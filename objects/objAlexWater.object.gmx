@@ -28,7 +28,7 @@
             <string>/// Check whether there's water above
 
 alarm[0] = 1    
-image_speed = .4;
+image_speed = .3;
 </string>
           </argument>
         </arguments>

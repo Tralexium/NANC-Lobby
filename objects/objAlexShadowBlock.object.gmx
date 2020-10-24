@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Change the depth back to 0
+            <string>/// Change the depth back to 100000
 
-depth = 0
+depth = 100000
 </string>
           </argument>
         </arguments>
