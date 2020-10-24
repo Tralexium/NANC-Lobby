@@ -116,6 +116,7 @@
     </sprites>
     <sprites name="ALEX">
       <sprite>sprites\sprAlexBlockSprite</sprite>
+      <sprite>sprites\sprAlexBlockWithoutShadow</sprite>
       <sprite>sprites\sprAlexShadowBlock</sprite>
       <sprite>sprites\sprAlexIceBlockSprite</sprite>
       <sprite>sprites\sprAlexPlatform</sprite>
@@ -123,6 +124,12 @@
       <sprite>sprites\sprAlexLobbyTransitionBubble</sprite>
       <sprite>sprites\sprAlexPlayerDustPart</sprite>
       <sprite>sprites\sprAlexLobbyStageDoor</sprite>
+      <sprite>sprites\sprAlexWaterTop</sprite>
+      <sprite>sprites\sprAlexWater</sprite>
+      <sprite>sprites\sprAlexWaterBubble</sprite>
+      <sprite>sprites\sprAlexWaterBubblePop</sprite>
+      <sprite>sprites\sprAlexWaterSplash</sprite>
+      <sprite>sprites\sprAlexWaterIcon</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -133,6 +140,9 @@
     <background>background\bStars</background>
     <backgrounds name="ALEX">
       <background>background\tAlexFloor1</background>
+      <background>background\tAlexFloor2</background>
+      <background>background\tAlexFloor3</background>
+      <background>background\tAlexFloor4</background>
       <background>background\bAlexFloor1</background>
       <background>background\bAlexFloor2</background>
       <background>background\bAlexFloor3</background>
@@ -315,6 +325,7 @@
         <object>objects\objAlexLobbyBubbleTransition</object>
         <object>objects\objAlexLobbyTransitionBubble</object>
         <object>objects\objAlexLobbyCam</object>
+        <object>objects\objAlexWaterBubble</object>
         <object>objects\objAlexParticle</object>
       </objects>
       <objects name="Player">
@@ -322,8 +333,10 @@
       </objects>
       <objects name="Blocks">
         <object>objects\objAlexBlockWithShadow</object>
+        <object>objects\objAlexBlockWithoutShadow</object>
         <object>objects\objAlexShadowBlock</object>
         <object>objects\objAlexIceBlockWithShadow</object>
+        <object>objects\objAlexWater</object>
         <object>objects\objAlexPlatform</object>
       </objects>
       <objects name="Doors">

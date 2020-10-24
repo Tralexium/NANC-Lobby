@@ -40,10 +40,14 @@
           <argument>
             <kind>1</kind>
             <string>/// New vars
+
+t = 0;             // General use timer
+
 draw_squish_x = 0; // positive means +xscale &amp; -yscale
 draw_squish_y = 0; // positive means -xscale &amp; +yscale
 
 has_landed = true; // for squish and smoke particles
+in_water = false;  // for splash and bubble particles
 
 // Bow's old fashion
 with(objBow)
@@ -413,9 +417,27 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
             <kind>1</kind>
             <string>/// New stuff
 
+// Increment timer
+t++;
+
 // Reset the squish values
 draw_squish_x = lerp(draw_squish_x, 0, .2);
 draw_squish_y = lerp(draw_squish_y, 0, .2);
+
+// Water effects
+if(!in_water &amp;&amp; place_meeting(x, y, objAlexWater)) {
+    in_water = true;
+    event_user(0);
+} else if(in_water &amp;&amp; !place_meeting(x, y, objAlexWater)) {
+    in_water = false;
+    event_user(0);
+}
+
+if(place_meeting(x, y, objAlexWater)) {
+    if(irandom(70) == 1) {
+        instance_create(x, y-5, objAlexWaterBubble);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -568,6 +590,36 @@ if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Water splash effect
+
+// PLAY SPLASH SOUND HERE!!
+
+repeat(3) {
+    var p = scrAlexMakeParticle(x, y+10, 20, sprAlexWaterSplash, 6/21, random_range(60, 130), 3, false, false, false);
+        p.gravity = .15;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -587,8 +639,8 @@ if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
             <kind>1</kind>
             <string>///draw the player
 
-var drawX = x;
-var drawY = y;
+var drawX = round(x);
+var drawY = round(y);
 var draw_xscale = image_xscale+(draw_squish_x-draw_squish_y)
 var draw_yscale = image_yscale+(draw_squish_y-draw_squish_x)
 
