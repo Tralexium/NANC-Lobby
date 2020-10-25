@@ -60,7 +60,7 @@ background_vspeed[0] = 0</code>
     <instance objName="objAlexBlockWithShadow" x="48" y="336" name="inst_9962B097" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="48" y="352" name="inst_471972A9" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyStageDoor" x="448" y="320" name="inst_DDAABB5A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLobbyStageDoor" x="336" y="352" name="inst_17D7DB93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyStageDoor" x="336" y="352" name="inst_17D7DB93" locked="0" code="room_id = rLobbyFloor2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyStageDoor" x="656" y="336" name="inst_810AF32B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyStageDoor" x="992" y="272" name="inst_4C3C5250" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyStageDoor" x="864" y="176" name="inst_9CDFA69C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -92,6 +92,7 @@ background_vspeed[0] = 0</code>
     <instance objName="objAlexIceBlockWithShadow" x="688" y="416" name="inst_70032894" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlatform" x="512" y="336" name="inst_19752798" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlatform" x="1072" y="176" name="inst_1486A2C8" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlayMusic" x="16" y="-32" name="inst_D49D710A" locked="0" code="BGM = musAlexFloor1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexFloor1" x="48" y="208" w="16" h="16" xo="96" yo="32" id="10002690" name="inst_4AECD382" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -27,9 +27,6 @@
             <kind>1</kind>
             <string>/// Setup the floor
 
-// Spawn the bubble transition
-instance_create(0, 0, objAlexLobbyBubbleTransition)
-
 // Change the player
 alarm[0] = 1;
 </string>

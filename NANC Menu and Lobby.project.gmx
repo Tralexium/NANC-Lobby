@@ -24,6 +24,15 @@
       <sound>sound\musMegaman</sound>
       <sound>sound\musMiku</sound>
     </sounds>
+    <sounds name="ALEX">
+      <sound>sound\musAlexReceptionRoom</sound>
+      <sound>sound\musAlexFloor1</sound>
+      <sound>sound\musAlexFloor2</sound>
+      <sound>sound\musAlexFloor3</sound>
+      <sound>sound\musAlexFloor4</sound>
+      <sound>sound\musAlexFloor5</sound>
+      <sound>sound\musAlexBonusFloor</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="world">
@@ -124,6 +133,10 @@
       <sprite>sprites\sprAlexLobbyTransitionBubble</sprite>
       <sprite>sprites\sprAlexPlayerDustPart</sprite>
       <sprite>sprites\sprAlexLobbyStageDoor</sprite>
+      <sprite>sprites\sprAlexLobbyStageDoorTag</sprite>
+      <sprite>sprites\sprAlexLobbyStageDoorAcedTag</sprite>
+      <sprite>sprites\sprAlexLobbyElevator</sprite>
+      <sprite>sprites\sprAlexPressUpArrow</sprite>
       <sprite>sprites\sprAlexWaterTop</sprite>
       <sprite>sprites\sprAlexWater</sprite>
       <sprite>sprites\sprAlexWaterBubble</sprite>
@@ -323,10 +336,13 @@
       <objects name="Misc">
         <object>objects\objFloorInitializer</object>
         <object>objects\objAlexLobbyBubbleTransition</object>
+        <object>objects\objAlexLobbyBubbleTransitionOut</object>
         <object>objects\objAlexLobbyTransitionBubble</object>
+        <object>objects\objAlexLobbyTransitionBubbleOut</object>
         <object>objects\objAlexLobbyCam</object>
         <object>objects\objAlexWaterBubble</object>
         <object>objects\objAlexParticle</object>
+        <object>objects\objAlexMusicFader</object>
       </objects>
       <objects name="Player">
         <object>objects\objAlexLobbyPlayer</object>

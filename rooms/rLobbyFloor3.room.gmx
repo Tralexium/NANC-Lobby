@@ -124,6 +124,7 @@ background_vspeed[0] = -.5</code>
     <instance objName="objAlexShadowBlock" x="688" y="288" name="inst_7F69D3E3" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowBlock" x="400" y="368" name="inst_61E52D2D" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowBlock" x="432" y="352" name="inst_11B6E5DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlayMusic" x="16" y="-32" name="inst_4804BF4A" locked="0" code="BGM = musAlexFloor3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexFloor3" x="432" y="240" w="32" h="48" xo="208" yo="0" id="10006611" name="inst_545706C7" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
