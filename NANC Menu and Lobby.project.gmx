@@ -135,6 +135,7 @@
       <sprite>sprites\sprAlexLobbyStageDoor</sprite>
       <sprite>sprites\sprAlexLobbyStageDoorTag</sprite>
       <sprite>sprites\sprAlexLobbyStageDoorAcedTag</sprite>
+      <sprite>sprites\sprAlexTopFiveBorders</sprite>
       <sprite>sprites\sprAlexLobbyElevator</sprite>
       <sprite>sprites\sprAlexPressUpArrow</sprite>
       <sprite>sprites\sprAlexWaterTop</sprite>
@@ -143,6 +144,10 @@
       <sprite>sprites\sprAlexWaterBubblePop</sprite>
       <sprite>sprites\sprAlexWaterSplash</sprite>
       <sprite>sprites\sprAlexWaterIcon</sprite>
+      <sprite>sprites\sprAlexPinkLeafPart</sprite>
+      <sprite>sprites\sprAlexYellowLeafPart</sprite>
+      <sprite>sprites\sprAlexLeafBlock</sprite>
+      <sprite>sprites\sprAlexFloor5Stars</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -156,6 +161,7 @@
       <background>background\tAlexFloor2</background>
       <background>background\tAlexFloor3</background>
       <background>background\tAlexFloor4</background>
+      <background>background\tAlexFloor5</background>
       <background>background\bAlexFloor1</background>
       <background>background\bAlexFloor2</background>
       <background>background\bAlexFloor3</background>
@@ -340,8 +346,6 @@
         <object>objects\objAlexLobbyTransitionBubble</object>
         <object>objects\objAlexLobbyTransitionBubbleOut</object>
         <object>objects\objAlexLobbyCam</object>
-        <object>objects\objAlexWaterBubble</object>
-        <object>objects\objAlexParticle</object>
         <object>objects\objAlexMusicFader</object>
       </objects>
       <objects name="Player">
@@ -357,6 +361,13 @@
       </objects>
       <objects name="Doors">
         <object>objects\objAlexLobbyStageDoor</object>
+      </objects>
+      <objects name="Decor">
+        <object>objects\objAlexParticle</object>
+        <object>objects\objAlexLeafPart</object>
+        <object>objects\objAlexLeafSpawnerBlock</object>
+        <object>objects\objAlexWaterBubble</object>
+        <object>objects\objAlexFloatingStar</object>
       </objects>
     </objects>
   </objects>
