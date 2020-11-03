@@ -29,15 +29,231 @@
 
 // Change these
 room_id = rLobbyFloor1;
+creator_name = "null";
+stage_name = "null";
+rating = 0;  // 0-10
+difficulty = 0;  // 0-10
+stage_number = 0;
+
+/*
+    To assign secrets use this format inside
+    the creation code:
+    
+    stage_secret_id[0] = global.secretItem[3];
+    stage_secret_id[1] = global.secretItem[4];
+    stage_secret_id[2] = global.secretItem[5];
+    ...and so on depending on how many secrets the stage has!
+*/
 ////////////////
 
+// Init empty secret slots (max of 10)
+for(var i = 0; i &lt; 10; i++) {
+    stage_secret_id[i] = noone;
+}
+
+tag_id = instance_create(x, y+1, objAlexDoorTag);
 image_speed = 0;
+alarm[10] = 1;
+total_secrets = 0;  // This will be filled in the 10th alarm
+secrets_found = 0;  // Same as above
+stage_cleared = false; // Check if the stage is cleared
+stage_aced = false;  // Whether all the secrets have been collected and the stage is cleared
 colliding = false;
 active = true;
 force_close = false;
 arrow_x = x;
 arrow_y = y;
 arrow_image_index = 0;
+theta = 0;
+checkmark_x = x;
+checkmark_y = y - sprite_height/2;
+checkmark_y_start = checkmark_y;
+checkmark_wiggle = 4;
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// UI related vars
+
+// We use a seperate object for UI to make the depth negative
+// Messing with the GUI event is more hassle than this...
+door_ui_id = instance_create(x, y, objAlexLobbyStageDoorUI);
+
+ui_alpha = 0;
+ui_x = x;
+ui_y = y - (sprite_height-8);
+ui_y_start = ui_y;
+ui_y_travel = 8;
+ui_fade_progress = 0;  // goes from 0 to 1, manages the fading animation
+ui_rating_length = 1;  // This is set in the 10th alarm
+ui_difficulty_length = 1;  // This is set in the 10th alarm
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Send the UI info to door_ui_id
+
+door_ui_id.ui_alpha = ui_alpha;
+door_ui_id.ui_x = ui_x;
+door_ui_id.ui_y = ui_y;
+door_ui_id.ui_y_start = ui_y_start;
+door_ui_id.ui_y_travel = ui_y_travel;
+door_ui_id.ui_fade_progress = ui_fade_progress;
+door_ui_id.ui_rating_length = ui_rating_length;
+door_ui_id.ui_difficulty_length = ui_difficulty_length;
+
+door_ui_id.stage_name = stage_name;
+door_ui_id.creator_name = creator_name;
+door_ui_id.total_secrets = total_secrets;
+door_ui_id.secrets_found = secrets_found;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Setup Door Tag
+
+tag_id.stage_number = stage_number;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check if stage is cleared
+
+if(global.stageCleared[stage_number]) {
+    stage_cleared = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Find total number of secrets &amp; if aced
+
+for(var i = 0; i &lt; 10; i++) {
+    if(stage_secret_id[i] != noone) {
+        total_secrets++;
+        if(stage_secret_id[i])
+            secrets_found++;
+    }
+}
+
+if(stage_cleared &amp;&amp; total_secrets == secrets_found) {
+    tag_id.sprite_index = sprAlexLobbyStageDoorAcedTag;
+    stage_aced = true;
+}
+
+// If no secrets exist, bring the UI closer to the door
+if(total_secrets &lt;= 0) {
+    show_debug_message("UI Lowered")
+    ui_y_start += 16;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Convert the score &amp; ratings into UI variants
+
+ui_rating_length = rating/10;  // This is set in the 10th alarm
+ui_difficulty_length = difficulty/10;  // This is set in the 10th alarm
 </string>
           </argument>
         </arguments>
@@ -212,6 +428,41 @@ if(!active) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Send the UI info to door_ui_id
+
+door_ui_id.ui_alpha = ui_alpha;
+door_ui_id.ui_x = ui_x;
+door_ui_id.ui_y = ui_y;
+door_ui_id.ui_y_start = ui_y_start;
+door_ui_id.ui_y_travel = ui_y_travel;
+door_ui_id.ui_fade_progress = ui_fade_progress;
+door_ui_id.ui_rating_length = ui_rating_length;
+door_ui_id.ui_difficulty_length = ui_difficulty_length;
+
+door_ui_id.stage_name = stage_name;
+door_ui_id.creator_name = creator_name;
+door_ui_id.total_secrets = total_secrets;
+door_ui_id.secrets_found = secrets_found;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -248,11 +499,42 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active) {
 
 if((colliding || !active) &amp;&amp; !force_close) {
     image_speed = .25;
+    ui_fade_progress = lerp(ui_fade_progress, 1, .25);
 } else {
     image_speed = -.25;
+    ui_fade_progress = lerp(ui_fade_progress, 0, .25);
 }
 
 image_index = clamp(image_index, .5, image_number-1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Handle UI values
+
+ui_alpha = ui_fade_progress;
+ui_y = ui_y_start - (ui_y_travel * ui_fade_progress);
+
+if(stage_cleared) {
+    theta += 5;
+    checkmark_y = checkmark_y_start + dsin(theta)*checkmark_wiggle;
+}
 </string>
           </argument>
         </arguments>
@@ -281,6 +563,33 @@ draw_self();
 
 if(colliding &amp;&amp; active)
     draw_sprite(sprAlexPressUpArrow, arrow_image_index, arrow_x, arrow_y);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw clear checkmark
+
+if(!stage_cleared) exit;
+
+draw_set_alpha(1-ui_alpha);
+draw_sprite(sprAlexLobbyStageDoorCleared, 0, checkmark_x, checkmark_y)
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

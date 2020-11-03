@@ -136,6 +136,7 @@
       <sprite>sprites\sprAlexLobbyStageDoorTag</sprite>
       <sprite>sprites\sprAlexLobbyStageDoorAcedTag</sprite>
       <sprite>sprites\sprAlexTopFiveBorders</sprite>
+      <sprite>sprites\sprAlexLobbyStageDoorCleared</sprite>
       <sprite>sprites\sprAlexLobbyElevator</sprite>
       <sprite>sprites\sprAlexPressUpArrow</sprite>
       <sprite>sprites\sprAlexWaterTop</sprite>
@@ -148,6 +149,10 @@
       <sprite>sprites\sprAlexYellowLeafPart</sprite>
       <sprite>sprites\sprAlexLeafBlock</sprite>
       <sprite>sprites\sprAlexFloor5Stars</sprite>
+      <sprite>sprites\sprAlexStageSecret</sprite>
+      <sprite>sprites\sprAlexStageSecretIcon</sprite>
+      <sprite>sprites\sprAlexStageDifficultyBar</sprite>
+      <sprite>sprites\sprAlexStageRatingBar</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -219,6 +224,11 @@
     <font>fonts\fDefault24</font>
     <font>fonts\fDefault18</font>
     <font>fonts\fDefault12</font>
+    <fonts name="ALEX GAME UI">
+      <font>fonts\fMenuLobby6</font>
+      <font>fonts\fMenuLobby12</font>
+      <font>fonts\fLobbySmall</font>
+    </fonts>
   </fonts>
   <objects name="objects">
     <objects name="world">
@@ -361,6 +371,8 @@
       </objects>
       <objects name="Doors">
         <object>objects\objAlexLobbyStageDoor</object>
+        <object>objects\objAlexDoorTag</object>
+        <object>objects\objAlexLobbyStageDoorUI</object>
       </objects>
       <objects name="Decor">
         <object>objects\objAlexParticle</object>
