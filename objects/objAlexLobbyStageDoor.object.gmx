@@ -262,6 +262,7 @@ for(var i = 0; i &lt; 10; i++) {
 if(stage_cleared &amp;&amp; total_secrets == secrets_found) {
     tag_id.sprite_index = sprAlexLobbyStageDoorAcedTag;
     stage_aced = true;
+    tag_id.is_aced = true;
 }
 
 // If no secrets exist, bring the UI closer to the door

@@ -136,6 +136,8 @@
       <sprite>sprites\sprAlexLobbyStageDoorTag</sprite>
       <sprite>sprites\sprAlexLobbyStageDoorAcedTag</sprite>
       <sprite>sprites\sprAlexTopFiveBorders</sprite>
+      <sprite>sprites\sprAlexAcedTagSparkPart1</sprite>
+      <sprite>sprites\sprAlexAcedTagSparkPart2</sprite>
       <sprite>sprites\sprAlexLobbyStageDoorCleared</sprite>
       <sprite>sprites\sprAlexLobbyElevator</sprite>
       <sprite>sprites\sprAlexPressUpArrow</sprite>

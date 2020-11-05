@@ -27,8 +27,49 @@
             <kind>1</kind>
             <string>/// Init vars
 
+timer = 0;
+is_aced = false;
 stage_number = 0;
 image_speed = .3;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// spawn particles if aced
+
+if(is_aced) {
+    timer++;
+    
+    var margin = 4;
+    var width = sprite_width/2;
+    var xx = random_range(x+margin-width, x+-margin+width);
+    var yy = random_range(y, y+sprite_height-margin);
+    
+    if(irandom(35) == 0){
+        if(choose(true, false))
+            scrAlexMakeParticle(xx, yy, 6, sprAlexAcedTagSparkPart1, .45, 0, 0, 0, 0, 1);
+        else
+            scrAlexMakeParticle(xx, yy, 8, sprAlexAcedTagSparkPart2, .45, 0, 0, 0, 0, 1);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -65,7 +106,7 @@ draw_set_font(fMenuLobby6);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
-scrDrawTextOutline(x, y+10, string(stage_number), $e8fff5, $2e1814);
+scrDrawTextOutline(x, y+11, string(stage_number), $e8fff5, $2e1814);
 </string>
           </argument>
         </arguments>

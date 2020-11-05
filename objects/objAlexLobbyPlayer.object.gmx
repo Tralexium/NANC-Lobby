@@ -648,6 +648,9 @@ var draw_yscale = image_yscale+(draw_squish_y-draw_squish_x)
 if (global.grav == -1)      //need to draw the player a pixel off in the y-axis when flipped for some reason
     drawY += 1;
 
+// Draw the shadow first
+draw_sprite_ext(sprite_index, image_index, x-2, y+2, draw_xscale*xScale,draw_yscale*global.grav, image_angle, c_black, 0.5)
+    
 draw_sprite_ext(sprite_index,image_index,drawX,drawY+(draw_squish_x*(sprite_height/2)),draw_xscale*xScale,draw_yscale*global.grav,image_angle,image_blend,image_alpha*draw_alpha);
 
 //draw the player's hitbox
