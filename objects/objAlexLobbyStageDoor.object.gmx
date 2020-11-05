@@ -34,6 +34,7 @@ stage_name = "null";
 rating = 0;  // 0-10
 difficulty = 0;  // 0-10
 stage_number = 0;
+stage_preview_image = sprStagePreviewTest;  // Sets the preview picture of the stage
 
 /*
     To assign secrets use this format inside
@@ -45,6 +46,19 @@ stage_number = 0;
     ...and so on depending on how many secrets the stage has!
 */
 ////////////////
+
+// Shader related
+preview_alpha = 0;
+time_since_open_door = 0;
+time_until_preview_shows = 8;
+
+shader = sHeatHaze;
+shader_timer = 0;
+distort_sprite = sprAlexHeatHazeDistortionTex;
+distort_tex = sprite_get_texture(distort_sprite, 0);
+u_distort_tex = shader_get_sampler_index(shader, "distort_tex");
+u_time = shader_get_uniform(shader, "time");
+preview_image_surf = noone;
 
 // Init empty secret slots (max of 10)
 for(var i = 0; i &lt; 10; i++) {
@@ -145,6 +159,31 @@ door_ui_id.secrets_found = secrets_found;
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Clear surface/s
+
+surface_free(preview_image_surf);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="10">
       <action>
         <libid>1</libid>
@@ -227,7 +266,6 @@ if(stage_cleared &amp;&amp; total_secrets == secrets_found) {
 
 // If no secrets exist, bring the UI closer to the door
 if(total_secrets &lt;= 0) {
-    show_debug_message("UI Lowered")
     ui_y_start += 16;
 }
 </string>
@@ -499,10 +537,22 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active) {
 
 if((colliding || !active) &amp;&amp; !force_close) {
     image_speed = .25;
+    time_since_open_door++;
     ui_fade_progress = lerp(ui_fade_progress, 1, .25);
 } else {
-    image_speed = -.25;
+    // Wait for the preview to fade out first
+    if((preview_alpha &lt;= 0))
+        image_speed = -.25;
+        
+    time_since_open_door = 0;
     ui_fade_progress = lerp(ui_fade_progress, 0, .25);
+}
+
+// Fade in stage preview after a while
+if(time_since_open_door &gt;= time_until_preview_shows) {
+    preview_alpha = min(1, preview_alpha+0.1);
+} else {
+    preview_alpha = max(0, preview_alpha-0.2);
 }
 
 image_index = clamp(image_index, .5, image_number-1);
@@ -557,12 +607,60 @@ if(stage_cleared) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw door and arrow
+            <string>/// Draw the door
 
 draw_self();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw preview of the stage
 
-if(colliding &amp;&amp; active)
-    draw_sprite(sprAlexPressUpArrow, arrow_image_index, arrow_x, arrow_y);
+if(preview_alpha &gt; 0) {
+
+if(!surface_exists(preview_image_surf)) {
+    var w = sprite_get_width(stage_preview_image);
+    var h = sprite_get_height(stage_preview_image);
+    preview_image_surf = surface_create(w, h);
+    
+    surface_set_target(preview_image_surf)
+        draw_sprite(stage_preview_image, 0, 0, 0);
+    surface_reset_target();
+}
+
+shader_timer += 0.002;
+var door_w = sprite_get_width(sprite_index);
+var door_h = sprite_get_height(sprite_index);
+
+draw_set_alpha(preview_alpha);
+texture_set_interpolation_ext(u_distort_tex, true);
+
+shader_set(shader);
+    texture_set_stage(u_distort_tex, distort_tex);
+    shader_set_uniform_f(u_time, shader_timer);
+    draw_surface(preview_image_surf, x-door_w/2, y-door_h);
+shader_reset();
+
+draw_set_alpha(1);
+texture_set_interpolation(false);
+
+}
 </string>
           </argument>
         </arguments>
@@ -585,11 +683,37 @@ if(colliding &amp;&amp; active)
             <kind>1</kind>
             <string>/// Draw clear checkmark
 
-if(!stage_cleared) exit;
+if(stage_cleared) {
 
-draw_set_alpha(1-ui_alpha);
-draw_sprite(sprAlexLobbyStageDoorCleared, 0, checkmark_x, checkmark_y)
-draw_set_alpha(1);
+    draw_set_alpha(1-ui_alpha);
+    draw_sprite(sprAlexLobbyStageDoorCleared, 0, checkmark_x, checkmark_y)
+    draw_set_alpha(1);
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the arrow
+
+if(colliding &amp;&amp; active)
+    draw_sprite(sprAlexPressUpArrow, arrow_image_index, arrow_x, arrow_y);
 </string>
           </argument>
         </arguments>

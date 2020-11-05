@@ -153,6 +153,10 @@
       <sprite>sprites\sprAlexStageSecretIcon</sprite>
       <sprite>sprites\sprAlexStageDifficultyBar</sprite>
       <sprite>sprites\sprAlexStageRatingBar</sprite>
+      <sprites name="Door Stage Previews">
+        <sprite>sprites\sprAlexHeatHazeDistortionTex</sprite>
+        <sprite>sprites\sprStagePreviewTest</sprite>
+      </sprites>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -219,6 +223,9 @@
       <script>scripts\scrAlexMakeParticleExt.gml</script>
     </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\sHeatHaze.shader</shader>
+  </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
     <font>fonts\fDefault24</font>
