@@ -432,6 +432,7 @@ if(!active) {
     with(objAlexLobbyPlayer) {
         frozen = true;
         sprite_index = sprPlayerRunning;
+        image_speed = 0.4;
         if(draw_alpha &gt; 0) {
             draw_alpha -= .05;
         }
@@ -655,7 +656,7 @@ texture_set_interpolation_ext(u_distort_tex, true);
 shader_set(shader);
     texture_set_stage(u_distort_tex, distort_tex);
     shader_set_uniform_f(u_time, shader_timer);
-    draw_surface(preview_image_surf, x-door_w/2, y-door_h);
+    draw_surface(preview_image_surf, x-door_w/2+1, y-door_h);
 shader_reset();
 
 draw_set_alpha(1);
