@@ -371,8 +371,8 @@ alarm[2] = 60;
             <kind>1</kind>
             <string>/// Shut the door
 
-// TODO: Closing door sound
 force_close = true;
+audio_play_sound(sndAlexStageDoorClosed, 0, false);
 
 alarm[1] = 50;
 </string>

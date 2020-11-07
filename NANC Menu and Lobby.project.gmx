@@ -35,6 +35,12 @@
       <sounds name="sfx">
         <sound>sound\sndAlexKidLand</sound>
         <sound>sound\sndAlexKidLandFromLongFall</sound>
+        <sound>sound\sndAlexStageDoorClosed</sound>
+        <sound>sound\sndAlexElevatorOpen</sound>
+        <sound>sound\sndAlexElevatorClosed</sound>
+        <sound>sound\sndAlexElevatorSwitchButton</sound>
+        <sound>sound\sndAlexElevatorError</sound>
+        <sound>sound\sndAlexElevatorPickFloor</sound>
         <sound>sound\sndAlexLobbyWaterSplashIn1</sound>
         <sound>sound\sndAlexLobbyWaterSplashIn2</sound>
         <sound>sound\sndAlexLobbyWaterSplashIn3</sound>

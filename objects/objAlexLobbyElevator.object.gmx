@@ -161,8 +161,8 @@ alarm[2] = 60;
             <kind>1</kind>
             <string>/// Shut the door
 
-// TODO: Closing door sound
 force_close = true;
+audio_play_sound(sndAlexElevatorClosed, 0, false);
 
 alarm[1] = 50;
 </string>
@@ -305,6 +305,7 @@ if(show_panel &amp;&amp; active) {
     //  Close the panel if shoot
     if(scrButtonCheckPressed(global.shootButton)) {
         show_panel = false;
+        audio_play_sound(sndAlexElevatorClosed, 0, false);
         with(objAlexLobbyPlayer) {
             frozen = false;
         }
@@ -319,11 +320,14 @@ if(show_panel &amp;&amp; active) {
         active = false;
         alarm[0] = 40;
         instance_create(0, 0, objAlexMusicFader);
-        // TODO: walking sound
+        audio_play_sound(sndAlexElevatorPickFloor, 0, false);
     }
     
     var H = (scrButtonCheckPressed(global.rightButton) - scrButtonCheckPressed(global.leftButton));
     var V = (scrButtonCheckPressed(global.upButton) - scrButtonCheckPressed(global.downButton));
+    
+    if(H+V != 0)
+        audio_play_sound(sndAlexElevatorSwitchButton, 0, false);
     
     cursor_index += H + (V*2);
     
@@ -358,6 +362,7 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active) {
     // Check if the player has entered the door
     if(scrButtonCheckPressed(global.upButton) &amp;&amp; !show_panel) {
         show_panel = true;
+        audio_play_sound(sndAlexElevatorOpen, 0, false);
         with(objAlexLobbyPlayer) {
             frozen = true;
         }
@@ -404,7 +409,7 @@ if(show_panel) {
     var bonus_is_locked = ((cursor_index == 7) &amp;&amp; !bonus_room_available);
     if(scrButtonCheckPressed(global.jumpButton) &amp;&amp; (is_same_floor || bonus_is_locked)) {
         cursor_mix_val = 1;
-        // TODO: play error sound
+        audio_play_sound(sndAlexElevatorError, 0, false);
     }
     
 } else {
