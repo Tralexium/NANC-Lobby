@@ -62,6 +62,11 @@ ds_map_add(saveMap,"savePlayerX",global.savePlayerX);
 ds_map_add(saveMap,"savePlayerY",global.savePlayerY);
 ds_map_add(saveMap,"saveGrav",global.saveGrav);
 
+for (var i = 0; i <= global.totalNumberOfStages; i++)
+{
+    ds_map_add(saveMap,"saveStageClear["+string(i)+"]",global.saveStageCleared[i]);
+}
+
 for (var i = 0; i < global.secretItemTotal; i++)
 {
     ds_map_add(saveMap,"saveSecretItem["+string(i)+"]",global.saveSecretItem[i]);

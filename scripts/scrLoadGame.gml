@@ -48,6 +48,11 @@ if (loadFile)
             saveValid = false;
         }
         
+        for (var i = 0; i <= global.totalNumberOfStages; i++)
+        {
+            global.saveStageCleared[i] = ds_map_find_value(saveMap,"saveStageClear["+string(i)+"]");
+        }
+        
         for (var i = 0; i < global.secretItemTotal; i++)
         {
             global.saveSecretItem[i] = ds_map_find_value(saveMap,"saveSecretItem["+string(i)+"]");
@@ -105,6 +110,11 @@ global.noPause = false;     //disable no pause mode
 global.autosave = false;    //disable autosaving since we're loading the game
 
 global.grav = global.saveGrav;
+
+for (var i = 0; i <= global.totalNumberOfStages; i++)
+{
+    global.stageCleared[i] = global.saveStageCleared[i];
+}
 
 for (var i = 0; i < global.secretItemTotal; i++)
 {

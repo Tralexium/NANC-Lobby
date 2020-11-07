@@ -4,7 +4,7 @@ scrSetGlobalOptions();       //initialize global game options
 
 // ALEX MENU & LOBBY GLOBALS
 global.totalNumberOfStages = 35;
-for (var i = global.totalNumberOfStages; i >= 0; i--)
+for (var i = 0; i <= global.totalNumberOfStages; i++)
 {
     show_debug_message(i);
     global.stageCleared[i] = false;

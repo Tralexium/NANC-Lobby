@@ -4,7 +4,7 @@
   <width>1792</width>
   <height>456</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -53,12 +53,12 @@ background_vspeed[0] = -.25</code>
   </views>
   <instances>
     <instance objName="objFloorInitializer" x="0" y="-16" name="inst_0CD5DB9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLobbyStageDoor" x="360" y="400" name="inst_CAE8BEEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLobbyStageDoor" x="120" y="256" name="inst_1C30F0EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLobbyStageDoor" x="1184" y="160" name="inst_3512C6AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLobbyStageDoor" x="1536" y="336" name="inst_26FF99FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLobbyStageDoor" x="1664" y="240" name="inst_2D261384" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLobbyStageDoor" x="592" y="320" name="inst_3F4E0EC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyStageDoor" x="360" y="400" name="inst_CAE8BEEF" locked="0" code="room_id = rLobbyFloor1;&#xA;creator_name = &quot;Null&quot;;&#xA;stage_name = &quot;Null&quot;;&#xA;rating = 0;  // 0-10&#xA;difficulty = 0;  // 0-10&#xA;stage_number = 22;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyStageDoor" x="120" y="256" name="inst_1C30F0EA" locked="0" code="room_id = rLobbyFloor1;&#xA;creator_name = &quot;Null&quot;;&#xA;stage_name = &quot;Null&quot;;&#xA;rating = 0;  // 0-10&#xA;difficulty = 0;  // 0-10&#xA;stage_number = 21;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyStageDoor" x="1184" y="160" name="inst_3512C6AC" locked="0" code="room_id = rLobbyFloor1;&#xA;creator_name = &quot;Null&quot;;&#xA;stage_name = &quot;Null&quot;;&#xA;rating = 0;  // 0-10&#xA;difficulty = 0;  // 0-10&#xA;stage_number = 18;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyStageDoor" x="1536" y="336" name="inst_26FF99FD" locked="0" code="room_id = rLobbyFloor1;&#xA;creator_name = &quot;Null&quot;;&#xA;stage_name = &quot;Null&quot;;&#xA;rating = 0;  // 0-10&#xA;difficulty = 0;  // 0-10&#xA;stage_number = 20;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyStageDoor" x="1664" y="240" name="inst_2D261384" locked="0" code="room_id = rLobbyFloor1;&#xA;creator_name = &quot;Null&quot;;&#xA;stage_name = &quot;Null&quot;;&#xA;rating = 0;  // 0-10&#xA;difficulty = 0;  // 0-10&#xA;stage_number = 19;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyStageDoor" x="592" y="320" name="inst_3F4E0EC0" locked="0" code="room_id = rLobbyFloor1;&#xA;creator_name = &quot;Null&quot;;&#xA;stage_name = &quot;Null&quot;;&#xA;rating = 0;  // 0-10&#xA;difficulty = 0;  // 0-10&#xA;stage_number = 23;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexWater" x="592" y="352" name="inst_C181E8FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexWater" x="512" y="352" name="inst_E22942C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexWater" x="528" y="352" name="inst_D55EA36D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -131,6 +131,7 @@ background_vspeed[0] = -.25</code>
     <instance objName="objAlexLeafSpawnerBlock" x="808" y="192" name="inst_266375B9" locked="0" code="is_pink = true&#xA;" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLeafSpawnerBlock" x="1080" y="224" name="inst_E0CBB477" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLeafSpawnerBlock" x="1456" y="240" name="inst_86A913F6" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyElevator" x="960" y="304" name="inst_490C40D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexFloor3" x="432" y="240" w="32" h="48" xo="208" yo="0" id="10006611" name="inst_545706C7" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
