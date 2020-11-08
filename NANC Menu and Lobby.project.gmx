@@ -172,6 +172,9 @@
       <sprite>sprites\sprAlexLeafBlock</sprite>
       <sprite>sprites\sprAlexFloor5Stars</sprite>
       <sprite>sprites\sprAlexStageSecret</sprite>
+      <sprite>sprites\sprAlexStageSecretAlreadyGot</sprite>
+      <sprite>sprites\sprAlexSecretHalo</sprite>
+      <sprite>sprites\sprAlexSecretCollected</sprite>
       <sprite>sprites\sprAlexStageSecretIcon</sprite>
       <sprite>sprites\sprAlexStageDifficultyBar</sprite>
       <sprite>sprites\sprAlexStageRatingBar</sprite>
@@ -387,6 +390,8 @@
         <object>objects\objAlexLobbyTransitionBubbleOut</object>
         <object>objects\objAlexLobbyCam</object>
         <object>objects\objAlexMusicFader</object>
+        <object>objects\objFancySecretItem</object>
+        <object>objects\objSecretCollectedIndicator</object>
       </objects>
       <objects name="Player">
         <object>objects\objAlexLobbyPlayer</object>
