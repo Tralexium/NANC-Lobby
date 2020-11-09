@@ -31,6 +31,7 @@
       <sound>sound\musAlexFloor3</sound>
       <sound>sound\musAlexFloor4</sound>
       <sound>sound\musAlexFloor5</sound>
+      <sound>sound\musAlexFloor6</sound>
       <sound>sound\musAlexBonusFloor</sound>
       <sounds name="sfx">
         <sound>sound\sndAlexKidLand</sound>
@@ -196,11 +197,15 @@
       <background>background\tAlexFloor3</background>
       <background>background\tAlexFloor4</background>
       <background>background\tAlexFloor5</background>
+      <background>background\tAlexFloor6</background>
       <background>background\bAlexFloor1</background>
       <background>background\bAlexFloor2</background>
       <background>background\bAlexFloor3</background>
       <background>background\bAlexFloor4</background>
       <background>background\bAlexFloor5</background>
+      <background>background\bAlexFloor5LargeSnow</background>
+      <background>background\bAlexFloor5SmallSnow</background>
+      <background>background\bAlexFloor6</background>
     </backgrounds>
   </backgrounds>
   <paths name="paths"/>
@@ -445,6 +450,7 @@
         <room>rooms\rLobbyFloor3</room>
         <room>rooms\rLobbyFloor4</room>
         <room>rooms\rLobbyFloor5</room>
+        <room>rooms\rLobbyFloor6</room>
       </rooms>
     </rooms>
   </rooms>

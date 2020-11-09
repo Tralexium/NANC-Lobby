@@ -43,8 +43,8 @@ floor_id[2] = rLobbyFloor2;
 floor_id[3] = rLobbyFloor3;
 floor_id[4] = rLobbyFloor4;
 floor_id[5] = rLobbyFloor5;
-floor_id[6] = rLobbyFloor5;  // Change this later into floor 6
-floor_id[7] = rLobbyFloor5;  // Change this later into bonus room
+floor_id[6] = rLobbyFloor6;  // Change this later into floor 6
+floor_id[7] = rLobbyFloor6;  // Change this later into bonus room
 
 for(var i=0; i&lt;8; i++) {
     if(floor_id[i] == room) {
