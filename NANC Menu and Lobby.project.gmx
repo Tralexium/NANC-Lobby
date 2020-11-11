@@ -34,6 +34,7 @@
       <sound>sound\musAlexFloor6</sound>
       <sound>sound\musAlexBonusFloor</sound>
       <sounds name="sfx">
+        <sound>sound\sndAlexSecretPickup</sound>
         <sound>sound\sndAlexKidLand</sound>
         <sound>sound\sndAlexKidLandFromLongFall</sound>
         <sound>sound\sndAlexStageDoorClosed</sound>
@@ -172,6 +173,12 @@
       <sprite>sprites\sprAlexYellowLeafPart</sprite>
       <sprite>sprites\sprAlexLeafBlock</sprite>
       <sprite>sprites\sprAlexFloor5Stars</sprite>
+      <sprite>sprites\sprAlexChandelier</sprite>
+      <sprite>sprites\sprAlexBonusFloorSparkPart1</sprite>
+      <sprite>sprites\sprAlexBonusFloorSparkPart2</sprite>
+      <sprite>sprites\sprAlexBonusFloorSparkPart3</sprite>
+      <sprite>sprites\sprAlexBonusFloorSparkPart4</sprite>
+      <sprite>sprites\sprAlexBonusFloorSparkPart5</sprite>
       <sprite>sprites\sprAlexStageSecret</sprite>
       <sprite>sprites\sprAlexStageSecretAlreadyGot</sprite>
       <sprite>sprites\sprAlexSecretHalo</sprite>
@@ -198,6 +205,8 @@
       <background>background\tAlexFloor4</background>
       <background>background\tAlexFloor5</background>
       <background>background\tAlexFloor6</background>
+      <background>background\tAlexBonusFloor</background>
+      <background>background\bAlexReceptionRoom</background>
       <background>background\bAlexFloor1</background>
       <background>background\bAlexFloor2</background>
       <background>background\bAlexFloor3</background>
@@ -206,6 +215,7 @@
       <background>background\bAlexFloor5LargeSnow</background>
       <background>background\bAlexFloor5SmallSnow</background>
       <background>background\bAlexFloor6</background>
+      <background>background\bAlexBonusFloor</background>
     </backgrounds>
   </backgrounds>
   <paths name="paths"/>
@@ -403,11 +413,13 @@
       </objects>
       <objects name="Blocks">
         <object>objects\objAlexBlockWithShadow</object>
+        <object>objects\objAlexSparkleShadowBlock</object>
         <object>objects\objAlexBlockWithoutShadow</object>
         <object>objects\objAlexShadowBlock</object>
         <object>objects\objAlexIceBlockWithShadow</object>
         <object>objects\objAlexWater</object>
         <object>objects\objAlexPlatform</object>
+        <object>objects\objAlexSparklePlatform</object>
       </objects>
       <objects name="Doors">
         <object>objects\objAlexLobbyStageDoor</object>
@@ -421,6 +433,7 @@
         <object>objects\objAlexLeafSpawnerBlock</object>
         <object>objects\objAlexWaterBubble</object>
         <object>objects\objAlexFloatingStar</object>
+        <object>objects\objAlexChandelier</object>
       </objects>
     </objects>
   </objects>
@@ -451,6 +464,7 @@
         <room>rooms\rLobbyFloor4</room>
         <room>rooms\rLobbyFloor5</room>
         <room>rooms\rLobbyFloor6</room>
+        <room>rooms\rLobbyBonusFloor</room>
       </rooms>
     </rooms>
   </rooms>

@@ -44,7 +44,7 @@ floor_id[3] = rLobbyFloor3;
 floor_id[4] = rLobbyFloor4;
 floor_id[5] = rLobbyFloor5;
 floor_id[6] = rLobbyFloor6;  // Change this later into floor 6
-floor_id[7] = rLobbyFloor6;  // Change this later into bonus room
+floor_id[7] = rLobbyBonusFloor;  // Change this later into bonus room
 
 for(var i=0; i&lt;8; i++) {
     if(floor_id[i] == room) {
@@ -52,8 +52,6 @@ for(var i=0; i&lt;8; i++) {
         break;
     }
 }
-
-show_debug_message(current_room_num);
 
 var secrets_found = 0
 var secrets_needed_to_unlock_bonus = 3;
@@ -592,7 +590,7 @@ if(colliding &amp;&amp; active)
             <kind>1</kind>
             <string>/// Draw the current floor light
 
-if(current_room_num &lt; 8) {
+if(current_room_num &lt; 7) {
     var offset = current_room_num*6;
     draw_sprite(sprAlexLobbyElevatorLight, 0, x-17, y-8-offset);
 } else {

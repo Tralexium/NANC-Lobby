@@ -674,7 +674,7 @@ if (global.grav == -1)      //need to draw the player a pixel off in the y-axis 
     drawY += 1;
 
 // Draw the shadow first
-draw_sprite_ext(sprite_index, image_index, x-2, y+2, draw_xscale*xScale,draw_yscale*global.grav, image_angle, c_black, 0.5*draw_alpha)
+draw_sprite_ext(sprite_index, image_index, drawX-2, drawY+2, draw_xscale*xScale,draw_yscale*global.grav, image_angle, c_black, 0.5*draw_alpha)
     
 draw_sprite_ext(sprite_index,image_index,drawX,drawY+(draw_squish_x*(sprite_height/2)),draw_xscale*xScale,draw_yscale*global.grav,image_angle,image_blend,image_alpha*draw_alpha);
 
