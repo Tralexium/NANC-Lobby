@@ -186,9 +186,27 @@
       <sprite>sprites\sprAlexStageSecretIcon</sprite>
       <sprite>sprites\sprAlexStageDifficultyBar</sprite>
       <sprite>sprites\sprAlexStageRatingBar</sprite>
+      <sprite>sprites\sprAlexLootBox</sprite>
+      <sprite>sprites\sprAlexLootBoxLock</sprite>
       <sprites name="Door Stage Previews">
         <sprite>sprites\sprAlexHeatHazeDistortionTex</sprite>
         <sprite>sprites\sprAllStagePreviews</sprite>
+      </sprites>
+      <sprites name="Hats &amp; Pets">
+        <sprite>sprites\sprAlexHatBlorb</sprite>
+        <sprite>sprites\sprAlexHatClownFace</sprite>
+        <sprite>sprites\sprAlexHatCyberHead</sprite>
+        <sprite>sprites\sprAlexHatDuality</sprite>
+        <sprite>sprites\sprAlexHatGhoul</sprite>
+        <sprite>sprites\sprAlexHatMotherClucker</sprite>
+        <sprite>sprites\sprAlexHatOldPC</sprite>
+        <sprite>sprites\sprAlexHatOongaBoonga</sprite>
+        <sprite>sprites\sprAlexHatPropellerHat</sprite>
+        <sprite>sprites\sprAlexHatSombrero</sprite>
+        <sprite>sprites\sprAlexPetGhosty</sprite>
+        <sprite>sprites\sprAlexPetPatsBall</sprite>
+        <sprite>sprites\sprAlexPetTrollBuddy</sprite>
+        <sprite>sprites\sprAlexPetRNG</sprite>
       </sprites>
     </sprites>
   </sprites>
@@ -266,6 +284,7 @@
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\sHeatHaze.shader</shader>
+    <shader type="GLSLES">shaders\sRainbowAura.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -434,6 +453,9 @@
         <object>objects\objAlexWaterBubble</object>
         <object>objects\objAlexFloatingStar</object>
         <object>objects\objAlexChandelier</object>
+      </objects>
+      <objects name="Cosmetics">
+        <object>objects\objAlexLootBox</object>
       </objects>
     </objects>
   </objects>
