@@ -3,7 +3,7 @@
   <spriteName>sprAlexLootBox</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -46,6 +46,13 @@ arrow_image_index = 0;
 lock_angle = 0;
 lock_shake_amnt = 20;
 lock_shake_limiter = 0;
+halo_angle = 0;
+halo_spin_spd = 1;
+halo_alpha = .5;
+halo_scale = .4;
+halo_add_scale = .1;
+halfs_distance = 0;
+halfs_alpha = 1;
 
 // Shader related
 shader = sRainbowAura;
@@ -59,6 +66,22 @@ shader_res[1] = sprite_height;
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>203</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_kill_object</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="3" enumb="2">
@@ -118,6 +141,14 @@ if(place_meeting(x, y+16, objAlexLobbyPlayer) &amp;&amp; !collected) {
     if(scrButtonCheckPressed(global.upButton)) {
         if(!locked) {
             collected = true;
+            alarm[0] = 50;
+            
+            var preview = instance_create(x, y, objAlexCosmeticPreviewFromBox);
+                preview.cosmetic_id = box_id;
+            
+            repeat(20) {
+                instance_create(draw_x, draw_y, objAlexLootBoxStarPart);
+            }
             // TODO: Save the box &amp; fancy effects bla bla...
         } else {
             lock_shake_limiter = lock_shake_amnt;
@@ -130,11 +161,21 @@ if(place_meeting(x, y+16, objAlexLobbyPlayer) &amp;&amp; !collected) {
 
 timer++;
 
+if(!collected) {
+    draw_y = ystart + dsin(timer*2)*8;
+} else {
+    halo_spin_spd += .5;
+    halo_alpha = max(halo_alpha - .05, 0);
+    halo_scale = max(halo_alpha - .02, 0);
+    halfs_distance = lerp(halfs_distance, 24, .05);
+    halfs_alpha = max(halfs_alpha - .05, 0);
+}
+
+halo_add_scale = dsin(timer)*.1;
 lock_shake_limiter = max(lock_shake_limiter-1, 0);
 lock_angle = dsin(timer*40)*lock_shake_limiter;
 shader_vis = abs(dsin(timer))
-
-draw_y = ystart + dsin(timer*2)*8;
+halo_angle += halo_spin_spd;
 </string>
           </argument>
         </arguments>
@@ -159,15 +200,7 @@ draw_y = ystart + dsin(timer*2)*8;
             <kind>1</kind>
             <string>/// Find out how many secrets are collected
 
-var secrets_found = 0;
-
-for (var i = global.secretItemTotal-1; i &gt;= 0; i--)
-{
-    if(global.secretItem[i])
-        secrets_found++;
-}
-
-if(secrets_found &gt;= min_secret_amnt)
+if(global.totalSecretsFound &gt;= min_secret_amnt)
     locked = false;
 </string>
           </argument>
@@ -215,20 +248,94 @@ shader_res[1] = sprite_height;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Draw halo if unlocked
+
+if(!locked) {
+    var halo_scale1 = halo_scale + halo_add_scale;
+    var halo_scale2 = halo_scale - halo_add_scale;
+    
+    draw_sprite_ext(sprAlexSecretHalo, 0, draw_x, draw_y, halo_scale1, halo_scale1, halo_angle, -1, halo_alpha);
+    draw_sprite_ext(sprAlexSecretHalo, 0, draw_x, draw_y, halo_scale2, halo_scale2, -halo_angle, -1, halo_alpha);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Draw box &amp; lock
 
-shader_timer += 0.05;
+if(locked) {
+    shader_timer += 0.05;
+    
+    // Draw box
+    shader_set(shader);
+        shader_set_uniform_f(u_time, shader_timer);
+        shader_set_uniform_f(u_visibility, shader_vis);
+        shader_set_uniform_f_array(u_resolution, shader_res);
+        draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, image_xscale, image_yscale, 0, -1, image_alpha);
+    shader_reset();
+    
+    // Draw lock
+    draw_sprite_ext(sprAlexLootBoxLock, 0, draw_x, draw_y, 1, 1, lock_angle, -1, image_alpha);
+} else {
+    if(!collected) {
+        draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, image_xscale, image_yscale, 0, -1, image_alpha);
+    } else {
+        draw_sprite_ext(sprAlexLootBoxUpperHalf, 0, draw_x, draw_y-halfs_distance, image_xscale, image_yscale, 0, -1, halfs_alpha);
+        draw_sprite_ext(sprAlexLootBoxBottomHalf, 0, draw_x, draw_y+halfs_distance, image_xscale, image_yscale, 0, -1, halfs_alpha);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the required secret amount
 
-// Draw box
-shader_set(shader);
-    shader_set_uniform_f(u_time, shader_timer);
-    shader_set_uniform_f(u_visibility, shader_vis);
-    shader_set_uniform_f_array(u_resolution, shader_res);
-    draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, image_xscale, image_yscale, 0, -1, image_alpha);
-shader_reset();
+var text_col = $e8fff5;
+var outline_col = $2e1814;
 
-// Draw lock
-draw_sprite_ext(sprAlexLootBoxLock, 0, draw_x, draw_y, 1, 1, lock_angle, -1, image_alpha);
+draw_set_font(fLobbySmall);
+draw_set_halign(fa_left);
+draw_set_valign(fa_middle);
+
+if(locked) {
+    draw_sprite(sprAlexStageSecretIcon, 0, draw_x-16, draw_y-32);
+    scrDrawTextOutline(draw_x-2, draw_y-32, "x  "+string(min_secret_amnt), text_col, outline_col);
+} else if(!collected) {
+    draw_set_halign(fa_center);
+    scrDrawTextOutline(draw_x, draw_y-32, "COLLECT ME!", text_col, outline_col);
+}
 </string>
           </argument>
         </arguments>

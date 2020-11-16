@@ -187,7 +187,10 @@
       <sprite>sprites\sprAlexStageDifficultyBar</sprite>
       <sprite>sprites\sprAlexStageRatingBar</sprite>
       <sprite>sprites\sprAlexLootBox</sprite>
+      <sprite>sprites\sprAlexLootBoxUpperHalf</sprite>
+      <sprite>sprites\sprAlexLootBoxBottomHalf</sprite>
       <sprite>sprites\sprAlexLootBoxLock</sprite>
+      <sprite>sprites\sprAlexLootBoxStarPart</sprite>
       <sprites name="Door Stage Previews">
         <sprite>sprites\sprAlexHeatHazeDistortionTex</sprite>
         <sprite>sprites\sprAllStagePreviews</sprite>
@@ -277,6 +280,7 @@
       <script>scripts\scrMakeCircle.gml</script>
     </scripts>
     <scripts name="ALEX">
+      <script>scripts\scrGetCosmeticSprite.gml</script>
       <script>scripts\scrAlexMakeParticle.gml</script>
       <script>scripts\scrAlexMakeParticleExt.gml</script>
       <script>scripts\scrAlexEaseOutSine.gml</script>
@@ -456,6 +460,8 @@
       </objects>
       <objects name="Cosmetics">
         <object>objects\objAlexLootBox</object>
+        <object>objects\objAlexLootBoxStarPart</object>
+        <object>objects\objAlexCosmeticPreviewFromBox</object>
       </objects>
     </objects>
   </objects>

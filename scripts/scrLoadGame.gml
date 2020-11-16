@@ -38,6 +38,10 @@ if (loadFile)
         global.savePlayerY = ds_map_find_value(saveMap,"savePlayerY");
         global.saveGrav = ds_map_find_value(saveMap,"saveGrav");
         
+        global.currentPlayerHat = ds_map_find_value(saveMap,"currentPlayerHat");
+        global.currentPlayerPet = ds_map_find_value(saveMap,"currentPlayerPet");
+        global.saveTotalSecretsFound = ds_map_find_value(saveMap,"saveTotalSecretsFound");
+        
         if (is_string(global.saveRoom))   //check if the saved room loaded properly
         {
             if (!room_exists(asset_get_index(global.saveRoom)))  //check if the room index in the save is valid
@@ -51,6 +55,11 @@ if (loadFile)
         for (var i = 0; i <= global.totalNumberOfStages; i++)
         {
             global.saveStageCleared[i] = ds_map_find_value(saveMap,"saveStageClear["+string(i)+"]");
+        }
+        
+        for (var i = 0; i <= global.totalNumberOfCosmetics; i++)
+        {
+            global.savePlayerCosmetic[i] = ds_map_find_value(saveMap,"savePlayerCosmetic["+string(i)+"]");
         }
         
         for (var i = 0; i < global.secretItemTotal; i++)
@@ -111,9 +120,16 @@ global.autosave = false;    //disable autosaving since we're loading the game
 
 global.grav = global.saveGrav;
 
+global.totalSecretsFound = global.saveTotalSecretsFound;
+
 for (var i = 0; i <= global.totalNumberOfStages; i++)
 {
     global.stageCleared[i] = global.saveStageCleared[i];
+}
+
+for (var i = 0; i <= global.totalNumberOfCosmetics; i++)
+{
+    global.playerCosmetic[i] = global.savePlayerCosmetic[i];
 }
 
 for (var i = 0; i < global.secretItemTotal; i++)

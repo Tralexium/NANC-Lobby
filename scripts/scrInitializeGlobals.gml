@@ -6,10 +6,21 @@ scrSetGlobalOptions();       //initialize global game options
 global.totalNumberOfStages = 35;
 for (var i = 0; i <= global.totalNumberOfStages; i++)
 {
-    show_debug_message(i);
     global.stageCleared[i] = false;
     global.saveStageCleared[i] = false;
 }
+
+global.totalNumberOfCosmetics = 14;
+for (var i = 0; i <= global.totalNumberOfCosmetics; i++)
+{
+    global.playerCosmetic[i] = false;
+    global.savePlayerCosmetic[i] = false;
+}
+
+global.currentPlayerHat = -1;  // Current hat that the player is wearing
+global.currentPlayerPet = -1;  // Current pet that follows the player
+global.totalSecretsFound = 0;  // This is set in the world object
+global.saveTotalSecretsFound = 0;
 
 
 global.savenum = 1;
