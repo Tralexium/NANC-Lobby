@@ -142,6 +142,13 @@
       <sprite>sprites\sprBossItem</sprite>
     </sprites>
     <sprites name="ALEX">
+      <sprites name="Pause UI">
+        <sprite>sprites\sprAlexPause</sprite>
+        <sprite>sprites\sprAlexPauseUITopBar</sprite>
+        <sprite>sprites\sprAlexPauseUIBottomBar</sprite>
+        <sprite>sprites\sprAlexPauseUIBG</sprite>
+        <sprite>sprites\sprAlexPauseTopOptionArrow</sprite>
+      </sprites>
       <sprite>sprites\sprAlexBlockSprite</sprite>
       <sprite>sprites\sprAlexBlockWithoutShadow</sprite>
       <sprite>sprites\sprAlexShadowBlock</sprite>
@@ -299,6 +306,7 @@
       <font>fonts\fMenuLobby6</font>
       <font>fonts\fMenuLobby12</font>
       <font>fonts\fLobbySmall</font>
+      <font>fonts\fLobbySmall24</font>
     </fonts>
   </fonts>
   <objects name="objects">
