@@ -39,6 +39,9 @@ aura_spin_spd = -20;
 aura_alpha = 0;
 theta = 0;
 go_up = false;
+text_x = x;
+text_y = y - 16;
+text_alpha = 0;
 
 alarm[1] = 75;  // start going up
 </string>
@@ -126,6 +129,8 @@ if(theta &lt;= 45) {
     init_scale = min(init_scale + .1, 2);
     aura_alpha = min(aura_alpha + .1, .5)
     aura_scale = lerp(aura_scale, .5, .05);
+    text_y = lerp(text_y, y-32, .1);
+    text_alpha = lerp(text_alpha, 1, .1);
     aura_spin_spd = lerp(aura_spin_spd, -5, .05);
     scale = init_scale + dsin(theta*4);
     image_angle = dsin(theta*8) * 20;
@@ -136,6 +141,7 @@ if(go_up) {
     scale -= .01;
     aura_scale -= .01;
     aura_alpha -= .02;
+    text_alpha -= .05;
 }
 </string>
           </argument>
@@ -177,12 +183,25 @@ if(go_up) {
             <kind>1</kind>
             <string>/// Draw self
 
+var text_col = $e8fff5;
+var outline_col = $2e1814;
+var text_string = "NEW HAT";
+
+if(scrCheckIfCosmeticIsAPet(cosmetic_id))  text_string = "NEW PET";
+
 draw_sprite_ext(sprAlexSecretHalo, 0, x, y, aura_scale, aura_scale, aura_angle, -1, aura_alpha);
 if(sprite_index != -1) {
     var y_offset = 0;
     if(sprite_height &gt;= 32) y_offset = 12;
     draw_sprite_ext(sprite_index, image_index, x, y + y_offset, scale, scale, image_angle, image_blend, image_alpha);
 }
+
+draw_set_font(fLobbySmall);
+draw_set_halign(fa_center);
+draw_set_valign(fa_bottom);
+draw_set_alpha(text_alpha);
+scrDrawTextOutline(text_x, text_y, text_string, text_col, outline_col);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

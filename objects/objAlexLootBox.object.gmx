@@ -141,6 +141,7 @@ if(place_meeting(x, y+16, objAlexLobbyPlayer) &amp;&amp; !collected) {
     if(scrButtonCheckPressed(global.upButton)) {
         if(!locked) {
             collected = true;
+            global.playerCosmetic[box_id] = true;
             alarm[0] = 50;
             
             var preview = instance_create(x, y, objAlexCosmeticPreviewFromBox);
@@ -149,10 +150,11 @@ if(place_meeting(x, y+16, objAlexLobbyPlayer) &amp;&amp; !collected) {
             repeat(20) {
                 instance_create(draw_x, draw_y, objAlexLootBoxStarPart);
             }
-            // TODO: Save the box &amp; fancy effects bla bla...
+            
+            audio_play_sound(sndAlexLootBoxOpen, 0, false);
         } else {
             lock_shake_limiter = lock_shake_amnt;
-            // TODO: Play lock sound
+            audio_play_sound(sndAlexLootBoxLocked, 0, false);
         }
     }
 } else {
@@ -182,6 +184,31 @@ halo_angle += halo_spin_spd;
       </action>
     </event>
     <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check if the box has been collected
+
+if(global.playerCosmetic[box_id]) {
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>

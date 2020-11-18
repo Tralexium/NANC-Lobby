@@ -85,6 +85,7 @@ instance_destroy();
 audio_sound_gain(old_song, 1, 10);
 instance_create(0, 0, objAlexLobbyBubbleTransition);
 scrStopMusic();
+scrSaveGame(true);
 alarm[0] = 25;
 </string>
           </argument>

@@ -43,6 +43,11 @@ if (savePosition)
         global.saveSecretItem[i] = global.secretItem[i];
     }
     
+    for (var i = 0; i < global.totalNumberOfCosmetics; i++)
+    {
+        global.savePlayerCosmetic[i] = global.playerCosmetic[i];
+    }
+    
     for (var i = 0; i < global.bossItemTotal; i++)
     {
         global.saveBossItem[i] = global.bossItem[i];
@@ -51,11 +56,6 @@ if (savePosition)
     for (var i = 0; i < global.totalNumberOfStages; i++)
     {
         global.saveStageCleared[i] = global.stageCleared[i];
-    }
-    
-    for (var i = 0; i < global.totalNumberOfCosmetics; i++)
-    {
-        global.savePlayerCosmetic[i] = global.playerCosmetic[i];
     }
     
     global.saveGameClear = global.gameClear;

@@ -34,6 +34,8 @@
       <sound>sound\musAlexFloor6</sound>
       <sound>sound\musAlexBonusFloor</sound>
       <sounds name="sfx">
+        <sound>sound\sndAlexLootBoxLocked</sound>
+        <sound>sound\sndAlexLootBoxOpen</sound>
         <sound>sound\sndAlexSecretPickup</sound>
         <sound>sound\sndAlexKidLand</sound>
         <sound>sound\sndAlexKidLandFromLongFall</sound>
@@ -288,6 +290,7 @@
     </scripts>
     <scripts name="ALEX">
       <script>scripts\scrGetCosmeticSprite.gml</script>
+      <script>scripts\scrCheckIfCosmeticIsAPet.gml</script>
       <script>scripts\scrAlexMakeParticle.gml</script>
       <script>scripts\scrAlexMakeParticleExt.gml</script>
       <script>scripts\scrAlexEaseOutSine.gml</script>
