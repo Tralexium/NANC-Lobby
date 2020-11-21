@@ -148,7 +148,7 @@ if (!settingKey)
             global.restartButton[0] = ord("R");
             global.skipButton[0] = ord("S");
             global.suicideButton[0] = ord("Q");
-            global.pauseButton[0] = ord("P");
+            global.pauseButton[0] = vk_escape;
             
             resetPrompt = true;
             alarm[0] = 60;

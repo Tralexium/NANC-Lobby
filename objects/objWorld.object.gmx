@@ -62,6 +62,7 @@ pause_top_option_text[0] = "Resume";
 pause_top_option_text[1] = "Cosmetics";
 pause_top_option_text[2] = "Options";
 pause_top_option_text[3] = "Exit Game";
+pause_top_option_selected = false;
 pause_top_option_theta = 0;
 pause_top_option_anim_spd = 20;
 pause_top_option_text_angle = 0;
@@ -96,6 +97,35 @@ pause_navigation_text_alpha = 0;
 pause_navigation_text_travel = 0;
 pause_navigation_text_travel_distance = 64;
 pause_navigation_text_y = display_get_gui_height() - pause_bar_rise_distance - 16;
+pause_fade_spd = .15;
+
+// Option contents
+pause_cosmetics_alpha = 0;
+pause_options_alpha = 0;
+pause_options_keyboard_alpha = 0;
+pause_options_controller_alpha = 0;
+pause_exit_alpha = 0;
+pause_options_keybind_menu = 0;  // 0: noone, 1: keyboard, 2: controller
+pause_cosmetic_index = 0;
+pause_cosmetic_max_index = 13;
+pause_cosmetic_tiles_per_line = 5;
+pause_options_index = 0;
+pause_options_seperation = 32;
+pause_options_scroll_spd = .1;
+pause_options_upper_threshold = pause_bar_rise_distance + 32;
+pause_options_bottom_threshold = display_get_gui_height() - pause_bar_rise_distance - 64;
+pause_options_target_y = display_get_gui_height()/2;
+pause_options_keyboard_target_y = display_get_gui_height()/2;
+pause_options_controller_target_y = display_get_gui_height()/2;
+pause_options_max_index = 6;
+pause_options_keyboard_index = 0;
+pause_options_keyboard_max_index = 10;
+pause_options_controller_index = 0;
+pause_options_controller_max_index = 11;
+pause_exit_index = 0;
+pause_exit_max_index = 1;
+
+
 </string>
           </argument>
         </arguments>
@@ -225,30 +255,9 @@ if (global.gameStarted)
     //handle pausing
     if (global.pauseDelay &lt;= 0) //check if pause delay is active
     {
-        if (scrButtonCheckPressed(global.pauseButton))
+        if (scrButtonCheckPressed(global.pauseButton) &amp;&amp; !pause_top_option_selected)
         {
-            if (!global.gamePaused)  //game currently not paused, pause the game
-            {
-                if (!global.noPause)
-                {
-                    global.gamePaused = true;  //set the game to paused
-                    global.pauseDelay = global.pauseDelayLength; //set pause delay
-                    
-                    instance_deactivate_all(true);  //deactivate everything
-                    
-                    global.pauseSurf = surface_create(surface_get_width(application_surface),surface_get_height(application_surface));    //create new surface
-                    surface_copy(global.pauseSurf,0,0,application_surface);             //copy current screen to it
-                }
-            }
-            else    //game currently paused, unpause the game
-            {
-                global.gamePaused = false;  //set the game to unpaused
-                global.pauseDelay = global.pauseDelayLength;     //set pause delay
-                
-                scrSaveConfig();    //save config in case volume levels were changed
-                
-                io_clear(); //clear input states to prevent possible pause strats/exploits
-            }
+            event_user(1);
         }
     }
     else
@@ -413,10 +422,13 @@ if (global.debugVisuals)
             <kind>1</kind>
             <string>///function keys
 
+// Get this cringe out of here
+/*
 if (keyboard_check_pressed(vk_escape))
 {
     game_end();
 }
+*/
 
 if (keyboard_check_pressed(vk_f2))
 {
@@ -502,15 +514,15 @@ if(pause_anim_timer &lt; pause_anim_timer_length &amp;&amp; pause_anim_timer &gt
     pause_BG_alpha = pause_BG_max_alpha * pause_anim_progress;
     pause_bar_y = -pause_bar_height + (pause_bar_rise_distance * pause_anim_progress);
     pause_bar_scroll_speed = pause_bar_scroll_max_speed - (pause_bar_scroll_max_speed - pause_bar_scroll_min_speed) * pause_anim_progress;
-}
 
-// Specifecally pause sprite and navigation info alpha
-if(global.gamePaused) {
-    pause_sprite_alpha = min(pause_sprite_alpha + .1, 1);
-    pause_navigation_text_alpha = min(pause_navigation_text_alpha + .1, 1);
-} else {
-    pause_sprite_alpha = max(pause_sprite_alpha - .1, 0);
-    pause_navigation_text_alpha = max(pause_navigation_text_alpha - .1, 0);
+    // Specifecally pause sprite and navigation info alpha
+    if(global.gamePaused) {
+        pause_sprite_alpha = min(pause_sprite_alpha + .1, 1);
+        pause_navigation_text_alpha = min(pause_navigation_text_alpha + pause_fade_spd, 1);
+    } else {
+        pause_sprite_alpha = max(pause_sprite_alpha - .1, 0);
+        pause_navigation_text_alpha = max(pause_navigation_text_alpha - pause_fade_spd, 0);
+    }
 }
 
 // Non Dependent
@@ -541,10 +553,19 @@ pause_BG_col = merge_colour(pause_BG_col1, pause_BG_col2, col_amnt);
             <kind>1</kind>
             <string>/// Handle pause input
 
+var H = (scrButtonCheckPressed(global.menuRightButton) - scrButtonCheckPressed(global.menuLeftButton));
+var V = (scrButtonCheckPressed(global.menuUpButton) - scrButtonCheckPressed(global.menuDownButton));
+var _accept_press = scrButtonCheckPressed(global.menuAcceptButton);
+var _back_press = (scrButtonCheckPressed(global.menuBackButton) || scrButtonCheckPressed(global.pauseButton));
+
+
 if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
     pause_top_option_theta = min(pause_top_option_theta+pause_top_option_anim_spd, 180);
     
-    var top_input = (scrButtonCheckPressed(global.rightButton) - scrButtonCheckPressed(global.leftButton));
+    var top_input = 0;
+    if(!pause_top_option_selected)
+        top_input = H;
+        
     pause_top_option_num += top_input;
     if(top_input != 0)
         pause_top_option_theta = 0;
@@ -558,6 +579,220 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
     pause_top_option_arrow_alpha = dsin(pause_top_option_theta/2);
     
     pause_top_option_arrow_move = abs(dsin(pause_timer*5) * 8);
+    
+    if(_accept_press &amp;&amp; !pause_top_option_selected) {
+        if(pause_top_option_num != 0) {
+            pause_top_option_selected = true;
+        } else {
+            event_user(1);  // Unpause the game since option 0 is Resume
+        }
+    }
+        
+    
+    // Control the pause content
+    if(pause_top_option_selected) {
+     
+        switch(pause_top_option_num) {
+            case 1:  // Cosmetics
+                pause_cosmetic_index += H + (V * pause_cosmetic_tiles_per_line);
+                if(pause_cosmetic_index &gt; pause_cosmetic_max_index) pause_cosmetic_index -= pause_cosmetic_max_index;
+                if(pause_cosmetic_index &lt; pause_cosmetic_max_index) pause_cosmetic_index += pause_cosmetic_max_index;
+                
+                if(_back_press) {
+                    pause_top_option_selected = false;
+                }
+                break;
+                
+            case 2:  // Options
+                switch(pause_options_keybind_menu) {
+                    case 0:  // General options
+                    default:
+                        pause_options_index += V;
+                        pause_options_index = clamp(pause_options_index, 0, pause_options_max_index);
+                        
+                        if(_back_press) {
+                            pause_top_option_selected = false;
+                        }
+                        break;
+                    
+                    case 1:  // Keyboard keybinds
+                        pause_options_keyboard_index += V;
+                        pause_options_keyboard_index = clamp(pause_options_keyboard_index, 0, pause_options_keyboard_max_index);
+                        
+                        if(_back_press &amp;&amp; !pause_setting_key) {
+                            pause_options_keybind_menu = 0;
+                        }
+                        break;
+                        
+                    case 2:  // Controller keybinds
+                        pause_options_controller_index += V;
+                        pause_options_controller_index = clamp(pause_options_controller_index, 0, pause_options_controller_max_index);
+                        
+                        if(_back_press &amp;&amp; !pause_setting_key) {
+                            pause_options_keybind_menu = 0;
+                        }
+                        break;
+                }
+                break;
+                
+            case 3:  // Exit
+                pause_exit_index += V;
+                pause_exit_index = clamp(pause_exit_index, 0, pause_exit_max_index);
+                break;
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Handle pause content animations
+
+
+if(pause_top_option_selected) {
+    var content_to_fade_in = -1;
+
+    switch(pause_top_option_num) {
+        case 1:  // Cosmetics
+            content_to_fade_in = pause_cosmetics_alpha;
+            break;
+        case 2:  // Options
+            content_to_fade_in = pause_options_alpha;
+            
+            // Sub menus for kebind settings
+            switch(pause_options_keybind_menu) {
+                case 1:
+                    content_to_fade_in = pause_options_keyboard_alpha;
+                    break;
+                case 2:
+                    content_to_fade_in = pause_options_controller_alpha;
+                    break;
+            }
+            break;
+        case 3:  // Exit
+            content_to_fade_in = pause_exit_alpha;
+            break;
+    }
+    
+    if(content_to_fade_in != -1 &amp;&amp; pause_sprite_alpha == 0)
+        content_to_fade_in = min(content_to_fade_in + pause_fade_spd, 1);
+    
+    if(pause_options_keybind_menu != 0) {
+        pause_options_alpha = max(pause_options_alpha - pause_fade_spd, 0);
+    }
+        
+    pause_sprite_alpha = max(pause_sprite_alpha - pause_fade_spd, 0);
+    
+    // Scrolling
+    var _general_options_scroll_amnt = pause_options_index * pause_options_seperation;
+    var _keyboard_options_scroll_amnt = pause_options_keyboard_index * pause_options_seperation;
+    var _controller_options_scroll_amnt = pause_options_controller_index * pause_options_seperation;
+    var _scroll_spd = pause_options_scroll_spd;
+    
+    pause_options_target_y = lerp(pause_options_target_y, (display_get_gui_height()/2)-_general_options_scroll_amnt, _scroll_spd);
+    pause_options_keyboard_target_y = lerp(pause_options_keyboard_target_y, (display_get_gui_height()/2)-_keyboard_options_scroll_amnt, _scroll_spd);
+    pause_options_controller_target_y = lerp(pause_options_controller_target_y, (display_get_gui_height()/2)-_controller_options_scroll_amnt, _scroll_spd);
+    
+} else if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1){
+    pause_sprite_alpha = min(pause_sprite_alpha + pause_fade_spd, 1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Change the keybind keys based on the settings sub menu
+
+var input_device = pause_top_option_num-1; // 0: keyboard, 1: controller
+
+pause_keybind_key[0] = scrGetKeybind(global.leftButton[input_device]);
+pause_keybind_key[1] = scrGetKeybind(global.rightButton[input_device]);
+pause_keybind_key[2] = scrGetKeybind(global.upButton[input_device]);
+pause_keybind_key[3] = scrGetKeybind(global.downButton[input_device]);
+pause_keybind_key[4] = scrGetKeybind(global.jumpButton[input_device]);
+pause_keybind_key[5] = scrGetKeybind(global.shootButton[input_device]);
+pause_keybind_key[6] = scrGetKeybind(global.restartButton[input_device]);
+pause_keybind_key[7] = scrGetKeybind(global.skipButton[input_device]);
+pause_keybind_key[8] = scrGetKeybind(global.suicideButton[input_device]);
+pause_keybind_key[9] = scrGetKeybind(global.pauseButton[input_device]);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Pause &amp; Unpause the game
+
+if (!global.gamePaused)  //game currently not paused, pause the game
+{
+    if (!global.noPause)
+    {
+        global.gamePaused = true;  //set the game to paused
+        global.pauseDelay = global.pauseDelayLength; //set pause delay
+        
+        instance_deactivate_all(true);  //deactivate everything
+        
+        global.pauseSurf = surface_create(surface_get_width(application_surface),surface_get_height(application_surface));    //create new surface
+        surface_copy(global.pauseSurf,0,0,application_surface);             //copy current screen to it
+    }
+}
+else    //game currently paused, unpause the game
+{
+    global.gamePaused = false;  //set the game to unpaused
+    global.pauseDelay = global.pauseDelayLength;     //set pause delay
+    
+    scrSaveConfig();    //save config in case volume levels were changed
+    
+    io_clear(); //clear input states to prevent possible pause strats/exploits
 }
 </string>
           </argument>
@@ -647,6 +882,65 @@ scrInitializeGlobals();
 scrLoadConfig();
 
 room_goto_next();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Option strings &amp; vars for pause menu
+// We create the after we initialized the keys
+
+// General options
+pause_options[0] = "Music";
+pause_options[1] = "Volume Level";
+pause_options[2] = "Screen Mode";
+pause_options[3] = "Smoothing Mode";
+pause_options[4] = "Vsync";
+pause_options[5] = "Set Keyboard Controls";
+pause_options[6] = "Controller Options";
+
+// Other keybind related vars
+pause_setting_key = false;
+
+// Keyboard keybinds
+pause_keybind[0] = "Left Button";
+pause_keybind[1] = "Right Button";
+pause_keybind[2] = "Up Button";
+pause_keybind[3] = "Down Button";
+pause_keybind[4] = "Jump Button";
+pause_keybind[5] = "Shoot Button";
+pause_keybind[6] = "Restart Button";
+pause_keybind[7] = "Skip Button";
+pause_keybind[8] = "Suicide Button";
+pause_keybind[9] = "Pause Button";
+pause_keybind[10] = "Reset Controls";
+// get current keyboard controls
+pause_keybind_key[0] = scrGetKeybind(global.leftButton[0]);
+pause_keybind_key[1] = scrGetKeybind(global.rightButton[0]);
+pause_keybind_key[2] = scrGetKeybind(global.upButton[0]);
+pause_keybind_key[3] = scrGetKeybind(global.downButton[0]);
+pause_keybind_key[4] = scrGetKeybind(global.jumpButton[0]);
+pause_keybind_key[5] = scrGetKeybind(global.shootButton[0]);
+pause_keybind_key[6] = scrGetKeybind(global.restartButton[0]);
+pause_keybind_key[7] = scrGetKeybind(global.skipButton[0]);
+pause_keybind_key[8] = scrGetKeybind(global.suicideButton[0]);
+pause_keybind_key[9] = scrGetKeybind(global.pauseButton[0]);
+pause_keyboard_key[10] = "";
 </string>
           </argument>
         </arguments>
@@ -854,9 +1148,13 @@ if (pause_anim_progress &gt; 0)
     draw_set_valign(fa_bottom);
     draw_set_alpha(pause_navigation_text_alpha);
     
-    scrDrawTextOutline(left_nav_x, pause_navigation_text_y, "Press ["+script_execute(scr_to_get_key,global.jumpButton[array_index])+"] to select", text_col, $2e1814);
+    scrDrawTextOutline(left_nav_x, pause_navigation_text_y, "Press ["+script_execute(scr_to_get_key,global.menuAcceptButton[array_index])+"] to select", text_col, $2e1814);
+    
+    var _go_back_text = script_execute(scr_to_get_key,global.menuBackButton[array_index])
+    if(!pause_top_option_selected)
+        _go_back_text = script_execute(scr_to_get_key,global.pauseButton[array_index])
     draw_set_halign(fa_right);
-    scrDrawTextOutline(right_nav_x, pause_navigation_text_y, "Press ["+script_execute(scr_to_get_key,global.shootButton[array_index])+"] to go back", text_col, $2e1814);
+    scrDrawTextOutline(right_nav_x, pause_navigation_text_y, "Press ["+_go_back_text+"] to go back", text_col, $2e1814);
     draw_set_alpha(1);
     
     
@@ -879,10 +1177,12 @@ if (pause_anim_progress &gt; 0)
             draw_set_colour(text_col);
             draw_text_transformed(option_x, option_y, pause_top_option_text[i], top_opt_scale, top_opt_scale, top_opt_angle);
             
-            if(i != 0)
-                draw_sprite(sprAlexPauseTopOptionArrow, 0, left_arrow_x, option_y);
-            if(i != 3)
-                draw_sprite(sprAlexPauseTopOptionArrow, 1, right_arrow_x, option_y);
+            if(!pause_top_option_selected) {
+                if(i != 0)
+                    draw_sprite(sprAlexPauseTopOptionArrow, 0, left_arrow_x, option_y);
+                if(i != 3)
+                    draw_sprite(sprAlexPauseTopOptionArrow, 1, right_arrow_x, option_y);
+            }
         } else {
             draw_set_colour(pause_BG_col);
             draw_text(option_x, option_y, pause_top_option_text[i])
