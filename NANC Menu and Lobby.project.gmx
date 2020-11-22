@@ -294,10 +294,13 @@
       <script>scripts\scrAlexMakeParticle.gml</script>
       <script>scripts\scrAlexMakeParticleExt.gml</script>
       <script>scripts\scrAlexEaseOutSine.gml</script>
+      <script>scripts\scrDrawTextSquareOutline.gml</script>
+      <script>scripts\scrAlexDrawSegmentBar.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\sHeatHaze.shader</shader>
+    <shader type="GLSLES">shaders\sSquareOutline.shader</shader>
     <shader type="GLSLES">shaders\sRainbowAura.shader</shader>
   </shaders>
   <fonts name="fonts">

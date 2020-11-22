@@ -1085,8 +1085,7 @@ if (pause_anim_progress &gt; 0)
                 draw_surface_ext(global.pauseSurf,i,j, 1, 1, 0, -1, surf_alpha);
             }
         }
-    }
-    
+    }    
     
     // Draw scrolling BG
     draw_sprite_tiled_ext(sprAlexPauseUIBG, 0, pause_BG_x, pause_BG_y, 1, 1, pause_BG_col, pause_BG_alpha);
@@ -1148,13 +1147,13 @@ if (pause_anim_progress &gt; 0)
     draw_set_valign(fa_bottom);
     draw_set_alpha(pause_navigation_text_alpha);
     
-    scrDrawTextOutline(left_nav_x, pause_navigation_text_y, "Press ["+script_execute(scr_to_get_key,global.menuAcceptButton[array_index])+"] to select", text_col, $2e1814);
+    scrDrawTextSquareOutline(left_nav_x, pause_navigation_text_y, "Press ["+script_execute(scr_to_get_key,global.menuAcceptButton[array_index])+"] to select", 2, text_col, $2e1814, fa_left, fa_bottom);
     
     var _go_back_text = script_execute(scr_to_get_key,global.menuBackButton[array_index])
     if(!pause_top_option_selected)
         _go_back_text = script_execute(scr_to_get_key,global.pauseButton[array_index])
     draw_set_halign(fa_right);
-    scrDrawTextOutline(right_nav_x, pause_navigation_text_y, "Press ["+_go_back_text+"] to go back", text_col, $2e1814);
+    scrDrawTextSquareOutline(right_nav_x, pause_navigation_text_y, "Press ["+_go_back_text+"] to go back", 2, text_col, $2e1814, fa_right, fa_bottom);
     draw_set_alpha(1);
     
     
