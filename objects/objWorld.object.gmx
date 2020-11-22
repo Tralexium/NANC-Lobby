@@ -105,23 +105,26 @@ pause_options_alpha = 0;
 pause_options_keyboard_alpha = 0;
 pause_options_controller_alpha = 0;
 pause_exit_alpha = 0;
-pause_options_keybind_menu = 0;  // 0: noone, 1: keyboard, 2: controller
+pause_options_keybind_menu = 0;  // 0: general, 1: keyboard, 2: controller
 pause_cosmetic_index = 0;
 pause_cosmetic_max_index = 13;
 pause_cosmetic_tiles_per_line = 5;
 pause_options_index = 0;
-pause_options_seperation = 32;
+pause_options_seperation = 48;
 pause_options_scroll_spd = .1;
-pause_options_upper_threshold = pause_bar_rise_distance + 32;
+pause_options_upper_threshold = pause_bar_rise_distance + 16;
 pause_options_bottom_threshold = display_get_gui_height() - pause_bar_rise_distance - 64;
-pause_options_target_y = display_get_gui_height()/2;
-pause_options_keyboard_target_y = display_get_gui_height()/2;
-pause_options_controller_target_y = display_get_gui_height()/2;
-pause_options_max_index = 6;
+pause_options_threshold_space = 32;
+pause_options_x = 100;
+pause_options_y = 150;
+pause_options_target_y = pause_options_y;
+pause_options_keyboard_target_y = pause_options_y;
+pause_options_controller_target_y = pause_options_y;
+pause_options_max_index = 7;
 pause_options_keyboard_index = 0;
-pause_options_keyboard_max_index = 10;
+pause_options_keyboard_max_index = 11;
 pause_options_controller_index = 0;
-pause_options_controller_max_index = 11;
+pause_options_controller_max_index = 12;
 pause_exit_index = 0;
 pause_exit_max_index = 1;
 
@@ -255,7 +258,7 @@ if (global.gameStarted)
     //handle pausing
     if (global.pauseDelay &lt;= 0) //check if pause delay is active
     {
-        if (scrButtonCheckPressed(global.pauseButton) &amp;&amp; !pause_top_option_selected)
+        if ((scrButtonCheckPressed(global.pauseButton) || (global.gamePaused &amp;&amp; scrButtonCheckPressed(global.menuBackButton))) &amp;&amp; !pause_top_option_selected)
         {
             event_user(1);
         }
@@ -554,7 +557,7 @@ pause_BG_col = merge_colour(pause_BG_col1, pause_BG_col2, col_amnt);
             <string>/// Handle pause input
 
 var H = (scrButtonCheckPressed(global.menuRightButton) - scrButtonCheckPressed(global.menuLeftButton));
-var V = (scrButtonCheckPressed(global.menuUpButton) - scrButtonCheckPressed(global.menuDownButton));
+var V = (scrButtonCheckPressed(global.menuDownButton) - scrButtonCheckPressed(global.menuUpButton));
 var _accept_press = scrButtonCheckPressed(global.menuAcceptButton);
 var _back_press = (scrButtonCheckPressed(global.menuBackButton) || scrButtonCheckPressed(global.pauseButton));
 
@@ -595,8 +598,8 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
         switch(pause_top_option_num) {
             case 1:  // Cosmetics
                 pause_cosmetic_index += H + (V * pause_cosmetic_tiles_per_line);
-                if(pause_cosmetic_index &gt; pause_cosmetic_max_index) pause_cosmetic_index -= pause_cosmetic_max_index;
-                if(pause_cosmetic_index &lt; pause_cosmetic_max_index) pause_cosmetic_index += pause_cosmetic_max_index;
+                if(pause_cosmetic_index &gt; pause_cosmetic_max_index-1) pause_cosmetic_index -= pause_cosmetic_max_index;
+                if(pause_cosmetic_index &lt; pause_cosmetic_max_index-1) pause_cosmetic_index += pause_cosmetic_max_index;
                 
                 if(_back_press) {
                     pause_top_option_selected = false;
@@ -608,7 +611,7 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                     case 0:  // General options
                     default:
                         pause_options_index += V;
-                        pause_options_index = clamp(pause_options_index, 0, pause_options_max_index);
+                        pause_options_index = clamp(pause_options_index, 0, pause_options_max_index-1);
                         
                         if(_back_press) {
                             pause_top_option_selected = false;
@@ -617,7 +620,7 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                     
                     case 1:  // Keyboard keybinds
                         pause_options_keyboard_index += V;
-                        pause_options_keyboard_index = clamp(pause_options_keyboard_index, 0, pause_options_keyboard_max_index);
+                        pause_options_keyboard_index = clamp(pause_options_keyboard_index, 0, pause_options_keyboard_max_index-1);
                         
                         if(_back_press &amp;&amp; !pause_setting_key) {
                             pause_options_keybind_menu = 0;
@@ -626,7 +629,7 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                         
                     case 2:  // Controller keybinds
                         pause_options_controller_index += V;
-                        pause_options_controller_index = clamp(pause_options_controller_index, 0, pause_options_controller_max_index);
+                        pause_options_controller_index = clamp(pause_options_controller_index, 0, pause_options_controller_max_index-1);
                         
                         if(_back_press &amp;&amp; !pause_setting_key) {
                             pause_options_keybind_menu = 0;
@@ -637,7 +640,11 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                 
             case 3:  // Exit
                 pause_exit_index += V;
-                pause_exit_index = clamp(pause_exit_index, 0, pause_exit_max_index);
+                pause_exit_index = clamp(pause_exit_index, 0, pause_exit_max_index-1);
+                
+                if(_back_press) {
+                    pause_top_option_selected = false;
+                }
                 break;
         }
     }
@@ -662,42 +669,61 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Handle pause content animations
+            <string>/// Handle pause content animations &amp; reset indexes
 
 
 if(pause_top_option_selected) {
-    var content_to_fade_in = -1;
 
-    switch(pause_top_option_num) {
-        case 1:  // Cosmetics
-            content_to_fade_in = pause_cosmetics_alpha;
-            break;
-        case 2:  // Options
-            content_to_fade_in = pause_options_alpha;
-            
-            // Sub menus for kebind settings
-            switch(pause_options_keybind_menu) {
-                case 1:
-                    content_to_fade_in = pause_options_keyboard_alpha;
-                    break;
-                case 2:
-                    content_to_fade_in = pause_options_controller_alpha;
-                    break;
-            }
-            break;
-        case 3:  // Exit
-            content_to_fade_in = pause_exit_alpha;
-            break;
+    pause_sprite_alpha = max(pause_sprite_alpha - pause_fade_spd, 0);    
+
+    if(pause_sprite_alpha == 0) {
+        switch(pause_top_option_num) {
+            case 1:  // Cosmetics
+                pause_cosmetics_alpha = min(pause_cosmetics_alpha + pause_fade_spd, 1);
+                break;
+            case 2:  // Options
+                switch(pause_options_keybind_menu) {
+                    case 0:
+                    default:
+                        if(pause_options_keyboard_alpha == 0 &amp;&amp; pause_options_controller_alpha == 0) {
+                            pause_options_alpha = min(pause_options_alpha + pause_fade_spd, 1);
+                        } else {
+                            pause_options_keyboard_alpha = max(pause_options_keyboard_alpha - pause_fade_spd, 0);
+                            pause_options_controller_alpha = max(pause_options_controller_alpha - pause_fade_spd, 0);
+                        }
+                        break;
+                        
+                    case 1:
+                        if(pause_options_alpha == 0) {
+                            pause_options_keyboard_alpha = min(pause_options_keyboard_alpha + pause_fade_spd, 1);
+                        } else {
+                            pause_options_alpha = max(pause_options_alpha - pause_fade_spd, 0);
+                        }
+                        break;
+                        
+                    case 2:
+                        if(pause_options_alpha == 0) {
+                            pause_options_controller_alpha = min(pause_options_controller_alpha + pause_fade_spd, 1);
+                        } else {
+                            pause_options_alpha = max(pause_options_alpha - pause_fade_spd, 0);
+                        }
+                        break;
+                }
+                break;
+            case 3:  // Exit
+                pause_exit_alpha = min(pause_exit_alpha + pause_fade_spd, 1);
+                break;
+        }
     }
     
-    if(content_to_fade_in != -1 &amp;&amp; pause_sprite_alpha == 0)
+    /*
+    if(pause_content_to_fade != -1 &amp;&amp; pause_sprite_alpha == 0)
         content_to_fade_in = min(content_to_fade_in + pause_fade_spd, 1);
     
     if(pause_options_keybind_menu != 0) {
         pause_options_alpha = max(pause_options_alpha - pause_fade_spd, 0);
     }
-        
-    pause_sprite_alpha = max(pause_sprite_alpha - pause_fade_spd, 0);
+    */
     
     // Scrolling
     var _general_options_scroll_amnt = pause_options_index * pause_options_seperation;
@@ -705,12 +731,24 @@ if(pause_top_option_selected) {
     var _controller_options_scroll_amnt = pause_options_controller_index * pause_options_seperation;
     var _scroll_spd = pause_options_scroll_spd;
     
-    pause_options_target_y = lerp(pause_options_target_y, (display_get_gui_height()/2)-_general_options_scroll_amnt, _scroll_spd);
-    pause_options_keyboard_target_y = lerp(pause_options_keyboard_target_y, (display_get_gui_height()/2)-_keyboard_options_scroll_amnt, _scroll_spd);
-    pause_options_controller_target_y = lerp(pause_options_controller_target_y, (display_get_gui_height()/2)-_controller_options_scroll_amnt, _scroll_spd);
+    pause_options_target_y = lerp(pause_options_target_y, pause_options_y-_general_options_scroll_amnt, _scroll_spd);
+    pause_options_keyboard_target_y = lerp(pause_options_keyboard_target_y, pause_options_y-_keyboard_options_scroll_amnt, _scroll_spd);
+    pause_options_controller_target_y = lerp(pause_options_controller_target_y, pause_options_y-_controller_options_scroll_amnt, _scroll_spd);
     
 } else if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1){
-    pause_sprite_alpha = min(pause_sprite_alpha + pause_fade_spd, 1);
+    if(pause_cosmetics_alpha == 0 &amp;&amp; pause_options_alpha == 0 &amp;&amp; pause_exit_alpha == 0) {
+        pause_sprite_alpha = min(pause_sprite_alpha + pause_fade_spd, 1);
+        pause_options_index = 0;
+        pause_options_target_y = pause_options_y;
+        pause_options_keyboard_index = 0;
+        pause_options_keyboard_target_y = pause_options_y;
+        pause_options_controller_index = 0;
+        pause_options_controller_target_y = pause_options_y;
+    } else {
+        pause_cosmetics_alpha = max(pause_cosmetics_alpha - pause_fade_spd, 0);
+        pause_options_alpha = max(pause_options_alpha - pause_fade_spd, 0);
+        pause_exit_alpha = max(pause_exit_alpha - pause_fade_spd, 0);
+    }
 }
 </string>
           </argument>
@@ -851,6 +889,31 @@ if (!instance_exists(objPlayMusic))  //make sure the play music object isn't in 
 
 room_speed = 50;    //make sure game is running at the correct frame rate
 scrSetRoomCaption();    //make sure window caption stays updated
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Free global surfaces
+
+surface_free(global.text_outline_surf);
 </string>
           </argument>
         </arguments>
@@ -1076,7 +1139,12 @@ if (global.gamePaused)  //check if game is paused to draw the pause screen
 
 if (pause_anim_progress &gt; 0)
 {
-    // Draw surface
+    var text_col = $e8e0df;
+    var outline_col = $2e1814;
+
+
+    // Draw blurred surface
+    ///////////////////////
     draw_clear(c_black);
     if (surface_exists(global.pauseSurf)) {  //check if surface exists before drawing it
         for(var i=0; i&lt;pause_surf_blur_intensity; i++) {
@@ -1088,50 +1156,14 @@ if (pause_anim_progress &gt; 0)
     }    
     
     // Draw scrolling BG
+    ////////////////////
     draw_sprite_tiled_ext(sprAlexPauseUIBG, 0, pause_BG_x, pause_BG_y, 1, 1, pause_BG_col, pause_BG_alpha);
     draw_sprite_tiled_ext(sprAlexPauseUIBG, 1, -pause_BG_x, -pause_BG_y, 1, 1, pause_BG_col, pause_BG_alpha);
     
     
-    // Draw the top &amp; bottom bars
-    var bar_segments = round(display_get_gui_width()/pause_bar_length);
-    var pause_bar_bottom_y = display_get_gui_height()-pause_bar_y-pause_bar_height;
-    var pause_bar_render_x_bottom = pause_bar_length - pause_bar_render_x;
-    for(var i=0; i&lt;bar_segments; i++) {
-        var segment_x = i*32;
-        draw_sprite_part(sprAlexPauseUITopBar, 0, pause_bar_render_x, 0, pause_bar_length, pause_bar_height, segment_x, pause_bar_y);
-        draw_sprite_part(sprAlexPauseUIBottomBar, 0, pause_bar_render_x_bottom, 0, pause_bar_length, pause_bar_height, segment_x, pause_bar_bottom_y);
-    }
-    
-    
-    // Draw bottom stats
-    var text_col = $e8e0df
-    var gui_width = display_get_gui_width();
-    var gui_height = display_get_gui_height();
-    var bottom_text_y = gui_height-32-pause_bar_y;
-    draw_set_color(text_col);
-    draw_set_font(fMenuLobby12);
-    
-    var t = global.time;
-    var timeText = string(t div 3600) + ":";
-    t = t mod 3600;
-    timeText += string(t div 600);
-    t = t mod 600;
-    timeText += string(t div 60) + ":";
-    t = t mod 60;
-    timeText += string(t div 10);
-    t = t mod 10;
-    timeText += string(floor(t));
-    
-    draw_set_halign(fa_left);
-    draw_set_valign(fa_bottom);
-    draw_set_colour(pause_BG_col);
-    draw_text(32, bottom_text_y, "Time: " + timeText)
-    
-    draw_set_halign(fa_right);
-    draw_text(gui_width-32, bottom_text_y,"Deaths: " + string(global.death));
-    
-    
-    // Draw Pause sprite and navigation text
+    // Draw middle contents
+    ///////////////////////
+    // Pause sprite and navigation text
     draw_sprite_ext(sprAlexPause, 0, pause_sprite_x, pause_sprite_y, 1, 1, 0, -1, pause_sprite_alpha);
     
     var left_nav_x = pause_navigation_text_travel - 32;
@@ -1143,21 +1175,40 @@ if (pause_anim_progress &gt; 0)
         array_index = 1;
     }
     draw_set_font(fLobbySmall24);
-    draw_set_halign(fa_left);
-    draw_set_valign(fa_bottom);
     draw_set_alpha(pause_navigation_text_alpha);
     
-    scrDrawTextSquareOutline(left_nav_x, pause_navigation_text_y, "Press ["+script_execute(scr_to_get_key,global.menuAcceptButton[array_index])+"] to select", 2, text_col, $2e1814, fa_left, fa_bottom);
-    
-    var _go_back_text = script_execute(scr_to_get_key,global.menuBackButton[array_index])
-    if(!pause_top_option_selected)
-        _go_back_text = script_execute(scr_to_get_key,global.pauseButton[array_index])
-    draw_set_halign(fa_right);
-    scrDrawTextSquareOutline(right_nav_x, pause_navigation_text_y, "Press ["+_go_back_text+"] to go back", 2, text_col, $2e1814, fa_right, fa_bottom);
+    scrDrawTextSquareOutline(left_nav_x, pause_navigation_text_y, "Press ["+script_execute(scr_to_get_key,global.menuAcceptButton[array_index])+"] to select", text_col, outline_col, 2, fa_left, fa_bottom);
+    scrDrawTextSquareOutline(right_nav_x, pause_navigation_text_y, "Press ["+script_execute(scr_to_get_key,global.menuBackButton[array_index])+"] to go back", text_col, outline_col, 2, fa_right, fa_bottom);
     draw_set_alpha(1);
+    
+    // General Options
+    draw_set_font(fMenuLobby12)
+    var _option_y;
+    var _option_alpha;
+    for(var i=0; i&lt;pause_options_max_index; i++) {
+        _option_y = pause_options_target_y + (i * pause_options_seperation);
+        _option_alpha = clamp(((_option_y + pause_options_threshold_space) - pause_options_upper_threshold)/pause_options_threshold_space, 0, 1);
+        draw_set_alpha(_option_alpha * pause_options_alpha);
+        scrDrawTextSquareOutline(pause_options_x, _option_y, pause_options[i], text_col, outline_col, 2, fa_left, fa_middle);
+    }
+    draw_sprite(sprAlexPetTrollBuddy, 0, pause_options_x - 32, pause_options_y)
+    draw_set_alpha(1)
+    
+    
+    // Draw the top &amp; bottom bars
+    /////////////////////////////
+    var bar_segments = round(display_get_gui_width()/pause_bar_length);
+    var pause_bar_bottom_y = display_get_gui_height()-pause_bar_y-pause_bar_height;
+    var pause_bar_render_x_bottom = pause_bar_length - pause_bar_render_x;
+    for(var i=0; i&lt;bar_segments; i++) {
+        var segment_x = i*32;
+        draw_sprite_part(sprAlexPauseUITopBar, 0, pause_bar_render_x, 0, pause_bar_length, pause_bar_height, segment_x, pause_bar_y);
+        draw_sprite_part(sprAlexPauseUIBottomBar, 0, pause_bar_render_x_bottom, 0, pause_bar_length, pause_bar_height, segment_x, pause_bar_bottom_y);
+    }
     
     
     // Draw top options
+    ///////////////////
     var top_option_left_margin = 96;
     var top_option_sep = (display_get_gui_width() - top_option_left_margin * 2) / 3;
     var option_y = 32+24+pause_bar_y;
@@ -1187,6 +1238,34 @@ if (pause_anim_progress &gt; 0)
             draw_text(option_x, option_y, pause_top_option_text[i])
         }
     }
+    
+    
+    // Draw bottom stats
+    ////////////////////
+    var gui_width = display_get_gui_width();
+    var gui_height = display_get_gui_height();
+    var bottom_text_y = gui_height-32-pause_bar_y;
+    draw_set_color(text_col);
+    draw_set_font(fMenuLobby12);
+    
+    var t = global.time;
+    var timeText = string(t div 3600) + ":";
+    t = t mod 3600;
+    timeText += string(t div 600);
+    t = t mod 600;
+    timeText += string(t div 60) + ":";
+    t = t mod 60;
+    timeText += string(t div 10);
+    t = t mod 10;
+    timeText += string(floor(t));
+    
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_bottom);
+    draw_set_colour(pause_BG_col);
+    draw_text(32, bottom_text_y, "Time: " + timeText)
+    
+    draw_set_halign(fa_right);
+    draw_text(gui_width-32, bottom_text_y,"Deaths: " + string(global.death));
 }
 </string>
           </argument>

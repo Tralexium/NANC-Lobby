@@ -73,31 +73,27 @@ var outline_col = $2e1814;
 
 // Stage title
 draw_set_font(fMenuLobby6);
-draw_set_halign(fa_center);
-draw_set_valign(fa_top);
 
-scrDrawTextOutline(ui_x, ui_y-77, stage_name, text_col, outline_col);
+scrDrawTextSquareOutline(ui_x, ui_y-77, stage_name, text_col, outline_col, 1, fa_center, fa_top);
 
 // Creator
 draw_set_font(fLobbySmall);
-scrDrawTextOutline(ui_x, ui_y-63, "By: "+creator_name, text_col, outline_col);
+scrDrawTextSquareOutline(ui_x, ui_y-63, "By: "+creator_name, text_col, outline_col, 1, fa_center, fa_top);
 
 // Rating
-draw_set_halign(fa_left);
-scrDrawTextOutline(ui_x-47, ui_y-43, "rating", text_col, outline_col);
+scrDrawTextSquareOutline(ui_x-47, ui_y-43, "rating", text_col, outline_col, 1, fa_left, fa_top);
 draw_sprite(sprAlexStageRatingBar, 0, ui_x-52, ui_y-28);
 draw_sprite_part(sprAlexStageRatingBar, 1, 0, 0, 40*ui_rating_length, 8, ui_x-52, ui_y-28);
 
 // Difficulty
-scrDrawTextOutline(ui_x+10, ui_y-43, "difficulty", text_col, outline_col);
+scrDrawTextSquareOutline(ui_x+10, ui_y-43, "difficulty", text_col, outline_col, 1, fa_left, fa_top);
 draw_sprite(sprAlexStageDifficultyBar, 0, ui_x+13, ui_y-28);
 draw_sprite_part(sprAlexStageDifficultyBar, 1, 0, 0, 40*ui_difficulty_length, 8, ui_x+13, ui_y-28);
 
 // Secrets
 if(total_secrets &gt; 0) {
-    draw_set_halign(fa_center);
     draw_sprite(sprAlexStageSecretIcon, 0, ui_x, ui_y-20);
-    scrDrawTextOutline(ui_x, ui_y-13, string(secrets_found)+"/"+string(total_secrets), text_col, outline_col);
+    scrDrawTextSquareOutline(ui_x, ui_y-13, string(secrets_found)+"/"+string(total_secrets), text_col, outline_col, 1, fa_center, fa_top);
 }
 
 draw_set_alpha(1);

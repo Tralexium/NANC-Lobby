@@ -1,46 +1,49 @@
-///scrDrawTextSquareOutline(x, y, string, outline_size, text_color, outline_color, halign, valign)
+///scrDrawTextSquareOutline(x, y, string, text_color, outline_color, outline_size, halign, valign)
 
 var _x = argument[0];
 var _y = argument[1];
 var _string = argument[2];
-var _outline_size = argument[3];
-var _text_color = argument[4];
-var _outline_color = argument[5];
+var _text_color = argument[3];
+var _outline_color = argument[4];
+var _outline_size = argument[5];
 var _halign = argument[6];
 var _valign = argument[7];
 
 // Make the text surface
-var _surf_w = string_width(_string) + (_outline_size * 2);
-var _surf_h = string_height(_string) + (_outline_size * 2);
-var _text_surf = surface_create(_surf_w, _surf_h);
+var _text_w = string_width(_string) + (_outline_size * 2);
+var _text_h = string_height(_string) + (_outline_size * 2);
+var _surf_w = surface_get_width(global.text_outline_surf);
+var _surf_h = surface_get_height(global.text_outline_surf);
 var _surf_x = _x;
 var _surf_y = _y;
 switch(_halign) {
     case fa_center:
-        _surf_x = _x - _surf_w/2;
+        _surf_x = _x - _text_w/2;
         break;
     case fa_right:
-        _surf_x = _x - _surf_w;
+        _surf_x = _x - _text_w;
         break;
 }
 switch(_valign) {
     case fa_middle:
-        _surf_y = _y - _surf_h/2;
+        _surf_y = _y - _text_h/2;
         break;
     case fa_bottom:
-        _surf_y = _y - _surf_h;
+        _surf_y = _y - _text_h;
         break;
 }
 
-if(surface_exists(_text_surf)) {
-    surface_set_target(_text_surf);
-        draw_clear_alpha(c_black, 0);
-        draw_set_halign(fa_left);
-        draw_set_valign(fa_top);
-        draw_set_colour(_text_color);
-        draw_text(_outline_size, _outline_size, _string);
-    surface_reset_target();
+if(!surface_exists(global.text_outline_surf)) {
+    global.text_outline_surf = surface_create(400, 100);
 }
+
+surface_set_target(global.text_outline_surf);
+    draw_clear_alpha(c_black, 0);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    draw_set_colour(_text_color);
+    draw_text(_outline_size, _outline_size, _string);
+surface_reset_target();
 
 
 // Shader related
@@ -60,7 +63,5 @@ shader_set(_shader);
     shader_set_uniform_f(_shader_outline_width_u, _shader_outline_width);
     shader_set_uniform_f(_shader_outline_height_u, _shader_outline_height);
     shader_set_uniform_f_array(_shader_color_u, _shader_color);
-    draw_surface(_text_surf, _surf_x, _surf_y);
+    draw_surface(global.text_outline_surf, _surf_x, _surf_y);
 shader_reset();
-
-surface_free(_text_surf);

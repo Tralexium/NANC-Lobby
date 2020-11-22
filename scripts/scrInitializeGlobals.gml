@@ -22,6 +22,9 @@ global.currentPlayerPet = -1;  // Current pet that follows the player
 global.totalSecretsFound = 0;  // This is set in the world object
 global.saveTotalSecretsFound = 0;
 
+// Global surfaces
+global.text_outline_surf = surface_create(400, 100);
+
 
 global.savenum = 1;
 global.difficulty = 0;  //0 = medium, 1 = hard, 2 = very hard, 3 = impossible

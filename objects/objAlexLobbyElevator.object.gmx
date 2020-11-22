@@ -453,11 +453,9 @@ draw_set_alpha(panel_alpha)
 draw_sprite(sprAlexLobbyElevatorButtonPanel, 0, panel_x, panel_y);
 
 draw_set_font(fMenuLobby6);
-draw_set_halign(fa_center);
-draw_set_valign(fa_top);
 
 // Draw the "choose a floor" text above the panel
-scrDrawTextOutline(panel_x, panel_y - 24, "Choose a Floor", $e8fff5, $2e1814);
+scrDrawTextSquareOutline(panel_x, panel_y - 24, "Choose a Floor", $e8fff5, $2e1814, 1, fa_center, fa_top);
 
 var button_amnt = 8;
 for(var i=0; i&lt;button_amnt; i++) {
@@ -478,16 +476,16 @@ for(var i=0; i&lt;button_amnt; i++) {
     // Draw bonus floor button
     if(i == 7) {
         if(bonus_room_available)
-            scrDrawTextOutline(xx, yy+3, "B", $e8fff5, $2e1814);
+            scrDrawTextSquareOutline(xx, yy+2, "B", $e8fff5, $2e1814, 1, fa_center, fa_top);
         else   
-            scrDrawTextOutline(xx, yy+3, "B", $3945e6, $2e1814);
+            scrDrawTextSquareOutline(xx, yy+2, "B", $3945e6, $2e1814, 1, fa_center, fa_top);
     }
     // Draw the ground floor button 
     else if(i == 0)    
-        scrDrawTextOutline(xx, yy+3, "G", $e8fff5, $2e1814);
+        scrDrawTextSquareOutline(xx, yy+2, "G", $e8fff5, $2e1814, 1, fa_center, fa_top);
     // Draw the number floor buttons
     else
-        scrDrawTextOutline(xx, yy+3, string(i), $e8fff5, $2e1814);
+        scrDrawTextSquareOutline(xx, yy+2, string(i), $e8fff5, $2e1814, 1, fa_center, fa_top);
         
     // Draw the cursor
     if(i == cursor_index)
@@ -495,8 +493,6 @@ for(var i=0; i&lt;button_amnt; i++) {
 }
 
 draw_set_font(fLobbySmall);
-draw_set_halign(fa_left);
-draw_set_valign(fa_bottom);
 
 // Draw the controls text
 var scr_to_get_key = scrGetKeybind;
@@ -506,9 +502,8 @@ if(global.controllerMode) {
     array_index = 1;
 }
     
-scrDrawTextOutline(text_x, text_y, "Press ["+script_execute(scr_to_get_key,global.menuAcceptButton[array_index])+"] to select", $e8fff5, $2e1814);
-draw_set_halign(fa_right);
-scrDrawTextOutline(view_wview[0]-text_x, text_y, "Press ["+script_execute(scr_to_get_key,global.menuBackButton[array_index])+"] to cancel", $e8fff5, $2e1814);
+scrDrawTextSquareOutline(text_x, text_y, "Press ["+script_execute(scr_to_get_key,global.menuAcceptButton[array_index])+"] to select", $e8fff5, $2e1814, 1, fa_left, fa_bottom);
+scrDrawTextSquareOutline(view_wview[0]-text_x, text_y, "Press ["+script_execute(scr_to_get_key,global.menuBackButton[array_index])+"] to cancel", $e8fff5, $2e1814, 1, fa_right, fa_bottom);
 
 draw_set_alpha(1)
 display_set_gui_size(view_wport[0], view_hport[0])
