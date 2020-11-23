@@ -26,7 +26,7 @@ for (var i = 0; i < global.totalNumberOfPets; i++)
 
 global.currentPlayerHat = -1;  // Current hat that the player is wearing
 global.currentPlayerPet = -1;  // Current pet that follows the player
-global.totalSecretsFound = 0;  // This is set in the world object
+global.totalSecretsFound = 0;
 global.saveTotalSecretsFound = 0;
 
 // Global surfaces

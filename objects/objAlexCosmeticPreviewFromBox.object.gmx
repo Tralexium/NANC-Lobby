@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>/// Init vars
 
-cosmetic_id = -1;
+hat_id = -1;
+pet_id = -1;
 alarm[0] = 1;  // Assign the correct sprite
 
 image_speed = .2;
@@ -97,7 +98,12 @@ gravity_direction = 90;
             <kind>1</kind>
             <string>/// Assign the correct sprite
 
-sprite_index = scrGetCosmeticSprite(cosmetic_id);
+if(hat_id != -1) {
+    sprite_index = scrGetCosmeticHatSprite(hat_id);
+}
+if(pet_id != -1) {
+    sprite_index = scrGetCosmeticPetSprite(pet_id);
+}
 </string>
           </argument>
         </arguments>
@@ -187,12 +193,12 @@ var text_col = $e8fff5;
 var outline_col = $2e1814;
 var text_string = "NEW HAT";
 
-if(scrCheckIfCosmeticIsAPet(cosmetic_id))  text_string = "NEW PET";
+if(pet_id != -1)  text_string = "NEW PET";
 
 draw_sprite_ext(sprAlexSecretHalo, 0, x, y, aura_scale, aura_scale, aura_angle, -1, aura_alpha);
 if(sprite_index != -1) {
     var y_offset = 0;
-    if(sprite_height &gt;= 32) y_offset = 12;
+    if(hat_id != -1) y_offset = 12;
     draw_sprite_ext(sprite_index, image_index, x, y + y_offset, scale, scale, image_angle, image_blend, image_alpha);
 }
 

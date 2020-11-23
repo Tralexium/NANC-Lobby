@@ -108,7 +108,15 @@ pause_options_controller_alpha = 0;
 pause_exit_alpha = 0;
 pause_options_keybind_menu = 0;  // 0: general, 1: keyboard, 2: controller
 pause_cosmetic_index = 0;
-pause_cosmetic_max_index = 13;
+pause_cosmetic_max_index = 16;
+pause_cosmetic_image_index = 0;
+pause_cosmetic_image_index_spd = 0.2;
+pause_cosmetic_slot_cursor_index = 0;
+pause_cosmetic_slot_cursor_index_spd = .3;
+pause_cosmetic_slot_sep = 48 + 16;
+pause_cosmetic_x = 100;
+pause_cosmetic_hat_y = 180;
+pause_cosmetic_pet_y = 430;
 pause_cosmetic_tiles_per_line = 5;
 pause_options_index = 0;
 pause_options_seperation = 48;
@@ -589,9 +597,10 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
             case 1:  // Cosmetics
                 pause_cosmetic_index += H + (V * pause_cosmetic_tiles_per_line);
                 if(pause_cosmetic_index &gt; pause_cosmetic_max_index-1) pause_cosmetic_index -= pause_cosmetic_max_index;
-                if(pause_cosmetic_index &lt; pause_cosmetic_max_index-1) pause_cosmetic_index += pause_cosmetic_max_index;
+                if(pause_cosmetic_index &lt; 0) pause_cosmetic_index += pause_cosmetic_max_index;
                 
-                
+                if(!pause_input_delay)
+                    scrPauseCosmeticsInput(pause_cosmetic_index, _accept_press, _back_press);
                 break;
                 
             case 2:  // Options
@@ -727,6 +736,8 @@ if(pause_top_option_selected) {
 } else if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1){
     if(pause_cosmetics_alpha == 0 &amp;&amp; pause_options_alpha == 0 &amp;&amp; pause_exit_alpha == 0) {
         pause_sprite_alpha = min(pause_sprite_alpha + pause_fade_spd, 1);
+        pause_cosmetic_index = 0;
+        pause_exit_index = 0;
         pause_options_index = 0;
         pause_options_target_y = pause_options_y;
         pause_options_keyboard_index = 0;
@@ -739,42 +750,6 @@ if(pause_top_option_selected) {
         pause_exit_alpha = max(pause_exit_alpha - pause_fade_spd, 0);
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="12">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Change the keybind keys based on the settings sub menu
-
-var input_device = pause_top_option_num-1; // 0: keyboard, 1: controller
-
-pause_keybind_key[0] = scrGetKeybind(global.leftButton[input_device]);
-pause_keybind_key[1] = scrGetKeybind(global.rightButton[input_device]);
-pause_keybind_key[2] = scrGetKeybind(global.upButton[input_device]);
-pause_keybind_key[3] = scrGetKeybind(global.downButton[input_device]);
-pause_keybind_key[4] = scrGetKeybind(global.jumpButton[input_device]);
-pause_keybind_key[5] = scrGetKeybind(global.shootButton[input_device]);
-pause_keybind_key[6] = scrGetKeybind(global.restartButton[input_device]);
-pause_keybind_key[7] = scrGetKeybind(global.skipButton[input_device]);
-pause_keybind_key[8] = scrGetKeybind(global.suicideButton[input_device]);
-pause_keybind_key[9] = scrGetKeybind(global.pauseButton[input_device]);
 </string>
           </argument>
         </arguments>
@@ -1173,6 +1148,7 @@ if (pause_anim_progress &gt; 0)
     draw_set_alpha(1);
     
     // General Options
+    scrPauseCosmeticsDraw(text_col, outline_col);
     scrPauseOptionsDraw(text_col, outline_col);
     scrPauseKeyboardDraw(text_col, outline_col);
     scrPauseControllerDraw(text_col, outline_col);

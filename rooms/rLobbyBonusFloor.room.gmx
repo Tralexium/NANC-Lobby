@@ -103,20 +103,20 @@ background_vspeed[0] = -.5</code>
     <instance objName="objAlexSparklePlatform" x="672" y="176" name="inst_6CF09026" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexSparklePlatform" x="512" y="176" name="inst_111F00AA" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexSparklePlatform" x="352" y="176" name="inst_B5A407E8" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="560" y="272" name="inst_769319C7" locked="0" code="box_id = 1;&#xA;min_secret_amnt = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="720" y="272" name="inst_66327B6F" locked="0" code="box_id = 2;&#xA;min_secret_amnt = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="880" y="272" name="inst_D0E3E986" locked="0" code="box_id = 3;&#xA;min_secret_amnt = 4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="1040" y="272" name="inst_6C7A05EE" locked="0" code="box_id = 4;&#xA;min_secret_amnt = 5;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="1200" y="272" name="inst_14E58AE2" locked="0" code="box_id = 5;&#xA;min_secret_amnt = 6;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="1360" y="272" name="inst_60E3C348" locked="0" code="box_id = 6;&#xA;min_secret_amnt = 7;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="720" y="144" name="inst_D9B89168" locked="0" code="box_id = 9;&#xA;min_secret_amnt = 13;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="880" y="144" name="inst_E6C392D3" locked="0" code="box_id = 10;&#xA;min_secret_amnt = 15;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="1040" y="144" name="inst_E762774A" locked="0" code="box_id = 11;&#xA;min_secret_amnt = 18;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="1200" y="144" name="inst_0FCE5C11" locked="0" code="box_id = 12;&#xA;min_secret_amnt = 21;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="1360" y="144" name="inst_894D803C" locked="0" code="box_id = 13;&#xA;min_secret_amnt = 24;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="400" y="144" name="inst_8DACF486" locked="0" code="box_id = 7;&#xA;min_secret_amnt = 9;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="560" y="144" name="inst_50BEC076" locked="0" code="box_id = 8;&#xA;min_secret_amnt = 11;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLootBox" x="400" y="272" name="inst_25C27A82" locked="0" code="box_id = 0;&#xA;min_secret_amnt = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="560" y="272" name="inst_769319C7" locked="0" code="hat_id = 1;&#xA;min_secret_amnt = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="720" y="272" name="inst_66327B6F" locked="0" code="hat_id = 2;&#xA;min_secret_amnt = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="880" y="272" name="inst_D0E3E986" locked="0" code="pet_id = 0;&#xA;min_secret_amnt = 4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="1040" y="272" name="inst_6C7A05EE" locked="0" code="hat_id = 3;&#xA;min_secret_amnt = 5;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="1200" y="272" name="inst_14E58AE2" locked="0" code="hat_id = 4;&#xA;min_secret_amnt = 6;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="1360" y="272" name="inst_60E3C348" locked="0" code="hat_id = 5;&#xA;min_secret_amnt = 7;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="720" y="144" name="inst_D9B89168" locked="0" code="hat_id = 7;&#xA;min_secret_amnt = 13;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="880" y="144" name="inst_E6C392D3" locked="0" code="pet_id = 2;&#xA;min_secret_amnt = 15;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="1040" y="144" name="inst_E762774A" locked="0" code="hat_id = 8;&#xA;min_secret_amnt = 18;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="1200" y="144" name="inst_0FCE5C11" locked="0" code="hat_id = 9;&#xA;min_secret_amnt = 21;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="1360" y="144" name="inst_894D803C" locked="0" code="pet_id = 3;&#xA;min_secret_amnt = 24;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="400" y="144" name="inst_8DACF486" locked="0" code="pet_id = 1&#xA;min_secret_amnt = 9;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="560" y="144" name="inst_50BEC076" locked="0" code="hat_id = 6;&#xA;min_secret_amnt = 11;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLootBox" x="400" y="272" name="inst_25C27A82" locked="0" code="hat_id = 0;&#xA;min_secret_amnt = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objFancySecretItem" x="144" y="224" name="inst_74387847" locked="0" code="itemNum = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objFancySecretItem" x="192" y="224" name="inst_6CFD68A6" locked="0" code="itemNum = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objFancySecretItem" x="240" y="224" name="inst_9AAAB252" locked="0" code="itemNum = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

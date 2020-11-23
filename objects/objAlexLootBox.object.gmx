@@ -28,7 +28,8 @@
             <string>/// Init vars
 
 // Change these
-box_id = 0;
+hat_id = -1;
+pet_id = -1;
 min_secret_amnt = 1;
 
 // General vars
@@ -141,16 +142,21 @@ if(place_meeting(x, y+16, objAlexLobbyPlayer) &amp;&amp; !collected) {
     if(scrButtonCheckPressed(global.upButton)) {
         if(!locked) {
             collected = true;
-            global.playerCosmetic[box_id] = true;
             alarm[0] = 50;
             
-            var preview = instance_create(x, y, objAlexCosmeticPreviewFromBox);
-                preview.cosmetic_id = box_id;
+            var preview = instance_create(x, y, objAlexCosmeticPreviewFromBox);            
+            if(hat_id != -1) {
+                global.playerHat[hat_id] = true;
+                preview.hat_id = hat_id;
+            }
+            if(pet_id != -1) {
+                global.playerPet[pet_id] = true;
+                preview.pet_id = pet_id;
+            }
             
             repeat(20) {
                 instance_create(draw_x, draw_y, objAlexLootBoxStarPart);
             }
-            
             audio_play_sound(sndAlexLootBoxOpen, 0, false);
         } else {
             lock_shake_limiter = lock_shake_amnt;
@@ -202,8 +208,16 @@ halo_angle += halo_spin_spd;
             <kind>1</kind>
             <string>/// Check if the box has been collected
 
-if(global.playerCosmetic[box_id]) {
-    instance_destroy();
+if(hat_id != -1) {
+    if(global.playerHat[hat_id]) {
+        instance_destroy();
+    }
+}
+
+if(pet_id != -1) {
+    if(global.playerPet[pet_id]) {
+        instance_destroy();
+    }
 }
 </string>
           </argument>

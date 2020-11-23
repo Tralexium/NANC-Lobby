@@ -53,7 +53,7 @@ for(var i=0; i&lt;8; i++) {
     }
 }
 
-bonus_room_available = (global.totalSecretsFound &gt;= 1);
+bonus_room_available = true; // (global.totalSecretsFound &gt;= 1);
 
 show_panel = false;  // Show button panel
 ui_lerp_val = 0;

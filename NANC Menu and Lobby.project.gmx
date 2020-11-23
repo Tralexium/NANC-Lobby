@@ -153,6 +153,7 @@
         <sprite>sprites\sprAlexPauseInactiveVolumeBar</sprite>
         <sprite>sprites\sprAlexPauseActiveVolumeBar</sprite>
         <sprite>sprites\sprAlexPauseCosmeticSlot</sprite>
+        <sprite>sprites\sprAlexPauseCosmeticSlotCursor</sprite>
       </sprites>
       <sprite>sprites\sprAlexBlockSprite</sprite>
       <sprite>sprites\sprAlexBlockWithoutShadow</sprite>
@@ -289,6 +290,7 @@
         <script>scripts\scrPauseGetKeybindsForDevice.gml</script>
         <script>scripts\scrPauseToggleMusic.gml</script>
         <script>scripts\scrPauseCosmeticsInput.gml</script>
+        <script>scripts\scrPauseCosmeticsDraw.gml</script>
         <script>scripts\scrPauseOptionsInput.gml</script>
         <script>scripts\scrPauseOptionsDraw.gml</script>
         <script>scripts\scrPauseKeyboardInput.gml</script>
@@ -305,7 +307,6 @@
     <scripts name="ALEX">
       <script>scripts\scrGetCosmeticHatSprite.gml</script>
       <script>scripts\scrGetCosmeticPetSprite.gml</script>
-      <script>scripts\scrCheckIfCosmeticIsAPet.gml</script>
       <script>scripts\scrAlexMakeParticle.gml</script>
       <script>scripts\scrAlexMakeParticleExt.gml</script>
       <script>scripts\scrAlexEaseOutSine.gml</script>
