@@ -285,9 +285,12 @@
         <script>scripts\scrButtonCheckReleased.gml</script>
       </scripts>
       <scripts name="pause">
+        <script>scripts\scrPauseGetKeybindsForDevice.gml</script>
         <script>scripts\scrPauseToggleMusic.gml</script>
         <script>scripts\scrPauseOptionsInput.gml</script>
         <script>scripts\scrPauseOptionsDraw.gml</script>
+        <script>scripts\scrPauseKeyboardInput.gml</script>
+        <script>scripts\scrPauseKeyboardDraw.gml</script>
       </scripts>
     </scripts>
     <scripts name="functions">

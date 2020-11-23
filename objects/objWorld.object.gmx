@@ -114,9 +114,9 @@ pause_options_index = 0;
 pause_options_seperation = 48;
 pause_options_scroll_spd = .1;
 pause_options_upper_threshold = pause_bar_rise_distance + 16;
-pause_options_bottom_threshold = display_get_gui_height() - pause_bar_rise_distance - 64;
+pause_options_bottom_threshold = display_get_gui_height() - pause_bar_rise_distance - 60;
 pause_options_threshold_space = 32;
-pause_options_x = 100;
+pause_options_x = 150;
 pause_options_y = 150;
 pause_options_w = display_get_gui_width() - 150;
 pause_options_target_y = pause_options_y;
@@ -126,7 +126,7 @@ pause_options_max_index = 7;
 pause_options_keyboard_index = 0;
 pause_options_keyboard_max_index = 11;
 pause_options_controller_index = 0;
-pause_options_controller_max_index = 12;
+pause_options_controller_max_index = 11;
 pause_options_volume_bars = 10;
 pause_options_volume_bar_sep = 16;
 pause_exit_index = 0;
@@ -604,21 +604,16 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                         pause_options_index = clamp(pause_options_index, 0, pause_options_max_index-1);
                         
                         if(!pause_input_delay)
-                            scrPauseOptionsInput(pause_options_index, _accept_press, H);
-                        
-                        if(_back_press) {
-                            scrSaveConfig();
-                            pause_top_option_selected = false;
-                        }
+                            scrPauseOptionsInput(pause_options_index, _accept_press, _back_press, H);
                         break;
                     
                     case 1:  // Keyboard keybinds
-                        pause_options_keyboard_index += V;
+                        if(!pause_setting_key)
+                            pause_options_keyboard_index += V;
                         pause_options_keyboard_index = clamp(pause_options_keyboard_index, 0, pause_options_keyboard_max_index-1);
                         
-                        if(_back_press &amp;&amp; !pause_setting_key) {
-                            pause_options_keybind_menu = 0;
-                        }
+                        if(!pause_input_delay)
+                            scrPauseKeyboardInput(pause_options_keyboard_index, _accept_press, _back_press);
                         break;
                         
                     case 2:  // Controller keybinds
@@ -990,7 +985,7 @@ pause_keybind[7] = "Skip Button";
 pause_keybind[8] = "Suicide Button";
 pause_keybind[9] = "Pause Button";
 pause_keybind[10] = "Reset Controls";
-// get current keyboard controls
+// get current binds (currently they're assigned to the keyboard variant)
 pause_keybind_key[0] = scrGetKeybind(global.leftButton[0]);
 pause_keybind_key[1] = scrGetKeybind(global.rightButton[0]);
 pause_keybind_key[2] = scrGetKeybind(global.upButton[0]);
@@ -1001,7 +996,7 @@ pause_keybind_key[6] = scrGetKeybind(global.restartButton[0]);
 pause_keybind_key[7] = scrGetKeybind(global.skipButton[0]);
 pause_keybind_key[8] = scrGetKeybind(global.suicideButton[0]);
 pause_keybind_key[9] = scrGetKeybind(global.pauseButton[0]);
-pause_keyboard_key[10] = "";
+pause_keybind_key[10] = "";
 </string>
           </argument>
         </arguments>
@@ -1181,6 +1176,7 @@ if (pause_anim_progress &gt; 0)
     
     // General Options
     scrPauseOptionsDraw(text_col, outline_col);
+    scrPauseKeyboardDraw(text_col, outline_col);
     
     
     // Draw the top &amp; bottom bars

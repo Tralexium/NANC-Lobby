@@ -46,6 +46,7 @@ if(pause_options_alpha > 0) {
                 break;
         }
     }
+    draw_set_alpha(pause_options_alpha)
     draw_sprite(sprAlexPetTrollBuddy, 0, pause_options_x - 32, pause_options_y)
     draw_set_alpha(1)
 }
