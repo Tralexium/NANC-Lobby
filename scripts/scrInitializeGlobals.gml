@@ -10,11 +10,18 @@ for (var i = 0; i <= global.totalNumberOfStages; i++)
     global.saveStageCleared[i] = false;
 }
 
-global.totalNumberOfCosmetics = 14;
-for (var i = 0; i <= global.totalNumberOfCosmetics; i++)
+global.totalNumberOfHats = 10;
+for (var i = 0; i < global.totalNumberOfHats; i++)
 {
-    global.playerCosmetic[i] = false;
-    global.savePlayerCosmetic[i] = false;
+    global.playerHat[i] = false;
+    global.savePlayerHat[i] = false;
+}
+
+global.totalNumberOfPets = 4;
+for (var i = 0; i < global.totalNumberOfPets; i++)
+{
+    global.playerPet[i] = false;
+    global.savePlayerPet[i] = false;
 }
 
 global.currentPlayerHat = -1;  // Current hat that the player is wearing

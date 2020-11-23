@@ -43,9 +43,14 @@ if (savePosition)
         global.saveSecretItem[i] = global.secretItem[i];
     }
     
-    for (var i = 0; i < global.totalNumberOfCosmetics; i++)
+    for (var i = 0; i < global.totalNumberOfHats; i++)
     {
-        global.savePlayerCosmetic[i] = global.playerCosmetic[i];
+        global.savePlayerHat[i] = global.playerHat[i];
+    }
+    
+    for (var i = 0; i < global.totalNumberOfPets; i++)
+    {
+        global.savePlayerPet[i] = global.playerPet[i];
     }
     
     for (var i = 0; i < global.bossItemTotal; i++)
@@ -83,9 +88,14 @@ for (var i = 0; i <= global.totalNumberOfStages; i++)
     ds_map_add(saveMap,"saveStageClear["+string(i)+"]",global.saveStageCleared[i]);
 }
 
-for (var i = 0; i <= global.totalNumberOfCosmetics; i++)
+for (var i = 0; i < global.totalNumberOfHats; i++)
 {
-    ds_map_add(saveMap,"savePlayerCosmetic["+string(i)+"]",global.savePlayerCosmetic[i]);
+    ds_map_add(saveMap,"savePlayerHat["+string(i)+"]",global.savePlayerHat[i]);
+}
+
+for (var i = 0; i < global.totalNumberOfPets; i++)
+{
+    ds_map_add(saveMap,"savePlayerPet["+string(i)+"]",global.savePlayerPet[i]);
 }
 
 for (var i = 0; i < global.secretItemTotal; i++)
