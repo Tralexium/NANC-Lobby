@@ -55,6 +55,7 @@ pause_timer = 0;  // timer used for pause animation stuff
 pause_anim_timer = 0;
 pause_anim_timer_length = 20;
 pause_anim_progress = 0;  // 0: start, 1: finish
+pause_input_delay = 0;
 
 // Top options
 pause_top_option_num = -1;
@@ -117,6 +118,7 @@ pause_options_bottom_threshold = display_get_gui_height() - pause_bar_rise_dista
 pause_options_threshold_space = 32;
 pause_options_x = 100;
 pause_options_y = 150;
+pause_options_w = display_get_gui_width() - 150;
 pause_options_target_y = pause_options_y;
 pause_options_keyboard_target_y = pause_options_y;
 pause_options_controller_target_y = pause_options_y;
@@ -125,6 +127,8 @@ pause_options_keyboard_index = 0;
 pause_options_keyboard_max_index = 11;
 pause_options_controller_index = 0;
 pause_options_controller_max_index = 12;
+pause_options_volume_bars = 10;
+pause_options_volume_bar_sep = 16;
 pause_exit_index = 0;
 pause_exit_max_index = 1;
 
@@ -297,21 +301,6 @@ if (global.gameStarted)
             global.time += global.timeMicro div 1000000;
             global.timeMicro = global.timeMicro mod 1000000;
         }
-    }
-    else    //game is paused, check for volume controls
-    {
-        if (scrButtonCheck(global.upButton))
-        {
-            if (global.volumeLevel &lt; 100)
-                global.volumeLevel += 1;
-        }
-        else if (scrButtonCheck(global.downButton))
-        {
-            if (global.volumeLevel &gt; 0)
-                global.volumeLevel -= 1;
-        }
-        
-        audio_master_gain(global.volumeLevel/100);  //set master gain
     }
     
     scrSetRoomCaption();    //keep caption updated
@@ -586,6 +575,7 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
     if(_accept_press &amp;&amp; !pause_top_option_selected) {
         if(pause_top_option_num != 0) {
             pause_top_option_selected = true;
+            pause_input_delay = 1;
         } else {
             event_user(1);  // Unpause the game since option 0 is Resume
         }
@@ -613,7 +603,11 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                         pause_options_index += V;
                         pause_options_index = clamp(pause_options_index, 0, pause_options_max_index-1);
                         
+                        if(!pause_input_delay)
+                            scrPauseOptionsInput(pause_options_index, _accept_press, H);
+                        
                         if(_back_press) {
+                            scrSaveConfig();
                             pause_top_option_selected = false;
                         }
                         break;
@@ -649,6 +643,8 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
         }
     }
 }
+
+pause_input_delay = max(pause_input_delay - 1, 0);
 </string>
           </argument>
         </arguments>
@@ -818,6 +814,8 @@ if (!global.gamePaused)  //game currently not paused, pause the game
         global.pauseDelay = global.pauseDelayLength; //set pause delay
         
         instance_deactivate_all(true);  //deactivate everything
+        instance_activate_object(objPlayMusic);  // Reactivate the music object
+                                                 // In case we want to configure it in the pause settings
         
         global.pauseSurf = surface_create(surface_get_width(application_surface),surface_get_height(application_surface));    //create new surface
         surface_copy(global.pauseSurf,0,0,application_surface);             //copy current screen to it
@@ -1182,17 +1180,7 @@ if (pause_anim_progress &gt; 0)
     draw_set_alpha(1);
     
     // General Options
-    draw_set_font(fMenuLobby12)
-    var _option_y;
-    var _option_alpha;
-    for(var i=0; i&lt;pause_options_max_index; i++) {
-        _option_y = pause_options_target_y + (i * pause_options_seperation);
-        _option_alpha = clamp(((_option_y + pause_options_threshold_space) - pause_options_upper_threshold)/pause_options_threshold_space, 0, 1);
-        draw_set_alpha(_option_alpha * pause_options_alpha);
-        scrDrawTextSquareOutline(pause_options_x, _option_y, pause_options[i], text_col, outline_col, 2, fa_left, fa_middle);
-    }
-    draw_sprite(sprAlexPetTrollBuddy, 0, pause_options_x - 32, pause_options_y)
-    draw_set_alpha(1)
+    scrPauseOptionsDraw(text_col, outline_col);
     
     
     // Draw the top &amp; bottom bars

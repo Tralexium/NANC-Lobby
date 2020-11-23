@@ -150,6 +150,8 @@
         <sprite>sprites\sprAlexPauseUIBottomBar</sprite>
         <sprite>sprites\sprAlexPauseUIBG</sprite>
         <sprite>sprites\sprAlexPauseTopOptionArrow</sprite>
+        <sprite>sprites\sprAlexPauseInactiveVolumeBar</sprite>
+        <sprite>sprites\sprAlexPauseActiveVolumeBar</sprite>
       </sprites>
       <sprite>sprites\sprAlexBlockSprite</sprite>
       <sprite>sprites\sprAlexBlockWithoutShadow</sprite>
@@ -281,6 +283,11 @@
         <script>scripts\scrButtonCheck.gml</script>
         <script>scripts\scrButtonCheckPressed.gml</script>
         <script>scripts\scrButtonCheckReleased.gml</script>
+      </scripts>
+      <scripts name="pause">
+        <script>scripts\scrPauseToggleMusic.gml</script>
+        <script>scripts\scrPauseOptionsInput.gml</script>
+        <script>scripts\scrPauseOptionsDraw.gml</script>
       </scripts>
     </scripts>
     <scripts name="functions">
