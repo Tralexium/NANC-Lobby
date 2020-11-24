@@ -683,7 +683,8 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                 
             case 3:  // Exit
                 var _prev_pause_exit_index = pause_exit_index;
-                pause_exit_index += V;
+                if(pause_exit_protocol == -1)
+                    pause_exit_index += V;
                 pause_exit_index = clamp(pause_exit_index, 0, pause_exit_max_index-1);
                 
                 if(_prev_pause_exit_index != pause_exit_index)

@@ -30,7 +30,7 @@ if(pause_options_keyboard_alpha > 0) {
             scrDrawTextSquareOutline(pause_options_w, _option_y, pause_keybind_key[i], _text_col, _outline_col, 2, fa_right, fa_middle);
     }
     draw_set_alpha(pause_options_keyboard_alpha);
-    draw_sprite(sprAlexPetTrollBuddy, 0, pause_options_x - 32, pause_options_y);
+    draw_sprite(sprAlexPauseContentArrow, 0, pause_options_x - 32, pause_options_y);
     draw_set_alpha(1);
 } else if(pause_options_keyboard_index != 0){
     pause_options_keyboard_index = 0;

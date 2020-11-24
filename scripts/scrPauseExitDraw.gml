@@ -17,7 +17,7 @@ if(pause_exit_alpha > 0) {
         scrDrawTextSquareOutline(pause_exit_x, _exit_y, pause_exit_text[i], _text_col, _outline_col, 2, fa_left, fa_middle);
     }
     
-    draw_sprite(sprAlexPetTrollBuddy, 0, pause_exit_cursor_x, pause_exit_cursor_y);
+    draw_sprite(sprAlexPauseContentArrow, 0, pause_exit_cursor_x, pause_exit_cursor_y);
     
     draw_set_alpha(1)
 }

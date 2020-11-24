@@ -160,6 +160,7 @@
         <sprite>sprites\sprAlexPauseUIBottomBar</sprite>
         <sprite>sprites\sprAlexPauseUIBG</sprite>
         <sprite>sprites\sprAlexPauseTopOptionArrow</sprite>
+        <sprite>sprites\sprAlexPauseContentArrow</sprite>
         <sprite>sprites\sprAlexPauseInactiveVolumeBar</sprite>
         <sprite>sprites\sprAlexPauseActiveVolumeBar</sprite>
         <sprite>sprites\sprAlexPauseCosmeticSlot</sprite>
