@@ -7,6 +7,7 @@ var _back_button = argument2;
 if(_accept_button) {
     pause_cosmetic_slot_cursor_scale = 1.4;
     pause_cosmetic_slot_cursor_index = 0;
+    audio_play_sound(sndAlexMenuConfirm, 0, false);
 
     if(_index < global.totalNumberOfHats) {
         if(global.playerHat[_index])
@@ -26,5 +27,6 @@ if(_accept_button) {
 
 if(_back_button) {
     scrSaveGame(false);
+    audio_play_sound(sndAlexMenuGoBack, 0, false);
     pause_top_option_selected = false;
 }

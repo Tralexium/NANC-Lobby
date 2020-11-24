@@ -34,6 +34,16 @@
       <sound>sound\musAlexFloor6</sound>
       <sound>sound\musAlexBonusFloor</sound>
       <sounds name="sfx">
+        <sound>sound\sndAlexMenuConfirm</sound>
+        <sound>sound\sndAlexMenuGoBack</sound>
+        <sound>sound\sndAlexExitGame</sound>
+        <sound>sound\sndAlexMenuResetControls</sound>
+        <sound>sound\sndAlexMenuSwitchOption</sound>
+        <sound>sound\sndAlexMenuAwaitKeybind</sound>
+        <sound>sound\sndAlexMenuError</sound>
+        <sound>sound\sndAlexPauseEnable</sound>
+        <sound>sound\sndAlexPauseDisable</sound>
+        <sound>sound\sndAlexPauseTopOption</sound>
         <sound>sound\sndAlexLootBoxLocked</sound>
         <sound>sound\sndAlexLootBoxOpen</sound>
         <sound>sound\sndAlexSecretPickup</sound>
@@ -297,6 +307,8 @@
         <script>scripts\scrPauseControllerInput.gml</script>
         <script>scripts\scrPauseKeyboardDraw.gml</script>
         <script>scripts\scrPauseControllerDraw.gml</script>
+        <script>scripts\scrPauseExitInput.gml</script>
+        <script>scripts\scrPauseExitDraw.gml</script>
       </scripts>
     </scripts>
     <scripts name="functions">

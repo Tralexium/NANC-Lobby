@@ -101,6 +101,7 @@ pause_navigation_text_travel = 0;
 pause_navigation_text_travel_distance = 64;
 pause_navigation_text_y = display_get_gui_height() - pause_bar_rise_distance - 16;
 pause_fade_spd = .15;
+pause_black_overlay_alpha = 0;
 
 // Option contents
 pause_cosmetics_alpha = 0;
@@ -125,7 +126,7 @@ pause_cosmetic_kid_x = display_get_gui_width() - 240;
 pause_cosmetic_kid_y = display_get_gui_height()/2;
 pause_options_index = 0;
 pause_options_seperation = 48;
-pause_options_scroll_spd = .1;
+pause_options_scroll_spd = .15;
 pause_options_upper_threshold = pause_bar_rise_distance + 16;
 pause_options_bottom_threshold = display_get_gui_height() - pause_bar_rise_distance - 60;
 pause_options_threshold_space = 32;
@@ -145,7 +146,14 @@ pause_options_volume_bar_sep = 16;
 pause_options_reset_keybinds_mix = 0; // 0: white, 1: red
 pause_options_reset_col = $e8e0df;
 pause_exit_index = 0;
-pause_exit_max_index = 1;
+pause_exit_max_index = 2;
+pause_exit_x = display_get_gui_width()/2 - 80;
+pause_exit_y = display_get_gui_height()/2 - 40;
+pause_exit_cursor_x = pause_exit_x - 32;
+pause_exit_cursor_y = pause_exit_y;
+pause_exit_text[0] = "Back to Menu";
+pause_exit_text[1] = "Exit Game";
+pause_exit_protocol = -1;  // 0: back to menu, 1: exit game
 
 
 </string>
@@ -574,8 +582,10 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
         top_input = H;
         
     pause_top_option_num += top_input;
-    if(top_input != 0)
+    if(top_input != 0) {
         pause_top_option_theta = 0;
+        audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+    }
     if(pause_top_option_num &gt; 3)
         pause_top_option_num = 0;
     if(pause_top_option_num &lt; 0)
@@ -591,6 +601,8 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
         if(pause_top_option_num != 0) {
             pause_top_option_selected = true;
             pause_input_delay = 1;
+            
+            audio_play_sound(sndAlexPauseTopOption, 0, false);
         } else {
             event_user(1);  // Unpause the game since option 0 is Resume
         }
@@ -604,6 +616,9 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
             case 1:  // Cosmetics
                 var _previous_index = pause_cosmetic_index;
                 pause_cosmetic_index += H + (V * pause_cosmetic_tiles_per_line);
+                
+                if(_previous_index != pause_cosmetic_index)
+                            audio_play_sound(sndAlexMenuSwitchOption, 0, false);
                 
                 // Transitions between the 2 cosmetic categories is more intuitive this way
                 if(_previous_index &lt;= global.totalNumberOfHats &amp;&amp; pause_cosmetic_index &gt; global.totalNumberOfHats)
@@ -626,6 +641,9 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                         pause_options_index += V;
                         pause_options_index = clamp(pause_options_index, 0, pause_options_max_index-1);
                         
+                        if(_previous_options_index != pause_options_index)
+                            audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+                        
                         if(V != 0) {
                             if(pause_options_index == 1)
                                 audio_sound_gain(global.currentMusic, 1, pause_music_fade_time);
@@ -642,6 +660,9 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                             pause_options_keyboard_index += V;
                         pause_options_keyboard_index = clamp(pause_options_keyboard_index, 0, pause_options_keyboard_max_index-1);
                         
+                        if(V != 0)
+                            audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+                        
                         if(!pause_input_delay)
                             scrPauseKeyboardInput(pause_options_keyboard_index, _accept_press, _back_press);
                         break;
@@ -651,6 +672,9 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                             pause_options_controller_index += V;
                         pause_options_controller_index = clamp(pause_options_controller_index, 0, pause_options_controller_max_index-1);
                         
+                        if(V != 0)
+                            audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+                        
                         if(!pause_input_delay)
                             scrPauseControllerInput(pause_options_controller_index, _accept_press, _back_press);
                         break;
@@ -658,12 +682,15 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                 break;
                 
             case 3:  // Exit
+                var _prev_pause_exit_index = pause_exit_index;
                 pause_exit_index += V;
                 pause_exit_index = clamp(pause_exit_index, 0, pause_exit_max_index-1);
                 
-                if(_back_press) {
-                    pause_top_option_selected = false;
-                }
+                if(_prev_pause_exit_index != pause_exit_index)
+                    audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+                
+                if(!pause_input_delay)
+                    scrPauseExitInput(pause_exit_index, _accept_press, _back_press);
                 break;
         }
     }
@@ -753,11 +780,13 @@ if(pause_top_option_selected) {
     var _general_options_scroll_amnt = pause_options_index * pause_options_seperation;
     var _keyboard_options_scroll_amnt = pause_options_keyboard_index * pause_options_seperation;
     var _controller_options_scroll_amnt = pause_options_controller_index * pause_options_seperation;
+    var _exit_scroll_amnt = pause_exit_index * pause_options_seperation;
     var _scroll_spd = pause_options_scroll_spd;
     
     pause_options_target_y = lerp(pause_options_target_y, pause_options_y-_general_options_scroll_amnt, _scroll_spd);
     pause_options_keyboard_target_y = lerp(pause_options_keyboard_target_y, pause_options_y-_keyboard_options_scroll_amnt, _scroll_spd);
     pause_options_controller_target_y = lerp(pause_options_controller_target_y, pause_options_y-_controller_options_scroll_amnt, _scroll_spd);
+    pause_exit_cursor_y = lerp(pause_exit_cursor_y, pause_exit_y+_exit_scroll_amnt, _scroll_spd);
     
 } else if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1){
     if(pause_cosmetics_alpha == 0 &amp;&amp; pause_options_alpha == 0 &amp;&amp; pause_exit_alpha == 0) {
@@ -811,6 +840,7 @@ if (!global.gamePaused)  //game currently not paused, pause the game
         instance_activate_object(objPlayMusic);  // Reactivate the music object
                                                  // In case we want to configure it in the pause settings
         audio_sound_gain(global.currentMusic, pause_music_volume, pause_music_fade_time);
+        audio_play_sound(sndAlexPauseEnable, 0, false);
                                                  
         global.pauseSurf = surface_create(surface_get_width(application_surface),surface_get_height(application_surface));    //create new surface
         surface_copy(global.pauseSurf,0,0,application_surface);             //copy current screen to it
@@ -820,7 +850,9 @@ else    //game currently paused, unpause the game
 {
     global.gamePaused = false;  //set the game to unpaused
     global.pauseDelay = global.pauseDelayLength;     //set pause delay
+    
     audio_sound_gain(global.currentMusic, 1, pause_music_fade_time);
+    audio_play_sound(sndAlexPauseDisable, 0, false);
     
     scrSaveConfig();    //save config in case volume levels were changed
     
@@ -1180,6 +1212,7 @@ if (pause_anim_progress &gt; 0)
     scrPauseOptionsDraw(text_col, outline_col);
     scrPauseKeyboardDraw(text_col, outline_col);
     scrPauseControllerDraw(text_col, outline_col);
+    scrPauseExitDraw(text_col, outline_col);
     
     
     // Draw the top &amp; bottom bars
@@ -1222,7 +1255,7 @@ if (pause_anim_progress &gt; 0)
             }
         } else {
             draw_set_colour(pause_BG_col);
-            draw_text(option_x, option_y, pause_top_option_text[i])
+            draw_text(option_x, option_y, pause_top_option_text[i]);
         }
     }
     
@@ -1249,10 +1282,20 @@ if (pause_anim_progress &gt; 0)
     draw_set_halign(fa_left);
     draw_set_valign(fa_bottom);
     draw_set_colour(pause_BG_col);
-    draw_text(32, bottom_text_y, "Time: " + timeText)
+    draw_text(32, bottom_text_y, "Time: " + timeText);
     
     draw_set_halign(fa_right);
     draw_text(gui_width-32, bottom_text_y,"Deaths: " + string(global.death));
+    
+    
+    // Draw black borders &amp; overlay
+    ///////////////////////////////
+    draw_set_colour(c_black);
+    draw_rectangle(-5000, -5000, -1, 5000, false);
+    draw_rectangle(display_get_gui_width(), -5000, 5000, 5000, false);
+    draw_set_alpha(pause_black_overlay_alpha);
+    draw_rectangle(-1, -1, display_get_gui_width(), display_get_gui_height(), false);
+    draw_set_alpha(1);
 }
 </string>
           </argument>

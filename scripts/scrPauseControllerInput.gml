@@ -11,6 +11,7 @@ if(!pause_setting_key) {
         if (_index != 10)
         {
             pause_setting_key = true;
+            audio_play_sound(sndAlexMenuAwaitKeybind, 0, false);
         }
         else
         {
@@ -27,12 +28,14 @@ if(!pause_setting_key) {
             global.pauseButton[1] = gp_start;
             
             scrPauseGetKeybindsForDevice(true);
+            audio_play_sound(sndAlexMenuResetControls, 0, false);
             pause_options_reset_keybinds_mix = 1;
         }
     }
     
     if(_back_button) {
         scrSaveConfig();
+        audio_play_sound(sndAlexMenuGoBack, 0, false);
         pause_options_keybind_menu = 0;
     }
 }
@@ -53,10 +56,12 @@ else
         else if (_index == 9) {global.pauseButton[1] = keyChange;}
         
         pause_setting_key = false;
+        audio_play_sound(sndAlexMenuConfirm, 0, false);
         scrPauseGetKeybindsForDevice(true);
     }
     else if (keyboard_check_pressed(vk_anykey))    //check if a controller button was pressed, exit prompt
     {
+        audio_play_sound(sndAlexMenuError, 0, false);
         pause_setting_key = false;
     }
 }

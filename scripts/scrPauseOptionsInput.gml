@@ -8,6 +8,9 @@ var _back_button = argument2;
 var _h_input = argument3;
 
 if(_accept_button) {
+    if(_index != 1)
+        audio_play_sound(sndAlexMenuConfirm, 0, false);
+
     switch(_index) {
          case 0:
             scrPauseToggleMusic();
@@ -47,10 +50,14 @@ if(_index == 1) {
     var _vol_change = _h_input * pause_options_volume_bars;
     global.volumeLevel = clamp(global.volumeLevel + _vol_change, 0, 100);
     audio_master_gain(global.volumeLevel/100);
+    
+    if(_h_input != 0)
+        audio_play_sound(sndAlexMenuAwaitKeybind, 0, false);
 }
 
 if(_back_button) {
     scrSaveConfig();
+    audio_play_sound(sndAlexMenuGoBack, 0, false);
     audio_sound_gain(global.currentMusic, pause_music_volume, pause_music_fade_time);
     pause_top_option_selected = false;
 }
