@@ -27,6 +27,7 @@ if(!pause_setting_key) {
             global.pauseButton[0] = vk_escape;
             
             scrPauseGetKeybindsForDevice(false);
+            pause_options_reset_keybinds_mix = 1;
         }
     }
     

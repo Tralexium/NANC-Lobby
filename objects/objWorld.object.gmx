@@ -56,6 +56,8 @@ pause_anim_timer = 0;
 pause_anim_timer_length = 20;
 pause_anim_progress = 0;  // 0: start, 1: finish
 pause_input_delay = 0;
+pause_music_fade_time = 500;
+pause_music_volume = .4;
 
 // Top options
 pause_top_option_num = -1;
@@ -113,11 +115,14 @@ pause_cosmetic_image_index = 0;
 pause_cosmetic_image_index_spd = 0.2;
 pause_cosmetic_slot_cursor_index = 0;
 pause_cosmetic_slot_cursor_index_spd = .3;
+pause_cosmetic_slot_cursor_scale = 1;
 pause_cosmetic_slot_sep = 48 + 16;
 pause_cosmetic_x = 100;
 pause_cosmetic_hat_y = 180;
 pause_cosmetic_pet_y = 430;
 pause_cosmetic_tiles_per_line = 5;
+pause_cosmetic_kid_x = display_get_gui_width() - 240;
+pause_cosmetic_kid_y = display_get_gui_height()/2;
 pause_options_index = 0;
 pause_options_seperation = 48;
 pause_options_scroll_spd = .1;
@@ -137,6 +142,8 @@ pause_options_controller_index = 0;
 pause_options_controller_max_index = 11;
 pause_options_volume_bars = 10;
 pause_options_volume_bar_sep = 16;
+pause_options_reset_keybinds_mix = 0; // 0: white, 1: red
+pause_options_reset_col = $e8e0df;
 pause_exit_index = 0;
 pause_exit_max_index = 1;
 
@@ -595,7 +602,15 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
      
         switch(pause_top_option_num) {
             case 1:  // Cosmetics
+                var _previous_index = pause_cosmetic_index;
                 pause_cosmetic_index += H + (V * pause_cosmetic_tiles_per_line);
+                
+                // Transitions between the 2 cosmetic categories is more intuitive this way
+                if(_previous_index &lt;= global.totalNumberOfHats &amp;&amp; pause_cosmetic_index &gt; global.totalNumberOfHats)
+                    pause_cosmetic_index = global.totalNumberOfHats + 1;
+                else if(_previous_index &gt; global.totalNumberOfHats &amp;&amp; pause_cosmetic_index &lt;= global.totalNumberOfHats)
+                    pause_cosmetic_index = global.totalNumberOfHats;
+                
                 if(pause_cosmetic_index &gt; pause_cosmetic_max_index-1) pause_cosmetic_index -= pause_cosmetic_max_index;
                 if(pause_cosmetic_index &lt; 0) pause_cosmetic_index += pause_cosmetic_max_index;
                 
@@ -607,8 +622,16 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                 switch(pause_options_keybind_menu) {
                     case 0:  // General options
                     default:
+                        var _previous_options_index = pause_options_index;
                         pause_options_index += V;
                         pause_options_index = clamp(pause_options_index, 0, pause_options_max_index-1);
+                        
+                        if(V != 0) {
+                            if(pause_options_index == 1)
+                                audio_sound_gain(global.currentMusic, 1, pause_music_fade_time);
+                            else if(_previous_options_index == 1)
+                                audio_sound_gain(global.currentMusic, pause_music_volume, pause_music_fade_time);
+                        }
                         
                         if(!pause_input_delay)
                             scrPauseOptionsInput(pause_options_index, _accept_press, _back_press, H);
@@ -678,8 +701,11 @@ if(pause_top_option_selected) {
         switch(pause_top_option_num) {
             case 1:  // Cosmetics
                 pause_cosmetics_alpha = min(pause_cosmetics_alpha + pause_fade_spd, 1);
+                pause_cosmetic_slot_cursor_scale = max(pause_cosmetic_slot_cursor_scale - 0.1, 1);
                 break;
             case 2:  // Options
+                pause_options_reset_keybinds_mix = max(pause_options_reset_keybinds_mix - 0.05, 0);
+                pause_options_reset_col = merge_colour($e8e0df, $3fab63, pause_options_reset_keybinds_mix);
                 switch(pause_options_keybind_menu) {
                     case 0:
                     default:
@@ -784,7 +810,8 @@ if (!global.gamePaused)  //game currently not paused, pause the game
         instance_deactivate_all(true);  //deactivate everything
         instance_activate_object(objPlayMusic);  // Reactivate the music object
                                                  // In case we want to configure it in the pause settings
-        
+        audio_sound_gain(global.currentMusic, pause_music_volume, pause_music_fade_time);
+                                                 
         global.pauseSurf = surface_create(surface_get_width(application_surface),surface_get_height(application_surface));    //create new surface
         surface_copy(global.pauseSurf,0,0,application_surface);             //copy current screen to it
     }
@@ -793,6 +820,7 @@ else    //game currently paused, unpause the game
 {
     global.gamePaused = false;  //set the game to unpaused
     global.pauseDelay = global.pauseDelayLength;     //set pause delay
+    audio_sound_gain(global.currentMusic, 1, pause_music_fade_time);
     
     scrSaveConfig();    //save config in case volume levels were changed
     

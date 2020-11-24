@@ -5,6 +5,9 @@ var _accept_button = argument1;
 var _back_button = argument2;
 
 if(_accept_button) {
+    pause_cosmetic_slot_cursor_scale = 1.4;
+    pause_cosmetic_slot_cursor_index = 0;
+
     if(_index < global.totalNumberOfHats) {
         if(global.playerHat[_index])
             global.currentPlayerHat = _index;

@@ -51,5 +51,6 @@ if(_index == 1) {
 
 if(_back_button) {
     scrSaveConfig();
+    audio_sound_gain(global.currentMusic, pause_music_volume, pause_music_fade_time);
     pause_top_option_selected = false;
 }

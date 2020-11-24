@@ -27,6 +27,7 @@ if(!pause_setting_key) {
             global.pauseButton[1] = gp_start;
             
             scrPauseGetKeybindsForDevice(true);
+            pause_options_reset_keybinds_mix = 1;
         }
     }
     
