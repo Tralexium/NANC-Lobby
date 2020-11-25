@@ -165,6 +165,8 @@
         <sprite>sprites\sprAlexPauseActiveVolumeBar</sprite>
         <sprite>sprites\sprAlexPauseCosmeticSlot</sprite>
         <sprite>sprites\sprAlexPauseCosmeticSlotCursor</sprite>
+        <sprite>sprites\sprAlexPauseSecretIcon</sprite>
+        <sprite>sprites\sprAlexPauseClearedStageIcon</sprite>
       </sprites>
       <sprite>sprites\sprAlexBlockSprite</sprite>
       <sprite>sprites\sprAlexBlockWithoutShadow</sprite>

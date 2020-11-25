@@ -669,14 +669,24 @@ var drawX = round(x);
 var drawY = round(y);
 var draw_xscale = image_xscale+(draw_squish_x-draw_squish_y)
 var draw_yscale = image_yscale+(draw_squish_y-draw_squish_x)
+var draw_y_adjustment = (draw_squish_x*(sprite_height/2));
 
 if (global.grav == -1)      //need to draw the player a pixel off in the y-axis when flipped for some reason
     drawY += 1;
 
-// Draw the shadow first
+// Draw pet
+if(pet_sprite != -1)
+    draw_sprite_ext(pet_sprite, cosmetic_index, pet_x, pet_y, pet_x_scale, image_yscale*global.grav, 0, -1, image_alpha);
+
+// Draw shadow
 draw_sprite_ext(sprite_index, image_index, drawX-2, drawY+2, draw_xscale*xScale,draw_yscale*global.grav, image_angle, c_black, 0.5*draw_alpha)
-    
-draw_sprite_ext(sprite_index,image_index,drawX,drawY+(draw_squish_x*(sprite_height/2)),draw_xscale*xScale,draw_yscale*global.grav,image_angle,image_blend,image_alpha*draw_alpha);
+
+// Draw player
+draw_sprite_ext(sprite_index,image_index,drawX,drawY+draw_y_adjustment,draw_xscale*xScale,draw_yscale*global.grav,image_angle,image_blend,image_alpha*draw_alpha);
+
+// Draw hat
+if(hat_sprite != -1)
+    draw_sprite_ext(hat_sprite, cosmetic_index, hat_x, hat_y+draw_y_adjustment, draw_xscale*xScale, draw_yscale*global.grav, image_angle, -1, image_alpha);
 
 //draw the player's hitbox
 if (global.debugShowHitbox)

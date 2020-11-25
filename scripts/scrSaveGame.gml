@@ -37,6 +37,7 @@ if (savePosition)
     global.savePlayerY = floor(global.savePlayerY);
     
     global.saveTotalSecretsFound = global.totalSecretsFound;
+    global.saveTotalStagesCleared = global.totalStagesCleared;
     
     for (var i = 0; i < global.secretItemTotal; i++)
     {
@@ -82,6 +83,7 @@ ds_map_add(saveMap,"saveGrav",global.saveGrav);
 ds_map_add(saveMap,"currentPlayerHat",global.currentPlayerHat);
 ds_map_add(saveMap,"currentPlayerPet",global.currentPlayerPet);
 ds_map_add(saveMap,"saveTotalSecretsFound",global.saveTotalSecretsFound);
+ds_map_add(saveMap,"saveTotalStagesCleared",global.saveTotalStagesCleared);
 
 for (var i = 0; i <= global.totalNumberOfStages; i++)
 {

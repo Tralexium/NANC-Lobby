@@ -1283,10 +1283,23 @@ if (pause_anim_progress &gt; 0)
     draw_set_halign(fa_left);
     draw_set_valign(fa_bottom);
     draw_set_colour(pause_BG_col);
-    draw_text(32, bottom_text_y, "Time: " + timeText);
+    var _time_text = "Time: " + timeText;
+    var _time_text_width = string_width(_time_text);
+    draw_text(32, bottom_text_y, _time_text);
+    
+    draw_text(_time_text_width + 64, bottom_text_y,"Deaths: " + string(global.death));
     
     draw_set_halign(fa_right);
-    draw_text(gui_width-32, bottom_text_y,"Deaths: " + string(global.death));
+    var _secret_text = ": " + string(global.totalSecretsFound) + "/28";
+    var _secret_text_width = string_width(_secret_text);
+    var _secret_icon_x = gui_width - _secret_text_width - 52;
+    draw_text(gui_width - 32, bottom_text_y, _secret_text); // Yeah I'm hard coding the secret amnt cause the max is 99
+    draw_sprite_ext(sprAlexPauseSecretIcon, 0, _secret_icon_x, bottom_text_y, 1, 1, 0, pause_BG_col, 1);
+    
+    var _clear_text = ": " + string(global.totalStagesCleared) + "/" + string(global.totalNumberOfStages);
+    var _clear_text_width = string_width(_clear_text);
+    draw_text(_secret_icon_x - 48, bottom_text_y, _clear_text);
+    draw_sprite_ext(sprAlexPauseClearedStageIcon, 0, _secret_icon_x - _clear_text_width - 64, bottom_text_y, 1, 1, 0, pause_BG_col, 1);
     
     
     // Draw black borders &amp; overlay

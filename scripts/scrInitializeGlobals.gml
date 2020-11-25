@@ -28,6 +28,8 @@ global.currentPlayerHat = -1;  // Current hat that the player is wearing
 global.currentPlayerPet = -1;  // Current pet that follows the player
 global.totalSecretsFound = 0;
 global.saveTotalSecretsFound = 0;
+global.totalStagesCleared = 0;  // TODO: update this number in your stage clear script Piece
+global.saveTotalStagesCleared = 0;
 
 // Global surfaces
 global.text_outline_surf = surface_create(400, 100);

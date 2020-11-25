@@ -41,6 +41,7 @@ if (loadFile)
         global.currentPlayerHat = ds_map_find_value(saveMap,"currentPlayerHat");
         global.currentPlayerPet = ds_map_find_value(saveMap,"currentPlayerPet");
         global.saveTotalSecretsFound = ds_map_find_value(saveMap,"saveTotalSecretsFound");
+        global.saveTotalStagesCleared = ds_map_find_value(saveMap,"saveTotalStagesCleared");
         
         if (is_string(global.saveRoom))   //check if the saved room loaded properly
         {
@@ -126,6 +127,7 @@ global.autosave = false;    //disable autosaving since we're loading the game
 global.grav = global.saveGrav;
 
 global.totalSecretsFound = global.saveTotalSecretsFound;
+global.totalStagesCleared = global.saveTotalStagesCleared;
 
 for (var i = 0; i <= global.totalNumberOfStages; i++)
 {

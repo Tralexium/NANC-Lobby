@@ -53,6 +53,41 @@ if (global.autosave) //save the game if currently set to autosave
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Cosmetic variables
+
+hat_sprite = scrGetCosmeticHatSprite(global.currentPlayerHat);
+pet_sprite = scrGetCosmeticPetSprite(global.currentPlayerPet);
+cosmetic_index = 0;
+cosmetic_img_spd = 0.2;
+hat_x = x;
+hat_y = y;
+pet_x = x;
+pet_y = y;
+pet_x_scale = 1;
+pet_theta = 0;
+pet_wiggle_spd = 2;
+pet_distance = 16;
+pet_follow_speed = 0.1;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -147,6 +182,75 @@ if (global.playerAnimationFix)
     }
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Hat &amp; Pet logic
+
+hat_sprite = scrGetCosmeticHatSprite(global.currentPlayerHat);
+pet_sprite = scrGetCosmeticPetSprite(global.currentPlayerPet);
+cosmetic_index += cosmetic_img_spd;
+
+if(hat_sprite != -1) {
+    hat_x = round(x);
+    hat_y = round(y);
+    
+    if(global.grav == -1)
+        hat_y++;
+
+    switch(sprite_index) {
+    case sprPlayerIdle:
+        var _kid_index = image_index mod 4;
+        if(floor(_kid_index) == 1) 
+            hat_y += image_yscale;
+        break;
+    
+    case sprPlayerJump:
+        hat_y -= image_yscale*2;
+        break;
+        
+    case sprPlayerFall:
+        hat_y += image_yscale;
+        break;
+    
+    case sprPlayerRunning:
+        hat_x += xScale;
+        break;
+    }
+}
+
+
+pet_x = lerp(pet_x, x - (pet_distance * xScale), pet_follow_speed);
+pet_y = lerp(pet_y, y - (12*global.grav) + (dsin(pet_theta)*4), pet_follow_speed);
+if(pet_sprite != -1) {
+    pet_theta += pet_wiggle_spd;
+
+    var _old_x = pet_x
+    
+    var _x_spd = pet_x - _old_x;
+    if(abs(_x_spd) &gt; 1) {
+        pet_x_scale = sign(_x_spd);
+    } else {
+        pet_x_scale = xScale;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -495,7 +599,50 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scrKillPlayer();
+            <string>/// Hat &amp; Pet logic
+
+hat_sprite = scrGetCosmeticHatSprite(global.currentPlayerHat);
+pet_sprite = scrGetCosmeticPetSprite(global.currentPlayerPet);
+cosmetic_index += cosmetic_img_spd;
+
+if(hat_sprite != -1) {
+    hat_x = round(x);
+    hat_y = round(y);
+    
+    if(global.grav == -1)
+        hat_y++;
+
+    switch(sprite_index) {
+    case sprPlayerIdle:
+        var _kid_index = image_index mod 4;
+        if(floor(_kid_index) == 1) 
+            hat_y += image_yscale;
+        break;
+    
+    case sprPlayerJump:
+        hat_y -= image_yscale;
+        break;
+        
+    case sprPlayerRunning:
+        hat_x += xScale;
+        break;
+    }
+}
+
+if(pet_sprite != -1) {
+    pet_theta++;
+
+    var _old_x = pet_x
+    pet_x = lerp(pet_x, x - (pet_distance * xScale), pet_follow_speed);
+    pet_y = lerp(pet_y, y - (12*global.grav) + (dsin(pet_theta)*4), pet_follow_speed);
+    
+    var _x_spd = pet_x - _old_x;
+    if(abs(_x_spd) &gt; 1) {
+        pet_x_scale = sign(_x_spd);
+    } else {
+        pet_x_scale = xScale;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -629,7 +776,16 @@ var drawY = y;
 if (global.grav == -1)      //need to draw the player a pixel off in the y-axis when flipped for some reason
     drawY += 1;
 
+// Draw pet
+if(pet_sprite != -1)
+    draw_sprite_ext(pet_sprite, cosmetic_index, pet_x, pet_y, pet_x_scale, image_yscale*global.grav, 0, -1, image_alpha);
+
+// Draw player
 draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_yscale*global.grav,image_angle,image_blend,image_alpha);
+
+// Draw hat
+if(hat_sprite != -1)
+    draw_sprite_ext(hat_sprite, cosmetic_index, hat_x, hat_y, xScale, image_yscale*global.grav, image_angle, -1, image_alpha);
 
 //draw the player's hitbox
 if (global.debugShowHitbox)
