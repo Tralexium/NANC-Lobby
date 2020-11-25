@@ -47,6 +47,7 @@
         <sound>sound\sndAlexLootBoxLocked</sound>
         <sound>sound\sndAlexLootBoxOpen</sound>
         <sound>sound\sndAlexSecretPickup</sound>
+        <sound>sound\sndAlexKidEnter</sound>
         <sound>sound\sndAlexKidLand</sound>
         <sound>sound\sndAlexKidLandFromLongFall</sound>
         <sound>sound\sndAlexStageDoorClosed</sound>
@@ -177,6 +178,7 @@
       <sprite>sprites\sprAlexLobbyTransitionBubble</sprite>
       <sprite>sprites\sprAlexPlayerDustPart</sprite>
       <sprite>sprites\sprAlexLobbyStageDoor</sprite>
+      <sprite>sprites\sprAlexLobbyGrandDoor</sprite>
       <sprite>sprites\sprAlexLobbyStageDoorTag</sprite>
       <sprite>sprites\sprAlexLobbyStageDoorAcedTag</sprite>
       <sprite>sprites\sprAlexTopFiveBorders</sprite>
@@ -491,6 +493,7 @@
       </objects>
       <objects name="Doors">
         <object>objects\objAlexLobbyStageDoor</object>
+        <object>objects\objAlexLobbyGrandDoor</object>
         <object>objects\objAlexLobbyElevator</object>
         <object>objects\objAlexDoorTag</object>
         <object>objects\objAlexLobbyStageDoorUI</object>

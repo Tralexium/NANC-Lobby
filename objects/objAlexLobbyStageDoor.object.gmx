@@ -531,7 +531,7 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active) {
         active = false;
         alarm[0] = 40;
         instance_create(0, 0, objAlexMusicFader);
-        // TODO: walking sound
+        audio_play_sound(sndAlexKidEnter, 0, false);
     }
 } else {
     colliding = false;
