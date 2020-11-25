@@ -676,7 +676,7 @@ if (global.grav == -1)      //need to draw the player a pixel off in the y-axis 
 
 // Draw pet
 if(pet_sprite != -1)
-    draw_sprite_ext(pet_sprite, cosmetic_index, pet_x, pet_y, pet_x_scale, image_yscale*global.grav, 0, -1, image_alpha);
+    draw_sprite_ext(pet_sprite, cosmetic_index, pet_x, pet_y, pet_x_scale, image_yscale*global.grav, 0, -1, image_alpha*draw_alpha);
 
 // Draw shadow
 draw_sprite_ext(sprite_index, image_index, drawX-2, drawY+2, draw_xscale*xScale,draw_yscale*global.grav, image_angle, c_black, 0.5*draw_alpha)
@@ -686,7 +686,7 @@ draw_sprite_ext(sprite_index,image_index,drawX,drawY+draw_y_adjustment,draw_xsca
 
 // Draw hat
 if(hat_sprite != -1)
-    draw_sprite_ext(hat_sprite, cosmetic_index, hat_x, hat_y+draw_y_adjustment, draw_xscale*xScale, draw_yscale*global.grav, image_angle, -1, image_alpha);
+    draw_sprite_ext(hat_sprite, cosmetic_index, hat_x, hat_y+draw_y_adjustment, draw_xscale*xScale, draw_yscale*global.grav, image_angle, -1, image_alpha*draw_alpha);
 
 //draw the player's hitbox
 if (global.debugShowHitbox)

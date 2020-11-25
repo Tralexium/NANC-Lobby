@@ -219,15 +219,19 @@ if(hat_sprite != -1) {
     case sprPlayerIdle:
         var _kid_index = image_index mod 4;
         if(floor(_kid_index) == 1) 
-            hat_y += image_yscale;
+            hat_y += image_yscale*global.grav;
         break;
     
     case sprPlayerJump:
-        hat_y -= image_yscale*2;
+        hat_y -= image_yscale*2*global.grav;
         break;
         
     case sprPlayerFall:
-        hat_y += image_yscale;
+        hat_y += image_yscale*global.grav;
+        break;
+        
+    case sprPlayerSliding:
+        hat_y += image_yscale*global.grav;
         break;
     
     case sprPlayerRunning:
@@ -599,50 +603,9 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Hat &amp; Pet logic
+            <string>/// Kill player
 
-hat_sprite = scrGetCosmeticHatSprite(global.currentPlayerHat);
-pet_sprite = scrGetCosmeticPetSprite(global.currentPlayerPet);
-cosmetic_index += cosmetic_img_spd;
-
-if(hat_sprite != -1) {
-    hat_x = round(x);
-    hat_y = round(y);
-    
-    if(global.grav == -1)
-        hat_y++;
-
-    switch(sprite_index) {
-    case sprPlayerIdle:
-        var _kid_index = image_index mod 4;
-        if(floor(_kid_index) == 1) 
-            hat_y += image_yscale;
-        break;
-    
-    case sprPlayerJump:
-        hat_y -= image_yscale;
-        break;
-        
-    case sprPlayerRunning:
-        hat_x += xScale;
-        break;
-    }
-}
-
-if(pet_sprite != -1) {
-    pet_theta++;
-
-    var _old_x = pet_x
-    pet_x = lerp(pet_x, x - (pet_distance * xScale), pet_follow_speed);
-    pet_y = lerp(pet_y, y - (12*global.grav) + (dsin(pet_theta)*4), pet_follow_speed);
-    
-    var _x_spd = pet_x - _old_x;
-    if(abs(_x_spd) &gt; 1) {
-        pet_x_scale = sign(_x_spd);
-    } else {
-        pet_x_scale = xScale;
-    }
-}
+scrKillPlayer();
 </string>
           </argument>
         </arguments>
