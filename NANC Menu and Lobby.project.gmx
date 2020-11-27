@@ -218,6 +218,7 @@
       <sprite>sprites\sprAlexLootBoxUpperHalf</sprite>
       <sprite>sprites\sprAlexLootBoxBottomHalf</sprite>
       <sprite>sprites\sprAlexLootBoxLock</sprite>
+      <sprite>sprites\sprAlexReviewArrow</sprite>
       <sprite>sprites\sprAlexLootBoxStarPart</sprite>
       <sprites name="Door Stage Previews">
         <sprite>sprites\sprAlexHeatHazeDistortionTex</sprite>
@@ -344,6 +345,7 @@
     <fonts name="ALEX GAME UI">
       <font>fonts\fMenuLobby6</font>
       <font>fonts\fMenuLobby12</font>
+      <font>fonts\fMenuLobby18</font>
       <font>fonts\fLobbySmall</font>
       <font>fonts\fLobbySmall24</font>
     </fonts>
@@ -496,6 +498,7 @@
         <object>objects\objAlexLobbyGrandDoor</object>
         <object>objects\objAlexLobbyElevator</object>
         <object>objects\objAlexDoorTag</object>
+        <object>objects\objAlexStageReviewUI</object>
         <object>objects\objAlexLobbyStageDoorUI</object>
       </objects>
       <objects name="Decor">

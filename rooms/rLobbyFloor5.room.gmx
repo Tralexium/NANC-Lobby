@@ -278,6 +278,7 @@ background_vspeed[2] = .3;</code>
     <tile bgName="tAlexFloor5" x="96" y="320" w="16" h="16" xo="64" yo="16" id="10012462" name="inst_9121DB78" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexFloor5" x="112" y="320" w="16" h="16" xo="64" yo="16" id="10012463" name="inst_8CF91AC0" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexFloor5" x="128" y="320" w="16" h="16" xo="64" yo="16" id="10012464" name="inst_6F14E5CF" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexFloor5" x="816" y="160" w="16" h="16" xo="0" yo="48" id="10013795" name="inst_65F59DB4" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexFloor5" x="64" y="416" w="16" h="16" xo="16" yo="96" id="10011075" name="inst_8354F8E5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexFloor5" x="80" y="416" w="16" h="16" xo="16" yo="96" id="10011076" name="inst_FA03C875" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexFloor5" x="96" y="416" w="16" h="16" xo="16" yo="96" id="10011077" name="inst_F9998456" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
