@@ -169,6 +169,8 @@
         <sound>sound\sndAlexPauseEnable</sound>
         <sound>sound\sndAlexPauseDisable</sound>
         <sound>sound\sndAlexPauseTopOption</sound>
+        <sound>sound\sndAlexReviewUIOpen</sound>
+        <sound>sound\sndAlexReviewUIClose</sound>
         <sound>sound\sndAlexLootBoxLocked</sound>
         <sound>sound\sndAlexLootBoxOpen</sound>
         <sound>sound\sndAlexSecretPickup</sound>

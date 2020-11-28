@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>/// Init vars
 
+audio_play_sound(sndAlexReviewUIOpen, 0, false);
+
 // Set this variable after creating the object
 stage_id = -1;
 alarm[0] = 1; // Set the variables if stage_id isn't -1
@@ -264,7 +266,7 @@ if(active &amp;&amp; text_alpha &gt;= 1) {
     }
     
     // Select a review
-    if(scrButtonCheckPressed(global.menuAcceptButton)) {
+    if(scrButtonCheckPressed(global.menuAcceptButton) &amp;&amp; UI_layer &lt; 1) {
         audio_play_sound(sndAlexMenuConfirm, 0, false);
         UI_layer++;
         fade_text = true;
@@ -272,7 +274,10 @@ if(active &amp;&amp; text_alpha &gt;= 1) {
     
     // Exit or go back if in review
     if(scrButtonCheckPressed(global.menuBackButton)) {
-        audio_play_sound(sndAlexMenuGoBack, 0, false);
+        if(UI_layer &gt; 0)
+            audio_play_sound(sndAlexMenuGoBack, 0, false);
+        else
+            audio_play_sound(sndAlexReviewUIClose, 0, false);
         UI_layer--;
         fade_text = true;
     }
@@ -337,6 +342,7 @@ if(active) {
                     case 0:
                         review_index = -1;
                         review_surf_scroll_amnt = 0;
+                        max_scroll_amnt = 0;
                         break;
                         
                     case 1:
