@@ -3,6 +3,131 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="7" name="datafiles">
+    <datafiles number="7" name="Reviews">
+      <datafiles number="7" name="Stage_35">
+        <datafile>
+          <name>Average_ratings.txt</name>
+          <exists>-1</exists>
+          <size>54</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>Average_ratings.txt</filename>
+        </datafile>
+        <datafile>
+          <name>Naloa's_review.txt</name>
+          <exists>-1</exists>
+          <size>41</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>Naloa's_review.txt</filename>
+        </datafile>
+        <datafile>
+          <name>Pieceofcheese87's_review.txt</name>
+          <exists>-1</exists>
+          <size>45</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>Pieceofcheese87's_review.txt</filename>
+        </datafile>
+        <datafile>
+          <name>Skulldude's_review.txt</name>
+          <exists>-1</exists>
+          <size>583</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>Skulldude's_review.txt</filename>
+        </datafile>
+        <datafile>
+          <name>Tehjman1993's_review.txt</name>
+          <exists>-1</exists>
+          <size>177</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>Tehjman1993's_review.txt</filename>
+        </datafile>
+        <datafile>
+          <name>Wolfiexe's_review.txt</name>
+          <exists>-1</exists>
+          <size>84</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>Wolfiexe's_review.txt</filename>
+        </datafile>
+        <datafile>
+          <name>Wolsk's_review.txt</name>
+          <exists>-1</exists>
+          <size>162</size>
+          <exportAction>2</exportAction>
+          <exportDir></exportDir>
+          <overwrite>0</overwrite>
+          <freeData>-1</freeData>
+          <removeEnd>0</removeEnd>
+          <store>0</store>
+          <ConfigOptions>
+            <Config name="Default">
+              <CopyToMask>9223372036854775807</CopyToMask>
+            </Config>
+          </ConfigOptions>
+          <filename>Wolsk's_review.txt</filename>
+        </datafile>
+      </datafiles>
+    </datafiles>
+  </datafiles>
   <NewExtensions/>
   <sounds name="sound">
     <sounds name="sfx">

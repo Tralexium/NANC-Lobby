@@ -83,6 +83,7 @@ checkmark_x = x;
 checkmark_y = y - sprite_height/2;
 checkmark_y_start = checkmark_y;
 checkmark_wiggle = 4;
+reading_reviews = false;
 
 
 </string>
@@ -523,7 +524,13 @@ door_ui_id.secrets_found = secrets_found;
             <kind>1</kind>
             <string>/// Check for player
 
-if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active) {
+if(instance_exists(objAlexStageReviewUI)) {
+    reading_reviews = true;
+} else {
+    reading_reviews = false;
+}
+
+if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active &amp;&amp; !reading_reviews) {
     colliding = true;
     
     // Check if the player has entered the door
@@ -532,6 +539,12 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active) {
         alarm[0] = 40;
         instance_create(0, 0, objAlexMusicFader);
         audio_play_sound(sndAlexKidEnter, 0, false);
+    }
+    
+    // Check if the player wants to read the reviews
+    if(scrButtonCheckPressed(global.downButton)) {
+        var _review_ui = instance_create(0, 0, objAlexStageReviewUI);
+            _review_ui.stage_id = stage_number;
     }
 } else {
     colliding = false;

@@ -1,0 +1,3 @@
+Rating: 0.5 / 10
+Difficulty: 25 / 100
+Random inputs at random intervals, which affect your movement and gravity direction. Not going to humor this one with any further review.

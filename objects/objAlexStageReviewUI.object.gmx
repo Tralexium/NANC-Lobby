@@ -32,6 +32,7 @@ stage_id = -1;
 alarm[0] = 1; // Set the variables if stage_id isn't -1
 
 // General
+arrays_initialized = false;
 active = true;
 intro_finished = false;
 selection_index = 0;
@@ -40,38 +41,43 @@ UI_layer = 0;
 fade_text = false;
 timer = 0;
 
-
-// Review related
+// Judge names
 judge_name[0] = "Pieceofcheese87";
 judge_name[1] = "Skulldude";
 judge_name[2] = "Wolfiexe";
 judge_name[3] = "Tehjman1993";
 judge_name[4] = "Wolsk";
-judge_name[5] = "Naloas";
+judge_name[5] = "Naloa";
 
 judge_amnt = 6;
 
 // UI related
 text_col = $e8fff5;
-overlay_x = 0;
+overlay_pos = 0;
+overlay_spd = 0.5;
 overlay_alpha = 0;
-overlay_max_alpha = 0.4;
-overlay_color = $2e1814;
-box_color = overlay_color;
+overlay_max_alpha = 0.6;
+overlay_col1 = $ceb85a;
+overlay_col2 = $702a9c;
+overlay_color = overlay_col1;
+overlay_color_amnt = 0;
+box_color = $2e1814;
 box_center_x = display_get_gui_width() / 2;
 box_center_y = display_get_gui_height() / 2;
-box_expansion_spd = .15;
+box_expansion_spd = .25;
 box_width = 0;
 box_height = 0;
 box_max_width = 600;
 box_max_height = 500;
-box_curve = 10;
+box_curve = 40;
 text_alpha = 0;
 text_fading_spd = .1;
-text_margin = 32;
-text_padding = 24;
+text_margin = 40;
+text_padding = 32;
 text_width = box_max_width - text_margin*2;
-scroll_spd = 2;
+control_text_alpha = 0;
+control_text_fade_spd = 0.05;
+scroll_spd = 4;
 arrow_wiggle = 0;
 arrow_wiggle_spd = 3;
 arrow_wiggle_amnt = 10;
@@ -80,7 +86,62 @@ review_surf = noone;
 review_surf_scroll_amnt = 0;
 max_scroll_amnt = 0;
 review_window_width = text_width;
-review_window_height = box_max_height-(text_margin*2 + text_padding*2);
+review_window_height = box_max_height-(text_margin*2 + text_padding*4);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Freeze player
+
+with(objPlayer) {
+    frozen = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Free the surface and unfreeze the player
+
+if(surface_exists(review_surf))
+    surface_free(review_surf);
+    
+with(objPlayer) {
+    frozen = false;
+}
 </string>
           </argument>
         </arguments>
@@ -106,12 +167,28 @@ review_window_height = box_max_height-(text_margin*2 + text_padding*2);
             <string>/// Init vars based on the stage id
 
 if(stage_id != -1) {
+    arrays_initialized = true;
+
     var _file_name;
     var _file;
     
+    
+    // Get the average ratings from the stage
+    _file_name = working_directory + "\Reviews\Stage_" + string(stage_id) + "\Average_ratings.txt";
+    _file = file_text_open_read(_file_name);
+    if(_file != -1) {
+        average_rating = file_text_readln(_file);
+        average_difficulty = file_text_readln(_file);
+    } else {
+        show_debug_message("file: '"+_file_name+"' doesn't exist!");
+    }
+    file_text_close(_file);
+    
+    
+    // Parse the info from the reviews
     for(var i=0; i&lt;judge_amnt; i++) {
-        var _file_name = working_directory + "Reviews" + string(stage_id) + judge_name[i] + "_review";
-        var _file = file_text_open_read(_file_name);
+        _file_name = working_directory + "\Reviews\Stage_" + string(stage_id) + "\" + judge_name[i] + "'s_review.txt";
+        _file = file_text_open_read(_file_name);
         
         if(_file != -1) {
             judge_rating[i] = file_text_readln(_file);
@@ -121,7 +198,7 @@ if(stage_id != -1) {
             judge_review_paragraphs[i] = 0;
             while(!file_text_eof(_file)) {
                 var _paragraph = file_text_readln(_file);
-                if(_paragraph != "") {
+                if(string_length(_paragraph) &gt; 2) {
                     judge_review[i, judge_review_paragraphs[i]] = _paragraph;
                     judge_review_paragraphs[i] += 1;
                 }
@@ -165,23 +242,24 @@ if(stage_id != -1) {
             <string>/// Handle input
 
 var V = (scrButtonCheckPressed(global.menuDownButton) - scrButtonCheckPressed(global.menuUpButton));
-
-if(V != 0) {
-    audio_play_sound(sndAlexMenuSwitchOption, 0, false);
-}
+var hold_V = (scrButtonCheck(global.menuDownButton) - scrButtonCheck(global.menuUpButton));
 
 if(active &amp;&amp; text_alpha &gt;= 1) {
     if(UI_layer == 0) {
         selection_index += V
         if(selection_index &gt;= judge_amnt) selection_index = 0;
         if(selection_index &lt; 0) selection_index = judge_amnt-1;
+        
+        if(V != 0) {
+            audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+        }
     } else if(UI_layer == 1 &amp;&amp; surface_exists(review_surf)) {
         // Do review scrolling here
         var _surf_height = surface_get_height(review_surf);
         max_scroll_amnt = _surf_height - review_window_height;
         if(max_scroll_amnt &gt; 0) {
-            review_surf_scroll_amnt += V * scroll_spd;
-            review_surf_scroll_amnt = clamp(review_surf_scroll_amnt, 0, _max_scroll_amnt);
+            review_surf_scroll_amnt += hold_V * scroll_spd;
+            review_surf_scroll_amnt = clamp(review_surf_scroll_amnt, 0, max_scroll_amnt);
         }
     }
     
@@ -223,11 +301,15 @@ if(active &amp;&amp; text_alpha &gt;= 1) {
 
 timer++;
 
+overlay_pos += overlay_spd;
+overlay_color_amnt = abs(dsin(timer/2));
+overlay_color = merge_colour(overlay_col1, overlay_col2, overlay_color_amnt);
 arrow_wiggle = abs(dsin(timer*arrow_wiggle_spd))*arrow_wiggle_amnt;
 
 if(active) {
     if(!intro_finished) {
-        overlay_alpha = min(overlay_alpha+text_fading_spd/2, 1);
+        overlay_alpha = min(overlay_alpha+text_fading_spd/2, overlay_max_alpha);
+        control_text_alpha = min(control_text_alpha+control_text_fade_spd, 1);
         box_width = lerp(box_width, box_max_width, box_expansion_spd);
         box_height = lerp(box_height, box_max_height, box_expansion_spd);
         
@@ -268,6 +350,7 @@ if(active) {
     }
 } else {
     overlay_alpha = max(overlay_alpha-text_fading_spd/2, 0);
+    control_text_alpha = max(control_text_alpha-control_text_fade_spd, 0);
     box_width = lerp(box_width, 0, box_expansion_spd);
     box_height = lerp(box_height, 0, box_expansion_spd);
     
@@ -300,16 +383,19 @@ if(active) {
             <string>/// Draw the stuff
 
 
-if(stage_id != -1) {
+if(arrays_initialized) {
 
     // Fill the surface
     if(!surface_exists(review_surf) &amp;&amp; active) {
         var _paragraphs = judge_review_paragraphs[selection_index];
+        show_debug_message(_paragraphs);
         var _surf_width = review_window_width;
         var _surf_height = 0;
+        var _string_height = 0;
+        draw_set_font(fLobbySmall24);
         for(var i=0; i&lt;_paragraphs; i++) {
                 _string = judge_review[selection_index, i];
-                _string_height = string_height_ext(_string, -1, review_surf_width);
+                _string_height = string_height_ext(_string, -1, review_window_width);
                 _surf_height += _string_height + text_padding;
         }
         review_surf = surface_create(_surf_width, _surf_height);
@@ -317,10 +403,9 @@ if(stage_id != -1) {
             draw_clear_alpha(c_black, 0);
             draw_set_halign(fa_left);
             draw_set_valign(fa_top);
-            draw_set_font(fLobbySmall24);
             var _paragraph_y = 0;
             var _string = "";
-            var _string_height = 0;
+            _string_height = 0;
             for(var i=0; i&lt;_paragraphs; i++) {
                 _string = judge_review[selection_index, i];
                 _string_height = string_height_ext(_string, -1, review_window_width);
@@ -334,21 +419,22 @@ if(stage_id != -1) {
     
     // Draw the overlay
     var _overlay_half_alpha = overlay_alpha/2;
-    draw_sprite_tiled_ext(sprAlexPauseUIBG, 0, overlay_x, 0, 1, 1, overlay_color, _overlay_half_alpha);
-    draw_sprite_tiled_ext(sprAlexPauseUIBG, 1, -overlay_x, 0, 1, 1, overlay_color, _overlay_half_alpha);
+    draw_sprite_tiled_ext(sprAlexPauseUIBG, 0, overlay_pos, overlay_pos, 1, 1, overlay_color, _overlay_half_alpha);
+    draw_sprite_tiled_ext(sprAlexPauseUIBG, 1, -overlay_pos, -overlay_pos, 1, 1, overlay_color, _overlay_half_alpha);
     
     
     // Draw the text box
-    var _rext_x = box_center_x - box_width/2;
-    var _rext_y = box_center_y - box_height/2;
-    var _rext_x2 = box_center_x + box_width/2;
-    var _rext_y2 = box_center_y + box_height/2;
+    var _rect_x = box_center_x - box_width/2;
+    var _rect_y = box_center_y - box_height/2;
+    var _rect_x2 = box_center_x + box_width/2;
+    var _rect_y2 = box_center_y + box_height/2;
     draw_set_colour(box_color);
-    draw_roundrect_ext(_rext_x, _rext_y, _rext_x2, _rext_y2, box_curve, box_curve, false);
+    draw_roundrect_ext(_rect_x, _rect_y, _rect_x2, _rect_y2, box_curve, box_curve, false);
     
     
     // Draw the selection text if review_index is empty
     draw_set_alpha(text_alpha);
+    draw_set_colour(text_col);
     
     if(review_index == -1) {
         // Select a judge title
@@ -360,21 +446,39 @@ if(stage_id != -1) {
         var _slct_text_y = box_center_y - (box_max_height/2) + text_margin;
         draw_text(_slct_text_x, _slct_text_y, "Choose a review");
         
+        // Average Rating
+        draw_set_halign(fa_left);
+        draw_set_font(fLobbySmall24);
+        var _rating_x = box_center_x - (box_max_width/2) + (text_margin*2);
+        var _rating_y = _slct_text_y + string_height("M") + text_padding;
+        draw_text(_rating_x, _rating_y, average_rating);
+        
+        // Average Difficulty
+        var _difficulty_x = _rating_x;
+        var _difficulty_y = _rating_y + text_padding;
+        draw_text(_difficulty_x, _difficulty_y, average_difficulty);
+        
         // Judge selection
         draw_set_halign(fa_left);
         draw_set_valign(fa_middle);
+        draw_set_font(fMenuLobby12);
         var _judge_name_x = box_center_x - (box_max_width/2) + (text_margin*2);
-        var _judge_name_y = box_center_y - (box_max_width/2) + (text_margin*2);
+        var _judge_name_y = box_center_y - (box_max_height/2) + (text_margin*4.5);
         var _judge_name_str = "";
         for(var i=0; i&lt;judge_amnt; i++) {
             _judge_name_str = judge_name[i] + "'s review";
             _judge_name_y += text_padding;
-            draw_text(_judge_name_x, _judge_name_y, _judge_name_str);
             
             if(selection_index == i) {
+                draw_set_colour(text_col);
                 var _arrow_x = _judge_name_x - text_padding - arrow_wiggle;
-                draw_sprite(sprAlexReviewArrow, 0, _arrow_x, _judge_name_y);
+                var _arrow_y = _judge_name_y - 5;
+                draw_sprite(sprAlexReviewArrow, 0, _arrow_x, _arrow_y);
+            } else {
+                draw_set_colour(overlay_color);
             }
+            
+            draw_text(_judge_name_x, _judge_name_y, _judge_name_str);
         }
     } else {
         // Judge's name
@@ -384,7 +488,7 @@ if(stage_id != -1) {
         
         var _judge_text_x = box_center_x;
         var _judge_text_y = box_center_y - (box_max_height/2) + text_margin;
-        draw_text(_judge_text_x, _judge_text_y, judge_name[i] + "'s review");
+        draw_text(_judge_text_x, _judge_text_y, judge_name[selection_index] + "'s review");
         
         // Rating
         draw_set_halign(fa_left);
@@ -393,23 +497,44 @@ if(stage_id != -1) {
         var _rating_y = _judge_text_y + string_height("M") + text_padding;
         draw_text(_rating_x, _rating_y, judge_rating[selection_index]);
         
-        // Review
+        // Difficulty
         draw_set_halign(fa_right);
         var _difficulty_x = box_center_x + (box_max_width/2) - text_margin;
         var _difficulty_y = _rating_y;
         draw_text(_difficulty_x, _difficulty_y, judge_difficulty[selection_index]);
         
+        // Review
         var _review_x = _rating_x;
-        var _review_y = _rating_y + string_height("M") + (text_padding*2);
+        var _review_y = _rating_y + (text_padding*2);
         draw_surface_part(review_surf, 0, review_surf_scroll_amnt, review_window_width, review_window_height, _review_x, _review_y);
         
         // Top &amp; bottom arrows
         var _arrow_x = box_center_x;
-        var _top_arrow_y = _review_y - (text_padding/2) - arrow_wiggle;
-        var _bottom_arrow_y = box_center_y + (box_max_height/2) - (text_padding/2) + arrow_wiggle;
-        draw_sprite(sprAlexReviewArrow, 0, _arrow_x, _top_arrow_y);
-        draw_sprite(sprAlexReviewArrow, 0, _arrow_x, _bottom_arrow_y);
+        var _top_arrow_y = _review_y - text_padding/2 - arrow_wiggle;
+        var _bottom_arrow_y = box_center_y + (box_max_height/2) - text_padding + arrow_wiggle;
+        if(max_scroll_amnt &gt; 0) {
+            if(review_surf_scroll_amnt &gt; 0)
+                draw_sprite_ext(sprAlexReviewArrow, 0, _arrow_x, _top_arrow_y, 1, 1, 90, -1, text_alpha);
+            if(review_surf_scroll_amnt != max_scroll_amnt)
+                draw_sprite_ext(sprAlexReviewArrow, 0, _arrow_x, _bottom_arrow_y, 1, 1, -90, -1, text_alpha);
+        }
     }
+    
+    // Draw the menu controls
+    var scr_to_get_key = scrGetKeybind;
+    var array_index = 0;
+    if(global.controllerMode) {
+        scr_to_get_key = scrGetControllerBind;
+        array_index = 1;
+    }
+    var _control_text_move_amnt = 32;
+    var _control_text_x = control_text_alpha * _control_text_move_amnt;
+    var _control_text_y = display_get_gui_height() - 16;
+    draw_set_font(fLobbySmall24);
+    draw_set_alpha(control_text_alpha);
+    scrDrawTextSquareOutline(_control_text_x, _control_text_y, "Press ["+script_execute(scr_to_get_key,global.menuAcceptButton[array_index])+"] to select", $e8fff5, $2e1814, 2, fa_left, fa_bottom);
+    scrDrawTextSquareOutline(display_get_gui_width()-_control_text_x, _control_text_y, "Press ["+script_execute(scr_to_get_key,global.menuBackButton[array_index])+"] to cancel", $e8fff5, $2e1814, 2, fa_right, fa_bottom);
+    
     draw_set_alpha(1);
 }
 </string>
