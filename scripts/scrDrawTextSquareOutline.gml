@@ -34,7 +34,7 @@ switch(_valign) {
 }
 
 if(!surface_exists(global.text_outline_surf)) {
-    global.text_outline_surf = surface_create(400, 100);
+    global.text_outline_surf = surface_create(global.text_outline_surf_w, global.text_outline_surf_h);
 }
 
 surface_set_target(global.text_outline_surf);

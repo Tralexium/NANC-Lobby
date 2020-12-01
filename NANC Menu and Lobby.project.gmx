@@ -150,6 +150,7 @@
       <sound>sound\musMiku</sound>
     </sounds>
     <sounds name="ALEX">
+      <sound>sound\musAlexMenu</sound>
       <sound>sound\musAlexReceptionRoom</sound>
       <sound>sound\musAlexFloor1</sound>
       <sound>sound\musAlexFloor2</sound>
@@ -295,6 +296,12 @@
         <sprite>sprites\sprAlexPauseCosmeticSlotCursor</sprite>
         <sprite>sprites\sprAlexPauseSecretIcon</sprite>
         <sprite>sprites\sprAlexPauseClearedStageIcon</sprite>
+      </sprites>
+      <sprites name="Menu">
+        <sprite>sprites\sprAlexFullLogo</sprite>
+        <sprite>sprites\sprAlexFullLogoMask</sprite>
+        <sprite>sprites\sprAlexMenuBGBlob</sprite>
+        <sprite>sprites\sprAlexLogoChunk</sprite>
       </sprites>
       <sprite>sprites\sprAlexBlockSprite</sprite>
       <sprite>sprites\sprAlexBlockWithoutShadow</sprite>
@@ -455,6 +462,7 @@
       <script>scripts\scrAlexMakeParticle.gml</script>
       <script>scripts\scrAlexMakeParticleExt.gml</script>
       <script>scripts\scrAlexEaseOutSine.gml</script>
+      <script>scripts\scrAlexEaseInSine.gml</script>
       <script>scripts\scrDrawTextSquareOutline.gml</script>
       <script>scripts\scrAlexDrawSegmentBar.gml</script>
     </scripts>
@@ -641,11 +649,22 @@
         <object>objects\objAlexLootBoxStarPart</object>
         <object>objects\objAlexCosmeticPreviewFromBox</object>
       </objects>
+      <objects name="Menu">
+        <object>objects\objAlexMenuBG</object>
+        <object>objects\objAlexMenuIntroSequence</object>
+        <object>objects\objAlexMenuFeaturedCreators</object>
+        <object>objects\objAlexMenuAllContribitors</object>
+        <object>objects\objTitleMenu_new</object>
+        <object>objects\objOptionsMenu_new</object>
+        <object>objects\objKeyboardControlsMenu_new</object>
+        <object>objects\objControllerMenu_new</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="init">
       <room>rooms\rInit</room>
+      <room>rooms\rGameIntro</room>
       <room>rooms\rTitle</room>
       <room>rooms\rMenu</room>
       <room>rooms\rOptions</room>

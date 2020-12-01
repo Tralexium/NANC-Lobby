@@ -32,7 +32,9 @@ global.totalStagesCleared = 0;  // TODO: update this number in your stage clear 
 global.saveTotalStagesCleared = 0;
 
 // Global surfaces
-global.text_outline_surf = surface_create(400, 100);
+global.text_outline_surf_w = 550;
+global.text_outline_surf_h = 100;
+global.text_outline_surf = surface_create(global.text_outline_surf_w, global.text_outline_surf_h);
 
 
 global.savenum = 1;
