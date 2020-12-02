@@ -157,6 +157,10 @@ for(var i=0; i&lt;5; i++) {
 if(timer &gt; 810) {
     letter_alpha -= 0.06;
 }
+
+if(timer == 821) {
+    room_goto_next();
+}
 </string>
           </argument>
         </arguments>

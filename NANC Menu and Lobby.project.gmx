@@ -301,6 +301,7 @@
         <sprite>sprites\sprAlexFullLogo</sprite>
         <sprite>sprites\sprAlexFullLogoMask</sprite>
         <sprite>sprites\sprAlexMenuBGBlob</sprite>
+        <sprite>sprites\sprAlexMenuTrianglePart</sprite>
         <sprite>sprites\sprAlexLogoChunk</sprite>
       </sprites>
       <sprite>sprites\sprAlexBlockSprite</sprite>
@@ -654,6 +655,8 @@
         <object>objects\objAlexMenuIntroSequence</object>
         <object>objects\objAlexMenuFeaturedCreators</object>
         <object>objects\objAlexMenuAllContribitors</object>
+        <object>objects\objAlexMenuGameLogo</object>
+        <object>objects\objAlexMenuTrianglePart</object>
         <object>objects\objTitleMenu_new</object>
         <object>objects\objOptionsMenu_new</object>
         <object>objects\objKeyboardControlsMenu_new</object>
@@ -664,6 +667,7 @@
   <rooms name="rooms">
     <rooms name="init">
       <room>rooms\rInit</room>
+      <room>rooms\rLogoTest</room>
       <room>rooms\rGameIntro</room>
       <room>rooms\rTitle</room>
       <room>rooms\rMenu</room>
