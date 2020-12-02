@@ -304,6 +304,7 @@
         <sprite>sprites\sprAlexMenuTrianglePart</sprite>
         <sprite>sprites\sprAlexLogoChunk</sprite>
       </sprites>
+      <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexBlockSprite</sprite>
       <sprite>sprites\sprAlexBlockWithoutShadow</sprite>
       <sprite>sprites\sprAlexShadowBlock</sprite>
@@ -464,6 +465,7 @@
       <script>scripts\scrAlexMakeParticleExt.gml</script>
       <script>scripts\scrAlexEaseOutSine.gml</script>
       <script>scripts\scrAlexEaseInSine.gml</script>
+      <script>scripts\scrAlexEaseOutElastic.gml</script>
       <script>scripts\scrDrawTextSquareOutline.gml</script>
       <script>scripts\scrAlexDrawSegmentBar.gml</script>
     </scripts>
@@ -606,6 +608,7 @@
     </objects>
     <objects name="ALEX">
       <objects name="Misc">
+        <object>objects\objAlexPlayMusicWithIntro</object>
         <object>objects\objFloorInitializer</object>
         <object>objects\objAlexLobbyBubbleTransition</object>
         <object>objects\objAlexLobbyBubbleTransitionOut</object>
@@ -655,20 +658,23 @@
         <object>objects\objAlexMenuIntroSequence</object>
         <object>objects\objAlexMenuFeaturedCreators</object>
         <object>objects\objAlexMenuAllContribitors</object>
+        <object>objects\objNewTitleMenu</object>
         <object>objects\objAlexMenuGameLogo</object>
         <object>objects\objAlexMenuTrianglePart</object>
-        <object>objects\objTitleMenu_new</object>
-        <object>objects\objOptionsMenu_new</object>
-        <object>objects\objKeyboardControlsMenu_new</object>
-        <object>objects\objControllerMenu_new</object>
+        <objects name="Possible menu system candidates">
+          <object>objects\objTitleMenu_new</object>
+          <object>objects\objOptionsMenu_new</object>
+          <object>objects\objKeyboardControlsMenu_new</object>
+          <object>objects\objControllerMenu_new</object>
+        </objects>
       </objects>
     </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="init">
       <room>rooms\rInit</room>
-      <room>rooms\rLogoTest</room>
       <room>rooms\rGameIntro</room>
+      <room>rooms\rNewTitle</room>
       <room>rooms\rTitle</room>
       <room>rooms\rMenu</room>
       <room>rooms\rOptions</room>

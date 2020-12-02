@@ -3,12 +3,12 @@
   <caption></caption>
   <width>800</width>
   <height>608</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
-  <colour>16777088</colour>
+  <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code></code>
   <enableViews>-1</enableViews>
@@ -52,7 +52,8 @@
   </views>
   <instances>
     <instance objName="objAlexMenuBG" x="0" y="0" name="inst_7AD014FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexMenuGameLogo" x="416" y="320" name="inst_6B2F2960" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPlayMusicWithIntro" x="32" y="0" name="inst_281668FA" locked="0" code="BGM = musAlexMenu;&#xA;introLength = 16.421;&#xA;loopLength = 65.084;&#xA;totalLength = introLength + loopLength;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objNewTitleMenu" x="16" y="0" name="inst_794951F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

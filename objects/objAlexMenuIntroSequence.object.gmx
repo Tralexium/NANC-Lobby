@@ -93,6 +93,11 @@ for(var i=0; i&lt;5; i++) {
             <kind>1</kind>
             <string>/// Increment timer and spawn shit
 
+if(scrButtonCheckPressed(global.skipButton)) {
+    audio_sound_set_track_position(global.currentMusic, 16.421);
+    room_goto_next();
+}
+
 timer++;
 
 if(timer &gt; 10 &amp;&amp; timer &lt; 100) {
@@ -154,7 +159,7 @@ for(var i=0; i&lt;5; i++) {
     }
 }
 
-if(timer &gt; 810) {
+if(timer &gt; 800) {
     letter_alpha -= 0.06;
 }
 

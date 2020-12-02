@@ -32,14 +32,11 @@ sprite_index = -1; // Make the sprite invincible without affecting the draw even
 image_speed = .2; // Used for the kid's walking animation;
 timer = 0; // Timer var, increments by 1 each frame
 select = 1; // Which option is currently selected
-confirmSfxTest = false; // If the user has pressed the confirm button during the sound test
 canSelect = false; // If the player can select an option
 selected = false; // If the player has selected an option
 canContinue = false; // If the player can continue a save file
-volumeCheck = true; // Player checks if the volume is too loud before entering the menu
 volTimer = 0; // Timer specifecaly for volume check
 scrollSpd = -2; // How fast everything scrolls
-cloudTimer = 0; // Spawns new clouds
 cloudNum = 0; // Keeps track the ammount of clouds
 nightMode = false // Switches from day and night
 
@@ -85,7 +82,7 @@ selectableAlpha = 0; // The options that you can pick in the menu
 arrowAlpha = 0; // Select arrow alpha
 dayAlpha = 1; // How opaque the sunset scenery is
 if(!volumeCheck)fadeAlpha = 0; // How opaque the fading effect is
-else fadeAlpha = 1;
+overlayAlpha = 1;
 
 //Scale elements
 arrowScale = 1; // The size of the select arrow
@@ -140,33 +137,6 @@ for(i = 0; i &lt; 4; i++){ // We do this so that we can get the text width from 
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Sfx test passed
-
-volumeCheck = false;
-fadeColor = 1;
-scrPlayMusic(musTitlescreen, true);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -184,51 +154,10 @@ scrPlayMusic(musTitlescreen, true);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(volumeCheck){
-  if(volTimer == 0){
-    audio_play_sound(sndTestSound, 0, true);
-  }
-  
-  volTimer++;
-  timer = -30; // Additional delay before we transtion to title
-  
-  if (!confirmSfxTest &amp;&amp; (scrButtonCheckPressed(global.menuAcceptButton) || keyboard_check_pressed(vk_anykey))){
-    alarm[0] = 50;
-    audio_play_sound(sndConfirmSoundTest, 0, false);
-    audio_stop_sound(sndTestSound)
-    confirmSfxTest = true;
-  }
-  
-  if(!confirmSfxTest) 
-  {
-    volCheckAlpha += .05;
-    if(volTimer &gt;= 50)volCheckIconAlpha += .05;
-    
-    if(volTimer mod 25 == 0 &amp;&amp; volTimer &gt;= 100)
-    {
-      if(addIconGlowAlpha == 1)volCheckGlowIconDistance = 0;  
-      volCheckGlowIconAlpha += addIconGlowAlpha;
-      addIconGlowAlpha -= .25;
-      if(addIconGlowAlpha &lt;= 0)addIconGlowAlpha = 1;
-    }
-  }
-  else 
-  {
-    volCheckAlpha -= .05;
-    volCheckIconAlpha -= .05;
-  }
-  
-  sfxTestBGX += .5;
-  volCheckGlowIconAlpha = lerp(volCheckGlowIconAlpha, 0, .15);
-  volCheckGlowIconDistance = lerp(volCheckGlowIconDistance, 300, .03);
-  volCheckAlpha = clamp(volCheckAlpha, 0, 1);
-  volCheckIconAlpha = clamp(volCheckIconAlpha, 0, 1);
-  volCheckGlowIconAlpha = clamp(volCheckGlowIconAlpha, 0, 1);
-  
-} else {
-  timer++;
-  if(!selected){ fadeAlpha -= .02; }
-}
+            <string>/// Animations
+
+timer++;
+if(!selected){ overlayAlpha -= .02; }
 
 // Initialize the intro sequence
 if(timer &gt;= 0 &amp;&amp; timer &lt; 50){
