@@ -160,6 +160,9 @@
       <sound>sound\musAlexFloor6</sound>
       <sound>sound\musAlexBonusFloor</sound>
       <sounds name="sfx">
+        <sound>sound\sndAlexVolumeCheckHighNote</sound>
+        <sound>sound\sndAlexVolumeCheckLowNote</sound>
+        <sound>sound\sndAlexVolumeCheckConfirm</sound>
         <sound>sound\sndAlexMenuConfirm</sound>
         <sound>sound\sndAlexMenuGoBack</sound>
         <sound>sound\sndAlexExitGame</sound>
@@ -303,6 +306,7 @@
         <sprite>sprites\sprAlexMenuBGBlob</sprite>
         <sprite>sprites\sprAlexMenuTrianglePart</sprite>
         <sprite>sprites\sprAlexLogoChunk</sprite>
+        <sprite>sprites\sprAlexVolumeTestIcon</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexBlockSprite</sprite>
@@ -655,15 +659,16 @@
       </objects>
       <objects name="Menu">
         <object>objects\objAlexMenuBG</object>
+        <object>objects\objAlexVolumeChecker</object>
         <object>objects\objAlexMenuIntroSequence</object>
         <object>objects\objAlexMenuFeaturedCreators</object>
         <object>objects\objAlexMenuAllContribitors</object>
         <object>objects\objNewTitleMenu</object>
+        <object>objects\objNewOptionsMenu</object>
         <object>objects\objAlexMenuGameLogo</object>
         <object>objects\objAlexMenuTrianglePart</object>
         <objects name="Possible menu system candidates">
           <object>objects\objTitleMenu_new</object>
-          <object>objects\objOptionsMenu_new</object>
           <object>objects\objKeyboardControlsMenu_new</object>
           <object>objects\objControllerMenu_new</object>
         </objects>
@@ -673,6 +678,7 @@
   <rooms name="rooms">
     <rooms name="init">
       <room>rooms\rInit</room>
+      <room>rooms\rVolumeCheck</room>
       <room>rooms\rGameIntro</room>
       <room>rooms\rNewTitle</room>
       <room>rooms\rTitle</room>

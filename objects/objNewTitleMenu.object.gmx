@@ -36,6 +36,7 @@ select_string[1] = "Play Game";
 select_string[2] = "Quit Game";
 intro_length = 60;
 can_interact = false;
+quiting_game = false;
 
 // Visual variables
 logo_obj = instance_create(400, 304, objAlexMenuGameLogo);
@@ -74,6 +75,42 @@ text_box_width = string_width(select_string[1]) + text_box_h_padding*2;
 text_box_height = string_height(select_string[1]) + text_box_v_padding*2;
 text_box_outline_size = 0;
 text_box_max_outline_size = 4;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Switch menu
+
+switch(select_index) {
+    // Options
+    case 0:
+        global.menuSelectPrev[1] = 0;
+        instance_create(0, 0, objNewOptionsMenu);
+        break;
+        
+    // Save files
+    case 1:
+        // TODO
+        break;
+}
 </string>
           </argument>
         </arguments>
@@ -121,7 +158,16 @@ if(can_interact) {
     }
     
     if(_accept_press) {
-        // TODO
+        can_interact = false;
+        alarm[0] = 20;
+        
+        if(select_index == 2) {
+            quiting_game = true;
+            audio_sound_gain(global.currentMusic, 0, 1000);
+            audio_play_sound(sndAlexExitGame, 0, false);
+        } else {
+            audio_play_sound(sndAlexPauseTopOption, 0, false);
+        }
     }
 }
 </string>
@@ -145,6 +191,24 @@ if(can_interact) {
           <argument>
             <kind>1</kind>
             <string>/// Visuals
+
+// Alpha
+if(timer &gt; intro_length) {
+    if(quiting_game) {
+        overlay_color = c_black
+        overlay_alpha += .015;
+        if(overlay_alpha &gt;= 1.4) {
+            game_end();
+        }
+    } else {
+        if(can_interact)
+            image_alpha = min(image_alpha + 0.075, 1);
+        else
+            image_alpha = max(image_alpha - 0.075, 0);
+    }
+}
+
+logo_obj.image_alpha = image_alpha;
 
 // Overlay
 if(timer &lt;= intro_length) {
@@ -209,7 +273,7 @@ for(var i=0; i&lt;3; i++) {
 
 
 // Draw button boxes
-draw_set_alpha(option_alpha);
+draw_set_alpha(option_alpha * image_alpha);
 var _button_x;
 var _half_width = text_box_width/2;
 var _half_height = text_box_height/2;
