@@ -50,6 +50,23 @@ lerp_spd = 0.15;
 second_icon_alpha = 0;
 second_icon_scale = 1;
 second_icon_growth_spd = 0.05;
+
+show_text = false;
+text_alpha = 0;
+text_travel = 0
+text_max_tavel = 32;
+text_h_pad = 0;
+text_v_pad = 24;
+text_y = room_height - text_v_pad;
+
+volume_bar_segments = 10;
+volume_bar_alpha = 0;
+volume_bar_x = 400 - (24 * (volume_bar_segments/2));
+volume_bar_y = 364;
+vol_timer = 0;
+
+arrow_wiggle = 0;
+arrow_wiggle_amnt = 16;
 </string>
           </argument>
         </arguments>
@@ -76,23 +93,26 @@ second_icon_growth_spd = 0.05;
 
 if(scrButtonCheckPressed(global.menuAcceptButton)) {
     passed = true;
+    scrSaveConfig();  // Save volume
     audio_play_sound(sndAlexVolumeCheckConfirm, 0, false);
 }
 
 if(!passed) {
     overlay_alpha = max(overlay_alpha - overlay_fade_spd, 0);
-    if(collision_point(mouse_x, mouse_y, id, true, false) &amp;&amp; mouse_check_button(mb_left)) {
+    if(scrButtonCheck(global.menuBackButton)) {
         draw_scale = lerp(draw_scale, .8, .15);
     } else {
         draw_scale = lerp(draw_scale, 1, lerp_spd);
     }
     
-    if(collision_point(mouse_x, mouse_y, id, true, false) &amp;&amp; mouse_check_button_released(mb_left)) {
+    if(scrButtonCheckReleased(global.menuBackButton)) {
         volume_check = !volume_check;
     }
     
     if(volume_check) {
         tempo_timer++;
+        
+        arrow_wiggle = abs(dsin(tempo_timer*2)) * arrow_wiggle_amnt;
         
         if(tempo_timer mod tempo == 0) {
             metronome_clicks++;
@@ -105,14 +125,42 @@ if(!passed) {
                 audio_play_sound(sndAlexVolumeCheckLowNote, 0, false);
             }
         }
+        
+        volume_bar_alpha = min(volume_bar_alpha + 0.05, 1);
+        
+        var _volume_change = scrButtonCheck(global.menuRightButton) - scrButtonCheck(global.menuLeftButton);
+        var _volume_increase = (100 / volume_bar_segments) * _volume_change;
+        
+        if(_volume_change != 0) {
+            vol_timer++;
+            if(vol_timer == 1 || (vol_timer mod 4 == 0 &amp;&amp; vol_timer &gt; 15)) {
+                var _old_vol = global.volumeLevel
+                global.volumeLevel = clamp(global.volumeLevel + _volume_increase, 0, 100);
+                if(global.volumeLevel != _old_vol)
+                    audio_play_sound(sndAlexMenuAwaitKeybind, 0, false);
+                    
+                audio_master_gain(global.volumeLevel/100);  //set master gain
+            }
+        } else {
+            vol_timer = 0;
+        }
     } else {
         tempo_timer = 1;
         metronome_clicks = -1;
+        volume_bar_alpha = max(volume_bar_alpha - 0.05, 0);
     }
 } else {
     overlay_alpha += overlay_fade_spd;
+    volume_bar_alpha = max(volume_bar_alpha - 0.05, 0);
     if(overlay_alpha &gt; 1.3)
         room_goto_next();
+}
+
+if(overlay_alpha &lt;= 0) {
+    text_alpha = min(text_alpha + 0.05, 1);
+    text_travel = lerp(text_travel, text_max_tavel, 0.1);
+} else {
+    text_alpha = max(text_alpha - 0.05, 0);
 }
 
 col_timer++;
@@ -151,6 +199,38 @@ draw_sprite_ext(sprite_index, 0, x, y, draw_scale, draw_scale, 0, image_blend, i
 draw_set_blend_mode(bm_add);
 draw_sprite_ext(sprite_index, 0, x, y, draw_scale, draw_scale, 0, -1, flash_alpha);
 draw_sprite_ext(sprite_index, 0, x, y, second_icon_scale, second_icon_scale, 0, image_blend, second_icon_alpha);
+draw_set_blend_mode(bm_normal);
+
+// Text
+var left_nav_x = text_travel;
+var right_nav_x = display_get_gui_width() - text_travel;
+var scr_to_get_key = scrGetKeybind;
+var array_index = 0;
+if(global.controllerMode) {
+    scr_to_get_key = scrGetControllerBind;
+    array_index = 1;
+}
+draw_set_font(fLobbySmall24);
+draw_set_alpha(text_alpha);
+
+scrDrawTextSquareOutline(left_nav_x, text_y, "Press ["+script_execute(scr_to_get_key,global.menuAcceptButton[array_index])+"] to continue", $e8e0df, $2e1814, 2, fa_left, fa_bottom);
+scrDrawTextSquareOutline(right_nav_x, text_y, "Press ["+script_execute(scr_to_get_key,global.menuBackButton[array_index])+"] to check volume", $e8e0df, $2e1814, 2, fa_right, fa_bottom);
+
+// Volume
+draw_set_alpha(volume_bar_alpha);
+var _active_bars = round(global.volumeLevel / 10);
+scrAlexDrawSegmentBar(volume_bar_x, volume_bar_y, 24, volume_bar_segments, _active_bars, sprAlexPauseActiveVolumeBar, sprAlexPauseInactiveVolumeBar);
+
+var _left_arrow_x = volume_bar_x - 32 - arrow_wiggle;
+var _right_arrow_x = volume_bar_x + (volume_bar_segments * 24) + 16 + arrow_wiggle;
+draw_sprite_ext(sprAlexPauseContentArrow, 0, _left_arrow_x, volume_bar_y, -1, 1, 0, -1, volume_bar_alpha);
+draw_sprite_ext(sprAlexPauseContentArrow, 0, _right_arrow_x, volume_bar_y, 1, 1, 0, -1, volume_bar_alpha);
+
+if(!global.controllerMode) {
+    scrDrawTextSquareOutline(400, volume_bar_y + 32, "Use the left/right keys", $e8e0df, $2e1814, 2, fa_center, fa_top);
+} else {
+    scrDrawTextSquareOutline(400, volume_bar_y + 32, "Use the left/right buttons", $e8e0df, $2e1814, 2, fa_center, fa_top);
+}
 
 // Overlays
 draw_set_colour(flash_colour);

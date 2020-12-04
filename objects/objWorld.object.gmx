@@ -143,7 +143,7 @@ pause_options_controller_index = 0;
 pause_options_controller_max_index = 11;
 pause_options_volume_bars = 10;
 pause_options_volume_bar_sep = 16;
-pause_options_reset_keybinds_mix = 0; // 0: white, 1: red
+pause_options_reset_keybinds_mix = 0; // 0: white, 1: green
 pause_options_reset_col = $e8e0df;
 pause_exit_index = 0;
 pause_exit_max_index = 2;
@@ -805,6 +805,51 @@ if(pause_top_option_selected) {
         pause_options_alpha = max(pause_options_alpha - pause_fade_spd, 0);
         pause_exit_alpha = max(pause_exit_alpha - pause_fade_spd, 0);
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Automatic controller detection 
+
+if(global.controllerEnabled)
+{
+  show_debug_message("Controller Status = " + async_load[? "event_type"]);  // Debug cocde so you can see which event has been
+  show_debug_message("Pad Index = " + string(async_load[? "pad_index"]));   // triggered and the pad associated with it.
+  
+  switch(async_load[? "event_type"])             // Parse the async_load map to see which event has been triggered
+  {
+  case "gamepad discovered":                     // A game pad has been discovered
+    var pad = async_load[? "pad_index"];        // Get the pad index value from the async_load map
+    gamepad_set_axis_deadzone(pad, 0.2);        // Set the "deadzone" for the axis
+    gamepad_set_button_threshold(pad, 0.3);     // Set the "threshold" for the triggers
+    global.controllerIndex = pad;               // Set the pad index to a global var
+    global.controllerMode = true;               // Instantly enable input from the controller
+    scrSaveConfig();
+    break;
+  case "gamepad lost":                           // Gamepad has been removed or otherwise disabled
+    global.controllerIndex = -1;                 // Set the pad index to -1 which indicates keyboard input
+    global.controllerMode = false;               // Instantly disable input from the controller
+    break;
+  }
 }
 </string>
           </argument>

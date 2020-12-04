@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>select = global.menuSelectPrev[1];
+            <string>select = 0;
 
 canSelect = false; // If the player can select an option
 switchMenu = false; // If it should switch to keyboard or controller settings
@@ -35,19 +35,47 @@ xSelector = 150;
 ySelector = 80;
 xSeperation = 800-150;
 ySeperation = 70;
-optionsNum = 7; //sets number of separate options available
+optionsNum = 11; //sets number of separate options available
 volTimer = 0;
 moveTimer = 0;
 moveTimerDelay = 25;
 moveTimerRepeatSpd = 5;
 
-strSelect[0] = "Music";
-strSelect[1] = "Volume Level";
-strSelect[2] = "Screen Mode";
-strSelect[3] = "Smoothing Mode";
-strSelect[4] = "Vsync";
-strSelect[5] = "Set Keyboard Controls";
-strSelect[6] = "Controller Options";
+yArrowLimit = 4 * ySeperation; // After the arrow passes this value the options start
+              // scrolling upwards.
+              
+yScroll = 0;  // The options scroll based on this value
+topFade = ySeperation;
+bottomFade = ySelector + (6 * ySeperation);
+thresholdSpace = ySeperation;
+
+settingKey = false;     //sets whether or not a key is getting set
+resetPrompt = false;    //shows the message that controls were reset
+
+strSelect[0] = "Left Button";
+strSelect[1] = "Right Button";
+strSelect[2] = "Up Button";
+strSelect[3] = "Down Button";
+strSelect[4] = "Jump Button";
+strSelect[5] = "Shoot Button";
+strSelect[6] = "Restart Button";
+strSelect[7] = "Skip Button";
+strSelect[8] = "Suicide Button";
+strSelect[9] = "Pause Button";
+strSelect[10] = "Reset Controls";
+
+//get current controls
+strKey[0] = scrGetKeybind(global.leftButton[0]);
+strKey[1] = scrGetKeybind(global.rightButton[0]);
+strKey[2] = scrGetKeybind(global.upButton[0]);
+strKey[3] = scrGetKeybind(global.downButton[0]);
+strKey[4] = scrGetKeybind(global.jumpButton[0]);
+strKey[5] = scrGetKeybind(global.shootButton[0]);
+strKey[6] = scrGetKeybind(global.restartButton[0]);
+strKey[7] = scrGetKeybind(global.skipButton[0]);
+strKey[8] = scrGetKeybind(global.suicideButton[0]);
+strKey[9] = scrGetKeybind(global.pauseButton[0]);
+strKey[10] = "";
 </string>
           </argument>
         </arguments>
@@ -77,10 +105,6 @@ arrowYScale = 1; // Scale of the arrow
 arrowPosX = xSelector; // X position of the arrow
 arrowPosY = ySelector+(ySeperation*select); // Y position of the arrow
 
-volume_bars_amnt = 10;
-volume_bar_sep = 16;
-volume_increase = 100 / volume_bars_amnt;
-
 holderScale = 1;
 holderAlpha = 0;
 holderMaxAlpha = .4;
@@ -93,6 +117,10 @@ holder_y_correction = 6;
 
 text_col = $e8e0df; // Greyish white
 outline_size = 2;
+
+reset_keybinds_color_mix = 0;
+options_reset_col = $3fab63;
+reset_keybinds_color = options_reset_col;
 
 navigation_text_alpha = 0;
 navigation_text_y = display_get_gui_height() - 24;
@@ -123,21 +151,7 @@ navigation_text_travel_distance = 64;
             <string>/// Switch to a different menu
 if(goBack) // Go back to main menu
 {
-    with(objNewTitleMenu){
-        can_interact = true;
-    }
-    instance_destroy();
-}
-else if (select == 5)   //go to the keyboard controls menu
-{
-    global.menuSelectPrev[1] = select;
-    instance_create(x,y,objNewKeyboardMenu);
-    instance_destroy();
-}
-else if (select == 6)   //go to the controller options menu
-{
-    global.menuSelectPrev[1] = select;
-    instance_create(x,y,objNewControllerMenu);
+    instance_create(x,y,objNewOptionsMenu);
     instance_destroy();
 }
 </string>
@@ -196,114 +210,119 @@ if(canSelect){
     timer++;
 
     // Arrow related draw vars
+    var _select_y = ySelector+(ySeperation*select);
     if(arrowAlpha &lt; 1){arrowAlpha += .05;}
     arrowPosX = xSelector-24 + (-1 * abs(dsin(timer*4)*10));
-    arrowPosY = lerp(arrowPosY, ySelector+(ySeperation*select), .2);
-
-    var _change_index = (scrButtonCheck(global.menuDownButton) - scrButtonCheck(global.menuUpButton))
-    if(_change_index != 0) {
-        moveTimer++;
-        
-        if(moveTimer == 1 || (moveTimer mod moveTimerRepeatSpd == 0 &amp;&amp; moveTimer &gt;= moveTimerDelay)) {
-            select += _change_index;
-            audio_play_sound(sndAlexMenuSwitchOption,0,false);
-            if(select &lt; 0)
-                select = optionsNum-1;
-            if(select &gt; optionsNum-1)
-                select = 0;
-        }
+    arrowPosY = lerp(arrowPosY, _select_y, .2);
+    arrowPosY = min(arrowPosY, yArrowLimit);
+    
+    if(_select_y &gt;= yArrowLimit) {
+        yScroll = lerp(yScroll, _select_y - yArrowLimit, 0.2);
     } else {
-        moveTimer = 0;
+        yScroll = lerp(yScroll, 0, 0.2);
     }
-    
-    if (scrButtonCheckPressed(global.menuBackButton) || keyboard_check_pressed(vk_escape))
-    {
-        audio_play_sound(sndAlexMenuGoBack,0,false);
-    
-        //save changes and go back
-        scrSaveConfig();
-        alarm[0] = 20;
-        global.menuSelectPrev[1] = 0;
-        switchMenu = true;
-        goBack = true;
-        canSelect = false;
-        exit;
-    }
-    else if (scrButtonCheckPressed(global.menuAcceptButton) || keyboard_check_pressed(vk_enter))
-    {
-        if(select != 1) audio_play_sound(sndAlexMenuConfirm, 0, false);
-    
-        if (select == 0)    //toggle mute music
-        {
-            scrToggleMusic();
-        }
-        else if (select == 2)   //toggle fullscreen
-        {
-            global.fullscreenMode = !global.fullscreenMode;
+
+    if(!settingKey) {
+        var _change_index = (scrButtonCheck(global.menuDownButton) - scrButtonCheck(global.menuUpButton))
+        if(_change_index != 0) {
+            moveTimer++;
             
-            window_set_fullscreen(global.fullscreenMode);
+            if(moveTimer == 1 || (moveTimer mod moveTimerRepeatSpd == 0 &amp;&amp; moveTimer &gt;= moveTimerDelay)) {
+                select += _change_index;
+                audio_play_sound(sndAlexMenuSwitchOption,0,false);
+                if(select &lt; 0)
+                    select = optionsNum-1;
+                if(select &gt; optionsNum-1)
+                    select = 0;
+            }
+        } else {
+            moveTimer = 0;
         }
-        else if (select == 3)   //toggle smoothing mode
+        
+        if (scrButtonCheckPressed(global.menuBackButton) || keyboard_check_pressed(vk_escape))
         {
-            global.smoothingMode = !global.smoothingMode;
-        }
-        else if (select == 4)   //toggle vsync mode
-        {
-            global.vsyncMode = !global.vsyncMode;
-            
-            scrSetVsync();
-        }else if (select == 5 || select == 6)  //play a fade animation and go to either the controller or keyboard menu
-        {
-            scrSaveConfig();    //save changes
+            audio_play_sound(sndAlexMenuGoBack,0,false);
+        
+            //save changes and go back
+            scrSaveConfig();
             alarm[0] = 20;
             switchMenu = true;
+            goBack = true;
             canSelect = false;
             exit;
         }
-    }
-    
-    
-    if (select == 1)
-    {        
-        var changeV = false;
-        if (scrButtonCheck(global.menuRightButton))  //raise volume
+        else if (scrButtonCheckPressed(global.menuAcceptButton) || keyboard_check_pressed(vk_enter))
         {
-            volTimer++;
-            if (global.volumeLevel &lt; 100){
-                if(volTimer == 1) changeV = true;
-                else if(volTimer mod 4 == 0 &amp;&amp; volTimer &gt;= 15) changeV = true;
-                
-                if(changeV)
-                {
-                  global.volumeLevel = clamp(global.volumeLevel + volume_increase, 0, 100);
-                  audio_play_sound(sndAlexMenuAwaitKeybind, 0, false);
-                }
-            }            
-            
-            audio_master_gain(global.volumeLevel/100);  //set master gain
-        }
-        else if (scrButtonCheck(global.menuLeftButton))  //lower volume
-        {
-            volTimer++;
-            if (global.volumeLevel &gt; 0){
-                if(volTimer == 1) changeV = true;
-                else if(volTimer mod 4 == 0 &amp;&amp; volTimer &gt;= 15) changeV = true;
-                
-                if(changeV)
-                {
-                  global.volumeLevel = clamp(global.volumeLevel - volume_increase, 0, 100);
-                  audio_play_sound(sndAlexMenuAwaitKeybind, 0, false);
-                }
+            if (select != 10)
+            {
+                settingKey = true;
+                audio_play_sound(sndAlexMenuAwaitKeybind, 0, false);
             }
+            else
+            {
+                //default controls
+                global.leftButton[0] = vk_left;
+                global.rightButton[0] = vk_right;
+                global.upButton[0] = vk_up;
+                global.downButton[0] = vk_down;
+                global.jumpButton[0] = vk_shift;
+                global.shootButton[0] = ord("Z");
+                global.restartButton[0] = ord("R");
+                global.skipButton[0] = ord("S");
+                global.suicideButton[0] = ord("Q");
+                global.pauseButton[0] = vk_escape;
                 
-            audio_master_gain(global.volumeLevel/100);  //set master gain
+                audio_play_sound(sndAlexMenuResetControls, 0, false);
+                reset_keybinds_color_mix = 1;
+            }
         }
-        else
+    } else {
+        if (keyboard_check_pressed(vk_anykey))  //check if a key is being pressed and if it is, store that key
         {
-          volTimer = 0;
+            var keyChange;
+            
+            keyChange = keyboard_key;
+            
+            if (keyChange == 160 || keyChange == 161)   //check if current key pressed is either shift key
+                keyChange = 16; //set it to work for both shift keys
+            
+            if (select == 0) {global.leftButton[0] = keyChange;}
+            else if (select == 1) {global.rightButton[0] = keyChange;}
+            else if (select == 2) {global.upButton[0] = keyChange;}
+            else if (select == 3) {global.downButton[0] = keyChange;}
+            else if (select == 4) {global.jumpButton[0] = keyChange;}
+            else if (select == 5) {global.shootButton[0] = keyChange;}
+            else if (select == 6) {global.restartButton[0] = keyChange;}
+            else if (select == 7) {global.skipButton[0] = keyChange;}
+            else if (select == 8) {global.suicideButton[0] = keyChange;}
+            else if (select == 9) {global.pauseButton[0] = keyChange;}
+            
+            settingKey = false;
+            audio_play_sound(sndAlexMenuConfirm, 0, false);
+        }
+        else if (scrAnyControllerButton() != -1)    //check if a controller button was pressed, exit prompt
+        {
+            audio_play_sound(sndAlexMenuError, 0, false);
+            settingKey = false;
         }
     }
 }
+
+//get current controls
+strKey[0] = scrGetKeybind(global.leftButton[0]);
+strKey[1] = scrGetKeybind(global.rightButton[0]);
+strKey[2] = scrGetKeybind(global.upButton[0]);
+strKey[3] = scrGetKeybind(global.downButton[0]);
+strKey[4] = scrGetKeybind(global.jumpButton[0]);
+strKey[5] = scrGetKeybind(global.shootButton[0]);
+strKey[6] = scrGetKeybind(global.restartButton[0]);
+strKey[7] = scrGetKeybind(global.skipButton[0]);
+strKey[8] = scrGetKeybind(global.suicideButton[0]);
+strKey[9] = scrGetKeybind(global.pauseButton[0]);
+strKey[10] = "";
+
+reset_keybinds_color_mix = max(reset_keybinds_color_mix - 0.05, 0);
+reset_keybinds_color = merge_colour(text_col, options_reset_col, reset_keybinds_color_mix);
 </string>
           </argument>
         </arguments>
@@ -332,42 +351,38 @@ draw_set_font(fMenuLobby12);
 
 for(var i = 0; i &lt; optionsNum; i++)
 {
-    var _y = ySelector+(ySeperation*i);
+    var _y = ySelector+(ySeperation*i) - yScroll;
     var _holder_y = _y - holder_y_correction;
-    draw_set_colour(holder_color)
-    draw_set_alpha(holderAlpha);
-    draw_roundrect_ext(xSelector - holder_h_pad, _holder_y - holder_v_pad, xSeperation + holder_h_pad, _holder_y + holder_v_pad, holder_corner_rad, holder_corner_rad, false);
-    draw_set_alpha(drawAlpha);
-
-    scrDrawTextSquareOutline(xSelector, _y, strSelect[i], text_col, holder_color, outline_size, fa_left, fa_middle);
-}
-
-draw_set_halign(fa_right);
-
-if (global.muteMusic)
-    scrDrawTextSquareOutline(xSeperation, ySelector, "Off", text_col, holder_color, outline_size, fa_right, fa_middle);
-else
-    scrDrawTextSquareOutline(xSeperation, ySelector, "On", text_col, holder_color, outline_size, fa_right, fa_middle);
-
-var _bar_amnt = volume_bars_amnt;
-var _sep = volume_bar_sep;
-var _active_bars = round(global.volumeLevel / 10);
-scrAlexDrawSegmentBar(xSeperation - (_sep * _bar_amnt), ySelector+ySeperation, _sep, _bar_amnt, _active_bars, sprAlexPauseActiveVolumeBar, sprAlexPauseInactiveVolumeBar);
     
-if (global.fullscreenMode)
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*2), "Fullscreen", text_col, holder_color, outline_size, fa_right, fa_middle);
-else
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*2), "Windowed", text_col, holder_color, outline_size, fa_right, fa_middle);
+    var _upper_threshold_alpha = clamp(((_y + thresholdSpace) - topFade)/thresholdSpace, 0, 1)
+    var _bottom_threshold_alpha = clamp(((bottomFade + thresholdSpace) - _y)/thresholdSpace, 0, 1)
+    var _final_holder_alpha = holderAlpha * _upper_threshold_alpha * _bottom_threshold_alpha;
+    
+    draw_set_colour(holder_color)
+    draw_set_alpha(_final_holder_alpha);
+    draw_roundrect_ext(xSelector - holder_h_pad, _holder_y - holder_v_pad, xSeperation + holder_h_pad, _holder_y + holder_v_pad, holder_corner_rad, holder_corner_rad, false);
+    
+    var _final_text_alpha = drawAlpha * _upper_threshold_alpha * _bottom_threshold_alpha;
+    draw_set_alpha(_final_text_alpha);
 
-if (global.smoothingMode)
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*3), "On", text_col, holder_color, outline_size, fa_right, fa_middle);
-else
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*3), "Off", text_col, holder_color, outline_size, fa_right, fa_middle);
-
-if (global.vsyncMode)
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*4), "On", text_col, holder_color, outline_size, fa_right, fa_middle);
-else
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*4), "Off", text_col, holder_color, outline_size, fa_right, fa_middle);
+    if(i == 10)
+        scrDrawTextSquareOutline(xSelector, _y, strSelect[i], reset_keybinds_color, holder_color, outline_size, fa_left, fa_middle);
+    else
+        scrDrawTextSquareOutline(xSelector, _y, strSelect[i], text_col, holder_color, outline_size, fa_left, fa_middle);
+        
+    if(i == select)
+    {
+        if (settingKey) //key prompt
+        {
+            scrDrawTextSquareOutline(xSeperation, _y, "Press the key to set", text_col, holder_color, outline_size, fa_right, fa_middle);
+        }
+    }
+    
+    if (!settingKey || i != select)    //shows current key
+    {
+        scrDrawTextSquareOutline(xSeperation, _y, strKey[i], text_col, holder_color, outline_size, fa_right, fa_middle);
+    }
+}
 
 draw_sprite_ext(sprAlexPauseContentArrow, 0, arrowPosX, arrowPosY, arrowXScale, arrowYScale, 0, -1, arrowAlpha);
 
@@ -382,7 +397,7 @@ if(global.controllerMode) {
 draw_set_font(fLobbySmall24);
 draw_set_alpha(navigation_text_alpha);
 
-scrDrawTextSquareOutline(left_nav_x, navigation_text_y, "Press ["+script_execute(scr_to_get_key,global.menuAcceptButton[array_index])+"] to select", text_col, holder_color, 2, fa_left, fa_bottom);
+scrDrawTextSquareOutline(left_nav_x, navigation_text_y, "Press ["+script_execute(scr_to_get_key,global.menuAcceptButton[array_index])+"] to set key", text_col, holder_color, 2, fa_left, fa_bottom);
 scrDrawTextSquareOutline(right_nav_x, navigation_text_y, "Press ["+script_execute(scr_to_get_key,global.menuBackButton[array_index])+"] to go back", text_col, holder_color, 2, fa_right, fa_bottom);
 draw_set_alpha(1);
 </string>

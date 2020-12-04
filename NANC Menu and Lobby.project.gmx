@@ -665,6 +665,8 @@
         <object>objects\objAlexMenuAllContribitors</object>
         <object>objects\objNewTitleMenu</object>
         <object>objects\objNewOptionsMenu</object>
+        <object>objects\objNewKeyboardMenu</object>
+        <object>objects\objNewControllerMenu</object>
         <object>objects\objAlexMenuGameLogo</object>
         <object>objects\objAlexMenuTrianglePart</object>
         <objects name="Possible menu system candidates">
