@@ -47,10 +47,10 @@ sky_col = $ceb85a; // Sky blue
 pink_col = $702a9c; // Redish fuchsia
 dark_col = $2e1814; // Night blue black
 gradient_col = sky_col; // Alters between sky blue and pink
-gradient_spd = 2;
+gradient_spd = 1;
 
 box_anchor_x = room_width/2;
-box_anchor_y = room_height/2 + 32;
+box_anchor_y = room_height/2 + 28;
 box_w = 300;
 box_h = 170;
 box_corner_rad = 60;
@@ -68,7 +68,101 @@ selection_box_start_h = selection_box_h;
 selection_box_end_w = selection_box_w;
 selection_box_end_h = selection_box_h + 80;
 selection_box_anim_timer = 0;
-selection_box_anim_length = 20;
+selection_box_anim_length = 25;
+
+top_bottom_info_pad = 9;
+bottom_info_h_pad = 100;
+save_file_font = fMenuLobby12;
+time_deaths_font = fLobbySmall24;
+
+clears_secrets_x_dist = 120;
+clears_secrets_icons_x_dist = 16;
+clears_secrets_y_dist = 26;
+
+completion_ring_x_dist = 75;
+completion_ring_anim_timer = 0;
+completion_ring_anim_length = 30;
+box_content_font = fMenuLobby12;
+
+//load save file values
+for (var i = 0; i &lt; 4; i++)
+{
+    if (file_exists("Data\save"+string(i+1)))  //check if current save exists
+    {
+        //load save data
+        save_exists[i] = true;
+        
+        //load the save map
+        var saveMap;
+        
+        if (global.extraSaveProtection) //use ds_map_secure function
+        {
+            saveMap = ds_map_secure_load("Data\save"+string(i+1));
+        }
+        else    //use text file
+        {
+            var f = file_text_open_read("Data\save"+string(i+1));
+            
+            saveMap = ds_map_create();
+            ds_map_read(saveMap,base64_decode(file_text_read_string(f)));
+            
+            file_text_close(f);
+        }
+        
+        save_deaths[i] = ds_map_find_value(saveMap,"death");
+        if (is_undefined(save_deaths[i]))
+            save_deaths[i] = "///";
+        
+        save_time_raw[i] = ds_map_find_value(saveMap,"time");
+        if (is_undefined(save_time_raw[i])) {
+            save_time[i] = "//://://";         
+        } else {
+            // Convert raw time to a readable format    
+            var t = save_time_raw[i];
+        
+            save_time[i] = string(t div 3600) + ":";
+            t = t mod 3600;
+            save_time[i] += string(t div 600);
+            t = t mod 600;
+            save_time[i] += string(t div 60) + ":";
+            t = t mod 60;
+            save_time[i] += string(t div 10);
+            t = t mod 10;
+            save_time[i] += string(floor(t));
+        }
+        
+        save_stages_cleared[i] = ds_map_find_value(saveMap,"saveTotalStagesCleared");
+        if (is_undefined(save_stages_cleared[i]))
+            save_stages_cleared[i] = 0;
+            
+        save_secrets_found[i] = ds_map_find_value(saveMap,"saveTotalSecretsFound");
+        if (is_undefined(save_secrets_found[i]))
+            save_secrets_found[i] = 0;
+            
+        save_clear[i] = ds_map_find_value(saveMap,"saveGameClear");
+        if (is_undefined(save_clear[i]))
+            save_clear[i] = false;
+        
+        ds_map_destroy(saveMap);
+        
+        // Calculate completion percentage
+        var _all_tasks = global.totalNumberOfStages + global.secretItemTotal;
+        var _finished_tasks = save_stages_cleared[i] + save_secrets_found[i];
+        
+        save_completion[i] = 0;
+        save_completion_target[i] = round((100 / _all_tasks) * _finished_tasks);  // for the cool animation
+    }
+    else
+    {
+        save_exists[i] = false;
+        save_deaths[i] = "///";
+        save_stages_cleared[i] = 0;
+        save_secrets_found[i] = 0;
+        save_time[i] = "//://://";
+        save_completion[i] = 0;
+        save_completion_target[i] = 0;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -191,10 +285,19 @@ if(timer &lt;= intro_animation_length) {
 }
 
 if(active) {
+    // Selection box that pops from the top and bottom of each save file
     if(selection_box_anim_timer &lt;= selection_box_anim_length) {
         selection_box_w = scrAlexEaseOutElastic(selection_box_anim_timer, selection_box_start_w, selection_box_end_w, selection_box_anim_length);
         selection_box_h = scrAlexEaseOutElastic(selection_box_anim_timer, selection_box_start_h, selection_box_end_h, selection_box_anim_length);
         selection_box_anim_timer++;
+    }
+    
+    // Completion ring starting animation
+    if(completion_ring_anim_timer &lt;= completion_ring_anim_length) {
+        for(var i=0; i&lt;4; i++) {
+            save_completion[i] = round(scrAlexEaseOutSine(completion_ring_anim_timer, 0, save_completion_target[i], completion_ring_anim_length));
+        }
+        completion_ring_anim_timer++;
     }
 }
 </string>
@@ -227,29 +330,115 @@ draw_set_alpha(draw_alpha);
 draw_set_font(header_font);
 scrDrawTextSquareOutline(header_x, header_y, header_text, white_col, dark_col, 2, fa_center, fa_top);
 
-// Dark Boxes
+// Draw the save files &amp; info
 var _box_x1, _box_y1, _box_x2, _box_y2;
+var _save_num_x, _save_num_y, _save_num_string;
+var _time_x, _time_y;
+var _deaths_x, _deaths_y;
+var _clears_x, _clears_y, _clears_string;
+var _secrets_x, _secrets_y, _secrets_string;
+var _clears_icon_x, _clears_icon_y;
+var _secrets_icon_x, _secrets_icon_y;
+var _ring_x, _ring_y, _ring_val, _ring_string;
 var _i = 0;
 for(var yy=-1; yy&lt;=1; yy += 2) {
     for(var xx=-1; xx&lt;=1; xx += 2) {  
         
+        // Gradient Box
         if(_i == save_index &amp;&amp; timer &gt; intro_animation_length) {
             _box_x1 = box_anchor_x + (((selection_box_w / 2) + box_pad_h) * xx);
             _box_x2 = box_anchor_x + ((-(selection_box_w / 2) + box_pad_h) * xx);
-            _box_y1 = box_anchor_y + (((selection_box_h / 2) + box_pad_v) * yy);
-            _box_y2 = box_anchor_y + ((-(selection_box_h / 2) + box_pad_v) * yy);
+            
+            if(_i &lt;= 1) {
+                _box_y1 = box_anchor_y + (((selection_box_h / 2) + box_pad_v) * yy);
+                _box_y2 = box_anchor_y + ((-(selection_box_h / 2) + box_pad_v) * yy);
+            } else {
+                _box_y2 = box_anchor_y + (((selection_box_h / 2) + box_pad_v) * yy);
+                _box_y1 = box_anchor_y + ((-(selection_box_h / 2) + box_pad_v) * yy);
+            }
         
             draw_set_colour(gradient_col);
             draw_roundrect_ext(_box_x1, _box_y1, _box_x2, _box_y2, box_corner_rad, box_corner_rad, false);
+        
+            // Save number, time &amp; deaths
+            var _fix_text_y = 4;
+            
+            _save_num_x = box_anchor_x + (box_pad_h * xx);
+            _save_num_y = _box_y1 + top_bottom_info_pad;
+            _save_num_string = "Save " + string(_i + 1);
+            draw_set_font(save_file_font);
+            scrDrawTextSquareOutline(_save_num_x, _save_num_y, _save_num_string, white_col, dark_col, 2, fa_center, fa_top);
+            
+            _time_x = box_anchor_x + (box_pad_h * xx) - bottom_info_h_pad;
+            _time_y = _box_y2 - top_bottom_info_pad;
+            draw_set_font(time_deaths_font);
+            scrDrawTextSquareOutline(_time_x, _time_y + _fix_text_y, save_time[_i], white_col, dark_col, 2, fa_left, fa_bottom);
+            draw_sprite(sprAlexMenuSaveTimeDeathIcons, 0, _time_x - 8, _time_y);
+            
+            _deaths_x = box_anchor_x + (box_pad_h * xx) + bottom_info_h_pad + 30;
+            _deaths_y = _box_y2 - top_bottom_info_pad;
+            draw_set_font(time_deaths_font);
+            var _deaths_string_w = string_width(save_deaths[_i]);
+            scrDrawTextSquareOutline(_deaths_x, _deaths_y + _fix_text_y, save_deaths[_i], white_col, dark_col, 2, fa_right, fa_bottom);
+            draw_sprite(sprAlexMenuSaveTimeDeathIcons, 1, _deaths_x - 8 - _deaths_string_w, _deaths_y);
         }
         
+        // Dark box
         _box_x1 = box_anchor_x + (((box_w / 2) + box_pad_h) * xx);
         _box_x2 = box_anchor_x + ((-(box_w / 2) + box_pad_h) * xx);
         _box_y1 = box_anchor_y + (((box_h / 2) + box_pad_v) * yy);
         _box_y2 = box_anchor_y + ((-(box_h / 2) + box_pad_v) * yy);
         
         draw_set_colour(dark_col);
-        draw_roundrect_ext(_box_x1, _box_y1, _box_x2, _box_y2, box_corner_rad, box_corner_rad, false);
+        draw_roundrect_ext(_box_x1, _box_y1, _box_x2, _box_y2, box_corner_rad, box_corner_rad, false);        
+        
+        
+        // Save file contents
+        
+        var _x_center = box_anchor_x + (box_pad_h * xx);
+        var _y_center = box_anchor_y + (box_pad_v * yy);
+        var _fix_text_y = 4;
+        
+        draw_set_colour(gradient_col);
+        if(save_exists[_i]) {
+            // Clears
+            draw_set_font(box_content_font)
+            draw_set_halign(fa_right);
+            draw_set_valign(fa_middle);
+            
+            _clears_x = _x_center + clears_secrets_x_dist;
+            _clears_y = _y_center - clears_secrets_y_dist + _fix_text_y*2;
+            _clears_string = string(save_stages_cleared[_i]) + "/" + string(global.totalNumberOfStages);
+            draw_text(_clears_x, _clears_y, _clears_string);
+            _clears_icon_x = _x_center + clears_secrets_icons_x_dist + 4;
+            _clears_icon_y = _y_center - clears_secrets_y_dist;
+            draw_sprite_ext(sprAlexMenuClearCheckmark, 0, _clears_icon_x, _clears_icon_y, 1, 1, 0, gradient_col, draw_alpha);
+             
+            // Secrets
+            _secrets_x = _x_center + clears_secrets_x_dist;
+            _secrets_y = _y_center + clears_secrets_y_dist + _fix_text_y;
+            _secrets_string = string(save_secrets_found[_i]) + "/" + string(global.secretItemTotal);
+            draw_text(_secrets_x, _secrets_y, _secrets_string);
+            _secrets_icon_x = _x_center + clears_secrets_icons_x_dist;
+            _secrets_icon_y = _y_center + clears_secrets_y_dist;
+            draw_sprite_ext(sprAlexMenuSecretIcon, 0, _secrets_icon_x, _secrets_icon_y, 1, 1, 0, gradient_col, draw_alpha);
+            
+            // Completion ring
+            _ring_x = _x_center - completion_ring_x_dist;
+            _ring_y = _y_center;
+            _ring_val = save_completion[_i] / 100;
+            draw_sprite_ext(sprAlexMenuSaveCompletionRing, 0, _ring_x, _ring_y, 1, 1, 0, gradient_col, draw_alpha/3);
+            var _ring_tex = sprite_get_texture(sprAlexMenuSaveCompletionRing, 0);
+            scrAlexDrawPieTexExt(_ring_x, _ring_y, _ring_val, _ring_tex, sprAlexMenuSaveCompletionRing, 0, gradient_col, draw_alpha);
+            _ring_string = string(save_completion[_i]) + "%";
+            scrDrawTextSquareOutline(_ring_x + 2, _ring_y + _fix_text_y + 2, _ring_string, gradient_col, dark_col, 2, fa_center, fa_middle);
+            
+        } else {
+            draw_set_font(fMenuLobby18);
+            draw_set_halign(fa_center);
+            draw_set_valign(fa_middle);
+            draw_text(_x_center + 4, _y_center + _fix_text_y*2, "EMPTY");
+        }
         
         _i++;
     }

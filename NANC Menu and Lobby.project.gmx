@@ -309,6 +309,8 @@
         <sprite>sprites\sprAlexVolumeTestIcon</sprite>
         <sprite>sprites\sprAlexMenuSaveCompletionRing</sprite>
         <sprite>sprites\sprAlexMenuSaveTimeDeathIcons</sprite>
+        <sprite>sprites\sprAlexMenuClearCheckmark</sprite>
+        <sprite>sprites\sprAlexMenuSecretIcon</sprite>
         <sprite>sprites\sprAlexMenuSaveStar</sprite>
         <sprite>sprites\sprAlexMenuSaveCrown</sprite>
       </sprites>
@@ -356,6 +358,7 @@
       <sprite>sprites\sprAlexSecretHalo</sprite>
       <sprite>sprites\sprAlexSecretCollected</sprite>
       <sprite>sprites\sprAlexStageSecretIcon</sprite>
+      <sprite>sprites\sprAlexMediumSecretIcon</sprite>
       <sprite>sprites\sprAlexStageDifficultyBar</sprite>
       <sprite>sprites\sprAlexStageRatingBar</sprite>
       <sprite>sprites\sprAlexLootBox</sprite>

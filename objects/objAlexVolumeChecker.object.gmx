@@ -116,7 +116,7 @@ arrow_wiggle_amnt = 16;
             <kind>1</kind>
             <string>/// Logic
 
-if(scrButtonCheckPressed(global.menuAcceptButton)) {
+if(scrButtonCheckPressed(global.menuAcceptButton) &amp;&amp; !passed) {
     passed = true;
     scrSaveConfig();  // Save volume
     audio_play_sound(sndAlexVolumeCheckConfirm, 0, false);
