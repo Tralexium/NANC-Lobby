@@ -30,6 +30,7 @@ global.totalSecretsFound = 0;
 global.saveTotalSecretsFound = 0;
 global.totalStagesCleared = 0;  // TODO: update this number in your stage clear script Piece
 global.saveTotalStagesCleared = 0;
+global.skipGameIntro = false;  // Used when going back to the main menu screen from the pause menu
 
 // Global surfaces
 global.text_outline_surf_w = 550;

@@ -307,6 +307,10 @@
         <sprite>sprites\sprAlexMenuTrianglePart</sprite>
         <sprite>sprites\sprAlexLogoChunk</sprite>
         <sprite>sprites\sprAlexVolumeTestIcon</sprite>
+        <sprite>sprites\sprAlexMenuSaveCompletionRing</sprite>
+        <sprite>sprites\sprAlexMenuSaveTimeDeathIcons</sprite>
+        <sprite>sprites\sprAlexMenuSaveStar</sprite>
+        <sprite>sprites\sprAlexMenuSaveCrown</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexBlockSprite</sprite>
@@ -381,6 +385,9 @@
         <sprite>sprites\sprAlexPetRNG</sprite>
       </sprites>
     </sprites>
+    <sprite>sprites\sprStarzorSignIdle</sprite>
+    <sprite>sprites\sprStarzorSignTalking</sprite>
+    <sprite>sprites\sprStarzorSignArrow</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bAllTiles</background>
@@ -471,6 +478,8 @@
       <script>scripts\scrAlexEaseInSine.gml</script>
       <script>scripts\scrAlexEaseOutElastic.gml</script>
       <script>scripts\scrDrawTextSquareOutline.gml</script>
+      <script>scripts\scrAlexDrawPieTex.gml</script>
+      <script>scripts\scrAlexDrawPieTexExt.gml</script>
       <script>scripts\scrAlexDrawSegmentBar.gml</script>
     </scripts>
   </scripts>
@@ -664,6 +673,7 @@
         <object>objects\objAlexMenuFeaturedCreators</object>
         <object>objects\objAlexMenuAllContribitors</object>
         <object>objects\objNewTitleMenu</object>
+        <object>objects\objNewSaveFileMenu</object>
         <object>objects\objNewOptionsMenu</object>
         <object>objects\objNewKeyboardMenu</object>
         <object>objects\objNewControllerMenu</object>
@@ -675,6 +685,7 @@
           <object>objects\objControllerMenu_new</object>
         </objects>
       </objects>
+      <object>objects\objStarzorSign</object>
     </objects>
   </objects>
   <rooms name="rooms">

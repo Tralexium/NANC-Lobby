@@ -31,6 +31,8 @@ if(pause_exit_protocol == -1) {
     if(pause_black_overlay_alpha > 1.8) {
         switch(pause_exit_protocol) {
             case 0:
+                global.skipGameIntro = true;
+                scrSaveConfig();
                 scrRestartGame();
                 exit;
                 

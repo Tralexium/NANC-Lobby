@@ -67,6 +67,9 @@ global.menuAcceptButton[1] = gp_face1;
 global.menuBackButton[1] = gp_face2;
 global.menuOptionsButton[1] = gp_select;
 
+// Alex Modified: Check if we skip the volume check & intro when restarting the game
+global.skipGameIntro = ini_read_real("Misc","skipGameIntro",false);
+
 ini_close();
 
 scrSaveConfig();    //save config in case something changed

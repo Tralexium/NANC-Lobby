@@ -45,6 +45,15 @@ logo_new_y_pos = 200;
 overlay_alpha = 1;
 overlay_color = c_white;
 
+// If we came back from pause
+// then make overlay black and
+// reset the global.
+if(global.skipGameIntro) {
+    overlay_color = c_black;
+    global.skipGameIntro = false;
+    scrSaveConfig();
+}
+
 option_alpha = 0;
 option_x = room_width/2;
 option_y_start = 400;
@@ -108,7 +117,7 @@ switch(select_index) {
         
     // Save files
     case 1:
-        // TODO
+        instance_create(0, 0, objNewSaveFileMenu);
         break;
 }
 </string>
@@ -136,7 +145,7 @@ switch(select_index) {
             <string>/// Functionality
 
 var H = (scrButtonCheckPressed(global.menuRightButton) - scrButtonCheckPressed(global.menuLeftButton));
-var _accept_press = scrButtonCheckPressed(global.menuAcceptButton);
+var _accept_press = scrButtonCheckPressed(global.menuAcceptButton) || keyboard_check_pressed(vk_enter);
 
 timer++;
 
