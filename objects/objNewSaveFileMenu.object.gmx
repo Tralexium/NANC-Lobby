@@ -33,9 +33,26 @@ active = false;
 close_ui = false;
 save_index = 0;
 intro_animation_length = 20;
+load_game = false; // Whether to start a new game or load the save file
+overlay_opacity_trigger = 1.4; // What the opacity needs to be in order to start the gameplay.
+default_difficulty = 0;
+
+for(var i=0; i&lt;4; i++) {
+    option_index[i] = 0; // Which option is the arrow currently on
+    sub_menu_index[i] = 0; // 0: save stats, 1: new/load game, 2: erase file
+    goto_sub_menu[i] = -1; // Set this to go to a different sub menu next time contents fade out
+    content_alpha[i] = 1;
+}
 
 // Visual
 draw_alpha = 0;
+
+content_fade_length = 30;
+content_fade_timer = -1;
+
+overlay_alpha = 0;
+fade_in_overlay = false; // Fades in the dark overlay when we chosen a file
+fade_in_overlay_spd = 0.02; // Fading speed for the overlay
 
 header_font = fMenuLobby12;
 header_text = "Choose a Save File";
@@ -46,6 +63,7 @@ white_col = $e8e0df; // Greyish white
 sky_col = $ceb85a; // Sky blue
 pink_col = $702a9c; // Redish fuchsia
 dark_col = $2e1814; // Night blue black
+red_col = $4d30d5 // Red
 gradient_col = sky_col; // Alters between sky blue and pink
 gradient_spd = 1;
 
@@ -83,6 +101,9 @@ completion_ring_x_dist = 75;
 completion_ring_anim_timer = 0;
 completion_ring_anim_length = 30;
 box_content_font = fMenuLobby12;
+
+arrow_wiggle = 0;
+arrow_wiggle_amnt = 8;
 
 //load save file values
 for (var i = 0; i &lt; 4; i++)
@@ -228,21 +249,79 @@ if(active) {
     _Select = scrButtonCheckPressed(global.menuAcceptButton) || keyboard_check_pressed(vk_enter);
 
     if(_Back) {
+        active = false;
         audio_play_sound(sndAlexMenuGoBack, 0, false);
     
-        close_ui = true;
-        active = false;
+        if(sub_menu_index[save_index] &gt; 0) {
+            goto_sub_menu[save_index] = sub_menu_index[save_index] - 1;
+            content_fade_timer = 0;
+        } else {
+            close_ui = true;
+        }
     }
     
-    if(_H + _V != 0) {
-        audio_play_sound(sndAlexMenuSwitchOption, 0, false);
-        selection_box_anim_timer = 0;
+    if(_Select) {
+        active = false;
         
-        save_index += _H + (_V * 2);
-        if(save_index &gt; 3)
-            save_index -= 4;
-        if(save_index &lt; 0)
-            save_index += 4;
+        switch(sub_menu_index[save_index]) {
+            // New game if empty save or goto next sub-menu
+            case 0:
+                if(save_exists[save_index]) {
+                    audio_play_sound(sndAlexMenuConfirm, 0, false);
+                    goto_sub_menu[save_index] = 1;
+                    content_fade_timer = 0;
+                } else {
+                    // Start a new game
+                    event_user(0);
+                }
+                break;
+            
+            // Continue or New game
+            case 1:
+                if(option_index[save_index] == 0) {
+                    // Load game
+                    event_user(1);
+                } else {
+                    audio_play_sound(sndAlexMenuConfirm, 0, false);
+                    goto_sub_menu[save_index] = 2;
+                    content_fade_timer = 0;
+                }
+                break;
+            
+            // Confirm deletion of the save file
+            case 2:
+                if(option_index[save_index] == 1) {
+                    // Start a new game
+                    event_user(0);
+                } else {
+                    audio_play_sound(sndAlexMenuGoBack, 0, false);
+                    goto_sub_menu[save_index] = 1;
+                    content_fade_timer = 0;
+                }
+                break;
+        }
+    }
+    
+    if(_H + _V != 0) {        
+        if(sub_menu_index[save_index] == 0) {
+            audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+            selection_box_anim_timer = 0;
+            
+            save_index += _H + (_V * 2);
+            if(save_index &gt; 3)
+                save_index -= 4;
+            if(save_index &lt; 0)
+                save_index += 4;
+        } else {
+            if(_V != 0)
+                audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+            
+            option_index[save_index] += _V;
+            if(option_index[save_index] &gt; 1)
+                option_index[save_index] -= 2;
+            if(option_index[save_index] &lt; 0)
+                option_index[save_index] += 2;
+        }
     }
 }
 
@@ -250,6 +329,31 @@ if(close_ui) {
     draw_alpha -= .05;
     if(draw_alpha &lt;= 0 &amp;&amp; !alarm[0])
         alarm[0] = 20;
+}
+
+// New game or load file
+if(overlay_alpha &gt;= overlay_opacity_trigger) {
+    audio_sound_gain(global.currentMusic, 1, 100);
+    global.savenum = save_index+1;
+    
+    if(load_game) {
+        //load existing save file
+        if (file_exists("Data\save"+string(global.savenum)))
+            scrLoadGame(true);
+        else
+            show_debug_message("File " + "Data\save"+string(global.savenum) + " no longer exists")
+    } else {
+        //start new game
+        global.gameStarted = true; //sets game in progress (enables saving, restarting, etc.)
+        global.autosave = true;
+        
+        global.difficulty = default_difficulty;
+        
+        if (file_exists("Data\save"+string(global.savenum)))
+            file_delete("Data\save"+string(global.savenum));
+        
+        room_goto(global.startRoom);
+    }
 }
 </string>
           </argument>
@@ -300,6 +404,84 @@ if(active) {
         completion_ring_anim_timer++;
     }
 }
+
+// Arrow wiggle
+arrow_wiggle = dsin(timer*3) * arrow_wiggle_amnt;
+
+// Content fading
+if(content_fade_timer &lt;= 360 &amp;&amp; content_fade_timer != -1) {
+    content_fade_timer += 360 / content_fade_length;
+    content_alpha[save_index] = dcos(content_fade_timer);
+    
+    if(content_fade_timer &gt;= 360) {
+        content_alpha[save_index] = 1;
+        content_fade_timer = -1;
+        active = true;
+    } else if(content_fade_timer &gt;= 180 &amp;&amp; goto_sub_menu[save_index] != -1) {
+        sub_menu_index[save_index] = goto_sub_menu[save_index];
+        option_index[save_index] = 0;
+        goto_sub_menu[save_index] = -1;
+    }
+}
+
+// Overlay fading
+if(fade_in_overlay) {
+    overlay_alpha += fade_in_overlay_spd;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Load the current save file
+audio_play_sound(sndAlexVolumeCheckConfirm, 0, false);
+audio_sound_gain(global.currentMusic, 0, 1000);
+fade_in_overlay = true;
+load_game = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Start a new game
+audio_play_sound(sndAlexVolumeCheckConfirm, 0, false);
+audio_sound_gain(global.currentMusic, 0, 1000);
+fade_in_overlay = true;
+load_game = false;
 </string>
           </argument>
         </arguments>
@@ -324,8 +506,6 @@ if(active) {
             <kind>1</kind>
             <string>/// Draw Interface
 
-draw_set_alpha(draw_alpha);
-
 // Header
 draw_set_font(header_font);
 scrDrawTextSquareOutline(header_x, header_y, header_text, white_col, dark_col, 2, fa_center, fa_top);
@@ -340,10 +520,17 @@ var _secrets_x, _secrets_y, _secrets_string;
 var _clears_icon_x, _clears_icon_y;
 var _secrets_icon_x, _secrets_icon_y;
 var _ring_x, _ring_y, _ring_val, _ring_string;
+var _sub_menu_header_x, _sub_menu_header_y;
+var _sub_menu_opt_x, _sub_menu_opt_y, _sub_menu_opt_v_sep;
+var _arrow_x_1, _arrow_x_2, _arrow_y;
+
 var _i = 0;
+
 for(var yy=-1; yy&lt;=1; yy += 2) {
     for(var xx=-1; xx&lt;=1; xx += 2) {  
         
+        draw_set_alpha(draw_alpha);
+    
         // Gradient Box
         if(_i == save_index &amp;&amp; timer &gt; intro_animation_length) {
             _box_x1 = box_anchor_x + (((selection_box_w / 2) + box_pad_h) * xx);
@@ -394,56 +581,124 @@ for(var yy=-1; yy&lt;=1; yy += 2) {
         
         
         // Save file contents
-        
         var _x_center = box_anchor_x + (box_pad_h * xx);
         var _y_center = box_anchor_y + (box_pad_v * yy);
         var _fix_text_y = 4;
+        draw_set_alpha(draw_alpha * content_alpha[_i]);
         
-        draw_set_colour(gradient_col);
-        if(save_exists[_i]) {
-            // Clears
-            draw_set_font(box_content_font)
-            draw_set_halign(fa_right);
-            draw_set_valign(fa_middle);
+        switch(sub_menu_index[_i]) {
+            case 0:                
+                draw_set_colour(gradient_col);
+                if(save_exists[_i]) {
+                    // Clears
+                    draw_set_font(box_content_font)
+                    draw_set_halign(fa_right);
+                    draw_set_valign(fa_middle);
+                    
+                    _clears_x = _x_center + clears_secrets_x_dist;
+                    _clears_y = _y_center - clears_secrets_y_dist + _fix_text_y*2;
+                    _clears_string = string(save_stages_cleared[_i]) + "/" + string(global.totalNumberOfStages);
+                    draw_text(_clears_x, _clears_y, _clears_string);
+                    _clears_icon_x = _x_center + clears_secrets_icons_x_dist + 4;
+                    _clears_icon_y = _y_center - clears_secrets_y_dist;
+                    draw_sprite_ext(sprAlexMenuClearCheckmark, 0, _clears_icon_x, _clears_icon_y, 1, 1, 0, gradient_col, draw_alpha * content_alpha[_i]);
+                     
+                    // Secrets
+                    _secrets_x = _x_center + clears_secrets_x_dist;
+                    _secrets_y = _y_center + clears_secrets_y_dist + _fix_text_y;
+                    _secrets_string = string(save_secrets_found[_i]) + "/" + string(global.secretItemTotal);
+                    draw_text(_secrets_x, _secrets_y, _secrets_string);
+                    _secrets_icon_x = _x_center + clears_secrets_icons_x_dist;
+                    _secrets_icon_y = _y_center + clears_secrets_y_dist;
+                    draw_sprite_ext(sprAlexMenuSecretIcon, 0, _secrets_icon_x, _secrets_icon_y, 1, 1, 0, gradient_col, draw_alpha * content_alpha[_i]);
+                    
+                    // Completion ring
+                    _ring_x = _x_center - completion_ring_x_dist;
+                    _ring_y = _y_center;
+                    _ring_val = save_completion[_i] / 100;
+                    draw_sprite_ext(sprAlexMenuSaveCompletionRing, 0, _ring_x, _ring_y, 1, 1, 0, gradient_col, draw_alpha/3 * content_alpha[_i]);
+                    var _ring_tex = sprite_get_texture(sprAlexMenuSaveCompletionRing, 0);
+                    scrAlexDrawPieTexExt(_ring_x, _ring_y, _ring_val, _ring_tex, sprAlexMenuSaveCompletionRing, 0, gradient_col, draw_alpha * content_alpha[_i]);
+                    _ring_string = string(save_completion[_i]) + "%";
+                    scrDrawTextSquareOutline(_ring_x + 2, _ring_y + _fix_text_y + 2, _ring_string, gradient_col, dark_col, 2, fa_center, fa_middle);
+                    
+                } else {
+                    draw_set_font(fMenuLobby18);
+                    draw_set_halign(fa_center);
+                    draw_set_valign(fa_middle);
+                    draw_text(_x_center + 4, _y_center + _fix_text_y*2, "EMPTY");
+                }
+                break;
             
-            _clears_x = _x_center + clears_secrets_x_dist;
-            _clears_y = _y_center - clears_secrets_y_dist + _fix_text_y*2;
-            _clears_string = string(save_stages_cleared[_i]) + "/" + string(global.totalNumberOfStages);
-            draw_text(_clears_x, _clears_y, _clears_string);
-            _clears_icon_x = _x_center + clears_secrets_icons_x_dist + 4;
-            _clears_icon_y = _y_center - clears_secrets_y_dist;
-            draw_sprite_ext(sprAlexMenuClearCheckmark, 0, _clears_icon_x, _clears_icon_y, 1, 1, 0, gradient_col, draw_alpha);
-             
-            // Secrets
-            _secrets_x = _x_center + clears_secrets_x_dist;
-            _secrets_y = _y_center + clears_secrets_y_dist + _fix_text_y;
-            _secrets_string = string(save_secrets_found[_i]) + "/" + string(global.secretItemTotal);
-            draw_text(_secrets_x, _secrets_y, _secrets_string);
-            _secrets_icon_x = _x_center + clears_secrets_icons_x_dist;
-            _secrets_icon_y = _y_center + clears_secrets_y_dist;
-            draw_sprite_ext(sprAlexMenuSecretIcon, 0, _secrets_icon_x, _secrets_icon_y, 1, 1, 0, gradient_col, draw_alpha);
-            
-            // Completion ring
-            _ring_x = _x_center - completion_ring_x_dist;
-            _ring_y = _y_center;
-            _ring_val = save_completion[_i] / 100;
-            draw_sprite_ext(sprAlexMenuSaveCompletionRing, 0, _ring_x, _ring_y, 1, 1, 0, gradient_col, draw_alpha/3);
-            var _ring_tex = sprite_get_texture(sprAlexMenuSaveCompletionRing, 0);
-            scrAlexDrawPieTexExt(_ring_x, _ring_y, _ring_val, _ring_tex, sprAlexMenuSaveCompletionRing, 0, gradient_col, draw_alpha);
-            _ring_string = string(save_completion[_i]) + "%";
-            scrDrawTextSquareOutline(_ring_x + 2, _ring_y + _fix_text_y + 2, _ring_string, gradient_col, dark_col, 2, fa_center, fa_middle);
-            
-        } else {
-            draw_set_font(fMenuLobby18);
-            draw_set_halign(fa_center);
-            draw_set_valign(fa_middle);
-            draw_text(_x_center + 4, _y_center + _fix_text_y*2, "EMPTY");
+            case 1:
+            case 2:
+                _sub_menu_header_x = _x_center;
+                _sub_menu_header_y = _y_center - 50;
+                _sub_menu_opt_x = _x_center;
+                _sub_menu_opt_y = _y_center + 10;
+                _sub_menu_opt_v_sep = 36;
+                _arrow_x_1 = _x_center - 96 - arrow_wiggle;
+                _arrow_x_2 = _x_center + 96 + arrow_wiggle;
+                _arrow_y = _sub_menu_opt_y + (option_index[_i] * _sub_menu_opt_v_sep);
+                
+                if(sub_menu_index[_i] == 1) {
+                    _sub_menu_opt_y = _y_center - 10;
+                    _arrow_y = _sub_menu_opt_y + (option_index[_i] * _sub_menu_opt_v_sep);
+                }
+                
+                draw_set_font(fMenuLobby12);
+                draw_set_halign(fa_center);
+                draw_set_valign(fa_middle);
+                
+                if(sub_menu_index[_i] == 1) {
+                    if(option_index[_i] == 0) {
+                        draw_set_colour(white_col);
+                        draw_text(_sub_menu_opt_x, _sub_menu_opt_y, "Continue");
+                    } else {
+                        draw_set_colour(gradient_col);
+                        draw_text(_sub_menu_opt_x, _sub_menu_opt_y, "Continue");
+                    }
+                    
+                    if(option_index[_i] == 1) {
+                        draw_set_colour(white_col);
+                        draw_text(_sub_menu_opt_x, _sub_menu_opt_y + _sub_menu_opt_v_sep, "New Game");
+                    } else {
+                        draw_set_colour(gradient_col);
+                        draw_text(_sub_menu_opt_x, _sub_menu_opt_y + _sub_menu_opt_v_sep, "New Game");
+                    }
+                } else {
+                    draw_set_colour(red_col);
+                    draw_text(_sub_menu_header_x, _sub_menu_header_y, "Erase File?")
+                
+                    if(option_index[_i] == 0) {
+                        draw_set_colour(white_col);
+                        draw_text(_sub_menu_opt_x, _sub_menu_opt_y, "Nope");
+                    } else {
+                        draw_set_colour(red_col);
+                        draw_text(_sub_menu_opt_x, _sub_menu_opt_y, "Nope");
+                    }
+                    
+                    if(option_index[_i] == 1) {
+                        draw_set_colour(white_col);
+                        draw_text(_sub_menu_opt_x, _sub_menu_opt_y + _sub_menu_opt_v_sep, "Yeah");
+                    } else {
+                        draw_set_colour(red_col);
+                        draw_text(_sub_menu_opt_x, _sub_menu_opt_y + _sub_menu_opt_v_sep, "Yeah");
+                    }
+                }
+                
+                draw_sprite_ext(sprAlexPauseContentArrow, 0, _arrow_x_1, _arrow_y, 1, 1, 0, -1, draw_alpha * content_alpha[_i]);
+                draw_sprite_ext(sprAlexPauseContentArrow, 0, _arrow_x_2, _arrow_y, -1, 1, 0, -1, draw_alpha * content_alpha[_i]);
+                break;
         }
         
         _i++;
     }
 }
 
+draw_set_alpha(overlay_alpha);
+draw_set_colour(c_black);
+draw_rectangle(-1, -1, room_width, room_height, false);
 draw_set_alpha(1);
 </string>
           </argument>
