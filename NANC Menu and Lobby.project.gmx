@@ -367,6 +367,12 @@
       <sprite>sprites\sprAlexLootBoxLock</sprite>
       <sprite>sprites\sprAlexReviewArrow</sprite>
       <sprite>sprites\sprAlexLootBoxStarPart</sprite>
+      <sprite>sprites\sprAlexReceptionPaintingFrame</sprite>
+      <sprite>sprites\sprAlexReceptionStagePaintings</sprite>
+      <sprite>sprites\sprAlexFloatingBook</sprite>
+      <sprite>sprites\sprAlexReceptionDoor</sprite>
+      <sprite>sprites\sprAlexSpeedOrb</sprite>
+      <sprite>sprites\sprAlexNormalSpeedOrb</sprite>
       <sprites name="Door Stage Previews">
         <sprite>sprites\sprAlexHeatHazeDistortionTex</sprite>
         <sprite>sprites\sprAllStagePreviews</sprite>
@@ -399,6 +405,7 @@
     <background>background\bTree</background>
     <background>background\bStars</background>
     <backgrounds name="ALEX">
+      <background>background\tAlexReception</background>
       <background>background\tAlexFloor1</background>
       <background>background\tAlexFloor2</background>
       <background>background\tAlexFloor3</background>
