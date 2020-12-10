@@ -373,6 +373,7 @@
       <sprite>sprites\sprAlexReceptionDoor</sprite>
       <sprite>sprites\sprAlexSpeedOrb</sprite>
       <sprite>sprites\sprAlexNormalSpeedOrb</sprite>
+      <sprite>sprites\sprAlexSpeedOrbGroundAura</sprite>
       <sprites name="Door Stage Previews">
         <sprite>sprites\sprAlexHeatHazeDistortionTex</sprite>
         <sprite>sprites\sprAllStagePreviews</sprite>
@@ -641,6 +642,8 @@
         <object>objects\objAlexMusicFader</object>
         <object>objects\objFancySecretItem</object>
         <object>objects\objSecretCollectedIndicator</object>
+        <object>objects\objAlexReviewBook</object>
+        <object>objects\objAlexSpeedOrb</object>
       </objects>
       <objects name="Player">
         <object>objects\objAlexLobbyPlayer</object>
@@ -670,6 +673,7 @@
         <object>objects\objAlexWaterBubble</object>
         <object>objects\objAlexFloatingStar</object>
         <object>objects\objAlexChandelier</object>
+        <object>objects\objAlexPainting</object>
       </objects>
       <objects name="Cosmetics">
         <object>objects\objAlexLootBox</object>

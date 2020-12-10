@@ -4,7 +4,7 @@
   <width>1200</width>
   <height>456</height>
   <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -94,8 +94,7 @@ background_vspeed[0] = 0</code>
     <instance objName="objAlexPlatform" x="1072" y="176" name="inst_1486A2C8" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlayMusic" x="16" y="-32" name="inst_D49D710A" locked="0" code="BGM = musAlexFloor1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyElevator" x="192" y="352" name="inst_AA143FD1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objFancySecretItem" x="272" y="304" name="inst_91363A1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objStarzorSign" x="496" y="288" name="inst_3A76083E" locked="0" code="text = &quot;Its a me, Supah Luigi on the Xbox One... WAHOOOOO. Its a me, Supah Luigi on the Xbox One... WAHOOOOO.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexSpeedOrb" x="272" y="384" name="inst_14B62E5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexFloor1" x="48" y="208" w="16" h="16" xo="96" yo="32" id="10002690" name="inst_4AECD382" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -110,6 +110,7 @@ background_vspeed[2] = .3;</code>
     <instance objName="objAlexBlockWithShadow" x="1024" y="16" name="inst_3E341EDC" locked="0" code="" scaleX="13" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="1232" y="16" name="inst_DC9EA1AD" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="1456" y="32" name="inst_67E3E872" locked="0" code="" scaleX="20.2666664123535" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexSpeedOrb" x="624" y="288" name="inst_64791C5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexFloor5" x="304" y="352" w="32" h="16" xo="112" yo="64" id="10011975" name="inst_B8270C93" depth="10001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

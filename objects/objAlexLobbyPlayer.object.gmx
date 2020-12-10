@@ -423,6 +423,13 @@ t++;
 draw_squish_x = lerp(draw_squish_x, 0, .2);
 draw_squish_y = lerp(draw_squish_y, 0, .2);
 
+// Check if the speed orb is in effect
+if(global.lobbyPlayerSpeedUp) {
+    maxSpeed = 5;
+} else {
+    maxSpeed = 3;
+}
+
 // Water effects
 if(!in_water &amp;&amp; place_meeting(x, y, objAlexWater)) {
     in_water = true;

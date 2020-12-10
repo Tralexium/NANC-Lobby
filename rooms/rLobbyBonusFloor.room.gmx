@@ -121,6 +121,7 @@ background_vspeed[0] = -.5</code>
     <instance objName="objFancySecretItem" x="192" y="224" name="inst_6CFD68A6" locked="0" code="itemNum = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objFancySecretItem" x="240" y="224" name="inst_9AAAB252" locked="0" code="itemNum = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyGrandDoor" x="1952" y="272" name="inst_F8B026C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexSpeedOrb" x="224" y="320" name="inst_9000C373" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexBonusFloor" x="80" y="352" w="16" h="16" xo="0" yo="80" id="10012465" name="inst_E5EA4C81" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

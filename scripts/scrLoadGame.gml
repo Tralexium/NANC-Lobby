@@ -43,6 +43,8 @@ if (loadFile)
         global.saveTotalSecretsFound = ds_map_find_value(saveMap,"saveTotalSecretsFound");
         global.saveTotalStagesCleared = ds_map_find_value(saveMap,"saveTotalStagesCleared");
         
+        global.lobbyPlayerSpeedUp = ds_map_find_value(saveMap,"lobbyPlayerSpeedUp");
+        
         if (is_string(global.saveRoom))   //check if the saved room loaded properly
         {
             if (!room_exists(asset_get_index(global.saveRoom)))  //check if the room index in the save is valid

@@ -85,6 +85,8 @@ ds_map_add(saveMap,"currentPlayerPet",global.currentPlayerPet);
 ds_map_add(saveMap,"saveTotalSecretsFound",global.saveTotalSecretsFound);
 ds_map_add(saveMap,"saveTotalStagesCleared",global.saveTotalStagesCleared);
 
+ds_map_add(saveMap,"lobbyPlayerSpeedUp",global.lobbyPlayerSpeedUp);
+
 for (var i = 0; i <= global.totalNumberOfStages; i++)
 {
     ds_map_add(saveMap,"saveStageClear["+string(i)+"]",global.saveStageCleared[i]);
