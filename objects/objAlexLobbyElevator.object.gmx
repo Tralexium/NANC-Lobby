@@ -37,7 +37,7 @@ arrow_y = y;
 arrow_image_index = 0;
 
 // New to the elevator
-floor_id[0] = rLobbyFloor1;  // Change this later into reception room
+floor_id[0] = rLobbyReception;  // Change this later into reception room
 floor_id[1] = rLobbyFloor1;
 floor_id[2] = rLobbyFloor2;
 floor_id[3] = rLobbyFloor3;

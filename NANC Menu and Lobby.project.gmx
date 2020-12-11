@@ -661,6 +661,7 @@
       <objects name="Doors">
         <object>objects\objAlexLobbyStageDoor</object>
         <object>objects\objAlexLobbyGrandDoor</object>
+        <object>objects\objAlexLobbyReceptionDoor</object>
         <object>objects\objAlexLobbyElevator</object>
         <object>objects\objAlexDoorTag</object>
         <object>objects\objAlexStageReviewUI</object>
@@ -725,6 +726,10 @@
     </rooms>
     <room>rooms\rTemplate</room>
     <rooms name="ALEX">
+      <rooms name="Reception">
+        <room>rooms\rLobbyReception</room>
+        <room>rooms\rLobbyGallery</room>
+      </rooms>
       <rooms name="Floors">
         <room>rooms\rLobbyFloor1</room>
         <room>rooms\rLobbyFloor2</room>
