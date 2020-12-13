@@ -644,6 +644,7 @@
         <object>objects\objSecretCollectedIndicator</object>
         <object>objects\objAlexReviewBook</object>
         <object>objects\objAlexSpeedOrb</object>
+        <object>objects\objAlexDialogBox</object>
       </objects>
       <objects name="Player">
         <object>objects\objAlexLobbyPlayer</object>
