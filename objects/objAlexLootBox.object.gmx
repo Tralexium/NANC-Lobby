@@ -60,10 +60,7 @@ shader = sRainbowAura;
 shader_timer = random(100);
 u_time = shader_get_uniform(shader, "u_time");
 u_visibility = shader_get_uniform(shader, "u_visibility");
-u_resolution = shader_get_uniform(shader, "u_resolution");
 shader_vis = 1;
-shader_res[0] = sprite_width;
-shader_res[1] = sprite_height;
 </string>
           </argument>
         </arguments>
@@ -327,7 +324,6 @@ if(locked) {
     shader_set(shader);
         shader_set_uniform_f(u_time, shader_timer);
         shader_set_uniform_f(u_visibility, shader_vis);
-        shader_set_uniform_f_array(u_resolution, shader_res);
         draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, image_xscale, image_yscale, 0, -1, image_alpha);
     shader_reset();
     

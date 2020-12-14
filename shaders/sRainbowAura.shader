@@ -24,7 +24,6 @@ varying vec4 v_vColour;
 
 uniform float u_time;
 uniform float u_visibility;         // 0 to 1
-uniform vec2 u_resolution;          // Either pass the resolution of the sprite or window
 
 const float blob_size = 30.0;        // Higher number = bigger size
 const float blob_intensity = 110.0;  // Lower number = more glow

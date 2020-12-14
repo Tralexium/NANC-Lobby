@@ -374,6 +374,7 @@
       <sprite>sprites\sprAlexSpeedOrb</sprite>
       <sprite>sprites\sprAlexNormalSpeedOrb</sprite>
       <sprite>sprites\sprAlexSpeedOrbGroundAura</sprite>
+      <sprite>sprites\sprAlexWhiteNoise</sprite>
       <sprites name="Door Stage Previews">
         <sprite>sprites\sprAlexHeatHazeDistortionTex</sprite>
         <sprite>sprites\sprAllStagePreviews</sprite>
@@ -498,6 +499,7 @@
     <shader type="GLSLES">shaders\sHeatHaze.shader</shader>
     <shader type="GLSLES">shaders\sSquareOutline.shader</shader>
     <shader type="GLSLES">shaders\sRainbowAura.shader</shader>
+    <shader type="GLSLES">shaders\sGradientHoles.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -639,6 +641,7 @@
         <object>objects\objAlexLobbyTransitionBubble</object>
         <object>objects\objAlexLobbyTransitionBubbleOut</object>
         <object>objects\objAlexLobbyCam</object>
+        <object>objects\objAlexSmartCam</object>
         <object>objects\objAlexMusicFader</object>
         <object>objects\objFancySecretItem</object>
         <object>objects\objSecretCollectedIndicator</object>
@@ -702,6 +705,9 @@
         </objects>
       </objects>
       <object>objects\objStarzorSign</object>
+      <objects name="Star Stages">
+        <object>objects\objAlexStarStageBG</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -727,6 +733,7 @@
     </rooms>
     <room>rooms\rTemplate</room>
     <rooms name="ALEX">
+      <room>rooms\rStarLevelTest</room>
       <rooms name="Reception">
         <room>rooms\rLobbyReception</room>
         <room>rooms\rLobbyGallery</room>
