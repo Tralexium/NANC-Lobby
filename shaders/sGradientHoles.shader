@@ -36,6 +36,8 @@ varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
 uniform float u_time;
+uniform float u_hue_increment;
+uniform float u_val_increment;
 uniform vec2 u_cam_offset;
 uniform vec3 u_base_col_hsv;
 
@@ -201,9 +203,9 @@ void main(){
       float depth = getDepth(noise);
         
         //calc HSV color
-        float hue = u_base_col_hsv.x + depth/6.0 + 0.025; //rainbow hue
+        float hue = u_base_col_hsv.x + ((depth*STEPS) * u_hue_increment) + u_hue_increment; //rainbow hue
         float sat = u_base_col_hsv.y;
-        float val = u_base_col_hsv.z - (depth*0.4); //deeper is darker
+        float val = u_base_col_hsv.z + (depth*u_val_increment); //deeper is darker
         
        //add bevel
         

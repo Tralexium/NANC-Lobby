@@ -316,6 +316,7 @@
       </sprites>
       <sprites name="Star Levels">
         <sprite>sprites\sprStarLevel1BlockTexture</sprite>
+        <sprite>sprites\sprAlexCameraClamper</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexBlockSprite</sprite>
@@ -481,6 +482,7 @@
       </scripts>
     </scripts>
     <scripts name="functions">
+      <script>scripts\scrInView.gml</script>
       <script>scripts\scrDrawTextOutline.gml</script>
       <script>scripts\scrMakeShapes.gml</script>
       <script>scripts\scrMakeCircle.gml</script>
@@ -646,7 +648,6 @@
         <object>objects\objAlexLobbyTransitionBubble</object>
         <object>objects\objAlexLobbyTransitionBubbleOut</object>
         <object>objects\objAlexLobbyCam</object>
-        <object>objects\objAlexSmartCam</object>
         <object>objects\objAlexMusicFader</object>
         <object>objects\objFancySecretItem</object>
         <object>objects\objSecretCollectedIndicator</object>
@@ -711,6 +712,8 @@
       </objects>
       <object>objects\objStarzorSign</object>
       <objects name="Star Stages">
+        <object>objects\objAlexStarStageCam</object>
+        <object>objects\objAlexCameraClamper</object>
         <object>objects\objAlexStarStageBG</object>
         <object>objects\objAlexOutlineBlockRenderer</object>
       </objects>

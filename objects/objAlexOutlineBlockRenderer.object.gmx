@@ -105,7 +105,8 @@ surface_set_target(block_surf);
     draw_clear_alpha(c_black, 0);
     with(objAlexBlockWithShadow) {
         shadow_dist = 4;
-        draw_sprite_ext(sprAlexOpaqueBlock, image_index, x - view_xview[0], y - view_yview[0], image_xscale, image_yscale, image_angle, -1, 1);
+        if(scrInView())
+            draw_sprite_ext(sprAlexOpaqueBlock, image_index, x - view_xview[0], y - view_yview[0], image_xscale, image_yscale, image_angle, -1, 1);
     }
 surface_reset_target();
 

@@ -41,9 +41,6 @@ xScale = 1; //sets the direction the player is facing (1 is facing right, -1 is 
 
 scrSetPlayerMask(); //set the player's hitbox
 
-if (global.difficulty == 0 &amp;&amp; global.gameStarted)   //create the player's bow
-    instance_create(x,y,objBow);
-
 if (global.autosave) //save the game if currently set to autosave
 {
     scrSaveGame(true);
@@ -733,8 +730,8 @@ if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
             <kind>1</kind>
             <string>///draw the player
 
-var drawX = x;
-var drawY = y;
+var drawX = round(x);
+var drawY = round(y);
 
 if (global.grav == -1)      //need to draw the player a pixel off in the y-axis when flipped for some reason
     drawY += 1;
