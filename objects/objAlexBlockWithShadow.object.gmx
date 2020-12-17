@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Change the depth back to 0
+            <string>/// Change the depth back to 0 &amp; innit vars
 
 depth = 0
+
+shadow_dist = 2;
 </string>
           </argument>
         </arguments>
@@ -52,7 +54,7 @@ depth = 0
             <kind>1</kind>
             <string>/// Draw shadow and hide block
 
-draw_sprite_ext(sprAlexBlockShadow, 0, x-2, y+2, image_xscale, image_yscale, image_angle, -1, 1)
+draw_sprite_ext(sprAlexBlockShadow, 0, x-shadow_dist, y+shadow_dist, image_xscale, image_yscale, image_angle, -1, 1)
 </string>
           </argument>
         </arguments>

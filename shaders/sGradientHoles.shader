@@ -39,7 +39,7 @@ uniform float u_time;
 uniform vec2 u_cam_offset;
 uniform vec3 u_base_col_hsv;
 
-const float STEPS = 8.0;
+const float STEPS = 6.0;
 const float CUTOFF = 0.5; //depth less than this, show white wall
 const vec2  OFFSET = vec2(0.01,0.01); //drop shadow offset
 

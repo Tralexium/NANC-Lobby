@@ -314,8 +314,12 @@
         <sprite>sprites\sprAlexMenuSaveStar</sprite>
         <sprite>sprites\sprAlexMenuSaveCrown</sprite>
       </sprites>
+      <sprites name="Star Levels">
+        <sprite>sprites\sprStarLevel1BlockTexture</sprite>
+      </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexBlockSprite</sprite>
+      <sprite>sprites\sprAlexOpaqueBlock</sprite>
       <sprite>sprites\sprAlexBlockWithoutShadow</sprite>
       <sprite>sprites\sprAlexShadowBlock</sprite>
       <sprite>sprites\sprAlexIceBlockSprite</sprite>
@@ -498,6 +502,7 @@
   <shaders name="shaders">
     <shader type="GLSLES">shaders\sHeatHaze.shader</shader>
     <shader type="GLSLES">shaders\sSquareOutline.shader</shader>
+    <shader type="GLSLES">shaders\sStarLevelBlocks.shader</shader>
     <shader type="GLSLES">shaders\sRainbowAura.shader</shader>
     <shader type="GLSLES">shaders\sGradientHoles.shader</shader>
   </shaders>
@@ -707,6 +712,7 @@
       <object>objects\objStarzorSign</object>
       <objects name="Star Stages">
         <object>objects\objAlexStarStageBG</object>
+        <object>objects\objAlexOutlineBlockRenderer</object>
       </objects>
     </objects>
   </objects>
