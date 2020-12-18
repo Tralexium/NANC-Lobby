@@ -4,7 +4,11 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
 {
     if (global.gameStarted) //normal death
     {
-        global.deathSound = audio_play_sound(sndDeath,0,false);
+        if(global.originalDeathSound) {
+            global.deathSound = audio_play_sound(sndOriginalDeath,0,false);
+        } else {
+            global.deathSound = audio_play_sound(sndDeath,0,false);
+        }
         
         if (!global.muteMusic)  //play death music
         {
@@ -23,13 +27,16 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
             }
         }
         
+        // Alex modified
         with (objPlayer)
         {
-            instance_create(x,y,objBloodEmitter);
+            var part = scrAlexMakeParticle(x, y, 100, sprAlexPlayerBloodSplatter, .4, 0, 0, false, false, false);
+                part.end_on_last_frame = true;
+                part.depth = -999;
             instance_destroy();
         }
         
-        instance_create(0,0,objGameOver);
+        instance_create(0,0,objAlexGameOver);
         
         global.death += 1; //increment deaths
             

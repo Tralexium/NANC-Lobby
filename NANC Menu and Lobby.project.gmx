@@ -136,6 +136,7 @@
       <sound>sound\sndWallJump</sound>
       <sound>sound\sndShoot</sound>
       <sound>sound\sndDeath</sound>
+      <sound>sound\sndOriginalDeath</sound>
       <sound>sound\sndItem</sound>
       <sound>sound\sndBlockChange</sound>
       <sound>sound\sndBossHit</sound>
@@ -380,6 +381,7 @@
       <sprite>sprites\sprAlexNormalSpeedOrb</sprite>
       <sprite>sprites\sprAlexSpeedOrbGroundAura</sprite>
       <sprite>sprites\sprAlexWhiteNoise</sprite>
+      <sprite>sprites\sprAlexPlayerBloodSplatter</sprite>
       <sprites name="Door Stage Previews">
         <sprite>sprites\sprAlexHeatHazeDistortionTex</sprite>
         <sprite>sprites\sprAllStagePreviews</sprite>
@@ -517,6 +519,7 @@
       <font>fonts\fMenuLobby6</font>
       <font>fonts\fMenuLobby12</font>
       <font>fonts\fMenuLobby18</font>
+      <font>fonts\fGameOver</font>
       <font>fonts\fLobbySmall</font>
       <font>fonts\fLobbySmall24</font>
     </fonts>
@@ -657,6 +660,7 @@
       </objects>
       <objects name="Player">
         <object>objects\objAlexLobbyPlayer</object>
+        <object>objects\objAlexGameOver</object>
       </objects>
       <objects name="Blocks">
         <object>objects\objAlexBlockWithShadow</object>
@@ -710,13 +714,13 @@
           <object>objects\objControllerMenu_new</object>
         </objects>
       </objects>
-      <object>objects\objStarzorSign</object>
       <objects name="Star Stages">
         <object>objects\objAlexStarStageCam</object>
         <object>objects\objAlexCameraClamper</object>
         <object>objects\objAlexStarStageBG</object>
         <object>objects\objAlexOutlineBlockRenderer</object>
       </objects>
+      <object>objects\objStarzorSign</object>
     </objects>
   </objects>
   <rooms name="rooms">

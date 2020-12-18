@@ -39,12 +39,12 @@ max_y = room_height - view_hview[0];
 
 if (instance_exists(objPlayer))
 {
-    view_xview[0] = objPlayer.x - view_wview[0]/2;
-    view_yview[0] = objPlayer.y - view_hview[0]/2;
-    target_x = view_xview[0];
-    target_y = view_yview[0];
+    target_x = objPlayer.x - view_wview[0]/2;
+    target_y = objPlayer.y - view_hview[0]/2;
+    event_user(0);
+    view_xview[0] = target_x;
+    view_yview[0] = target_y;
 }
-event_user(0);
 
 opt_previous_x = view_xview[0];
 opt_previous_y = view_yview[0];

@@ -136,7 +136,7 @@ pause_options_w = display_get_gui_width() - 150;
 pause_options_target_y = pause_options_y;
 pause_options_keyboard_target_y = pause_options_y;
 pause_options_controller_target_y = pause_options_y;
-pause_options_max_index = 7;
+pause_options_max_index = 8;
 pause_options_keyboard_index = 0;
 pause_options_keyboard_max_index = 11;
 pause_options_controller_index = 0;
@@ -1046,8 +1046,9 @@ pause_options[1] = "Volume Level";
 pause_options[2] = "Screen Mode";
 pause_options[3] = "Smoothing Mode";
 pause_options[4] = "Vsync";
-pause_options[5] = "Set Keyboard Controls";
-pause_options[6] = "Controller Options";
+pause_options[5] = "Death Sound";
+pause_options[6] = "Set Keyboard Controls";
+pause_options[7] = "Controller Options";
 
 // Other keybind related vars
 pause_setting_key = false;

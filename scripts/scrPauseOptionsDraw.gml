@@ -44,6 +44,11 @@ if(pause_options_alpha > 0) {
                 if(global.vsyncMode) _string = "On";
                 scrDrawTextSquareOutline(pause_options_w, _option_y, _string, _text_col, _outline_col, 2, fa_right, fa_middle);
                 break;
+            case 5:
+                var _string = "Refined";
+                if(global.originalDeathSound) _string = "Original";
+                scrDrawTextSquareOutline(pause_options_w, _option_y, _string, _text_col, _outline_col, 2, fa_right, fa_middle);
+                break;
         }
     }
     draw_set_alpha(pause_options_alpha)

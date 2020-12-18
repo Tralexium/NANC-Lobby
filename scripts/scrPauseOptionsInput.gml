@@ -31,13 +31,17 @@ if(_accept_button) {
             break;
             
          case 5:
+            global.originalDeathSound = !global.originalDeathSound;
+            break;
+            
+         case 6:
             scrSaveConfig();
             scrPauseGetKeybindsForDevice(false);
             pause_options_keybind_menu = 1;
             pause_input_delay = 1;
             break;
             
-         case 6:
+         case 7:
             scrSaveConfig();
             scrPauseGetKeybindsForDevice(true);
             pause_options_keybind_menu = 2;

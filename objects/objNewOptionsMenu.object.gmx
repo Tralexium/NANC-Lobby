@@ -35,19 +35,28 @@ xSelector = 150;
 ySelector = 80;
 xSeperation = 800-150;
 ySeperation = 70;
-optionsNum = 7; //sets number of separate options available
+optionsNum = 8; //sets number of separate options available
 volTimer = 0;
 moveTimer = 0;
 moveTimerDelay = 25;
 moveTimerRepeatSpd = 5;
+
+yArrowLimit = 4 * ySeperation; // After the arrow passes this value the options start
+              // scrolling upwards.
+              
+yScroll = 0;  // The options scroll based on this value
+topFade = ySeperation;
+bottomFade = ySelector + (6 * ySeperation);
+thresholdSpace = ySeperation;
 
 strSelect[0] = "Music";
 strSelect[1] = "Volume Level";
 strSelect[2] = "Screen Mode";
 strSelect[3] = "Smoothing Mode";
 strSelect[4] = "Vsync";
-strSelect[5] = "Set Keyboard Controls";
-strSelect[6] = "Controller Options";
+strSelect[5] = "Death Sound";
+strSelect[6] = "Set Keyboard Controls";
+strSelect[7] = "Controller Options";
 </string>
           </argument>
         </arguments>
@@ -128,13 +137,13 @@ if(goBack) // Go back to main menu
     }
     instance_destroy();
 }
-else if (select == 5)   //go to the keyboard controls menu
+else if (select == 6)   //go to the keyboard controls menu
 {
     global.menuSelectPrev[1] = select;
     instance_create(x,y,objNewKeyboardMenu);
     instance_destroy();
 }
-else if (select == 6)   //go to the controller options menu
+else if (select == 7)   //go to the controller options menu
 {
     global.menuSelectPrev[1] = select;
     instance_create(x,y,objNewControllerMenu);
@@ -196,10 +205,18 @@ if(canSelect){
     timer++;
 
     // Arrow related draw vars
+    var _select_y = ySelector+(ySeperation*select);
     if(arrowAlpha &lt; 1){arrowAlpha += .05;}
     arrowPosX = xSelector-24 + (-1 * abs(dsin(timer*4)*10));
-    arrowPosY = lerp(arrowPosY, ySelector+(ySeperation*select), .2);
+    arrowPosY = lerp(arrowPosY, _select_y, .2);
+    arrowPosY = min(arrowPosY, yArrowLimit);
 
+    if(_select_y &gt;= yArrowLimit) {
+        yScroll = lerp(yScroll, _select_y - yArrowLimit, 0.2);
+    } else {
+        yScroll = lerp(yScroll, 0, 0.2);
+    }
+    
     var _change_index = (scrButtonCheck(global.menuDownButton) - scrButtonCheck(global.menuUpButton))
     if(_change_index != 0) {
         moveTimer++;
@@ -252,7 +269,10 @@ if(canSelect){
             global.vsyncMode = !global.vsyncMode;
             
             scrSetVsync();
-        }else if (select == 5 || select == 6)  //play a fade animation and go to either the controller or keyboard menu
+        }else if (select == 5)   //toggle death sound
+        {
+            global.originalDeathSound = !global.originalDeathSound;
+        }else if (select == 6 || select == 7)  //play a fade animation and go to either the controller or keyboard menu
         {
             scrSaveConfig();    //save changes
             alarm[0] = 20;
@@ -332,42 +352,68 @@ draw_set_font(fMenuLobby12);
 
 for(var i = 0; i &lt; optionsNum; i++)
 {
-    var _y = ySelector+(ySeperation*i);
+    var _y = ySelector+(ySeperation*i) - yScroll;
     var _holder_y = _y - holder_y_correction;
+    
+    var _upper_threshold_alpha = clamp(((_y + thresholdSpace) - topFade)/thresholdSpace, 0, 1)
+    var _bottom_threshold_alpha = clamp(((bottomFade + thresholdSpace) - _y)/thresholdSpace, 0, 1)
+    var _final_holder_alpha = holderAlpha * _upper_threshold_alpha * _bottom_threshold_alpha;
+    
+    // Draw the left side content
     draw_set_colour(holder_color)
-    draw_set_alpha(holderAlpha);
+    draw_set_alpha(_final_holder_alpha);
     draw_roundrect_ext(xSelector - holder_h_pad, _holder_y - holder_v_pad, xSeperation + holder_h_pad, _holder_y + holder_v_pad, holder_corner_rad, holder_corner_rad, false);
-    draw_set_alpha(drawAlpha);
+    
+    var _final_text_alpha = drawAlpha * _upper_threshold_alpha * _bottom_threshold_alpha;
+    draw_set_alpha(_final_text_alpha);
 
     scrDrawTextSquareOutline(xSelector, _y, strSelect[i], text_col, holder_color, outline_size, fa_left, fa_middle);
-}
-
-draw_set_halign(fa_right);
-
-if (global.muteMusic)
-    scrDrawTextSquareOutline(xSeperation, ySelector, "Off", text_col, holder_color, outline_size, fa_right, fa_middle);
-else
-    scrDrawTextSquareOutline(xSeperation, ySelector, "On", text_col, holder_color, outline_size, fa_right, fa_middle);
-
-var _bar_amnt = volume_bars_amnt;
-var _sep = volume_bar_sep;
-var _active_bars = round(global.volumeLevel / 10);
-scrAlexDrawSegmentBar(xSeperation - (_sep * _bar_amnt), ySelector+ySeperation, _sep, _bar_amnt, _active_bars, sprAlexPauseActiveVolumeBar, sprAlexPauseInactiveVolumeBar);
     
-if (global.fullscreenMode)
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*2), "Fullscreen", text_col, holder_color, outline_size, fa_right, fa_middle);
-else
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*2), "Windowed", text_col, holder_color, outline_size, fa_right, fa_middle);
-
-if (global.smoothingMode)
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*3), "On", text_col, holder_color, outline_size, fa_right, fa_middle);
-else
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*3), "Off", text_col, holder_color, outline_size, fa_right, fa_middle);
-
-if (global.vsyncMode)
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*4), "On", text_col, holder_color, outline_size, fa_right, fa_middle);
-else
-    scrDrawTextSquareOutline(xSeperation, ySelector+(ySeperation*4), "Off", text_col, holder_color, outline_size, fa_right, fa_middle);
+    // Draw the right side content
+    switch(i) {
+        case 0:
+            if (global.muteMusic)
+                scrDrawTextSquareOutline(xSeperation, _y, "Off", text_col, holder_color, outline_size, fa_right, fa_middle);
+            else
+                scrDrawTextSquareOutline(xSeperation, _y, "On", text_col, holder_color, outline_size, fa_right, fa_middle);
+            break;
+        
+        case 1:
+            var _bar_amnt = volume_bars_amnt;
+            var _sep = volume_bar_sep;
+            var _active_bars = round(global.volumeLevel / 10);
+            scrAlexDrawSegmentBar(xSeperation - (_sep * _bar_amnt), _y, _sep, _bar_amnt, _active_bars, sprAlexPauseActiveVolumeBar, sprAlexPauseInactiveVolumeBar);
+            break;
+        
+        case 2:
+            if (global.fullscreenMode)
+                scrDrawTextSquareOutline(xSeperation, _y, "Fullscreen", text_col, holder_color, outline_size, fa_right, fa_middle);
+            else
+                scrDrawTextSquareOutline(xSeperation, _y, "Windowed", text_col, holder_color, outline_size, fa_right, fa_middle);
+            break;
+        
+        case 3:
+            if (global.smoothingMode)
+                scrDrawTextSquareOutline(xSeperation, _y, "On", text_col, holder_color, outline_size, fa_right, fa_middle);
+            else
+                scrDrawTextSquareOutline(xSeperation, _y, "Off", text_col, holder_color, outline_size, fa_right, fa_middle);
+            break;
+        
+        case 4:
+            if (global.vsyncMode)
+                scrDrawTextSquareOutline(xSeperation, _y, "On", text_col, holder_color, outline_size, fa_right, fa_middle);
+            else
+                scrDrawTextSquareOutline(xSeperation, _y, "Off", text_col, holder_color, outline_size, fa_right, fa_middle);
+            break;
+        
+        case 5:
+            if (global.originalDeathSound)
+                scrDrawTextSquareOutline(xSeperation, _y, "Original", text_col, holder_color, outline_size, fa_right, fa_middle);
+            else
+                scrDrawTextSquareOutline(xSeperation, _y, "Refined", text_col, holder_color, outline_size, fa_right, fa_middle);
+            break;
+    }
+}
 
 draw_sprite_ext(sprAlexPauseContentArrow, 0, arrowPosX, arrowPosY, arrowXScale, arrowYScale, 0, -1, arrowAlpha);
 

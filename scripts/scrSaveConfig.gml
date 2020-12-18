@@ -41,7 +41,8 @@ if (global.controllerEnabled)
     ini_write_real("Controller","Align_right",global.alignRightButton[1]);
 }
 
-// Alex Modified: Check if we skip the volume check & intro when restarting the game
-ini_write_real("Misc","skipGameIntro",global.skipGameIntro);
+// Alex Modified
+ini_write_real("Settings","Original_death_sound",global.originalDeathSound);
+ini_write_real("Misc","skipGameIntro",global.skipGameIntro);  // Check if we skip the volume check & intro when restarting the game
 
 ini_close();

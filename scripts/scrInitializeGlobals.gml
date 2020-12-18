@@ -34,8 +34,8 @@ global.skipGameIntro = false;  // Used when going back to the main menu screen f
 global.lobbyPlayerSpeedUp = false; // Whether the player is faster in the lobby
 
 // Global surfaces
-global.text_outline_surf_w = 550;
-global.text_outline_surf_h = 100;
+global.text_outline_surf_w = 800;
+global.text_outline_surf_h = 250;
 global.text_outline_surf = surface_create(global.text_outline_surf_w, global.text_outline_surf_h);
 
 
