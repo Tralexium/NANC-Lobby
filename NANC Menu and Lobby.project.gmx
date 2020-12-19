@@ -161,6 +161,10 @@
       <sound>sound\musAlexFloor6</sound>
       <sound>sound\musAlexBonusFloor</sound>
       <sounds name="sfx">
+        <sound>sound\sndAlexSaveBlocker</sound>
+        <sound>sound\sndAlexSaveGreen</sound>
+        <sound>sound\sndAlexSaveRed</sound>
+        <sound>sound\sndAlexSaveToaster</sound>
         <sound>sound\sndAlexVolumeCheckHighNote</sound>
         <sound>sound\sndAlexVolumeCheckLowNote</sound>
         <sound>sound\sndAlexVolumeCheckConfirm</sound>
@@ -182,6 +186,8 @@
         <sound>sound\sndAlexKidEnter</sound>
         <sound>sound\sndAlexKidLand</sound>
         <sound>sound\sndAlexKidLandFromLongFall</sound>
+        <sound>sound\sndAlexLobbyNormalSpeed</sound>
+        <sound>sound\sndAlexLobbyFastSpeed</sound>
         <sound>sound\sndAlexStageDoorClosed</sound>
         <sound>sound\sndAlexElevatorOpen</sound>
         <sound>sound\sndAlexElevatorClosed</sound>
@@ -317,6 +323,11 @@
       </sprites>
       <sprites name="Star Levels">
         <sprite>sprites\sprStarLevel1BlockTexture</sprite>
+        <sprite>sprites\sprStarLevel2BlockTexture</sprite>
+        <sprite>sprites\sprStarLevel3BlockTexture</sprite>
+        <sprite>sprites\sprStarLevel4BlockTexture</sprite>
+        <sprite>sprites\sprStarLevel5BlockTexture</sprite>
+        <sprite>sprites\sprStarLevel6BlockTexture</sprite>
         <sprite>sprites\sprAlexCameraClamper</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
@@ -382,6 +393,12 @@
       <sprite>sprites\sprAlexSpeedOrbGroundAura</sprite>
       <sprite>sprites\sprAlexWhiteNoise</sprite>
       <sprite>sprites\sprAlexPlayerBloodSplatter</sprite>
+      <sprite>sprites\sprAlexSaveGreen</sprite>
+      <sprite>sprites\sprAlexSaveRed</sprite>
+      <sprite>sprites\sprAlexSaveText</sprite>
+      <sprite>sprites\sprAlexSaveFlare</sprite>
+      <sprite>sprites\sprAlexSaveToast</sprite>
+      <sprite>sprites\sprAlexSaveBlocker</sprite>
       <sprites name="Door Stage Previews">
         <sprite>sprites\sprAlexHeatHazeDistortionTex</sprite>
         <sprite>sprites\sprAllStagePreviews</sprite>
@@ -660,6 +677,9 @@
       </objects>
       <objects name="Player">
         <object>objects\objAlexLobbyPlayer</object>
+        <object>objects\objSaveBlocker_new</object>
+        <object>objects\objSave_new</object>
+        <object>objects\objAlexSaveToast</object>
         <object>objects\objAlexGameOver</object>
       </objects>
       <objects name="Blocks">
@@ -746,7 +766,11 @@
     </rooms>
     <room>rooms\rTemplate</room>
     <rooms name="ALEX">
-      <room>rooms\rStarLevelTest</room>
+      <room>rooms\rStarLevel1</room>
+      <room>rooms\rStarLevel2</room>
+      <room>rooms\rStarLevel3</room>
+      <room>rooms\rStarLevel4</room>
+      <room>rooms\rStarLevel5</room>
       <rooms name="Reception">
         <room>rooms\rLobbyReception</room>
         <room>rooms\rLobbyGallery</room>

@@ -37,6 +37,7 @@ varying vec4 v_vColour;
 
 uniform float u_time;
 uniform float u_hue_increment;
+uniform float u_sat_increment;
 uniform float u_val_increment;
 uniform vec2 u_cam_offset;
 uniform vec3 u_base_col_hsv;
@@ -204,7 +205,7 @@ void main(){
         
         //calc HSV color
         float hue = u_base_col_hsv.x + ((depth*STEPS) * u_hue_increment) + u_hue_increment; //rainbow hue
-        float sat = u_base_col_hsv.y;
+        float sat = u_base_col_hsv.y + ((depth*STEPS) * u_sat_increment);
         float val = u_base_col_hsv.z + (depth*u_val_increment); //deeper is darker
         
        //add bevel
