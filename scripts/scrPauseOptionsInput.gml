@@ -54,9 +54,6 @@ if(_index == 1) {
     var _vol_change = _h_input * pause_options_volume_bars;
     global.volumeLevel = clamp(global.volumeLevel + _vol_change, 0, 100);
     audio_master_gain(global.volumeLevel/100);
-    
-    if(_h_input != 0)
-        audio_play_sound(sndAlexMenuAwaitKeybind, 0, false);
 }
 
 if(_back_button) {

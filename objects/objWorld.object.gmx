@@ -58,6 +58,10 @@ pause_anim_progress = 0;  // 0: start, 1: finish
 pause_input_delay = 0;
 pause_music_fade_time = 500;
 pause_music_volume = .4;
+pause_option_input_timer = 0;  // Counts how long you held the Up or Down buttons
+pause_option_repeat_input_delay = 25;  // Waits this long before the held key is registered again while pressed
+pause_option_move_intervals = 5;  // After the above delay is passed repeat the input based on this interval
+pause_option_vol_timer = 0;
 
 // Top options
 pause_top_option_num = -1;
@@ -634,15 +638,43 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                 break;
                 
             case 2:  // Options
+                var _H_hold = (scrButtonCheck(global.menuRightButton) - scrButtonCheck(global.menuLeftButton));
+                var _V_hold = (scrButtonCheck(global.menuDownButton) - scrButtonCheck(global.menuUpButton));
+                var _H_hold_input = 0;
+                var _V_hold_input = 0;
+                
+                if(_H_hold != 0 &amp;&amp; pause_options_index == 1) {
+                    pause_option_vol_timer++;
+                    
+                    if(pause_option_vol_timer == 1 || (pause_option_vol_timer mod 4 == 0 &amp;&amp; pause_option_vol_timer &gt;= 15)) {
+                        _H_hold_input = _H_hold;
+                        audio_play_sound(sndAlexMenuAwaitKeybind,0,false);
+                    }
+                } else {
+                    pause_option_vol_timer = 0;
+                }
+                
+                if(_V_hold != 0) {
+                    pause_option_input_timer++;
+                    
+                    if(pause_option_input_timer == 1 || (pause_option_input_timer mod pause_option_move_intervals == 0 &amp;&amp; pause_option_input_timer &gt;= pause_option_repeat_input_delay)) {
+                        _V_hold_input = _V_hold;
+                        audio_play_sound(sndAlexMenuSwitchOption,0,false);
+                    }
+                } else {
+                    pause_option_input_timer = 0;
+                }
+                
                 switch(pause_options_keybind_menu) {
                     case 0:  // General options
                     default:
                         var _previous_options_index = pause_options_index;
-                        pause_options_index += V;
-                        pause_options_index = clamp(pause_options_index, 0, pause_options_max_index-1);
+                        pause_options_index += _V_hold_input;
                         
-                        if(_previous_options_index != pause_options_index)
-                            audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+                        if(pause_options_index &gt; pause_options_max_index-1)
+                            pause_options_index -= pause_options_max_index;
+                        if(pause_options_index &lt; 0)
+                            pause_options_index += pause_options_max_index;
                         
                         if(V != 0) {
                             if(pause_options_index == 1)
@@ -652,16 +684,17 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                         }
                         
                         if(!pause_input_delay)
-                            scrPauseOptionsInput(pause_options_index, _accept_press, _back_press, H);
+                            scrPauseOptionsInput(pause_options_index, _accept_press, _back_press, _H_hold_input);
                         break;
                     
                     case 1:  // Keyboard keybinds
                         if(!pause_setting_key)
-                            pause_options_keyboard_index += V;
-                        pause_options_keyboard_index = clamp(pause_options_keyboard_index, 0, pause_options_keyboard_max_index-1);
-                        
-                        if(V != 0)
-                            audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+                            pause_options_keyboard_index += _V_hold_input;
+                            
+                        if(pause_options_keyboard_index &gt; pause_options_keyboard_max_index-1)
+                            pause_options_keyboard_index -= pause_options_keyboard_max_index;
+                        if(pause_options_keyboard_index &lt; 0)
+                            pause_options_keyboard_index += pause_options_keyboard_max_index;
                         
                         if(!pause_input_delay)
                             scrPauseKeyboardInput(pause_options_keyboard_index, _accept_press, _back_press);
@@ -669,11 +702,12 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                         
                     case 2:  // Controller keybinds
                         if(!pause_setting_key)
-                            pause_options_controller_index += V;
-                        pause_options_controller_index = clamp(pause_options_controller_index, 0, pause_options_controller_max_index-1);
-                        
-                        if(V != 0)
-                            audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+                            pause_options_controller_index += _V_hold_input;
+                            
+                        if(pause_options_controller_index &gt; pause_options_controller_max_index-1)
+                            pause_options_controller_index -= pause_options_controller_max_index;
+                        if(pause_options_controller_index &lt; 0)
+                            pause_options_controller_index += pause_options_controller_max_index;
                         
                         if(!pause_input_delay)
                             scrPauseControllerInput(pause_options_controller_index, _accept_press, _back_press);
@@ -685,7 +719,11 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                 var _prev_pause_exit_index = pause_exit_index;
                 if(pause_exit_protocol == -1)
                     pause_exit_index += V;
-                pause_exit_index = clamp(pause_exit_index, 0, pause_exit_max_index-1);
+                    
+                if(pause_exit_index &gt; pause_exit_max_index-1)
+                    pause_exit_index -= pause_exit_max_index;
+                if(pause_exit_index &lt; 0)
+                    pause_exit_index += pause_exit_max_index;
                 
                 if(_prev_pause_exit_index != pause_exit_index)
                     audio_play_sound(sndAlexMenuSwitchOption, 0, false);

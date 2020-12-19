@@ -386,9 +386,7 @@ if(timer &lt;= intro_animation_length) {
     draw_alpha = scrAlexEaseOutSine(timer, 0, 1, intro_animation_length);
     box_pad_h = scrAlexEaseOutSine(timer, box_pad_h_start, box_pad_h_end, intro_animation_length);
     box_pad_v = scrAlexEaseOutSine(timer, box_pad_v_start, box_pad_v_end, intro_animation_length);
-}
-
-if(active) {
+} else {
     // Selection box that pops from the top and bottom of each save file
     if(selection_box_anim_timer &lt;= selection_box_anim_length) {
         selection_box_w = scrAlexEaseOutElastic(selection_box_anim_timer, selection_box_start_w, selection_box_end_w, selection_box_anim_length);

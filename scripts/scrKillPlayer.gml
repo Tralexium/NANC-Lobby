@@ -33,6 +33,12 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
             var part = scrAlexMakeParticle(x, y, 100, sprAlexPlayerBloodSplatter, .4, 0, 0, false, false, false);
                 part.end_on_last_frame = true;
                 part.depth = -999;
+                
+            if(!instance_exists(objAlexLobbyPlayer)) {
+                part.image_xscale = 2;
+                part.image_yscale = 2;
+            }
+                
             instance_destroy();
         }
         
