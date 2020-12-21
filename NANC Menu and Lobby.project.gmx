@@ -331,8 +331,12 @@
         <sprite>sprites\sprAlexCameraClamper</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
-      <sprite>sprites\sprAlexBlockSprite</sprite>
+      <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
+      <sprite>sprites\sprAlexOpaqueSpikeD</sprite>
+      <sprite>sprites\sprAlexOpaqueSpikeR</sprite>
+      <sprite>sprites\sprAlexOpaqueSpikeL</sprite>
       <sprite>sprites\sprAlexOpaqueBlock</sprite>
+      <sprite>sprites\sprAlexBlockSprite</sprite>
       <sprite>sprites\sprAlexBlockWithoutShadow</sprite>
       <sprite>sprites\sprAlexShadowBlock</sprite>
       <sprite>sprites\sprAlexIceBlockSprite</sprite>
@@ -737,8 +741,13 @@
       <objects name="Star Stages">
         <object>objects\objAlexStarStageCam</object>
         <object>objects\objAlexCameraClamper</object>
+        <object>objects\objAlexShadowSpike</object>
+        <object>objects\objAlexShadowSpikeU</object>
+        <object>objects\objAlexShadowSpikeD</object>
+        <object>objects\objAlexShadowSpikeR</object>
+        <object>objects\objAlexShadowSpikeL</object>
         <object>objects\objAlexStarStageBG</object>
-        <object>objects\objAlexOutlineBlockRenderer</object>
+        <object>objects\objAlexObstacleRenderer</object>
       </objects>
       <object>objects\objStarzorSign</object>
     </objects>

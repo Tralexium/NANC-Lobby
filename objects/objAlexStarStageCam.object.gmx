@@ -125,7 +125,7 @@ if(_exceeded_check_dist) {
     instance_activate_object(objWorld);
     instance_activate_object(objAlexCameraClamper);
     instance_activate_object(objAlexStarStageBG);
-    instance_activate_object(objAlexOutlineBlockRenderer);
+    instance_activate_object(objAlexObstacleRenderer);
 }
 </string>
           </argument>

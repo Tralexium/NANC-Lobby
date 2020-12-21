@@ -51,7 +51,7 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="objAlexStarStageBG" x="0" y="0" name="inst_FBB3A06A" locked="0" code="base_col_hsv[0] = 0.00; // Hue&#xA;base_col_hsv[1] = 0.5; // Saturation&#xA;base_col_hsv[2] = 0.85; // Value / Luminosity&#xA;hue_increment = 0.0235; // How much the hue changes each step&#xA;val_increment = 0.0; // How much the value/luminosity changes each step&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarStageBG" x="0" y="0" name="inst_FBB3A06A" locked="0" code="base_col_hsv[0] = 0.99; // Hue&#xA;base_col_hsv[1] = 0.5; // Saturation&#xA;base_col_hsv[2] = 1.35; // Value / Luminosity&#xA;hue_increment = 0.0175; // How much the hue changes each step&#xA;sat_increment = -0.02;&#xA;val_increment = 0.2; // How much the value/luminosity changes each step&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlayerStart" x="448" y="384" name="inst_BA0BEEED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarStageCam" x="32" y="0" name="inst_B3294691" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="320" y="416" name="inst_ED607A06" locked="0" code="" scaleX="18" scaleY="2" colour="4294967295" rotation="0"/>
@@ -60,7 +60,7 @@
     <instance objName="objAlexBlockWithShadow" x="512" y="544" name="inst_03376375" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="128" y="512" name="inst_6DE2F17D" locked="0" code="" scaleX="4" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="192" y="576" name="inst_0B28060A" locked="0" code="" scaleX="14" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexOutlineBlockRenderer" x="0" y="32" name="inst_8F24ED47" locked="0" code="block_texture_sprite = sprStarLevel4BlockTexture;&#xA;texture_h_spd = 0.5;&#xA;texture_v_spd = 0.0;&#xA;outline_size = 2;&#xA;outline_col[0] = 20 / 255;  // R (0-1)&#xA;outline_col[1] = 24 / 255;  // G (0-1)&#xA;outline_col[2] = 46 / 255;  // B (0-1)&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexObstacleRenderer" x="0" y="32" name="inst_8F24ED47" locked="0" code="block_texture_sprite = sprStarLevel4BlockTexture;&#xA;texture_h_spd = 0.5;&#xA;texture_v_spd = 0.0;&#xA;outline_size = 2;&#xA;outline_col[0] = 20 / 255;  // R (0-1)&#xA;outline_col[1] = 24 / 255;  // G (0-1)&#xA;outline_col[2] = 46 / 255;  // B (0-1)&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexCameraClamper" x="128" y="0" name="inst_B3F0CF5F" locked="0" code="" scaleX="13.5" scaleY="6.5" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="576" y="288" name="inst_D537BF7B" locked="0" code="" scaleX="18" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="320" y="160" name="inst_158E243D" locked="0" code="" scaleX="18" scaleY="2" colour="4294967295" rotation="0"/>
