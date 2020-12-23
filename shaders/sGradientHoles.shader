@@ -205,7 +205,7 @@ void main(){
         
         //calc HSV color
         float hue = u_base_col_hsv.x + ((depth*STEPS) * u_hue_increment) + u_hue_increment; //rainbow hue
-        float sat = u_base_col_hsv.y + ((depth*STEPS) * u_sat_increment);
+        float sat = u_base_col_hsv.y + ((depth*STEPS) * u_sat_increment) + u_sat_increment;
         float val = u_base_col_hsv.z + (depth*u_val_increment); //deeper is darker
         
        //add bevel

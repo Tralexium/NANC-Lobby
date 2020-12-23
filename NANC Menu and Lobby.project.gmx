@@ -153,6 +153,7 @@
     <sounds name="ALEX">
       <sound>sound\musAlexMenu</sound>
       <sound>sound\musAlexReceptionRoom</sound>
+      <sound>sound\musAlexGalleryRoom</sound>
       <sound>sound\musAlexFloor1</sound>
       <sound>sound\musAlexFloor2</sound>
       <sound>sound\musAlexFloor3</sound>
@@ -160,6 +161,12 @@
       <sound>sound\musAlexFloor5</sound>
       <sound>sound\musAlexFloor6</sound>
       <sound>sound\musAlexBonusFloor</sound>
+      <sound>sound\musStarStage2</sound>
+      <sound>sound\musStarStage3</sound>
+      <sound>sound\musStarStage4</sound>
+      <sound>sound\musStarStage5</sound>
+      <sound>sound\musStarStage6</sound>
+      <sound>sound\musFinalStage</sound>
       <sounds name="sfx">
         <sound>sound\sndAlexSaveBlocker</sound>
         <sound>sound\sndAlexSaveGreen</sound>
@@ -444,6 +451,7 @@
       <background>background\tAlexFloor6</background>
       <background>background\tAlexBonusFloor</background>
       <background>background\bAlexReceptionRoom</background>
+      <background>background\bAlexGalleryRoom</background>
       <background>background\bAlexFloor1</background>
       <background>background\bAlexFloor2</background>
       <background>background\bAlexFloor3</background>
@@ -780,6 +788,7 @@
       <room>rooms\rStarLevel3</room>
       <room>rooms\rStarLevel4</room>
       <room>rooms\rStarLevel5</room>
+      <room>rooms\rStarLevel6</room>
       <rooms name="Reception">
         <room>rooms\rLobbyReception</room>
         <room>rooms\rLobbyGallery</room>

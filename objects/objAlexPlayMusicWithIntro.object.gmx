@@ -82,6 +82,8 @@ if(_pos &gt; totalLength)
             <kind>1</kind>
             <string>if (BGM != -2)
     scrPlayMusic(BGM,false);
+    
+totalLength = introLength + loopLength;
 </string>
           </argument>
         </arguments>
