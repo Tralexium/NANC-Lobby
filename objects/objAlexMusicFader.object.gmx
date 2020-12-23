@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>/// Fade Music
 
+bubble_transition = true;
+
 old_song = global.currentMusic
 audio_sound_gain(global.currentMusic, 0, 2800);
 </string>
@@ -82,8 +84,10 @@ instance_destroy();
             <kind>1</kind>
             <string>/// Spawn the bubble transition
 
-audio_sound_gain(old_song, 1, 10);
-instance_create(0, 0, objAlexLobbyBubbleTransition);
+if(bubble_transition)
+    instance_create(0, 0, objAlexLobbyBubbleTransition);
+    
+audio_sound_gain(old_song, 1, 10);    
 scrStopMusic();
 scrSaveGame(true);
 alarm[0] = 25;

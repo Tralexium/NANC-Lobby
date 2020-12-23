@@ -321,6 +321,11 @@ ui_difficulty_length = difficulty/10;  // This is set in the 10th alarm
 with(objAlexLobbyPlayer)
     instance_destroy();  // so that the kid can spawn at the right pos
 
+with(instance_create(0, 0, objAlexStageIntro)) {
+    stage_title = other.stage_name;
+    maker_name = other.creator_name;
+}
+    
 room_goto(room_id)
 </string>
           </argument>
@@ -566,7 +571,8 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active &amp;&amp; !reading
     if(scrButtonCheckPressed(global.upButton)) {
         active = false;
         alarm[0] = 40;
-        instance_create(0, 0, objAlexMusicFader);
+        var obj = instance_create(0, 0, objAlexMusicFader);
+            obj.bubble_transition = false;
         audio_play_sound(sndAlexKidEnter, 0, false);
     }
     

@@ -679,6 +679,7 @@
         <object>objects\objAlexLobbyBubbleTransitionOut</object>
         <object>objects\objAlexLobbyTransitionBubble</object>
         <object>objects\objAlexLobbyTransitionBubbleOut</object>
+        <object>objects\objAlexStageIntro</object>
         <object>objects\objAlexLobbyCam</object>
         <object>objects\objAlexMusicFader</object>
         <object>objects\objFancySecretItem</object>
