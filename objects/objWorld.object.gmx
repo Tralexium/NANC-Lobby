@@ -164,6 +164,30 @@ pause_exit_protocol = -1;  // 0: back to menu, 1: exit game
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Create the improved smoothing mode object
+
+if(!instance_exists(objImprovedSmoothingMode))
+    instance_create(0, 0, objImprovedSmoothingMode);
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="1">
       <action>
@@ -239,8 +263,8 @@ audio_pause_sound(global.currentMusic);
             <string>///game checks
 
 
-//set linear interpolation depending on what the current smoothing setting is
-texture_set_interpolation(global.smoothingMode);
+//set linear interpolation depending on what the current smoothing setting is [CHECK 3RD CREATE EVENT, THIS IS OUTDATED]
+//texture_set_interpolation(global.smoothingMode);
 
 //controller checks
 if (global.controllerEnabled &amp;&amp; global.controllerIndex != -1)

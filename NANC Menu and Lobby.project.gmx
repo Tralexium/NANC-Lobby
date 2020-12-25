@@ -676,6 +676,7 @@
     <objects name="ALEX">
       <objects name="Misc">
         <object>objects\objAlexPlayMusicWithIntro</object>
+        <object>objects\objImprovedSmoothingMode</object>
         <object>objects\objFloorInitializer</object>
         <object>objects\objAlexLobbyBubbleTransition</object>
         <object>objects\objAlexLobbyBubbleTransitionOut</object>

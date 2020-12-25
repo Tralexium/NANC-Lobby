@@ -123,6 +123,7 @@ if(_exceeded_check_dist) {
 
     // Always keep these active:
     instance_activate_object(objWorld);
+    instance_activate_object(objImprovedSmoothingMode);
     instance_activate_object(objAlexCameraClamper);
     instance_activate_object(objAlexStarStageBG);
     instance_activate_object(objAlexObstacleRenderer);
