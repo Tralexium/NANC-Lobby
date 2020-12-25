@@ -329,6 +329,7 @@
         <sprite>sprites\sprAlexMenuSaveCrown</sprite>
       </sprites>
       <sprites name="Star Levels">
+        <sprite>sprites\sprAlex3DFloor</sprite>
         <sprite>sprites\sprStarLevel1BlockTexture</sprite>
         <sprite>sprites\sprStarLevel2BlockTexture</sprite>
         <sprite>sprites\sprStarLevel3BlockTexture</sprite>
@@ -538,6 +539,7 @@
     <shader type="GLSLES">shaders\sStarLevelBlocks.shader</shader>
     <shader type="GLSLES">shaders\sRainbowAura.shader</shader>
     <shader type="GLSLES">shaders\sGradientHoles.shader</shader>
+    <shader type="GLSLES">shaders\s3DFloor.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -747,6 +749,9 @@
           <object>objects\objControllerMenu_new</object>
         </objects>
       </objects>
+      <objects name="Star Floor">
+        <object>objects\obj3DFloor</object>
+      </objects>
       <objects name="Star Stages">
         <object>objects\objAlexStarStageCam</object>
         <object>objects\objAlexCameraClamper</object>
@@ -802,6 +807,7 @@
         <room>rooms\rLobbyFloor5</room>
         <room>rooms\rLobbyFloor6</room>
         <room>rooms\rLobbyBonusFloor</room>
+        <room>rooms\rStarFloor</room>
       </rooms>
     </rooms>
   </rooms>
