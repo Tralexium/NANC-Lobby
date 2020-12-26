@@ -42,7 +42,7 @@ background_vspeed[0] = 0</code>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="objAlexLobbyCam" xview="0" yview="0" wview="400" hview="304" xport="0" yport="0" wport="800" hport="608" hborder="400" vborder="304" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="" xview="0" yview="0" wview="400" hview="304" xport="0" yport="0" wport="800" hport="608" hborder="400" vborder="304" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -59,7 +59,11 @@ background_vspeed[0] = 0</code>
     <instance objName="objBlock" x="0" y="-32" name="inst_821A4DB5" locked="0" code="" scaleX="37.5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="1200" y="-32" name="inst_0C934673" locked="0" code="" scaleX="1.54838705062866" scaleY="51" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="-48" y="-32" name="inst_DA6A5B21" locked="0" code="" scaleX="1.5" scaleY="51" colour="4294967295" rotation="0"/>
-    <instance objName="obj3DFloor" x="624" y="1472" name="inst_65C8F8DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj3DFloor" x="464" y="1488" name="inst_65C8F8DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarStageBG" x="464" y="1504" name="inst_F96AFF11" locked="0" code="base_col_hsv[0] = 0.7; // Hue&#xA;base_col_hsv[1] = 0.7; // Saturation&#xA;base_col_hsv[2] = 0.2; // Value / Luminosity&#xA;hue_increment = -0.015; // How much the hue changes each step&#xA;sat_increment = 0.04; // How much the sat changes each step&#xA;val_increment = 0.35; // How much the value/luminosity changes each step&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarStageCam" x="512" y="1456" name="inst_A89C75B2" locked="0" code="disable_objects = false;&#xA;snapSpd = 0.4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexFallingStarSpawner" x="560" y="1472" name="inst_157C6029" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexIdleStarGenerator" x="576" y="1472" name="inst_B9A54DEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

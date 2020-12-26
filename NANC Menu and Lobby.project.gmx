@@ -330,6 +330,15 @@
       </sprites>
       <sprites name="Star Levels">
         <sprite>sprites\sprAlex3DFloor</sprite>
+        <sprite>sprites\sprAlex3DFloorSuns</sprite>
+        <sprite>sprites\sprAlex3DFloorSunGlow</sprite>
+        <sprite>sprites\sprAlexFallingStar</sprite>
+        <sprite>sprites\sprAlexIdleStar1</sprite>
+        <sprite>sprites\sprAlexIdleStar2</sprite>
+        <sprite>sprites\sprAlexIdleStar3</sprite>
+        <sprite>sprites\sprAlexStarFlash1</sprite>
+        <sprite>sprites\sprAlexStarFlash2</sprite>
+        <sprite>sprites\sprAlexStarFlash3</sprite>
         <sprite>sprites\sprStarLevel1BlockTexture</sprite>
         <sprite>sprites\sprStarLevel2BlockTexture</sprite>
         <sprite>sprites\sprStarLevel3BlockTexture</sprite>
@@ -752,6 +761,10 @@
       </objects>
       <objects name="Star Floor">
         <object>objects\obj3DFloor</object>
+        <object>objects\objAlexFallingStarSpawner</object>
+        <object>objects\objAlexIdleStarGenerator</object>
+        <object>objects\objAlexIdleStar</object>
+        <object>objects\objAlexFallingStar</object>
       </objects>
       <objects name="Star Stages">
         <object>objects\objAlexStarStageCam</object>
