@@ -161,6 +161,7 @@
       <sound>sound\musAlexFloor5</sound>
       <sound>sound\musAlexFloor6</sound>
       <sound>sound\musAlexBonusFloor</sound>
+      <sound>sound\musAlexStarHub</sound>
       <sound>sound\musStarStage2</sound>
       <sound>sound\musStarStage3</sound>
       <sound>sound\musStarStage4</sound>
@@ -339,6 +340,9 @@
         <sprite>sprites\sprAlexStarFlash1</sprite>
         <sprite>sprites\sprAlexStarFlash2</sprite>
         <sprite>sprites\sprAlexStarFlash3</sprite>
+        <sprite>sprites\sprAlexStarDoor</sprite>
+        <sprite>sprites\sprAlexStarDoorFlash</sprite>
+        <sprite>sprites\sprAlexStarTransition</sprite>
         <sprite>sprites\sprStarLevel1BlockTexture</sprite>
         <sprite>sprites\sprStarLevel2BlockTexture</sprite>
         <sprite>sprites\sprStarLevel3BlockTexture</sprite>
@@ -720,6 +724,7 @@
       <objects name="Doors">
         <object>objects\objAlexLobbyStageDoor</object>
         <object>objects\objAlexLobbyGrandDoor</object>
+        <object>objects\objAlexLobbyStarStageDoor</object>
         <object>objects\objAlexLobbyReceptionDoor</object>
         <object>objects\objAlexLobbyElevator</object>
         <object>objects\objAlexDoorTag</object>

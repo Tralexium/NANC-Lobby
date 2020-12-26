@@ -30,6 +30,7 @@
 snapSpd = 0.166; //determines how fast the camera snaps to the player (higher numbers follow the player slower), can be changed in creation code
 check_dist = 96; // How far the camera must travel before activating certain objects
 region_margin = 256; // How much leeway do we want to add in our object deactivation region
+target_obj = objPlayer;
 target_x = 0;
 target_y = 0;
 min_x = 0;
@@ -38,10 +39,10 @@ max_x = room_width - view_wview[0];
 max_y = room_height - view_hview[0];
 disable_objects = true;
 
-if (instance_exists(objPlayer))
+if (instance_exists(target_obj))
 {
-    target_x = objPlayer.x - view_wview[0]/2;
-    target_y = objPlayer.y - view_hview[0]/2;
+    target_x = target_obj.x - view_wview[0]/2;
+    target_y = target_obj.y - view_hview[0]/2;
     event_user(0);
     view_xview[0] = target_x;
     view_yview[0] = target_y;
@@ -73,10 +74,10 @@ opt_previous_y = view_yview[0];
             <kind>1</kind>
             <string>/// Manipulate the cam coords
 
-if (instance_exists(objPlayer))
+if (instance_exists(target_obj))
 {
-    target_x = objPlayer.x - view_wview[0]/2;
-    target_y = objPlayer.y - view_hview[0]/2;
+    target_x = target_obj.x - view_wview[0]/2;
+    target_y = target_obj.y - view_hview[0]/2;
     event_user(0);
     
     view_xview[0] = lerp(view_xview[0], target_x, snapSpd);

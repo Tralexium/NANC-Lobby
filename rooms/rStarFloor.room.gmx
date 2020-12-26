@@ -54,7 +54,7 @@ background_vspeed[0] = 0</code>
   <instances>
     <instance objName="objFloorInitializer" x="464" y="1472" name="inst_0B484770" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlayerStart" x="584" y="1536" name="inst_E6AE6AC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objPlayMusic" x="480" y="1456" name="inst_D49D710A" locked="0" code="BGM = musAlexFloor1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlayMusic" x="480" y="1456" name="inst_D49D710A" locked="0" code="BGM = musAlexStarHub;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="0" y="1568" name="inst_09660F7A" locked="0" code="" scaleX="37.5" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="0" y="-32" name="inst_821A4DB5" locked="0" code="" scaleX="37.5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="1200" y="-32" name="inst_0C934673" locked="0" code="" scaleX="1.54838705062866" scaleY="51" colour="4294967295" rotation="0"/>
@@ -64,8 +64,25 @@ background_vspeed[0] = 0</code>
     <instance objName="objAlexStarStageCam" x="512" y="1456" name="inst_A89C75B2" locked="0" code="disable_objects = false;&#xA;snapSpd = 0.4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexFallingStarSpawner" x="560" y="1472" name="inst_157C6029" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexIdleStarGenerator" x="576" y="1472" name="inst_B9A54DEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="704" y="1456" name="inst_7BAA9EAD" locked="0" code="" scaleX="14" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyStarStageDoor" x="816" y="1424" name="inst_F6EF64CB" locked="0" code="room_id = rStarLevel2;&#xA;stage_name = &quot;Star Stage 2&quot;;&#xA;creator_name = &quot;Your Mom&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
-  <tiles/>
+  <tiles>
+    <tile bgName="bAllTiles" x="704" y="1456" w="32" h="32" xo="32" yo="32" id="10017534" name="inst_B6E4A3CE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="736" y="1456" w="32" h="32" xo="32" yo="32" id="10017535" name="inst_2ED0EEF0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="768" y="1456" w="32" h="32" xo="32" yo="32" id="10017536" name="inst_FBAB447E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="800" y="1456" w="32" h="32" xo="32" yo="32" id="10017537" name="inst_E26FA7D6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="832" y="1456" w="32" h="32" xo="32" yo="32" id="10017538" name="inst_1608A5BE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="864" y="1456" w="32" h="32" xo="32" yo="32" id="10017539" name="inst_78015879" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="896" y="1456" w="32" h="32" xo="32" yo="32" id="10017540" name="inst_DE07A14D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="704" y="1488" w="32" h="32" xo="32" yo="32" id="10017541" name="inst_F23E9B4A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="736" y="1488" w="32" h="32" xo="32" yo="32" id="10017542" name="inst_A18FAB7B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="768" y="1488" w="32" h="32" xo="32" yo="32" id="10017543" name="inst_4ABAE998" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="800" y="1488" w="32" h="32" xo="32" yo="32" id="10017544" name="inst_C1DEB4E0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="832" y="1488" w="32" h="32" xo="32" yo="32" id="10017545" name="inst_ACCB7ADD" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="864" y="1488" w="32" h="32" xo="32" yo="32" id="10017546" name="inst_EFB14452" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bAllTiles" x="896" y="1488" w="32" h="32" xo="32" yo="32" id="10017547" name="inst_489B7EEE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+  </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
   <PhysicsWorldLeft>0</PhysicsWorldLeft>
