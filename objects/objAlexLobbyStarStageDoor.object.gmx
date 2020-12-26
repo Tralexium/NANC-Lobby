@@ -74,6 +74,7 @@ flash_length = 30;
             <kind>1</kind>
             <string>/// Start the flash animation
 
+audio_play_sound(sndAlexStarDoorFlash, 0, false)
 flash_expand = true;
 alarm[1] = flash_length + 15;
 </string>

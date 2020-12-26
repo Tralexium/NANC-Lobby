@@ -208,6 +208,7 @@
         <sound>sound\sndAlexLobbyWaterSplashOut1</sound>
         <sound>sound\sndAlexLobbyWaterSplashOut2</sound>
         <sound>sound\sndAlexLobbyWaterSplashOut3</sound>
+        <sound>sound\sndAlexStarDoorFlash</sound>
       </sounds>
     </sounds>
   </sounds>
