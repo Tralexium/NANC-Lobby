@@ -28,7 +28,7 @@
             <string>/// Init vars and snap to player
 
 snapSpd = 0.166; //determines how fast the camera snaps to the player (higher numbers follow the player slower), can be changed in creation code
-check_dist = 96; // How far the camera must travel before activating certain objects
+check_dist = 128; // How far the camera must travel before activating certain objects
 region_margin = 256; // How much leeway do we want to add in our object deactivation region
 target_obj = objPlayer;
 target_x = 0;
@@ -39,6 +39,33 @@ max_x = room_width - view_wview[0];
 max_y = room_height - view_hview[0];
 disable_objects = true;
 
+alarm[0] = 1; // Snap to the target object
+opt_previous_x = view_xview[0];
+opt_previous_y = view_yview[0];
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Snap to the target object
+
 if (instance_exists(target_obj))
 {
     target_x = target_obj.x - view_wview[0]/2;
@@ -46,6 +73,7 @@ if (instance_exists(target_obj))
     event_user(0);
     view_xview[0] = target_x;
     view_yview[0] = target_y;
+    show_debug_message("snapped")
 }
 
 opt_previous_x = view_xview[0];
@@ -80,8 +108,8 @@ if (instance_exists(target_obj))
     target_y = target_obj.y - view_hview[0]/2;
     event_user(0);
     
-    view_xview[0] = lerp(view_xview[0], target_x, snapSpd);
-    view_yview[0] = lerp(view_yview[0], target_y, snapSpd);
+    view_xview[0] = round(lerp(view_xview[0], target_x, snapSpd));
+    view_yview[0] = round(lerp(view_yview[0], target_y, snapSpd));
 }
 </string>
           </argument>
@@ -153,6 +181,11 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
           <argument>
             <kind>1</kind>
             <string>/// Clamp cam coords
+
+if(room == rStarFloor) {
+    max_x = room_width - view_wview[0];
+    max_y = room_height - view_hview[0];
+}
 
 target_x = clamp(target_x, min_x, max_x);
 target_y = clamp(target_y, min_y, max_y);

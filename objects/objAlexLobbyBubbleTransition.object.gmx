@@ -30,7 +30,7 @@
 var shift_start_x = false
 
 for(var yy=0; yy&lt;11; yy++) {
-    for(var xx=-128; xx&lt;9; xx++) {
+    for(var xx=-9; xx&lt;9; xx++) {
         instance_create(xx*64+(shift_start_x*32), yy*32, objAlexLobbyTransitionBubble)
     }
     shift_start_x = !shift_start_x;

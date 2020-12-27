@@ -260,8 +260,8 @@ if(!active) {
     with(objAlexStarStageCam) {
         target_obj = other.id;
     }
-    view_wview[0] = lerp(view_wview[0], 300, .1);
-    view_hview[0] = lerp(view_hview[0], 228, .1);
+    view_wview[0] = round(lerp(view_wview[0], 300, .1));
+    view_hview[0] = round(lerp(view_hview[0], 228, .1));
 }
 </string>
           </argument>
@@ -369,7 +369,7 @@ if(flash_expand) {
     _anim_progress = clamp(flash_timer - (flash_length / 2), 0, flash_length / 2);
     flash_width = scrAlexEaseInSine(_anim_progress, 2, 300, flash_length / 2);
     
-    draw_sprite_ext(sprAlexStarDoorFlash, 0, 400, 304, flash_width, flash_height, 0, -1, 1);
+    draw_sprite_ext(sprAlexStarDoorFlash, 0, 404, 304, flash_width, flash_height, 0, -1, 1);
 }
 </string>
           </argument>

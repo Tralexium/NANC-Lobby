@@ -350,6 +350,7 @@
         <sprite>sprites\sprStarLevel4BlockTexture</sprite>
         <sprite>sprites\sprStarLevel5BlockTexture</sprite>
         <sprite>sprites\sprStarLevel6BlockTexture</sprite>
+        <sprite>sprites\sprFinalStarLevelTexture</sprite>
         <sprite>sprites\sprAlexCameraClamper</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>

@@ -426,9 +426,9 @@ draw_squish_y = lerp(draw_squish_y, 0, .2);
 
 // Check if the speed orb is in effect
 if(global.lobbyPlayerSpeedUp) {
-    maxSpeed = 5;
+    maxSpeed = 6;
 } else {
-    maxSpeed = 3;
+    maxSpeed = 4;
 }
 
 // Water effects

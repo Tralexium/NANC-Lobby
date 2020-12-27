@@ -28,6 +28,8 @@
             <string>/// Innit vars
 
 image_speed = 0.3;
+image_xscale = random_range(0.5, 1);
+image_yscale = image_xscale;
 sprite_index = choose(sprAlexIdleStar1, sprAlexIdleStar2, sprAlexIdleStar3);
 flash_index = -1;
 flash_img_index = 0;
@@ -35,7 +37,7 @@ flash_image_spd = 0.5;
 flash_max_img_index = 0;
 
 timer = irandom(500);
-flash_frequency = 300;
+flash_frequency = 400;
 bg_spd_div = 2;
 </string>
           </argument>

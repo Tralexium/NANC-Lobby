@@ -28,9 +28,9 @@
             <string>/// Spawn all the stars in the room
 
 // Make sure the stars are set in the same order
-random_set_seed(42);
+random_set_seed(69);
 
-repeat(150) {
+repeat(300) {
     var _x = random_range(0, room_width);
     var _y = random_range(0, room_height);
     instance_create(_x, _y, objAlexIdleStar);

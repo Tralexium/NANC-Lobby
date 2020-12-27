@@ -28,10 +28,13 @@
             <string>/// Init vars
 
 // Change these
-room_id = rLobbyFloor1;
+room_id = rStarFloor;
+spawn_x = -1;
+spawn_y = -1;
 
+stages_required = 6;
 door_locked = true;
-if(global.totalStagesCleared &gt;= global.totalNumberOfStages)
+if(global.totalStagesCleared &gt;= stages_required)
     door_locked = false;
 
 image_speed = 0;
@@ -156,8 +159,15 @@ surface_free(door_surf);
             <kind>1</kind>
             <string>/// Go to the appropriate room
 
-with(objAlexLobbyPlayer)
-    instance_destroy();  // so that the kid can spawn at the right pos
+if(spawn_x == -1 &amp;&amp; spawn_y == -1) {
+    with(objAlexLobbyPlayer)
+        instance_destroy();  // so that the kid can spawn at the right pos
+} else {
+    with(objAlexLobbyPlayer) {
+        x = other.spawn_x;
+        y = other.spawn_y;
+    }
+}
 
 room_goto(room_id)
 </string>
@@ -300,8 +310,8 @@ if(!active) {
             <string>/// Zoom in camera
 
 if(!active) {
-    view_wview[0] = lerp(view_wview[0], 300, .1);
-    view_hview[0] = lerp(view_hview[0], 228, .1);
+    view_wview[0] = round(lerp(view_wview[0], 300, .1));
+    view_hview[0] = round(lerp(view_hview[0], 228, .1));
 }
 </string>
           </argument>
@@ -491,7 +501,7 @@ var _text_x = ui_x - 8;
 var _text_y = ui_y;
 var _text_col = $e8e0df;
 var _outline_col = $2e1814;
-var _text = ": " + string(global.totalStagesCleared) + "/" + string(global.totalNumberOfStages);
+var _text = ": " + string(global.totalStagesCleared) + "/" + string(stages_required);
 draw_set_font(fLobbySmall)
 scrDrawTextSquareOutline(_text_x, _text_y, _text, _text_col, _outline_col, 1, fa_left, fa_bottom);
 

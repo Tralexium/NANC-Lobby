@@ -180,7 +180,7 @@ for(var i = 0; i &lt; ceil(room_width/256) + 2; i++) {
 
 
 // Draw floor
-floor_move_amnt = view_xview[0] / floor_z_dist;
+floor_move_amnt = (view_xview[0] / floor_z_dist);
 var _spr_h = sprite_get_height(sprAlex3DFloor);
 var _spr_x = floor_move_amnt mod _spr_h;
 if(!surface_exists(surf)) {
