@@ -209,6 +209,12 @@
         <sound>sound\sndAlexLobbyWaterSplashOut2</sound>
         <sound>sound\sndAlexLobbyWaterSplashOut3</sound>
         <sound>sound\sndAlexStarDoorFlash</sound>
+        <sound>sound\sndAlexDialogStart</sound>
+        <sound>sound\sndAlexDialogNext</sound>
+        <sound>sound\sndAlexDialogEnd</sound>
+        <sound>sound\sndAlexDialogSoundDefault</sound>
+        <sound>sound\sndAlexDialogSoundBilly</sound>
+        <sound>sound\sndAlexDialogSoundBartender</sound>
       </sounds>
     </sounds>
   </sounds>
@@ -426,6 +432,8 @@
       <sprite>sprites\sprAlexSaveFlare</sprite>
       <sprite>sprites\sprAlexSaveToast</sprite>
       <sprite>sprites\sprAlexSaveBlocker</sprite>
+      <sprite>sprites\sprAlexNPCDialogIcon</sprite>
+      <sprite>sprites\sprAlexNPCDialogNextIcon</sprite>
       <sprites name="Door Stage Previews">
         <sprite>sprites\sprAlexHeatHazeDistortionTex</sprite>
         <sprite>sprites\sprAllStagePreviews</sprite>
@@ -704,6 +712,7 @@
         <object>objects\objSecretCollectedIndicator</object>
         <object>objects\objAlexReviewBook</object>
         <object>objects\objAlexSpeedOrb</object>
+        <object>objects\objAlexNPC</object>
         <object>objects\objAlexDialogBox</object>
       </objects>
       <objects name="Player">

@@ -28,10 +28,13 @@
             <string>/// Init vars
 
 image_speed = 0.3;
+audio_play_sound(sndAlexDialogStart, 0, false);
 
 // Add text into this list
 dialog_list = ds_list_create();
 
+npc_name = "NPC Name goes here";
+letter_sfx = sndAlexDialogSoundDefault;
 confirm_button = global.jumpButton;
 dialog_index = -1;
 timer = 0;
@@ -41,7 +44,7 @@ box_center_x = display_get_gui_width()/2;
 box_center_y = 100;
 box_width = 0;
 box_height = 0;
-box_target_width = 600;
+box_target_width = 500;
 box_target_height = 150;
 box_add_bottom_height = 0; // Makes sure the text fits
 box_alpha = 0;
@@ -53,10 +56,13 @@ text_sep = -1;
 text_width = box_target_width - (text_padding*2);
 text_font = fLobbySmall24;
 text_color = $e8fff5;
+npc_name_color = $b8a44f;
 can_talk = false;
 talking = false;
+end_reached = false;
 letter_delay = 2;
-letter_sfx = sndJump; // Change later
+letter_sfx_delay = 4;
+delay_between_dialogs = 10;
 </string>
           </argument>
         </arguments>
@@ -87,6 +93,31 @@ ds_list_destroy(dialog_list);
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Move to the next paragraph
+
+talking = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -108,19 +139,20 @@ ds_list_destroy(dialog_list);
 
 var _list_size = ds_list_size(dialog_list);
 var _current_dialog = dialog_list[| dialog_index];
-var _end_reached = dialog_index &gt;= _list_size;
 
+end_reached = dialog_index &gt;= _list_size;
 timer++;
     
 if(can_talk) {
     // Dialog
-    if(scrButtonCheckPressed(confirm_button) &amp;&amp; !_end_reached) {
+    if(scrButtonCheckPressed(confirm_button) &amp;&amp; !end_reached &amp;&amp; !alarm[0]) {
         current_letter = 0;
         
         if(!talking) {
-            talking = true;
+            alarm[0] = delay_between_dialogs;
             displayed_text = "";
             dialog_index++;
+            audio_play_sound(sndAlexDialogNext, 0, false);
         } else {
             talking = false;
             displayed_text = _current_dialog;            
@@ -130,8 +162,8 @@ if(can_talk) {
     // Resize the box vertically based on the dialog height
     draw_set_font(text_font);
     var _text_height = string_height_ext(displayed_text, text_sep, text_width);
-    if(_text_height &gt; box_target_height - text_padding*2) {
-        box_add_bottom_height = _text_height - (box_target_height - text_padding*2);
+    if(_text_height &gt; box_target_height - text_padding*2.5) {
+        box_add_bottom_height = _text_height - (box_target_height - text_padding*2.5);
     } else {
         box_add_bottom_height = 0;
     }
@@ -150,9 +182,9 @@ if(can_talk) {
     }
 }
 
-_end_reached = dialog_index &gt;= _list_size;
+end_reached = dialog_index &gt;= _list_size;
 
-if(!_end_reached) {
+if(!end_reached) {
     if(talking) {
         // Add letters to the dialog
         _current_dialog = dialog_list[| dialog_index];
@@ -161,6 +193,8 @@ if(!_end_reached) {
             if(timer mod letter_delay == 0) {
                 current_letter++;
                 displayed_text += string_char_at(_current_dialog, current_letter);
+            }
+            if(timer mod letter_sfx_delay == 0) {
                 audio_stop_sound(letter_sfx);
                 audio_play_sound(letter_sfx, 0, false);
             }
@@ -171,6 +205,9 @@ if(!_end_reached) {
 } else {
     // Remove the box and destroy the object
     if(box_animation_timer &gt; 0) {
+        if(box_animation_timer == box_animation_length)
+            audio_play_sound(sndAlexDialogEnd, 0, false);
+        
         box_animation_timer--;
         
         box_alpha = scrAlexEaseOutSine(box_animation_timer, 0, 1, box_animation_length);
@@ -216,14 +253,23 @@ draw_set_alpha(box_alpha);
 draw_roundrect_ext(_upper_x, _upper_y, _lower_x, _lower_y, 30, 30, false);
 draw_set_alpha(1);
 
-
-// Dialog
-draw_set_font(text_font);
-draw_set_colour(text_color);
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-
-draw_text_ext(_upper_x + text_padding, _upper_y + text_padding, displayed_text, text_sep, text_width);
+if(can_talk &amp;&amp; !end_reached) {
+    // NPC Name
+    draw_set_font(text_font);
+    draw_set_colour(npc_name_color);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    
+    draw_text(_upper_x + text_padding, _upper_y + text_padding - 4, npc_name)
+    
+    // Dialog
+    draw_set_colour(text_color);
+    draw_text_ext(_upper_x + text_padding, _upper_y + text_padding*2 + 4, displayed_text, text_sep, text_width);
+    
+    // Next icon
+    if(!talking &amp;&amp; !alarm[0])
+        draw_sprite(sprAlexNPCDialogNextIcon, timer/12, _lower_x - 16, _lower_y - 16);
+}
 </string>
           </argument>
         </arguments>

@@ -3,8 +3,8 @@
   <caption></caption>
   <width>2000</width>
   <height>456</height>
-  <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <vsnap>2</vsnap>
+  <hsnap>2</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -84,6 +84,7 @@ background_vspeed[0] = -.5;</code>
     <instance objName="objAlexShadowBlock" x="1328" y="128" name="inst_8971F4DA" locked="0" code="" scaleX="1" scaleY="17" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowBlock" x="1536" y="160" name="inst_D894D0F1" locked="0" code="" scaleX="1" scaleY="15" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowBlock" x="1808" y="160" name="inst_E4FCA9B6" locked="0" code="" scaleX="1" scaleY="15" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1126" y="334" name="inst_5ACCA22D" locked="0" code="npc_name = &quot;Billy&quot;;&#xA;idle_sprite = sprPlayerIdle;&#xA;talking_sprite = sprPlayerRunning;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;Hey there, take a seat at this fine couch.&quot;&#xA;dialog_list[| 1] = &quot;You won't regret it ;)&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexReception" x="496" y="368" w="32" h="32" xo="240" yo="128" id="10016890" name="inst_6568E5F4" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
