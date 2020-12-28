@@ -32,9 +32,9 @@ room_id = rStarFloor;
 spawn_x = -1;
 spawn_y = -1;
 
-stages_required = 6;
+secrets_required = 10;
 door_locked = true;
-if(global.totalStagesCleared &gt;= stages_required)
+if(global.totalSecretsFound &gt;= secrets_required)
     door_locked = false;
 
 image_speed = 0;
@@ -489,19 +489,19 @@ if(colliding &amp;&amp; active)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw how many stages are cleared
+            <string>/// Draw how many secrets are collected
 
 draw_set_alpha(ui_alpha);
 
 var _check_x = ui_x - 20;
 var _check_y = ui_y - 8;
-draw_sprite(sprAlexLobbyStageDoorCleared, 0, _check_x, _check_y);
+draw_sprite(sprAlexMediumSecretIcon, 0, _check_x, _check_y);
 
 var _text_x = ui_x - 8;
 var _text_y = ui_y;
 var _text_col = $e8e0df;
 var _outline_col = $2e1814;
-var _text = ": " + string(global.totalStagesCleared) + "/" + string(stages_required);
+var _text = ": " + string(global.totalSecretsFound) + "/" + string(secrets_required);
 draw_set_font(fLobbySmall)
 scrDrawTextSquareOutline(_text_x, _text_y, _text, _text_col, _outline_col, 1, fa_left, fa_bottom);
 
