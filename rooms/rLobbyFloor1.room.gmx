@@ -4,7 +4,7 @@
   <width>1200</width>
   <height>456</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -95,8 +95,9 @@ background_vspeed[0] = 0</code>
     <instance objName="objPlayMusic" x="16" y="-32" name="inst_D49D710A" locked="0" code="BGM = musAlexFloor1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyElevator" x="192" y="352" name="inst_AA143FD1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexSpeedOrb" x="272" y="384" name="inst_14B62E5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSave_new" x="536" y="304" name="inst_E0EC72F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objSaveBlocker_new" x="720" y="304" name="inst_D618F202" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="96" y="384" name="inst_D3DF0091" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC8Idle;&#xA;talking_sprite = sprGenericNPC8Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="816" y="384" name="inst_F4B33B6A" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC9Idle;&#xA;talking_sprite = sprGenericNPC9Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1072" y="176" name="inst_AFC40AB1" locked="0" code="npc_name = &quot;Boshy&quot;;&#xA;idle_sprite = sprSpecialNPCBoshyIdle;&#xA;talking_sprite = sprSpecialNPCBoshyTalk;&#xA;letter_sfx = sndAlexDialogSoundBoshy;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexFloor1" x="48" y="208" w="16" h="16" xo="96" yo="32" id="10002690" name="inst_4AECD382" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

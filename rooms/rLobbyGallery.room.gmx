@@ -157,7 +157,9 @@ background_vspeed[0] = -.5;</code>
     <instance objName="objAlexReviewBook" x="744" y="288" name="inst_0C3284BD" locked="0" code="stage_index = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexReviewBook" x="840" y="288" name="inst_0A634919" locked="0" code="stage_index = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexReviewBook" x="936" y="288" name="inst_F3071E7D" locked="0" code="stage_index = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexSpeedOrb" x="256" y="1328" name="inst_64DA4119" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexSpeedOrb" x="192" y="1328" name="inst_64DA4119" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="400" y="1360" name="inst_43856A13" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC7Idle;&#xA;talking_sprite = sprGenericNPC7Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1104" y="1360" name="inst_EF2012F8" locked="0" code="npc_name = &quot;Wolsk&quot;;&#xA;idle_sprite = sprSpecialNPCWolskIdle;&#xA;talking_sprite = sprSpecialNPCWolskTalk;&#xA;letter_sfx = sndAlexDialogSoundWolsk;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexReception" x="536" y="304" w="32" h="16" xo="80" yo="48" id="10016355" name="inst_403CF366" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

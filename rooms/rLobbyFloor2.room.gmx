@@ -150,6 +150,10 @@ background_vspeed[0] = .5</code>
     <instance objName="objPlayMusic" x="16" y="-32" name="inst_0207C49F" locked="0" code="BGM = musAlexFloor2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyElevator" x="768" y="464" name="inst_FA7D6273" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexSpeedOrb" x="704" y="432" name="inst_7A9B58D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1264" y="288" name="inst_9E9E424E" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC10Idle;&#xA;talking_sprite = sprGenericNPC10Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1136" y="512" name="inst_3FA3A4A5" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC14Idle;&#xA;talking_sprite = sprGenericNPC14Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="80" y="384" name="inst_7CCB6EE9" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC15Idle;&#xA;talking_sprite = sprGenericNPC15Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1472" y="464" name="inst_014910C8" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprSpecialNPCSkullIdle;&#xA;talking_sprite = sprSpecialNPCSkullTalk;&#xA;letter_sfx = sndAlexDialogSoundSans;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexFloor2" x="1488" y="336" w="64" h="32" xo="208" yo="32" id="10004362" name="inst_398661C1" depth="10001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

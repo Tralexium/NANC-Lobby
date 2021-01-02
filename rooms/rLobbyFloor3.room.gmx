@@ -133,6 +133,9 @@ background_vspeed[0] = -.25</code>
     <instance objName="objAlexLeafSpawnerBlock" x="1456" y="240" name="inst_86A913F6" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyElevator" x="960" y="304" name="inst_490C40D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexSpeedOrb" x="1024" y="272" name="inst_77B7E941" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="800" y="336" name="inst_9D383F0E" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC11Idle;&#xA;talking_sprite = sprGenericNPC11Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1296" y="336" name="inst_CAF6D37C" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC12Idle;&#xA;talking_sprite = sprGenericNPC12Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="208" y="304" name="inst_AC2AB067" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC16Idle;&#xA;talking_sprite = sprGenericNPC16Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexFloor3" x="432" y="240" w="32" h="48" xo="208" yo="0" id="10006611" name="inst_545706C7" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

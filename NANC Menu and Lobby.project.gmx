@@ -214,6 +214,11 @@
         <sound>sound\sndAlexDialogEnd</sound>
         <sound>sound\sndAlexDialogSoundDefault</sound>
         <sound>sound\sndAlexDialogSoundBilly</sound>
+        <sound>sound\sndAlexDialogSoundSans</sound>
+        <sound>sound\sndAlexDialogSoundWolsk</sound>
+        <sound>sound\sndAlexDialogSoundBoshy</sound>
+        <sound>sound\sndAlexDialogSoundPiece</sound>
+        <sound>sound\sndAlexDialogSoundWolfie</sound>
         <sound>sound\sndAlexDialogSoundBartender</sound>
       </sounds>
     </sounds>
@@ -358,6 +363,84 @@
         <sprite>sprites\sprStarLevel6BlockTexture</sprite>
         <sprite>sprites\sprFinalStarLevelTexture</sprite>
         <sprite>sprites\sprAlexCameraClamper</sprite>
+      </sprites>
+      <sprites name="NPCs">
+        <sprites name="Generic">
+          <sprite>sprites\sprGenericNPC1Idle</sprite>
+          <sprite>sprites\sprGenericNPC1Talk</sprite>
+          <sprite>sprites\sprGenericNPC2Idle</sprite>
+          <sprite>sprites\sprGenericNPC2Talk</sprite>
+          <sprite>sprites\sprGenericNPC3Idle</sprite>
+          <sprite>sprites\sprGenericNPC3Talk</sprite>
+          <sprite>sprites\sprGenericNPC4Idle</sprite>
+          <sprite>sprites\sprGenericNPC4Talk</sprite>
+          <sprite>sprites\sprGenericNPC5Idle</sprite>
+          <sprite>sprites\sprGenericNPC5Talk</sprite>
+          <sprite>sprites\sprGenericNPC6Idle</sprite>
+          <sprite>sprites\sprGenericNPC6Talk</sprite>
+          <sprite>sprites\sprGenericNPC7Idle</sprite>
+          <sprite>sprites\sprGenericNPC7Talk</sprite>
+          <sprite>sprites\sprGenericNPC8Idle</sprite>
+          <sprite>sprites\sprGenericNPC8Talk</sprite>
+          <sprite>sprites\sprGenericNPC9Idle</sprite>
+          <sprite>sprites\sprGenericNPC9Talk</sprite>
+          <sprite>sprites\sprGenericNPC10Idle</sprite>
+          <sprite>sprites\sprGenericNPC10Talk</sprite>
+          <sprite>sprites\sprGenericNPC11Idle</sprite>
+          <sprite>sprites\sprGenericNPC11Talk</sprite>
+          <sprite>sprites\sprGenericNPC12Idle</sprite>
+          <sprite>sprites\sprGenericNPC12Talk</sprite>
+          <sprite>sprites\sprGenericNPC13Idle</sprite>
+          <sprite>sprites\sprGenericNPC13Talk</sprite>
+          <sprite>sprites\sprGenericNPC14Idle</sprite>
+          <sprite>sprites\sprGenericNPC14Talk</sprite>
+          <sprite>sprites\sprGenericNPC15Idle</sprite>
+          <sprite>sprites\sprGenericNPC15Talk</sprite>
+          <sprite>sprites\sprGenericNPC16Idle</sprite>
+          <sprite>sprites\sprGenericNPC16Talk</sprite>
+          <sprite>sprites\sprGenericNPC17Idle</sprite>
+          <sprite>sprites\sprGenericNPC17Talk</sprite>
+          <sprite>sprites\sprGenericNPC18Idle</sprite>
+          <sprite>sprites\sprGenericNPC18Talk</sprite>
+          <sprite>sprites\sprGenericNPC19Idle</sprite>
+          <sprite>sprites\sprGenericNPC19Talk</sprite>
+          <sprite>sprites\sprGenericNPC20Idle</sprite>
+          <sprite>sprites\sprGenericNPC20Talk</sprite>
+          <sprite>sprites\sprGenericNPC21Idle</sprite>
+          <sprite>sprites\sprGenericNPC21Talk</sprite>
+          <sprite>sprites\sprGenericNPC22Idle</sprite>
+          <sprite>sprites\sprGenericNPC22Talk</sprite>
+          <sprite>sprites\sprGenericNPC23Idle</sprite>
+          <sprite>sprites\sprGenericNPC23Talk</sprite>
+          <sprite>sprites\sprGenericNPC24Idle</sprite>
+          <sprite>sprites\sprGenericNPC24Talk</sprite>
+          <sprite>sprites\sprGenericNPC25Idle</sprite>
+          <sprite>sprites\sprGenericNPC25Talk</sprite>
+          <sprite>sprites\sprGenericNPC26Idle</sprite>
+          <sprite>sprites\sprGenericNPC26Talk</sprite>
+        </sprites>
+        <sprites name="Special">
+          <sprite>sprites\sprSpecialNPCPieceIdle</sprite>
+          <sprite>sprites\sprSpecialNPCPieceTalk</sprite>
+          <sprite>sprites\sprSpecialNPCNaloaIdle</sprite>
+          <sprite>sprites\sprSpecialNPCNaloaTalk</sprite>
+          <sprite>sprites\sprSpecialNPCTJIdle</sprite>
+          <sprite>sprites\sprSpecialNPCTJTalk</sprite>
+          <sprite>sprites\sprSpecialNPCWolskIdle</sprite>
+          <sprite>sprites\sprSpecialNPCWolskTalk</sprite>
+          <sprite>sprites\sprSpecialNPCWolfieIdle</sprite>
+          <sprite>sprites\sprSpecialNPCWolfieTalk</sprite>
+          <sprite>sprites\sprSpecialNPCSkullIdle</sprite>
+          <sprite>sprites\sprSpecialNPCSkullTalk</sprite>
+          <sprite>sprites\sprSpecialNPCChadleyIdle</sprite>
+          <sprite>sprites\sprSpecialNPCChadleyTalk</sprite>
+          <sprite>sprites\sprSpecialNPCSansIdle</sprite>
+          <sprite>sprites\sprSpecialNPCSansTalk</sprite>
+          <sprite>sprites\sprSpecialNPCBoshyIdle</sprite>
+          <sprite>sprites\sprSpecialNPCBoshyTalk</sprite>
+          <sprite>sprites\sprSpecialNPCBillyIdle</sprite>
+          <sprite>sprites\sprSpecialNPCBillyTalk</sprite>
+        </sprites>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
@@ -713,6 +796,7 @@
         <object>objects\objAlexReviewBook</object>
         <object>objects\objAlexSpeedOrb</object>
         <object>objects\objAlexNPC</object>
+        <object>objects\objAlexBillyTheSign</object>
         <object>objects\objAlexDialogBox</object>
       </objects>
       <objects name="Player">

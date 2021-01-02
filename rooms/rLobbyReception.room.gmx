@@ -3,8 +3,8 @@
   <caption></caption>
   <width>2000</width>
   <height>456</height>
-  <vsnap>2</vsnap>
-  <hsnap>2</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -84,7 +84,13 @@ background_vspeed[0] = -.5;</code>
     <instance objName="objAlexShadowBlock" x="1328" y="128" name="inst_8971F4DA" locked="0" code="" scaleX="1" scaleY="17" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowBlock" x="1536" y="160" name="inst_D894D0F1" locked="0" code="" scaleX="1" scaleY="15" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowBlock" x="1808" y="160" name="inst_E4FCA9B6" locked="0" code="" scaleX="1" scaleY="15" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexNPC" x="1126" y="334" name="inst_5ACCA22D" locked="0" code="npc_name = &quot;Billy&quot;;&#xA;idle_sprite = sprPlayerIdle;&#xA;talking_sprite = sprPlayerRunning;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;Hey there, take a seat at this fine couch.&quot;&#xA;dialog_list[| 1] = &quot;You won't regret it ;)&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1125" y="343" name="inst_5ACCA22D" locked="0" code="npc_name = &quot;Billy&quot;;&#xA;idle_sprite = sprGenericNPC1Idle;&#xA;talking_sprite = sprGenericNPC1Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;Hey there, take a seat at this fine couch.&quot;&#xA;dialog_list[| 1] = &quot;You won't regret it ;)&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1531" y="391" name="inst_983A99C8" locked="0" code="npc_name = &quot;Aaron&quot;;&#xA;idle_sprite = sprGenericNPC2Idle;&#xA;talking_sprite = sprGenericNPC2Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1707" y="391" name="inst_989F725A" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC3Idle;&#xA;talking_sprite = sprGenericNPC3Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1637" y="391" name="inst_495EED33" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC4Idle;&#xA;talking_sprite = sprGenericNPC4Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="688" y="374" name="inst_08601E44" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC5Idle;&#xA;talking_sprite = sprGenericNPC5Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="352" y="400" name="inst_E43B6D6A" locked="0" code="npc_name = &quot;Empty&quot;;&#xA;idle_sprite = sprGenericNPC6Idle;&#xA;talking_sprite = sprGenericNPC6Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="1920" y="400" name="inst_2F4BAEFB" locked="0" code="npc_name = &quot;TJ&quot;;&#xA;idle_sprite = sprSpecialNPCTJIdle;&#xA;talking_sprite = sprSpecialNPCTJTalk;&#xA;letter_sfx = sndAlexDialogSoundBartender;&#xA;lock_dir = true;&#xA;&#xA;dialog_list[| 0] = &quot;&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexReception" x="496" y="368" w="32" h="32" xo="240" yo="128" id="10016890" name="inst_6568E5F4" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -267,7 +273,7 @@ background_vspeed[0] = -.5;</code>
     <tile bgName="tAlexReception" x="1696" y="368" w="32" h="32" xo="112" yo="64" id="10017301" name="inst_5558DE24" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="1648" y="368" w="48" h="32" xo="176" yo="48" id="10017302" name="inst_751EFEA9" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="1568" y="384" w="32" h="16" xo="192" yo="32" id="10017308" name="inst_BFAE4CBF" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexReception" x="1888" y="368" w="32" h="32" xo="144" yo="128" id="10017313" name="inst_49B85C33" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexReception" x="1856" y="368" w="32" h="32" xo="144" yo="128" id="10017313" name="inst_49B85C33" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="1296" y="384" w="32" h="16" xo="160" yo="16" id="10017316" name="inst_E42843E8" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="896" y="384" w="32" h="16" xo="160" yo="16" id="10017317" name="inst_99A0CCBD" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="896" y="336" w="32" h="48" xo="224" yo="0" id="10017319" name="inst_EC73113F" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -288,12 +294,10 @@ background_vspeed[0] = -.5;</code>
     <tile bgName="tAlexReception" x="1056" y="320" w="32" h="32" xo="112" yo="64" id="10017439" name="inst_946E4FFF" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="1008" y="320" w="32" h="32" xo="112" yo="32" id="10017440" name="inst_F2EC26DD" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="1472" y="368" w="48" h="32" xo="176" yo="80" id="10017441" name="inst_768B5814" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexReception" x="1840" y="368" w="16" h="32" xo="128" yo="0" id="10017520" name="inst_424EEAE5" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="1808" y="368" w="16" h="32" xo="128" yo="0" id="10017521" name="inst_31883AA0" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="1824" y="368" w="16" h="32" xo="128" yo="0" id="10017523" name="inst_39A184C8" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexReception" x="1856" y="368" w="16" h="32" xo="128" yo="0" id="10017524" name="inst_2EBAC6FE" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="1792" y="368" w="16" h="32" xo="112" yo="0" id="10017525" name="inst_580BEB22" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexReception" x="1872" y="368" w="16" h="32" xo="144" yo="0" id="10017526" name="inst_84BC5BDA" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexReception" x="1840" y="368" w="16" h="32" xo="144" yo="0" id="10017526" name="inst_84BC5BDA" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="1440" y="368" w="32" h="32" xo="112" yo="32" id="10017528" name="inst_14F7A3B9" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="432" y="320" w="32" h="32" xo="256" yo="0" id="10017533" name="inst_C4D5E177" depth="9999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexReception" x="1184" y="336" w="32" h="16" xo="112" yo="112" id="10017084" name="inst_2784815C" depth="-2" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

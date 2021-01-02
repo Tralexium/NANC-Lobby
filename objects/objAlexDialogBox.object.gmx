@@ -162,8 +162,8 @@ if(can_talk) {
     // Resize the box vertically based on the dialog height
     draw_set_font(text_font);
     var _text_height = string_height_ext(displayed_text, text_sep, text_width);
-    if(_text_height &gt; box_target_height - text_padding*2.5) {
-        box_add_bottom_height = _text_height - (box_target_height - text_padding*2.5);
+    if(_text_height &gt; box_target_height - text_padding*3) {
+        box_add_bottom_height = _text_height - (box_target_height - text_padding*3);
     } else {
         box_add_bottom_height = 0;
     }
