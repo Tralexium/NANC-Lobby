@@ -29,6 +29,7 @@ uniform float u_outline_w;
 uniform float u_outline_h;
 uniform float u_texture_h_offset;
 uniform float u_texture_v_offset;
+uniform float u_tex_size;
 uniform vec2 u_cam_pos;
 uniform vec3 u_outline_color;
 uniform sampler2D u_block_texture;
@@ -49,7 +50,7 @@ void main()
     if(alpha == 0.0 && current_alpha > 0.0) {  // Is outline
         gl_FragColor = vec4(u_outline_color, 1.0);
     } else {  // Is not outline, draw the assigned texture
-        vec2 tex_offset = vec2(u_texture_h_offset, u_texture_v_offset) - (u_cam_pos / vec2(50.0, 50.0));  // vec2(64.0, 64.0) for static
-        gl_FragColor = texture2D( gm_BaseTexture, v_vTexcoord ) * texture2D( u_block_texture, fract((v_vTexcoord * vec2(800.0 / 64.0, 608.0 / 64.0)) - tex_offset));
+        vec2 tex_offset = vec2(u_texture_h_offset, u_texture_v_offset) - (u_cam_pos / vec2(u_tex_size * 0.75, u_tex_size * 0.75));  // vec2(u_tex_size, u_tex_size) for static
+        gl_FragColor = texture2D( gm_BaseTexture, v_vTexcoord ) * texture2D( u_block_texture, fract((v_vTexcoord * vec2(800.0 / u_tex_size, 608.0 / u_tex_size)) - tex_offset));
     }
 }
