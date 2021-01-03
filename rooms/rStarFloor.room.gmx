@@ -4,7 +4,7 @@
   <width>1392</width>
   <height>1600</height>
   <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -148,7 +148,7 @@ background_vspeed[0] = 0</code>
     <instance objName="objAlexLobbyStarStageDoor" x="1072" y="1008" name="inst_81742D89" locked="0" code="room_id = rStarLevel3;&#xA;stage_name = &quot;Star Stage 3&quot;;&#xA;creator_name = &quot;Null&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyStarStageDoor" x="656" y="896" name="inst_D5944A5C" locked="0" code="room_id = rStarLevel4;&#xA;stage_name = &quot;Star Stage 4&quot;;&#xA;creator_name = &quot;Null&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyStarStageDoor" x="304" y="704" name="inst_3DCA0BDE" locked="0" code="room_id = rStarLevel5;&#xA;stage_name = &quot;Star Stage 5&quot;;&#xA;creator_name = &quot;Null&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLobbyStarStageDoor" x="928" y="544" name="inst_F1D2BD9D" locked="0" code="room_id = rStarLevel6;&#xA;stage_name = &quot;Star Stage 6&quot;;&#xA;creator_name = &quot;Null&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyStarStageDoor" x="928" y="544" name="inst_F1D2BD9D" locked="0" code="room_id = rStarLevel6;&#xA;stage_name = &quot;Star Stage 6&quot;;&#xA;creator_name = &quot;Null&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithoutShadow" x="1120" y="1312" name="inst_F9C59CE2" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithoutShadow" x="176" y="1072" name="inst_F4AA3932" locked="0" code="" scaleX="2" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithoutShadow" x="208" y="1072" name="inst_9B71D2A7" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
@@ -182,6 +182,7 @@ background_vspeed[0] = 0</code>
     <instance objName="objAlexSpeedOrb" x="816" y="1440" name="inst_4831A860" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarStageCam" x="496" y="1456" name="inst_8517E044" locked="0" code="disable_objects = false;&#xA;snap_spd = 0.3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexNPC" x="80" y="1568" name="inst_1E8B5B6A" locked="0" code="npc_name = &quot;Sans Undertale&quot;;&#xA;idle_sprite = sprSpecialNPCSansIdle;&#xA;talking_sprite = sprSpecialNPCSansTalk;&#xA;letter_sfx = sndAlexDialogSoundSans;&#xA;lock_dir = true;&#xA;&#xA;dialog_list[| 0] = &quot;Hey kiddo, have you tried the Wario challenge yet?&quot;&#xA;dialog_list[| 1] = &quot;That's where you drink all the shampoo in the house.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyFinalStageDoor" x="680" y="160" name="inst_851C97DC" locked="0" code="room_id = rStarLevel6;&#xA;stage_name = &quot;Star Stage 6&quot;;&#xA;creator_name = &quot;Null&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexFloor4" x="752" y="816" w="16" h="16" xo="160" yo="112" id="10018319" name="inst_3186080F" depth="1002" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

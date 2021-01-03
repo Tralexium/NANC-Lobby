@@ -29,8 +29,8 @@
 
 // Change these
 block_texture_sprite = sprStarLevel1BlockTexture;
-texture_h_spd = 0.5;
-texture_v_spd = 0;
+texture_h_spd = 0.0;
+texture_v_spd = 0.0;
 outline_size = 2;
 outline_col[0] = 20 / 255;  // R (0-1)
 outline_col[1] = 24 / 255;  // G (0-1)

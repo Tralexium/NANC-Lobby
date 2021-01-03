@@ -40,7 +40,7 @@ dialog_list[| 0] = "If you're looking for wisdom then you found the right sign!"
 
 fact_index = 0;
 max_fact_index = 9;
-fact_string[0] = "Did you know, you can press the [Down] key to view the judges reviews when standing next to a door?";
+fact_string[0] = "Did you know, when standing next to a door you can press [Down] button to view the judge reviews?";
 fact_string[1] = "Did you know, you can go back to the hub from any stage at any time? You will find an option in the exit section within the pause menu.";
 fact_string[2] = "Did you know, the initial move speed within this lobby was only 3 pixels per frame? Crazy right! Since then the kid moves at 5 and 7 when boosted by the orb!";
 fact_string[3] = "Did you know, all the NPCs in the hub are unique? In total there's currently 36 including myself!";

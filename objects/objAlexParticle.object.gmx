@@ -86,7 +86,7 @@ var life_normal = life/max_life;
 t++;
 
 // Colour
-image_blend = merge_colour(start_col, end_col, life_normal);
+image_blend = merge_colour(end_col, start_col, life_normal);
 
 // Scale
 if(shrink) {
@@ -168,9 +168,11 @@ if(end_on_last_frame) {
             <kind>1</kind>
             <string>/// Apply blend mode
 
-draw_set_blend_mode(blend_mode);
-draw_self();
-draw_set_blend_mode(bm_normal);
+if(t &gt; 0) {
+    draw_set_blend_mode(blend_mode);
+    draw_self();
+    draw_set_blend_mode(bm_normal);
+}
 </string>
           </argument>
         </arguments>
