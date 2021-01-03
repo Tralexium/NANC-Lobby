@@ -44,7 +44,7 @@ arrow_y = y;
 arrow_image_index = 0;
 
 // Unique vars
-locked = false;
+locked = true;
 flash_expand = false;
 flash_height = 0;
 flash_width = 0;

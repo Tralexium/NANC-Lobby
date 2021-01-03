@@ -28,6 +28,7 @@
             <string>/// init vars
 
 active = false;
+clamp_coords = true;  // Makes sure the view can't escape the room boundries
 
 var _touching_player = place_meeting(x, y, objPlayer);
 if(_touching_player) {
@@ -75,11 +76,21 @@ var _touching_player = place_meeting(x, y, objPlayer);
 if(_touching_player) {
     if(!active) {
         active = true;
-        with(objAlexStarStageCam) {
-            min_x = max(0, other.bbox_left);
-            min_y = max(0, other.bbox_top);
-            max_x = min(room_width - view_wview[0], max(min_x, other.bbox_right - view_wview[0]));
-            max_y = min(room_height - view_hview[0], max(min_y, other.bbox_bottom - view_hview[0]));
+        
+        if(clamp_coords) {
+            with(objAlexStarStageCam) {
+                min_x = max(0, other.bbox_left);
+                min_y = max(0, other.bbox_top);
+                max_x = min(room_width - view_wview[0], max(min_x, other.bbox_right - view_wview[0]));
+                max_y = min(room_height - view_hview[0], max(min_y, other.bbox_bottom - view_hview[0]));
+            }
+        } else {
+            with(objAlexStarStageCam) {
+                min_x = other.bbox_left;
+                min_y = other.bbox_top;
+                max_x = max(min_x, other.bbox_right - view_wview[0]);
+                max_y = max(min_y, other.bbox_bottom - view_hview[0]);
+            }
         }
     }
 } else if(active) {

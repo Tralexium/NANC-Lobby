@@ -108,8 +108,8 @@ if (instance_exists(target_obj))
     target_y = target_obj.y - view_hview[0]/2;
     event_user(0);
     
-    view_xview[0] = round(lerp(view_xview[0], target_x, snapSpd));
-    view_yview[0] = round(lerp(view_yview[0], target_y, snapSpd));
+    view_xview[0] = lerp(view_xview[0], target_x, snapSpd);
+    view_yview[0] = lerp(view_yview[0], target_y, snapSpd);
 }
 </string>
           </argument>
@@ -181,11 +181,6 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
           <argument>
             <kind>1</kind>
             <string>/// Clamp cam coords
-
-if(room == rStarFloor) {
-    max_x = room_width - view_wview[0];
-    max_y = room_height - view_hview[0];
-}
 
 target_x = clamp(target_x, min_x, max_x);
 target_y = clamp(target_y, min_y, max_y);

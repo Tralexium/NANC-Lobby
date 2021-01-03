@@ -4,7 +4,7 @@
   <width>1392</width>
   <height>1600</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -136,11 +136,10 @@ background_vspeed[0] = 0</code>
     <instance objName="objAlexBlockWithShadow" x="880" y="384" name="inst_98C89F8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="592" y="464" name="inst_17953404" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="752" y="464" name="inst_93042B3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="512" y="240" name="inst_6A71C512" locked="0" code="" scaleX="21" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="560" y="256" name="inst_E5A829DC" locked="0" code="" scaleX="14.9333333969116" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="464" y="192" name="inst_944647C5" locked="0" code="" scaleX="27" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="480" y="224" name="inst_F9A2A807" locked="0" code="" scaleX="25" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="624" y="272" name="inst_5D4BA9B1" locked="0" code="" scaleX="7" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="480" y="240" name="inst_6A71C512" locked="0" code="" scaleX="25" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="528" y="256" name="inst_E5A829DC" locked="0" code="" scaleX="19" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="448" y="192" name="inst_944647C5" locked="0" code="" scaleX="29" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="592" y="272" name="inst_5D4BA9B1" locked="0" code="" scaleX="11" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithoutShadow" x="1136" y="464" name="inst_4FC2DC0D" locked="0" code="" scaleX="6" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithoutShadow" x="1104" y="496" name="inst_6F09AAAB" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithoutShadow" x="1200" y="896" name="inst_512DCFA3" locked="0" code="" scaleX="4.26666688919067" scaleY="2.13333344459534" colour="4294967295" rotation="0"/>
@@ -183,6 +182,7 @@ background_vspeed[0] = 0</code>
     <instance objName="objAlexStarStageCam" x="496" y="1456" name="inst_8517E044" locked="0" code="disable_objects = false;&#xA;snap_spd = 0.3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexNPC" x="80" y="1568" name="inst_1E8B5B6A" locked="0" code="npc_name = &quot;Sans Undertale&quot;;&#xA;idle_sprite = sprSpecialNPCSansIdle;&#xA;talking_sprite = sprSpecialNPCSansTalk;&#xA;letter_sfx = sndAlexDialogSoundSans;&#xA;lock_dir = true;&#xA;&#xA;dialog_list[| 0] = &quot;Hey kiddo, have you tried the Wario challenge yet?&quot;&#xA;dialog_list[| 1] = &quot;That's where you drink all the shampoo in the house.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyFinalStageDoor" x="680" y="160" name="inst_851C97DC" locked="0" code="room_id = rStarLevel6;&#xA;stage_name = &quot;Star Stage 6&quot;;&#xA;creator_name = &quot;Null&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexCameraClamper" x="480" y="-64" name="inst_2E70E85D" locked="0" code="clamp_coords = false;&#xA;" scaleX="6.25" scaleY="4" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexFloor4" x="752" y="816" w="16" h="16" xo="160" yo="112" id="10018319" name="inst_3186080F" depth="1002" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
