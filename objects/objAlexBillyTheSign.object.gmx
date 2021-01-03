@@ -43,7 +43,7 @@ max_fact_index = 9;
 fact_string[0] = "Did you know, you can press the [Down] key to view the judges reviews when standing next to a door?";
 fact_string[1] = "Did you know, you can go back to the hub from any stage at any time? You will find an option in the exit section within the pause menu.";
 fact_string[2] = "Did you know, the initial move speed within this lobby was only 3 pixels per frame? Crazy right! Since then the kid moves at 5 and 7 when boosted by the orb!";
-fact_string[3] = "Did you know, all the NPCs in the hub are unique? In total there's currently 35 including myself!";
+fact_string[3] = "Did you know, all the NPCs in the hub are unique? In total there's currently 36 including myself!";
 fact_string[4] = "Did you know, all of this hub artwork was drawn by a single person? He's also the creator of me!";
 fact_string[5] = "Did you know, this hub was in the making for a whopping 3 months?";
 fact_string[6] = "Did you know, that Wolfie's tweet named 'The duality of man' was the reaction to his NPC avatar? Tbh I do agree with both of them.";
@@ -146,7 +146,7 @@ if(!is_talking) {
     sprite_index = idle_sprite;
     image_xscale = initial_xscale;
     
-    var _dist;
+    var _dist = 1000;
     if(instance_exists(objPlayer)) {
         _dist = distance_to_object(objPlayer);
     }

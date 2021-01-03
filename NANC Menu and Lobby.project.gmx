@@ -796,6 +796,8 @@
         <object>objects\objAlexReviewBook</object>
         <object>objects\objAlexSpeedOrb</object>
         <object>objects\objAlexNPC</object>
+        <object>objects\objAlexPandaNPC</object>
+        <object>objects\objOneTimeTrigger</object>
         <object>objects\objAlexBillyTheSign</object>
         <object>objects\objAlexDialogBox</object>
       </objects>

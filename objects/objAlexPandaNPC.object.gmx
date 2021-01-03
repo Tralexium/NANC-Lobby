@@ -30,13 +30,21 @@
 // Add dialog into the list
 dialog_list = ds_list_create();
 
-// Change these in creation code
-npc_name = "NPC Name goes here";
-idle_sprite = sprPlayerIdle;
-talking_sprite = sprPlayerRunning;
+npc_name = "Panda";
+idle_sprite = sprGenericNPC12Idle;
+talking_sprite = sprGenericNPC12Talk;
 letter_sfx = sndAlexDialogSoundDefault;
 max_distance = 24;
 lock_dir = false;
+
+dialog_list[| 0] = "Hey there kid. I've got a secret for you."
+dialog_list[| 1] = "You see that pool of water? There's totally some buried treasure in there. Take a look!"
+
+// Special vars
+speech_activated = false;
+trigger_num = 1;
+
+instance_deactivate_object(objOneTimeTrigger);
 
 image_speed = 0.2;
 
@@ -140,6 +148,10 @@ if(!is_talking) {
     if(_dist &lt;= max_distance) {
         show_icons = true;
         if(scrButtonCheckPressed(dialog_button)) {
+            // Remembers the convo
+            speech_activated = true;
+            instance_activate_object(objOneTimeTrigger);
+        
             is_talking = true;
             dialog_box = instance_create(x, y, objAlexDialogBox);
             dialog_box.npc_name = npc_name;
@@ -149,6 +161,23 @@ if(!is_talking) {
     } else {
         show_icons = false;
     }
+    
+    // Do the funny
+    if(speech_activated &amp;&amp; global.trigger[trigger_num]) {
+        speech_activated = false;
+        global.trigger[trigger_num] = false;
+    
+        // Modify the original text to ridicule you even more
+        dialog_list[| 0] = "You fell in the bamboozer pit!"
+        dialog_list[| 1] = "Can't believe you fell for that."
+        
+        is_talking = true;
+        dialog_box = instance_create(x, y, objAlexDialogBox);
+        dialog_box.npc_name = npc_name;
+        dialog_box.letter_sfx = letter_sfx;
+        dialog_box.dialog_list[| 0] = "Lol jk. Get bamboozled.";
+    }
+    
 } else {
     if(!instance_exists(objAlexDialogBox)) {
         dialog_box = noone;
@@ -173,8 +202,6 @@ if(!is_talking) {
         }
     }
 }
-
-
 </string>
           </argument>
         </arguments>
