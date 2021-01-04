@@ -61,7 +61,7 @@ background_vspeed[0] = -.5;</code>
     <instance objName="objAlexBlockWithShadow" x="144" y="336" name="inst_085BDEBA" locked="0" code="" scaleX="6" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="992" y="352" name="inst_A94D1A1E" locked="0" code="" scaleX="15" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="objPlayerStart" x="816" y="368" name="inst_65EF88DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLobbyElevator" x="832" y="400" name="inst_0EE480A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyElevator" x="672" y="528" name="inst_0EE480A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexSpeedOrb" x="776" y="368" name="inst_A52F4A64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyReceptionDoor" x="192" y="336" name="inst_15633CD1" locked="0" code="room_id = rLobbyGallery;&#xA;spawn_x = -1;&#xA;spawn_y = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="1232" y="368" name="inst_86D8A009" locked="0" code="" scaleX="2" scaleY="2.13333344459534" colour="4294967295" rotation="0"/>
@@ -91,6 +91,7 @@ background_vspeed[0] = -.5;</code>
     <instance objName="objAlexNPC" x="688" y="374" name="inst_08601E44" locked="0" code="npc_name = &quot;Ellie&quot;;&#xA;idle_sprite = sprGenericNPC5Idle;&#xA;talking_sprite = sprGenericNPC5Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;I scoured Delfruit last night.&quot;&#xA;dialog_list[| 1] = &quot;And now I'm trying to drink away what I saw.&quot;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexNPC" x="352" y="400" name="inst_E43B6D6A" locked="0" code="npc_name = &quot;Rebecca&quot;;&#xA;idle_sprite = sprGenericNPC6Idle;&#xA;talking_sprite = sprGenericNPC6Talk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;Do you wanna hear a joke?&quot;&#xA;dialog_list[| 1] = &quot;f(x) walks into a bar, the bartender says...&quot;&#xA;dialog_list[| 2] = &quot;'Sorry, we don't cater for functions'&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexNPC" x="1920" y="400" name="inst_2F4BAEFB" locked="0" code="npc_name = &quot;TJ&quot;;&#xA;idle_sprite = sprSpecialNPCTJIdle;&#xA;talking_sprite = sprSpecialNPCTJTalk;&#xA;letter_sfx = sndAlexDialogSoundBartender;&#xA;lock_dir = true;&#xA;&#xA;dialog_list[| 0] = &quot;I'm half lemonade, half iced tea...&quot;&#xA;dialog_list[| 1] = &quot;But 100% greatness!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objStageEndWarp" x="816" y="256" name="inst_F592278E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexReception" x="496" y="368" w="32" h="32" xo="240" yo="128" id="10016890" name="inst_6568E5F4" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

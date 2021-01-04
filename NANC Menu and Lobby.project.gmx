@@ -640,6 +640,7 @@
       <script>scripts\scrAlexMakeParticleExt.gml</script>
       <script>scripts\scrAlexEaseOutSine.gml</script>
       <script>scripts\scrAlexEaseInSine.gml</script>
+      <script>scripts\scrAlexEaseInBack.gml</script>
       <script>scripts\scrAlexEaseOutElastic.gml</script>
       <script>scripts\scrDrawTextSquareOutline.gml</script>
       <script>scripts\scrAlexDrawPieTex.gml</script>
@@ -654,6 +655,7 @@
     <shader type="GLSLES">shaders\sRainbowAura.shader</shader>
     <shader type="GLSLES">shaders\sGradientHoles.shader</shader>
     <shader type="GLSLES">shaders\s3DFloor.shader</shader>
+    <shader type="GLSLES">shaders\sRainbowSpiral.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -808,6 +810,8 @@
         <object>objects\objOneTimeTrigger</object>
         <object>objects\objAlexBillyTheSign</object>
         <object>objects\objAlexDialogBox</object>
+        <object>objects\objStageEndWarp</object>
+        <object>objects\objStageEndWarpPart</object>
       </objects>
       <objects name="Player">
         <object>objects\objAlexLobbyPlayer</object>
