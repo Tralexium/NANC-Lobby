@@ -656,6 +656,7 @@
     <shader type="GLSLES">shaders\sGradientHoles.shader</shader>
     <shader type="GLSLES">shaders\s3DFloor.shader</shader>
     <shader type="GLSLES">shaders\sRainbowSpiral.shader</shader>
+    <shader type="GLSLES">shaders\sRainbowCircles.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -667,6 +668,7 @@
       <font>fonts\fMenuLobby12</font>
       <font>fonts\fMenuLobby18</font>
       <font>fonts\fGameOver</font>
+      <font>fonts\fStageClear</font>
       <font>fonts\fLobbySmall</font>
       <font>fonts\fLobbySmall24</font>
     </fonts>
@@ -812,6 +814,7 @@
         <object>objects\objAlexDialogBox</object>
         <object>objects\objStageEndWarp</object>
         <object>objects\objStageEndWarpPart</object>
+        <object>objects\objStageClearUI</object>
       </objects>
       <objects name="Player">
         <object>objects\objAlexLobbyPlayer</object>
