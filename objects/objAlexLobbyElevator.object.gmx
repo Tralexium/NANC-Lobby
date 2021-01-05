@@ -310,7 +310,7 @@ if(show_panel &amp;&amp; active) {
         panel_alpha = 0;
         active = false;
         alarm[0] = 40;
-        instance_create(0, 0, objAlexMusicFader);
+        instance_create(0, 0, objAlexMusicFadeTransition);
         audio_play_sound(sndAlexElevatorPickFloor, 0, false);
         audio_play_sound(sndAlexKidEnter, 0, false);
     }

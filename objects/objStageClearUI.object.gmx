@@ -25,11 +25,37 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Init vars
+            <string>/// Init vars &amp; disable restarting &amp; pausing
+
+global.noRestart = true;
+global.noPause = true;
 
 timer = 0;
 text_col = $e8fff5;
 outline_col = $2e1814;
+
+
+// Stage stats
+stage_time = 0;
+stage_deaths = 0;
+stage_total_secrets = 0;
+stage_secrets_found = 0;
+
+
+// UI converted stage stats
+ui_stage_time = 0;
+ui_stage_deaths = 0;
+ui_stage_secrets_found = 0;
+ui_time_icon_scale = 1;
+ui_deaths_icon_scale = 1;
+ui_secret_icon_scale = 1;
+stats_timer = 0;
+stats_count_delay = 20;
+stats_x = display_get_gui_width()/2;
+stats_y = display_get_gui_height()/2;
+stats_add_y = 0;
+stats_add_y_target = 64;
+stats_alpha = 0;
 
 
 // Stage clear text
@@ -49,9 +75,9 @@ for(var i = 0; i &lt; go_string_size; i++) {
 
 
 // BG
-bg_anim_length = 30;
+bg_anim_length = 40;
 bg_size = 0;
-bg_target_size = 1500;
+bg_target_size = 2500;
 
 
 // Top and bottom bars

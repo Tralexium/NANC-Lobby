@@ -31,7 +31,18 @@ global.saveTotalSecretsFound = 0;
 global.totalStagesCleared = 0;  // TODO: update this number in your stage clear script Piece
 global.saveTotalStagesCleared = 0;
 global.skipGameIntro = false;  // Used when going back to the main menu screen from the pause menu
+global.noRestart = false;  // Disables restarting
+
+// Lobby related
 global.lobbyPlayerSpeedUp = false; // Whether the player is faster in the lobby
+global.lobbyLastFloor = -1; // Remembers the floor of the last door that the player entered
+global.lobbyLastX = -1; // Remembers which door the player entered
+global.lobbyLastY = -1;
+
+// Stage related
+global.stagePresent = false; // Whether you're playing a stage currently
+global.stageDeaths = 0;
+global.stageTime = 0;
 
 // Global surfaces
 global.text_outline_surf_w = 800;

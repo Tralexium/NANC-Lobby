@@ -43,7 +43,16 @@ if (loadFile)
         global.saveTotalSecretsFound = ds_map_find_value(saveMap,"saveTotalSecretsFound");
         global.saveTotalStagesCleared = ds_map_find_value(saveMap,"saveTotalStagesCleared");
         
+        // Lobby related
         global.lobbyPlayerSpeedUp = ds_map_find_value(saveMap,"lobbyPlayerSpeedUp");
+        global.lobbyLastFloor = ds_map_find_value(saveMap,"lobbyLastFloor");
+        global.lobbyLastX = ds_map_find_value(saveMap,"lobbyLastX");
+        global.lobbyLastY = ds_map_find_value(saveMap,"lobbyLastY");
+        
+        // Stage related
+        global.stagePresent = ds_map_find_value(saveMap,"stagePresent");
+        global.stageDeaths = ds_map_find_value(saveMap,"stageDeaths");
+        global.stageTime = ds_map_find_value(saveMap,"stageTime");
         
         if (is_string(global.saveRoom))   //check if the saved room loaded properly
         {

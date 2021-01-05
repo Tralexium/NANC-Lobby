@@ -85,7 +85,16 @@ ds_map_add(saveMap,"currentPlayerPet",global.currentPlayerPet);
 ds_map_add(saveMap,"saveTotalSecretsFound",global.saveTotalSecretsFound);
 ds_map_add(saveMap,"saveTotalStagesCleared",global.saveTotalStagesCleared);
 
+// Lobby related
 ds_map_add(saveMap,"lobbyPlayerSpeedUp",global.lobbyPlayerSpeedUp);
+ds_map_add(saveMap,"lobbyLastFloor",global.lobbyLastFloor);
+ds_map_add(saveMap,"lobbyLastX",global.lobbyLastX);
+ds_map_add(saveMap,"lobbyLastY",global.lobbyLastY);
+
+// Stage related
+ds_map_add(saveMap,"stagePresent",global.stagePresent);
+ds_map_add(saveMap,"stageDeaths",global.stageDeaths);
+ds_map_add(saveMap,"stageTime",global.stageTime);
 
 for (var i = 0; i <= global.totalNumberOfStages; i++)
 {

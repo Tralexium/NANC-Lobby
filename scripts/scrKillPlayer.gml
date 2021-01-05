@@ -45,6 +45,10 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
         instance_create(0,0,objAlexGameOver);
         
         global.death += 1; //increment deaths
+        
+        // New for stages
+        if(global.stagePresent)
+            global.stageDeaths += 1;
             
         scrSaveGame(false); //save death/time
     }

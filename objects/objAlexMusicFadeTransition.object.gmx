@@ -82,7 +82,7 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Spawn the bubble transition
+            <string>/// Save game &amp; bubble transition
 
 if(bubble_transition)
     instance_create(0, 0, objAlexLobbyBubbleTransition);

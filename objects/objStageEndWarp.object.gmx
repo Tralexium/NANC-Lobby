@@ -27,6 +27,13 @@
             <kind>1</kind>
             <string>/// Init vars and shader
 
+// Change these
+stage_num = -1;
+stage_secret[0] = -1;
+stage_secret[1] = -1;
+stage_secret[2] = -1;
+stage_secret[3] = -1;
+
 surf = noone;
 surf_size = 256;
 middle = surf_size/2;
@@ -82,6 +89,35 @@ u_time = shader_get_uniform(shader, "u_time");
             <string>/// Free surface
 
 surface_free(surf)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Spawn the stage clear UI &amp; destroy self
+
+with(instance_create(0, 0, objStageClearUI)) {
+    scrStageClear(other.stage_num, other.stage_secret[0], other.stage_secret[1], other.stage_secret[2], other.stage_secret[3]);
+}
+
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -148,6 +184,7 @@ if(collided) {
         anim_timer++
         if(anim_timer == anim_length) {
             anim_finished = true;
+            alarm[0] = 30;
         }
         
         

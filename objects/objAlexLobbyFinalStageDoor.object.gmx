@@ -173,6 +173,9 @@ with(instance_create(0, 0, objAlexStageIntro)) {
     maker_name = other.creator_name;
 }
 
+// Enable stage time/death tracking
+global.stagePresent = true;
+
 room_goto(room_id)
 </string>
           </argument>
@@ -377,7 +380,7 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active &amp;&amp; !locked)
     if(scrButtonCheckPressed(global.upButton)) {
         active = false;
         alarm[0] = 40;
-        var fader = instance_create(0, 0, objAlexMusicFader);
+        var fader = instance_create(0, 0, objAlexMusicFadeTransition);
             fader.bubble_transition = false;
         
         audio_play_sound(sndAlexKidEnter, 0, false);

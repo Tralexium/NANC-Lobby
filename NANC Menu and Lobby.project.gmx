@@ -634,6 +634,7 @@
       <script>scripts\scrMakeCircle.gml</script>
     </scripts>
     <scripts name="ALEX">
+      <script>scripts\scrStageClear.gml</script>
       <script>scripts\scrGetCosmeticHatSprite.gml</script>
       <script>scripts\scrGetCosmeticPetSprite.gml</script>
       <script>scripts\scrAlexMakeParticle.gml</script>
@@ -802,7 +803,7 @@
         <object>objects\objAlexLobbyTransitionBubbleOut</object>
         <object>objects\objAlexStageIntro</object>
         <object>objects\objAlexLobbyCam</object>
-        <object>objects\objAlexMusicFader</object>
+        <object>objects\objAlexMusicFadeTransition</object>
         <object>objects\objFancySecretItem</object>
         <object>objects\objSecretCollectedIndicator</object>
         <object>objects\objAlexReviewBook</object>

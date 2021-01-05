@@ -347,7 +347,7 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active) {
         if(!door_locked) {
             active = false;
             alarm[0] = 40;
-            instance_create(0, 0, objAlexMusicFader);
+            instance_create(0, 0, objAlexMusicFadeTransition);
             audio_play_sound(sndAlexKidEnter, 0, false);
         } else {
             lock_shake_limiter = lock_shake_amnt;

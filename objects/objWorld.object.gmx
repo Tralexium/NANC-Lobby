@@ -325,7 +325,7 @@ if (global.gameStarted)
     
     if (!global.gamePaused) //check if the game is currently paused
     {
-        if (scrButtonCheckPressed(global.restartButton))
+        if (scrButtonCheckPressed(global.restartButton) &amp;&amp; !global.noRestart)
         {
             //stop death sound/music
             audio_stop_sound(global.deathSound);
@@ -351,7 +351,11 @@ if (global.gameStarted)
             global.timeMicro += delta_time;
             global.time += global.timeMicro div 1000000;
             global.timeMicro = global.timeMicro mod 1000000;
-        }
+            
+            // New for stages
+            if(global.stagePresent)
+                global.stageTime += global.timeMicro div 1000000;
+        }        
     }
     
     scrSetRoomCaption();    //keep caption updated
