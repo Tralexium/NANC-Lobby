@@ -61,7 +61,7 @@ background_vspeed[0] = -.5;</code>
     <instance objName="objAlexBlockWithShadow" x="144" y="336" name="inst_085BDEBA" locked="0" code="" scaleX="6" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="992" y="352" name="inst_A94D1A1E" locked="0" code="" scaleX="15" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="objPlayerStart" x="816" y="368" name="inst_65EF88DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexLobbyElevator" x="672" y="528" name="inst_0EE480A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyElevator" x="832" y="400" name="inst_0EE480A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexSpeedOrb" x="776" y="368" name="inst_A52F4A64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexLobbyReceptionDoor" x="192" y="336" name="inst_15633CD1" locked="0" code="room_id = rLobbyGallery;&#xA;spawn_x = -1;&#xA;spawn_y = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="1232" y="368" name="inst_86D8A009" locked="0" code="" scaleX="2" scaleY="2.13333344459534" colour="4294967295" rotation="0"/>

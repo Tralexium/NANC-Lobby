@@ -43,27 +43,27 @@ void main()
     
     // Red
     if(strength > 0.166 * 5.) {
-        col = vec3(1., 0.25, 0.20);
+        col = vec3(1., 0.47, 0.455);
     } 
     // Orange
     else if (strength > 0.166 * 4.) {
-        col = vec3(1., 0.63, 0.01);
+        col = vec3(0.99, 0.75, 0.40);
     }
     // Yellow
     else if (strength > 0.166 * 3.) {
-        col = vec3(1., 0.82, 0.01);
+        col = vec3(0.99, 0.99, 0.59);
     }
     // Green
     else if (strength > 0.166 * 2.) {
-        col = vec3(0.26, 0.75, 0.12);
+        col = vec3(0.62, 0.88, 0.62);
     }
     // Blue
     else if (strength > 0.166) {
-        col = vec3(0.07, 0.6, 0.95);
+        col = vec3(0.62, 0.755, 0.81);
     }
     // Purple
     else {
-        col = vec3(0.73, 0.36, 0.82);
+        col = vec3(0.8, 0.6, 0.79);
     }
     
     gl_FragColor = vec4(col, texture2D( gm_BaseTexture, v_vTexcoord ).a);

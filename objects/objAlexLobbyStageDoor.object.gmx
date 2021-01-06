@@ -318,6 +318,18 @@ ui_difficulty_length = difficulty/10;  // This is set in the 10th alarm
             <kind>1</kind>
             <string>/// Go to the appropriate room
 
+// Save current lobby position and room
+global.lobbyLastFloor = room;
+global.lobbyLastX = objPlayer.x;
+global.lobbyLastY = objPlayer.y;
+
+// Enable stage time/death tracking
+global.stagePresent = true;
+
+// Re enable restart and pause
+global.noRestart = false;
+global.noPause = false;
+
 with(objAlexLobbyPlayer)
     instance_destroy();  // so that the kid can spawn at the right pos
 
@@ -325,9 +337,6 @@ with(instance_create(0, 0, objAlexStageIntro)) {
     stage_title = other.stage_name;
     maker_name = other.creator_name;
 }
-
-// Enable stage time/death tracking
-global.stagePresent = true;
 
 room_goto(room_id)
 </string>
@@ -574,6 +583,11 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active &amp;&amp; !reading
     if(scrButtonCheckPressed(global.upButton)) {
         active = false;
         alarm[0] = 40;
+        
+        // Disable pause and restart
+        global.noRestart = true;
+        global.noPause = true;
+        
         var obj = instance_create(0, 0, objAlexMusicFadeTransition);
             obj.bubble_transition = false;
         audio_play_sound(sndAlexKidEnter, 0, false);

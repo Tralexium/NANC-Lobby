@@ -350,11 +350,13 @@ if (global.gameStarted)
         {
             global.timeMicro += delta_time;
             global.time += global.timeMicro div 1000000;
-            global.timeMicro = global.timeMicro mod 1000000;
             
             // New for stages
-            if(global.stagePresent)
+            if(global.stagePresent) {
                 global.stageTime += global.timeMicro div 1000000;
+            }
+            
+            global.timeMicro = global.timeMicro mod 1000000;
         }        
     }
     

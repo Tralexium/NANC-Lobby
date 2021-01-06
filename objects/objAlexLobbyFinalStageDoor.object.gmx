@@ -158,6 +158,18 @@ alarm[1] = flash_length + 15;
             <kind>1</kind>
             <string>/// Go to the appropriate room
 
+// Save current lobby position and room
+global.lobbyLastFloor = room;
+global.lobbyLastX = objPlayer.x;
+global.lobbyLastY = objPlayer.y;
+
+// Enable stage time/death tracking
+global.stagePresent = true;
+
+// Re enable restart and pause
+global.noRestart = false;
+global.noPause = false;
+
 if(spawn_x == -1 &amp;&amp; spawn_y == -1) {
     with(objAlexLobbyPlayer)
         instance_destroy();  // so that the kid can spawn at the right pos
@@ -172,9 +184,6 @@ with(instance_create(0, 0, objAlexStageIntro)) {
     stage_title = other.stage_name;
     maker_name = other.creator_name;
 }
-
-// Enable stage time/death tracking
-global.stagePresent = true;
 
 room_goto(room_id)
 </string>
@@ -380,6 +389,11 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active &amp;&amp; !locked)
     if(scrButtonCheckPressed(global.upButton)) {
         active = false;
         alarm[0] = 40;
+        
+        // Disable pause and restart
+        global.noRestart = true;
+        global.noPause = true;
+        
         var fader = instance_create(0, 0, objAlexMusicFadeTransition);
             fader.bubble_transition = false;
         
@@ -458,7 +472,12 @@ if(flash_expand) {
     _anim_progress = clamp(flash_timer - (flash_length / 2), 0, flash_length / 2);
     flash_width = scrAlexEaseInSine(_anim_progress, 2, 300, flash_length / 2);
     
-    draw_sprite_ext(sprAlexFinalDoorFlash, 0, 408, 304, flash_width, flash_height, 0, -1, 1);
+    draw_sprite_ext(sprAlexFinalDoorFlash, 0, 400, 304, flash_width, flash_height, 0, -1, 1);
+    
+    // Draw the right and left black bars
+    draw_set_colour(c_black);
+    draw_rectangle(-5000, -5000, -1, 5000, false);
+    draw_rectangle(display_get_gui_width(), -5000, 5000, 5000, false);
 }
 </string>
           </argument>

@@ -507,6 +507,7 @@
       <sprite>sprites\sprAlexLootBoxLock</sprite>
       <sprite>sprites\sprAlexReviewArrow</sprite>
       <sprite>sprites\sprAlexLootBoxStarPart</sprite>
+      <sprite>sprites\sprAlexStageClearIcons</sprite>
       <sprite>sprites\sprAlexReceptionPaintingFrame</sprite>
       <sprite>sprites\sprAlexReceptionStagePaintings</sprite>
       <sprite>sprites\sprAlexFloatingBook</sprite>
@@ -634,7 +635,9 @@
       <script>scripts\scrMakeCircle.gml</script>
     </scripts>
     <scripts name="ALEX">
-      <script>scripts\scrStageClear.gml</script>
+      <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
+      <script>scripts\scrResetStageStats.gml</script>
+      <script>scripts\scrWarpBackToLobby.gml</script>
       <script>scripts\scrGetCosmeticHatSprite.gml</script>
       <script>scripts\scrGetCosmeticPetSprite.gml</script>
       <script>scripts\scrAlexMakeParticle.gml</script>
@@ -644,6 +647,8 @@
       <script>scripts\scrAlexEaseInBack.gml</script>
       <script>scripts\scrAlexEaseInOutSine.gml</script>
       <script>scripts\scrAlexEaseOutElastic.gml</script>
+      <script>scripts\scrAlexEaseOutCubic.gml</script>
+      <script>scripts\scrAlexEaseOutQuint.gml</script>
       <script>scripts\scrDrawTextSquareOutline.gml</script>
       <script>scripts\scrAlexDrawPieTex.gml</script>
       <script>scripts\scrAlexDrawPieTexExt.gml</script>

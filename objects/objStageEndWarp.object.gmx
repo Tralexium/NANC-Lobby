@@ -114,7 +114,7 @@ surface_free(surf)
             <string>/// Spawn the stage clear UI &amp; destroy self
 
 with(instance_create(0, 0, objStageClearUI)) {
-    scrStageClear(other.stage_num, other.stage_secret[0], other.stage_secret[1], other.stage_secret[2], other.stage_secret[3]);
+    scrStageClearUIGetCurrentStageInfo(other.stage_num, other.stage_secret[0], other.stage_secret[1], other.stage_secret[2], other.stage_secret[3]);
 }
 
 instance_destroy();

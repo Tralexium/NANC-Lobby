@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>-10000</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -40,6 +40,7 @@ warp_to_lobby = false;
 
 
 // Stage stats
+stage_num = -1;
 stage_time = 0;
 stage_deaths = 0;
 stage_total_secrets = 0;
@@ -56,42 +57,52 @@ sfx_secret_incr = sndAlexMenuConfirm;
 ui_stage_time = 0;
 ui_stage_deaths = 0;
 ui_stage_secrets_found = 0;
-ui_time_icon_scale = 1;
-ui_deaths_icon_scale = 1;
-ui_secret_icon_scale = 1;
+ui_time_icon_scale = 2;
+ui_deaths_icon_scale = 2;
+ui_secret_icon_scale = 2;
+ui_icon_max_scale = 2.3;
+stats_font = fMenuLobby12;
 stats_timer = 0;
+stats_incr_timer = 0;
 stats_count_delay = 20;
+stats_pad = 160;
+stats_angle = 0;
 stats_x = display_get_gui_width()/2;
 stats_y = display_get_gui_height()/2 + 32;
+stats_icon_y = stats_y - 48;
 stats_add_y = 0;
-stats_add_y_target = 64;
+stats_add_y_target = 32;
 stats_alpha = 0;
 
 
 // Stage clear text
 sc_string = "STAGE CLEAR";
 sc_font = fStageClear;
-sc_letter_outline_size = 9;
+sc_letter_outline_size = 7;
 sc_letter_delay = 5;
+sc_letter_shine_delay = 2;
 sc_letter_anim_length = 40;
-sc_letter_shine_anim_length = 10;
-sc_letter_distance = 80;
+sc_letter_shine_anim_length = 30;
+sc_letter_distance = 50;
 sc_string_size = string_length(sc_string)
 sc_fade_delay = 10;
-sc_time_until_stats_show = 130;
+sc_sat_change_delay = 40
+sc_time_until_stats_show = 180;
 sc_move_anim_length = 30;
-for(var i = 0; i &lt; go_string_size; i++) {
+sc_add_y_when_end = -128;
+sc_initial_sat = 150;
+for(var i = 0; i &lt; sc_string_size; i++) {
     sc_letter_alpha[i] = 0;
-    sc_letter_shine_alpha[i] = 0;
     sc_letter_add_y[i] = 0;
     sc_letter_hue[i] = i * sc_letter_delay;
+    sc_letter_sat[i] = sc_initial_sat;
 }
 
 
 // BG
 bg_anim_length = 40;
 bg_size = 0;
-bg_target_size = 1500;
+bg_target_size = 700;
 
 
 // Top and bottom bars
@@ -113,8 +124,10 @@ if(global.controllerMode) {
     _scr_to_get_key = scrGetControllerBind;
     _array_index = 1;
 }
-continue_string = "Press ["+script_execute(scr_to_get_key,global.jumpButton[array_index])+"] to Continue";
+continue_string = "Press ["+script_execute(_scr_to_get_key,global.jumpButton[_array_index])+"] to Continue";
 continue_alpha = 0;
+continue_x = stats_x;
+continue_y = stats_y + stats_add_y_target + 96;
 continue_anim_length = 50;
 
 
@@ -164,6 +177,33 @@ surface_free(shader_surf)
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Teleport the player back to the lobby
+
+global.noRestart = false;
+global.noPause = false;
+scrWarpBackToLobby();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -205,8 +245,13 @@ var _time_begin, _letter_timer;
 for(var i = 0; i &lt; sc_string_size; i++) {
     if(timer &lt; sc_time_until_stats_show) {
         // If jump is pressed skip the letter animation
-        if(scrButtonCheckPressed(global.jumpButton))
-            timer = sc_time_until_stats_show;
+        if(scrButtonCheckPressed(global.jumpButton)) {
+            timer = sc_time_until_stats_show - 1;
+            
+            bg_size = bg_target_size;
+            shader_timer_spd = shader_timer_min_spd;
+            bar_y = -bar_height + bar_rise_distance;
+        }
     
         // Fade in animation
         _time_begin = sc_letter_delay * i;
@@ -215,20 +260,29 @@ for(var i = 0; i &lt; sc_string_size; i++) {
         sc_letter_alpha[i] = scrAlexEaseOutSine(_letter_timer, 0, 1, sc_letter_anim_length);
         sc_letter_add_y[i] = scrAlexEaseOutElastic(_letter_timer, -100, 0, sc_letter_anim_length);
         
-        // Shine animation
-        var _time_until_last_letter = sc_string_size * sc_letter_delay;
-        _letter_timer = clamp(timer - (_time_begin + sc_fade_delay + _time_until_last_letter), 0, sc_letter_shine_anim_length);
+        // Letter hue
+        if(sc_letter_alpha[i] &gt; 0)
+            sc_letter_hue[i] += 4;
         
-        sc_letter_shine_alpha[i] = dsin(_letter_shine_timer * (180/sc_letter_shine_anim_length));
+        // Letter sat
+        var _time_until_last_letter = sc_string_size * sc_letter_delay;
+        _letter_timer = clamp(timer - (_time_begin + sc_sat_change_delay + _time_until_last_letter), 0, sc_letter_shine_anim_length);
+        
+        sc_letter_sat[i] = scrAlexEaseOutSine(_letter_timer, sc_initial_sat, 0, sc_letter_shine_anim_length);
     } else {
         // Move the clear text up &amp; the stats down
         _letter_timer = clamp(timer - sc_time_until_stats_show, 0, sc_move_anim_length);
-        sc_letter_add_y[i] = scrAlexEaseInOutSine(_letter_timer, 0, -100, sc_letter_anim_length);
+        sc_letter_add_y[i] = scrAlexEaseInOutSine(_letter_timer, 0, sc_add_y_when_end, sc_letter_anim_length);
     }
 }
 
 
 // Stage stats
+stats_angle = dsin(timer*2) * 15;
+ui_time_icon_scale = lerp(ui_time_icon_scale, 2, 0.2);
+ui_deaths_icon_scale = lerp(ui_deaths_icon_scale, 2, 0.2);
+ui_secret_icon_scale = lerp(ui_secret_icon_scale, 2, 0.2);
+
 var _stat_ease_time;
 if(timer &gt;= sc_time_until_stats_show) {
     
@@ -241,69 +295,80 @@ if(timer &gt;= sc_time_until_stats_show) {
     _stat_frequency = 0;
     _stat_increment = 0;
     if(timer &gt;= sc_time_until_stats_show + sc_move_anim_length) {
-        stat_timer++;
+        stats_timer++;
         
-        if(stat_timer &gt; stats_count_delay) {
+        if(stats_timer &gt; stats_count_delay) {
+            stats_incr_timer++;
+        
             // Time
             if(ui_stage_time &lt; stage_time) {
-                _stat_frequency = 4;
-                _stat_increment = 5 * round(1 + stat_timer / 5);
+                _stat_frequency = max( 4, 10 - floor(stats_timer / 15));
+                _stat_increment = 5 * floor(1 + stats_timer / 10);
                 
-                if(stat_timer mod _stat_frequency == 0) {
+                if(stats_incr_timer &gt;= _stat_frequency) {
+                    stats_incr_timer = 0;
+                    
                     ui_stage_time += _stat_increment;
+                    ui_time_icon_scale = ui_icon_max_scale;
                     audio_stop_sound(sfx_time_incr);
                     audio_play_sound(sfx_time_incr, 0, false);
                 }
                     
                 ui_stage_time = min(ui_stage_time, stage_time);
-                if(ui_stage_time == stage_time) stat_timer = 0;
+                if(ui_stage_time == stage_time) stats_timer = 0;
                 
                 if(scrButtonCheckPressed(global.jumpButton)) {
                     ui_stage_time = stage_time;
-                    stat_timer = stats_count_delay;
+                    stats_timer = stats_count_delay;
                 }
             }
             // Deaths
             else if(ui_stage_deaths &lt; stage_deaths) {
-                _stat_frequency = max( 4, 20 - round(stat_timer / 10));
-                _stat_increment = 1;
+                _stat_frequency = max( 4, 10 - floor(stats_timer / 15));
+                _stat_increment = 1 + floor(stats_timer / 10);
                 
-                if(stat_timer mod _stat_frequency == 0) {
+                if(stats_incr_timer &gt;= _stat_frequency) {
+                    stats_incr_timer = 0;
+                    
                     ui_stage_deaths += _stat_increment;
+                    ui_deaths_icon_scale = ui_icon_max_scale;
                     audio_stop_sound(sfx_death_incr);
                     audio_play_sound(sfx_death_incr, 0, false);
                 }
                     
                 ui_stage_deaths = min(ui_stage_deaths, stage_deaths);
-                if(ui_stage_deaths == stage_deaths) stat_timer = 0;
+                if(ui_stage_deaths == stage_deaths) stats_timer = 0;
                 
                 if(scrButtonCheckPressed(global.jumpButton)) {
                     ui_stage_deaths = stage_deaths;
-                    stat_timer = stats_count_delay;
+                    stats_timer = stats_count_delay;
                 }
             }
             // Secrets
-            else if(ui_stage_secrets_found &lt; stage_secrets_found) {
+            else if(ui_stage_secrets_found &lt; stage_secrets_found &amp;&amp; stage_total_secrets &gt; 0) {
                 _stat_frequency = stats_count_delay;
                 _stat_increment = 1;
                 
-                if(stat_timer mod _stat_frequency == 0) {
+                if(stats_incr_timer &gt;= _stat_frequency) {
+                    stats_incr_timer = 0;
+                    
                     ui_stage_secrets_found += _stat_increment;
+                    ui_secret_icon_scale = ui_icon_max_scale;
                     audio_stop_sound(sfx_secret_incr);
                     audio_play_sound(sfx_secret_incr, 0, false);
                 }
                     
                 ui_stage_secrets_found = min(ui_stage_secrets_found, stage_secrets_found);
-                if(ui_stage_secrets_found == stage_secrets_found) stat_timer = 0;
+                if(ui_stage_secrets_found == stage_secrets_found) stats_timer = 0;
                 
                 if(scrButtonCheckPressed(global.jumpButton)) {
                     ui_stage_secrets_found = stage_secrets_found;
-                    stat_timer = stats_count_delay;
+                    stats_timer = stats_count_delay;
                 }
             }
             // Continue Text
             else {
-                _stat_ease_time = clamp(stat_timer - stats_count_delay, 0, continue_anim_length);
+                _stat_ease_time = clamp(stats_timer - stats_count_delay, 0, continue_anim_length);
                 continue_alpha = scrAlexEaseInOutSine(_stat_ease_time, 0, 1, continue_anim_length);
                 
                 if(scrButtonCheckPressed(global.jumpButton) &amp;&amp; !warp_to_lobby) {
@@ -314,6 +379,10 @@ if(timer &gt;= sc_time_until_stats_show) {
                     alarm[0] = additional_time_before_warp + black_circle_anim_length;
                 }
             }
+        } else {
+            // Always keep this timer at 0 
+            // until we use it for the above stats
+            stats_incr_timer = 0;
         }
     }
 }
@@ -324,8 +393,43 @@ if(warp_to_lobby) {
     black_circle_timer++;
     
     var _ease_time = clamp(black_circle_timer, 0, black_circle_anim_length);
-    black_circle_size = scrAlexEaseOutSine(_ease_time, 0, black_circle_target_size, black_circle_anim_length);
+    black_circle_size = scrAlexEaseOutCubic(_ease_time, 0, black_circle_target_size, black_circle_anim_length);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Mark stage as cleared
+
+instance_create(0, 0, objAlexLobbyBubbleTransition);
+
+// Mark the stage as cleared
+if(stage_num != -1)
+    global.saveStageCleared[stage_num] = true;
+    
+// Reset stage stats
+scrResetStageStats();
+scrSaveGame(true);
+
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -353,22 +457,22 @@ if(warp_to_lobby) {
 
 // Draw BG
 if(!surface_exists(shader_surf)) {
-    shader_surf = surface_create(bg_target_size, bg_target_size);
+    shader_surf = surface_create(display_get_gui_width(), display_get_gui_width());
 }
 
-var _middle = bg_target_size / 2;
 surface_set_target(shader_surf);
     draw_clear_alpha(c_black, 0);
     draw_set_circle_precision(64);
-    draw_circle(middle, middle, bg_size, false);
+    draw_circle(display_get_gui_width() / 2, display_get_gui_height() / 2, bg_size, false);
     draw_set_circle_precision(24);
 surface_reset_target();
 
 shader_timer += shader_timer_spd;
 
+var _surf_y_offset = -(display_get_gui_width() - display_get_gui_height()) / 2;
 shader_set(shader);
     shader_set_uniform_f(u_time, shader_timer);
-    draw_surface(shader_surf, display_get_gui_width()/2 - middle, display_get_gui_height()/2 - middle);
+    draw_surface(shader_surf, 0, _surf_y_offset);
 shader_reset();
 
 
@@ -378,24 +482,51 @@ draw_set_font(sc_font);
 for(var i = 0; i &lt; sc_string_size; i++) {
     if(sc_letter_alpha[i] &gt; 0) {
         _letter_x = (view_wport[0]/2) + (sc_letter_distance * (i - sc_string_size/2 + 0.5));
-        _letter_y = (view_hport[0]/2) + 75 + sc_letter_add_y[i];
+        _letter_y = (view_hport[0]/2) + sc_letter_add_y[i];
         _letter_str = string_char_at(sc_string, i+1);
         draw_set_alpha(sc_letter_alpha[i]);
-        sc_letter_hue[i] += 1;
-        _letter_col = make_colour_hsv(sc_letter_hue[i], 200, 240);
+        _letter_col = make_colour_hsv(sc_letter_hue[i], sc_letter_sat[i], 240);
         scrDrawTextSquareOutline(_letter_x, _letter_y, _letter_str, _letter_col, outline_col, sc_letter_outline_size, fa_center, fa_middle);
-        
-        // Shine
-        draw_set_alpha(sc_letter_shine_alpha[i])
-        if(sc_letter_shine_alpha[i] &gt; 0.05)
-            scrDrawTextSquareOutline(_letter_x, _letter_y, _letter_str, text_col, outline_col, sc_letter_outline_size, fa_center, fa_middle);
-        draw_set_alpha(1);
     }
 }
 
 
 // Draw the stats
+draw_set_alpha(stats_alpha);
+draw_set_font(stats_font);
 
+var _add_x_if_no_secrets = 0;
+if(stage_total_secrets == 0) _add_x_if_no_secrets = stats_pad / 2;
+
+// Time
+var t = ui_stage_time;
+var _time_string = string(t div 3600) + ":";
+t = t mod 3600;
+_time_string += string(t div 600);
+t = t mod 600;
+_time_string += string(t div 60) + ":";
+t = t mod 60;
+_time_string += string(t div 10);
+t = t mod 10;
+_time_string += string(floor(t));
+draw_sprite_ext(sprAlexStageClearIcons, 0, stats_x - stats_pad + _add_x_if_no_secrets, stats_icon_y + stats_add_y, ui_time_icon_scale, ui_time_icon_scale, stats_angle, -1, stats_alpha);
+scrDrawTextSquareOutline(stats_x - stats_pad + _add_x_if_no_secrets, stats_y + stats_add_y, _time_string, text_col, outline_col, 2, fa_center, fa_top);
+
+// Deaths
+draw_sprite_ext(sprAlexStageClearIcons, 1, stats_x + _add_x_if_no_secrets, stats_icon_y + stats_add_y, ui_deaths_icon_scale, ui_deaths_icon_scale, stats_angle, -1, stats_alpha);
+scrDrawTextSquareOutline(stats_x + _add_x_if_no_secrets, stats_y + stats_add_y, string(ui_stage_deaths), text_col, outline_col, 2, fa_center, fa_top);
+
+// Secrets
+if(stage_total_secrets &gt; 0) {
+    var _secrets_string = string(ui_stage_secrets_found) + "/" + string(stage_total_secrets);
+    draw_sprite_ext(sprAlexStageClearIcons, 2, stats_x + stats_pad, stats_icon_y + stats_add_y, ui_secret_icon_scale, ui_secret_icon_scale, stats_angle, -1, stats_alpha);
+    scrDrawTextSquareOutline(stats_x + stats_pad, stats_y + stats_add_y, _secrets_string, text_col, outline_col, 2, fa_center, fa_top);
+}
+
+
+// Continue text
+draw_set_alpha(continue_alpha);
+scrDrawTextSquareOutline(continue_x, continue_y, continue_string, text_col, outline_col, 2, fa_center, fa_top);
 
 
 // Draw the top &amp; bottom bars
@@ -408,6 +539,13 @@ for(var i=0; i&lt;bar_segments; i++) {
     draw_sprite_part(sprAlexPauseUITopBar, 0, bar_render_x, 0, bar_length, bar_height, segment_x, bar_y);
     draw_sprite_part(sprAlexPauseUIBottomBar, 0, bar_render_x_bottom, 0, bar_length, bar_height, segment_x, bar_bottom_y);
 }
+
+
+// Draw the black circle
+draw_set_colour(outline_col);
+draw_set_circle_precision(64);
+draw_circle(display_get_gui_width() / 2, display_get_gui_height() / 2, black_circle_size, false);
+draw_set_circle_precision(24);
 
 
 // Draw the right and left black bars
