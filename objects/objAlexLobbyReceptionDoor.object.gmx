@@ -74,6 +74,10 @@ if(spawn_x == -1 &amp;&amp; spawn_y == -1) {
     }
 }
 
+// Enable pause and restart
+global.noRestart = false;
+global.noPause = false;
+
 room_goto(room_id)
 </string>
           </argument>
@@ -250,6 +254,11 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active) {
     // Check if the player has entered the door
     if(scrButtonCheckPressed(global.upButton)) {
         active = false;
+        
+        // Disable pause and restart
+        global.noRestart = true;
+        global.noPause = true;
+        
         alarm[0] = 40;
         instance_create(0, 0, objAlexMusicFadeTransition);
         audio_play_sound(sndAlexKidEnter, 0, false);

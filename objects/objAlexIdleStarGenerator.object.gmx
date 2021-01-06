@@ -30,7 +30,7 @@
 // Make sure the stars are set in the same order
 random_set_seed(69);
 
-repeat(300) {
+repeat(200) {
     var _x = random_range(0, room_width);
     var _y = random_range(0, room_height);
     instance_create(_x, _y, objAlexIdleStar);
@@ -38,6 +38,143 @@ repeat(300) {
 
 // Randomize the seed again
 randomize();
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Generate the star coords [UNUSED]
+
+/*
+timer = 0;
+star_img_index = 0;
+star_img_spd = 0.3;
+star_flash_img_index = 0;
+star_flash_img_spd = 0.5;
+star_sprite[0] = sprAlexIdleStar1;
+star_sprite[1] = sprAlexIdleStar2;
+star_sprite[2] = sprAlexIdleStar3;
+star_list = ds_list_create();
+timer_list = ds_list_create();
+star_amnt = 300;
+star_flash_freq = 50;  // After how many stars should the star flash
+star_flash_id_shift = irandom_range(star_flash_freq / -2, star_flash_freq / 2);  // Randomizes which stars to flash
+star_flash_sprite = choose(sprAlexStarFlash1, sprAlexStarFlash2, sprAlexStarFlash3);
+
+// Make sure the stars are set in the same order
+random_set_seed(69);
+
+var _current_star = 0;
+for(i=0; i&lt;star_amnt*2; i++) {
+    var _coord = random_range(0, room_height); // Y coord
+    if(i mod 2 == 0) {
+        _coord = random_range(0, room_width); // X coord
+        
+        // Assign random timer
+        timer_list[| _current_star] = irandom(500);
+        _current_star++;
+    }
+    
+    star_list[| i] = _coord;
+}
+
+// Randomize the seed again
+randomize();
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy lists [UNUSED]
+
+/*
+ds_list_destroy(star_list);
+ds_list_destroy(timer_list);
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the stars [UNUSED]
+
+/*
+star_img_index += star_img_spd;
+
+var _x, _y, _spr, _flash_star;
+_flash_star = clamp(star_flash_freq + star_flash_id_shift, 0, star_amnt);
+
+for(i=0; i&lt;star_amnt*2; i++) {
+    if(i mod 2 == 0) {
+        _x = star_list[| i];
+    } else {
+        _y = star_list[| i];
+        _spr = star_sprite[i mod 3];
+        draw_sprite(_spr, star_img_index, _x, _y);
+        
+        if(i mod _flash_star == 0) {
+            draw_sprite(star_flash_sprite, star_flash_img_index, _x, _y);
+        }
+    }
+}
+
+if(star_flash_img_index &gt;= sprite_get_number(star_flash_sprite)) {
+    star_flash_img_index = 0;
+    star_flash_sprite = choose(sprAlexStarFlash1, sprAlexStarFlash2, sprAlexStarFlash3);
+    star_flash_id_shift = irandom_range(star_flash_freq / -2, star_flash_freq / 2);
+}
+*/
 </string>
           </argument>
         </arguments>

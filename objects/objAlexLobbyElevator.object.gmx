@@ -101,6 +101,10 @@ t = 0;  // general use timer
 with(objAlexLobbyPlayer)
     instance_destroy();  // so that the kid can spawn at the right pos
 
+// Enable pause and restart
+global.noRestart = false;
+global.noPause = false;
+    
 room_goto(floor_id[cursor_index])
 </string>
           </argument>
@@ -296,6 +300,11 @@ if(show_panel &amp;&amp; active) {
     //  Close the panel if shoot
     if(scrButtonCheckPressed(global.menuBackButton)) {
         show_panel = false;
+        
+        // Enable pause and restart
+        global.noRestart = false;
+        global.noPause = false;
+        
         audio_play_sound(sndAlexElevatorClosed, 0, false);
         with(objAlexLobbyPlayer) {
             frozen = false;
@@ -354,6 +363,11 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active) {
     // Check if the player has entered the door
     if(scrButtonCheckPressed(global.upButton) &amp;&amp; !show_panel) {
         show_panel = true;
+        
+        // Disable pause and restart
+        global.noRestart = true;
+        global.noPause = true;
+        
         audio_play_sound(sndAlexElevatorOpen, 0, false);
         with(objAlexLobbyPlayer) {
             frozen = true;
