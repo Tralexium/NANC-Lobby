@@ -35,11 +35,21 @@ text_col = $e8fff5;
 outline_col = $2e1814;
 
 
+// General
+warp_to_lobby = false;
+
+
 // Stage stats
 stage_time = 0;
 stage_deaths = 0;
 stage_total_secrets = 0;
 stage_secrets_found = 0;
+
+
+// SFX
+sfx_time_incr = sndAlexDialogSoundBilly;
+sfx_death_incr = sndAlexDialogSoundBartender;
+sfx_secret_incr = sndAlexMenuConfirm;
 
 
 // UI converted stage stats
@@ -52,7 +62,7 @@ ui_secret_icon_scale = 1;
 stats_timer = 0;
 stats_count_delay = 20;
 stats_x = display_get_gui_width()/2;
-stats_y = display_get_gui_height()/2;
+stats_y = display_get_gui_height()/2 + 32;
 stats_add_y = 0;
 stats_add_y_target = 64;
 stats_alpha = 0;
@@ -64,11 +74,15 @@ sc_font = fStageClear;
 sc_letter_outline_size = 9;
 sc_letter_delay = 5;
 sc_letter_anim_length = 40;
+sc_letter_shine_anim_length = 10;
 sc_letter_distance = 80;
 sc_string_size = string_length(sc_string)
 sc_fade_delay = 10;
+sc_time_until_stats_show = 130;
+sc_move_anim_length = 30;
 for(var i = 0; i &lt; go_string_size; i++) {
     sc_letter_alpha[i] = 0;
+    sc_letter_shine_alpha[i] = 0;
     sc_letter_add_y[i] = 0;
     sc_letter_hue[i] = i * sc_letter_delay;
 }
@@ -77,7 +91,7 @@ for(var i = 0; i &lt; go_string_size; i++) {
 // BG
 bg_anim_length = 40;
 bg_size = 0;
-bg_target_size = 2500;
+bg_target_size = 1500;
 
 
 // Top and bottom bars
@@ -101,6 +115,15 @@ if(global.controllerMode) {
 }
 continue_string = "Press ["+script_execute(scr_to_get_key,global.jumpButton[array_index])+"] to Continue";
 continue_alpha = 0;
+continue_anim_length = 50;
+
+
+// Black circle
+black_circle_timer = 0;
+black_circle_size = 0;
+black_circle_target_size = bg_target_size;
+black_circle_anim_length = bg_anim_length;
+additional_time_before_warp = 50;
 
 
 // Shader related
@@ -180,11 +203,128 @@ bar_render_x = (bar_render_x + bar_scroll_speed) mod bar_length;
 // Stage clear letters
 var _time_begin, _letter_timer;
 for(var i = 0; i &lt; sc_string_size; i++) {
-    _time_begin = sc_letter_delay * i;
-    _letter_timer = clamp(timer - (_time_begin + sc_fade_delay), 0, sc_letter_anim_length);
+    if(timer &lt; sc_time_until_stats_show) {
+        // If jump is pressed skip the letter animation
+        if(scrButtonCheckPressed(global.jumpButton))
+            timer = sc_time_until_stats_show;
+    
+        // Fade in animation
+        _time_begin = sc_letter_delay * i;
+        _letter_timer = clamp(timer - (_time_begin + sc_fade_delay), 0, sc_letter_anim_length);
+    
+        sc_letter_alpha[i] = scrAlexEaseOutSine(_letter_timer, 0, 1, sc_letter_anim_length);
+        sc_letter_add_y[i] = scrAlexEaseOutElastic(_letter_timer, -100, 0, sc_letter_anim_length);
+        
+        // Shine animation
+        var _time_until_last_letter = sc_string_size * sc_letter_delay;
+        _letter_timer = clamp(timer - (_time_begin + sc_fade_delay + _time_until_last_letter), 0, sc_letter_shine_anim_length);
+        
+        sc_letter_shine_alpha[i] = dsin(_letter_shine_timer * (180/sc_letter_shine_anim_length));
+    } else {
+        // Move the clear text up &amp; the stats down
+        _letter_timer = clamp(timer - sc_time_until_stats_show, 0, sc_move_anim_length);
+        sc_letter_add_y[i] = scrAlexEaseInOutSine(_letter_timer, 0, -100, sc_letter_anim_length);
+    }
+}
 
-    sc_letter_alpha[i] = scrAlexEaseOutSine(_letter_timer, 0, 1, sc_letter_anim_length);
-    sc_letter_add_y[i] = scrAlexEaseOutElastic(_letter_timer, -100, 0, sc_letter_anim_length);
+
+// Stage stats
+var _stat_ease_time;
+if(timer &gt;= sc_time_until_stats_show) {
+    
+    // Move the stats
+    _stat_ease_time = clamp(timer - sc_time_until_stats_show, 0, sc_move_anim_length);
+    stats_add_y = scrAlexEaseInOutSine(_stat_ease_time, 0, stats_add_y_target, sc_move_anim_length);
+    stats_alpha = scrAlexEaseInOutSine(_stat_ease_time, 0, 1, sc_move_anim_length);
+    
+    // Increment the stats
+    _stat_frequency = 0;
+    _stat_increment = 0;
+    if(timer &gt;= sc_time_until_stats_show + sc_move_anim_length) {
+        stat_timer++;
+        
+        if(stat_timer &gt; stats_count_delay) {
+            // Time
+            if(ui_stage_time &lt; stage_time) {
+                _stat_frequency = 4;
+                _stat_increment = 5 * round(1 + stat_timer / 5);
+                
+                if(stat_timer mod _stat_frequency == 0) {
+                    ui_stage_time += _stat_increment;
+                    audio_stop_sound(sfx_time_incr);
+                    audio_play_sound(sfx_time_incr, 0, false);
+                }
+                    
+                ui_stage_time = min(ui_stage_time, stage_time);
+                if(ui_stage_time == stage_time) stat_timer = 0;
+                
+                if(scrButtonCheckPressed(global.jumpButton)) {
+                    ui_stage_time = stage_time;
+                    stat_timer = stats_count_delay;
+                }
+            }
+            // Deaths
+            else if(ui_stage_deaths &lt; stage_deaths) {
+                _stat_frequency = max( 4, 20 - round(stat_timer / 10));
+                _stat_increment = 1;
+                
+                if(stat_timer mod _stat_frequency == 0) {
+                    ui_stage_deaths += _stat_increment;
+                    audio_stop_sound(sfx_death_incr);
+                    audio_play_sound(sfx_death_incr, 0, false);
+                }
+                    
+                ui_stage_deaths = min(ui_stage_deaths, stage_deaths);
+                if(ui_stage_deaths == stage_deaths) stat_timer = 0;
+                
+                if(scrButtonCheckPressed(global.jumpButton)) {
+                    ui_stage_deaths = stage_deaths;
+                    stat_timer = stats_count_delay;
+                }
+            }
+            // Secrets
+            else if(ui_stage_secrets_found &lt; stage_secrets_found) {
+                _stat_frequency = stats_count_delay;
+                _stat_increment = 1;
+                
+                if(stat_timer mod _stat_frequency == 0) {
+                    ui_stage_secrets_found += _stat_increment;
+                    audio_stop_sound(sfx_secret_incr);
+                    audio_play_sound(sfx_secret_incr, 0, false);
+                }
+                    
+                ui_stage_secrets_found = min(ui_stage_secrets_found, stage_secrets_found);
+                if(ui_stage_secrets_found == stage_secrets_found) stat_timer = 0;
+                
+                if(scrButtonCheckPressed(global.jumpButton)) {
+                    ui_stage_secrets_found = stage_secrets_found;
+                    stat_timer = stats_count_delay;
+                }
+            }
+            // Continue Text
+            else {
+                _stat_ease_time = clamp(stat_timer - stats_count_delay, 0, continue_anim_length);
+                continue_alpha = scrAlexEaseInOutSine(_stat_ease_time, 0, 1, continue_anim_length);
+                
+                if(scrButtonCheckPressed(global.jumpButton) &amp;&amp; !warp_to_lobby) {
+                    warp_to_lobby = true;
+                    audio_play_sound(sndAlexExitGame, 0, false);
+                    
+                    // Prepare the alarm to warp the player back to the lobby
+                    alarm[0] = additional_time_before_warp + black_circle_anim_length;
+                }
+            }
+        }
+    }
+}
+
+
+// Black circle
+if(warp_to_lobby) {
+    black_circle_timer++;
+    
+    var _ease_time = clamp(black_circle_timer, 0, black_circle_anim_length);
+    black_circle_size = scrAlexEaseOutSine(_ease_time, 0, black_circle_target_size, black_circle_anim_length);
 }
 </string>
           </argument>
@@ -243,9 +383,19 @@ for(var i = 0; i &lt; sc_string_size; i++) {
         draw_set_alpha(sc_letter_alpha[i]);
         sc_letter_hue[i] += 1;
         _letter_col = make_colour_hsv(sc_letter_hue[i], 200, 240);
-        scrDrawTextSquareOutline(_letter_x, _letter_y, _letter_str, _letter_col, outline_col, sc_letter_outline_size, fa_center, fa_bottom);
+        scrDrawTextSquareOutline(_letter_x, _letter_y, _letter_str, _letter_col, outline_col, sc_letter_outline_size, fa_center, fa_middle);
+        
+        // Shine
+        draw_set_alpha(sc_letter_shine_alpha[i])
+        if(sc_letter_shine_alpha[i] &gt; 0.05)
+            scrDrawTextSquareOutline(_letter_x, _letter_y, _letter_str, text_col, outline_col, sc_letter_outline_size, fa_center, fa_middle);
+        draw_set_alpha(1);
     }
 }
+
+
+// Draw the stats
+
 
 
 // Draw the top &amp; bottom bars
@@ -258,6 +408,12 @@ for(var i=0; i&lt;bar_segments; i++) {
     draw_sprite_part(sprAlexPauseUITopBar, 0, bar_render_x, 0, bar_length, bar_height, segment_x, bar_y);
     draw_sprite_part(sprAlexPauseUIBottomBar, 0, bar_render_x_bottom, 0, bar_length, bar_height, segment_x, bar_bottom_y);
 }
+
+
+// Draw the right and left black bars
+draw_set_colour(c_black);
+draw_rectangle(-5000, -5000, -1, 5000, false);
+draw_rectangle(display_get_gui_width(), -5000, 5000, 5000, false);
 </string>
           </argument>
         </arguments>

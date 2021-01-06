@@ -642,6 +642,7 @@
       <script>scripts\scrAlexEaseOutSine.gml</script>
       <script>scripts\scrAlexEaseInSine.gml</script>
       <script>scripts\scrAlexEaseInBack.gml</script>
+      <script>scripts\scrAlexEaseInOutSine.gml</script>
       <script>scripts\scrAlexEaseOutElastic.gml</script>
       <script>scripts\scrDrawTextSquareOutline.gml</script>
       <script>scripts\scrAlexDrawPieTex.gml</script>
