@@ -50,7 +50,7 @@ stage_secrets_found = 0;
 // SFX
 sfx_time_incr = sndAlexDialogSoundBilly;
 sfx_death_incr = sndAlexDialogSoundBartender;
-sfx_secret_incr = sndAlexMenuConfirm;
+sfx_secret_incr = sndAlexClearUISecret;
 
 
 // UI converted stage stats
@@ -147,6 +147,40 @@ shader_timer_max_spd = 0.03;
 shader_timer_min_spd = 0.003;
 shader_timer_spd = shader_timer_max_spd;
 u_time = shader_get_uniform(shader, "u_time");
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Init music related vars
+
+BGM = musFanfare;
+introLength = 7.388;
+loopLength = 29.531;
+totalLength = introLength + loopLength;
+
+
+fanfare = audio_play_sound(BGM, 0, false);
+
+if(global.muteMusic)
+    audio_sound_gain(fanfare, 0, 10);
+else 
+    audio_sound_gain(fanfare, 1, 10);
 </string>
           </argument>
         </arguments>
@@ -302,8 +336,8 @@ if(timer &gt;= sc_time_until_stats_show) {
         
             // Time
             if(ui_stage_time &lt; stage_time) {
-                _stat_frequency = max( 4, 10 - floor(stats_timer / 15));
-                _stat_increment = 5 * floor(1 + stats_timer / 10);
+                _stat_frequency = 4;
+                _stat_increment = ceil(stage_time / 10);
                 
                 if(stats_incr_timer &gt;= _stat_frequency) {
                     stats_incr_timer = 0;
@@ -324,8 +358,8 @@ if(timer &gt;= sc_time_until_stats_show) {
             }
             // Deaths
             else if(ui_stage_deaths &lt; stage_deaths) {
-                _stat_frequency = max( 4, 10 - floor(stats_timer / 15));
-                _stat_increment = 1 + floor(stats_timer / 10);
+                _stat_frequency = 4;
+                _stat_increment = ceil(stage_deaths / 10);
                 
                 if(stats_incr_timer &gt;= _stat_frequency) {
                     stats_incr_timer = 0;
@@ -346,7 +380,7 @@ if(timer &gt;= sc_time_until_stats_show) {
             }
             // Secrets
             else if(ui_stage_secrets_found &lt; stage_secrets_found &amp;&amp; stage_total_secrets &gt; 0) {
-                _stat_frequency = stats_count_delay;
+                _stat_frequency = 20;
                 _stat_increment = 1;
                 
                 if(stats_incr_timer &gt;= _stat_frequency) {
@@ -374,6 +408,7 @@ if(timer &gt;= sc_time_until_stats_show) {
                 if(scrButtonCheckPressed(global.jumpButton) &amp;&amp; !warp_to_lobby) {
                     warp_to_lobby = true;
                     audio_play_sound(sndAlexExitGame, 0, false);
+                    audio_sound_gain(fanfare, 0, 1500);
                     
                     // Prepare the alarm to warp the player back to the lobby
                     alarm[0] = additional_time_before_warp + black_circle_anim_length;
@@ -399,8 +434,61 @@ if(warp_to_lobby) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Fanfare looping
+
+var _pos = audio_sound_get_track_position(fanfare)
+
+if(_pos &gt; totalLength &amp;&amp; audio_is_playing(fanfare))
+{
+  audio_sound_set_track_position(fanfare, _pos-loopLength);
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stop fanfare
+
+if(audio_is_playing(fanfare))
+    audio_stop_sound(fanfare);
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
