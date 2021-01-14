@@ -31,25 +31,196 @@
 room_id = rStarLevel1;
 stage_name = "Null";
 creator_name = "Null";
+difficulty = 0;  // 0-10
+star_number = 0;
 spawn_x = -1;
 spawn_y = -1;
 
+// overwrite these slots to check
+// if those stages are already beaten
+for(i=0; i&lt;6; i++) {
+    stage_to_check[i] = -1;
+}
+
+// Recalculate variables based on the creation code
+alarm[10] = 1;
+
 image_speed = 0;
 timer = 0;
+stage_cleared = false;
 colliding = false;
 active = true;
 force_close = false;
 arrow_x = x;
 arrow_y = y;
 arrow_image_index = 0;
+theta = 0;
+checkmark_x = x;
+checkmark_y = y - sprite_height/2;
+checkmark_y_start = checkmark_y;
+checkmark_wiggle = 4;
+lock_x = x;
+lock_y = y - (sprite_height/2) + 12;
+lock_angle = 0;
+lock_shake_amnt = 20;
+lock_shake_limiter = 0;
 
 // Unique vars
+locked = true;
 flash_expand = false;
 flash_height = 0;
 flash_width = 0;
 flash_timer = 0;
 flash_length = 30;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// UI variables
+
+ui_alpha = 0;
+ui_x = x;
+ui_y = y;
+ui_y_start = ui_y;
+ui_y_travel = 8;
+ui_fade_progress = 0;
+ui_difficulty_length = 0;
+
+stage_name = "null";
+creator_name = "null";
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Shader related
+
+door_surf = noone;
+shader = sRainbowAura;
+shader_timer = random(100);
+u_time = shader_get_uniform(shader, "u_time");
+u_visibility = shader_get_uniform(shader, "u_visibility");
+u_resolution = shader_get_uniform(shader, "u_resolution");
+shader_vis = 1;
+shader_res[0] = sprite_width;
+shader_res[1] = sprite_height;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Clear surface/s
+
+surface_free(door_surf);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Convert the difficulty into the UI variant
+
+ui_difficulty_length = difficulty/10;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check if it's unlocked &amp; if the stage is cleared
+
+var is_locked = false;
+for(i=0; i&lt;6; i++) {
+    if(stage_to_check[i] != -1) {
+        if(!stage_to_check[i])
+            is_locked = true;
+    }
+}
+
+locked = is_locked;
+
+if(!locked &amp;&amp; global.crystalStar[star_number]) {
+    stage_cleared = true;
+}
 </string>
           </argument>
         </arguments>
@@ -330,29 +501,73 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active) {
     
     // Check if the player has entered the door
     if(scrButtonCheckPressed(global.upButton)) {
-        active = false;
-        alarm[0] = 40;
-        
-        // Disable pause and restart
-        global.noRestart = true;
-        global.noPause = true;
-        
-        var fader = instance_create(0, 0, objAlexMusicFadeTransition);
-            fader.bubble_transition = false;
-        
-        audio_play_sound(sndAlexKidEnter, 0, false);
+        if(!locked) {
+            active = false;
+            alarm[0] = 40;
+            
+            // Disable pause and restart
+            global.noRestart = true;
+            global.noPause = true;
+            
+            var fader = instance_create(0, 0, objAlexMusicFadeTransition);
+                fader.bubble_transition = false;
+            
+            audio_play_sound(sndAlexKidEnter, 0, false);
+        } else {
+            lock_shake_limiter = lock_shake_amnt;
+            audio_play_sound(sndAlexLootBoxLocked, 0, false);
+        }
     }
 } else {
     colliding = false;
 }
 
 if((colliding || !active) &amp;&amp; !force_close) {
-    image_speed = .25;
+    if(!locked)
+        image_speed = .25;
+    
+    if(!active)
+        ui_fade_progress = lerp(ui_fade_progress, 1, .25);
+    else
+        ui_fade_progress = lerp(ui_fade_progress, 0, .25);
 } else {
     image_speed = -.25; 
+    ui_fade_progress = lerp(ui_fade_progress, 0, .25);
 }
 
 image_index = clamp(image_index, .5, image_number-1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Handle UI values
+
+ui_alpha = ui_fade_progress;
+ui_y = ui_y_start - (ui_y_travel * ui_fade_progress);
+
+lock_shake_limiter = max(lock_shake_limiter-1, 0);
+lock_angle = dsin(timer*40)*lock_shake_limiter;
+
+if(stage_cleared) {
+    theta += 5;
+    checkmark_y = checkmark_y_start + dsin(theta)*checkmark_wiggle;
+}
 </string>
           </argument>
         </arguments>
@@ -417,7 +632,31 @@ if(flash_expand) {
             <kind>1</kind>
             <string>/// Draw the door
 
-draw_self();
+if(locked) {
+    if(!surface_exists(door_surf)) {
+        door_surf = surface_create(sprite_width, sprite_height);
+    }
+    
+    surface_set_target(door_surf);
+        draw_clear_alpha(c_black, 0);
+        draw_sprite(sprite_index, image_index, sprite_width/2, sprite_height);
+    surface_reset_target();
+    
+    shader_timer += 0.05;
+    
+    // Draw door
+    shader_set(shader);
+        shader_set_uniform_f(u_time, shader_timer);
+        shader_set_uniform_f(u_visibility, shader_vis);
+        shader_set_uniform_f_array(u_resolution, shader_res);
+        draw_surface(door_surf, x-(sprite_width/2), y-sprite_height);
+    shader_reset();
+    
+    // Draw lock
+    draw_sprite_ext(sprAlexLootBoxLock, 0, lock_x, lock_y, 1, 1, lock_angle, -1, image_alpha);
+} else {
+    draw_self();
+}
 </string>
           </argument>
         </arguments>
@@ -442,6 +681,80 @@ draw_self();
 
 if(colliding &amp;&amp; active)
     draw_sprite(sprAlexPressUpArrow, arrow_image_index, arrow_x, arrow_y);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the UI above
+
+if(ui_fade_progress &gt; .02) {
+
+    draw_set_alpha(ui_alpha);
+    
+    var text_col = $e8fff5;
+    var outline_col = $2e1814;
+    
+    // Stage title
+    draw_set_font(fMenuLobby6);
+    
+    scrDrawTextSquareOutline(ui_x, ui_y-120, stage_name, text_col, outline_col, 1, fa_center, fa_top);
+    
+    // Creator
+    draw_set_font(fLobbySmall);
+    scrDrawTextSquareOutline(ui_x, ui_y-110, "By: "+creator_name, text_col, outline_col, 1, fa_center, fa_top);
+    
+    // Difficulty
+    scrDrawTextSquareOutline(ui_x, ui_y-90, "difficulty", text_col, outline_col, 1, fa_center, fa_top);
+    draw_sprite(sprAlexStageDifficultyBar, 0, ui_x-20, ui_y-75);
+    draw_sprite_part(sprAlexStageDifficultyBar, 1, 0, 0, 40*ui_difficulty_length, 8, ui_x-20, ui_y-75);
+    
+    draw_set_alpha(1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw clear checkmark
+
+if(stage_cleared) {
+
+    draw_set_alpha(1-ui_alpha);
+    draw_sprite(sprAlexLobbyStageDoorCleared, 0, checkmark_x, checkmark_y)
+    draw_set_alpha(1);
+
+}
 </string>
           </argument>
         </arguments>

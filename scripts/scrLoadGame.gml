@@ -69,6 +69,11 @@ if (loadFile)
             global.saveStageCleared[i] = ds_map_find_value(saveMap,"saveStageClear["+string(i)+"]");
         }
         
+        for (var i = 0; i <= global.totalNumberOfCrystalStars; i++)
+        {
+            global.saveCrystalStar[i] = ds_map_find_value(saveMap,"saveCrystalStar["+string(i)+"]");
+        }
+        
         for (var i = 0; i < global.totalNumberOfHats; i++)
         {
             global.savePlayerHat[i] = ds_map_find_value(saveMap,"savePlayerHat["+string(i)+"]");
@@ -143,6 +148,11 @@ global.totalStagesCleared = global.saveTotalStagesCleared;
 for (var i = 0; i <= global.totalNumberOfStages; i++)
 {
     global.stageCleared[i] = global.saveStageCleared[i];
+}
+
+for (var i = 0; i <= global.totalNumberOfCrystalStars; i++)
+{
+    global.crystalStar[i] = global.saveCrystalStar[i];
 }
 
 for (var i = 0; i < global.totalNumberOfHats; i++)

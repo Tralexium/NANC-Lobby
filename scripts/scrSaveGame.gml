@@ -64,6 +64,11 @@ if (savePosition)
         global.saveStageCleared[i] = global.stageCleared[i];
     }
     
+    for (var i = 0; i < global.totalNumberOfCrystalStars; i++)
+    {
+        global.saveCrystalStar[i] = global.crystalStar[i];
+    }
+    
     global.saveGameClear = global.gameClear;
 }
 
@@ -99,6 +104,11 @@ ds_map_add(saveMap,"stageTime",global.stageTime);
 for (var i = 0; i <= global.totalNumberOfStages; i++)
 {
     ds_map_add(saveMap,"saveStageClear["+string(i)+"]",global.saveStageCleared[i]);
+}
+
+for (var i = 0; i <= global.totalNumberOfCrystalStars; i++)
+{
+    ds_map_add(saveMap,"saveCrystalStar["+string(i)+"]",global.saveCrystalStar[i]);
 }
 
 for (var i = 0; i < global.totalNumberOfHats; i++)

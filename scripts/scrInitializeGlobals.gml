@@ -8,6 +8,18 @@ for (var i = 0; i <= global.totalNumberOfStages; i++)
 {
     global.stageCleared[i] = false;
     global.saveStageCleared[i] = false;
+    
+    if(i > 15) {
+        global.stageCleared[i] = true;
+        global.saveStageCleared[i] = true;
+    }
+}
+
+global.totalNumberOfCrystalStars = 6;
+for (var i = 0; i <= global.totalNumberOfCrystalStars; i++)
+{
+    global.crystalStar[i] = false;
+    global.saveCrystalStar[i] = false;
 }
 
 global.totalNumberOfHats = 10;
@@ -24,11 +36,12 @@ for (var i = 0; i < global.totalNumberOfPets; i++)
     global.savePlayerPet[i] = false;
 }
 
+
 global.currentPlayerHat = -1;  // Current hat that the player is wearing
 global.currentPlayerPet = -1;  // Current pet that follows the player
 global.totalSecretsFound = 0;
 global.saveTotalSecretsFound = 0;
-global.totalStagesCleared = 0;  // TODO: update this number in your stage clear script Piece
+global.totalStagesCleared = 0;
 global.saveTotalStagesCleared = 0;
 global.skipGameIntro = false;  // Used when going back to the main menu screen from the pause menu
 global.noRestart = false;  // Disables restarting
