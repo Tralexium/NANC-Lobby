@@ -631,6 +631,8 @@
         <script>scripts\scrPauseControllerDraw.gml</script>
         <script>scripts\scrPauseExitInput.gml</script>
         <script>scripts\scrPauseExitDraw.gml</script>
+        <script>scripts\scrPauseExitHubInput.gml</script>
+        <script>scripts\scrPauseExitHubDraw.gml</script>
       </scripts>
     </scripts>
     <scripts name="functions">

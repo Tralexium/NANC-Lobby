@@ -60,7 +60,7 @@ checkmark_y = y - sprite_height/2;
 checkmark_y_start = checkmark_y;
 checkmark_wiggle = 4;
 lock_x = x;
-lock_y = y - (sprite_height/2) + 12;
+lock_y = y + 4;
 lock_angle = 0;
 lock_shake_amnt = 20;
 lock_shake_limiter = 0;
@@ -526,7 +526,7 @@ if((colliding || !active) &amp;&amp; !force_close) {
     if(!locked)
         image_speed = .25;
     
-    if(!active)
+    if(active)
         ui_fade_progress = lerp(ui_fade_progress, 1, .25);
     else
         ui_fade_progress = lerp(ui_fade_progress, 0, .25);
@@ -639,7 +639,7 @@ if(locked) {
     
     surface_set_target(door_surf);
         draw_clear_alpha(c_black, 0);
-        draw_sprite(sprite_index, image_index, sprite_width/2, sprite_height);
+        draw_sprite(sprite_index, image_index, sprite_width/2, sprite_height - 32);
     surface_reset_target();
     
     shader_timer += 0.05;
@@ -649,7 +649,7 @@ if(locked) {
         shader_set_uniform_f(u_time, shader_timer);
         shader_set_uniform_f(u_visibility, shader_vis);
         shader_set_uniform_f_array(u_resolution, shader_res);
-        draw_surface(door_surf, x-(sprite_width/2), y-sprite_height);
+        draw_surface(door_surf, x-(sprite_width/2), y-sprite_height+32);
     shader_reset();
     
     // Draw lock
@@ -713,16 +713,16 @@ if(ui_fade_progress &gt; .02) {
     // Stage title
     draw_set_font(fMenuLobby6);
     
-    scrDrawTextSquareOutline(ui_x, ui_y-120, stage_name, text_col, outline_col, 1, fa_center, fa_top);
+    scrDrawTextSquareOutline(ui_x, ui_y-90, stage_name, text_col, outline_col, 1, fa_center, fa_top);
     
     // Creator
     draw_set_font(fLobbySmall);
-    scrDrawTextSquareOutline(ui_x, ui_y-110, "By: "+creator_name, text_col, outline_col, 1, fa_center, fa_top);
+    scrDrawTextSquareOutline(ui_x, ui_y-80, "By: "+creator_name, text_col, outline_col, 1, fa_center, fa_top);
     
     // Difficulty
-    scrDrawTextSquareOutline(ui_x, ui_y-90, "difficulty", text_col, outline_col, 1, fa_center, fa_top);
-    draw_sprite(sprAlexStageDifficultyBar, 0, ui_x-20, ui_y-75);
-    draw_sprite_part(sprAlexStageDifficultyBar, 1, 0, 0, 40*ui_difficulty_length, 8, ui_x-20, ui_y-75);
+    scrDrawTextSquareOutline(ui_x, ui_y-60, "difficulty", text_col, outline_col, 1, fa_center, fa_top);
+    draw_sprite(sprAlexStageDifficultyBar, 0, ui_x-20, ui_y-45);
+    draw_sprite_part(sprAlexStageDifficultyBar, 1, 0, 0, 40*ui_difficulty_length, 8, ui_x-20, ui_y-45);
     
     draw_set_alpha(1);
 }

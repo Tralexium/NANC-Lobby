@@ -68,7 +68,7 @@ pause_top_option_num = -1;
 pause_top_option_text[0] = "Resume";
 pause_top_option_text[1] = "Cosmetics";
 pause_top_option_text[2] = "Options";
-pause_top_option_text[3] = "Exit Game";
+pause_top_option_text[3] = "Exit";
 pause_top_option_selected = false;
 pause_top_option_theta = 0;
 pause_top_option_anim_spd = 20;
@@ -113,7 +113,9 @@ pause_options_alpha = 0;
 pause_options_keyboard_alpha = 0;
 pause_options_controller_alpha = 0;
 pause_exit_alpha = 0;
+pause_exit_hub_alpha = 0;
 pause_options_keybind_menu = 0;  // 0: general, 1: keyboard, 2: controller
+pause_exit_menu = 0;  // 0: general, 1: back to hub confirmation
 pause_cosmetic_index = 0;
 pause_cosmetic_max_index = 16;
 pause_cosmetic_image_index = 0;
@@ -150,14 +152,28 @@ pause_options_volume_bar_sep = 16;
 pause_options_reset_keybinds_mix = 0; // 0: white, 1: green
 pause_options_reset_col = $e8e0df;
 pause_exit_index = 0;
-pause_exit_max_index = 2;
+pause_exit_max_index = 3;
 pause_exit_x = display_get_gui_width()/2 - 80;
 pause_exit_y = display_get_gui_height()/2 - 40;
 pause_exit_cursor_x = pause_exit_x - 32;
 pause_exit_cursor_y = pause_exit_y;
 pause_exit_text[0] = "Back to Menu";
 pause_exit_text[1] = "Exit Game";
-pause_exit_protocol = -1;  // 0: back to menu, 1: exit game
+pause_exit_text[2] = "Back to Hub";
+pause_exit_protocol = -1;  // 0: back to menu, 1: exit game, 2: back to hub
+pause_exit_hub_index = 0;
+pause_exit_hub_max_index = 2;
+pause_exit_hub_protocol = -1;  // 0: Back to hub
+pause_exit_hub_title = "Go back back to the hub area?#Progress will not be saved!"
+pause_exit_hub_x = display_get_gui_width()/2 - 40;
+pause_exit_hub_y = display_get_gui_height()/2 + 20;
+pause_exit_hub_cursor_x = pause_exit_hub_x - 32;
+pause_exit_hub_cursor_y = pause_exit_hub_y;
+pause_exit_hub_title_x = display_get_gui_width()/2;
+pause_exit_hub_title_y = pause_exit_hub_y - pause_options_seperation;
+pause_exit_hub_text[0] = "Nope";
+pause_exit_hub_text[1] = "Yeap";
+pause_autosave_for_hub = false;  // Autosaves the player position when back in hub
 
 
 </string>
@@ -746,20 +762,43 @@ if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1) {
                 break;
                 
             case 3:  // Exit
-                var _prev_pause_exit_index = pause_exit_index;
-                if(pause_exit_protocol == -1)
-                    pause_exit_index += V;
+                switch(pause_exit_menu) {
+                    case 0:  // General exit options
+                        var _prev_pause_exit_index = pause_exit_index;
+                        if(pause_exit_protocol == -1)
+                            pause_exit_index += V;
+                            
+                        var _actual_exit_max_index = pause_exit_max_index - !global.stagePresent;  // Takes into account if currently in a stage
+                        if(pause_exit_index &gt; _actual_exit_max_index-1)
+                            pause_exit_index -= _actual_exit_max_index;
+                        if(pause_exit_index &lt; 0)
+                            pause_exit_index += _actual_exit_max_index;
+                        
+                        if(_prev_pause_exit_index != pause_exit_index)
+                            audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+                        
+                        if(!pause_input_delay)
+                            scrPauseExitInput(pause_exit_index, _accept_press, _back_press);
+                        break;
                     
-                if(pause_exit_index &gt; pause_exit_max_index-1)
-                    pause_exit_index -= pause_exit_max_index;
-                if(pause_exit_index &lt; 0)
-                    pause_exit_index += pause_exit_max_index;
+                    case 1:  // Back to hub confirmation
+                        var _prev_pause_exit_hub_index = pause_exit_hub_index;
+                        if(pause_exit_hub_protocol == -1)
+                            pause_exit_hub_index += V;
+                            
+                        if(pause_exit_hub_index &gt; pause_exit_hub_max_index-1)
+                            pause_exit_hub_index -= pause_exit_hub_max_index;
+                        if(pause_exit_hub_index &lt; 0)
+                            pause_exit_hub_index += pause_exit_hub_max_index;
+                        
+                        if(_prev_pause_exit_hub_index != pause_exit_hub_index)
+                            audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+                        
+                        if(!pause_input_delay)
+                            scrPauseExitHubInput(pause_exit_hub_index, _accept_press, _back_press);
+                        break;
+                }
                 
-                if(_prev_pause_exit_index != pause_exit_index)
-                    audio_play_sound(sndAlexMenuSwitchOption, 0, false);
-                
-                if(!pause_input_delay)
-                    scrPauseExitInput(pause_exit_index, _accept_press, _back_press);
                 break;
         }
     }
@@ -831,7 +870,23 @@ if(pause_top_option_selected) {
                 }
                 break;
             case 3:  // Exit
-                pause_exit_alpha = min(pause_exit_alpha + pause_fade_spd, 1);
+                switch(pause_exit_menu) {
+                    case 0:
+                    default:
+                        if(pause_exit_hub_alpha == 0) {
+                            pause_exit_alpha = min(pause_exit_alpha + pause_fade_spd, 1);
+                        } else {
+                            pause_exit_hub_alpha = max(pause_exit_hub_alpha - pause_fade_spd, 0);
+                        }
+                        break;
+                    case 1:
+                        if(pause_exit_alpha == 0) {
+                            pause_exit_hub_alpha = min(pause_exit_hub_alpha + pause_fade_spd, 1);
+                        } else {
+                            pause_exit_alpha = max(pause_exit_alpha - pause_fade_spd, 0);
+                        }
+                        break;
+                }
                 break;
         }
     }
@@ -846,22 +901,27 @@ if(pause_top_option_selected) {
     */
     
     // Scrolling
+    var _scroll_spd = pause_options_scroll_spd;
     var _general_options_scroll_amnt = pause_options_index * pause_options_seperation;
     var _keyboard_options_scroll_amnt = pause_options_keyboard_index * pause_options_seperation;
     var _controller_options_scroll_amnt = pause_options_controller_index * pause_options_seperation;
     var _exit_scroll_amnt = pause_exit_index * pause_options_seperation;
-    var _scroll_spd = pause_options_scroll_spd;
+    var _exit_hub_scroll_amnt = pause_exit_hub_index * pause_options_seperation;
     
     pause_options_target_y = lerp(pause_options_target_y, pause_options_y-_general_options_scroll_amnt, _scroll_spd);
     pause_options_keyboard_target_y = lerp(pause_options_keyboard_target_y, pause_options_y-_keyboard_options_scroll_amnt, _scroll_spd);
     pause_options_controller_target_y = lerp(pause_options_controller_target_y, pause_options_y-_controller_options_scroll_amnt, _scroll_spd);
     pause_exit_cursor_y = lerp(pause_exit_cursor_y, pause_exit_y+_exit_scroll_amnt, _scroll_spd);
+    pause_exit_hub_cursor_y = lerp(pause_exit_hub_cursor_y, pause_exit_hub_y+_exit_hub_scroll_amnt, _scroll_spd);
     
 } else if(global.gamePaused &amp;&amp; pause_anim_progress &gt;= 1){
     if(pause_cosmetics_alpha == 0 &amp;&amp; pause_options_alpha == 0 &amp;&amp; pause_exit_alpha == 0) {
         pause_sprite_alpha = min(pause_sprite_alpha + pause_fade_spd, 1);
         pause_cosmetic_index = 0;
         pause_exit_index = 0;
+        pause_exit_cursor_y = pause_exit_y;
+        pause_exit_hub_index = 0;
+        pause_exit_hub_cursor_y = pause_exit_hub_y;
         pause_options_index = 0;
         pause_options_target_y = pause_options_y;
         pause_options_keyboard_index = 0;
@@ -1029,6 +1089,33 @@ if (!instance_exists(objPlayMusic))  //make sure the play music object isn't in 
 
 room_speed = 50;    //make sure game is running at the correct frame rate
 scrSetRoomCaption();    //make sure window caption stays updated
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Autosave if just came back to hub from a stage
+
+if(pause_autosave_for_hub) {
+    scrSaveGame(true);
+    instance_create(0, 0, objAlexLobbyBubbleTransition);
+    pause_autosave_for_hub = false;
+}
 </string>
           </argument>
         </arguments>
@@ -1328,6 +1415,7 @@ if (pause_anim_progress &gt; 0)
     scrPauseKeyboardDraw(text_col, outline_col);
     scrPauseControllerDraw(text_col, outline_col);
     scrPauseExitDraw(text_col, outline_col);
+    scrPauseExitHubDraw(text_col, outline_col);
     
     
     // Draw the top &amp; bottom bars

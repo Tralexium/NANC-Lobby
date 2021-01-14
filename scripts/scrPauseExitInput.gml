@@ -7,16 +7,21 @@ var _accept_button = argument1;
 var _back_button = argument2;
 
 if(pause_exit_protocol == -1) {
-    if(_accept_button) {
-        audio_sound_gain(global.currentMusic, 0, 1000);
-        audio_play_sound(sndAlexExitGame, 0, false);
-    
+    if(_accept_button) {    
         switch(_index) {
             case 0:
                 pause_exit_protocol = 0;  // Exit back to menu
+                audio_sound_gain(global.currentMusic, 0, 1000);
+                audio_play_sound(sndAlexExitGame, 0, false);
                 break;
             case 1:
                 pause_exit_protocol = 1;  // Exit game
+                audio_sound_gain(global.currentMusic, 0, 1000);
+                audio_play_sound(sndAlexExitGame, 0, false);
+                break;
+            case 2:
+                pause_exit_menu = 1;  // Confirm back to hub
+                audio_play_sound(sndAlexMenuConfirm, 0, false);
                 break;
         }
     }

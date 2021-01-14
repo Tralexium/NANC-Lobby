@@ -178,7 +178,7 @@ totalLength = introLength + loopLength;
 fanfare = audio_play_sound(BGM, 0, false);
 
 if(global.muteMusic)
-    audio_sound_gain(fanfare, 0, 10);
+    audio_stop_sound(fanfare);
 else 
     audio_sound_gain(fanfare, 1, 10);
 </string>

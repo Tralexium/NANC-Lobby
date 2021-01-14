@@ -8,11 +8,6 @@ for (var i = 0; i <= global.totalNumberOfStages; i++)
 {
     global.stageCleared[i] = false;
     global.saveStageCleared[i] = false;
-    
-    if(i > 15) {
-        global.stageCleared[i] = true;
-        global.saveStageCleared[i] = true;
-    }
 }
 
 global.totalNumberOfCrystalStars = 6;

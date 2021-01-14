@@ -10,8 +10,9 @@ if(pause_exit_alpha > 0) {
     draw_set_alpha(pause_exit_alpha)
     
     var _exit_y;
+    var _actual_exit_max_index = pause_exit_max_index - !global.stagePresent;  // Takes into account if currently in a stage
     
-    for(var i=0; i<pause_exit_max_index; i++) {
+    for(var i=0; i<_actual_exit_max_index; i++) {
         _exit_y = pause_exit_y + (i * pause_options_seperation);
         
         scrDrawTextSquareOutline(pause_exit_x, _exit_y, pause_exit_text[i], _text_col, _outline_col, 2, fa_left, fa_middle);
