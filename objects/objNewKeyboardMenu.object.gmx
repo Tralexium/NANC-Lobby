@@ -35,7 +35,7 @@ xSelector = 150;
 ySelector = 80;
 xSeperation = 800-150;
 ySeperation = 70;
-optionsNum = 11; //sets number of separate options available
+optionsNum = 10; //sets number of separate options available
 volTimer = 0;
 moveTimer = 0;
 moveTimerDelay = 25;
@@ -60,9 +60,8 @@ strSelect[4] = "Jump Button";
 strSelect[5] = "Shoot Button";
 strSelect[6] = "Restart Button";
 strSelect[7] = "Skip Button";
-strSelect[8] = "Suicide Button";
-strSelect[9] = "Pause Button";
-strSelect[10] = "Reset Controls";
+strSelect[8] = "Pause Button";
+strSelect[9] = "Reset Controls";
 
 //get current controls
 strKey[0] = scrGetKeybind(global.leftButton[0]);
@@ -73,9 +72,8 @@ strKey[4] = scrGetKeybind(global.jumpButton[0]);
 strKey[5] = scrGetKeybind(global.shootButton[0]);
 strKey[6] = scrGetKeybind(global.restartButton[0]);
 strKey[7] = scrGetKeybind(global.skipButton[0]);
-strKey[8] = scrGetKeybind(global.suicideButton[0]);
-strKey[9] = scrGetKeybind(global.pauseButton[0]);
-strKey[10] = "";
+strKey[8] = scrGetKeybind(global.pauseButton[0]);
+strKey[9] = "";
 </string>
           </argument>
         </arguments>
@@ -253,7 +251,7 @@ if(canSelect){
         }
         else if (scrButtonCheckPressed(global.menuAcceptButton) || keyboard_check_pressed(vk_enter))
         {
-            if (select != 10)
+            if (select != 9)
             {
                 settingKey = true;
                 audio_play_sound(sndAlexMenuAwaitKeybind, 0, false);
@@ -294,8 +292,7 @@ if(canSelect){
             else if (select == 5) {global.shootButton[0] = keyChange;}
             else if (select == 6) {global.restartButton[0] = keyChange;}
             else if (select == 7) {global.skipButton[0] = keyChange;}
-            else if (select == 8) {global.suicideButton[0] = keyChange;}
-            else if (select == 9) {global.pauseButton[0] = keyChange;}
+            else if (select == 8) {global.pauseButton[0] = keyChange;}
             
             settingKey = false;
             audio_play_sound(sndAlexMenuConfirm, 0, false);
@@ -317,9 +314,8 @@ strKey[4] = scrGetKeybind(global.jumpButton[0]);
 strKey[5] = scrGetKeybind(global.shootButton[0]);
 strKey[6] = scrGetKeybind(global.restartButton[0]);
 strKey[7] = scrGetKeybind(global.skipButton[0]);
-strKey[8] = scrGetKeybind(global.suicideButton[0]);
-strKey[9] = scrGetKeybind(global.pauseButton[0]);
-strKey[10] = "";
+strKey[8] = scrGetKeybind(global.pauseButton[0]);
+strKey[9] = "";
 
 reset_keybinds_color_mix = max(reset_keybinds_color_mix - 0.05, 0);
 reset_keybinds_color = merge_colour(text_col, options_reset_col, reset_keybinds_color_mix);
@@ -365,7 +361,7 @@ for(var i = 0; i &lt; optionsNum; i++)
     var _final_text_alpha = drawAlpha * _upper_threshold_alpha * _bottom_threshold_alpha;
     draw_set_alpha(_final_text_alpha);
 
-    if(i == 10)
+    if(i == 9)
         scrDrawTextSquareOutline(xSelector, _y, strSelect[i], reset_keybinds_color, holder_color, outline_size, fa_left, fa_middle);
     else
         scrDrawTextSquareOutline(xSelector, _y, strSelect[i], text_col, holder_color, outline_size, fa_left, fa_middle);
@@ -374,7 +370,7 @@ for(var i = 0; i &lt; optionsNum; i++)
     {
         if (settingKey) //key prompt
         {
-            scrDrawTextSquareOutline(xSeperation, _y, "Press the key to set", text_col, holder_color, outline_size, fa_right, fa_middle);
+            scrDrawTextSquareOutline(xSeperation, _y, "Awaiting input", text_col, holder_color, outline_size, fa_right, fa_middle);
         }
     }
     

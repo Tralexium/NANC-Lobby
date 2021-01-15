@@ -8,7 +8,7 @@ var _back_button = argument2;
 
 if(!pause_setting_key) {
     if(_accept_button) {
-        if (_index != 10)
+        if (_index != 9)
         {
             pause_setting_key = true;
             audio_play_sound(sndAlexMenuAwaitKeybind, 0, false);
@@ -52,8 +52,7 @@ else
         else if (_index == 5) {global.shootButton[1] = keyChange;}
         else if (_index == 6) {global.restartButton[1] = keyChange;}
         else if (_index == 7) {global.skipButton[1] = keyChange;}
-        else if (_index == 8) {global.suicideButton[1] = keyChange;}
-        else if (_index == 9) {global.pauseButton[1] = keyChange;}
+        else if (_index == 8) {global.pauseButton[1] = keyChange;}
         
         pause_setting_key = false;
         audio_play_sound(sndAlexMenuConfirm, 0, false);

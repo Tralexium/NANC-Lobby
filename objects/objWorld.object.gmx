@@ -144,9 +144,9 @@ pause_options_keyboard_target_y = pause_options_y;
 pause_options_controller_target_y = pause_options_y;
 pause_options_max_index = 8;
 pause_options_keyboard_index = 0;
-pause_options_keyboard_max_index = 11;
+pause_options_keyboard_max_index = 10;
 pause_options_controller_index = 0;
-pause_options_controller_max_index = 11;
+pause_options_controller_max_index = 10;
 pause_options_volume_bars = 10;
 pause_options_volume_bar_sep = 16;
 pause_options_reset_keybinds_mix = 0; // 0: white, 1: green
@@ -1193,7 +1193,7 @@ room_goto_next();
           <argument>
             <kind>1</kind>
             <string>/// Option strings &amp; vars for pause menu
-// We create the after we initialized the keys
+// We create them after we initialized the keys
 
 // General options
 pause_options[0] = "Music";
@@ -1217,9 +1217,8 @@ pause_keybind[4] = "Jump Button";
 pause_keybind[5] = "Shoot Button";
 pause_keybind[6] = "Restart Button";
 pause_keybind[7] = "Skip Button";
-pause_keybind[8] = "Suicide Button";
-pause_keybind[9] = "Pause Button";
-pause_keybind[10] = "Reset Controls";
+pause_keybind[8] = "Pause Button";
+pause_keybind[9] = "Reset Controls";
 // get current binds (currently they're assigned to the keyboard variant)
 pause_keybind_key[0] = scrGetKeybind(global.leftButton[0]);
 pause_keybind_key[1] = scrGetKeybind(global.rightButton[0]);
@@ -1229,9 +1228,8 @@ pause_keybind_key[4] = scrGetKeybind(global.jumpButton[0]);
 pause_keybind_key[5] = scrGetKeybind(global.shootButton[0]);
 pause_keybind_key[6] = scrGetKeybind(global.restartButton[0]);
 pause_keybind_key[7] = scrGetKeybind(global.skipButton[0]);
-pause_keybind_key[8] = scrGetKeybind(global.suicideButton[0]);
-pause_keybind_key[9] = scrGetKeybind(global.pauseButton[0]);
-pause_keybind_key[10] = "";
+pause_keybind_key[8] = scrGetKeybind(global.pauseButton[0]);
+pause_keybind_key[9] = "";
 </string>
           </argument>
         </arguments>

@@ -371,7 +371,7 @@ if (!frozen)    //check if frozen before doing anything
         scrPlayerJump();
     if (scrButtonCheckReleased(global.jumpButton))
         scrPlayerVJump();
-    if (scrButtonCheckPressed(global.suicideButton))
+    if (scrButtonCheckPressed(global.suicideButton) &amp;&amp; global.debugMode)
         scrKillPlayer();
 }
 
