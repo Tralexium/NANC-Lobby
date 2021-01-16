@@ -512,9 +512,6 @@ instance_create(0, 0, objAlexLobbyBubbleTransition);
 // Mark the stage as cleared
 if(stage_num != -1)
     global.saveStageCleared[stage_num] = true;
-
-// Increment the total of cleared stages
-global.totalStagesCleared += 1;
     
 // Reset stage stats
 scrResetStageStats();

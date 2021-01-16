@@ -40,8 +40,11 @@ if (loadFile)
         
         global.currentPlayerHat = ds_map_find_value(saveMap,"currentPlayerHat");
         global.currentPlayerPet = ds_map_find_value(saveMap,"currentPlayerPet");
+        
+        // Totals
         global.saveTotalSecretsFound = ds_map_find_value(saveMap,"saveTotalSecretsFound");
         global.saveTotalStagesCleared = ds_map_find_value(saveMap,"saveTotalStagesCleared");
+        global.saveTotalCrystalStarsFound = ds_map_find_value(saveMap,"saveTotalCrystalStarsFound");
         
         // Lobby related
         global.lobbyPlayerSpeedUp = ds_map_find_value(saveMap,"lobbyPlayerSpeedUp");
@@ -69,7 +72,7 @@ if (loadFile)
             global.saveStageCleared[i] = ds_map_find_value(saveMap,"saveStageClear["+string(i)+"]");
         }
         
-        for (var i = 0; i <= global.totalNumberOfCrystalStars; i++)
+        for (var i = 0; i < global.totalNumberOfCrystalStars; i++)
         {
             global.saveCrystalStar[i] = ds_map_find_value(saveMap,"saveCrystalStar["+string(i)+"]");
         }
@@ -142,15 +145,17 @@ global.autosave = false;    //disable autosaving since we're loading the game
 
 global.grav = global.saveGrav;
 
+// Totals
 global.totalSecretsFound = global.saveTotalSecretsFound;
 global.totalStagesCleared = global.saveTotalStagesCleared;
+global.totalCrystalStarsFound = global.saveTotalCrystalStarsFound;
 
 for (var i = 0; i <= global.totalNumberOfStages; i++)
 {
     global.stageCleared[i] = global.saveStageCleared[i];
 }
 
-for (var i = 0; i <= global.totalNumberOfCrystalStars; i++)
+for (var i = 0; i < global.totalNumberOfCrystalStars; i++)
 {
     global.crystalStar[i] = global.saveCrystalStar[i];
 }

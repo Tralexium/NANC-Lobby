@@ -909,6 +909,7 @@
         <object>objects\objAlexStarStageBG</object>
         <object>objects\objAlexObstacleRenderer</object>
         <object>objects\objAlexCrystalStar</object>
+        <object>objects\objAlexCrystalStarCollectedIndicator</object>
       </objects>
       <object>objects\objStarzorSign</object>
     </objects>

@@ -36,9 +36,6 @@ if (savePosition)
     global.savePlayerX = floor(global.savePlayerX);
     global.savePlayerY = floor(global.savePlayerY);
     
-    global.saveTotalSecretsFound = global.totalSecretsFound;
-    global.saveTotalStagesCleared = global.totalStagesCleared;
-    
     for (var i = 0; i < global.secretItemTotal; i++)
     {
         global.saveSecretItem[i] = global.secretItem[i];
@@ -72,6 +69,36 @@ if (savePosition)
     global.saveGameClear = global.gameClear;
 }
 
+
+// Calculate and assign the total of different stats
+// Secrets
+global.totalSecretsFound = 0;
+for (var i = 0; i < global.secretItemTotal; i++)
+{
+    if(global.saveSecretItem[i])
+        global.totalSecretsFound++;
+}
+global.saveTotalSecretsFound = global.totalSecretsFound;
+
+// Stages
+global.totalStagesCleared = 0;
+for (var i = 0; i <= global.totalNumberOfStages; i++)
+{
+    if(global.saveStageCleared[i])
+        global.totalStagesCleared++;
+}
+global.saveTotalStagesCleared = global.totalStagesCleared;
+
+// Crystal stars
+global.totalCrystalStarsFound = 0;
+for (var i = 0; i < global.totalNumberOfCrystalStars; i++)
+{
+    if(global.saveCrystalStar[i])
+        global.totalCrystalStarsFound++;
+}
+global.saveTotalCrystalStarsFound = global.totalCrystalStarsFound;
+
+
 //create a map for save data
 var saveMap = ds_map_create();
 
@@ -87,8 +114,11 @@ ds_map_add(saveMap,"saveGrav",global.saveGrav);
 
 ds_map_add(saveMap,"currentPlayerHat",global.currentPlayerHat);
 ds_map_add(saveMap,"currentPlayerPet",global.currentPlayerPet);
+
+// Totals
 ds_map_add(saveMap,"saveTotalSecretsFound",global.saveTotalSecretsFound);
 ds_map_add(saveMap,"saveTotalStagesCleared",global.saveTotalStagesCleared);
+ds_map_add(saveMap,"saveTotalCrystalStarsFound",global.saveTotalCrystalStarsFound);
 
 // Lobby related
 ds_map_add(saveMap,"lobbyPlayerSpeedUp",global.lobbyPlayerSpeedUp);
@@ -106,7 +136,7 @@ for (var i = 0; i <= global.totalNumberOfStages; i++)
     ds_map_add(saveMap,"saveStageClear["+string(i)+"]",global.saveStageCleared[i]);
 }
 
-for (var i = 0; i <= global.totalNumberOfCrystalStars; i++)
+for (var i = 0; i < global.totalNumberOfCrystalStars; i++)
 {
     ds_map_add(saveMap,"saveCrystalStar["+string(i)+"]",global.saveCrystalStar[i]);
 }

@@ -11,7 +11,7 @@ for (var i = 0; i <= global.totalNumberOfStages; i++)
 }
 
 global.totalNumberOfCrystalStars = 6;
-for (var i = 0; i <= global.totalNumberOfCrystalStars; i++)
+for (var i = 0; i < global.totalNumberOfCrystalStars; i++)
 {
     global.crystalStar[i] = false;
     global.saveCrystalStar[i] = false;
@@ -38,6 +38,8 @@ global.totalSecretsFound = 0;
 global.saveTotalSecretsFound = 0;
 global.totalStagesCleared = 0;
 global.saveTotalStagesCleared = 0;
+global.totalCrystalStarsFound = 0;
+global.saveTotalCrystalStarsFound = 0;
 global.skipGameIntro = false;  // Used when going back to the main menu screen from the pause menu
 global.noRestart = false;  // Disables restarting
 

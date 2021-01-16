@@ -7,7 +7,395 @@
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Init vars
+
+image_speed = 0;
+
+//set in creation code
+starNum = 0;
+starHaloCol = $b8a44f
+
+
+collected = false;
+fly_away = false;
+t = 0;
+shine_frequency = 100;
+shine_length = 25;
+shine_t = 0;
+shine_index = 0;
+glow_alpha = 0;
+draw_x = xstart;
+draw_y = ystart;
+draw_angle = 0;
+draw_scale = 1;
+halo_angle = 0;
+halo_spin_spd = 1;
+halo_alpha = .35;
+halo_scale = .7;
+halo_add_scale = .2;  // Set in step event
+overlay_flash_alpha = 0;
+spin_spd = 0;
+spin_accel = -1;
+pre_fly_scale = 5;
+pre_fly_alpha = 0;
+shake_cam_amnt = 5;
+shake_cam_amnt_decrease = 0.5;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Spawn the "collected" indicator
+
+var obj = instance_create(x, y, objAlexCrystalStarCollectedIndicator);
+    obj.image_index = starNum;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy instance and show the collected indicator
+
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Make the item fly away
+
+fly_away = true;
+
+var _life, _dir, _x, _y;
+_life = 20;
+_angle = draw_angle;
+_x = draw_x;
+_y = draw_y
+for(i=0; i&lt;25; i++) {
+    scrAlexMakeParticleExt(_x, _y, _life, sprite_index, image_index, 0, _angle, 90, 1, -0.05, -1, -1, bm_add, false, true, false, depth, false);
+    _life += 4;
+    _angle += 30;
+    _y -= sprite_height + 10;
+    
+    repeat(2) {
+        randomize();
+        var _orb_scale = random_range(0.05, 0.15);
+        var p = scrAlexMakeParticle(_x + random_range(-20, 20), _y + random_range(-20, 20), random_range(30, 50), sprAlexGlowOrb, 0, 90, random_range(2, 3), false, true, false);
+            p.image_xscale = _orb_scale;
+            p.image_yscale = _orb_scale;
+            p.spd_shift = -0.1;
+    }
+}
+
+overlay_flash_alpha = 1;
+
+alarm[1] = 100;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Prior collection animations
+
+t++;
+
+if(!collected) {
+    image_index = starNum;
+
+    draw_y = ystart + dsin(t*2)*6;
+    halo_angle += halo_spin_spd;
+    halo_add_scale = dsin(t)*.2;
+    
+    if(t mod shine_frequency == 0) {
+        shine_t = 0;
+    }
+    
+    if(shine_t &lt;= shine_length) {
+        shine_t++;
+        glow_alpha = dsin((180/shine_length) * shine_t) / 2.5;
+        
+        var _shine_img_num = sprite_get_number(sprAlexCrystalStarShine) - 1;
+        shine_index = (_shine_img_num/shine_length) * shine_t;
+    } else {
+        glow_alpha = 0;
+        shine_index = sprite_get_number(sprAlexCrystalStarShine) - 1; 
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Collection animations
+
+if(collected) {
+    if(!fly_away) {
+        draw_angle += spin_spd;
+        halo_angle += halo_spin_spd
+        halo_spin_spd += spin_accel;
+        spin_spd += spin_accel;
+        halo_alpha = max(halo_alpha - .05, 0);
+        glow_alpha = min(glow_alpha + .025, 1);
+        pre_fly_scale = max(pre_fly_scale - .1, 0);
+        pre_fly_alpha = min(pre_fly_alpha + 0.01, 1);
+    } else {
+        view_yview[0] += dsin(t*10) * shake_cam_amnt;
+        shake_cam_amnt = max(shake_cam_amnt - shake_cam_amnt_decrease, 0);
+        overlay_flash_alpha = max(overlay_flash_alpha - 0.05, 0);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objPlayer">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Add secret if not collected
+
+if(!collected) {
+    collected = true;
+    global.crystalStar[starNum] = true;
+    
+    //save the item if autosaving items is on
+    if (global.autosaveSecretItems)
+    {
+        global.saveCrystalStar[starNum] = true;
+        scrSaveGame(false);
+    }
+    
+    // Make sure the shine animation isn't present
+    shine_index = sprite_get_number(sprAlexCrystalStarShine) - 1;
+    
+    // Add delay before it flies away
+    alarm[0] = 45;    
+    
+    //audio_play_sound(sndAlexSecretPickup,0,false);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.crystalStar[starNum]) //destroy self if item already obtained
+    instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw flash overlay
+
+if(overlay_flash_alpha &gt; 0) {
+    draw_set_colour(c_white);
+    draw_set_alpha(overlay_flash_alpha);
+    draw_set_blend_mode(bm_add);
+    draw_rectangle(-1, -1, display_get_gui_width(), display_get_gui_height(), false);
+    draw_set_alpha(1);
+    draw_set_blend_mode(bm_normal);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the visuals
+
+var halo_scale1 = halo_scale + halo_add_scale;
+var halo_scale2 = halo_scale - halo_add_scale;
+var halo_scale3 = halo_scale - 0.15;
+
+if(!fly_away) {
+    draw_sprite_ext(sprAlexSecretHalo, 0, draw_x, draw_y, halo_scale1, halo_scale1, halo_angle, starHaloCol, halo_alpha);
+    draw_sprite_ext(sprAlexSecretHalo, 0, draw_x, draw_y, halo_scale2, halo_scale2, -halo_angle, starHaloCol, halo_alpha);
+    
+    draw_set_blend_mode(bm_add);
+    draw_sprite_ext(sprAlexSecretHalo, 0, draw_x, draw_y, halo_scale3, halo_scale3, -halo_angle * 0.5, starHaloCol, halo_alpha);
+    draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, pre_fly_scale, pre_fly_scale, draw_angle, -1, pre_fly_alpha);
+    draw_set_blend_mode(bm_normal);
+    
+    draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, draw_scale, draw_scale, draw_angle, -1, 1);
+    
+    draw_set_blend_mode(bm_add);
+    draw_sprite_ext(sprite_index, 0, draw_x, draw_y, draw_scale, draw_scale, draw_angle, -1, glow_alpha);
+    draw_set_blend_mode(bm_normal);
+    
+    draw_sprite_ext(sprAlexCrystalStarShine, shine_index, draw_x, draw_y, draw_scale, draw_scale, draw_angle, -1, 0.8);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

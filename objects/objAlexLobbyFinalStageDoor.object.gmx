@@ -437,7 +437,7 @@ if(timer mod 2 == 0 &amp;&amp; locked) {
     var _y = y + 50;
     var _dir = random_range(100, 80)
     var _spd_shift = choose(.015, .015, .015, .015, .02, .02, .02, .02, .03, .04);
-    var _part = scrAlexMakeParticleExt(_x, _y, 60, sprAlexGlowOrb, 0, _dir, 0, _spd_shift, $7752ff, $e6c742, bm_add, true, false, false, depth-1, false);
+    var _part = scrAlexMakeParticleExt(_x, _y, 60, sprAlexGlowOrb, 0, 0, 0, _dir, 0, _spd_shift, $7752ff, $e6c742, bm_add, true, false, false, depth-1, false);
 }
 </string>
           </argument>

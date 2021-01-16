@@ -62,9 +62,11 @@ header_y = 32;
 white_col = $e8e0df; // Greyish white
 sky_col = $ceb85a; // Sky blue
 pink_col = $702a9c; // Redish fuchsia
+yellow_col = $41bbf0; // Golden yellow
 dark_col = $2e1814; // Night blue black
 red_col = $4d30d5 // Red
 gradient_col = sky_col; // Alters between sky blue and pink
+gradient_col_clear = yellow_col; // Alters between sky blue and yellow
 gradient_spd = 1;
 
 box_anchor_x = room_width/2;
@@ -101,6 +103,9 @@ completion_ring_x_dist = 75;
 completion_ring_anim_timer = 0;
 completion_ring_anim_length = 30;
 box_content_font = fMenuLobby12;
+
+stars_pad = 32;
+stars_y_dist = -42;
 
 arrow_wiggle = 0;
 arrow_wiggle_amnt = 8;
@@ -160,18 +165,23 @@ for (var i = 0; i &lt; 4; i++)
         if (is_undefined(save_secrets_found[i]))
             save_secrets_found[i] = 0;
             
+        save_stars_found[i] = ds_map_find_value(saveMap,"saveTotalCrystalStarsFound");
+        if (is_undefined(save_stars_found[i]))
+            save_stars_found[i] = 0;
+              
         save_clear[i] = ds_map_find_value(saveMap,"saveGameClear");
         if (is_undefined(save_clear[i]))
             save_clear[i] = false;
         
         ds_map_destroy(saveMap);
         
+        
         // Calculate completion percentage
-        var _all_tasks = global.totalNumberOfStages + global.secretItemTotal;
-        var _finished_tasks = save_stages_cleared[i] + save_secrets_found[i];
+        var _all_tasks = global.totalNumberOfStages + global.secretItemTotal + global.totalNumberOfCrystalStars + 1;  // The one is for clearing the game
+        var _finished_tasks = save_stages_cleared[i] + save_secrets_found[i] + save_stars_found[i] + save_clear[i];
         
         save_completion[i] = 0;
-        save_completion_target[i] = round((100 / _all_tasks) * _finished_tasks);  // for the cool animation
+        save_completion_target[i] = min(floor((100 / _all_tasks) * _finished_tasks), 100);  // for the cool circle animation
     }
     else
     {
@@ -179,6 +189,7 @@ for (var i = 0; i &lt; 4; i++)
         save_deaths[i] = "///";
         save_stages_cleared[i] = 0;
         save_secrets_found[i] = 0;
+        save_stars_found[i] = 0;
         save_time[i] = "//://://";
         save_completion[i] = 0;
         save_completion_target[i] = 0;
@@ -380,6 +391,7 @@ if(overlay_alpha &gt;= overlay_opacity_trigger) {
 // Shift the colors for the gradient
 var _amnt = abs(dsin(timer * gradient_spd));
 gradient_col = merge_colour(sky_col, pink_col, _amnt);
+gradient_col_clear = merge_colour(yellow_col, pink_col, _amnt);
 
 // Intro animation
 if(timer &lt;= intro_animation_length) {
@@ -509,6 +521,7 @@ draw_set_font(header_font);
 scrDrawTextSquareOutline(header_x, header_y, header_text, white_col, dark_col, 2, fa_center, fa_top);
 
 // Draw the save files &amp; info
+var _accent_col;
 var _box_x1, _box_y1, _box_x2, _box_y2;
 var _save_num_x, _save_num_y, _save_num_string;
 var _time_x, _time_y;
@@ -521,6 +534,7 @@ var _ring_x, _ring_y, _ring_val, _ring_string;
 var _sub_menu_header_x, _sub_menu_header_y;
 var _sub_menu_opt_x, _sub_menu_opt_y, _sub_menu_opt_v_sep;
 var _arrow_x_1, _arrow_x_2, _arrow_y;
+var _star_x, _star_y, _star_amnt;
 
 var _i = 0;
 
@@ -528,6 +542,13 @@ for(var yy=-1; yy&lt;=1; yy += 2) {
     for(var xx=-1; xx&lt;=1; xx += 2) {  
         
         draw_set_alpha(draw_alpha);
+        
+        // Choose accent color based if the file is 100%
+        if(save_completion_target[_i] == 100) {
+            _accent_col = gradient_col_clear;
+        } else {
+            _accent_col = gradient_col;
+        }
     
         // Gradient Box
         if(_i == save_index &amp;&amp; timer &gt; intro_animation_length) {
@@ -541,8 +562,8 @@ for(var yy=-1; yy&lt;=1; yy += 2) {
                 _box_y2 = box_anchor_y + (((selection_box_h / 2) + box_pad_v) * yy);
                 _box_y1 = box_anchor_y + ((-(selection_box_h / 2) + box_pad_v) * yy);
             }
-        
-            draw_set_colour(gradient_col);
+            
+            draw_set_colour(_accent_col);
             draw_roundrect_ext(_box_x1, _box_y1, _box_x2, _box_y2, box_corner_rad, box_corner_rad, false);
         
             // Save number, time &amp; deaths
@@ -582,11 +603,12 @@ for(var yy=-1; yy&lt;=1; yy += 2) {
         var _x_center = box_anchor_x + (box_pad_h * xx);
         var _y_center = box_anchor_y + (box_pad_v * yy);
         var _fix_text_y = 4;
+        var _space_for_stars = 24 * sign(save_stars_found[_i]);
         draw_set_alpha(draw_alpha * content_alpha[_i]);
         
         switch(sub_menu_index[_i]) {
             case 0:                
-                draw_set_colour(gradient_col);
+                draw_set_colour(_accent_col);
                 if(save_exists[_i]) {
                     // Clears
                     draw_set_font(box_content_font)
@@ -594,31 +616,45 @@ for(var yy=-1; yy&lt;=1; yy += 2) {
                     draw_set_valign(fa_middle);
                     
                     _clears_x = _x_center + clears_secrets_x_dist;
-                    _clears_y = _y_center - clears_secrets_y_dist + _fix_text_y*2;
+                    _clears_y = _y_center - clears_secrets_y_dist + _space_for_stars + _fix_text_y*2;
                     _clears_string = string(save_stages_cleared[_i]) + "/" + string(global.totalNumberOfStages);
                     draw_text(_clears_x, _clears_y, _clears_string);
                     _clears_icon_x = _x_center + clears_secrets_icons_x_dist + 4;
-                    _clears_icon_y = _y_center - clears_secrets_y_dist;
-                    draw_sprite_ext(sprAlexMenuClearCheckmark, 0, _clears_icon_x, _clears_icon_y, 1, 1, 0, gradient_col, draw_alpha * content_alpha[_i]);
+                    _clears_icon_y = _y_center - clears_secrets_y_dist + _space_for_stars;
+                    draw_sprite_ext(sprAlexMenuClearCheckmark, 0, _clears_icon_x, _clears_icon_y, 1, 1, 0, _accent_col, draw_alpha * content_alpha[_i]);
                      
                     // Secrets
                     _secrets_x = _x_center + clears_secrets_x_dist;
-                    _secrets_y = _y_center + clears_secrets_y_dist + _fix_text_y;
+                    _secrets_y = _y_center + clears_secrets_y_dist + _space_for_stars + _fix_text_y;
                     _secrets_string = string(save_secrets_found[_i]) + "/" + string(global.secretItemTotal);
                     draw_text(_secrets_x, _secrets_y, _secrets_string);
                     _secrets_icon_x = _x_center + clears_secrets_icons_x_dist;
-                    _secrets_icon_y = _y_center + clears_secrets_y_dist;
-                    draw_sprite_ext(sprAlexMenuSecretIcon, 0, _secrets_icon_x, _secrets_icon_y, 1, 1, 0, gradient_col, draw_alpha * content_alpha[_i]);
+                    _secrets_icon_y = _y_center + clears_secrets_y_dist + _space_for_stars;
+                    draw_sprite_ext(sprAlexMenuSecretIcon, 0, _secrets_icon_x, _secrets_icon_y, 1, 1, 0, _accent_col, draw_alpha * content_alpha[_i]);
                     
                     // Completion ring
                     _ring_x = _x_center - completion_ring_x_dist;
-                    _ring_y = _y_center;
+                    _ring_y = _y_center + _space_for_stars;
                     _ring_val = save_completion[_i] / 100;
-                    draw_sprite_ext(sprAlexMenuSaveCompletionRing, 0, _ring_x, _ring_y, 1, 1, 0, gradient_col, draw_alpha/3 * content_alpha[_i]);
+                    draw_sprite_ext(sprAlexMenuSaveCompletionRing, 0, _ring_x, _ring_y, 1, 1, 0, _accent_col, draw_alpha/3 * content_alpha[_i]);
                     var _ring_tex = sprite_get_texture(sprAlexMenuSaveCompletionRing, 0);
-                    scrAlexDrawPieTexExt(_ring_x, _ring_y, _ring_val, _ring_tex, sprAlexMenuSaveCompletionRing, 0, gradient_col, draw_alpha * content_alpha[_i]);
+                    scrAlexDrawPieTexExt(_ring_x, _ring_y, _ring_val, _ring_tex, sprAlexMenuSaveCompletionRing, 0, _accent_col, draw_alpha * content_alpha[_i]);
                     _ring_string = string(save_completion[_i]) + "%";
-                    scrDrawTextSquareOutline(_ring_x + 2, _ring_y + _fix_text_y + 2, _ring_string, gradient_col, dark_col, 2, fa_center, fa_middle);
+                    scrDrawTextSquareOutline(_ring_x + 2, _ring_y + _fix_text_y + 2, _ring_string, _accent_col, dark_col, 2, fa_center, fa_middle);
+                    
+                    // Stars &amp; Crown
+                    _star_amnt = save_stars_found[_i];
+                    _star_x = _x_center - ((_star_amnt-1)*stars_pad)/2;
+                    _star_y = _y_center + stars_y_dist;
+                    if(!save_clear[_i]) {
+                        var _current_star_x = _star_x;
+                        for(var i=0; i&lt;_star_amnt; i++) {
+                            draw_sprite_ext(sprAlexMenuSaveStar, 0, _current_star_x, _star_y, 1, 1, 0, _accent_col, draw_alpha * content_alpha[_i]);
+                            _current_star_x += stars_pad;
+                        }
+                    } else {
+                        draw_sprite_ext(sprAlexMenuSaveCrown, 0, _x_center, _star_y, 1, 1, 0, _accent_col, draw_alpha * content_alpha[_i]);
+                    }
                     
                 } else {
                     draw_set_font(fMenuLobby18);
@@ -653,7 +689,7 @@ for(var yy=-1; yy&lt;=1; yy += 2) {
                         draw_set_colour(white_col);
                         draw_text(_sub_menu_opt_x, _sub_menu_opt_y, "Continue");
                     } else {
-                        draw_set_colour(gradient_col);
+                        draw_set_colour(_accent_col);
                         draw_text(_sub_menu_opt_x, _sub_menu_opt_y, "Continue");
                     }
                     
@@ -661,7 +697,7 @@ for(var yy=-1; yy&lt;=1; yy += 2) {
                         draw_set_colour(white_col);
                         draw_text(_sub_menu_opt_x, _sub_menu_opt_y + _sub_menu_opt_v_sep, "New Game");
                     } else {
-                        draw_set_colour(gradient_col);
+                        draw_set_colour(_accent_col);
                         draw_text(_sub_menu_opt_x, _sub_menu_opt_y + _sub_menu_opt_v_sep, "New Game");
                     }
                 } else {
