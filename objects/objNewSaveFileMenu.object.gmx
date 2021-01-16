@@ -105,7 +105,7 @@ completion_ring_anim_length = 30;
 box_content_font = fMenuLobby12;
 
 stars_pad = 32;
-stars_y_dist = -42;
+stars_y_dist = -40;
 
 arrow_wiggle = 0;
 arrow_wiggle_amnt = 8;
@@ -174,7 +174,6 @@ for (var i = 0; i &lt; 4; i++)
             save_clear[i] = false;
         
         ds_map_destroy(saveMap);
-        
         
         // Calculate completion percentage
         var _all_tasks = global.totalNumberOfStages + global.secretItemTotal + global.totalNumberOfCrystalStars + 1;  // The one is for clearing the game
