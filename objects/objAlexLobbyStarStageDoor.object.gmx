@@ -66,6 +66,8 @@ lock_shake_amnt = 20;
 lock_shake_limiter = 0;
 
 // Unique vars
+level_amnt = 0;
+beaten_levels = 0;
 locked = true;
 flash_expand = false;
 flash_height = 0;
@@ -211,8 +213,12 @@ ui_difficulty_length = difficulty/10;
 var is_locked = false;
 for(i=0; i&lt;6; i++) {
     if(stage_to_check[i] != -1) {
+        level_amnt++;
+    
         if(!stage_to_check[i])
             is_locked = true;
+        else
+            beaten_levels++;
     }
 }
 
@@ -710,19 +716,26 @@ if(ui_fade_progress &gt; .02) {
     var text_col = $e8fff5;
     var outline_col = $2e1814;
     
-    // Stage title
-    draw_set_font(fMenuLobby6);
-    
-    scrDrawTextSquareOutline(ui_x, ui_y-90, stage_name, text_col, outline_col, 1, fa_center, fa_top);
-    
-    // Creator
-    draw_set_font(fLobbySmall);
-    scrDrawTextSquareOutline(ui_x, ui_y-80, "By: "+creator_name, text_col, outline_col, 1, fa_center, fa_top);
-    
-    // Difficulty
-    scrDrawTextSquareOutline(ui_x, ui_y-60, "difficulty", text_col, outline_col, 1, fa_center, fa_top);
-    draw_sprite(sprAlexStageDifficultyBar, 0, ui_x-20, ui_y-45);
-    draw_sprite_part(sprAlexStageDifficultyBar, 1, 0, 0, 40*ui_difficulty_length, 8, ui_x-20, ui_y-45);
+    if(!locked) {
+        // Stage title
+        draw_set_font(fMenuLobby6);
+        
+        scrDrawTextSquareOutline(ui_x, ui_y-90, stage_name, text_col, outline_col, 1, fa_center, fa_top);
+        
+        // Creator
+        draw_set_font(fLobbySmall);
+        scrDrawTextSquareOutline(ui_x, ui_y-80, "By: "+creator_name, text_col, outline_col, 1, fa_center, fa_top);
+        
+        // Difficulty
+        scrDrawTextSquareOutline(ui_x, ui_y-60, "difficulty", text_col, outline_col, 1, fa_center, fa_top);
+        draw_sprite(sprAlexStageDifficultyBar, 0, ui_x-20, ui_y-45);
+        draw_sprite_part(sprAlexStageDifficultyBar, 1, 0, 0, 40*ui_difficulty_length, 8, ui_x-20, ui_y-45);
+    } else {
+        // Green tick
+        draw_sprite(sprAlexLobbyStageDoorCleared, 0, ui_x-16, ui_y-53);
+        var _string = ": " + string(beaten_levels) + "/" + string(level_amnt);
+        scrDrawTextSquareOutline(ui_x-4, ui_y-45, _string, text_col, outline_col, 1, fa_left, fa_bottom);
+    }
     
     draw_set_alpha(1);
 }

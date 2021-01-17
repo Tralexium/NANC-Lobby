@@ -432,6 +432,8 @@
           <sprite>sprites\sprGenericNPC26Talk</sprite>
         </sprites>
         <sprites name="Special">
+          <sprite>sprites\sprSpecialNPCBartenderIdle</sprite>
+          <sprite>sprites\sprSpecialNPCBartenderTalk</sprite>
           <sprite>sprites\sprSpecialNPCPieceIdle</sprite>
           <sprite>sprites\sprSpecialNPCPieceTalk</sprite>
           <sprite>sprites\sprSpecialNPCNaloaIdle</sprite>
