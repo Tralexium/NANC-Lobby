@@ -385,7 +385,7 @@ if(!fly_away) {
     draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, draw_scale, draw_scale, draw_angle, -1, 1);
     
     draw_set_blend_mode(bm_add);
-    draw_sprite_ext(sprite_index, 0, draw_x, draw_y, draw_scale, draw_scale, draw_angle, -1, glow_alpha);
+    draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, draw_scale, draw_scale, draw_angle, -1, glow_alpha);
     draw_set_blend_mode(bm_normal);
     
     draw_sprite_ext(sprAlexCrystalStarShine, shine_index, draw_x, draw_y, draw_scale, draw_scale, draw_angle, -1, 0.8);

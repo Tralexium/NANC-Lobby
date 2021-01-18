@@ -899,6 +899,7 @@
         <object>objects\objAlexIdleStarGenerator</object>
         <object>objects\objAlexIdleStar</object>
         <object>objects\objAlexFallingStar</object>
+        <object>objects\objAlexCrystalStarSlots</object>
       </objects>
       <objects name="Star Stages">
         <object>objects\objAlexStarStageCam</object>

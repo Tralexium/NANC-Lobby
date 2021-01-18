@@ -37,3 +37,5 @@ var p = instance_create(xx, yy, objAlexParticle);
     p.random_wiggle = random_wiggle;
     p.depth = d;
     p.depth_check = depth_check;
+    
+return p;
