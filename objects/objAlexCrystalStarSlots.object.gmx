@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-20</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -60,6 +60,15 @@ circle_spin_amount = (360 - 180) * -5;
 circle_spin_finished = false;
 circle_shrink_length = 25;
 circle_shrink_finished = false;
+circle_time_before_beam = 50;
+circle_beam_length = 150;
+circle_beam_alpha = 0;
+circle_beam_alpha_2 = 0;
+circle_beam_alpha_mult = 0;
+circle_beam_pulse_speed = 0;
+circle_beam_size = 128;
+circle_beam_finished = false;
+circle_beam_shot_length = 15;
 circle_rad = 48;
 circle_angle = 90;
 old_x = 0;
@@ -271,13 +280,51 @@ if(_active) {
     }
     
     // Start beam
-    else if(circle_shrink_finished) {
+    else if(circle_shrink_finished &amp;&amp; !circle_beam_finished) {
         overlay_flash_alpha -= 0.05;
         
         var _last_id = global.totalNumberOfCrystalStars - 1;
         
         final_star_col = make_colour_hsv(circle_t * 4, 50, 255);
         star_y[_last_id] = y + dsin(circle_t*star_wiggle_spd) * star_wiggle;
+        
+        if(circle_t &gt; circle_time_before_beam) {
+            var _anim_t = clamp(circle_t - circle_time_before_beam, 0, circle_beam_length);
+            
+            circle_beam_alpha_mult = scrAlexEaseInSine(_anim_t, 0, 1, circle_beam_length);
+            circle_beam_pulse_speed = scrAlexEaseInSine(_anim_t, 0, .35, circle_beam_length);
+            circle_beam_size = scrAlexEaseInSine(_anim_t, 128, 0, circle_beam_length);
+            
+            circle_beam_alpha_2 -= circle_beam_pulse_speed;
+            circle_beam_alpha = abs(frac(circle_beam_alpha_2)) * circle_beam_alpha_mult;
+            
+            if(_anim_t == circle_beam_length) {
+                circle_beam_finished = true;
+                circle_t = 0;
+                
+                overlay_flash_alpha = 1;
+                circle_beam_alpha = 1;
+                circle_beam_size = 96;
+                
+                with(objAlexLobbyFinalStageDoor)
+                    locked = false;
+            }
+        }
+    }
+    
+    // Shoot the beam and finish
+    else if(circle_beam_finished) {
+        overlay_flash_alpha -= 0.05;
+        
+        var _anim_t = clamp(circle_t, 0, circle_beam_shot_length);
+        circle_beam_size = scrAlexEaseInSine(_anim_t, 96, 0, circle_beam_shot_length);
+        
+        if(_anim_t == circle_beam_shot_length &amp;&amp; overlay_flash_alpha &lt;= 0) {
+            with(objPlayer)
+                frozen = false;
+        
+            instance_destroy();
+        }
     }
     
 }
@@ -398,13 +445,24 @@ if(!circle_shrink_finished) {
     
     var _last_id = global.totalNumberOfCrystalStars - 1;
 
-    // Draw star
-    draw_sprite_ext(sprAlexCrystalStars, _last_id, star_x[_last_id], star_y[_last_id], 2, 2, 0, -1, .5);
+    if(!circle_beam_finished) {
+        // Draw star
+        draw_sprite_ext(sprAlexCrystalStars, _last_id, star_x[_last_id], star_y[_last_id], 2, 2, 0, -1, .5);
+        
+        // Draw glow
+        draw_set_blend_mode(bm_add);
+        draw_sprite_ext(sprAlexCrystalStarMask, 0, star_x[_last_id], star_y[_last_id], 2, 2, 0, final_star_col, .6);
+        draw_set_blend_mode(bm_normal);
+    }
     
-    // Draw glow
+    // Draw beam
+    draw_set_alpha(circle_beam_alpha);
+    draw_set_colour(final_star_col);
     draw_set_blend_mode(bm_add);
-    draw_sprite_ext(sprAlexCrystalStarMask, 0, star_x[_last_id], star_y[_last_id], 2, 2, 0, final_star_col, .6);
+    draw_rectangle(x - circle_beam_size, y - 1000, x + circle_beam_size, y + 1000, false);
+    draw_set_alpha(1);
     draw_set_blend_mode(bm_normal);
+    
 }
 </string>
           </argument>
