@@ -225,6 +225,13 @@
         <sound>sound\sndAlexDialogSoundBartender</sound>
         <sound>sound\sndAlexClearWarp</sound>
         <sound>sound\sndAlexClearUISecret</sound>
+        <sound>sound\sndAlexCrystalStarCollected</sound>
+        <sound>sound\sndAlexCrystalStarIntoCircleSlot</sound>
+        <sound>sound\sndAlexCrystalStarSpin</sound>
+        <sound>sound\sndAlexCrystalStarBeforeFusion</sound>
+        <sound>sound\sndAlexCrystalStarFused</sound>
+        <sound>sound\sndAlexCrystalStarBeamCharge</sound>
+        <sound>sound\sndAlexCrystalStarBeam</sound>
       </sounds>
     </sounds>
   </sounds>

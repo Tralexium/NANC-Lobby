@@ -78,10 +78,10 @@ circle_time_until_spin = 40;
 circle_spin_length = 120;
 circle_spin_amount = (360 - 180) * -5;
 circle_spin_finished = false;
-circle_shrink_length = 25;
+circle_shrink_length = 40;
 circle_shrink_finished = false;
-circle_time_before_beam = 50;
-circle_beam_length = 150;
+circle_time_before_beam = 80;
+circle_beam_length = 100;
 circle_beam_alpha = 0;
 circle_beam_alpha_2 = 0;
 circle_beam_alpha_mult = 0;
@@ -234,6 +234,9 @@ if(_active) {
                 
                 star_glow_alpha[circle_current_star - 1] = 1;
                 
+                audio_sound_pitch(sndAlexCrystalStarIntoCircleSlot, 0.8 + (circle_current_star * 0.05));
+                audio_play_sound(sndAlexCrystalStarIntoCircleSlot, 0, false);
+                
                 repeat(20) {
                     var _part_scale = random_range(.05, .3);
                     var _part = scrAlexMakeParticleExt(_target_x, _target_y, 20, sprAlexGlowOrb, 0, 0, 0, random(360), random_range(4, 8), -0.3 - _part_scale, star_halo_col[circle_current_star - 1], star_halo_col[circle_current_star - 1], bm_add, false, true, 0, depth, false);
@@ -249,6 +252,10 @@ if(_active) {
     else if (circle_t &gt; circle_time_until_spin &amp;&amp; !circle_spin_finished) {
         event_user(0);
         var _anim_t = clamp(circle_t - circle_time_until_spin, 0, circle_spin_length);
+        
+        if(_anim_t == 1) {
+            audio_play_sound(sndAlexCrystalStarSpin, 0, false);
+        }
         
         circle_angle = scrAlexEaseInOutSine(_anim_t, 90, circle_spin_amount, circle_spin_length);
         
@@ -271,6 +278,10 @@ if(_active) {
     else if(circle_spin_finished &amp;&amp; !circle_shrink_finished) {
         var _anim_t = clamp(circle_t, 0, circle_shrink_length);
         
+        if(_anim_t == 1) {
+            audio_play_sound(sndAlexCrystalStarBeforeFusion, 0, false);
+        }
+        
         circle_rad = scrAlexEaseInBack(_anim_t, 48, 0, circle_shrink_length);
         overlay_flash_alpha = scrAlexEaseInBack(_anim_t, 0, .3, circle_shrink_length);
         
@@ -288,6 +299,8 @@ if(_active) {
             circle_shrink_finished = true;
             overlay_flash_alpha = 1;
             circle_t = 0;
+            
+            audio_play_sound(sndAlexCrystalStarFused, 0, false);
             
             repeat(25) {
                 var _col = make_colour_hsv(random(255), 50, 255);
@@ -312,6 +325,9 @@ if(_active) {
         if(circle_t &gt; circle_time_before_beam) {
             var _anim_t = clamp(circle_t - circle_time_before_beam, 0, circle_beam_length);
             
+            if(_anim_t == 1)
+                audio_play_sound(sndAlexCrystalStarBeamCharge, 0, false);
+            
             circle_beam_alpha_mult = scrAlexEaseInSine(_anim_t, 0, 1, circle_beam_length);
             circle_beam_pulse_speed = scrAlexEaseInSine(_anim_t, 0, .35, circle_beam_length);
             circle_beam_size = scrAlexEaseInSine(_anim_t, 128, 0, circle_beam_length);
@@ -327,6 +343,8 @@ if(_active) {
                 circle_beam_alpha = 1;
                 circle_beam_size = 96;
                 shake_amnt = 7;
+                
+                audio_play_sound(sndAlexCrystalStarBeam, 0, false);
                 
                 with(objAlexLobbyFinalStageDoor)
                     locked = false;
@@ -399,6 +417,8 @@ if(_active) {
         circle_beam_alpha = 1;
         circle_beam_size = 96;
         shake_amnt = 7;
+        
+        audio_play_sound(sndAlexCrystalStarBeam, 0, false);
         
         with(objAlexLobbyFinalStageDoor)
             locked = false;
