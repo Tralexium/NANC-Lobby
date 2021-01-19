@@ -39,6 +39,8 @@ halo_scale = .4;
 halo_add_scale = .1;  // Set in step
 halo_alpha = 0.4;
 overlay_flash_alpha = 0;
+text_col = $e8fff5;
+outline_col = $2e1814;
 
 // Pre animation related
 star_wiggle = 8;
@@ -49,8 +51,26 @@ pad = 64;
 start_x = x - (global.totalNumberOfCrystalStars / 2) * pad + (pad / 2);
 start_y = y;
 
+// Skip anim related
+skip_t = 0;
+skipped = false;
+skip_text_x = 16;
+skip_text_y = display_get_gui_height() - 24;
+skip_target_x = 32;
+skip_text_alpha = 0;
+skip_text_font = fLobbySmall24;
+skip_text_duration = 100;
+var scr_to_get_key = scrGetKeybind;
+var array_index = 0;
+if(global.controllerMode) {
+    scr_to_get_key = scrGetControllerBind;
+    array_index = 1;
+}
+skip_string = "Press ["+script_execute(scr_to_get_key,global.skipButton[array_index])+"] to Skip";
+
+
 // Animation related
-circle_t = 0;
+circle_t = -15;
 circle_current_star = 0;
 circle_per_star_delay = 5;
 circle_assemble_length = 15;
@@ -74,6 +94,7 @@ circle_angle = 90;
 old_x = 0;
 old_y = 0;
 final_star_col = c_white;
+shake_amnt = 0;
 
 for(var i=0; i&lt;global.totalNumberOfCrystalStars; i++) {
     star_collected[i] = global.crystalStar[i];
@@ -305,6 +326,7 @@ if(_active) {
                 overlay_flash_alpha = 1;
                 circle_beam_alpha = 1;
                 circle_beam_size = 96;
+                shake_amnt = 7;
                 
                 with(objAlexLobbyFinalStageDoor)
                     locked = false;
@@ -315,11 +337,14 @@ if(_active) {
     // Shoot the beam and finish
     else if(circle_beam_finished) {
         overlay_flash_alpha -= 0.05;
+        shake_amnt -= 0.15;
         
         var _anim_t = clamp(circle_t, 0, circle_beam_shot_length);
         circle_beam_size = scrAlexEaseInSine(_anim_t, 96, 0, circle_beam_shot_length);
         
-        if(_anim_t == circle_beam_shot_length &amp;&amp; overlay_flash_alpha &lt;= 0) {
+        view_yview[0] += dsin(circle_t*50) * shake_amnt;
+        
+        if(_anim_t == circle_beam_shot_length &amp;&amp; overlay_flash_alpha &lt;= 0 &amp;&amp; shake_amnt &lt;= 0) {
             with(objPlayer)
                 frozen = false;
         
@@ -327,6 +352,57 @@ if(_active) {
         }
     }
     
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check if the animation is skipped
+
+var _active = triggered &amp;&amp; all_collected;
+
+if(_active) {
+    if(skip_t &lt; skip_text_duration) {
+        skip_t++;
+        skip_text_x = lerp(skip_text_x, skip_target_x, 0.1);
+        skip_text_alpha = lerp(skip_text_alpha, 1, 0.1);
+    } else {
+        skip_text_alpha = max(skip_text_alpha - .02, 0);
+    }
+    
+    if(scrButtonCheckPressed(global.skipButton) &amp;&amp; !skipped) {
+        skipped = true;
+        skip_t = skip_text_duration;
+        circle_t = 0;
+        circle_current_star = global.totalNumberOfCrystalStars;
+        circle_spin_finished = true;
+        circle_shrink_finished = true;
+        circle_beam_finished = true;
+        
+        overlay_flash_alpha = 1;
+        circle_beam_alpha = 1;
+        circle_beam_size = 96;
+        shake_amnt = 7;
+        
+        with(objAlexLobbyFinalStageDoor)
+            locked = false;
+    }
 }
 </string>
           </argument>
@@ -387,6 +463,32 @@ if(overlay_flash_alpha &gt; 0) {
     draw_set_alpha(1);
     draw_set_blend_mode(bm_normal);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw skip text
+
+draw_set_font(skip_text_font);
+draw_set_alpha(skip_text_alpha);
+scrDrawTextSquareOutline(skip_text_x, skip_text_y, skip_string, text_col, outline_col, 2, fa_left, fa_bottom);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>
@@ -456,12 +558,14 @@ if(!circle_shrink_finished) {
     }
     
     // Draw beam
-    draw_set_alpha(circle_beam_alpha);
-    draw_set_colour(final_star_col);
-    draw_set_blend_mode(bm_add);
-    draw_rectangle(x - circle_beam_size, y - 1000, x + circle_beam_size, y + 1000, false);
-    draw_set_alpha(1);
-    draw_set_blend_mode(bm_normal);
+    if(circle_beam_size &gt; 0) {
+        draw_set_alpha(circle_beam_alpha);
+        draw_set_colour(final_star_col);
+        draw_set_blend_mode(bm_add);
+        draw_rectangle(x - circle_beam_size, y - 1000, x + circle_beam_size, y + 1000, false);
+        draw_set_alpha(1);
+        draw_set_blend_mode(bm_normal);
+    }
     
 }
 </string>
