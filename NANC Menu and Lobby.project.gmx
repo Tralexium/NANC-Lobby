@@ -168,8 +168,7 @@
       <sound>sound\musStarStage5</sound>
       <sound>sound\musStarStage6</sound>
       <sound>sound\musFinalStage</sound>
-      <sound>sound\musFinalStageAvoidance</sound>
-      <sound>sound\musFinalStretch</sound>
+      <sound>sound\musFinalBoss</sound>
       <sound>sound\musFanfare</sound>
       <sounds name="sfx">
         <sound>sound\sndAlexSaveBlocker</sound>
@@ -463,6 +462,14 @@
           <sprite>sprites\sprSpecialNPCBillyTalk</sprite>
         </sprites>
       </sprites>
+      <sprites name="Final Boss">
+        <sprite>sprites\sprAlexTestShapeSmallCircle</sprite>
+        <sprite>sprites\sprAlexTestShapeCircle</sprite>
+        <sprite>sprites\sprAlexTestShapeSmallSquare</sprite>
+        <sprite>sprites\sprAlexTestShapeSquare</sprite>
+        <sprite>sprites\sprAlexTestShapeStick</sprite>
+        <sprite>sprites\sprAlexFinalBossIdle</sprite>
+      </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeD</sprite>
@@ -651,6 +658,16 @@
       <script>scripts\scrMakeCircle.gml</script>
     </scripts>
     <scripts name="ALEX">
+      <scripts name="Final Boss">
+        <scripts name="Projectiles">
+          <script>scripts\scrFBPBeam.gml</script>
+          <script>scripts\scrFBPOrb.gml</script>
+          <script>scripts\scrFBPOrbWithObj.gml</script>
+          <script>scripts\scrFBPOrbBounce.gml</script>
+          <script>scripts\scrFBPCane.gml</script>
+        </scripts>
+        <script>scripts\scrFinalBossTP.gml</script>
+      </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
       <script>scripts\scrResetStageStats.gml</script>
       <script>scripts\scrWarpBackToLobby.gml</script>
@@ -922,6 +939,16 @@
         <object>objects\objAlexCrystalStarCollectedIndicator</object>
       </objects>
       <object>objects\objStarzorSign</object>
+      <objects name="Final Boss">
+        <objects name="Projectiles">
+          <object>objects\objAlexFBPBeam</object>
+          <object>objects\objAlexFBPOrb</object>
+          <object>objects\objAlexFBPOrbWithObj</object>
+          <object>objects\objAlexFBPOrbBounce</object>
+          <object>objects\objAlexFBPCane</object>
+        </objects>
+        <object>objects\objAlexFinalBossWarmup</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
