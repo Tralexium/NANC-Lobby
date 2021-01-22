@@ -58,4 +58,4 @@ if(argument_count > 11) {
 }
 
 // In case you want to further modify it
-return obj;
+return _obj;

@@ -33,13 +33,16 @@ fire_dur = 5;
 size = 32;
 angle_incr = 0;
 image_angle = 90;
+travel_dist_x = 0;
+travel_dist_y = 0;
 
 
 image_xscale = 40;
 mask_index = -1;
 
 t = 0;
-flicker_spd = 0.2;
+flicker_spd = 0;
+flicker_max_spd = 0.3;
 flicker_alpha = 0;
 tell_finished = false;
 </string>
@@ -68,16 +71,22 @@ tell_finished = false;
 if(!tell_finished) {
     t++;
     
-    var _anim_val = t / tell_dur;
-    flicker_alpha = frac(flicker_alpha - flicker_spd);
-    image_alpha = flicker_alpha * _anim_val;
-    image_angle += angle_incr;
-    image_yscale = 1 - _anim_val;
-    
     if(t &gt;= tell_dur) {
         t = 0;
         tell_finished = true;
         mask_index = sprite_index;
+        image_alpha = 1;
+    } else {
+        var _anim_val = t / tell_dur;
+        flicker_spd = scrAlexEaseInSine(t, 0, flicker_max_spd, tell_dur)
+        flicker_alpha = frac(flicker_alpha - flicker_spd);
+        image_alpha = flicker_alpha * _anim_val;
+        image_angle += angle_incr;
+        image_yscale = 1 - _anim_val;
+        
+        // Assign position
+        x = scrAlexEaseOutSine(t, xstart, xstart + travel_dist_x, tell_dur);
+        y = scrAlexEaseOutSine(t, ystart, ystart + travel_dist_y, tell_dur);
     }
 } else {
     if(t == fire_dur) {
@@ -86,7 +95,7 @@ if(!tell_finished) {
         t++;
         
         var _init_size = size / sprite_get_height(sprite_index);
-        image_yscale = scrAlexEaseOutSine(t, size, 0, fire_dur);
+        image_yscale = scrAlexEaseOutSine(t, _init_size, 0, fire_dur);
     }
 }
 </string>

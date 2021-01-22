@@ -468,6 +468,7 @@
         <sprite>sprites\sprAlexTestShapeSmallSquare</sprite>
         <sprite>sprites\sprAlexTestShapeSquare</sprite>
         <sprite>sprites\sprAlexTestShapeStick</sprite>
+        <sprite>sprites\sprAlexTestShapeShockwave</sprite>
         <sprite>sprites\sprAlexFinalBossIdle</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
@@ -665,6 +666,11 @@
           <script>scripts\scrFBPOrbWithObj.gml</script>
           <script>scripts\scrFBPOrbBounce.gml</script>
           <script>scripts\scrFBPCane.gml</script>
+          <script>scripts\scrFBPShockwave.gml</script>
+        </scripts>
+        <scripts name="Attack Sequences">
+          <script>scripts\scrFBASMultiHoverOrbs.gml</script>
+          <script>scripts\scrFBASMultiBeam.gml</script>
         </scripts>
         <script>scripts\scrFinalBossTP.gml</script>
       </scripts>
@@ -946,6 +952,10 @@
           <object>objects\objAlexFBPOrbWithObj</object>
           <object>objects\objAlexFBPOrbBounce</object>
           <object>objects\objAlexFBPCane</object>
+          <object>objects\objAlexFBPShockwave</object>
+          <object>objects\objAlexFBPStartAttackCane</object>
+          <object>objects\objAlexFBPHoverBeamOrb</object>
+          <object>objects\objAlexFBPRicochetOrb</object>
         </objects>
         <object>objects\objAlexFinalBossWarmup</object>
       </objects>
@@ -980,6 +990,7 @@
       <room>rooms\rStarLevel4</room>
       <room>rooms\rStarLevel5</room>
       <room>rooms\rStarLevel6</room>
+      <room>rooms\rFinalBoss</room>
       <rooms name="Reception">
         <room>rooms\rLobbyReception</room>
         <room>rooms\rLobbyGallery</room>
