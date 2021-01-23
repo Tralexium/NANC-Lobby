@@ -11,7 +11,7 @@ var _spawn_spd = -1;
 var _spawn_dir = -1;
 var _lock_in_place = -1;
 
-var _obj = instance_create(_x, _y, objAlexFBPOrb);
+var _obj = instance_create(_x, _y, objAlexFBPCane);
     _obj.target_player = _target_player;
     _obj.fade_in = _fade_in;
 

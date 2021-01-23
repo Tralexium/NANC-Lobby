@@ -1057,9 +1057,15 @@ else    //game currently paused, unpause the game
             <string>///fade current music out
 global.musicFading = true;
 global.currentGain = audio_sound_get_gain(global.currentMusic);     //get current gain
-audio_sound_gain(global.currentMusic,0,1000);                       //fade out music over 1 second
 
-alarm[0] = 50;  //pause music when it's done fading
+// Alex modified
+if(global.deathMusicMode == 2) {
+    audio_sound_gain(global.currentMusic,0,1000);
+    alarm[0] = 50;  //pause music when it's done fading
+}
+if(global.deathMusicMode == 3) {
+    audio_sound_gain(global.currentMusic, 0.3, 1000);
+}
 </string>
           </argument>
         </arguments>

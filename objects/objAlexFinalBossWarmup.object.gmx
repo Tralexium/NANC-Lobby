@@ -30,7 +30,152 @@
 image_speed = 0.2;
 
 t = 0;
+floating = false;
+draw_y = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Timeline
 
+t++;
+
+// Create first cane
+if(t == 40) {
+    instance_create(x, y, objAlexFBPStartAttackCane);
+}
+
+// Teleport to the top
+if(t == 70) {
+    scrFinalBossTP(room_width/2, 96, sprite_index);
+}
+
+// Spin circles 1
+if(t == 7*50) {
+    scrFBPStartAttackCane2(x, y, room_width/2 - 250, 100, 44, 0);
+    scrFBPStartAttackCane2(x, y, room_width/2 + 250, 100, 44, 0);
+}
+
+// Spin circles 2
+if(t == 7*50 + 22) {
+    scrFBPStartAttackCane2(x, y, room_width/2 - 150, 200, 44, 0);
+    scrFBPStartAttackCane2(x, y, room_width/2 + 150, 200, 44, 0);
+}
+
+// Shower attack
+if(t == 440) {
+    scrFBPStartAttackCane2(x, y, room_width/2 - 200, 350, 22, 1);
+    scrFBPStartAttackCane2(x, y, room_width/2, 400, 22, 1);
+    scrFBPStartAttackCane2(x, y, room_width/2 + 200, 350, 22, 1);
+}
+
+// Targeted canes
+if(t == 440 + 22) {
+    scrFBPCane(x, y, true, false, 30, 1 + 22, 50, 15, -140);
+    scrFBPCane(x, y, true, false, 30, 11 + 22, 50, 10, -90);
+    scrFBPCane(x, y, true, false, 30, 22 + 22, 50, 15, -40);
+}
+
+// Squish orbs
+if(t &gt;= 530-22 &amp;&amp; t &lt; 710-22 &amp;&amp; t mod 22 == 0) {
+    scrFBPStartAttackCane2(x, y, room_width/2 + random_range(-300, 300), random_range(100, 150), 22, 2);
+    
+    with(objAlexFBPSquishOrb) {
+        speed = 12;
+    }
+}
+
+// Multi gustav beam
+if(t == 610) {
+    scrFBASMultiBeam(x + random_range(100, 200), y, 30, 128, false, 64, 90, 0, 100, 7, -200, 0);
+}
+
+// Turn squish orbs into normal orbs
+if(t == 710) {
+    with(objAlexFBPSquishOrb) {
+        if(y &lt; 480) {
+            var _orb = scrFBPOrb(x, y, 32, random_range(80, 100), 0, random_range(8, 12), 0, -0.2);
+                _orb.gravity = .4;
+        }
+        
+        instance_destroy();
+    }
+}
+
+
+// Shower attack
+if(t == 722) {
+    scrFBPStartAttackCane2(x, y, room_width/2 - 200, 300, 44, 1);
+    scrFBPStartAttackCane2(x, y, room_width/2 + 200, 300, 44, 1);
+}
+
+// Beam dodge 1 &amp; shower attack
+if(t == 744) {
+    scrFBPStartAttackCane2(x, y, room_width/2 - 100, 350, 22, 1);
+    scrFBPStartAttackCane2(x, y, room_width/2 + 100, 350, 22, 1);
+
+    var _rand_angle = irandom(10);
+    scrFBPBeam(room_width/2 - 350, 400, 64, 50 + _rand_angle, 0, 44);
+    scrFBPBeam(room_width/2 + 350, 400, 64, -50 - _rand_angle, 0, 44);
+    
+    scrFBPBeam(room_width/2 - 250, 470, 64, -30 + _rand_angle, 0, 66);
+    scrFBPBeam(room_width/2 + 250, 470, 64, 30 - _rand_angle, 0, 66);
+    
+    scrFBPBeam(room_width/2 - 200, 460, 64, 20 + _rand_angle, 0, 88);
+    scrFBPBeam(room_width/2 + 200, 460, 64, -20 - _rand_angle, 0, 88);
+    
+    scrFBPBeam(room_width/2 - 100, 440, 64, -20 - _rand_angle, 0, 110);
+    scrFBPBeam(room_width/2 + 100, 440, 64, 20 + _rand_angle, 0, 110);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Other checks
+
+if(place_meeting(x, y+1, objBlock)) {
+    floating = false;
+} else {
+    floating = true;
+}
+
+if(floating) {
+    draw_y = dsin(t*2)*8;
+}
 </string>
           </argument>
         </arguments>
@@ -57,6 +202,31 @@ t = 0;
 
 scrStopMusic();
 scrPlayMusic(musFinalBoss, true);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw self
+
+draw_sprite_ext(sprite_index, image_index, x, y + draw_y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>

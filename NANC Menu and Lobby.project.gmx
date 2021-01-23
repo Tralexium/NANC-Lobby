@@ -470,6 +470,7 @@
         <sprite>sprites\sprAlexTestShapeStick</sprite>
         <sprite>sprites\sprAlexTestShapeShockwave</sprite>
         <sprite>sprites\sprAlexTestShapeBubble</sprite>
+        <sprite>sprites\sprAlexNoMask</sprite>
         <sprite>sprites\sprAlexFinalBossIdle</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
@@ -664,11 +665,17 @@
         <scripts name="Projectiles">
           <script>scripts\scrFBPBeam.gml</script>
           <script>scripts\scrFBPOrb.gml</script>
+          <script>scripts\scrFBPOrbCircle.gml</script>
+          <script>scripts\scrFBPSquishOrb.gml</script>
+          <script>scripts\scrFBPSquishOrbCircle.gml</script>
           <script>scripts\scrFBPOrbWithObj.gml</script>
           <script>scripts\scrFBPOrbBounce.gml</script>
           <script>scripts\scrFBPCane.gml</script>
           <script>scripts\scrFBPShockwave.gml</script>
           <script>scripts\scrFBPBubble.gml</script>
+          <scripts name="Warmup">
+            <script>scripts\scrFBPStartAttackCane2.gml</script>
+          </scripts>
         </scripts>
         <scripts name="Attack Sequences">
           <script>scripts\scrFBASMultiHoverOrbs.gml</script>
@@ -955,10 +962,14 @@
           <object>objects\objAlexFBPOrbBounce</object>
           <object>objects\objAlexFBPCane</object>
           <object>objects\objAlexFBPShockwave</object>
-          <object>objects\objAlexFBPStartAttackCane</object>
           <object>objects\objAlexFBPHoverBeamOrb</object>
           <object>objects\objAlexFBPRicochetOrb</object>
           <object>objects\objAlexFBPBubble</object>
+          <object>objects\objAlexFBPSquishOrb</object>
+          <objects name="Warmup specific">
+            <object>objects\objAlexFBPStartAttackCane</object>
+            <object>objects\objAlexFBPStartAttackCane2</object>
+          </objects>
         </objects>
         <object>objects\objAlexFinalBossWarmup</object>
       </objects>

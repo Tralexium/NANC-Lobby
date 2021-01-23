@@ -37,8 +37,9 @@ spawn_spd = 0;  // When spawned it gets launched before acquiring a target
 spawn_dir = 0;
 lock_in_place = false;  // When locked it cannot charge onto a target, you have to manually unset it
 
-friction = .2;
+friction = .5;
 image_alpha = 0;
+alarm[0] = 1;
 
 t = 0;
 start_angle = random_range(360*4, 360*5);
@@ -129,8 +130,6 @@ if(collided) {
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="4" ename="objBlock">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -149,11 +148,14 @@ if(collided) {
             <kind>1</kind>
             <string>/// Check for collisions when shot
 
-if(spin_finished &amp;&amp; !collided) {
-    collided = true;
-    
-    while(place_meeting(x, y - 4, objBlock))
-        y--;
+if(place_meeting(x, y, objBlock)) {
+    if(spin_finished &amp;&amp; !collided) {
+        collided = true;
+        speed = 0;
+        
+        while(place_meeting(x, y-2, objBlock))
+            y--;
+    }
 }
 </string>
           </argument>

@@ -25,6 +25,12 @@ if (instance_exists(objPlayer) && (!global.noDeath && !global.debugNoDeath))
                 
                 global.gameOverMusic = audio_play_sound(musOnDeath,1,false);
             }
+            else if (global.deathMusicMode == 3)    //fade out the current music to a certain volume
+            {                
+                with (objWorld)
+                    event_user(0);  //fades out and stops the current music
+                
+            }
         }
         
         // Alex modified
