@@ -469,6 +469,7 @@
         <sprite>sprites\sprAlexTestShapeSquare</sprite>
         <sprite>sprites\sprAlexTestShapeStick</sprite>
         <sprite>sprites\sprAlexTestShapeShockwave</sprite>
+        <sprite>sprites\sprAlexTestShapeBubble</sprite>
         <sprite>sprites\sprAlexFinalBossIdle</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
@@ -667,6 +668,7 @@
           <script>scripts\scrFBPOrbBounce.gml</script>
           <script>scripts\scrFBPCane.gml</script>
           <script>scripts\scrFBPShockwave.gml</script>
+          <script>scripts\scrFBPBubble.gml</script>
         </scripts>
         <scripts name="Attack Sequences">
           <script>scripts\scrFBASMultiHoverOrbs.gml</script>
@@ -956,6 +958,7 @@
           <object>objects\objAlexFBPStartAttackCane</object>
           <object>objects\objAlexFBPHoverBeamOrb</object>
           <object>objects\objAlexFBPRicochetOrb</object>
+          <object>objects\objAlexFBPBubble</object>
         </objects>
         <object>objects\objAlexFinalBossWarmup</object>
       </objects>

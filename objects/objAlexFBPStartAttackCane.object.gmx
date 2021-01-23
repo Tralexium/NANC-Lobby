@@ -28,12 +28,12 @@
             <string>/// Init vars
 
 // Change these:
-attack_type = irandom(1); // 0: Horizontal line of balls
+attack_type = irandom(2); // 0: Horizontal line of balls
                           // 1: Ricochet balls
-                          // 2: Giant bouncy splitting ball
+                          // 2: Splitting bubbles
 
 t = 0;
-spin_dur = 80;
+spin_dur = 50;
 spin_spd = -30;
 target_x = room_width/2;
 target_y = room_height/2 - 64;
@@ -78,6 +78,11 @@ if(t == spin_dur) {
         // Ricochet balls
         case 1:
             scrMakeCircle(x, y, random(360), 10, 9, objAlexFBPRicochetOrb);
+            break;
+            
+        // Splitting bubbles
+        case 2:
+            instance_create(x, y, objAlexFBPBubble);
             break;
     }
     

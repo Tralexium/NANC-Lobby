@@ -28,7 +28,7 @@
             <string>/// Init vars
 
 // Change these:
-travel_time = 200;
+travel_time = 100;
 time_until_fall = irandom_range(20, 70);
 friction_after_time = 0.25;
 fall_grav = 0.2;
@@ -74,6 +74,11 @@ if(place_meeting(x, y + vspeed, objBlock)) {
         while(!place_meeting(x, y, objBlock))
             y++;
     
+        repeat(3) {
+            var _orb = scrFBPOrb(x, y, 16, random_range(80, 100), 0, random_range(11, 13));
+                _orb.gravity = .25;
+        }
+            
         scrFBPBeam(x, y, 32, 90, 0, 1);
         scrFBPShockwave(x, y);
     
