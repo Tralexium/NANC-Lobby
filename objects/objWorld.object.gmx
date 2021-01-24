@@ -1064,7 +1064,7 @@ if(global.deathMusicMode == 2) {
     alarm[0] = 50;  //pause music when it's done fading
 }
 if(global.deathMusicMode == 3) {
-    audio_sound_gain(global.currentMusic, 0.3, 1000);
+    audio_sound_gain(global.currentMusic, 0.15, 1000);
 }
 </string>
           </argument>

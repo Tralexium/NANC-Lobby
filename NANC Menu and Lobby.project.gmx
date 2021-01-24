@@ -472,6 +472,9 @@
         <sprite>sprites\sprAlexTestShapeBubble</sprite>
         <sprite>sprites\sprAlexNoMask</sprite>
         <sprite>sprites\sprAlexFinalBossIdle</sprite>
+        <sprite>sprites\sprAlexFinalBossFloat</sprite>
+        <sprite>sprites\sprAlexFinalBossFloatAtk1</sprite>
+        <sprite>sprites\sprAlexFinalBossFloatAtk2</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
