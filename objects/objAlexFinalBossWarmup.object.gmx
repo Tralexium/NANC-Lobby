@@ -32,6 +32,10 @@ image_speed = 0.2;
 t = 0;
 floating = false;
 draw_y = 0;
+bouncy_orbs_y = 490;
+pulse_circle_angle = 0;
+pulse_circle_curve_spd = 1;
+bouncy_orbs_angle = 15;
 </string>
           </argument>
         </arguments>
@@ -111,9 +115,9 @@ if(t == 610) {
 // Turn squish orbs into normal orbs
 if(t == 710) {
     with(objAlexFBPSquishOrb) {
-        if(y &lt; 480) {
+        if(y &lt; 520) {
             var _orb = scrFBPOrb(x, y, 32, random_range(80, 100), 0, random_range(8, 12), 0, -0.2);
-                _orb.gravity = .4;
+                _orb.gravity = .3;
         }
         
         instance_destroy();
@@ -132,18 +136,85 @@ if(t == 744) {
     scrFBPStartAttackCane2(x, y, room_width/2 - 100, 350, 22, 1);
     scrFBPStartAttackCane2(x, y, room_width/2 + 100, 350, 22, 1);
 
-    var _rand_angle = irandom(10);
-    scrFBPBeam(room_width/2 - 350, 400, 64, 50 + _rand_angle, 0, 44);
-    scrFBPBeam(room_width/2 + 350, 400, 64, -50 - _rand_angle, 0, 44);
+    scrFBPBeam(room_width/2 - 350, 400, 64, 50, 0, 44);
+    scrFBPBeam(room_width/2 + 350, 400, 64, -50, 0, 44);
     
-    scrFBPBeam(room_width/2 - 250, 470, 64, -30 + _rand_angle, 0, 66);
-    scrFBPBeam(room_width/2 + 250, 470, 64, 30 - _rand_angle, 0, 66);
+    scrFBPBeam(room_width/2 - 250, 470, 64, -30, 0, 66);
+    scrFBPBeam(room_width/2 + 250, 470, 64, 30, 0, 66);
     
-    scrFBPBeam(room_width/2 - 200, 460, 64, 20 + _rand_angle, 0, 88);
-    scrFBPBeam(room_width/2 + 200, 460, 64, -20 - _rand_angle, 0, 88);
+    scrFBPBeam(room_width/2 - 200, 460, 64, 20, 0, 88);
+    scrFBPBeam(room_width/2 + 200, 460, 64, -20, 0, 88);
     
-    scrFBPBeam(room_width/2 - 100, 440, 64, -20 - _rand_angle, 0, 110);
-    scrFBPBeam(room_width/2 + 100, 440, 64, 20 + _rand_angle, 0, 110);
+    scrFBPBeam(room_width/2 - 100, 440, 64, -20, 0, 110);
+    scrFBPBeam(room_width/2 + 100, 440, 64, 20, 0, 110);
+}
+
+// Bouncy orbs
+if(t &gt;= 900 &amp;&amp; t &lt; 960 &amp;&amp; t mod 22 == 0) {
+    // Left side
+    scrFBPOrbBounce(room_width/2 - 420, bouncy_orbs_y, 32, 90 - bouncy_orbs_angle, 0, 10, 0, 0, .3, 2);
+    
+    // Right side
+    scrFBPOrbBounce(room_width/2 + 420, bouncy_orbs_y, 32, 90 + bouncy_orbs_angle, 0, 10, 0, 0, .3, 2);
+    
+    bouncy_orbs_y -= 80;
+    bouncy_orbs_angle += 10;
+}
+
+// Beam dodge  &amp; shower attack
+if(t == 932) {
+    scrFBPBeam(room_width/2, 480, 64, 45, 0, 44);
+    scrFBPBeam(room_width/2, 480, 64, -45, 0, 44);
+    
+    scrFBPBeam(room_width/2 - 200, 480, 64, 20, 0, 66);
+    scrFBPBeam(room_width/2 + 200, 480, 64, -20, 0, 66);
+    
+    scrFBPBeam(room_width/2 - 400, 480, 64, 30, 0, 88);
+    scrFBPBeam(room_width/2 + 400, 480, 64, -30, 0, 88);
+    
+    scrFBPBeam(room_width/2 - 400, 480, 64, 45, 0, 110);
+    scrFBPBeam(room_width/2 + 400, 480, 64, -45, 0, 110);
+}
+
+// split the bouncy orbs
+if(t == 1060) {
+    with(objAlexFBPOrbBounce) {
+        if(y &lt; 520) {
+            repeat(5) {
+            var _orb = scrFBPOrb(x, y, 32, random_range(80, 100), 0, random_range(11, 13), 0, -.2);
+                _orb.gravity = .25;
+            }
+            
+            instance_destroy();
+        }
+        
+        instance_destroy();
+    }
+}
+
+// Spiral pulse thingy
+if(t &gt;= 1070 &amp;&amp; t &lt; 1230 &amp;&amp; t mod 22 == 0) {
+    scrFBPSquishOrbCircle(room_width/2, 300, pulse_circle_angle, 18, 32, pulse_circle_curve_spd, 13, 0, 0);
+    pulse_circle_angle += 15;
+    pulse_circle_curve_spd *= -1;
+    
+    with(objAlexFBPSquishOrb) {
+        speed = 13;
+        friction = .4;
+    }
+}
+
+// Change the direction of the pulse orbs
+if(t == 1250) {
+    with(objAlexFBPSquishOrb) {
+        if(x &lt; view_xview[0] || x &gt; view_xview[0] + view_wview[0] || y &lt; view_yview[0] || y &gt; 520)
+            instance_destroy();
+    
+        direction = random(360);
+        friction = 0;
+        spd_incr = .04;
+        dir_incr *= 0.5;
+    }
 }
 </string>
           </argument>

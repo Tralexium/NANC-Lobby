@@ -77,8 +77,6 @@ image_yscale = image_xscale;
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="4" ename="objBlock">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -97,31 +95,35 @@ image_yscale = image_xscale;
             <kind>1</kind>
             <string>/// Check for collisions
 
-if(bounce_count &gt; 0) {
-    bounce_count--;
-
-    while(place_meeting(x, y, objBlock))
-        y--;
+if(vspeed &gt; 0 &amp;&amp; place_meeting(x, y + vspeed, objBlock)) {
+    if(bounce_count &gt; 0) {
+        bounce_count--;
+    
+        while(place_meeting(x, y, objBlock))
+            y--;
+            
+        if(bounce_pow != -1)
+            vspeed = -bounce_pow;
+        else
+            vspeed = -vspeed;
         
-    if(bounce_pow != -1)
-        vspeed = -bounce_pow;
-    else
-        vspeed = -vspeed;
+        if(bounce_dir != -1)
+            direction = bounce_dir;
     
-    if(bounce_dir != -1)
-        direction = bounce_dir;
-
-    if(bounce_sfx != -1) {
-        audio_stop_sound(bounce_sfx);
-        audio_play_sound(bounce_sfx, 0, false);
+        if(bounce_sfx != -1) {
+            audio_stop_sound(bounce_sfx);
+            audio_play_sound(bounce_sfx, 0, false);
+        }
+    } else {
+        if(death_sfx != -1) {
+            audio_stop_sound(death_sfx);
+            audio_play_sound(death_sfx, 0, false);
+        }
+        
+        show_debug_message(vspeed)
+        
+        instance_destroy();
     }
-} else {
-    if(death_sfx != -1) {
-        audio_stop_sound(death_sfx);
-        audio_play_sound(death_sfx, 0, false);
-    }
-    
-    instance_destroy();
 }
 </string>
           </argument>

@@ -21,8 +21,8 @@ if(argument_count > 2) {
     _obj.size = _size;
 }
 if(argument_count > 3) {
-    _angle = argument[3];
-    _obj.image_angle = _angle;
+    _dir = argument[3];
+    _obj.direction = _dir;
 }
 if(argument_count > 4) {
     _dir_incr = argument[4];
