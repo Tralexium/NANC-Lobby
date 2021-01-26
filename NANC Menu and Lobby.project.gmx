@@ -463,6 +463,26 @@
         </sprites>
       </sprites>
       <sprites name="Final Boss">
+        <sprites name="Projectiles">
+          <sprite>sprites\sprAlexFBPOrb</sprite>
+          <sprite>sprites\sprAlexFBPBlackOrb</sprite>
+          <sprite>sprites\sprAlexFBPOrbHitbox</sprite>
+          <sprite>sprites\sprAlexFBPStar</sprite>
+          <sprite>sprites\sprAlexFBPStarHitbox</sprite>
+          <sprite>sprites\sprAlexFBPBeam</sprite>
+          <sprite>sprites\sprAlexFBPBeamHitbox</sprite>
+          <sprite>sprites\sprAlexFBPBubble</sprite>
+          <sprite>sprites\sprAlexFBPBubbleHitbox</sprite>
+          <sprite>sprites\sprAlexFBPCaneSpin</sprite>
+          <sprite>sprites\sprAlexFBPCaneHalt</sprite>
+          <sprite>sprites\sprAlexFBPCaneReady</sprite>
+          <sprite>sprites\sprAlexFBPCaneCharge</sprite>
+          <sprite>sprites\sprAlexFBPCaneStuck</sprite>
+          <sprite>sprites\sprAlexFBPCaneHitbox</sprite>
+        </sprites>
+        <sprites name="Particles">
+          <sprite>sprites\sprFBParticleSpark</sprite>
+        </sprites>
         <sprite>sprites\sprAlexTestShapeSmallCircle</sprite>
         <sprite>sprites\sprAlexTestShapeCircle</sprite>
         <sprite>sprites\sprAlexTestShapeSmallSquare</sprite>
