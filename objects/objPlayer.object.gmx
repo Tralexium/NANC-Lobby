@@ -602,6 +602,13 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
             <kind>1</kind>
             <string>/// Kill player
 
+// Shows what killed the player
+if(global.debugMode) {
+    with(other) {
+        show_debug_message(object_get_name(object_index))
+    }
+}
+
 scrKillPlayer();
 </string>
           </argument>

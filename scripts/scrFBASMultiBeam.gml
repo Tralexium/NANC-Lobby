@@ -36,6 +36,8 @@ for(var i = 0; i < _beam_amnt; i++) {
     if(argument_count > 5) {
         _size = argument[5];
         _obj.size = _size;
+        
+        _obj.image_yscale = _size / sprite_get_height(sprAlexFBPBeamHitbox);
     }
     if(argument_count > 6) {
         _angle = argument[6];

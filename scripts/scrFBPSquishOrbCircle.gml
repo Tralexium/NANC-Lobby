@@ -19,6 +19,9 @@ for (var i = 0; i < _amount; i += 1)
     if(argument_count > 4) {
         _size = argument[4];
         _obj.size = _size;
+        
+        _obj.image_xscale = _size / sprite_get_height(sprAlexFBPOrbHitbox);
+        _obj.image_yscale = _size / sprite_get_height(sprAlexFBPOrbHitbox);
     }
     if(argument_count > 5) {
         _dir_incr = argument[5];

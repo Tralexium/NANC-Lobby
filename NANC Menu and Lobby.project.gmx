@@ -466,10 +466,12 @@
         <sprites name="Projectiles">
           <sprite>sprites\sprAlexFBPOrb</sprite>
           <sprite>sprites\sprAlexFBPBlackOrb</sprite>
+          <sprite>sprites\sprAlexFBPOrbTrail</sprite>
           <sprite>sprites\sprAlexFBPOrbHitbox</sprite>
           <sprite>sprites\sprAlexFBPStar</sprite>
           <sprite>sprites\sprAlexFBPStarHitbox</sprite>
           <sprite>sprites\sprAlexFBPBeam</sprite>
+          <sprite>sprites\sprAlexFBPBeamIndicator</sprite>
           <sprite>sprites\sprAlexFBPBeamHitbox</sprite>
           <sprite>sprites\sprAlexFBPBubble</sprite>
           <sprite>sprites\sprAlexFBPBubbleHitbox</sprite>
@@ -481,7 +483,7 @@
           <sprite>sprites\sprAlexFBPCaneHitbox</sprite>
         </sprites>
         <sprites name="Particles">
-          <sprite>sprites\sprFBParticleSpark</sprite>
+          <sprite>sprites\sprAlexFBParticleSpark</sprite>
         </sprites>
         <sprite>sprites\sprAlexTestShapeSmallCircle</sprite>
         <sprite>sprites\sprAlexTestShapeCircle</sprite>
@@ -699,6 +701,7 @@
           <scripts name="Warmup">
             <script>scripts\scrFBPStartAttackCane2.gml</script>
           </scripts>
+          <script>scripts\scrFBPExplosionParticles.gml</script>
         </scripts>
         <scripts name="Attack Sequences">
           <script>scripts\scrFBASMultiHoverOrbs.gml</script>

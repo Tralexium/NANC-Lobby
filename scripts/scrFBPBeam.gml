@@ -15,6 +15,8 @@ var _obj = instance_create(_x, _y, objAlexFBPBeam);
 if(argument_count > 2) {
     _size = argument[2];
     _obj.size = _size;
+    
+    _obj.image_yscale = _size / sprite_get_height(sprAlexFBPBeamHitbox);
 }
 if(argument_count > 3) {
     _angle = argument[3];

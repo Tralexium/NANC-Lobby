@@ -21,6 +21,9 @@ if(argument_count > 3) {
 if(argument_count > 4) {
     _size = argument[4];
     _obj.size = _size;
+    
+    _obj.image_xscale = _size / sprite_get_height(sprAlexFBPOrbHitbox);
+    _obj.image_yscale = _size / sprite_get_height(sprAlexFBPOrbHitbox);
 }
 if(argument_count > 5) {
     _angle = argument[5];

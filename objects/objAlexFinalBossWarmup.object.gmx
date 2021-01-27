@@ -3,7 +3,7 @@
   <spriteName>sprAlexFinalBossIdle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Init vars
 
-image_speed = 0.2;
+image_speed = 0.3;
 
 t = 0;
 floating = false;
@@ -36,6 +36,15 @@ bouncy_orbs_y = 490;
 pulse_circle_angle = 0;
 pulse_circle_curve_spd = 1;
 bouncy_orbs_angle = 15;
+is_attacking = false;
+attack_anim = 1;
+aura_spd = 3;
+aura_alpha = 1;
+aura_base_alpha = 0.5;
+aura_add_alpha = 0.2;
+aura_scale = 1.5;
+aura_base_scale = aura_scale;
+aura_add_scale = .3;
 </string>
           </argument>
         </arguments>
@@ -69,19 +78,23 @@ if(t == 40) {
 
 // Teleport to the top
 if(t == 70) {
-    scrFinalBossTP(room_width/2, 96, sprite_index);
+    scrFinalBossTP(room_width/2, 96, sprAlexFinalBossFloat);
 }
 
 // Spin circles 1
 if(t == 7*50) {
     scrFBPStartAttackCane2(x, y, room_width/2 - 250, 100, 44, 0);
     scrFBPStartAttackCane2(x, y, room_width/2 + 250, 100, 44, 0);
+    
+    event_user(0);
 }
 
 // Spin circles 2
 if(t == 7*50 + 22) {
     scrFBPStartAttackCane2(x, y, room_width/2 - 150, 200, 44, 0);
     scrFBPStartAttackCane2(x, y, room_width/2 + 150, 200, 44, 0);
+    
+    event_user(0);
 }
 
 // Shower attack
@@ -89,6 +102,8 @@ if(t == 440) {
     scrFBPStartAttackCane2(x, y, room_width/2 - 200, 350, 22, 1);
     scrFBPStartAttackCane2(x, y, room_width/2, 400, 22, 1);
     scrFBPStartAttackCane2(x, y, room_width/2 + 200, 350, 22, 1);
+    
+    event_user(0);
 }
 
 // Targeted canes
@@ -96,15 +111,19 @@ if(t == 440 + 22) {
     scrFBPCane(x, y, true, false, 30, 1 + 22, 50, 15, -140);
     scrFBPCane(x, y, true, false, 30, 11 + 22, 50, 10, -90);
     scrFBPCane(x, y, true, false, 30, 22 + 22, 50, 15, -40);
+    
+    event_user(0);
 }
 
 // Squish orbs
-if(t &gt;= 530-22 &amp;&amp; t &lt; 710-22 &amp;&amp; t mod 22 == 0) {
+if(t &gt;= 530-22 &amp;&amp; t &lt; 710-24 &amp;&amp; t mod 22 == 0) {
     scrFBPStartAttackCane2(x, y, room_width/2 + random_range(-300, 300), random_range(100, 150), 22, 2);
     
     with(objAlexFBPSquishOrb) {
         speed = 12;
     }
+    
+    event_user(0);
 }
 
 // Multi gustav beam
@@ -129,6 +148,8 @@ if(t == 710) {
 if(t == 722) {
     scrFBPStartAttackCane2(x, y, room_width/2 - 200, 300, 44, 1);
     scrFBPStartAttackCane2(x, y, room_width/2 + 200, 300, 44, 1);
+    
+    event_user(0);
 }
 
 // Beam dodge 1 &amp; shower attack
@@ -147,6 +168,8 @@ if(t == 744) {
     
     scrFBPBeam(room_width/2 - 100, 440, 64, -20, 0, 110);
     scrFBPBeam(room_width/2 + 100, 440, 64, 20, 0, 110);
+    
+    event_user(0);
 }
 
 // Bouncy orbs
@@ -180,7 +203,7 @@ if(t == 932) {
 if(t == 1060) {
     with(objAlexFBPOrbBounce) {
         if(y &lt; 520) {
-            repeat(5) {
+            repeat(3) {
             var _orb = scrFBPOrb(x, y, 32, random_range(80, 100), 0, random_range(11, 13), 0, -.2);
                 _orb.gravity = .25;
             }
@@ -194,7 +217,7 @@ if(t == 1060) {
 
 // Spiral pulse thingy
 if(t &gt;= 1070 &amp;&amp; t &lt; 1230 &amp;&amp; t mod 22 == 0) {
-    scrFBPSquishOrbCircle(room_width/2, 300, pulse_circle_angle, 18, 32, pulse_circle_curve_spd, 13, 0, 0);
+    scrFBPSquishOrbCircle(room_width/2, 300, pulse_circle_angle, 16, 32, pulse_circle_curve_spd, 13, 0, 0);
     pulse_circle_angle += 15;
     pulse_circle_curve_spd *= -1;
     
@@ -247,6 +270,76 @@ if(place_meeting(x, y+1, objBlock)) {
 if(floating) {
     draw_y = dsin(t*2)*8;
 }
+
+aura_alpha = aura_base_alpha + dsin(t*aura_spd) * aura_add_alpha;
+aura_scale = aura_base_scale + dsin(t*aura_spd) * aura_add_scale;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Start attack anim
+
+is_attacking = true;
+attack_anim *= -1;
+
+image_index = 0;
+image_speed = 0.4;
+
+if(attack_anim)
+    sprite_index = sprAlexFinalBossFloatAtk1;
+else
+    sprite_index = sprAlexFinalBossFloatAtk2;
+    
+var _part = scrAlexMakeParticle(x, y, 10, sprite_index, 0, 0, 0, false, true, false);;
+            _part.blend_mode = bm_add;
+            _part.add_scale = 0.1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stop attack animation
+
+if(is_attacking) {
+    is_attacking = false;
+    sprite_index = sprAlexFinalBossFloat;
+    image_index = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -297,6 +390,9 @@ scrPlayMusic(musFinalBoss, true);
             <kind>1</kind>
             <string>/// Draw self
 
+draw_set_blend_mode(bm_add);
+draw_sprite_ext(sprite_index, image_index, x, y + draw_y, aura_scale, aura_scale, image_angle, c_fuchsia, aura_alpha);
+draw_set_blend_mode(bm_normal);
 draw_sprite_ext(sprite_index, image_index, x, y + draw_y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>
           </argument>

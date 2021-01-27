@@ -40,7 +40,8 @@ depth_check = true      // Assigns the depth based on its position
 end_on_last_frame = false  // Destroys the particle once the animation reached the end
 
 // Set these manually
-add_angle = 0
+add_angle = 0;
+add_scale = 0;
 
 // Misc.
 t = 0;
@@ -83,12 +84,21 @@ if(life &lt;= 0) {
 // A normalized remainder of life
 var life_normal = life/max_life;
 
-t++;
+++t;
 
 // Colour
-image_blend = merge_colour(end_col, start_col, life_normal);
+if(start_col != c_white &amp;&amp; end_col != c_white) {
+    image_blend = merge_colour(end_col, start_col, life_normal);
+} else if(start_col != c_white){
+    image_blend = start_col;
+}
 
 // Scale
+if(add_scale != 0) {
+    image_xscale += add_scale;
+    image_yscale += add_scale
+}
+
 if(shrink) {
     image_xscale = life_normal
     image_yscale = life_normal

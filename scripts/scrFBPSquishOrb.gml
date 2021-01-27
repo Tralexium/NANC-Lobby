@@ -14,6 +14,9 @@ var _obj = instance_create(_x, _y, objAlexFBPSquishOrb);
 if(argument_count > 2) {
     _size = argument[2];
     _obj.size = _size;
+    
+    _obj.image_xscale = _size / sprite_get_height(sprAlexFBPOrbHitbox);
+    _obj.image_yscale = _size / sprite_get_height(sprAlexFBPOrbHitbox);
 }
 if(argument_count > 3) {
     _dir = argument[3];

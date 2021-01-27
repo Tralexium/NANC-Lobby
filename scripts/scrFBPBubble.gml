@@ -12,8 +12,8 @@ var _obj = instance_create(_x, _y, objAlexFBPBubble);
     _obj.target_scale = _target_scale;
     _obj.direction = _dir;
     _obj.speed = _spd;
-    _obj.image_xscale = _start_scale;
-    _obj.image_yscale = _start_scale;
+    _obj.image_xscale = _start_scale * (128 / sprite_get_height(sprAlexFBPBubbleHitbox));
+    _obj.image_yscale = _start_scale * (128 / sprite_get_height(sprAlexFBPBubbleHitbox));
 
 
 // In case you want to further modify it
