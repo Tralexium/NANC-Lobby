@@ -37,7 +37,8 @@ fall_grav = 0.2;
 t = 0;
 is_falling = false;
 
-
+rico_sfx = sndAlexFBRicochet;
+explosion_sfx = sndAlexFBBlackOrbExplosion;
 is_outside = false;
 image_xscale = 40 / sprite_get_height(sprAlexFBPOrbHitbox);
 image_yscale = image_xscale;
@@ -102,6 +103,8 @@ t++;
 // ricochet against walls
 if(place_meeting(x + hspeed, y, objBlock)) {
     hspeed *= -1;
+    
+    audio_play_sound(rico_sfx, 0, false);
 }
 if(place_meeting(x, y + vspeed, objBlock)) {
     vspeed *= -1;
@@ -119,7 +122,14 @@ if(place_meeting(x, y + vspeed, objBlock)) {
         scrFBPBeam(x, y, 32, 90, 0, 1);
         scrFBPShockwave(x, y);
     
+        audio_stop_sound(explosion_sfx);
+        audio_play_sound(explosion_sfx, 0, false);
+        
         instance_destroy();
+    } else {
+        audio_stop_sound(rico_sfx);
+        audio_sound_pitch(rico_sfx, random_range(0.9, 1.1));
+        audio_play_sound(rico_sfx, 0, false);
     }
 }
 

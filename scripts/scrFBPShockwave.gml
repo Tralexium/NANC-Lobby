@@ -1,9 +1,10 @@
-/// scrFBPShockwave(x, y, travel_dist[optional], travel_dur[optional])
+/// scrFBPShockwave(x, y, travel_dist[optional], travel_dur[optional], scale[optional])
 
 var _x = argument[0];
 var _y = argument[1];
 var _travel_dist = -1;
 var _travel_dur = -1;
+var _scale = -1;
 
 for(var i=-1; i<2; i += 2) {
     var _obj = instance_create(_x, _y, objAlexFBPShockwave);
@@ -15,6 +16,10 @@ for(var i=-1; i<2; i += 2) {
     if(argument_count > 3) {
         _travel_dur = argument[3];
         _obj.travel_dur = _travel_dur;
+    }
+    if(argument_count > 4) {
+        _scale = argument[4];
+        _obj.image_xscale = _scale;
     }
     
     _obj.travel_dist *= i;

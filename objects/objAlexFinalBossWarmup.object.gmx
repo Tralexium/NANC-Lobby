@@ -121,6 +121,9 @@ if(t &gt;= 530-22 &amp;&amp; t &lt; 710-24 &amp;&amp; t mod 22 == 0) {
     
     with(objAlexFBPSquishOrb) {
         speed = 12;
+        
+        audio_stop_sound(sndAlexFBSquishOrbPulse)
+        audio_play_sound(sndAlexFBSquishOrbPulse, 0, false);
     }
     
     event_user(0);
@@ -225,6 +228,9 @@ if(t &gt;= 1070 &amp;&amp; t &lt; 1230 &amp;&amp; t mod 22 == 0) {
         speed = 13;
         friction = .4;
     }
+    
+    audio_stop_sound(sndAlexFBSquishOrbPulse)
+    audio_play_sound(sndAlexFBSquishOrbPulse, 0, false);
 }
 
 // Change the direction of the pulse orbs

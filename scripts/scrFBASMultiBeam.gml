@@ -1,5 +1,7 @@
 /// scrFBASMultiBeam(x, y, beam_amnt, beam_pad, is_vertical, size[optional], angle[optional], angle_incr[optional], tell_dur[optional], fire_dur[optional], travel_dist_x[optional], travel_dist_y[optional)
 
+audio_play_sound(sndAlexFBMultiBeamIndicators, 0, false);
+
 var _x = argument[0];
 var _y = argument[1];
 var _beam_amnt = argument[2];

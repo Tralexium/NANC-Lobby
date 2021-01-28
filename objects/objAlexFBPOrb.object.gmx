@@ -37,6 +37,7 @@ direction = random(360);
 
 
 is_outside = false;
+explosion_sfx = sndAlexFBOrbExplosion;
 </string>
           </argument>
         </arguments>
@@ -68,6 +69,9 @@ if(!is_outside) {
     var _spark_add_scale = -0.4 * image_xscale;
     var _spark_spd = random_range(8, 14) * image_xscale;
     scrFBPExplosionParticles(sprite_index, 7, 1.4, _add_scale, true, bm_add, _spark_amnt, 10, _spark_scale, _spark_add_scale, _spark_spd);
+
+    audio_stop_sound(explosion_sfx);
+    audio_play_sound(explosion_sfx, 0, false);
 }
 </string>
           </argument>

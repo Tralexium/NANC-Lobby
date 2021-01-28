@@ -40,6 +40,9 @@ target_y = room_height/2 - 64;
 lerp_spd = 0.15;
 
 image_speed = 0.3;
+
+audio_stop_sound(sndAlexFBCaneStartAttack);
+audio_play_sound(sndAlexFBCaneStartAttack, 0, false);
 </string>
           </argument>
         </arguments>
@@ -75,6 +78,9 @@ var _part = scrAlexMakeParticle(x, y, 25, sprite_index, .3, direction, 0, false,
     _part.image_yscale = image_yscale;
     _part.blend_mode = bm_add;
     _part.add_scale = 0.025;
+    
+audio_stop_sound(sndAlexFBCaneExplosion)
+audio_play_sound(sndAlexFBCaneExplosion, 0, false);
 </string>
           </argument>
         </arguments>

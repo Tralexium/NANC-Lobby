@@ -41,8 +41,8 @@ bounce_pow = -1;
 bounce_dir = -1;
 
 
-bounce_sfx = -1;
-death_sfx = -1;
+bounce_sfx = sndAlexFBStarBounce;
+death_sfx = sndAlexFBStarExplosion;
 spin_spd = 3;
 
 
@@ -78,6 +78,11 @@ if(!is_outside) {
     var _spark_add_scale = -0.4 * image_xscale;
     var _spark_spd = random_range(8, 14) * image_xscale;
     scrFBPExplosionParticles(sprite_index, 7, 1.4, _add_scale, true, bm_add, _spark_amnt, 10, _spark_scale, _spark_add_scale, _spark_spd);
+    
+    if(death_sfx != -1) {
+        audio_stop_sound(death_sfx);
+        audio_play_sound(death_sfx, 0, false);
+    }
 }
 </string>
           </argument>
@@ -157,6 +162,7 @@ if(vspeed &gt; 0 &amp;&amp; place_meeting(x, y + vspeed, objBlock)) {
     
         if(bounce_sfx != -1) {
             audio_stop_sound(bounce_sfx);
+            audio_sound_pitch(bounce_sfx, random_range(0.95, 1.05));
             audio_play_sound(bounce_sfx, 0, false);
         }
         
@@ -166,15 +172,6 @@ if(vspeed &gt; 0 &amp;&amp; place_meeting(x, y + vspeed, objBlock)) {
             _part.image_angle = image_angle;
             _part.blend_mode = bm_add;
             _part.add_scale = 0.1 * image_xscale;
-    } else {
-        if(death_sfx != -1) {
-            audio_stop_sound(death_sfx);
-            audio_play_sound(death_sfx, 0, false);
-        }
-        
-        show_debug_message(vspeed)
-        
-        instance_destroy();
     }
 }
 </string>

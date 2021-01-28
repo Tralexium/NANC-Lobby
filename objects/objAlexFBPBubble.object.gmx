@@ -116,6 +116,9 @@ if(place_meeting(x, y + vspeed, objBlock) &amp;&amp; vspeed &gt; 0) {
         scrFBPBubble(x, y, target_scale + new_start_scale_add, _new_target_scale, 75, _new_bounce_speed);
     }
     
+    audio_stop_sound(sndAlexFBBubbleHit);
+    audio_play_sound(sndAlexFBBubbleHit, 0, false);
+    
     instance_destroy();
 }
 

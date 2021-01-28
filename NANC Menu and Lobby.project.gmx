@@ -171,6 +171,26 @@
       <sound>sound\musFinalBoss</sound>
       <sound>sound\musFanfare</sound>
       <sounds name="sfx">
+        <sounds name="Final Boss">
+          <sounds name="Projectiles">
+            <sound>sound\sndAlexFBBeam</sound>
+            <sound>sound\sndAlexFBMultiBeamIndicators</sound>
+            <sound>sound\sndAlexFBBubbleHit</sound>
+            <sound>sound\sndAlexFBCaneStartAttack</sound>
+            <sound>sound\sndAlexFBCaneThrow</sound>
+            <sound>sound\sndAlexFBCaneExplosion</sound>
+            <sound>sound\sndAlexFBCaneDash</sound>
+            <sound>sound\sndAlexFBCaneStuck</sound>
+            <sound>sound\sndAlexFBSquishOrbPulse</sound>
+            <sound>sound\sndAlexFBOrbExplosion</sound>
+            <sound>sound\sndAlexFBBlackOrbExplosion</sound>
+            <sound>sound\sndAlexFBRicochet</sound>
+            <sound>sound\sndAlexFBStarBounce</sound>
+            <sound>sound\sndAlexFBStarExplosion</sound>
+          </sounds>
+          <sound>sound\sndAlexFBTeleport</sound>
+          <sound>sound\sndAlexFBShieldBroken</sound>
+        </sounds>
         <sound>sound\sndAlexSaveBlocker</sound>
         <sound>sound\sndAlexSaveGreen</sound>
         <sound>sound\sndAlexSaveRed</sound>
@@ -475,6 +495,7 @@
           <sprite>sprites\sprAlexFBPBeamHitbox</sprite>
           <sprite>sprites\sprAlexFBPBubble</sprite>
           <sprite>sprites\sprAlexFBPBubbleHitbox</sprite>
+          <sprite>sprites\sprAlexFBPShockwave</sprite>
           <sprite>sprites\sprAlexFBPCaneSpin</sprite>
           <sprite>sprites\sprAlexFBPCaneHalt</sprite>
           <sprite>sprites\sprAlexFBPCaneReady</sprite>

@@ -1,6 +1,8 @@
 /// scrFinalBossTP(tele_x, tele_y, new_sprite_index)
 // Only used in the final boss!
 
+audio_play_sound(sndAlexFBTeleport, 0, false);
+
 var _tele_x = argument[0];
 var _tele_y = argument[1];
 var _sprite = argument[2];

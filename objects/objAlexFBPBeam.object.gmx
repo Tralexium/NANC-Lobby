@@ -77,6 +77,9 @@ if(!tell_finished) {
         tell_finished = true;
         mask_index = sprAlexFBPBeamHitbox;
         image_alpha = 1;
+        
+        audio_stop_sound(sndAlexFBBeam);
+        audio_play_sound(sndAlexFBBeam, 0, false);
     } else {    
         var _anim_val = t / tell_dur;
         indicator_alpha = scrAlexEaseOutSine(t, 0, 0.2, tell_dur);

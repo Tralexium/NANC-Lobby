@@ -37,6 +37,7 @@ lerp_spd = 0.1;
 t = 0;
 falling = false;
 
+explosion_sfx = sndAlexFBBlackOrbExplosion;
 is_outside = false;
 image_xscale = 40 / sprite_get_height(sprAlexFBPOrbHitbox);
 image_yscale = image_xscale;
@@ -146,6 +147,9 @@ repeat(4) {
     var _orb = scrFBPOrb(x, y, 16, random_range(80, 100), 0, random_range(8, 13));
         _orb.gravity = .2;
 }
+
+audio_stop_sound(explosion_sfx);
+audio_play_sound(explosion_sfx, 0, false);
 
 instance_destroy();
 </string>

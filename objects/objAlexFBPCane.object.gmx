@@ -47,6 +47,9 @@ start_angle = random_range(360*4, 360*5);
 target_angle = random_range(-130, 50);
 spin_finished = false;
 collided = false;
+
+audio_stop_sound(sndAlexFBCaneThrow);
+audio_play_sound(sndAlexFBCaneThrow, 0, false);
 </string>
           </argument>
         </arguments>
@@ -126,6 +129,9 @@ if(!spin_finished) {
         
         sprite_index = sprAlexFBPCaneCharge;
         image_speed = 0.4;
+        
+        audio_stop_sound(sndAlexFBCaneDash);
+        audio_play_sound(sndAlexFBCaneDash, 0, false);
     }
 }
 
@@ -133,6 +139,9 @@ if(collided) {
     if(t == 0) {
         sprite_index = sprAlexFBPCaneStuck;
         image_speed = 0.4; 
+        
+        audio_stop_sound(sndAlexFBCaneStuck);
+        audio_play_sound(sndAlexFBCaneStuck, 0, false);
     
         var _spark_dir = direction + 180; 
         var _spark_x = x + lengthdir_x(sprite_width / 2, direction);
