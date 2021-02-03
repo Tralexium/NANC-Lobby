@@ -505,6 +505,7 @@
         </sprites>
         <sprites name="Particles">
           <sprite>sprites\sprAlexFBParticleSpark</sprite>
+          <sprite>sprites\sprAlexFBParticleMagicCircle</sprite>
         </sprites>
         <sprite>sprites\sprAlexTestShapeSmallCircle</sprite>
         <sprite>sprites\sprAlexTestShapeCircle</sprite>
@@ -514,10 +515,26 @@
         <sprite>sprites\sprAlexTestShapeShockwave</sprite>
         <sprite>sprites\sprAlexTestShapeBubble</sprite>
         <sprite>sprites\sprAlexNoMask</sprite>
+        <sprite>sprites\sprAlexFinalBossShieldOrb</sprite>
+        <sprite>sprites\sprAlexFinalBossMagicCircle</sprite>
         <sprite>sprites\sprAlexFinalBossIdle</sprite>
+        <sprite>sprites\sprAlexFinalBossAtk</sprite>
+        <sprite>sprites\sprAlexFinalBossPreDash</sprite>
+        <sprite>sprites\sprAlexFinalBossDash</sprite>
         <sprite>sprites\sprAlexFinalBossFloat</sprite>
         <sprite>sprites\sprAlexFinalBossFloatAtk1</sprite>
         <sprite>sprites\sprAlexFinalBossFloatAtk2</sprite>
+        <sprite>sprites\sprAlexFinalBossJump</sprite>
+        <sprite>sprites\sprAlexFinalBossJumpAtk</sprite>
+        <sprite>sprites\sprAlexFinalBossJumpFront</sprite>
+        <sprite>sprites\sprAlexFinalBossJumpFrontAtk</sprite>
+        <sprite>sprites\sprAlexFinalBossJumpBack</sprite>
+        <sprite>sprites\sprAlexFinalBossJumpBackAtk</sprite>
+        <sprite>sprites\sprAlexFinalBossGroundStomp</sprite>
+        <sprite>sprites\sprAlexFinalBossIntro</sprite>
+        <sprite>sprites\sprAlexFinalBossVulnerable</sprite>
+        <sprite>sprites\sprAlexFinalBossRecover</sprite>
+        <sprite>sprites\sprAlexFinalBossPowerUp</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
