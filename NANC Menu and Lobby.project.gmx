@@ -501,6 +501,7 @@
           <sprite>sprites\sprAlexFBPCaneReady</sprite>
           <sprite>sprites\sprAlexFBPCaneCharge</sprite>
           <sprite>sprites\sprAlexFBPCaneStuck</sprite>
+          <sprite>sprites\sprAlexFBPCaneLine</sprite>
           <sprite>sprites\sprAlexFBPCaneHitbox</sprite>
         </sprites>
         <sprites name="Particles">
@@ -516,6 +517,7 @@
         <sprite>sprites\sprAlexTestShapeBubble</sprite>
         <sprite>sprites\sprAlexNoMask</sprite>
         <sprite>sprites\sprAlexFinalBossShieldOrb</sprite>
+        <sprite>sprites\sprAlexFinalBossLowHPShieldOrb</sprite>
         <sprite>sprites\sprAlexFinalBossMagicCircle</sprite>
         <sprite>sprites\sprAlexFinalBossIdle</sprite>
         <sprite>sprites\sprAlexFinalBossAtk</sprite>
@@ -1035,6 +1037,8 @@
             <object>objects\objAlexFBPStartAttackCane2</object>
           </objects>
         </objects>
+        <object>objects\objAlexFBCam</object>
+        <object>objects\objAlexFinalBoss</object>
         <object>objects\objAlexFinalBossWarmup</object>
       </objects>
     </objects>

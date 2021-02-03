@@ -163,17 +163,22 @@ if(t == 744) {
     scrFBPBeam(room_width/2 - 350, 400, 64, 50, 0, 44);
     scrFBPBeam(room_width/2 + 350, 400, 64, -50, 0, 44);
     
-    scrFBPBeam(room_width/2 - 250, 470, 64, -30, 0, 66);
-    scrFBPBeam(room_width/2 + 250, 470, 64, 30, 0, 66);
-    
-    scrFBPBeam(room_width/2 - 200, 460, 64, 20, 0, 88);
-    scrFBPBeam(room_width/2 + 200, 460, 64, -20, 0, 88);
-    
-    scrFBPBeam(room_width/2 - 100, 440, 64, -20, 0, 110);
-    scrFBPBeam(room_width/2 + 100, 440, 64, 20, 0, 110);
-    
     event_user(0);
 }
+else if(t == 755) {
+    scrFBPBeam(room_width/2 - 250, 470, 64, -30, 0, 56);
+    scrFBPBeam(room_width/2 + 250, 470, 64, 30, 0, 56);
+}
+else if(t == 765) {
+    scrFBPBeam(room_width/2 - 200, 460, 64, 20, 0, 68);
+    scrFBPBeam(room_width/2 + 200, 460, 64, -20, 0, 68);
+}
+else if(t == 775) {
+    scrFBPBeam(room_width/2 - 100, 440, 64, -20, 0, 80);
+    scrFBPBeam(room_width/2 + 100, 440, 64, 20, 0, 80);
+}
+
+
 
 // Bouncy orbs
 if(t &gt;= 900 &amp;&amp; t &lt; 960 &amp;&amp; t mod 22 == 0) {
@@ -190,16 +195,19 @@ if(t &gt;= 900 &amp;&amp; t &lt; 960 &amp;&amp; t mod 22 == 0) {
 // Beam dodge  &amp; shower attack
 if(t == 932) {
     scrFBPBeam(room_width/2, 480, 64, 45, 0, 44);
-    scrFBPBeam(room_width/2, 480, 64, -45, 0, 44);
-    
-    scrFBPBeam(room_width/2 - 200, 480, 64, 20, 0, 66);
-    scrFBPBeam(room_width/2 + 200, 480, 64, -20, 0, 66);
-    
-    scrFBPBeam(room_width/2 - 400, 480, 64, 30, 0, 88);
-    scrFBPBeam(room_width/2 + 400, 480, 64, -30, 0, 88);
-    
-    scrFBPBeam(room_width/2 - 400, 480, 64, 45, 0, 110);
-    scrFBPBeam(room_width/2 + 400, 480, 64, -45, 0, 110);
+    scrFBPBeam(room_width/2, 480, 64, -45, 0, 44); 
+}
+else if(t == 942) {
+    scrFBPBeam(room_width/2 - 200, 480, 64, 20, 0, 56);
+    scrFBPBeam(room_width/2 + 200, 480, 64, -20, 0, 56);
+}
+else if(t == 952) {
+    scrFBPBeam(room_width/2 - 400, 480, 64, 30, 0, 68);
+    scrFBPBeam(room_width/2 + 400, 480, 64, -30, 0, 68);
+}
+else if(t == 962) {
+    scrFBPBeam(room_width/2 - 400, 480, 64, 45, 0, 80);
+    scrFBPBeam(room_width/2 + 400, 480, 64, -45, 0, 80);
 }
 
 // split the bouncy orbs
@@ -243,6 +251,24 @@ if(t == 1250) {
         friction = 0;
         spd_incr = .04;
         dir_incr *= 0.5;
+    }
+}
+
+// Zoom out cam and spawn the canes
+if(t &gt; 1250 &amp;&amp; t &lt; 1400) {
+    var _zoom_t = clamp(t - 1250, 0, 150);
+    y = scrAlexEaseInBack(_zoom_t, 96, -120, 150)
+    
+    if(t mod 12 == 0) {
+        scrFBPCane(random_range(450, room_width - 450), random_range(30, 200), false, true, 40, 100, 50, 0, 0, true);
+        audio_stop_sound(sndAlexFBCaneThrow);
+    }
+}
+
+// Shoot the canes and ground stomp (spawn real final boss)
+if(t == 1500) {
+    with(objAlexFBPCane) {
+        lock_in_place = false;
     }
 }
 </string>
