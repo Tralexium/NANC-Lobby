@@ -28,6 +28,7 @@
             <string>/// Init vars
 
 image_speed = 0.3;
+image_xscale = -1;
 
 t = 0;
 floating = false;
@@ -67,13 +68,60 @@ aura_add_scale = .3;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Other checks
+
+if(place_meeting(x, y+5, objBlock)) {
+    floating = false;
+} else {
+    floating = true;
+}
+
+if(floating) {
+    draw_y = dsin(t*2)*8;
+} else {
+    draw_y = 0;
+}
+
+aura_alpha = aura_base_alpha + dsin(t*aura_spd) * aura_add_alpha;
+aura_scale = (aura_base_scale + dsin(t*aura_spd) * aura_add_scale) * sign(image_xscale);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Timeline
 
 t++;
 
+if(!instance_exists(objPlayer))
+    exit;
+
 // Create first cane
 if(t == 40) {
     instance_create(x, y, objAlexFBPStartAttackCane);
+    sprite_index = sprAlexFinalBossAtk;
+    image_speed = 0.2;
+    
+    var _part = scrAlexMakeParticle(x, y, 10, sprite_index, 0, 0, 0, false, true, false);;
+        _part.blend_mode = bm_add;
+        _part.add_scale_x = 0.15 * sign(image_xscale);
+        _part.add_scale_y = 0.15;
+        _part.image_xscale = image_xscale;
 }
 
 // Teleport to the top
@@ -228,8 +276,8 @@ if(t == 1060) {
 
 // Spiral pulse thingy
 if(t &gt;= 1070 &amp;&amp; t &lt; 1230 &amp;&amp; t mod 22 == 0) {
-    scrFBPSquishOrbCircle(room_width/2, 300, pulse_circle_angle, 16, 32, pulse_circle_curve_spd, 13, 0, 0);
-    pulse_circle_angle += 15;
+    scrFBPSquishOrbCircle(room_width/2, 300, pulse_circle_angle, 12, 32, pulse_circle_curve_spd, 13, 0, 0);
+    pulse_circle_angle += 25;
     pulse_circle_curve_spd *= -1;
     
     with(objAlexFBPSquishOrb) {
@@ -265,46 +313,19 @@ if(t &gt; 1250 &amp;&amp; t &lt; 1400) {
     }
 }
 
+// Prepare the landing indicator
+if(t == 1500-120) {
+    instance_create(objPlayer.x, 512, objAlexFinalBossSpawner);
+}
+
 // Shoot the canes and ground stomp (spawn real final boss)
 if(t == 1500) {
     with(objAlexFBPCane) {
         lock_in_place = false;
     }
+    
+    instance_destroy();
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Other checks
-
-if(place_meeting(x, y+1, objBlock)) {
-    floating = false;
-} else {
-    floating = true;
-}
-
-if(floating) {
-    draw_y = dsin(t*2)*8;
-}
-
-aura_alpha = aura_base_alpha + dsin(t*aura_spd) * aura_add_alpha;
-aura_scale = aura_base_scale + dsin(t*aura_spd) * aura_add_scale;
 </string>
           </argument>
         </arguments>
@@ -333,7 +354,7 @@ is_attacking = true;
 attack_anim *= -1;
 
 image_index = 0;
-image_speed = 0.4;
+image_speed = 0.35;
 
 if(attack_anim)
     sprite_index = sprAlexFinalBossFloatAtk1;
@@ -341,8 +362,10 @@ else
     sprite_index = sprAlexFinalBossFloatAtk2;
     
 var _part = scrAlexMakeParticle(x, y, 10, sprite_index, 0, 0, 0, false, true, false);;
-            _part.blend_mode = bm_add;
-            _part.add_scale = 0.1;
+    _part.blend_mode = bm_add;
+    _part.add_scale_x = 0.15 * sign(image_xscale);
+    _part.add_scale_y = 0.15;
+    _part.image_xscale = image_xscale;
 </string>
           </argument>
         </arguments>
@@ -372,6 +395,9 @@ if(is_attacking) {
     sprite_index = sprAlexFinalBossFloat;
     image_index = 0;
     image_speed = 0.3;
+} else if(sprite_index == sprAlexFinalBossAtk){
+    sprite_index = sprAlexFinalBossIdle;
+    image_index = 0;
 }
 </string>
           </argument>
@@ -424,7 +450,7 @@ scrPlayMusic(musFinalBoss, true);
             <string>/// Draw self
 
 draw_set_blend_mode(bm_add);
-draw_sprite_ext(sprite_index, image_index, x, y + draw_y, aura_scale, aura_scale, image_angle, c_fuchsia, aura_alpha);
+draw_sprite_ext(sprite_index, image_index, x, y + draw_y, aura_scale, abs(aura_scale), image_angle, c_fuchsia, aura_alpha);
 draw_set_blend_mode(bm_normal);
 draw_sprite_ext(sprite_index, image_index, x, y + draw_y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>

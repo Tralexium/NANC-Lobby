@@ -30,7 +30,7 @@
 snapSpd = 0.166; //determines how fast the camera snaps to the player (higher numbers follow the player slower), can be changed in creation code
 zoom_spd = 0.1;  // Determines how fast the camera zooms in and out
 zoom_lvl = 1;  // How zoomed in we currently are (1 being the default view dimensions)
-zoom_min_lvl = 0.5;
+zoom_min_lvl = 0.8;
 zoom_max_lvl = 1;
 default_view_w = view_wport[0];
 default_view_h = view_hport[0];
@@ -45,6 +45,12 @@ max_x = room_width - view_wview[0];
 max_y = room_height - view_hview[0];
 dist_to_anchor = 0;
 default_dist_to_anchor = 600;
+shake_t = 0;
+shake_dur = 0;  // How long the shake lasts for
+shake_x_dist = 0;
+shake_y_dist = 0;
+shake_x_repeats = 1;  // each decimal is equal to one full sine movement
+shake_y_repeats = 1;
 
 alarm[0] = 1; // Snap to the target object
 opt_previous_x = view_xview[0];
@@ -73,6 +79,9 @@ opt_previous_y = view_yview[0];
 
 view_xview[0] = 400;
 view_yview[0] = 0;
+
+opt_previous_x = view_xview[0];
+opt_previous_y = view_yview[0];
 </string>
           </argument>
         </arguments>
@@ -135,8 +144,8 @@ opt_previous_y = view_yview[0];
 if (instance_exists(target_obj) &amp;&amp; !lock_in_place)
 {
     if(instance_exists(anchor_obj)) {
-        var _average_x = mean(target_obj.x, anchor_obj.x);
-        var _average_y = mean(target_obj.y, anchor_obj.y);
+        var _average_x = mean(target_obj.x, target_obj.x, anchor_obj.x);
+        var _average_y = mean(target_obj.y, target_obj.y, anchor_obj.y);
         
         // Get distance from target to anchor
         with(target_obj) {
@@ -167,6 +176,68 @@ if (instance_exists(target_obj) &amp;&amp; !lock_in_place)
     // Update view coords
     view_xview[0] = lerp(view_xview[0], target_x, snapSpd);
     view_yview[0] = lerp(view_yview[0], target_y, snapSpd);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Shake the camera
+
+if(shake_t &lt; shake_dur) {
+    shake_t = min(shake_t + 1, shake_dur);
+    var _shake_x_theta = (shake_t / shake_dur) * (360 * shake_x_repeats);
+    var _shake_y_theta = (shake_t / shake_dur) * (360 * shake_y_repeats);
+    var _shake_power = 1 - shake_t / shake_dur;
+    
+    if(!lock_in_place) {
+        view_xview[0] += dcos(_shake_x_theta) * (shake_x_dist * _shake_power);
+        view_yview[0] += dcos(_shake_y_theta) * (shake_y_dist * _shake_power);
+    } else {
+        view_xview[0] = opt_previous_x + dcos(_shake_x_theta) * (shake_x_dist * _shake_power);
+        view_yview[0] = opt_previous_y + dcos(_shake_y_theta) * (shake_y_dist * _shake_power);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stabilize the BG to avoid gray lines
+
+with(objAlexStarStageBG) {
+    surf_x = view_xview[0];
+    surf_y = view_yview[0];
 }
 </string>
           </argument>

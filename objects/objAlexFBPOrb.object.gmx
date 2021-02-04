@@ -72,6 +72,8 @@ if(!is_outside) {
 
     audio_stop_sound(explosion_sfx);
     audio_play_sound(explosion_sfx, 0, false);
+    
+    scrFBShakeCam(15, 3, 3, 2, 4);
 }
 </string>
           </argument>

@@ -83,7 +83,7 @@ if(!tell_finished) {
     } else {    
         var _anim_val = t / tell_dur;
         indicator_alpha = scrAlexEaseOutSine(t, 0, 0.2, tell_dur);
-        indicator_scale = scrAlexEaseOutSine(t, image_yscale, 0, tell_dur);
+        indicator_scale = scrAlexEaseOutSine(t, 0, image_yscale, tell_dur);
         shrinking_indicator_alpha = abs(dsin(t * (_anim_val*20)));
         image_angle += angle_incr;
         
@@ -93,6 +93,7 @@ if(!tell_finished) {
     }
 } else {
     if(t == fire_dur) {
+        scrFBShakeCam(15, 0, 8, 0, 3);
         instance_destroy();
     } else {
         t++;

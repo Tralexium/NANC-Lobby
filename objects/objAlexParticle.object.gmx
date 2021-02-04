@@ -42,6 +42,8 @@ end_on_last_frame = false  // Destroys the particle once the animation reached t
 // Set these manually
 add_angle = 0;
 add_scale = 0;
+add_scale_x = 0;
+add_scale_y = 0;
 
 // Misc.
 t = 0;
@@ -94,19 +96,23 @@ if(start_col != c_white &amp;&amp; end_col != c_white) {
 }
 
 // Scale
-if(add_scale != 0) {
+if(add_scale_x != 0 || add_scale_y != 0) {
+    image_xscale += add_scale_x;
+    image_yscale += add_scale_y;
+}
+else if(add_scale != 0) {
     image_xscale += add_scale;
-    image_yscale += add_scale
+    image_yscale += add_scale;
 }
 
 if(shrink) {
-    image_xscale = life_normal
-    image_yscale = life_normal
+    image_xscale = life_normal;
+    image_yscale = life_normal;
 }
 
 // Alpha
 if(fade) {
-    image_alpha = life_normal
+    image_alpha = life_normal;
 }
 
 // Speed
@@ -114,18 +120,18 @@ speed += spd_shift;
 
 // Wiggle in space
 if(random_wiggle &gt; 0) {
-    x += random_range(-random_wiggle, random_wiggle)
-    y += random_range(-random_wiggle, random_wiggle)
+    x += random_range(-random_wiggle, random_wiggle);
+    y += random_range(-random_wiggle, random_wiggle);
 }
 
 // Sort the depth based on position
 if(depth_check) {
-    depth = -y
+    depth = -y;
 }
 
 // Add angle
 if(add_angle != 0) {
-    image_angle += add_angle
+    image_angle += add_angle;
 }
 </string>
           </argument>

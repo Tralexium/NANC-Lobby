@@ -3,7 +3,7 @@
   <caption></caption>
   <width>1600</width>
   <height>608</height>
-  <vsnap>32</vsnap>
+  <vsnap>16</vsnap>
   <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
@@ -55,11 +55,13 @@
     <instance objName="objPlayerStart" x="544" y="480" name="inst_BA0BEEED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="-32" y="512" name="inst_59E92437" locked="0" code="" scaleX="104" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="objAlexObstacleRenderer" x="0" y="32" name="inst_8F24ED47" locked="0" code="block_texture_sprite = sprFinalStarLevelTexture;&#xA;texture_h_spd = 0.0;&#xA;texture_v_spd = 0.1;&#xA;outline_size = 2;&#xA;outline_col[0] = 105 / 255;  // R (0-1)&#xA;outline_col[1] = 100 / 255;  // G (0-1)&#xA;outline_col[2] = 165 / 255;  // B (0-1)&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexFinalBossWarmup" x="1024" y="480" name="inst_71067511" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objBlock" x="368" y="-32" name="inst_5DCBE950" locked="0" code="" scaleX="27" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexFinalBossWarmup" x="1024" y="482" name="inst_71067511" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="0" y="-32" name="inst_5DCBE950" locked="0" code="" scaleX="50.0645179748535" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexFBCam" x="32" y="0" name="inst_3FF3759A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="368" y="0" name="inst_0BAC22FE" locked="0" code="" scaleX="1" scaleY="16" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="1200" y="0" name="inst_86E94851" locked="0" code="" scaleX="1" scaleY="16" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="-32" y="-1" name="inst_1BCFF981" locked="0" code="" scaleX="1" scaleY="16" colour="4294967295" rotation="0"/>
+    <instance objName="objBlock" x="1600" y="0" name="inst_01A0D7E3" locked="0" code="" scaleX="1" scaleY="16" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -189,7 +189,13 @@
             <sound>sound\sndAlexFBStarExplosion</sound>
           </sounds>
           <sound>sound\sndAlexFBTeleport</sound>
+          <sound>sound\sndAlexFBDash</sound>
+          <sound>sound\sndAlexFBGroundStomp</sound>
+          <sound>sound\sndAlexFBShieldOrbHit</sound>
+          <sound>sound\sndAlexFBShieldOrbBroken</sound>
+          <sound>sound\sndAlexFBShieldHit</sound>
           <sound>sound\sndAlexFBShieldBroken</sound>
+          <sound>sound\sndAlexFBPowerup</sound>
         </sounds>
         <sound>sound\sndAlexSaveBlocker</sound>
         <sound>sound\sndAlexSaveGreen</sound>
@@ -519,6 +525,7 @@
         <sprite>sprites\sprAlexFinalBossShieldOrb</sprite>
         <sprite>sprites\sprAlexFinalBossLowHPShieldOrb</sprite>
         <sprite>sprites\sprAlexFinalBossMagicCircle</sprite>
+        <sprite>sprites\sprAlexFBGroundGlow</sprite>
         <sprite>sprites\sprAlexFinalBossIdle</sprite>
         <sprite>sprites\sprAlexFinalBossAtk</sprite>
         <sprite>sprites\sprAlexFinalBossPreDash</sprite>
@@ -747,6 +754,7 @@
           <script>scripts\scrFBASMultiHoverOrbs.gml</script>
           <script>scripts\scrFBASMultiBeam.gml</script>
         </scripts>
+        <script>scripts\scrFBShakeCam.gml</script>
         <script>scripts\scrFinalBossTP.gml</script>
       </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
@@ -1039,6 +1047,7 @@
         </objects>
         <object>objects\objAlexFBCam</object>
         <object>objects\objAlexFinalBoss</object>
+        <object>objects\objAlexFinalBossSpawner</object>
         <object>objects\objAlexFinalBossWarmup</object>
       </objects>
     </objects>

@@ -70,6 +70,7 @@ if(!is_outside) {
     var _spark_add_scale = -0.6 * image_xscale;
     var _spark_spd = random_range(15, 20) * image_xscale;
     scrFBPExplosionParticles(sprite_index, 7, 1.2, _add_scale, true, bm_add, _spark_amnt, 10, _spark_scale, _spark_add_scale, _spark_spd);
+    scrFBShakeCam(20, 0, 10, 0, 2);
 }
 </string>
           </argument>
