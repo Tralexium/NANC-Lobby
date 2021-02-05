@@ -525,6 +525,7 @@
         <sprite>sprites\sprAlexFinalBossShieldOrb</sprite>
         <sprite>sprites\sprAlexFinalBossLowHPShieldOrb</sprite>
         <sprite>sprites\sprAlexFinalBossMagicCircle</sprite>
+        <sprite>sprites\sprAlexFinalBossDashMark</sprite>
         <sprite>sprites\sprAlexFBGroundGlow</sprite>
         <sprite>sprites\sprAlexFinalBossIdle</sprite>
         <sprite>sprites\sprAlexFinalBossAtk</sprite>
@@ -738,6 +739,7 @@
           <script>scripts\scrFBPBeam.gml</script>
           <script>scripts\scrFBPOrb.gml</script>
           <script>scripts\scrFBPOrbCircle.gml</script>
+          <script>scripts\scrFBPOrbStar.gml</script>
           <script>scripts\scrFBPSquishOrb.gml</script>
           <script>scripts\scrFBPSquishOrbCircle.gml</script>
           <script>scripts\scrFBPOrbWithObj.gml</script>
@@ -754,8 +756,16 @@
           <script>scripts\scrFBASMultiHoverOrbs.gml</script>
           <script>scripts\scrFBASMultiBeam.gml</script>
         </scripts>
+        <scripts name="Attacks">
+          <script>scripts\scrFBAtkStar.gml</script>
+          <script>scripts\scrFBAtkDash.gml</script>
+        </scripts>
         <script>scripts\scrFBShakeCam.gml</script>
+        <script>scripts\scrFBSpawnShieldOrbCircle.gml</script>
         <script>scripts\scrFinalBossTP.gml</script>
+        <script>scripts\scrFBJump.gml</script>
+        <script>scripts\scrFBSetAttackSprite.gml</script>
+        <script>scripts\scrFBGetNextTeleportXPos.gml</script>
       </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
       <script>scripts\scrResetStageStats.gml</script>

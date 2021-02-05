@@ -108,6 +108,12 @@ aura_scale = (aura_base_scale + dsin(t*aura_spd) * aura_add_scale) * sign(image_
 
 t++;
 
+// For debug purposes, skips the majority of the warmup phase
+if(global.debugMode &amp;&amp; scrButtonCheckPressed(global.skipButton) &amp;&amp; t &lt; 1370) {
+    t = 1370;
+    scrFinalBossTP(room_width/2, 96, sprAlexFinalBossFloat);
+}
+
 if(!instance_exists(objPlayer))
     exit;
 

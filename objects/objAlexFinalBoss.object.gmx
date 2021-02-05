@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-1</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>objPlayerKiller</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -41,17 +41,33 @@ exp_target = 100;               // How much exp is needed to level up
 exp_idle_gain = 0.1;            // How much exp per frame
 exp_shield_gain = 5;            // How much exp per shield hit
 exp_lock_gain = true;           // Restricts exp gaining when true
+exp_level = 1;                  // Current boss level
 
 on_ground = true;               // Whether the boss is touching the ground
 ground_level = 512;             // The ground level, cannot clip past this point
+default_gravity = 0.2;          // This is the gravity used when airborn
 
+dist_from_player = 200;         // How far away to teleport from the player
+dist_from_room_edges = 96;      // How close the final boss can be near the edges
+                                // Also triggers the cage attack to bring the player
+                                // closer to the middle.
+
+side_from_player = choose(1, -1);   // Dictates which side the boss will teleport at
+                                    // the start of the next attack
+                                
 
 // Animation related
 fallback_sprite = noone;        // When the current sprite animation is finished
                                 // fall back to this sprite.
-
+fallback_image_speed = 0.3      // The animation speed of the fallback sprite
+look_at_player = false;         // Controls the image_xscale
                           
 // Draw related
+floating = false;               // Makes the boss sprite wiggle up &amp; down
+float_y = 0;
+float_dist = 8;
+float_spd = 2;
+
 aura_spd = 3;
 aura_alpha = 1;
 aura_base_alpha = 0.5;
@@ -82,7 +98,7 @@ aura_add_scale = .3;
             <string>/// Init attacks enums and vars
 
 enum atk {
-    flower,
+    stars,
     dash,
     stomp,
     jump,
@@ -96,7 +112,7 @@ enum ulti_atk {
 }
 
 attack_list = ds_list_create();
-attack_list[| 0] = atk.flower;
+attack_list[| 0] = atk.stars;
 attack_list[| 1] = atk.dash;
 attack_list[| 2] = atk.stomp;
 attack_list[| 3] = atk.jump;
@@ -105,6 +121,7 @@ ds_list_shuffle(attack_list);
 
 current_attack = noone;
 last_attack = noone;
+
 </string>
           </argument>
         </arguments>
@@ -156,11 +173,26 @@ ds_list_destroy(attack_list);
 
 t++;
 
+// Face the player
+if(instance_exists(objPlayer) &amp;&amp; look_at_player) {
+    if(objPlayer.x &gt; x)
+        image_xscale = 1;
+    else
+        image_xscale = -1;
+}
+
 // Check if currently standing on ground
 if(place_meeting(x, y+1, objBlock)) {
     on_ground = true;
 } else {
     on_ground = false;
+}
+
+// Wiggle the sprite if the sprite is floating
+if(floating) {
+    float_y = dsin(t*float_spd) * float_dist;
+} else {
+    float_y = lerp(float_y, 0, .1);
 }
 
 // Boss aura
@@ -203,6 +235,7 @@ if(!intro_finished) {
     
     if(image_index &gt;= image_number - 1) {
         intro_finished = true;
+        look_at_player = true;
         t = 0;
         
         sprite_index = sprAlexFinalBossIdle;
@@ -238,6 +271,41 @@ if(!intro_finished) {
           <argument>
             <kind>1</kind>
             <string>/// Attacking
+
+if(intro_finished &amp;&amp; instance_exists(objPlayer)) {
+
+    // Choose an attack
+    if(current_attack == noone) {
+        if(!ds_list_empty(attack_list)) {
+            //current_attack = attack_list[| 0];
+            //ds_list_delete(attack_list, 0);
+            current_attack = atk.dash;
+        } else {
+            // If attack list is empty refill it
+            event_user(0);
+        }
+    }
+    
+    // Execute the attacks
+    switch(current_attack) {
+        case atk.stars:
+            scrFBAtkStar(exp_level);
+            break;
+        
+        case atk.dash:
+            scrFBAtkDash(exp_level);
+            break;
+            
+        case atk.stomp:
+            break;
+            
+        case atk.jump:
+            break;
+            
+        case atk.back_jump:
+            break;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -263,6 +331,96 @@ if(!intro_finished) {
 // Snap to ground level
 while(bbox_bottom &gt; ground_level) {
     y--;
+    speed = 0;
+    gravity = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Finish the current attack &amp; reset some vars
+
+t = 0;
+current_atk = noone;
+side_from_player *= -1;
+look_at_player = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Fill the attack list &amp; shuffle
+
+attack_list[| 0] = atk.stars;
+attack_list[| 1] = atk.dash;
+attack_list[| 2] = atk.stomp;
+attack_list[| 3] = atk.jump;
+attack_list[| 4] = atk.back_jump;
+ds_list_shuffle(attack_list);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Fall back to the previous sprite
+// after finishing the attack animation
+
+if(fallback_sprite != noone &amp;&amp; fallback_sprite != sprite_index) {
+    sprite_index = fallback_sprite;
+    image_speed = fallback_image_speed;
+    image_index = 0;
 }
 </string>
           </argument>
@@ -290,9 +448,9 @@ while(bbox_bottom &gt; ground_level) {
 
 // Self and Aura
 draw_set_blend_mode(bm_add);
-draw_sprite_ext(sprite_index, image_index, x, y, aura_scale, abs(aura_scale), image_angle, c_fuchsia, aura_alpha);
+draw_sprite_ext(sprite_index, image_index, x, y + float_y, aura_scale, abs(aura_scale), image_angle, c_fuchsia, aura_alpha);
 draw_set_blend_mode(bm_normal);
-draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, image_index, x, y + float_y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>
