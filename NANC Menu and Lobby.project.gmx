@@ -1047,6 +1047,8 @@
         </objects>
         <object>objects\objAlexFBCam</object>
         <object>objects\objAlexFinalBoss</object>
+        <object>objects\objAlexFinalBossShieldOrb</object>
+        <object>objects\objAlexFinalBossShieldOrbCircle</object>
         <object>objects\objAlexFinalBossSpawner</object>
         <object>objects\objAlexFinalBossWarmup</object>
       </objects>
