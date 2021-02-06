@@ -6,9 +6,8 @@ var _dash_distance = 500;
 // Teleport onto position
 if(t == 1) {
     var _tp_x = scrFBGetNextTeleportXPos();
-    scrFinalBossTP(_tp_x, ground_level, sprAlexFinalBossPreDash);
+    scrFinalBossTP(_tp_x, ground_level - 32, sprAlexFinalBossPreDash);
     
-    fallback_sprite = noone;
     fallback_image_speed = 0.3;
 }
 
@@ -31,7 +30,7 @@ switch(_lvl) {
                     scrKillPlayer();
             }
                 
-            scrFinalBossTP(_dash_x_pos, ground_level, sprAlexFinalBossDash);
+            scrFinalBossTP(_dash_x_pos, y, sprAlexFinalBossDash);
             scrFBSetAttackSprite(sprAlexFinalBossDash, 0.3);
             audio_play_sound(sndAlexFBDash, 0, false);
         }

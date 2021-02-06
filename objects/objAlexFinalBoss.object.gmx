@@ -102,7 +102,6 @@ enum atk {
     dash,
     stomp,
     jump,
-    back_jump,
     cage,
 }
 
@@ -116,7 +115,6 @@ attack_list[| 0] = atk.stars;
 attack_list[| 1] = atk.dash;
 attack_list[| 2] = atk.stomp;
 attack_list[| 3] = atk.jump;
-attack_list[| 4] = atk.back_jump;
 ds_list_shuffle(attack_list);
 
 current_attack = noone;
@@ -277,9 +275,9 @@ if(intro_finished &amp;&amp; instance_exists(objPlayer)) {
     // Choose an attack
     if(current_attack == noone) {
         if(!ds_list_empty(attack_list)) {
-            //current_attack = attack_list[| 0];
-            //ds_list_delete(attack_list, 0);
-            current_attack = atk.dash;
+            current_attack = attack_list[| 0];
+            ds_list_delete(attack_list, 0);
+            //current_attack = atk.jump;
         } else {
             // If attack list is empty refill it
             event_user(0);
@@ -297,12 +295,11 @@ if(intro_finished &amp;&amp; instance_exists(objPlayer)) {
             break;
             
         case atk.stomp:
+            scrFBAtkStomp(exp_level);
             break;
             
         case atk.jump:
-            break;
-            
-        case atk.back_jump:
+            scrFBAtkJump(exp_level);
             break;
     }
 }
@@ -359,7 +356,8 @@ while(bbox_bottom &gt; ground_level) {
             <string>/// Finish the current attack &amp; reset some vars
 
 t = 0;
-current_atk = noone;
+current_attack = noone;
+fallback_sprite = noone;
 side_from_player *= -1;
 look_at_player = true;
 </string>
@@ -386,11 +384,11 @@ look_at_player = true;
             <kind>1</kind>
             <string>/// Fill the attack list &amp; shuffle
 
+t = 0;
 attack_list[| 0] = atk.stars;
 attack_list[| 1] = atk.dash;
 attack_list[| 2] = atk.stomp;
 attack_list[| 3] = atk.jump;
-attack_list[| 4] = atk.back_jump;
 ds_list_shuffle(attack_list);
 </string>
           </argument>

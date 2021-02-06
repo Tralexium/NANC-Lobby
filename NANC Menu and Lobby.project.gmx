@@ -743,6 +743,7 @@
           <script>scripts\scrFBPSquishOrb.gml</script>
           <script>scripts\scrFBPSquishOrbCircle.gml</script>
           <script>scripts\scrFBPOrbWithObj.gml</script>
+          <script>scripts\scrFBPFadeBeamOrb.gml</script>
           <script>scripts\scrFBPOrbBounce.gml</script>
           <script>scripts\scrFBPCane.gml</script>
           <script>scripts\scrFBPShockwave.gml</script>
@@ -759,6 +760,8 @@
         <scripts name="Attacks">
           <script>scripts\scrFBAtkStar.gml</script>
           <script>scripts\scrFBAtkDash.gml</script>
+          <script>scripts\scrFBAtkStomp.gml</script>
+          <script>scripts\scrFBAtkJump.gml</script>
         </scripts>
         <script>scripts\scrFBShakeCam.gml</script>
         <script>scripts\scrFBSpawnShieldOrbCircle.gml</script>
@@ -1047,6 +1050,7 @@
           <object>objects\objAlexFBPCane</object>
           <object>objects\objAlexFBPShockwave</object>
           <object>objects\objAlexFBPHoverBeamOrb</object>
+          <object>objects\objAlexFBPFadeBeamOrb</object>
           <object>objects\objAlexFBPRicochetOrb</object>
           <object>objects\objAlexFBPBubble</object>
           <object>objects\objAlexFBPSquishOrb</object>
