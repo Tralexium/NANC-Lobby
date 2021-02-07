@@ -17,8 +17,9 @@ switch(_lvl) {
         if(t == 20) {
             look_at_player = false;
             
+            
             var _hspeed = 6 * image_xscale;
-            if((x < 600 && _hspeed < 0) || (x > room_width - 600 && _hspeed > 0))
+            if((x < 500 && _hspeed < 0) || (x > room_width - 500 && _hspeed > 0))
                 _hspeed *= -1;
             
             scrFBJump(_hspeed, 12);

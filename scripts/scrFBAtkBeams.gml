@@ -4,7 +4,6 @@ var _lvl = argument[0];
 
 // Teleport onto position
 if(t == 1) {
-    var _tp_x = scrFBGetNextTeleportXPos();
     scrFinalBossTP(objPlayer.x, 180, sprAlexFinalBossFloat);
     look_at_player = false;
     image_xscale = 1;

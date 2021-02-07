@@ -765,6 +765,7 @@
           <script>scripts\scrFBAtkJump.gml</script>
           <script>scripts\scrFBAtkCircles.gml</script>
           <script>scripts\scrFBAtkBeams.gml</script>
+          <script>scripts\scrFBAtkBeamCage.gml</script>
         </scripts>
         <script>scripts\scrFBShakeCam.gml</script>
         <script>scripts\scrFBSpawnShieldOrbCircle.gml</script>

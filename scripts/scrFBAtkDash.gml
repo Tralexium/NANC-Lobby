@@ -20,7 +20,7 @@ switch(_lvl) {
             look_at_player = false;
         
             var _slash_mark = scrAlexMakeParticleExt(mean(x, _dash_x_pos), ground_level - 24, 14, sprAlexFinalBossDashMark, 0, 0, 0, 0, 0, 0, -1, -1, bm_add, true, false, 0, depth-1, false);
-                _slash_mark.hspeed = 7 * image_xscale;
+                _slash_mark.hspeed = 10 * image_xscale;
             
             if(image_xscale > 0) {
                 if(objPlayer.x > x && objPlayer.x < _dash_x_pos && objPlayer.y > ground_level - 64)

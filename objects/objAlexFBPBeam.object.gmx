@@ -87,16 +87,21 @@ if(!tell_finished) {
         shrinking_indicator_alpha = abs(dsin(t * (_anim_val*20)));
         image_angle += angle_incr;
         
-        // Assign position
-        x = scrAlexEaseOutSine(t, xstart, xstart + travel_dist_x, tell_dur);
-        y = scrAlexEaseOutSine(t, ystart, ystart + travel_dist_y, tell_dur);
+        // Assign travel distance position
+        if(travel_dist_x != 0)
+            x = scrAlexEaseOutSine(t, xstart, xstart + travel_dist_x, tell_dur);
+        if(travel_dist_y != 0)
+            y = scrAlexEaseOutSine(t, ystart, ystart + travel_dist_y, tell_dur);
     }
 } else {
     if(t == fire_dur) {
-        scrFBShakeCam(15, 0, 8, 0, 3);
         instance_destroy();
     } else {
         t++;
+        
+        if(t == 1) {
+            scrFBShakeCam(15, 0, 8, 0, 3);
+        }
         
         var _init_size = size / sprite_get_height(sprAlexFBPBeamHitbox);
         image_yscale = scrAlexEaseOutSine(t, _init_size, 0, fire_dur);

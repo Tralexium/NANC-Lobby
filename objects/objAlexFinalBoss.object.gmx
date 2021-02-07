@@ -104,6 +104,7 @@ enum atk {
     jump,
     circles,
     beams,
+    beam_cage,
 }
 
 enum ulti_atk {
@@ -217,7 +218,7 @@ aura_scale = (aura_base_scale + dsin(t*aura_spd) * aura_add_scale) * sign(image_
 if(!intro_finished) {
     if(t == 1) {
         scrFinalBossTP(x, ground_level, sprAlexFinalBossIntro);
-        image_speed = 0.25;
+        image_speed = 0.3;
     }
     
     if(instance_exists(objPlayer)) {
@@ -271,10 +272,10 @@ if(intro_finished &amp;&amp; instance_exists(objPlayer)) {
     // Choose an attack
     if(current_attack == noone) {
         if(!ds_list_empty(attack_list)) {
-            current_attack = attack_list[| 0];
-            last_attack = current_attack;
-            ds_list_delete(attack_list, 0);
-            //current_attack = atk.beams;
+            //current_attack = attack_list[| 0];
+            //last_attack = current_attack;
+            //ds_list_delete(attack_list, 0);
+            current_attack = atk.beam_cage;
         } else {
             // If attack list is empty refill it
             event_user(0);
@@ -305,6 +306,10 @@ if(intro_finished &amp;&amp; instance_exists(objPlayer)) {
             
         case atk.beams:
             scrFBAtkBeams(exp_level);
+            break;
+            
+        case atk.beam_cage:
+            scrFBAtkBeamCage(exp_level);
             break;
     }
 }
@@ -399,6 +404,7 @@ do {
     attack_list[| 3] = atk.jump;
     attack_list[| 4] = atk.circles;
     attack_list[| 5] = atk.beams;
+    attack_list[| 6] = atk.beam_cage;
     ds_list_shuffle(attack_list);
 } until (last_attack != attack_list[| 0]);
 </string>
