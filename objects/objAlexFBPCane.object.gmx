@@ -115,6 +115,7 @@ if(!spin_finished) {
     
     image_alpha = min(image_alpha + 0.05, 1);
     image_angle = scrAlexEaseOutSine(_anim_val, start_angle, target_angle, spin_length);
+    line_alpha = scrAlexEaseInSine(_anim_val, 0, 0.5, spin_length);
     
     if(_anim_val == round(spin_length / 2)) {
         sprite_index = sprAlexFBPCaneHalt;
@@ -134,8 +135,6 @@ if(!spin_finished) {
             
             audio_stop_sound(sndAlexFBCaneDash);
             audio_play_sound(sndAlexFBCaneDash, 0, false);
-        } else {
-            line_alpha = min(line_alpha + 0.015, 0.5);
         }
     }
 }
@@ -288,7 +287,7 @@ if(sprite_index == sprAlexFBPCaneHalt) {
             <kind>1</kind>
             <string>/// Draw line
 
-draw_sprite_ext(sprAlexFBPCaneLine, 0, x, y, 6, 1, image_angle, -1, line_alpha);
+draw_sprite_ext(sprAlexFBPCaneLine, 0, x, y, 6, 1, target_angle, -1, line_alpha);
 
 draw_self();
 </string>

@@ -1,12 +1,12 @@
 ///scrFBAtkDash(current_boss_level)
 
 var _lvl = argument[0];
-var _dash_distance = 500;
+var _dash_distance = 550;
 
 // Teleport onto position
 if(t == 1) {
     var _tp_x = scrFBGetNextTeleportXPos();
-    scrFinalBossTP(_tp_x, ground_level - 32, sprAlexFinalBossPreDash);
+    scrFinalBossTP(_tp_x, ground_level - 24, sprAlexFinalBossPreDash);
     
     fallback_image_speed = 0.3;
 }
@@ -19,7 +19,7 @@ switch(_lvl) {
         if(t == 60) {
             look_at_player = false;
         
-            var _slash_mark = scrAlexMakeParticleExt(mean(x, _dash_x_pos), ground_level - 32, 14, sprAlexFinalBossDashMark, 0, 0, 0, 0, 0, 0, -1, -1, bm_add, true, false, 0, depth-1, false);
+            var _slash_mark = scrAlexMakeParticleExt(mean(x, _dash_x_pos), ground_level - 24, 14, sprAlexFinalBossDashMark, 0, 0, 0, 0, 0, 0, -1, -1, bm_add, true, false, 0, depth-1, false);
                 _slash_mark.hspeed = 7 * image_xscale;
             
             if(image_xscale > 0) {
@@ -44,17 +44,17 @@ switch(_lvl) {
         
         if(t == 120) {
             scrFBSetAttackSprite(sprAlexFinalBossJumpFrontAtk, 0.3);
-            scrFBPCane(x, y, true, false, 30, 30, 50, 5, random_range(-60, -120));
+            scrFBPCane(x, y, true, false, 30, 50, 50, 5, random_range(-60, -120));
         }
         
         if(t == 140) {
             scrFBSetAttackSprite(sprAlexFinalBossJumpFrontAtk, 0.3);
-            scrFBPCane(x, y, true, false, 30, 30, 50, 5, random_range(-60, -120));
+            scrFBPCane(x, y, true, false, 30, 50, 50, 5, random_range(-60, -120));
         }
         
         if(t == 160) {
             scrFBSetAttackSprite(sprAlexFinalBossJumpFrontAtk, 0.3);
-            scrFBPCane(x, y, true, false, 30, 30, 50, 5, random_range(-60, -120));
+            scrFBPCane(x, y, true, false, 30, 50, 50, 5, random_range(-60, -120));
         }
         
         if(t > 160 && on_ground) {

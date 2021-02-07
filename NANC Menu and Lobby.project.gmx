@@ -738,6 +738,7 @@
         <scripts name="Projectiles">
           <script>scripts\scrFBPBeam.gml</script>
           <script>scripts\scrFBPOrb.gml</script>
+          <script>scripts\scrFBPFadeOrb.gml</script>
           <script>scripts\scrFBPOrbCircle.gml</script>
           <script>scripts\scrFBPOrbStar.gml</script>
           <script>scripts\scrFBPSquishOrb.gml</script>
@@ -762,9 +763,12 @@
           <script>scripts\scrFBAtkDash.gml</script>
           <script>scripts\scrFBAtkStomp.gml</script>
           <script>scripts\scrFBAtkJump.gml</script>
+          <script>scripts\scrFBAtkCircles.gml</script>
+          <script>scripts\scrFBAtkBeams.gml</script>
         </scripts>
         <script>scripts\scrFBShakeCam.gml</script>
         <script>scripts\scrFBSpawnShieldOrbCircle.gml</script>
+        <script>scripts\scrFBPOrbShrinkingCircle.gml</script>
         <script>scripts\scrFinalBossTP.gml</script>
         <script>scripts\scrFBJump.gml</script>
         <script>scripts\scrFBSetAttackSprite.gml</script>
@@ -1045,6 +1049,7 @@
         <objects name="Projectiles">
           <object>objects\objAlexFBPBeam</object>
           <object>objects\objAlexFBPOrb</object>
+          <object>objects\objAlexFBPFadeOrb</object>
           <object>objects\objAlexFBPOrbWithObj</object>
           <object>objects\objAlexFBPOrbBounce</object>
           <object>objects\objAlexFBPCane</object>
@@ -1054,10 +1059,13 @@
           <object>objects\objAlexFBPRicochetOrb</object>
           <object>objects\objAlexFBPBubble</object>
           <object>objects\objAlexFBPSquishOrb</object>
+        </objects>
+        <objects name="Attacks">
           <objects name="Warmup specific">
             <object>objects\objAlexFBPStartAttackCane</object>
             <object>objects\objAlexFBPStartAttackCane2</object>
           </objects>
+          <object>objects\objAlexFBOrbShrinkingCircle</object>
         </objects>
         <object>objects\objAlexFBCam</object>
         <object>objects\objAlexFinalBoss</object>
