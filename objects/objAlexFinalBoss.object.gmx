@@ -32,6 +32,9 @@ t = 0;                          // General use timer, updates in the "Animations
 
 intro_finished = false;         // Toggles to true when the intro is finished
 
+hp = 50;                        // Starting health
+max_hp = hp;
+
 vulnerable = false;             // If possible to damage the boss
 shield_orb_amnt = 0;            // How many orbs are currently present
 shield_orb_circle_id = noone;   // The ID of the circle orb circle object
@@ -76,6 +79,34 @@ aura_add_alpha = 0.2;
 aura_scale = 1.5;
 aura_base_scale = aura_scale;
 aura_add_scale = .3;
+
+health_bar_alpha = 0;
+health_bar_alpha2 = 0;
+health_bar_length = 800 - 128;
+health_bar_strip_length = 0;
+health_bar_strip_max_length = health_bar_length + 24;
+health_bar_strip_color = $7b2fcc;
+health_bar_strip_shielded_color = $7b2fcc;
+health_bar_strip_vulnerable_color = $b8a44f;
+health_bar_strip_trail_color = $41b5f0;
+health_bar_trailing_strip_length = 0;
+health_bar_x = 32;
+health_bar_x2 = display_get_width()-64;
+health_bar_y = 16;
+health_bar_eye_icons_alpha = 0;
+health_bar_eye_icons_scale = 2;
+health_bar_eye_icons_pad = 32;
+
+exp_bar_alpha = 0;
+exp_bar_length = 800 - 160;
+exp_bar_strip_length = 0;
+exp_bar_strip_max_length = (exp_bar_length + 18)/2;
+exp_bar_strip_color = $7b2fcc;
+exp_bar_strip_first_color = $7b2fcc;
+exp_bar_strip_secondary_color = $b8a44f;
+exp_bar_x = 64;
+exp_bar_x2 = display_get_width() - 96;
+exp_bar_y = 32;
 </string>
           </argument>
         </arguments>
@@ -169,6 +200,7 @@ ds_list_destroy(attack_list);
 
 t++;
 
+
 // Face the player
 if(instance_exists(objPlayer) &amp;&amp; look_at_player) {
     if(objPlayer.x &gt; x)
@@ -177,11 +209,36 @@ if(instance_exists(objPlayer) &amp;&amp; look_at_player) {
         image_xscale = -1;
 }
 
+
 // Check if currently standing on ground
 if(place_meeting(x, y+1, objBlock)) {
     on_ground = true;
 } else {
     on_ground = false;
+}
+
+
+// Health bar
+if(intro_finished) {
+    var _hp_bar_length_target = (hp/max_hp) * health_bar_strip_max_length;
+    health_bar_strip_length = lerp(health_bar_strip_length, _hp_bar_length_target, 0.1);
+    if(!vulnerable) {
+        health_bar_trailing_strip_length = lerp(health_bar_trailing_strip_length, health_bar_strip_length, 0.1);
+        health_bar_alpha2 = lerp(health_bar_alpha2, abs(dsin(t*2)), 0.1);
+    } else {
+        health_bar_alpha2 = lerp(health_bar_alpha2, 0, 0.1);
+    }
+    var _shield_orb_amnt = 0;
+    with(shield_orb_circle_id) {
+        _shield_orb_amnt = available_orbs;
+    }
+    if(_shield_orb_amnt &gt; 0) {
+        health_bar_eye_icons_alpha = lerp(health_bar_eye_icons_alpha, 1, 0.1);
+        health_bar_eye_icons_scale = lerp(health_bar_eye_icons_scale, 1, 0.1);
+    } else {
+        health_bar_eye_icons_alpha = 0;
+        health_bar_eye_icons_scale = 2;
+    }
 }
 
 // Wiggle the sprite if the sprite is floating
@@ -190,6 +247,7 @@ if(floating) {
 } else {
     float_y = lerp(float_y, 0, .1);
 }
+
 
 // Boss aura
 aura_alpha = aura_base_alpha + dsin(t*aura_spd) * aura_add_alpha;
@@ -448,6 +506,95 @@ if(fallback_sprite != noone &amp;&amp; sprite_index != fallback_sprite) {
     image_speed = fallback_image_speed;
     image_index = 0;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw health bar &amp; exp bar
+
+
+// Health
+var _shield_orb_amnt = 0;
+with(shield_orb_circle_id) {
+    _shield_orb_amnt = available_orbs;
+}
+var _strip_x = health_bar_x + 20;
+var _strip_y = health_bar_y + 4;
+var _strip_x2 = health_bar_x + 20 + health_bar_strip_length;
+var _strip_y2 = health_bar_y + 12;
+
+// Health trailing strip/bar
+draw_set_alpha(health_bar_alpha);
+if(health_bar_alpha &gt;= 1) {
+    var _trail_strip_x2 = health_bar_x + 20 + health_bar_trailing_strip_length;
+    var _trail_strip_y2 = health_bar_y + 4 + health_bar_trailing_strip_length;
+
+    draw_set_color(health_bar_strip_trail_color);
+    draw_rectangle(_strip_x, _strip_y, _trail_strip_x2, _trail_strip_y2, false);
+}
+// Health strip/bar
+draw_set_color(health_bar_strip_color);
+draw_rectangle(_strip_x, _strip_y, _strip_x2, _strip_y2, false);
+draw_set_alpha(health_bar_alpha2);
+draw_set_blend_mode(bm_add);
+draw_rectangle(_strip_x, _strip_y, _strip_x2, _strip_y2, false);
+draw_set_alpha(health_bar_alpha);
+draw_set_blend_mode(bm_normal);
+
+// Health frame
+draw_sprite_part(sprAlexFBHealthBar, 0, 0, 0, 32, 16, health_bar_x, health_bar_y);
+draw_sprite_part_ext(sprAlexFBHealthBar, 0, 32, 0, 16, 16, health_bar_x + 32, health_bar_y, health_bar_strip_length / 16, 1, -1, health_bar_alpha);
+draw_sprite_part(sprAlexFBHealthBar, 0, 48, 0, 32, 16, health_bar_x2, health_bar_y);
+
+// Eyeballs
+var _eye_y = health_bar_y + 8;
+var _start_x = (display_get_width() / 2) - (_shield_orb_amnt*health_bar_eye_icons_pad) / 2;
+if(_shield_orb_amnt &gt; 0) {
+    for(var i=0; i&lt;_shield_orb_amnt; i++) {
+        var _eye_x = _start_x + i*health_bar_eye_icons_pad;
+        var _eye_y = health_bar_y + 8;
+        var _eye_scale = health_bar_eye_icons_scale;
+        var _eye_alpha = health_bar_eye_icons_alpha;
+        draw_sprite_ext(sprAlexFBHealthBarEyeIcon, 0, _eye_x, _eye_y, _eye_scale, _eye_scale, 0, -1, _eye_alpha);
+    }
+}
+
+
+// Exp
+_strip_x = display_get_width()/2 - exp_bar_strip_length;
+_strip_y = exp_bar_y + 2;
+_strip_x2 = display_get_width()/2 + exp_bar_strip_length;
+_strip_y2 = health_bar_y + 7;
+
+// Exp strip/bar
+draw_set_alpha(exp_bar_alpha);
+draw_set_color(exp_bar_strip_color);
+draw_rectangle(_strip_x, _strip_y, _strip_x2, _strip_y2, false);
+
+// Exp frame
+draw_sprite_part(sprAlexFBExpBar, 0, 0, 0, 16, 8, exp_bar_x, exp_bar_y);
+draw_sprite_part_ext(sprAlexFBExpBar, 0, 16, 0, 16, 8, exp_bar_x + 16, health_bar_y, exp_bar_strip_length / 16, 1, -1, exp_bar_alpha);
+draw_sprite_part(sprAlexFBExpBar, 0, 16, 0, 64, 18, display_get_width()-32, exp_bar_y);
+draw_sprite_part(sprAlexFBExpBar, 0, 80, 0, 16, 8, exp_bar_x2, exp_bar_y);
+
 </string>
           </argument>
         </arguments>

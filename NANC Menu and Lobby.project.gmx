@@ -527,6 +527,9 @@
         <sprite>sprites\sprAlexFinalBossMagicCircle</sprite>
         <sprite>sprites\sprAlexFinalBossDashMark</sprite>
         <sprite>sprites\sprAlexFBGroundGlow</sprite>
+        <sprite>sprites\sprAlexFBHealthBar</sprite>
+        <sprite>sprites\sprAlexFBHealthBarEyeIcon</sprite>
+        <sprite>sprites\sprAlexFBExpBar</sprite>
         <sprite>sprites\sprAlexFinalBossIdle</sprite>
         <sprite>sprites\sprAlexFinalBossAtk</sprite>
         <sprite>sprites\sprAlexFinalBossPreDash</sprite>
