@@ -34,6 +34,7 @@ intro_finished = false;         // Toggles to true when the intro is finished
 
 vulnerable = false;             // If possible to damage the boss
 shield_orb_amnt = 0;            // How many orbs are currently present
+shield_orb_circle_id = noone;   // The ID of the circle orb circle object
 recovery_time = 100;            // How many frames until recover shield
 
 exp_amnt = 0;                   // Current exp amount
@@ -218,7 +219,11 @@ aura_scale = (aura_base_scale + dsin(t*aura_spd) * aura_add_scale) * sign(image_
 if(!intro_finished) {
     if(t == 1) {
         scrFinalBossTP(x, ground_level, sprAlexFinalBossIntro);
-        image_speed = 0.3;
+        image_speed = 0.32;
+    }
+    
+    if(t == 175) {
+        shield_orb_circle_id = instance_create(x, y, objAlexFinalBossShieldOrbCircle);
     }
     
     if(instance_exists(objPlayer)) {
@@ -272,10 +277,10 @@ if(intro_finished &amp;&amp; instance_exists(objPlayer)) {
     // Choose an attack
     if(current_attack == noone) {
         if(!ds_list_empty(attack_list)) {
-            //current_attack = attack_list[| 0];
-            //last_attack = current_attack;
-            //ds_list_delete(attack_list, 0);
-            current_attack = atk.beam_cage;
+            current_attack = attack_list[| 0];
+            last_attack = current_attack;
+            ds_list_delete(attack_list, 0);
+            //current_attack = atk.beam_cage;
         } else {
             // If attack list is empty refill it
             event_user(0);
@@ -340,6 +345,12 @@ while(bbox_bottom &gt; ground_level) {
     y--;
     speed = 0;
     gravity = 0;
+}
+
+// Attach the shield orb circle to the X &amp; Y coords
+if(instance_exists(shield_orb_circle_id)) {
+    shield_orb_circle_id.x = x;
+    shield_orb_circle_id.y = y;
 }
 </string>
           </argument>

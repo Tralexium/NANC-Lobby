@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-600</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -28,6 +28,8 @@
             <string>/// Init vars
 
 shield_orb_amnt = 5;
+available_orbs = shield_orb_amnt;
+old_available_orbs = shield_orb_amnt;
 rad = 0;
 rad_target = 64;
 rad_anim_dur = 15;
@@ -37,10 +39,46 @@ spd = initial_spd;
 spd_change_dur = 50;
 
 t = 0;
+snap_to_pos_t = 0;
+snap_to_pos_dur = 20;
 dir = 0;
 orbs_set = false;
+surf_alpha = 1;
+surf_scale = 1;
 
 alarm[0] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Particle Effects
+
+var _circle = scrAlexMakeParticleExt(x, y, 50, sprAlexFinalBossMagicCircle, 0, 0, 0, 0, 0, 0, -1, -1, bm_add, false, true, 0, depth, false);
+    _circle.image_xscale = 0.5;
+    _circle.image_yscale = 0.5;
+    _circle.add_scale = 0.02;
+    
+    _circle = scrAlexMakeParticleExt(x, y, 25, sprAlexFinalBossMagicCircle, 0, 0, 0, 0, 0, 0, c_purple, c_purple, bm_add, false, true, 0, depth, false);
+    _circle.image_xscale = 0.5;
+    _circle.image_yscale = 0.5;
+    _circle.add_scale = 0.05;
+    _circle.image_alpha = 0.5;
 </string>
           </argument>
         </arguments>
@@ -68,7 +106,7 @@ alarm[0] = 1;
 for(var i=0; i&lt;shield_orb_amnt; i++) {
     orb[i] = instance_create(x, y, objAlexFinalBossShieldOrb);
 }
-
+available_orbs = shield_orb_amnt;
 orbs_set = true;
 </string>
           </argument>
@@ -97,22 +135,128 @@ orbs_set = true;
 var _orb_sep = 360 / shield_orb_amnt;
 
 if(orbs_set) {
+    available_orbs = 0;
     for(var i=0; i&lt;shield_orb_amnt; i++) {
         if(!instance_exists(orb[i]))
             continue;
-    
-        var _sep = _orb_sep * i;
-        orb[i].x = x + lengthdir_x(rad, dir + _sep);
-        orb[i].y = y + lengthdir_y(rad, dir + _sep);
+        
+        available_orbs++
     }
     
-    dir += spd;
+    if(available_orbs != old_available_orbs) {
+        snap_to_pos_t = 0;
+        
+        for(var i=0; i&lt;shield_orb_amnt; i++) {
+            if(!instance_exists(orb[i]))
+                continue;
+        
+            initial_orb_x[i] = orb[i].x;
+            initial_orb_y[i] = orb[i].y;
+        }
+    }
+    old_available_orbs = available_orbs;
+
+    if(available_orbs &gt; 2) {
+        dir += spd;
+    
+        for(var i=0; i&lt;shield_orb_amnt; i++) {
+            if(!instance_exists(orb[i]))
+                continue;
+        
+            var _sep = _orb_sep * i;
+            orb[i].x = x + lengthdir_x(rad, dir + _sep);
+            orb[i].y = y + lengthdir_y(rad, dir + _sep);
+        }
+    }
+    else if(available_orbs == 2) {
+        snap_to_pos_t++;
+        var _anim_val = clamp(snap_to_pos_t, 0, snap_to_pos_dur);
+        var _go_to_right_side = true;
+        
+        for(var i=0; i&lt;shield_orb_amnt; i++) {
+            if(!instance_exists(orb[i]))
+                continue;
+        
+            if(_go_to_right_side) {
+                orb[i].x = scrAlexEaseOutSine(_anim_val, initial_orb_x[i], x - rad, snap_to_pos_dur);
+                _go_to_right_side = false;
+            } else {
+                orb[i].x = scrAlexEaseOutSine(_anim_val, initial_orb_x[i], x + rad, snap_to_pos_dur);
+            }
+             
+            orb[i].y = scrAlexEaseOutSine(_anim_val, initial_orb_y[i], y, snap_to_pos_dur);   
+        }
+    } else {
+        snap_to_pos_t++;
+        var _anim_val = clamp(snap_to_pos_t, 0, snap_to_pos_dur);
+          
+        for(var i=0; i&lt;shield_orb_amnt; i++) {
+            if(!instance_exists(orb[i]))
+                continue;
+
+            orb[i].x = scrAlexEaseOutSine(_anim_val, initial_orb_x[i], x, snap_to_pos_dur);
+            orb[i].y = scrAlexEaseOutSine(_anim_val, initial_orb_y[i], y - rad, snap_to_pos_dur);   
+        }
+    }
     
     t++;
     var _anim_val = clamp(t, 0, spd_change_dur)
     var _rad_anim_val = clamp(t, 0, rad_anim_dur)
     spd = scrAlexEaseOutSine(_anim_val, initial_spd, target_spd, spd_change_dur);
     rad = scrAlexEaseOutSine(_rad_anim_val, 0, rad_target, rad_anim_dur);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Surface effect
+
+surf_alpha = max(surf_alpha - 0.1, 0);
+surf_scale = lerp(surf_scale, 1.2, 0.1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the surface effect
+
+if(surf_alpha &gt; 0) {
+    var _surf_x = (display_get_gui_width() - surface_get_width(application_surface)*surf_scale)/2;
+    var _surf_y = (display_get_gui_height() - surface_get_height(application_surface)*surf_scale)/2;
+    draw_surface_ext(application_surface, _surf_x, _surf_y, surf_scale, surf_scale, 0, -1, surf_alpha);
 }
 </string>
           </argument>
