@@ -61,6 +61,6 @@ switch(_lvl) {
             scrFinalBossTP(_tp_x, ground_level - 32, sprAlexFinalBossIdle);
         }
         
-        if(t == 460)
+        if(t == 470)
             event_user(1);
 }

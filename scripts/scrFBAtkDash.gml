@@ -63,7 +63,7 @@ switch(_lvl) {
             sprite_index = sprAlexFinalBossIdle;
         }
         
-        if(t == 290) {
+        if(t == 310) {
             event_user(1);
         }
 }

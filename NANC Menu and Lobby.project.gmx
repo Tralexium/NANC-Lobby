@@ -547,6 +547,7 @@
         <sprite>sprites\sprAlexFinalBossIntro</sprite>
         <sprite>sprites\sprAlexFinalBossVulnerable</sprite>
         <sprite>sprites\sprAlexFinalBossRecover</sprite>
+        <sprite>sprites\sprAlexFinalBossFloatUp</sprite>
         <sprite>sprites\sprAlexFinalBossPowerUp</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>

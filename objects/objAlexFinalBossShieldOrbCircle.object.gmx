@@ -173,6 +173,8 @@ if(orbs_set) {
         var _anim_val = clamp(snap_to_pos_t, 0, snap_to_pos_dur);
         var _go_to_right_side = true;
         
+        rad_target = 64;
+        
         for(var i=0; i&lt;shield_orb_amnt; i++) {
             if(!instance_exists(orb[i]))
                 continue;
@@ -204,6 +206,10 @@ if(orbs_set) {
     var _rad_anim_val = clamp(t, 0, rad_anim_dur)
     spd = scrAlexEaseOutSine(_anim_val, initial_spd, target_spd, spd_change_dur);
     rad = scrAlexEaseOutSine(_rad_anim_val, 0, rad_target, rad_anim_dur);
+    
+    if(available_orbs == 0) {
+        instance_destroy();
+    }
 }
 </string>
           </argument>

@@ -47,6 +47,6 @@ switch(_lvl) {
             }
         }
         
-        if(t == 320)
+        if(t == 340)
             event_user(1);
 }
