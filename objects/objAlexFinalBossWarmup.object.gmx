@@ -272,8 +272,6 @@ if(t == 1060) {
             var _orb = scrFBPOrb(x, y, 32, random_range(80, 100), 0, random_range(11, 13), 0, -.2);
                 _orb.gravity = .25;
             }
-            
-            instance_destroy();
         }
         
         instance_destroy();

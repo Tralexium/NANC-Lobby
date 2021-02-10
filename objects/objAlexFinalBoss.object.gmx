@@ -49,10 +49,10 @@ shield_orb_circle_id = noone;   // The ID of the circle orb circle object
 
 exp_amnt = 0;                   // Current exp amount
 exp_max = 100;                  // How much exp is needed to level up
-exp_idle_gain = 0.015;            // How much exp per frame
+exp_idle_gain = 0;//0.015;            // How much exp per frame
 exp_shield_gain = 5;            // How much exp per shield hit
 exp_lock_gain = true;           // Restricts exp gaining when true
-exp_level = 1;                  // Current boss level
+exp_level = 2//1;                  // Current boss level
 exp_max_level = 3;              // Max level possible
 
 on_ground = true;               // Whether the boss is touching the ground
@@ -468,7 +468,7 @@ if(intro_finished &amp;&amp; !vulnerable &amp;&amp; instance_exists(objPlayer)) 
             current_attack = attack_list[| 0];
             last_attack = current_attack;
             ds_list_delete(attack_list, 0);
-            //current_attack = atk.beam_cage;
+            //current_attack = atk.dash;
         } else {
             // If attack list is empty refill it
             event_user(0);

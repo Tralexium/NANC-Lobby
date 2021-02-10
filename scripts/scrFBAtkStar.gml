@@ -19,7 +19,7 @@ if(on_ground) {
 // Execute the correct attack based on the current boss level
 switch(_lvl) {
     default:
-    case 0:
+    case 1:
         var _dir_to_player = point_direction(x, y, objPlayer.x, objPlayer.y);
         if(t == 50) {
             scrFBPOrbStar(x, y, _dir_to_player, 5, 21, 32, 0, 7, .1, 0);
@@ -42,4 +42,30 @@ switch(_lvl) {
         if(t == 230) {
             event_user(1);
         }
+        break;
+        
+    case 2:
+        var _dir_to_player = point_direction(x, y, objPlayer.x, objPlayer.y);
+        if(t == 50) {
+            scrFBPOrbStar(x, y, _dir_to_player, 4, 20, 32, 1, 5, .1, 0);
+            scrFBSetAttackSprite(sprAlexFinalBossJumpAtk, 0.3);
+            audio_play_sound(sndAlexFBCaneThrow, 0, false);
+            audio_play_sound(sndAlexFBOrbExplosion, 0, false);
+        }
+        if(t == 90) {
+            scrFBPOrbStar(x, y, -_dir_to_player, 4, 10, 32, -1, 2, .1, .4);
+            scrFBSetAttackSprite(sprAlexFinalBossJumpAtk, 0.3);
+            audio_play_sound(sndAlexFBCaneThrow, 0, false);
+            audio_play_sound(sndAlexFBOrbExplosion, 0, false);
+        }
+        
+        if(t == 100) {
+            floating = false;
+            gravity = default_gravity;
+        }
+        
+        if(t == 230) {
+            event_user(1);
+        }
+        break;
 }
