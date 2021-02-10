@@ -380,6 +380,9 @@ if(!intro_finished) {
     }
     if(sprite_index == sprAlexFinalBossIntro) {
         if(t &lt; 175) {
+            with(objPlayer)
+                frozen = true;
+        
             with(objAlexFBCam) {
                 zoom_lvl = lerp(zoom_lvl, 0.4, 0.05);
                 view_wview[0] = default_view_w * zoom_lvl;
@@ -387,7 +390,7 @@ if(!intro_finished) {
                 view_xview[0] = room_width/2 - view_wview[0]/2;
                 view_yview[0] = 260 - view_hview[0]/2;
             }
-        } else {
+        } else {        
             with(objAlexFBCam) {
                 zoom_lvl = lerp(zoom_lvl, 1, 0.1);
                 view_wview[0] = default_view_w * zoom_lvl;
@@ -408,6 +411,9 @@ if(!intro_finished) {
     
     if(t == 175) {
         event_user(2);  // Spawn the shield orbs
+        
+        with(objPlayer)
+            frozen = false;
     }
     
     if(t &gt; 175) {
@@ -693,7 +699,7 @@ shield_orb_circle_id = instance_create(x, y, objAlexFinalBossShieldOrbCircle);
 shield_orb_circle_id.rad_target = shield_orb_rad;
 shield_orb_circle_id.shield_orb_amnt = shield_orb_spawn_amnt;
 
-shield_orb_rad += 16;
+shield_orb_rad += 8;
 shield_orb_spawn_amnt = min(shield_orb_spawn_amnt + 1, 7);
 </string>
           </argument>
