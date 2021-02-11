@@ -37,6 +37,8 @@ min_x = 0;
 min_y = 0;
 max_x = room_width - view_wview[0];
 max_y = room_height - view_hview[0];
+lock_x = -1;
+lock_y = -1;
 disable_objects = true;
 
 alarm[0] = 1; // Snap to the target object
@@ -104,8 +106,18 @@ opt_previous_y = view_yview[0];
 
 if (instance_exists(target_obj))
 {
-    target_x = target_obj.x - view_wview[0]/2;
-    target_y = target_obj.y - view_hview[0]/2;
+    if(lock_x != -1) {
+        target_x = lock_x - view_wview[0]/2;
+    } else {
+        target_x = target_obj.x - view_wview[0]/2;
+    }
+    
+    if(lock_y != -1) {
+        target_y = lock_y - view_hview[0]/2;
+    } else {
+        target_y = target_obj.y - view_hview[0]/2;
+    }
+    
     event_user(0);
     
     view_xview[0] = lerp(view_xview[0], target_x, snapSpd);

@@ -76,6 +76,7 @@
     <instance objName="objAlexShadowSpikeU" x="544" y="384" name="inst_0751E540" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objStageEndWarp" x="800" y="192" name="inst_92F6DFEB" locked="0" code="// Change these&#xA;stage_num = 35;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexCrystalStar" x="448" y="288" name="inst_9895B19A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexCameraAxisLock" x="512" y="320" name="inst_7C6FBC8D" locked="0" code="lock_x = -1;&#xA;lock_y = 416;&#xA;event_user(0);&#xA;" scaleX="5.07936525344849" scaleY="3.5" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="320" y="416" w="32" h="32" xo="32" yo="32" id="10016393" name="inst_7E3FEE59" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

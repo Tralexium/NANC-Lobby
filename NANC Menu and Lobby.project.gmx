@@ -403,6 +403,7 @@
         <sprite>sprites\sprStarLevel6BlockTexture</sprite>
         <sprite>sprites\sprFinalStarLevelTexture</sprite>
         <sprite>sprites\sprAlexCameraClamper</sprite>
+        <sprite>sprites\sprAlexCameraAxisLock</sprite>
         <sprite>sprites\sprAlexCrystalStars</sprite>
         <sprite>sprites\sprAlexCrystalStarEmptySlot</sprite>
         <sprite>sprites\sprAlexCrystalStarMask</sprite>
@@ -1039,6 +1040,7 @@
       <objects name="Star Stages">
         <object>objects\objAlexStarStageCam</object>
         <object>objects\objAlexCameraClamper</object>
+        <object>objects\objAlexCameraAxisLock</object>
         <object>objects\objAlexShadowSpike</object>
         <object>objects\objAlexShadowSpikeU</object>
         <object>objects\objAlexShadowSpikeD</object>
