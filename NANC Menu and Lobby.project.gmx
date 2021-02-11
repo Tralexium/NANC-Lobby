@@ -1070,6 +1070,7 @@
             <object>objects\objAlexFBPStartAttackCane</object>
             <object>objects\objAlexFBPStartAttackCane2</object>
           </objects>
+          <object>objects\objAlexFBHelixOrbs</object>
           <object>objects\objAlexFBOrbShrinkingCircle</object>
         </objects>
         <object>objects\objAlexFBCam</object>
