@@ -44,6 +44,8 @@ magic_circle_alpha = 0;
 dir = random(360);
 orbs_set = false;
 
+projectile_count = 0;  // Not set in the script
+
 alarm[0] = 1;
 </string>
           </argument>
@@ -126,7 +128,7 @@ if(orbs_set) {
     
     if(t &gt;= time_before_shrink) {
         var _rad_anim_val = clamp(t - time_before_shrink, 0, shrink_length);
-        rad = scrAlexEaseInSine(_rad_anim_val, start_rad, 0, time_before_shrink);
+        rad = scrAlexEaseInSine(_rad_anim_val, start_rad, 0, shrink_length);
         
         if(_rad_anim_val == shrink_length) {
             for(var i=0; i&lt;orb_amnt; i++) {
@@ -135,6 +137,13 @@ if(orbs_set) {
                 
                 if(instance_exists(orb[i]))
                     instance_destroy(orb[i]);
+            }
+            
+            if(projectile_count &gt; 0) {
+                repeat(projectile_count) {
+                    var _orb = scrFBPOrb(x, y, 16, random_range(60, 120), 0, random_range(8, 13));
+                        _orb.gravity = .2;
+                }
             }
             
             instance_destroy();
