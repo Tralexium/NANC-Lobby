@@ -463,7 +463,7 @@ if(intro_finished &amp;&amp; !vulnerable &amp;&amp; instance_exists(objPlayer)) 
             //current_attack = attack_list[| 0];
             //last_attack = current_attack;
             //ds_list_delete(attack_list, 0);
-            current_attack = atk.stomp;
+            current_attack = atk.beams;
         } else {
             // If attack list is empty refill it
             event_user(0);
