@@ -34,6 +34,7 @@ target_scale = 1;
 new_start_scale_add = 0.4;
 decrease_per_split = 0.25;
 bounce_multi = 1.05;
+shockwave_dist = 150;
 gravity = 0.55;
 image_xscale = 0;
 image_yscale = 0;
@@ -108,7 +109,7 @@ if(place_meeting(x, y + vspeed, objBlock) &amp;&amp; vspeed &gt; 0) {
         var _orb = scrFBPOrb(x, y, _orb_size, random_range(80, 100), 0, random_range(10, 13));
             _orb.gravity = .25;
     }
-    scrFBPShockwave(x, y, 400 - round(200 * target_scale));
+    scrFBPShockwave(x, y, shockwave_dist);
     
     var _new_bounce_speed = abs(vspeed) * bounce_multi
     var _new_target_scale = target_scale - decrease_per_split;

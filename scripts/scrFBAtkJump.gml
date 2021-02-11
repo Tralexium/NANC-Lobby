@@ -156,6 +156,9 @@ switch(_lvl) {
             else
                 scrFBSetAttackSprite(sprAlexFinalBossJumpFrontAtk, 0.3);
         }
+        
+        with(objAlexFBPSquishOrb)
+            squish_multi = 0.02;
     
         if(t > 200) {
             if(on_ground)

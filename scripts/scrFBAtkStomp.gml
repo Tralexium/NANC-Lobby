@@ -19,10 +19,10 @@ switch(_lvl) {
             x = lerp(x, objPlayer.x, 0.05);
             
             if((t+1) mod 20 == 0) {
-                var _spawn_x = x + random_range(-400, 400);
+                var _spawn_x = objPlayer.x + random_range(-400, 400);
                 
                 while(_spawn_x < 0 || _spawn_x > room_width) {
-                    _spawn_x = x + random_range(-400, 400);
+                    _spawn_x = objPlayer.x + random_range(-400, 400);
                 }
                 
                 scrFBPFadeBeamOrb(_spawn_x, y + 50, 64, -90, 0, 0, .15);
@@ -60,10 +60,10 @@ switch(_lvl) {
             x = lerp(x, objPlayer.x, 0.05);
             
             if((t+1) mod 20 == 0) {
-                var _spawn_x = x + random_range(-400, 400);
+                var _spawn_x = objPlayer.x + random_range(-400, 400);
                 
                 while(_spawn_x < 0 || _spawn_x > room_width) {
-                    _spawn_x = x + random_range(-400, 400);
+                    _spawn_x = objPlayer.x + random_range(-400, 400);
                 }
                 
                 scrFBPFadeBeamOrb(_spawn_x, y + 50, 64, -90, 0, 0, .15, 0, .025, 3);
@@ -91,6 +91,54 @@ switch(_lvl) {
         }
     
         if(t == 460) {
+            with(objAlexFBPOrbBounce)
+                instance_destroy();
+                
+            event_user(1);
+        }
+        break;
+        
+        
+    case 3:
+        if(t <= 251) {
+            x = lerp(x, objPlayer.x, 0.05);
+            
+            if((t+1) mod 50 == 0) {
+                var _spawn_x = clamp(objPlayer.x + choose(-270, -190, -120, 120, 190, 270), 96, room_width - 96);
+                
+                var _bubble = scrFBPBubble(_spawn_x, y + 50, 0, .6, -90, 0);
+                    _bubble.gravity = .2;
+            }
+        }
+        
+        with(objAlexFBPBubble) {
+            decrease_per_split = 0.3;
+            bounce_multi = 1.5;
+            shockwave_dist = 100;
+        }
+        
+        if(t == 340) {
+            scrFBPBeam(x, y, 64, -90, 0, 60);
+        }
+        
+        if(t == 400) {
+            look_at_player = true;
+            scrFinalBossTP(x, ground_level, sprAlexFinalBossGroundStomp);
+            scrFBPShockwave(x, y, 400, 12, 2);
+            scrFBShakeCam(35, 0, 12, 0, 3);
+            fallback_sprite = sprAlexFinalBossIdle;
+            fallback_image_speed = 0.3;
+            
+            audio_play_sound(sndAlexFBGroundStomp, 0, false);
+            
+            scrFBPSquishOrbCircle(x, y, 0, 12, 32, -0.5, 0, .1, 0);
+            scrFBPSquishOrbCircle(x, y, 0, 12, 32, 0.5, 0, .1, 0);
+        }
+        
+        with(objAlexFBPSquishOrb)
+            squish_multi = 0.02;
+    
+        if(t == 530) {
             with(objAlexFBPOrbBounce)
                 instance_destroy();
                 
