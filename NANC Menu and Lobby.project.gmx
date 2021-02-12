@@ -187,6 +187,8 @@
             <sound>sound\sndAlexFBRicochet</sound>
             <sound>sound\sndAlexFBStarBounce</sound>
             <sound>sound\sndAlexFBStarExplosion</sound>
+            <sound>sound\sndAlexFBShrinkingCircleSpawn</sound>
+            <sound>sound\sndAlexFBLongBeam</sound>
           </sounds>
           <sound>sound\sndAlexFBTeleport</sound>
           <sound>sound\sndAlexFBDash</sound>
@@ -195,7 +197,9 @@
           <sound>sound\sndAlexFBShieldOrbBroken</sound>
           <sound>sound\sndAlexFBShieldHit</sound>
           <sound>sound\sndAlexFBShieldBroken</sound>
-          <sound>sound\sndAlexFBPowerup</sound>
+          <sound>sound\sndAlexFBShieldRestored</sound>
+          <sound>sound\sndAlexFBLevelUp</sound>
+          <sound>sound\sndAlexFBLand</sound>
         </sounds>
         <sound>sound\sndAlexSaveBlocker</sound>
         <sound>sound\sndAlexSaveGreen</sound>
@@ -779,6 +783,7 @@
         <script>scripts\scrFinalBossTP.gml</script>
         <script>scripts\scrFBJump.gml</script>
         <script>scripts\scrFBSetAttackSprite.gml</script>
+        <script>scripts\scrFBLevelUp.gml</script>
         <script>scripts\scrFBGetNextTeleportXPos.gml</script>
       </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>

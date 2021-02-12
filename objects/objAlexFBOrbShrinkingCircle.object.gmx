@@ -82,6 +82,9 @@ for(var i=0; i&lt;orb_amnt; i++) {
 rad = start_rad;
 spd_change_dur = time_before_shrink / 2;
 orbs_set = true;
+
+audio_stop_sound(sndAlexFBShrinkingCircleSpawn);
+audio_play_sound(sndAlexFBShrinkingCircleSpawn, 0, false);
 </string>
           </argument>
         </arguments>
@@ -174,7 +177,7 @@ if(orbs_set) {
             <kind>1</kind>
             <string>/// Draw the magic circle in the middle
 
-var _scale = rad / 100;
+var _scale = rad / 200;
 magic_circle_angle += sign(initial_spd) * 2;
 
 draw_set_blend_mode(bm_add);

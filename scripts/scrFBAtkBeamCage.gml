@@ -36,6 +36,8 @@ switch(_lvl) {
                     else
                         hspeed = -1;
                 }
+                
+                audio_play_sound(sndAlexFBLongBeam, 0, false);
             }
             
             if(t > 100 && t < 300 && t mod 20 == 0) {
@@ -87,6 +89,8 @@ switch(_lvl) {
                     else
                         hspeed = -1;
                 }
+                
+                audio_play_sound(sndAlexFBLongBeam, 0, false);
             }
             
             if(t > 100 && t < 300 && t mod 30 == 0) {
@@ -151,6 +155,8 @@ switch(_lvl) {
                     else
                         hspeed = 0.7;
                 }
+                
+                audio_play_sound(sndAlexFBLongBeam, 0, false);
             }
             
             if(t > 100 && t < 300 && t mod 25 == 0) {  
@@ -166,8 +172,6 @@ switch(_lvl) {
                     _spawn_x = 750;
                     _spawn_side = -1;
                 }
-                
-                show_debug_message(view_xview[0])
                 
                 var _spd = random_range(3.5, 6) * -_spawn_side;
                 
@@ -207,6 +211,8 @@ switch(_lvl) {
                     else
                         hspeed = -1.5;
                 }
+                
+                audio_play_sound(sndAlexFBLongBeam, 0, false);
             }
             
             if(t > 440 && t < 630 && t mod 20 == 0) {

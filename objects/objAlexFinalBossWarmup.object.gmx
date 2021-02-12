@@ -429,6 +429,9 @@ if(is_attacking) {
 
 scrStopMusic();
 scrPlayMusic(musFinalBoss, true);
+
+// Make sure the volume is full
+audio_sound_gain(musFinalBoss, 1, 10);
 </string>
           </argument>
         </arguments>

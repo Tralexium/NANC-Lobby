@@ -25,34 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Init vars and snap to player
+            <string>/// Center the cam at the beginning
 
-snapSpd = 0.166; //determines how fast the camera snaps to the player (higher numbers follow the player slower), can be changed in creation code
-zoom_spd = 0.1;  // Determines how fast the camera zooms in and out
-zoom_lvl = 1;  // How zoomed in we currently are (1 being the default view dimensions)
-zoom_min_lvl = 0.8;
-zoom_max_lvl = 1;
-default_view_w = view_wport[0];
-default_view_h = view_hport[0];
-target_obj = objPlayer;
-anchor_obj = objAlexFinalBoss;  // The 2nd object to average the cam position (In this case it's the final boss)
-lock_in_place = true;
-target_x = 0;
-target_y = 0;
-min_x = 0;
-min_y = 0;
-max_x = room_width - view_wview[0];
-max_y = room_height - view_hview[0];
-dist_to_anchor = 0;
-default_dist_to_anchor = 600;
-shake_t = 0;
-shake_dur = 0;  // How long the shake lasts for
-shake_x_dist = 0;
-shake_y_dist = 0;
-shake_x_repeats = 1;  // each decimal is equal to one full sine movement
-shake_y_repeats = 1;
+view_xview[0] = 400;
+view_yview[0] = 0;
 
-alarm[0] = 1; // Snap to the target object
 opt_previous_x = view_xview[0];
 opt_previous_y = view_yview[0];
 </string>
@@ -75,11 +52,35 @@ opt_previous_y = view_yview[0];
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Center the cam at the beginning
+            <string>/// Init vars and snap to player
 
-view_xview[0] = 400;
-view_yview[0] = 0;
+snapSpd = 0.166; //determines how fast the camera snaps to the player (higher numbers follow the player slower), can be changed in creation code
+zoom_spd = 0.1;  // Determines how fast the camera zooms in and out
+zoom_lvl = 1;  // How zoomed in we currently are (1 being the default view dimensions)
+zoom_min_lvl = 0.8;
+zoom_max_lvl = 1;
+zoom_on_boss = false;
+default_view_w = view_wport[0];
+default_view_h = view_hport[0];
+target_obj = objPlayer;
+anchor_obj = objAlexFinalBoss;  // The 2nd object to average the cam position (In this case it's the final boss)
+lock_in_place = true;
+target_x = 0;
+target_y = 0;
+min_x = 0;
+min_y = 0;
+max_x = room_width - view_wview[0];
+max_y = room_height - view_hview[0];
+dist_to_anchor = 0;
+default_dist_to_anchor = 600;
+shake_t = 0;
+shake_dur = 0;  // How long the shake lasts for
+shake_x_dist = 0;
+shake_y_dist = 0;
+shake_x_repeats = 1;  // each decimal is equal to one full sine movement
+shake_y_repeats = 1;
 
+alarm[0] = 1; // Snap to the target object
 opt_previous_x = view_xview[0];
 opt_previous_y = view_yview[0];
 </string>
@@ -153,17 +154,28 @@ if (instance_exists(target_obj) &amp;&amp; !lock_in_place)
         }       
         
         // Do the zooming shenanigans
-        zoom_lvl = clamp(mean(dist_to_anchor, default_dist_to_anchor) / default_dist_to_anchor, zoom_min_lvl, zoom_max_lvl);
-        view_wview[0] = lerp(view_wview[0], default_view_w * zoom_lvl, zoom_spd);
-        view_hview[0] = lerp(view_hview[0], default_view_h * zoom_lvl, zoom_spd);
+        if(!zoom_on_boss) {
+            zoom_lvl = clamp(mean(dist_to_anchor, default_dist_to_anchor) / default_dist_to_anchor, zoom_min_lvl, zoom_max_lvl);
+            view_wview[0] = lerp(view_wview[0], default_view_w * zoom_lvl, zoom_spd);
+            view_hview[0] = lerp(view_hview[0], default_view_h * zoom_lvl, zoom_spd);
+        } else {
+            zoom_lvl = 0.4;
+            view_wview[0] = lerp(view_wview[0], default_view_w * zoom_lvl, 0.05);
+            view_hview[0] = lerp(view_hview[0], default_view_h * zoom_lvl, 0.05);
+        }
         
         // Update the max X &amp; Y coords
         max_x = room_width - view_wview[0];
         max_y = room_height - view_hview[0];
         
         // Set a new target position for the cam
-        target_x = _average_x - view_wview[0]/2;
-        target_y = _average_y - view_hview[0]/2;
+        if(!zoom_on_boss) {
+            target_x = _average_x - view_wview[0]/2;
+            target_y = _average_y - view_hview[0]/2;
+        } else {
+            target_x = anchor_obj.x - view_wview[0]/2;
+            target_y = anchor_obj.y - view_hview[0]/2;
+        }
     } else {
         // Set a new target position for the cam
         target_x = target_obj.x - view_wview[0]/2;

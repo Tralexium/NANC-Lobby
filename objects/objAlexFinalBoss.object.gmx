@@ -32,14 +32,14 @@ t = 0;                          // General use timer, updates in the "Animations
 
 intro_finished = false;         // Toggles to true when the intro is finished
 
-hp = 50;                        // Starting health
+hp = 80;                        // Starting health
 max_hp = hp;
 
 vulnerable = false;             // If possible to damage the boss
 iframes = 0;                    // How many iframes are currently present
-max_iframes = 10;               // How long the iframes last
+max_iframes = 7;               // How long the iframes last
 shield_rad = 40;                // How large the shield radius is
-recovery_time = 170;            // How many frames until recover shield
+recovery_time = 200;            // How many frames until recover shield
 recovering = false;             // Whether the boss is about to regenerate the shield orbs
 
 shield_orb_amnt = 0;            // How many orbs are currently present
@@ -49,10 +49,11 @@ shield_orb_circle_id = noone;   // The ID of the circle orb circle object
 
 exp_amnt = 0;                   // Current exp amount
 exp_max = 100;                  // How much exp is needed to level up
-exp_idle_gain = 0;//0.015;            // How much exp per frame
+exp_idle_gain = 0.02;          // How much exp per frame
 exp_shield_gain = 5;            // How much exp per shield hit
 exp_lock_gain = true;           // Restricts exp gaining when true
-exp_level = 3//1;                  // Current boss level
+exp_ready_to_level_up = false;  // Indicates when the boss should play the leveling animation
+exp_level = 1;                  // Current boss level
 exp_max_level = 3;              // Max level possible
 
 on_ground = true;               // Whether the boss is touching the ground
@@ -132,6 +133,13 @@ exp_bar_font_col = $e8e0df;
 exp_bar_x = 64;
 exp_bar_x2 = display_get_gui_width() - 80;
 exp_bar_y = 55;
+
+bg_target_hue = 0.7;
+bg_target_sat = 0.5;
+bg_target_val = 0.15;
+bg_hue_incr = 0.022;
+bg_sat_incr = 0.038;
+bg_val_incr = 0.6;
 </string>
           </argument>
         </arguments>
@@ -162,6 +170,7 @@ enum atk {
     circles,
     beams,
     beam_cage,
+    level_up
 }
 
 current_attack = noone;
@@ -260,6 +269,9 @@ if(instance_exists(objPlayer) &amp;&amp; look_at_player) {
 
 // Check if currently standing on ground
 if(place_meeting(x, y+1, objBlock) &amp;&amp; bbox_bottom &gt;= ground_level - 2) {
+    if(on_ground == false &amp;&amp; sprite_index != sprAlexFinalBossIdle)
+        audio_play_sound(sndAlexFBLand, 0, false);
+
     on_ground = true;
 } else {
     on_ground = false;
@@ -306,6 +318,7 @@ if(intro_finished) {
     if(exp_amnt &lt; exp_max) {
         exp_bar_flicker_t += 12*(exp_amnt/exp_max);
         exp_bar_alpha2 = dsin(exp_bar_flicker_t);
+        exp_bar_max_level_alpha = max(exp_bar_max_level_alpha - 0.05, 0);
     } else {
         exp_bar_max_level_alpha = min(exp_bar_max_level_alpha + 0.05, 1);
     }
@@ -453,20 +466,24 @@ if(!intro_finished) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Attacking
+            <string>/// Attacking &amp; Leveling up
 
 if(intro_finished &amp;&amp; !vulnerable &amp;&amp; instance_exists(objPlayer)) {
 
     // Choose an attack
     if(current_attack == noone) {
-        if(!ds_list_empty(attack_list)) {
-            //current_attack = attack_list[| 0];
-            //last_attack = current_attack;
-            //ds_list_delete(attack_list, 0);
-            current_attack = atk.jump;
+        if(exp_ready_to_level_up) {
+            current_attack = atk.level_up;
         } else {
-            // If attack list is empty refill it
-            event_user(0);
+            if(!ds_list_empty(attack_list)) {
+                current_attack = attack_list[| 0];
+                last_attack = current_attack;
+                ds_list_delete(attack_list, 0);
+                //current_attack = atk.jump;
+            } else {
+                // If attack list is empty refill it
+                event_user(0);
+            }
         }
     }
     
@@ -498,6 +515,10 @@ if(intro_finished &amp;&amp; !vulnerable &amp;&amp; instance_exists(objPlayer)) 
             
         case atk.beam_cage:
             scrFBAtkBeamCage(exp_level);
+            break;
+            
+        case atk.level_up:
+            scrFBLevelUp();
             break;
     }
 }
@@ -537,14 +558,11 @@ if(instance_exists(shield_orb_circle_id)) {
 }
 
 // Experience level
-if(intro_finished &amp;&amp; !vulnerable)
+if(intro_finished &amp;&amp; !vulnerable &amp;&amp; !exp_ready_to_level_up)
     exp_amnt = min(exp_amnt + exp_idle_gain, exp_max);
 
-if(exp_amnt &gt;= exp_max &amp;&amp; exp_level &lt; exp_max_level) {
-    exp_level++;
-    
-    if(exp_level &lt; exp_max_level)
-        exp_amnt = 0;
+if(exp_amnt &gt;= exp_max &amp;&amp; exp_level &lt; exp_max_level &amp;&amp; !exp_ready_to_level_up) {
+    exp_ready_to_level_up = true;
 }
 
 // Vulnerability
@@ -574,7 +592,7 @@ if(intro_finished) {
     if(!vulnerable) {
         var _bullet_id = collision_circle(x, y, shield_rad, objBullet, true, true);
         if(_bullet_id) {
-            exp_amnt += exp_shield_gain;
+            exp_amnt = min(exp_amnt + exp_shield_gain, exp_max);
             shield_scale = shield_start_scale;
             shield_alpha = 1;
             exp_bar_color_blend_amnt = 1;
@@ -670,6 +688,61 @@ if(recovering) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Change color of BG based on level
+
+// Make the background black to make the fade
+// transition afterwards if about to level up
+if(exp_ready_to_level_up) {
+    //bg_target_val = 0;
+    //bg_val_incr = 0;
+} else {
+    if(exp_level == 2) {
+        bg_target_hue = 0.68;
+        bg_target_sat = 0.5;
+        bg_target_val = 0.15;
+        bg_hue_incr = -0.027;
+        bg_sat_incr = 0.05;
+        bg_val_incr = 1.2;
+    }
+    
+    if(exp_level &gt;= 3) {
+        bg_target_hue = 0.9;
+        bg_target_sat = 0.5;
+        bg_target_val = 0.15;
+        bg_hue_incr = 0.03;
+        bg_sat_incr = 0.06;
+        bg_val_incr = 1.6;
+    }
+}
+
+with(objAlexStarStageBG) {
+    base_col_hsv[0] = lerp(base_col_hsv[0], other.bg_target_hue, 0.05); // Hue
+    base_col_hsv[1] = lerp(base_col_hsv[1], other.bg_target_sat, 0.05); // Saturation
+    base_col_hsv[2] = lerp(base_col_hsv[2], other.bg_target_val, 0.05); // Value / Luminosity
+    hue_increment = lerp(hue_increment, other.bg_hue_incr, 0.05); // How much the hue changes each step
+    sat_increment = lerp(sat_increment, other.bg_sat_incr, 0.05); // How much the sat changes each step
+    val_increment = lerp(val_increment, other.bg_val_incr, 0.05); // How much the value/luminosity changes each step
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="12">
       <action>
@@ -696,6 +769,8 @@ shield_orb_circle_id.shield_orb_amnt = shield_orb_spawn_amnt;
 
 shield_orb_rad += 8;
 shield_orb_spawn_amnt = min(shield_orb_spawn_amnt + 1, 7);
+
+audio_play_sound(sndAlexFBShieldRestored, 0, false);
 </string>
           </argument>
         </arguments>

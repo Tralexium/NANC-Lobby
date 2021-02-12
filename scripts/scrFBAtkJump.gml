@@ -64,8 +64,9 @@ switch(_lvl) {
         }
         
         if(t > 50) {
-            if(on_ground)
+            if(on_ground) {
                 sprite_index = sprAlexFinalBossIdle;
+            }
         }
     
         if(t == 230) {
@@ -166,8 +167,9 @@ switch(_lvl) {
             squish_multi = 0.02;
     
         if(t > 200) {
-            if(on_ground)
+            if(on_ground) {
                 sprite_index = sprAlexFinalBossIdle;
+            }
         }
         
         if(t == 350) {
