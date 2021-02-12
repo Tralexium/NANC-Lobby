@@ -76,8 +76,9 @@
     <instance objName="objAlexShadowSpikeU" x="544" y="384" name="inst_0751E540" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objStageEndWarp" x="800" y="192" name="inst_92F6DFEB" locked="0" code="// Change these&#xA;stage_num = 35;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexCrystalStar" x="448" y="288" name="inst_9895B19A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexCameraAxisLock" x="640" y="288" name="inst_7C6FBC8D" locked="0" code="lock_x = -1;&#xA;lock_y = 416;&#xA;event_user(0);" scaleX="1" scaleY="3.55555558204651" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexCameraAxisUnlock" x="544" y="320" name="inst_A19F5597" locked="0" code="" scaleX="1" scaleY="3.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexCameraAxisLock" x="640" y="288" name="inst_7C6FBC8D" locked="0" code="lock_x = -1;&#xA;lock_y = 416;&#xA;left_edge = 640;&#xA;right_edge = -1;&#xA;top_edge = -1;&#xA;bottom_edge = 544;&#xA;" scaleX="1.01587307453156" scaleY="3.55555558204651" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexCameraAxisUnlock" x="832" y="192" name="inst_A19F5597" locked="0" code="" scaleX="1" scaleY="3.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexCameraClamper" x="128" y="-32" name="inst_87774DF4" locked="0" code="" scaleX="8" scaleY="9.5" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="320" y="416" w="32" h="32" xo="32" yo="32" id="10016393" name="inst_7E3FEE59" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

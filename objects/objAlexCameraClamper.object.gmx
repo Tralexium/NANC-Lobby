@@ -29,24 +29,6 @@
 
 active = false;
 clamp_coords = true;  // Makes sure the view can't escape the room boundries
-
-var _touching_player = place_meeting(x, y, objPlayer);
-if(_touching_player) {
-    if(!active) {
-        active = true;
-        with(objAlexStarStageCam) {
-            min_x = max(0, other.bbox_left);
-            min_y = max(0, other.bbox_top);
-            max_x = min(room_width - view_wview[0], max(min_x, other.bbox_right - view_wview[0]));
-            max_y = min(room_height - view_hview[0], max(min_y, other.bbox_bottom - view_hview[0]));
-            
-            event_user(0);
-            
-            view_xview[0] = target_x;
-            view_yview[0] = target_y;
-        }
-    }
-}
 </string>
           </argument>
         </arguments>
@@ -100,6 +82,47 @@ if(_touching_player) {
         min_y = 0;
         max_x = room_width - view_wview[0];
         max_y = room_height - view_hview[0];
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Snap cam into place
+
+var _touching_player = place_meeting(x, y, objPlayer);
+if(_touching_player) {
+    if(!active) {
+        active = true;
+        with(objAlexStarStageCam) {
+            min_x = max(0, other.bbox_left);
+            min_y = max(0, other.bbox_top);
+            max_x = min(room_width - view_wview[0], max(min_x, other.bbox_right - view_wview[0]));
+            max_y = min(room_height - view_hview[0], max(min_y, other.bbox_bottom - view_hview[0]));
+            
+            event_user(0);
+            
+            view_xview[0] = target_x;
+            view_yview[0] = target_y;
+        }
     }
 }
 </string>

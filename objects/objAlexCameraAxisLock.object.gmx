@@ -27,13 +27,18 @@
             <kind>1</kind>
             <string>/// init vars
 
+view_edges_set = false;
+
 // Change these to the desired coordinate
 // and call "event_user(0)" inside the 
 // creation code.
 // if lock_x/y is -1 it will be ignored by the camera
 lock_x = -1;
 lock_y = -1;
-event_user(0);
+left_edge = -1;
+right_edge = -1;
+top_edge = -1;
+bottom_edge = -1;
 </string>
           </argument>
         </arguments>
@@ -70,6 +75,15 @@ if(_touching_player) {
             lock_y = other.lock_y;
         }
     }
+    
+    if(!view_edges_set) {
+        event_user(0);
+        
+        with(objAlexStarStageCam) {
+            view_xview[0] = target_x;
+            view_yview[0] = target_y;
+        }
+    }
 }
 </string>
           </argument>
@@ -77,6 +91,47 @@ if(_touching_player) {
       </action>
     </event>
     <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Set min and max coords for cam
+
+view_edges_set = true;
+
+with(objAlexStarStageCam) {
+    if(other.left_edge != -1)
+        min_x = max(0, other.left_edge);
+        
+    if(other.top_edge != -1)
+        min_y = max(0, other.top_edge);
+    
+    if(other.right_edge != -1)
+        max_x = min(room_width - view_wview[0], max(min_x, other.right_edge - view_wview[0]));
+        
+    if(other.bottom_edge != -1)
+        max_y = min(room_height - view_hview[0], max(min_y, other.bottom_edge - view_hview[0]));
+    
+    event_user(0);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -105,6 +160,12 @@ if(_touching_player) {
             lock_y = other.lock_y;
             view_yview[0] = lock_y - view_hview[0]/2;
         }
+    }
+    
+    if(!view_edges_set) {
+        event_user(0);
+        view_xview[0] = target_x;
+        view_yview[0] = target_y;
     }
 }
 </string>

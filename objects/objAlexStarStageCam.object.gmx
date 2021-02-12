@@ -70,8 +70,18 @@ opt_previous_y = view_yview[0];
 
 if (instance_exists(target_obj))
 {
-    target_x = target_obj.x - view_wview[0]/2;
-    target_y = target_obj.y - view_hview[0]/2;
+    if(lock_x != -1) {
+        target_x = lock_x - view_wview[0]/2;
+    } else {
+        target_x = target_obj.x - view_wview[0]/2;
+    }
+    
+    if(lock_y != -1) {
+        target_y = lock_y - view_hview[0]/2;
+    } else {
+        target_y = target_obj.y - view_hview[0]/2;
+    }
+    
     event_user(0);
     view_xview[0] = target_x;
     view_yview[0] = target_y;
