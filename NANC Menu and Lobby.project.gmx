@@ -973,6 +973,7 @@
         <object>objects\objStageEndWarp</object>
         <object>objects\objStageEndWarpPart</object>
         <object>objects\objStageClearUI</object>
+        <object>objects\objAlexScreenPulseEffect</object>
       </objects>
       <objects name="Player">
         <object>objects\objAlexLobbyPlayer</object>

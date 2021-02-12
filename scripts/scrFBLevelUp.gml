@@ -45,6 +45,7 @@ if(round(image_index) == 10 && exp_ready_to_level_up && sprite_index == sprAlexF
     with(objPlayer)
         frozen = false;
         
+    instance_create(0, 0, objAlexScreenPulseEffect);
     audio_sound_gain(musFinalBoss, 1, 1500);
 }
 

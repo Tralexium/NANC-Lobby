@@ -41,6 +41,7 @@ switch(_lvl) {
             fallback_sprite = sprAlexFinalBossIdle;
             fallback_image_speed = 0.3;
             
+            instance_create(0, 0, objAlexScreenPulseEffect);
             audio_play_sound(sndAlexFBGroundStomp, 0, false);
             
             repeat(15) {
@@ -82,6 +83,7 @@ switch(_lvl) {
             fallback_sprite = sprAlexFinalBossIdle;
             fallback_image_speed = 0.3;
             
+            instance_create(0, 0, objAlexScreenPulseEffect);
             audio_play_sound(sndAlexFBGroundStomp, 0, false);
             
             repeat(12) {
@@ -129,6 +131,7 @@ switch(_lvl) {
             fallback_sprite = sprAlexFinalBossIdle;
             fallback_image_speed = 0.3;
             
+            instance_create(0, 0, objAlexScreenPulseEffect);
             audio_play_sound(sndAlexFBGroundStomp, 0, false);
             
             scrFBPSquishOrbCircle(x, y, 0, 12, 32, -0.5, 0, .1, 0);
