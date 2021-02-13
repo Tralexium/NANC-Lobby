@@ -37,10 +37,11 @@ max_hp = hp;
 
 vulnerable = false;             // If possible to damage the boss
 iframes = 0;                    // How many iframes are currently present
-max_iframes = 7;               // How long the iframes last
+max_iframes = 7;                // How long the iframes last
 shield_rad = 40;                // How large the shield radius is
 recovery_time = 200;            // How many frames until recover shield
 recovering = false;             // Whether the boss is about to regenerate the shield orbs
+beaten = false;                 // Whether the boss is defeated
 
 shield_orb_amnt = 0;            // How many orbs are currently present
 shield_orb_spawn_amnt = 5;      // How many orbs the shield should have
@@ -189,6 +190,41 @@ event_user(0);  // Fill and shuffle the attack list
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Make the particle system
+
+part_system = part_system_create();
+part_type = part_type_create();
+
+part_system_depth(part_system, 1000);
+
+part_type_life(part_type, 180, 220);
+part_type_alpha2(part_type, 0.1, 0);
+part_type_size(part_type, 5, 5, -0.025, 0);
+part_type_shape(part_type, pt_shape_sphere);
+part_type_colour2(part_type, $cc2fb0, $801c42);
+part_type_speed(part_type, 0, 0, 0.02, 0);
+part_type_direction(part_type, 90, 90, 0, 2);
+part_type_blend(part_type, true);
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -210,6 +246,30 @@ event_user(0);  // Fill and shuffle the attack list
             <string>/// Get rid of any data structures
 
 ds_list_destroy(attack_list);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy the particles
+
+part_system_destroy(part_system);
+part_type_destroy(part_type);
 </string>
           </argument>
         </arguments>
@@ -755,6 +815,32 @@ with(objAlexStarStageBG) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Spawn particles
+
+if(!beaten) {
+    repeat(5)
+        part_particles_create(part_system, random_range(-50, room_width+50), ground_level + 130, part_type, 1)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="12">
       <action>
@@ -879,6 +965,58 @@ if(fallback_sprite != noone &amp;&amp; sprite_index != fallback_sprite) {
     image_speed = fallback_image_speed;
     image_index = 0;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy the particles
+
+part_system_destroy(part_system);
+part_type_destroy(part_type);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy the particles
+
+part_system_destroy(part_system);
+part_type_destroy(part_type);
 </string>
           </argument>
         </arguments>
@@ -1023,8 +1161,9 @@ if(lvlup_alpha &gt; 0) {
     draw_set_blend_mode(bm_add);
     draw_sprite_ext(sprAlexFBParticleMagicCircle, 0, x, y, 1, 1, draw_t, -1, lvlup_alpha*0.25);
     draw_sprite_ext(sprAlexFBParticleMagicCircle, 0, x, y, 2, 2, -draw_t, -1, lvlup_alpha*0.25);
-    draw_set_blend_mode(bm_normal);
 }
+
+draw_set_blend_mode(bm_normal);
 </string>
           </argument>
         </arguments>
@@ -1059,9 +1198,10 @@ draw_set_blend_mode(bm_add);
 if(exp_level != exp_max_level) {
     draw_set_alpha(shield_alpha*0.7);
     draw_line_width_colour(x, y, view_xview[0] + (view_wview[0]/2), view_yview[0] + (view_hview[0]/8.4), 3, c_purple, $7b2fcc);
-    draw_set_blend_mode(bm_normal);
-    draw_set_alpha(1);
 }
+
+draw_set_blend_mode(bm_normal);
+draw_set_alpha(1);
 
 // Damage indicator
 var _damage_alpha = iframes / max_iframes;

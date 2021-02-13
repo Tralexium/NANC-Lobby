@@ -54,6 +54,13 @@ if(round(image_index) == 10 && exp_ready_to_level_up && sprite_index == sprAlexF
         
     instance_create(0, 0, objAlexScreenPulseEffect);
     audio_sound_gain(musFinalBoss, 1, 1500);
+    
+    if(exp_level == 2) {
+        part_type_colour2(part_type, $abb84f, $bb7642);
+    }
+    if(exp_level >= 3) {
+        part_type_colour2(part_type, $41b5f0, $452fad);
+    }
 }
 
 if(round(image_index) == image_number - 1 && sprite_index == sprAlexFinalBossPowerUp) {
