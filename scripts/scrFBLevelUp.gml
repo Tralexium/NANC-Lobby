@@ -22,8 +22,9 @@ if(t == 30) {
 }
 
 if(t > 30 && t <= 80) {
-    var _anim_val = clamp(t, 0, 40);
-    y = scrAlexEaseInOutSine(_anim_val, 300, 260, 40);
+    var _anim_val = clamp(t-30, 0, 50);
+    y = scrAlexEaseInOutSine(_anim_val, 300, 260, 50);
+    lvlup_alpha = scrAlexEaseInOutSine(_anim_val, 0, 1, 50);
 }
 
 if(t == 80) {
@@ -44,6 +45,12 @@ if(round(image_index) == 10 && exp_ready_to_level_up && sprite_index == sprAlexF
         
     with(objPlayer)
         frozen = false;
+        
+    lvlup_alpha = 0;
+    var _circle = scrAlexMakeParticleExt(x, y, 20, sprAlexFBParticleMagicCircle, 0, 0, 0, 0, 0, 0, -1, -1, bm_add, false, true, 0, depth, false);
+        _circle.image_xscale = 1;
+        _circle.image_yscale = 1;
+        _circle.add_scale = 0.08;
         
     instance_create(0, 0, objAlexScreenPulseEffect);
     audio_sound_gain(musFinalBoss, 1, 1500);

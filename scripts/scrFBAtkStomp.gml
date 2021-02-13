@@ -31,6 +31,7 @@ switch(_lvl) {
         
         if(t == 260) {
             scrFBPBeam(x, y, 64, -90, 0, 60);
+            indicator_ground_stomp_alpha_target = 0.7;
         }
         
         if(t == 320) {
@@ -40,6 +41,9 @@ switch(_lvl) {
             scrFBShakeCam(35, 0, 12, 0, 3);
             fallback_sprite = sprAlexFinalBossIdle;
             fallback_image_speed = 0.3;
+            
+            indicator_ground_stomp_alpha = 1;
+            indicator_ground_stomp_alpha_target = 0;
             
             instance_create(0, 0, objAlexScreenPulseEffect);
             audio_play_sound(sndAlexFBGroundStomp, 0, false);
@@ -73,6 +77,7 @@ switch(_lvl) {
         
         if(t == 260) {
             scrFBPBeam(x, y, 64, -90, 0, 60);
+            indicator_ground_stomp_alpha_target = 0.7;
         }
         
         if(t == 320) {
@@ -82,6 +87,9 @@ switch(_lvl) {
             scrFBShakeCam(35, 0, 12, 0, 3);
             fallback_sprite = sprAlexFinalBossIdle;
             fallback_image_speed = 0.3;
+            
+            indicator_ground_stomp_alpha = 1;
+            indicator_ground_stomp_alpha_target = 0;
             
             instance_create(0, 0, objAlexScreenPulseEffect);
             audio_play_sound(sndAlexFBGroundStomp, 0, false);
@@ -121,6 +129,7 @@ switch(_lvl) {
         
         if(t == 340) {
             scrFBPBeam(x, y, 64, -90, 0, 60);
+            indicator_ground_stomp_alpha_target = 0.7;
         }
         
         if(t == 400) {
@@ -130,6 +139,9 @@ switch(_lvl) {
             scrFBShakeCam(35, 0, 12, 0, 3);
             fallback_sprite = sprAlexFinalBossIdle;
             fallback_image_speed = 0.3;
+            
+            indicator_ground_stomp_alpha = 1;
+            indicator_ground_stomp_alpha_target = 0;
             
             instance_create(0, 0, objAlexScreenPulseEffect);
             audio_play_sound(sndAlexFBGroundStomp, 0, false);

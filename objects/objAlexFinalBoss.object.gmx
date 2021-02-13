@@ -32,7 +32,7 @@ t = 0;                          // General use timer, updates in the "Animations
 
 intro_finished = false;         // Toggles to true when the intro is finished
 
-hp = 80;                        // Starting health
+hp = 90;                        // Starting health
 max_hp = hp;
 
 vulnerable = false;             // If possible to damage the boss
@@ -49,8 +49,8 @@ shield_orb_circle_id = noone;   // The ID of the circle orb circle object
 
 exp_amnt = 0;                   // Current exp amount
 exp_max = 100;                  // How much exp is needed to level up
-exp_idle_gain = 0.02;          // How much exp per frame
-exp_shield_gain = 5;            // How much exp per shield hit
+exp_idle_gain = 0.025;          // How much exp per frame
+exp_shield_gain = 6;            // How much exp per shield hit
 exp_lock_gain = true;           // Restricts exp gaining when true
 exp_ready_to_level_up = false;  // Indicates when the boss should play the leveling animation
 exp_level = 1;                  // Current boss level
@@ -140,6 +140,13 @@ bg_target_val = 0.15;
 bg_hue_incr = 0.022;
 bg_sat_incr = 0.038;
 bg_val_incr = 0.6;
+
+indicator_ground_stomp_alpha = 0;
+indicator_ground_stomp_alpha_target = 0;
+indicator_dash_alpha = 0;
+indicator_dash_alpha_target = 0;
+
+lvlup_alpha = 0;
 </string>
           </argument>
         </arguments>
@@ -349,6 +356,11 @@ if(vulnerable) {
 
 aura_alpha = aura_base_alpha + dsin(draw_t*aura_spd) * aura_add_alpha;
 aura_scale = (aura_base_scale + dsin(draw_t*aura_spd) * aura_add_scale) * sign(image_xscale);
+
+
+// Indicators
+indicator_ground_stomp_alpha = lerp(indicator_ground_stomp_alpha, indicator_ground_stomp_alpha_target, 0.05);
+indicator_dash_alpha = lerp(indicator_dash_alpha, indicator_dash_alpha_target, 0.05);
 </string>
           </argument>
         </arguments>
@@ -479,7 +491,7 @@ if(intro_finished &amp;&amp; !vulnerable &amp;&amp; instance_exists(objPlayer)) 
                 current_attack = attack_list[| 0];
                 last_attack = current_attack;
                 ds_list_delete(attack_list, 0);
-                //current_attack = atk.jump;
+                //current_attack = atk.dash;
             } else {
                 // If attack list is empty refill it
                 event_user(0);
@@ -1005,6 +1017,34 @@ draw_set_alpha(1);
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Draw the level up stuff
+
+if(lvlup_alpha &gt; 0) {
+    draw_set_blend_mode(bm_add);
+    draw_sprite_ext(sprAlexFBParticleMagicCircle, 0, x, y, 1, 1, draw_t, -1, lvlup_alpha*0.25);
+    draw_sprite_ext(sprAlexFBParticleMagicCircle, 0, x, y, 2, 2, -draw_t, -1, lvlup_alpha*0.25);
+    draw_set_blend_mode(bm_normal);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Draw self and other stuff
 
 // Self and Aura
@@ -1015,10 +1055,70 @@ draw_sprite_ext(sprite_index, image_index, x, y + float_y, image_xscale, image_y
 
 // Shield
 draw_sprite_ext(sprAlexFinalBossMagicCircle, 0, x, y, shield_scale, shield_scale, 0, -1, shield_alpha);
+draw_set_blend_mode(bm_add);
+if(exp_level != exp_max_level) {
+    draw_set_alpha(shield_alpha*0.7);
+    draw_line_width_colour(x, y, view_xview[0] + (view_wview[0]/2), view_yview[0] + (view_hview[0]/8.4), 3, c_purple, $7b2fcc);
+    draw_set_blend_mode(bm_normal);
+    draw_set_alpha(1);
+}
 
 // Damage indicator
 var _damage_alpha = iframes / max_iframes;
 draw_sprite_ext(sprite_index, image_index, x, y + float_y, image_xscale, image_yscale, image_angle, c_red, _damage_alpha);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw attack indicators
+
+// Ground stomp
+if(indicator_ground_stomp_alpha &gt; 0.1) {
+    draw_set_blend_mode(bm_add);
+    draw_sprite_ext(sprAlexFBGroundGlow, 0, room_width/2, 512, 200, 2, 0, -1, indicator_ground_stomp_alpha);
+    draw_set_blend_mode(bm_normal);
+}
+
+
+// Pre dash / charge
+if(indicator_dash_alpha &gt; 0.1) {
+    var _xx, _yy;
+    var _len = 150 - (150*indicator_dash_alpha);
+    var _scale_mult = 2 - (0.5*indicator_dash_alpha);
+    var _dir = (draw_t*3);
+    draw_set_blend_mode(bm_add);
+    for(var i=0; i&lt;4; i++) {
+        _xx = x + lengthdir_x(_len, _dir + (i*90));
+        _yy = y + lengthdir_y(_len, _dir + (i*90));
+        draw_sprite_ext(sprite_index, image_index, _xx, _yy, image_xscale*_scale_mult, image_yscale*_scale_mult, 0, c_fuchsia, indicator_dash_alpha*0.5);
+    }
+    
+    for(var i=0; i&lt;17; i++) {
+        _xx = x + (32 * (i * sign(image_xscale)));
+        draw_sprite_ext(sprite_index, image_index, _xx, y, image_xscale, image_yscale, 0, c_fuchsia, indicator_dash_alpha*0.6);
+    }
+    
+    var _charge_alpha = dsin(draw_t*50);
+    repeat(2)
+        draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, 0, -1, _charge_alpha);
+    draw_set_blend_mode(bm_normal);
+}
 </string>
           </argument>
         </arguments>

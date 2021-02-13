@@ -9,6 +9,7 @@ if(t == 1) {
     scrFinalBossTP(_tp_x, ground_level - 24, sprAlexFinalBossPreDash);
     
     fallback_image_speed = 0.3;
+    indicator_dash_alpha_target = 1;
 }
 
 // Execute the correct attack based on the current boss level
@@ -18,6 +19,9 @@ switch(_lvl) {
     case 1:
         if(t == 60) {
             look_at_player = false;
+            
+            indicator_dash_alpha = 0;
+            indicator_dash_alpha_target = 0;
         
             var _slash_mark = scrAlexMakeParticleExt(mean(x, _dash_x_pos), ground_level - 24, 14, sprAlexFinalBossDashMark, 0, 0, 0, 0, 0, 0, -1, -1, bm_add, true, false, 0, depth-1, false);
                 _slash_mark.hspeed = 10 * image_xscale;
@@ -72,6 +76,9 @@ switch(_lvl) {
     case 2:
         if(t == 60) {
             look_at_player = false;
+            
+            indicator_dash_alpha = 0;
+            indicator_dash_alpha_target = 0;
         
             var _slash_mark = scrAlexMakeParticleExt(mean(x, _dash_x_pos), ground_level - 24, 14, sprAlexFinalBossDashMark, 0, 0, 0, 0, 0, 0, -1, -1, bm_add, true, false, 0, depth-1, false);
                 _slash_mark.hspeed = 10 * image_xscale;
@@ -138,6 +145,9 @@ switch(_lvl) {
     case 3:
         if(t == 60) {
             look_at_player = false;
+            
+            indicator_dash_alpha = 0;
+            indicator_dash_alpha_target = 0;
         
             var _slash_mark = scrAlexMakeParticleExt(mean(x, _dash_x_pos), ground_level - 24, 14, sprAlexFinalBossDashMark, 0, 0, 0, 0, 0, 0, -1, -1, bm_add, true, false, 0, depth-1, false);
                 _slash_mark.hspeed = 10 * image_xscale;
@@ -204,10 +214,15 @@ switch(_lvl) {
             
             var _tp_x = scrFBGetNextTeleportXPos();
             scrFinalBossTP(_tp_x, ground_level - 24, sprAlexFinalBossPreDash);
+            
+            indicator_dash_alpha_target = 1;
         }
         
         if(t == 260) {
             look_at_player = false;
+            
+            indicator_dash_alpha = 0;
+            indicator_dash_alpha_target = 0;
         
             var _slash_mark = scrAlexMakeParticleExt(mean(x, _dash_x_pos), ground_level - 24, 14, sprAlexFinalBossDashMark, 0, 0, 0, 0, 0, 0, -1, -1, bm_add, true, false, 0, depth-1, false);
                 _slash_mark.hspeed = 10 * image_xscale;
