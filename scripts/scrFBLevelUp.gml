@@ -4,6 +4,7 @@ if(t == 1) {
     scrFinalBossTP(clamp(objPlayer.x, 300, room_width - 300), 300, sprAlexFinalBossFloatUp);
         
     look_at_player = false;
+    show_bars = false;
     
     with(objPlayerKiller) {
         if(object_index != other.object_index)
@@ -17,6 +18,8 @@ if(t == 1) {
 if(t == 30) {
     with(objAlexFBCam)
         zoom_on_boss = true;
+        
+    show_black_bars = true;
         
     audio_sound_gain(musFinalBoss, 0.5, 1000);
 }
@@ -45,6 +48,9 @@ if(round(image_index) == 10 && exp_ready_to_level_up && sprite_index == sprAlexF
         
     with(objPlayer)
         frozen = false;
+        
+    show_black_bars = false;
+    show_bars = true;
         
     lvlup_alpha = 0;
     var _circle = scrAlexMakeParticleExt(x, y, 20, sprAlexFBParticleMagicCircle, 0, 0, 0, 0, 0, 0, -1, -1, bm_add, false, true, 0, depth, false);

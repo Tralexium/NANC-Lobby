@@ -191,6 +191,7 @@
             <sound>sound\sndAlexFBLongBeam</sound>
           </sounds>
           <sound>sound\sndAlexFBTeleport</sound>
+          <sound>sound\sndAlexFBPreDash</sound>
           <sound>sound\sndAlexFBDash</sound>
           <sound>sound\sndAlexFBGroundStomp</sound>
           <sound>sound\sndAlexFBShieldOrbHit</sound>

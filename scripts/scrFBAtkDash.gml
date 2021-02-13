@@ -10,6 +10,7 @@ if(t == 1) {
     
     fallback_image_speed = 0.3;
     indicator_dash_alpha_target = 1;
+    audio_play_sound(sndAlexFBPreDash, 0, false);
 }
 
 // Execute the correct attack based on the current boss level
@@ -216,6 +217,7 @@ switch(_lvl) {
             scrFinalBossTP(_tp_x, ground_level - 24, sprAlexFinalBossPreDash);
             
             indicator_dash_alpha_target = 1;
+            audio_play_sound(sndAlexFBPreDash, 0, false);
         }
         
         if(t == 260) {
