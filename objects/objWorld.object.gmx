@@ -1171,6 +1171,9 @@ surface_free(global.text_outline_surf);
             <kind>1</kind>
             <string>///initialize everything
 
+//Create an object to kill the player if they are stuck in a block
+instance_create(0,0,objBetterBlockCtrl);
+
 //initialize all variables
 scrInitializeGlobals();
 

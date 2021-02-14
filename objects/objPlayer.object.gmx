@@ -85,6 +85,42 @@ pet_follow_speed = 0.1;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Better Block
+
+
+//used to check if riding a platform will put the player into/through a block
+platCheck = 0;
+platCounter = 0;
+
+//the Better Platform/Block which the player is on, if there is one
+riding = noone;
+
+//records player movement
+PhSpd = 0;
+PvSpd = 0;
+
+//amount pushed by Better Blocks (used to carry the player)
+hPush = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -252,6 +288,29 @@ if(pet_sprite != -1) {
         pet_x_scale = xScale;
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Set up Player variables for objBetterBlock and objBetterMovingPlatform
+PhSpd = (x - xprevious);
+PvSpd = (y - yprevious);
 </string>
           </argument>
         </arguments>
@@ -577,6 +636,35 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
     //set xprevious/yprevious coordinates for future solid collisions
     xprevious = x;
     yprevious = y;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objBetterBlock">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Push out to avoid colliding with objects embedded in Better Blocks
+PhSpd = (x - xprevious);
+PvSpd = (y - yprevious);
+with (other){
+    event_user(0);
+    event_user(1);
 }
 </string>
           </argument>

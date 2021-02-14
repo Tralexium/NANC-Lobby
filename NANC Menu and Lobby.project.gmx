@@ -495,6 +495,19 @@
           <sprite>sprites\sprSpecialNPCBillyTalk</sprite>
         </sprites>
       </sprites>
+      <sprites name="Final Stage">
+        <sprite>sprites\sprAlexChangeColorBlockMaxID</sprite>
+        <sprite>sprites\sprAlexColorBlockRed</sprite>
+        <sprite>sprites\sprAlexColorBlockBlue</sprite>
+        <sprite>sprites\sprAlexColorBlockGreen</sprite>
+        <sprite>sprites\sprAlexColorBlockYellow</sprite>
+        <sprite>sprites\sprAlexSnakeBlock</sprite>
+        <sprite>sprites\sprAlexBeatBlockPink</sprite>
+        <sprite>sprites\sprAlexBeatBlockPurple</sprite>
+        <sprite>sprites\sprAlexBeatBlockPinkInactive</sprite>
+        <sprite>sprites\sprAlexBeatBlockPurpleInactive</sprite>
+        <sprite>sprites\sprAlexBubble</sprite>
+      </sprites>
       <sprites name="Final Boss">
         <sprites name="Projectiles">
           <sprite>sprites\sprAlexFBPOrb</sprite>
@@ -744,6 +757,12 @@
       <script>scripts\scrMakeShapes.gml</script>
       <script>scripts\scrMakeCircle.gml</script>
     </scripts>
+    <scripts name="BetterBlock">
+      <script>scripts\scrIsBlock.gml</script>
+      <script>scripts\scrIsBetterBlock.gml</script>
+      <script>scripts\scrIsBetterPlatform.gml</script>
+      <script>scripts\scrMoveContactObject.gml</script>
+    </scripts>
     <scripts name="ALEX">
       <scripts name="Final Boss">
         <scripts name="Projectiles">
@@ -835,6 +854,7 @@
   <objects name="objects">
     <objects name="world">
       <object>objects\objWorld</object>
+      <object>objects\objBetterBlockCtrl</object>
       <object>objects\objCamera</object>
       <object>objects\objSmoothCamera</object>
       <object>objects\objPlayMusic</object>
@@ -855,6 +875,7 @@
     </objects>
     <objects name="blocks">
       <object>objects\objBlock</object>
+      <object>objects\objBetterBlock</object>
       <object>objects\objMiniBlock</object>
       <object>objects\objSlipBlock</object>
       <object>objects\objBlockInvis</object>
@@ -876,6 +897,7 @@
       <object>objects\objPlatform</object>
       <object>objects\objMovingPlatform</object>
       <object>objects\objMovingPlatformNoBounce</object>
+      <object>objects\objBetterMovingPlatform</object>
       <object>objects\objBlockRise</object>
       <object>objects\objBlockFall</object>
     </objects>
@@ -1061,6 +1083,15 @@
         <object>objects\objAlexCrystalStarCollectedIndicator</object>
       </objects>
       <object>objects\objStarzorSign</object>
+      <objects name="Final Stage">
+        <object>objects\objAlexColorBlock</object>
+        <object>objects\objAlexColorBlockController</object>
+        <object>objects\objAlexChangeColorBlockGlobals</object>
+        <object>objects\objAlexColorBlockRed</object>
+        <object>objects\objAlexColorBlockBlue</object>
+        <object>objects\objAlexColorBlockGreen</object>
+        <object>objects\objAlexColorBlockYellow</object>
+      </objects>
       <objects name="Final Boss">
         <objects name="Projectiles">
           <object>objects\objAlexFBPBeam</object>
