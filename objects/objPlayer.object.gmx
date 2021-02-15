@@ -171,7 +171,7 @@ with (objBow)
 if (global.playerAnimationFix)
 {
     //block/vine checks
-    var notOnBlock = (place_free(x,y+(global.grav)));
+    var notOnBlock = (place_free(x,y+(global.grav)) &amp;&amp; !instance_exists(riding));
     var onVineR = (place_meeting(x+1,y,objWalljumpR) &amp;&amp; notOnBlock);
     var onVineL = (place_meeting(x-1,y,objWalljumpL) &amp;&amp; notOnBlock);
     
@@ -350,7 +350,7 @@ if (!frozen)    //don't move if frozen
 var slipBlockTouching = instance_place(x,y+(1*global.grav),objSlipBlock);   //check if on a slip block
 
 //vine checks
-var notOnBlock = (place_free(x,y+(global.grav)));
+var notOnBlock = (place_free(x,y+(global.grav)) &amp;&amp; !instance_exists(riding));
 var onVineL = (place_meeting(x-1,y,objWalljumpL) &amp;&amp; notOnBlock);
 var onVineR = (place_meeting(x+1,y,objWalljumpR) &amp;&amp; notOnBlock);
 
@@ -720,7 +720,9 @@ scrKillPlayer();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.grav == 1)   //normal
+            <string>if (scrIsBetterPlatform(other) || scrIsBetterBlock(other)) exit;
+
+if (global.grav == 1)   //normal
 {
     if (y-vspeed/2 &lt;= other.y)
     {
@@ -770,7 +772,9 @@ else    //flipped
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!place_free(x+hspeed,y))
+            <string>if (scrIsBetterPlatform(other) || scrIsBetterBlock(other)) exit;
+
+if (!place_free(x+hspeed,y))
 {
     if (global.grav == 1)   //normal
     {

@@ -75,6 +75,11 @@
     <instance objName="objAlexColorBlockGreen" x="208" y="304" name="inst_20B21D3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockGreen" x="176" y="272" name="inst_08C2FF52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockYellow" x="320" y="288" name="inst_7F512780" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexSnakeBlock" x="496" y="336" name="inst_B26D3868" locked="0" code="snake_id = 0;&#xA;snake_length = 5;&#xA;travel_spd = 2;&#xA;scale = 1;&#xA;direction = 90;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexSnakeBlockDirRight" x="480" y="224" name="inst_E6FB5ADB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexSnakeBlockDirUp" x="704" y="224" name="inst_B41B8C33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexSnakeBlockEnd" x="608" y="160" name="inst_DCD7BDC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexSnakeBlockDirLeft" x="704" y="160" name="inst_2CCDBFEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="320" y="416" w="32" h="32" xo="32" yo="32" id="10016393" name="inst_7E3FEE59" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

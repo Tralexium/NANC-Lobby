@@ -502,6 +502,11 @@
         <sprite>sprites\sprAlexColorBlockGreen</sprite>
         <sprite>sprites\sprAlexColorBlockYellow</sprite>
         <sprite>sprites\sprAlexSnakeBlock</sprite>
+        <sprite>sprites\sprAlexSnakeBlockDirRight</sprite>
+        <sprite>sprites\sprAlexSnakeBlockDirLeft</sprite>
+        <sprite>sprites\sprAlexSnakeBlockDirUp</sprite>
+        <sprite>sprites\sprAlexSnakeBlockDirDown</sprite>
+        <sprite>sprites\sprAlexSnakeBlockEnd</sprite>
         <sprite>sprites\sprAlexBeatBlockPink</sprite>
         <sprite>sprites\sprAlexBeatBlockPurple</sprite>
         <sprite>sprites\sprAlexBeatBlockPinkInactive</sprite>
@@ -854,7 +859,6 @@
   <objects name="objects">
     <objects name="world">
       <object>objects\objWorld</object>
-      <object>objects\objBetterBlockCtrl</object>
       <object>objects\objCamera</object>
       <object>objects\objSmoothCamera</object>
       <object>objects\objPlayMusic</object>
@@ -875,8 +879,8 @@
     </objects>
     <objects name="blocks">
       <object>objects\objBlock</object>
-      <object>objects\objBetterBlock</object>
       <object>objects\objMiniBlock</object>
+      <object>objects\objBetterBlock</object>
       <object>objects\objSlipBlock</object>
       <object>objects\objBlockInvis</object>
       <object>objects\objBlockFake</object>
@@ -896,8 +900,8 @@
     <objects name="platforms">
       <object>objects\objPlatform</object>
       <object>objects\objMovingPlatform</object>
-      <object>objects\objMovingPlatformNoBounce</object>
       <object>objects\objBetterMovingPlatform</object>
+      <object>objects\objMovingPlatformNoBounce</object>
       <object>objects\objBlockRise</object>
       <object>objects\objBlockFall</object>
     </objects>
@@ -948,6 +952,9 @@
       <object>objects\objSign</object>
       <object>objects\objGravityUp</object>
       <object>objects\objGravityDown</object>
+      <objects name="BetterBlock">
+        <object>objects\objBetterBlockCtrl</object>
+      </objects>
     </objects>
     <objects name="saves">
       <object>objects\objSaveMedium</object>
@@ -1084,13 +1091,26 @@
       </objects>
       <object>objects\objStarzorSign</object>
       <objects name="Final Stage">
-        <object>objects\objAlexColorBlock</object>
-        <object>objects\objAlexColorBlockController</object>
-        <object>objects\objAlexChangeColorBlockGlobals</object>
-        <object>objects\objAlexColorBlockRed</object>
-        <object>objects\objAlexColorBlockBlue</object>
-        <object>objects\objAlexColorBlockGreen</object>
-        <object>objects\objAlexColorBlockYellow</object>
+        <objects name="Color Blocks">
+          <object>objects\objAlexColorBlock</object>
+          <object>objects\objAlexColorBlockController</object>
+          <object>objects\objAlexChangeColorBlockGlobals</object>
+          <object>objects\objAlexColorBlockRed</object>
+          <object>objects\objAlexColorBlockBlue</object>
+          <object>objects\objAlexColorBlockGreen</object>
+          <object>objects\objAlexColorBlockYellow</object>
+        </objects>
+        <objects name="Snake Block">
+          <object>objects\objAlexSnakeBlock</object>
+          <object>objects\objAlexSnakeBlockBody</object>
+          <object>objects\objAlexSnakeBlockTail</object>
+          <object>objects\objAlexSnakeBlockDir</object>
+          <object>objects\objAlexSnakeBlockDirRight</object>
+          <object>objects\objAlexSnakeBlockDirLeft</object>
+          <object>objects\objAlexSnakeBlockDirUp</object>
+          <object>objects\objAlexSnakeBlockDirDown</object>
+          <object>objects\objAlexSnakeBlockEnd</object>
+        </objects>
       </objects>
       <objects name="Final Boss">
         <objects name="Projectiles">
