@@ -513,6 +513,12 @@
         <sprite>sprites\sprAlexBeatBlockPurpleInactive</sprite>
         <sprite>sprites\sprAlexBubble</sprite>
         <sprite>sprites\sprAlexBubblePop</sprite>
+        <sprite>sprites\sprAlexCannonWarp</sprite>
+        <sprite>sprites\sprAlexCannonWarpSpiral</sprite>
+        <sprite>sprites\sprAlexCannonWarpLine</sprite>
+        <sprite>sprites\sprAlexCannonWarpLaunch</sprite>
+        <sprite>sprites\sprAlexCannonWarpExplosion</sprite>
+        <sprite>sprites\sprAlexCannonWarpPart</sprite>
       </sprites>
       <sprites name="Final Boss">
         <sprites name="Projectiles">
@@ -1113,6 +1119,8 @@
           <object>objects\objAlexSnakeBlockEnd</object>
         </objects>
         <object>objects\objAlexBubble</object>
+        <object>objects\objAlexCannonWarpLaunch</object>
+        <object>objects\objAlexCannonWarp</object>
       </objects>
       <objects name="Final Boss">
         <objects name="Projectiles">
