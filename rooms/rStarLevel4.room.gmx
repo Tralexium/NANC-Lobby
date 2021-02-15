@@ -80,6 +80,11 @@
     <instance objName="objAlexSnakeBlockDirUp" x="704" y="224" name="inst_B41B8C33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexSnakeBlockEnd" x="608" y="160" name="inst_DCD7BDC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexSnakeBlockDirLeft" x="704" y="160" name="inst_2CCDBFEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="320" y="384" name="inst_17E612AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="352" y="384" name="inst_7A07FE32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="400" y="192" name="inst_7F8E243A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="368" y="192" name="inst_84E80B34" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBubble" x="416" y="320" name="inst_87B0ABD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="320" y="416" w="32" h="32" xo="32" yo="32" id="10016393" name="inst_7E3FEE59" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
