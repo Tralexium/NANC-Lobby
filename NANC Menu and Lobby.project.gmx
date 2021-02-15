@@ -519,6 +519,7 @@
         <sprite>sprites\sprAlexCannonWarpLaunch</sprite>
         <sprite>sprites\sprAlexCannonWarpExplosion</sprite>
         <sprite>sprites\sprAlexCannonWarpPart</sprite>
+        <sprite>sprites\sprAlexOrbBlock</sprite>
       </sprites>
       <sprites name="Final Boss">
         <sprites name="Projectiles">
@@ -1118,9 +1119,17 @@
           <object>objects\objAlexSnakeBlockDirDown</object>
           <object>objects\objAlexSnakeBlockEnd</object>
         </objects>
+        <objects name="Cannon Warp">
+          <object>objects\objAlexCannonWarp</object>
+          <object>objects\objAlexCannonWarpLaunch</object>
+        </objects>
+        <objects name="Orb Blocks">
+          <object>objects\objAlexOrbBlockCircle</object>
+          <object>objects\objAlexOrbBlockExpandingCircle</object>
+          <object>objects\objAlexOrbWand</object>
+          <object>objects\objAlexPlasmaOrb</object>
+        </objects>
         <object>objects\objAlexBubble</object>
-        <object>objects\objAlexCannonWarpLaunch</object>
-        <object>objects\objAlexCannonWarp</object>
       </objects>
       <objects name="Final Boss">
         <objects name="Projectiles">
