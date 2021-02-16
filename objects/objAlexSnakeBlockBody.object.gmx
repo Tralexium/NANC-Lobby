@@ -3,7 +3,7 @@
   <spriteName>sprAlexSnakeBlock</spriteName>
   <solid>-1</solid>
   <visible>-1</visible>
-  <depth>-98</depth>
+  <depth>-208</depth>
   <persistent>0</persistent>
   <parentName>objBlock</parentName>
   <maskName>&lt;undefined&gt;</maskName>

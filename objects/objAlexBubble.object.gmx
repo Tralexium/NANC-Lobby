@@ -68,10 +68,13 @@ image_speed = 0.3;
             <string>/// Release the player
 
 with(objPlayer) {
-    vspeed = 0;
+    if(vspeed &gt; 0) {
+        vspeed = 0;
+        djump = 1;
+    }
+    
     visible = true;
     frozen = false;
-    djump = 1;
 }
 
 // Visual pop effect and SFX
@@ -146,14 +149,11 @@ if(active) {
             <kind>1</kind>
             <string>/// Controls
 
+var _jump = scrButtonCheckPressed(global.jumpButton);
 var _hor = (scrButtonCheck(global.rightButton) - scrButtonCheck(global.leftButton));
 var _ver = (scrButtonCheck(global.downButton) - scrButtonCheck(global.upButton));
 
-if(active) {
-    // Check if it's expired or player is dead
-    if(t &gt;= duration || !instance_exists(objPlayer))
-        instance_destroy();
-    
+if(active) {    
     hspeed += _hor * acceleration;
     vspeed += _ver * acceleration;
     
@@ -178,6 +178,20 @@ if(active) {
     with(objPlayer) {
         x = other.x;
         y = other.y;
+    }
+    
+    // Check if it's expired or player is dead
+    if(t &gt;= duration || _jump || !instance_exists(objPlayer)) {
+        if(_jump) {
+            with(objPlayer) {
+                frozen = false;
+                djump = 0;
+                vspeed = -jump2;
+                audio_play_sound(sndDJump,0,false);
+            }
+        }
+    
+        instance_destroy();
     }
 }
 </string>
