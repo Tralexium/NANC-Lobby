@@ -520,6 +520,15 @@
         <sprite>sprites\sprAlexCannonWarpExplosion</sprite>
         <sprite>sprites\sprAlexCannonWarpPart</sprite>
         <sprite>sprites\sprAlexOrbBlock</sprite>
+        <sprite>sprites\sprAlexPandoraBoxArea</sprite>
+        <sprite>sprites\sprAlexPandoraBoxKey</sprite>
+        <sprite>sprites\sprAlexPandoraBoxIdle</sprite>
+        <sprite>sprites\sprAlexPandoraBoxActive</sprite>
+        <sprite>sprites\sprAlexPandoraBoxUnlocked</sprite>
+        <sprite>sprites\sprAlexPandoraWallPart</sprite>
+        <sprite>sprites\sprAlexPandoraBoxBorderEnter</sprite>
+        <sprite>sprites\sprAlexPandoraBoxPreExplosion</sprite>
+        <sprite>sprites\sprAlexPandoraBoxExplosion</sprite>
       </sprites>
       <sprites name="Final Boss">
         <sprites name="Projectiles">
@@ -841,6 +850,7 @@
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\sHeatHaze.shader</shader>
+    <shader type="GLSLES">shaders\sPandoraBoxHaze.shader</shader>
     <shader type="GLSLES">shaders\sSquareOutline.shader</shader>
     <shader type="GLSLES">shaders\sStarLevelBlocks.shader</shader>
     <shader type="GLSLES">shaders\sRainbowAura.shader</shader>
@@ -1126,8 +1136,13 @@
         <objects name="Orb Blocks">
           <object>objects\objAlexOrbBlockCircle</object>
           <object>objects\objAlexOrbBlockExpandingCircle</object>
-          <object>objects\objAlexOrbWand</object>
+          <object>objects\objAlexOrbBlockLine</object>
           <object>objects\objAlexPlasmaOrb</object>
+        </objects>
+        <objects name="Pandora Box">
+          <object>objects\objAlexPandoraBoxArea</object>
+          <object>objects\objAlexPandoraBoxParticles</object>
+          <object>objects\objAlexPandoraBox</object>
         </objects>
         <object>objects\objAlexBubble</object>
       </objects>

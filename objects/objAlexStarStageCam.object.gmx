@@ -133,6 +133,29 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexStarStageBG);
     instance_activate_object(objAlexObstacleRenderer);
     instance_activate_object(objBetterBlockCtrl);
+    
+    // Gimmicks
+    // Color blocks
+    instance_activate_object(objAlexColorBlock);
+    instance_activate_object(objAlexColorBlockController);
+    instance_activate_object(objAlexChangeColorBlockGlobals);
+    // Snake block
+    instance_activate_object(objAlexSnakeBlock);
+    instance_activate_object(objAlexSnakeBlockBody);
+    instance_activate_object(objAlexSnakeBlockTail);
+    instance_activate_object(objAlexSnakeBlockDir);
+    instance_activate_object(objAlexSnakeBlockEnd);
+    // Cannon warp
+    instance_activate_object(objAlexCannonWarp);
+    // Orb blocks
+    instance_activate_object(objAlexOrbBlockCircle);
+    instance_activate_object(objAlexOrbBlockExpandingCircle);
+    instance_activate_object(objAlexOrbBlockLine);
+    instance_activate_object(objAlexPlasmaOrb);
+    // Pandora box
+    instance_activate_object(objAlexPandoraBox);
+    instance_activate_object(objAlexPandoraBoxArea);
+    instance_activate_object(objAlexPandoraBoxParticles);
 }
 </string>
           </argument>
