@@ -526,6 +526,7 @@
         <sprite>sprites\sprAlexPandoraBoxActive</sprite>
         <sprite>sprites\sprAlexPandoraBoxUnlocked</sprite>
         <sprite>sprites\sprAlexPandoraWallPart</sprite>
+        <sprite>sprites\sprAlexPandoraRing</sprite>
         <sprite>sprites\sprAlexPandoraBoxBorderEnter</sprite>
         <sprite>sprites\sprAlexPandoraBoxPreExplosion</sprite>
         <sprite>sprites\sprAlexPandoraBoxExplosion</sprite>
@@ -1143,6 +1144,7 @@
           <object>objects\objAlexPandoraBoxArea</object>
           <object>objects\objAlexPandoraBoxParticles</object>
           <object>objects\objAlexPandoraBox</object>
+          <object>objects\objAlexPandoraKey</object>
         </objects>
         <object>objects\objAlexBubble</object>
       </objects>
