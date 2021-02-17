@@ -156,6 +156,9 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexPandoraBox);
     instance_activate_object(objAlexPandoraBoxArea);
     instance_activate_object(objAlexPandoraBoxParticles);
+    // Dark clones
+    instance_activate_object(objAlexDarkClone);
+    instance_activate_object(objAlexDarkCloneRenderer);
 }
 </string>
           </argument>

@@ -218,7 +218,8 @@ if(active) {
             <kind>1</kind>
             <string>/// Destroy the bubble
 
-instance_destroy();
+if(active)
+    instance_destroy();
 </string>
           </argument>
         </arguments>

@@ -530,6 +530,7 @@
         <sprite>sprites\sprAlexPandoraBoxBorderEnter</sprite>
         <sprite>sprites\sprAlexPandoraBoxPreExplosion</sprite>
         <sprite>sprites\sprAlexPandoraBoxExplosion</sprite>
+        <sprite>sprites\sprAlexDarkCloneTexture</sprite>
       </sprites>
       <sprites name="Final Boss">
         <sprites name="Projectiles">
@@ -854,6 +855,7 @@
     <shader type="GLSLES">shaders\sPandoraBoxHaze.shader</shader>
     <shader type="GLSLES">shaders\sSquareOutline.shader</shader>
     <shader type="GLSLES">shaders\sStarLevelBlocks.shader</shader>
+    <shader type="GLSLES">shaders\sDarkClone.shader</shader>
     <shader type="GLSLES">shaders\sRainbowAura.shader</shader>
     <shader type="GLSLES">shaders\sGradientHoles.shader</shader>
     <shader type="GLSLES">shaders\s3DFloor.shader</shader>
@@ -1145,6 +1147,10 @@
           <object>objects\objAlexPandoraBoxParticles</object>
           <object>objects\objAlexPandoraBox</object>
           <object>objects\objAlexPandoraKey</object>
+        </objects>
+        <objects name="Dark Clones">
+          <object>objects\objAlexDarkCloneRenderer</object>
+          <object>objects\objAlexDarkClone</object>
         </objects>
         <object>objects\objAlexBubble</object>
       </objects>
