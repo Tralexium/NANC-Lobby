@@ -531,6 +531,10 @@
         <sprite>sprites\sprAlexPandoraBoxPreExplosion</sprite>
         <sprite>sprites\sprAlexPandoraBoxExplosion</sprite>
         <sprite>sprites\sprAlexDarkCloneTexture</sprite>
+        <sprite>sprites\sprAlexDarkClonePortal</sprite>
+        <sprite>sprites\sprAlexDarkCloneSpawnArea</sprite>
+        <sprite>sprites\sprAlexDarkCloneDespawnArea</sprite>
+        <sprite>sprites\sprAlexDarkClonePart</sprite>
       </sprites>
       <sprites name="Final Boss">
         <sprites name="Projectiles">
@@ -1150,6 +1154,10 @@
         </objects>
         <objects name="Dark Clones">
           <object>objects\objAlexDarkCloneRenderer</object>
+          <object>objects\objAlexDarkCloneSpawnArea</object>
+          <object>objects\objAlexDarkCloneDespawnArea</object>
+          <object>objects\objAlexDarkClonePortal</object>
+          <object>objects\objAlexDarkClonePortalPart</object>
           <object>objects\objAlexDarkClone</object>
         </objects>
         <object>objects\objAlexBubble</object>

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-101</depth>
+  <depth>-9</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -151,7 +151,7 @@ surface_free(clone_surf);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Post process the dark clones
+            <string>/// Post process the dark clones &amp; portal
 
 if(!surface_exists(clone_surf)) {
     clone_surf = surface_create(view_wview[0], view_hview[0]);
@@ -164,6 +164,15 @@ surface_set_target(clone_surf);
         if(scrInView())
             draw_sprite_ext(sprite_index, image_index, x - view_xview[0], y - view_yview[0], image_xscale * draw_xscale, image_yscale, 0, -1, image_alpha);
     }
+    with(objAlexDarkClonePortal) {
+        if(scrInView())
+            draw_sprite_ext(sprite_index, image_index, x - view_xview[0], y - view_yview[0], image_xscale, image_yscale, 0, -1, image_alpha);
+    }
+    with(objAlexDarkClonePortalPart) {
+        if(scrInView())
+            draw_sprite_ext(sprite_index, image_index, x - view_xview[0], y - view_yview[0], image_xscale, image_yscale, 0, -1, image_alpha);
+    }
+    
 surface_reset_target();
 
 shader_t++;

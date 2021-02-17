@@ -89,7 +89,7 @@ var life_normal = life/max_life;
 ++t;
 
 // Colour
-if(start_col != c_white &amp;&amp; end_col != c_white) {
+if(end_col != c_white) {
     image_blend = merge_colour(end_col, start_col, life_normal);
 } else if(start_col != c_white){
     image_blend = start_col;
