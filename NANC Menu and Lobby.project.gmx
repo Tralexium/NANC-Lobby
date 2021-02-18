@@ -536,6 +536,15 @@
         <sprite>sprites\sprAlexDarkCloneDespawnArea</sprite>
         <sprite>sprites\sprAlexDarkClonePart</sprite>
         <sprite>sprites\sprAlexVoidBlock</sprite>
+        <sprite>sprites\sprAlexEyeSentryClosed</sprite>
+        <sprite>sprites\sprAlexEyeSentryOpening</sprite>
+        <sprite>sprites\sprAlexEyeSentryOpen</sprite>
+        <sprite>sprites\sprAlexEyeSentryClosing</sprite>
+        <sprite>sprites\sprAlexEyeSentryPupil</sprite>
+        <sprite>sprites\sprAlexEyeSentryPupilAlerted</sprite>
+        <sprite>sprites\sprAlexEyeSentrySpotlight</sprite>
+        <sprite>sprites\sprAlexEyeSentryEnable</sprite>
+        <sprite>sprites\sprAlexEyeSentryDisable</sprite>
       </sprites>
       <sprites name="Final Boss">
         <sprites name="Projectiles">
@@ -1160,6 +1169,11 @@
           <object>objects\objAlexDarkClonePortal</object>
           <object>objects\objAlexDarkClonePortalPart</object>
           <object>objects\objAlexDarkClone</object>
+        </objects>
+        <objects name="Eye Sentry">
+          <object>objects\objAlexEyeSentryEnable</object>
+          <object>objects\objAlexEyeSentryDisable</object>
+          <object>objects\objAlexEyeSentry</object>
         </objects>
         <object>objects\objAlexBubble</object>
         <object>objects\objAlexVoidBlock</object>

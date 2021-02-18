@@ -163,6 +163,10 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexDarkClonePortal);
     instance_activate_object(objAlexDarkClonePortalPart);
     instance_activate_object(objAlexDarkCloneRenderer);
+    // Eye Sentry
+    instance_activate_object(objAlexEyeSentry);
+    instance_activate_object(objAlexEyeSentryEnable);
+    instance_activate_object(objAlexEyeSentryDisable);
 }
 </string>
           </argument>
