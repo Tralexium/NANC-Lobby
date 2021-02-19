@@ -47,6 +47,33 @@ image_speed = 0.3;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Propelor Block related vars
+
+wind_accel_x = 0;
+wind_accel_y = 0;
+wind_max_accel_x = 5;
+wind_max_accel_y = 5;
+wind_decel = 0.5;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -126,6 +153,47 @@ if(active) {
     else if(t &gt; duration-100 &amp;&amp; t mod 7 == 0) {
         image_alpha *= -1;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Propelor block wind acceleration
+
+if(place_meeting(x+wind_accel_x, y, objBlock) || place_meeting(x+wind_accel_x, y, objBetterBlock))
+    wind_accel_x = 0;
+if(place_meeting(x, y+wind_accel_y, objBlock) || place_meeting(x, y+wind_accel_y, objBetterBlock))
+    wind_accel_y = 0;
+
+hspeed = clamp(hspeed + wind_accel_x, -wind_max_accel_x, wind_max_accel_x);
+vspeed = clamp(vspeed + wind_accel_y, -wind_max_accel_y, wind_max_accel_y);
+
+if(!place_meeting(x, y, objAlexPropelorBlockWindArea) &amp;&amp; (wind_accel_x != 0 || wind_accel_y != 0)) {
+    if(wind_accel_x &gt; 0)
+        wind_accel_x = max(wind_accel_x - wind_decel, 0);
+    else if(wind_accel_x &lt; 0)
+        wind_accel_x = min(wind_accel_x + wind_decel, 0);
+    
+    if(wind_accel_y &gt; 0)
+        wind_accel_y = max(wind_accel_y - wind_decel, 0);
+    else if(wind_accel_y &lt; 0)
+        wind_accel_y = min(wind_accel_y + wind_decel, 0);
 }
 </string>
           </argument>

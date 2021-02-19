@@ -42,7 +42,7 @@
             <string>/// Change the wind direction &amp; power
 
 wind_dir = 270;
-wind_pow = 0.025;
+wind_pow = 0.075;
 </string>
           </argument>
         </arguments>
