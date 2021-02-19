@@ -496,6 +496,12 @@
         </sprites>
       </sprites>
       <sprites name="Final Stage">
+        <sprite>sprites\sprAlexActivateBeamSpawner</sprite>
+        <sprite>sprites\sprAlexDeactivateBeamSpawner</sprite>
+        <sprite>sprites\sprAlexActivateCircleSpawner</sprite>
+        <sprite>sprites\sprAlexDeactivateCircleSpawner</sprite>
+        <sprite>sprites\sprAlexActivateOrbSpawner</sprite>
+        <sprite>sprites\sprAlexDeactivateOrbSpawner</sprite>
         <sprite>sprites\sprAlexChangeColorBlockMaxID</sprite>
         <sprite>sprites\sprAlexColorBlockRed</sprite>
         <sprite>sprites\sprAlexColorBlockBlue</sprite>
@@ -1191,6 +1197,16 @@
           <object>objects\objAlexPropelorBlockRight</object>
           <object>objects\objAlexPropelorBlockKillerPart</object>
           <object>objects\objAlexPropelorBlockPart</object>
+        </objects>
+        <objects name="Beam Obstacle">
+          <object>objects\objAlexActivateBeamSpawner</object>
+          <object>objects\objAlexDeactivateBeamSpawner</object>
+          <object>objects\objAlexBeamSpawner</object>
+        </objects>
+        <objects name="Circle Obstacle">
+          <object>objects\objAlexActivateCircleSpawner</object>
+          <object>objects\objAlexDeactivateCircleSpawner</object>
+          <object>objects\objAlexCircleSpawner</object>
         </objects>
         <object>objects\objAlexBubble</object>
         <object>objects\objAlexVoidBlock</object>

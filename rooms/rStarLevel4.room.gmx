@@ -74,9 +74,6 @@
     <instance objName="objAlexPandoraBox" x="1168" y="304" name="inst_62D4F41E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPandoraBoxArea" x="1152" y="288" name="inst_7527BFB4" locked="0" code="" scaleX="14" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPandoraKey" x="1328" y="224" name="inst_4772F275" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexDarkCloneSpawnArea" x="320" y="320" name="inst_00F164B4" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexDarkCloneDespawnArea" x="576" y="320" name="inst_58ED31CD" locked="0" code="" scaleX="1" scaleY="3.09677410125732" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexDarkClonePortal" x="464" y="320" name="inst_740A2900" locked="0" code="clone_amnt = 3;&#xA;clone_scale = 2;&#xA;clone_initial_delay = 60;  // Min is 30!&#xA;clone_seperation = 30;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexVoidBlock" x="608" y="416" name="inst_2766C96E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexVoidBlock" x="640" y="416" name="inst_1718EBBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexVoidBlock" x="672" y="416" name="inst_A0EAE79F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

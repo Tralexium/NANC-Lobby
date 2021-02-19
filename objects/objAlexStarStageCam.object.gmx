@@ -167,6 +167,14 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexEyeSentry);
     instance_activate_object(objAlexEyeSentryEnable);
     instance_activate_object(objAlexEyeSentryDisable);
+    // Beam Obstacle
+    instance_activate_object(objAlexBeamSpawner);
+    instance_activate_object(objAlexActivateBeamSpawner);
+    instance_activate_object(objAlexDeactivateBeamSpawner);
+    // Circle Obstacle
+    instance_activate_object(objAlexCircleSpawner);
+    instance_activate_object(objAlexActivateCircleSpawner);
+    instance_activate_object(objAlexDeactivateCircleSpawner);
 }
 </string>
           </argument>

@@ -77,6 +77,7 @@ for(var i=0; i&lt;orb_amnt; i++) {
     var _y = lengthdir_y(rad, _dir);
     orb[i] = scrFBPFadeOrb(_x, _y, orb_size);
     orb[i].destroy_when_outside = false;
+    orb[i].depth = depth;
 }
 
 rad = start_rad;
