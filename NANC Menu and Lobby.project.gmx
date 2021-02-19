@@ -545,6 +545,13 @@
         <sprite>sprites\sprAlexEyeSentrySpotlight</sprite>
         <sprite>sprites\sprAlexEyeSentryEnable</sprite>
         <sprite>sprites\sprAlexEyeSentryDisable</sprite>
+        <sprite>sprites\sprAlexPropelorBlockUp</sprite>
+        <sprite>sprites\sprAlexPropelorBlockDown</sprite>
+        <sprite>sprites\sprAlexPropelorBlockLeft</sprite>
+        <sprite>sprites\sprAlexPropelorBlockRight</sprite>
+        <sprite>sprites\sprAlexPropelorBlockKillerPart</sprite>
+        <sprite>sprites\sprAlexPropelorBlockWindPart</sprite>
+        <sprite>sprites\sprAlexPropelorBlockWindPartDespawn</sprite>
       </sprites>
       <sprites name="Final Boss">
         <sprites name="Projectiles">
@@ -1174,6 +1181,16 @@
           <object>objects\objAlexEyeSentryEnable</object>
           <object>objects\objAlexEyeSentryDisable</object>
           <object>objects\objAlexEyeSentry</object>
+        </objects>
+        <objects name="Propelor Block">
+          <object>objects\objAlexPropelorBlockWindArea</object>
+          <object>objects\objAlexPropelorBlock</object>
+          <object>objects\objAlexPropelorBlockUp</object>
+          <object>objects\objAlexPropelorBlockDown</object>
+          <object>objects\objAlexPropelorBlockLeft</object>
+          <object>objects\objAlexPropelorBlockRight</object>
+          <object>objects\objAlexPropelorBlockKillerPart</object>
+          <object>objects\objAlexPropelorBlockPart</object>
         </objects>
         <object>objects\objAlexBubble</object>
         <object>objects\objAlexVoidBlock</object>

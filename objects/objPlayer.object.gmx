@@ -101,6 +101,33 @@ pet_follow_speed = 0.1;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// init Alex propelor block vars
+
+alex_wind_accel_x = 0;
+alex_wind_accel_y = 0;
+alex_wind_max_accel_x = maxVspeed;
+alex_wind_max_accel_y = maxVspeed;
+alex_wind_decel = 0.5;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Better Block
 
 
@@ -636,6 +663,47 @@ if (instance_exists(objSlope) &amp;&amp; hspeed != 0)
     //set xprevious/yprevious coordinates for future solid collisions
     xprevious = x;
     yprevious = y;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Alex propelor block wind acceleration
+
+if(place_meeting(x+sign(alex_wind_accel_x), y, objBlock) || place_meeting(x+sign(alex_wind_accel_x), y, objBetterBlock))
+    alex_wind_accel_x = 0;
+if(place_meeting(x, y+sign(alex_wind_accel_y), objBlock) || place_meeting(x, y+sign(alex_wind_accel_y), objBetterBlock))
+    alex_wind_accel_y = 0;
+
+hspeed = clamp(hspeed + alex_wind_accel_x, -alex_wind_max_accel_x, alex_wind_max_accel_x);
+vspeed = clamp(vspeed + alex_wind_accel_y, -alex_wind_max_accel_y, alex_wind_max_accel_y);
+
+if(!place_meeting(x, y, objAlexPropelorBlockWindArea) &amp;&amp; (alex_wind_accel_x != 0 || alex_wind_accel_y != 0)) {
+    if(alex_wind_accel_x &gt; 0)
+        alex_wind_accel_x = max(alex_wind_accel_x - alex_wind_decel, 0);
+    else if(alex_wind_accel_x &lt; 0)
+        alex_wind_accel_x = min(alex_wind_accel_x + alex_wind_decel, 0);
+    
+    if(alex_wind_accel_y &gt; 0)
+        alex_wind_accel_y = max(alex_wind_accel_y - alex_wind_decel, 0);
+    else if(alex_wind_accel_y &lt; 0)
+        alex_wind_accel_y = min(alex_wind_accel_y + alex_wind_decel, 0);
 }
 </string>
           </argument>
