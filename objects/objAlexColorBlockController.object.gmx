@@ -91,6 +91,24 @@ if(global.player_on_block) {
     }
     
     if(!_is_player_on_block) {
+        switch(global.current_color_id) {
+            case 0:
+                audio_play_sound(sndAlexColorBlockRed, 0, false);
+                break;
+                
+            case 1:
+                audio_play_sound(sndAlexColorBlockBlue, 0, false);
+                break;
+                
+            case 2:
+                audio_play_sound(sndAlexColorBlockGreen, 0, false);
+                break;
+                
+            case 3:
+                audio_play_sound(sndAlexColorBlockYellow, 0, false);
+                break;
+        }
+    
         global.current_color_id++;
         if(global.current_color_id &gt; global.max_colod_id)
             global.current_color_id = 0;
@@ -100,8 +118,6 @@ if(global.player_on_block) {
             global.next_color_id = 0;
         
         global.player_on_block = false;
-        
-        // Play sfx for activating the next color block
     }
 }
 </string>

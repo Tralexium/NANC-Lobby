@@ -202,6 +202,39 @@
           <sound>sound\sndAlexFBLevelUp</sound>
           <sound>sound\sndAlexFBLand</sound>
         </sounds>
+        <sounds name="Final Stage Gimmicks">
+          <sound>sound\sndAlexBubbleIn</sound>
+          <sound>sound\sndAlexBubblePop</sound>
+          <sound>sound\sndAlexBubbleBounce</sound>
+          <sound>sound\sndAlexCannonWarpIn</sound>
+          <sound>sound\sndAlexCannonWarpLaunch</sound>
+          <sound>sound\sndAlexCannonWarpImpact</sound>
+          <sound>sound\sndAlexColorBlockLand</sound>
+          <sound>sound\sndAlexColorBlockRed</sound>
+          <sound>sound\sndAlexColorBlockBlue</sound>
+          <sound>sound\sndAlexColorBlockGreen</sound>
+          <sound>sound\sndAlexColorBlockYellow</sound>
+          <sound>sound\sndAlexOrbBlockNoise</sound>
+          <sound>sound\sndAlexPropelorBlockNoise</sound>
+          <sound>sound\sndAlexPandoraBoxKey</sound>
+          <sound>sound\sndAlexPandoraBoxInsertingKey</sound>
+          <sound>sound\sndAlexPandoraBoxPreExplosion</sound>
+          <sound>sound\sndAlexPandoraBoxExplosion</sound>
+          <sound>sound\sndAlexPandoraBoxWrap</sound>
+          <sound>sound\sndAlexEyeSentryOpen</sound>
+          <sound>sound\sndAlexEyeSentryClose</sound>
+          <sound>sound\sndAlexEyeSentryLook</sound>
+          <sound>sound\sndAlexEyeSentryResetPupil</sound>
+          <sound>sound\sndAlexEyeSentrySpotted</sound>
+          <sound>sound\sndAlexDarkCloneWarpExpand</sound>
+          <sound>sound\sndAlexDarkCloneWarpShrink</sound>
+          <sound>sound\sndAlexDarkCloneSpawn</sound>
+          <sound>sound\sndAlexDarkCloneDespawn</sound>
+          <sound>sound\sndAlexSnakeBlockStart</sound>
+          <sound>sound\sndAlexSnakeBlockMove</sound>
+          <sound>sound\sndAlexSnakeBlockShake</sound>
+          <sound>sound\sndAlexSnakeBlockShrink</sound>
+        </sounds>
         <sound>sound\sndAlexSaveBlocker</sound>
         <sound>sound\sndAlexSaveGreen</sound>
         <sound>sound\sndAlexSaveRed</sound>
@@ -807,6 +840,7 @@
       <script>scripts\scrDrawTextOutline.gml</script>
       <script>scripts\scrMakeShapes.gml</script>
       <script>scripts\scrMakeCircle.gml</script>
+      <script>scripts\scrInverseLerp.gml</script>
     </scripts>
     <scripts name="BetterBlock">
       <script>scripts\scrIsBlock.gml</script>
@@ -1164,6 +1198,7 @@
           <object>objects\objAlexCannonWarpLaunch</object>
         </objects>
         <objects name="Orb Blocks">
+          <object>objects\objAlexOrbBlock</object>
           <object>objects\objAlexOrbBlockCircle</object>
           <object>objects\objAlexOrbBlockExpandingCircle</object>
           <object>objects\objAlexOrbBlockLine</object>

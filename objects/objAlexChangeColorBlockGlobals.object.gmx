@@ -29,7 +29,7 @@
 
 // Change in creation code (max ID is 3)
 start_id = 0;
-new_max = 1;
+new_max = 3;
 </string>
           </argument>
         </arguments>

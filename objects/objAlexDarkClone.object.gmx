@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Init enum &amp; vars
+            <string>/// Init vars
 
 recorded_data = ds_queue_create()
 
@@ -75,6 +75,9 @@ if(t &gt; initial_delay) {
             _part.image_yscale = scale;
             _part.add_scale = -scale/30;
     }
+    
+    audio_stop_sound(sndAlexDarkCloneDespawn);
+    audio_play_sound(sndAlexDarkCloneDespawn, 0, false);
 }
 </string>
           </argument>
@@ -148,6 +151,9 @@ if(instance_exists(objPlayer)) {
             _part.depth = depth + 1;
             _part.start_col = c_black;
     } else if(t &gt; initial_delay - 30) {
+        if(t == initial_delay - 29)
+            audio_play_sound(sndAlexDarkCloneSpawn, 0, false);
+    
         var _anim_val = clamp(t - (initial_delay - 31), 0, 30);
         
         image_alpha = scrAlexEaseOutSine(_anim_val, 0, 1, 30);

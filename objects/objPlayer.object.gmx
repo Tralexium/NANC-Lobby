@@ -709,6 +709,47 @@ if(!place_meeting(x, y, objAlexPropelorBlockWindArea) &amp;&amp; (alex_wind_acce
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Control the volume for propelor blocks and orb blocks
+
+if(instance_exists(objAlexPropelorBlock)) {
+    var _propelor_block_range = 200;
+    var _propelor_block_vol = scrInverseLerp(_propelor_block_range, 0, min(distance_to_object(objAlexPropelorBlock), _propelor_block_range));
+    
+    audio_sound_gain(sndAlexPropelorBlockNoise, _propelor_block_vol, 0);
+    
+    if(!audio_is_playing(sndAlexPropelorBlockNoise))
+        audio_play_sound(sndAlexPropelorBlockNoise, 0, true);
+}
+
+if(instance_exists(objAlexOrbBlock)) {
+    var _orb_block_range = 150;
+    var _orb_block_vol = scrInverseLerp(_orb_block_range, 0, min(distance_to_object(objAlexOrbBlock), _orb_block_range));
+    
+    audio_sound_gain(sndAlexOrbBlockNoise, _orb_block_vol, 0);
+    
+    if(!audio_is_playing(sndAlexOrbBlockNoise))
+        audio_play_sound(sndAlexOrbBlockNoise, 0, true);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="objPlayerKiller">
       <action>
@@ -873,6 +914,32 @@ if (!place_free(x,y+vspeed))
 }
 
 if (!place_free(x+hspeed,y+vspeed)) {hspeed = 0;}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stop the propellor and orb block sounds
+
+audio_stop_sound(sndAlexPropelorBlockNoise);
+audio_stop_sound(sndAlexOrbBlockNoise);
 </string>
           </argument>
         </arguments>

@@ -94,7 +94,7 @@ if(place_meeting(x, y-1, objPlayer) &amp;&amp; !global.player_on_block) {
             glow_alpha = 1;
     }
     
-    // Play sfx for touching the block
+    audio_play_sound(sndAlexColorBlockLand, 0, false);
 }
 </string>
           </argument>

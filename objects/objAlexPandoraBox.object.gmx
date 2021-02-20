@@ -170,6 +170,7 @@ if(active &amp;&amp; !unlocked) {
                 _part.depth = depth - 1;
                 _part.image_angle = 180;
                 _part.blend_mode = bm_add;
+            audio_play_sound(sndAlexPandoraBoxWrap, 0, false);
         }
         // Right side
         if(x &gt;= other.area_x2) {
@@ -181,6 +182,7 @@ if(active &amp;&amp; !unlocked) {
             var _part = scrAlexMakeParticle(x, y, 30, sprAlexPandoraBoxBorderEnter, 0.499, 0, 0, false, false, false);
                 _part.depth = depth - 1;
                 _part.blend_mode = bm_add;
+            audio_play_sound(sndAlexPandoraBoxWrap, 0, false);
         }
         // Top side
         if(y &lt;= other.area_y1) {
@@ -193,6 +195,7 @@ if(active &amp;&amp; !unlocked) {
                 _part.depth = depth - 1;
                 _part.image_angle = 90;
                 _part.blend_mode = bm_add;
+            audio_play_sound(sndAlexPandoraBoxWrap, 0, false);
         }
         // Bottom side
         if(y &gt;= other.area_y2) {
@@ -205,6 +208,7 @@ if(active &amp;&amp; !unlocked) {
                 _part.depth = depth - 1;
                 _part.image_angle = -90;
                 _part.blend_mode = bm_add;
+            audio_play_sound(sndAlexPandoraBoxWrap, 0, false);
         }
     }
 }
@@ -237,6 +241,8 @@ if(explode) {
     
     if(image_xscale &lt;= 0) {
         scrAlexMakeParticle(x, y, 20, sprAlexPandoraBoxExplosion, 0.49, 0, 0, false, false, false);
+        audio_stop_sound(sndAlexPandoraBoxPreExplosion);
+        audio_play_sound(sndAlexPandoraBoxExplosion, 0, false);
         instance_destroy();
     }
 }

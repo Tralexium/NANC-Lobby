@@ -105,6 +105,8 @@ if(active) {
                     _clone.initial_clone_x = initial_clone_x;
                     _clone.initial_clone_y = initial_clone_y;
             }
+            
+            audio_play_sound(sndAlexDarkCloneWarpExpand, 0, false);
         } else {
             instance_destroy();
         }
@@ -121,6 +123,8 @@ if(active) {
     if(t &gt;= clone_initial_delay + (clone_seperation * clone_amnt)) {
         collapse = true;
         t = anim_dur;
+        
+        audio_play_sound(sndAlexDarkCloneWarpShrink, 0, false);
     }
 }
 </string>

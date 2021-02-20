@@ -118,6 +118,8 @@ if(inserted) {
             _pandora_box.unlocked = true;
             _pandora_box.image_index = 0;
             instance_destroy();
+            
+            audio_play_sound(sndAlexPandoraBoxPreExplosion, 0, false);
         }
     }
 }
@@ -126,8 +128,10 @@ else if(collected) {
         other.target_x = x;
         other.target_y = y - 32;
         
-        if(distance_to_object(objAlexPandoraBox) &lt;= other.dist_from_box)
+        if(distance_to_object(objAlexPandoraBox) &lt;= other.dist_from_box) {
             other.inserted = true;
+            audio_play_sound(sndAlexPandoraBoxInsertingKey, 0, false);    
+        }
     }
     
     if(!instance_exists(objPlayer)) {
@@ -164,6 +168,8 @@ y = lerp(y, target_y, 0.15);
 
 if(!collected) {
     collected = true;
+    
+    audio_play_sound(sndAlexPandoraBoxKey, 0, false);
 }
 </string>
           </argument>

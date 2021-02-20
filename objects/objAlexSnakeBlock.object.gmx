@@ -76,6 +76,8 @@ image_speed = 0;
 
 shrink = true;
 instance_destroy(better_block_id);
+audio_stop_sound(sndAlexSnakeBlockShake);
+audio_play_sound(sndAlexSnakeBlockShrink, 0, false);
 </string>
           </argument>
         </arguments>
@@ -102,6 +104,8 @@ instance_destroy(better_block_id);
 
 if(place_meeting(x, y-1, objPlayer) &amp;&amp; !active) {
     active = true;
+    audio_play_sound(sndAlexSnakeBlockStart, 0, false);
+    audio_play_sound(sndAlexSnakeBlockMove, 0, true);
 }
 </string>
           </argument>
@@ -197,6 +201,9 @@ if(block_traveled) {
         end_reached = true;
         alarm[0] = shake_dur;
         
+        audio_stop_sound(sndAlexSnakeBlockMove);
+        audio_play_sound(sndAlexSnakeBlockShake, 0, false);
+        
         with(objAlexSnakeBlockBody) {
             if(snake_id == other.snake_id) {
                 end_reached = true;
@@ -288,6 +295,29 @@ with(tail) {
     better_block_id.image_xscale = scale;
     better_block_id.image_yscale = scale;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stop the move sound in case it's still playing
+
+audio_stop_sound(sndAlexSnakeBlockMove);
 </string>
           </argument>
         </arguments>

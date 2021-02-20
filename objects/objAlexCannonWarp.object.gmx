@@ -146,6 +146,10 @@ if(in_use) {
     if(_ver == -1)
         line_target_angle = 90;
         
+    if(_hor != 0 || _ver != 0) {
+        audio_play_sound(sndAlexMenuSwitchOption, 0, false);
+    }
+        
     // Launch the player
     if(_action_key) {
         in_use = false;
@@ -193,6 +197,8 @@ if(!in_use &amp;&amp; cooldown_t == 0) {
     t = 0;
     spiral_rotate_spd = -20;
     spiral_target_spd = -10;
+    
+    audio_play_sound(sndAlexCannonWarpIn, 0, false);
     
     // In case it collided with a warp launch
     with(objAlexCannonWarpLaunch) {
