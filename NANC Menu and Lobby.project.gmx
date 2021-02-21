@@ -216,11 +216,16 @@
           <sound>sound\sndAlexColorBlockYellow</sound>
           <sound>sound\sndAlexOrbBlockNoise</sound>
           <sound>sound\sndAlexPropelorBlockNoise</sound>
+          <sound>sound\sndAlexPandoraBoxActivate</sound>
+          <sound>sound\sndAlexPandoraBoxAmbience</sound>
           <sound>sound\sndAlexPandoraBoxKey</sound>
           <sound>sound\sndAlexPandoraBoxInsertingKey</sound>
           <sound>sound\sndAlexPandoraBoxPreExplosion</sound>
           <sound>sound\sndAlexPandoraBoxExplosion</sound>
           <sound>sound\sndAlexPandoraBoxWrap</sound>
+          <sound>sound\sndAlexPandoraBoxPlayerJump</sound>
+          <sound>sound\sndAlexPandoraBoxPlayerDJump</sound>
+          <sound>sound\sndAlexPandoraBoxPlayerShoot</sound>
           <sound>sound\sndAlexEyeSentryOpen</sound>
           <sound>sound\sndAlexEyeSentryClose</sound>
           <sound>sound\sndAlexEyeSentryLook</sound>

@@ -120,6 +120,8 @@ if(inserted) {
             instance_destroy();
             
             audio_play_sound(sndAlexPandoraBoxPreExplosion, 0, false);
+            audio_sound_gain(sndAlexPandoraBoxAmbience, 0, 1000);
+            audio_sound_gain(global.currentMusic, 1, 1000);
         }
     }
 }

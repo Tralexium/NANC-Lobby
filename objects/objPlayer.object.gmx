@@ -738,7 +738,7 @@ if(instance_exists(objAlexPropelorBlock)) {
 }
 
 if(instance_exists(objAlexOrbBlock)) {
-    var _orb_block_range = 150;
+    var _orb_block_range = 200;
     var _orb_block_vol = scrInverseLerp(_orb_block_range, 0, min(distance_to_object(objAlexOrbBlock), _orb_block_range));
     
     audio_sound_gain(sndAlexOrbBlockNoise, _orb_block_vol, 0);
