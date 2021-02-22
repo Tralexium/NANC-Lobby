@@ -35,6 +35,8 @@ initial_clone_x = x;
 initial_clone_y = y;
 initial_delay = 100;
 draw_xscale = 1;
+previous_sprite = sprite_index;
+airborne_time = 0;
 
 image_alpha = 0;
 image_speed = 0.2;
@@ -175,6 +177,57 @@ if(instance_exists(objPlayer)) {
 var _x_dif = sign(x - xprevious);
 if(_x_dif != 0)
     draw_xscale = _x_dif;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Shake the camera when landing
+
+var _min_air_time = 5;
+var _max_air_time = 20;
+
+if(scale &gt; 2 &amp;&amp; t &gt; initial_delay) {
+    if(sprite_index == sprPlayerFall)
+        airborne_time = min(airborne_time+1, _max_air_time);
+        
+    if(sprite_index == sprPlayerJump)
+        airborne_time = 0;
+
+    if(airborne_time &gt; _min_air_time &amp;&amp; previous_sprite == sprPlayerFall &amp;&amp; (sprite_index == sprPlayerRunning || sprite_index == sprPlayerIdle)) {
+        var _val = scrInverseLerp(_min_air_time, _max_air_time, airborne_time);
+        show_debug_message(_val)
+        var _shake_amnt = _val*10;
+        scrAlexShakeCam(15, 0, _shake_amnt, 0, 3);
+        
+        audio_sound_gain(sndAlexDarkCloneStomp, _val, 0);
+        audio_play_sound(sndAlexDarkCloneStomp, 0, false);
+        
+        if(airborne_time &gt;= _max_air_time &amp;&amp; (place_meeting(x, y+1, objBlock) || place_meeting(x, y+1, objBetterBlock))) {
+            audio_play_sound(sndAlexFBBlackOrbExplosion, 0, false);
+            scrFBPShockwave(x, y, 256, 20, 1);
+        }
+        
+        airborne_time = 0;
+    }
+    
+    previous_sprite = sprite_index;
+}
 </string>
           </argument>
         </arguments>

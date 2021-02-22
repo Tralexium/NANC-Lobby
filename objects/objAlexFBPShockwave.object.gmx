@@ -37,11 +37,11 @@ t = 0;
 
 // Make sure it's above the floor
 if(place_meeting(x, y, objBlock)) {
-    while(place_meeting(x, y, objBlock)) {
+    while(place_meeting(x, y, objBlock) || place_meeting(x, y, objBetterBlock)) {
         y--;
     }
 } else {
-    while(!place_meeting(x, y, objBlock)) {
+    while(!place_meeting(x, y, objBlock) &amp;&amp; !place_meeting(x, y, objBetterBlock)) {
         y++;
     }
 }
@@ -82,6 +82,10 @@ if(t &lt; travel_dur) {
         _part.blend_mode = bm_add;
         _part.start_col = c_fuchsia;
         _part.add_scale = -0.1;
+        
+    if(!place_meeting(x + (sprite_width/2), y+1, objBlock) &amp;&amp;
+       !place_meeting(x + (sprite_width/2), y+1, objBetterBlock))
+        t = travel_dur;
 } else {
     image_xscale = lerp(image_xscale, 0, 0.35);
     image_yscale = abs(image_xscale);

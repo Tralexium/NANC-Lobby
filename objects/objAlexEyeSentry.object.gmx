@@ -127,6 +127,7 @@ if(active &amp;&amp; instance_exists(objPlayer)) {
             if(charge_t == charge_dur) {
                   scrKillPlayer();
                   scrAlexMakeParticleExt(spotlight_x, spotlight_y, 10, sprAlexEyeSentrySpotlight, 0, image_speed, 0, 0, 0, 0, -1, -1, bm_add, false, true, 0, depth+1, false);
+                  instance_create(0, 0, objAlexScreenPulseEffect);
                   pupil_sprite = sprAlexEyeSentryPupil;
             }
         } else if(look_t mod look_dur == 0 &amp;&amp; look_t &lt; open_time) {

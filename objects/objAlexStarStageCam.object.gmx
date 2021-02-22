@@ -41,6 +41,13 @@ lock_x = -1;
 lock_y = -1;
 disable_objects = true;
 
+shake_t = 0;
+shake_dur = 0;  // How long the shake lasts for
+shake_x_dist = 0;
+shake_y_dist = 0;
+shake_x_repeats = 1;  // each decimal is equal to one full sine movement
+shake_y_repeats = 1;
+
 opt_previous_x = view_xview[0];
 opt_previous_y = view_yview[0];
 </string>
@@ -85,6 +92,37 @@ if (instance_exists(target_obj))
     
     view_xview[0] = lerp(view_xview[0], target_x, snapSpd);
     view_yview[0] = lerp(view_yview[0], target_y, snapSpd);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Shake the camera
+
+if(shake_t &lt; shake_dur) {
+    shake_t = min(shake_t + 1, shake_dur);
+    var _shake_x_theta = (shake_t / shake_dur) * (360 * shake_x_repeats);
+    var _shake_y_theta = (shake_t / shake_dur) * (360 * shake_y_repeats);
+    var _shake_power = 1 - shake_t / shake_dur;
+    
+    view_xview[0] += dcos(_shake_x_theta) * (shake_x_dist * _shake_power);
+    view_yview[0] += dcos(_shake_y_theta) * (shake_y_dist * _shake_power);
 }
 </string>
           </argument>

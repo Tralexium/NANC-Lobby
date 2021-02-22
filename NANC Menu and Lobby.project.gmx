@@ -235,6 +235,7 @@
           <sound>sound\sndAlexDarkCloneWarpShrink</sound>
           <sound>sound\sndAlexDarkCloneSpawn</sound>
           <sound>sound\sndAlexDarkCloneDespawn</sound>
+          <sound>sound\sndAlexDarkCloneStomp</sound>
           <sound>sound\sndAlexSnakeBlockStart</sound>
           <sound>sound\sndAlexSnakeBlockMove</sound>
           <sound>sound\sndAlexSnakeBlockShake</sound>
@@ -922,6 +923,7 @@
       <script>scripts\scrAlexDrawPieTex.gml</script>
       <script>scripts\scrAlexDrawPieTexExt.gml</script>
       <script>scripts\scrAlexDrawSegmentBar.gml</script>
+      <script>scripts\scrAlexShakeCam.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
