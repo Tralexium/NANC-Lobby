@@ -3,8 +3,8 @@
   <caption></caption>
   <width>2400</width>
   <height>960</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -149,6 +149,18 @@
     <instance objName="objAlexColorBlockYellow" x="224" y="128" name="inst_947FBAAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockYellow" x="256" y="128" name="inst_9FC14CE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockYellow" x="288" y="128" name="inst_07E3BFA8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexEye" x="736" y="384" name="inst_9DD7AABF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexEye" x="480" y="480" name="inst_6DEA0D76" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexEyeBlock" x="848" y="368" name="inst_02C7C099" locked="0" code="num = 0;  // Scans for eyes with this number&#xA;target = 2;  // How many eyes need to be destroyed to unlock&#xA;" scaleX="2.5" scaleY="2.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexFSPathPlatform" x="688" y="128" name="inst_A9CFD4BB" locked="0" code="spd = 2;&#xA;dir = 90;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexFSPathPlatform" x="816" y="128" name="inst_3FE98C1C" locked="0" code="spd = 2;&#xA;dir = -90;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPlatformArrowRight" x="688" y="64" name="inst_F815A367" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPlatformArrowDown" x="816" y="64" name="inst_B9F3F532" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPlatformArrowLeft" x="816" y="192" name="inst_4C9BC916" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPlatformArrowUp" x="688" y="192" name="inst_389A3C67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPlatformSpawner" x="816" y="752" name="inst_30299FB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPlatformKiller" x="1216" y="752" name="inst_B4D88E41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPlatformWheel" x="1376" y="832" name="inst_800557DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="320" y="416" w="32" h="32" xo="32" yo="32" id="10016393" name="inst_7E3FEE59" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

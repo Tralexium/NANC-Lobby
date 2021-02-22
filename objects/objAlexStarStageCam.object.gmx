@@ -135,6 +135,13 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objBetterBlockCtrl);
     
     // Gimmicks
+    // Platforms
+    instance_activate_object(objAlexPlatformWheel);
+    instance_activate_object(objAlexPlatformArrow);
+    instance_activate_object(objAlexPlatformSpawner);
+    instance_activate_object(objAlexPlatformKiller);
+    instance_activate_object(objAlexFSPlatform);
+    instance_activate_object(objAlexFSPathPlatform);
     // Color blocks
     instance_activate_object(objAlexColorBlock);
     instance_activate_object(objAlexColorBlockController);

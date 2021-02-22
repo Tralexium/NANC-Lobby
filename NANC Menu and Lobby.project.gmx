@@ -239,6 +239,7 @@
           <sound>sound\sndAlexSnakeBlockMove</sound>
           <sound>sound\sndAlexSnakeBlockShake</sound>
           <sound>sound\sndAlexSnakeBlockShrink</sound>
+          <sound>sound\sndAlexEyeBlockUnlocked</sound>
         </sounds>
         <sound>sound\sndAlexSaveBlocker</sound>
         <sound>sound\sndAlexSaveGreen</sound>
@@ -551,10 +552,17 @@
         <sprite>sprites\sprAlexSnakeBlockDirUp</sprite>
         <sprite>sprites\sprAlexSnakeBlockDirDown</sprite>
         <sprite>sprites\sprAlexSnakeBlockEnd</sprite>
-        <sprite>sprites\sprAlexBeatBlockPink</sprite>
-        <sprite>sprites\sprAlexBeatBlockPurple</sprite>
-        <sprite>sprites\sprAlexBeatBlockPinkInactive</sprite>
-        <sprite>sprites\sprAlexBeatBlockPurpleInactive</sprite>
+        <sprite>sprites\sprAlexEyeBlock</sprite>
+        <sprite>sprites\sprAlexSmallPlatform</sprite>
+        <sprite>sprites\sprAlexLongPlatform</sprite>
+        <sprite>sprites\sprAlexPlatformSpawner</sprite>
+        <sprite>sprites\sprAlexPlatformKiller</sprite>
+        <sprite>sprites\sprAlexPlatformPathDot</sprite>
+        <sprite>sprites\sprAlexPlatformPivotPoint</sprite>
+        <sprite>sprites\sprAlexPlatformPathArrowUp</sprite>
+        <sprite>sprites\sprAlexPlatformPathArrowDown</sprite>
+        <sprite>sprites\sprAlexPlatformPathArrowRight</sprite>
+        <sprite>sprites\sprAlexPlatformPathArrowLeft</sprite>
         <sprite>sprites\sprAlexBubble</sprite>
         <sprite>sprites\sprAlexBubblePop</sprite>
         <sprite>sprites\sprAlexCannonWarp</sprite>
@@ -1178,6 +1186,18 @@
       </objects>
       <object>objects\objStarzorSign</object>
       <objects name="Final Stage">
+        <objects name="Platforms">
+          <object>objects\objAlexPlatformWheel</object>
+          <object>objects\objAlexPlatformArrow</object>
+          <object>objects\objAlexPlatformArrowUp</object>
+          <object>objects\objAlexPlatformArrowDown</object>
+          <object>objects\objAlexPlatformArrowRight</object>
+          <object>objects\objAlexPlatformArrowLeft</object>
+          <object>objects\objAlexPlatformSpawner</object>
+          <object>objects\objAlexPlatformKiller</object>
+          <object>objects\objAlexFSPlatform</object>
+          <object>objects\objAlexFSPathPlatform</object>
+        </objects>
         <objects name="Color Blocks">
           <object>objects\objAlexColorBlock</object>
           <object>objects\objAlexColorBlockController</object>
@@ -1247,6 +1267,10 @@
           <object>objects\objAlexActivateCircleSpawner</object>
           <object>objects\objAlexDeactivateCircleSpawner</object>
           <object>objects\objAlexCircleSpawner</object>
+        </objects>
+        <objects name="Eye Block">
+          <object>objects\objAlexEye</object>
+          <object>objects\objAlexEyeBlock</object>
         </objects>
         <object>objects\objAlexBubble</object>
         <object>objects\objAlexVoidBlock</object>
