@@ -728,7 +728,7 @@ if(!place_meeting(x, y, objAlexPropelorBlockWindArea) &amp;&amp; (alex_wind_acce
             <string>/// Control the volume for propelor blocks and orb blocks
 
 if(instance_exists(objAlexPropelorBlock)) {
-    var _propelor_block_range = 200;
+    var _propelor_block_range = 300;
     var _propelor_block_vol = scrInverseLerp(_propelor_block_range, 0, min(distance_to_object(objAlexPropelorBlock), _propelor_block_range));
     
     audio_sound_gain(sndAlexPropelorBlockNoise, _propelor_block_vol, 0);
