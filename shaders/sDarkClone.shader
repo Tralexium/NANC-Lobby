@@ -19,7 +19,7 @@ void main()
 }
 
 //######################_==_YOYO_SHADER_MARKER_==_######################@~//
-// Special shader for the blocks in star levels
+// Special shader for Dark Clone objects
 //
 
 varying vec2 v_vTexcoord;

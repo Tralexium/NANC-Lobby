@@ -180,6 +180,8 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexPlatformKiller);
     instance_activate_object(objAlexFSPlatform);
     instance_activate_object(objAlexFSPathPlatform);
+    // Dark Void
+    instance_activate_object(objAlexDarkVoidRenderer);
     // Color blocks
     instance_activate_object(objAlexColorBlock);
     instance_activate_object(objAlexColorBlockController);

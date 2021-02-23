@@ -168,6 +168,8 @@
       <sound>sound\musStarStage5</sound>
       <sound>sound\musStarStage6</sound>
       <sound>sound\musFinalStage</sound>
+      <sound>sound\musFinalStagePart2</sound>
+      <sound>sound\musFinalStageChase</sound>
       <sound>sound\musFinalBoss</sound>
       <sound>sound\musFanfare</sound>
       <sounds name="sfx">
@@ -536,6 +538,9 @@
         </sprites>
       </sprites>
       <sprites name="Final Stage">
+        <sprite>sprites\sprAlexDarkVoidSquare</sprite>
+        <sprite>sprites\sprAlexDarkVoidCircle</sprite>
+        <sprite>sprites\sprAlexDarkVoidTriangle</sprite>
         <sprite>sprites\sprAlexActivateBeamSpawner</sprite>
         <sprite>sprites\sprAlexDeactivateBeamSpawner</sprite>
         <sprite>sprites\sprAlexActivateCircleSpawner</sprite>
@@ -932,6 +937,7 @@
     <shader type="GLSLES">shaders\sSquareOutline.shader</shader>
     <shader type="GLSLES">shaders\sStarLevelBlocks.shader</shader>
     <shader type="GLSLES">shaders\sDarkClone.shader</shader>
+    <shader type="GLSLES">shaders\sDarkVoid.shader</shader>
     <shader type="GLSLES">shaders\sRainbowAura.shader</shader>
     <shader type="GLSLES">shaders\sGradientHoles.shader</shader>
     <shader type="GLSLES">shaders\s3DFloor.shader</shader>
@@ -1199,6 +1205,13 @@
           <object>objects\objAlexPlatformKiller</object>
           <object>objects\objAlexFSPlatform</object>
           <object>objects\objAlexFSPathPlatform</object>
+        </objects>
+        <objects name="Dark Void">
+          <object>objects\objAlexDarkVoidSquare</object>
+          <object>objects\objAlexDarkVoidCircle</object>
+          <object>objects\objAlexDarkVoidTriangle</object>
+          <object>objects\objAlexDarkVoid</object>
+          <object>objects\objAlexDarkVoidRenderer</object>
         </objects>
         <objects name="Color Blocks">
           <object>objects\objAlexColorBlock</object>

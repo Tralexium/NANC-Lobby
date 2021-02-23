@@ -153,6 +153,9 @@ surface_free(clone_surf);
             <kind>1</kind>
             <string>/// Post process the dark clones &amp; portal
 
+if(!instance_exists(objAlexDarkClone) &amp;&amp; !instance_exists(objAlexDarkClonePortal))
+    instance_destroy();
+
 if(!surface_exists(clone_surf)) {
     clone_surf = surface_create(view_wview[0], view_hview[0]);
 }
