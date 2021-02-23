@@ -1351,6 +1351,9 @@
       <room>rooms\rStarLevel4</room>
       <room>rooms\rStarLevel5</room>
       <room>rooms\rStarLevel6</room>
+      <room>rooms\rFinalStage</room>
+      <room>rooms\rFinalStagePart2</room>
+      <room>rooms\rFinalStageChase</room>
       <room>rooms\rFinalBoss</room>
       <rooms name="Reception">
         <room>rooms\rLobbyReception</room>
