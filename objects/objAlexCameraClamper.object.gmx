@@ -60,14 +60,14 @@ if(_touching_player) {
         active = true;
         
         if(clamp_coords) {
-            with(objAlexStarStageCam) {
+            with(objAlexStarStageCam_old) {
                 min_x = max(0, other.bbox_left);
                 min_y = max(0, other.bbox_top);
                 max_x = min(room_width - view_wview[0], max(min_x, other.bbox_right - view_wview[0]));
                 max_y = min(room_height - view_hview[0], max(min_y, other.bbox_bottom - view_hview[0]));
             }
         } else {
-            with(objAlexStarStageCam) {
+            with(objAlexStarStageCam_old) {
                 min_x = other.bbox_left;
                 min_y = other.bbox_top;
                 max_x = max(min_x, other.bbox_right - view_wview[0]);
@@ -77,7 +77,7 @@ if(_touching_player) {
     }
 } else if(active) {
     active = false;
-    with(objAlexStarStageCam) {
+    with(objAlexStarStageCam_old) {
         min_x = 0;
         min_y = 0;
         max_x = room_width - view_wview[0];
@@ -112,7 +112,7 @@ var _touching_player = place_meeting(x, y, objPlayer);
 if(_touching_player) {
     if(!active) {
         active = true;
-        with(objAlexStarStageCam) {
+        with(objAlexStarStageCam_old) {
             min_x = max(0, other.bbox_left);
             min_y = max(0, other.bbox_top);
             max_x = min(room_width - view_wview[0], max(min_x, other.bbox_right - view_wview[0]));

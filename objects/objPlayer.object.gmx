@@ -735,6 +735,9 @@ if(instance_exists(objAlexPropelorBlock)) {
     
     if(!audio_is_playing(sndAlexPropelorBlockNoise))
         audio_play_sound(sndAlexPropelorBlockNoise, 0, true);
+} else {
+    if(audio_is_playing(sndAlexPropelorBlockNoise))
+        audio_stop_sound(sndAlexPropelorBlockNoise);
 }
 
 if(instance_exists(objAlexOrbBlock)) {
@@ -745,6 +748,9 @@ if(instance_exists(objAlexOrbBlock)) {
     
     if(!audio_is_playing(sndAlexOrbBlockNoise))
         audio_play_sound(sndAlexOrbBlockNoise, 0, true);
+} else {
+    if(audio_is_playing(sndAlexOrbBlockNoise))
+        audio_stop_sound(sndAlexOrbBlockNoise);
 }
 </string>
           </argument>

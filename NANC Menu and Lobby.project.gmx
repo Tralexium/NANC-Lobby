@@ -565,6 +565,8 @@
         <sprite>sprites\sprAlexLongPlatform</sprite>
         <sprite>sprites\sprAlexPlatformSpawner</sprite>
         <sprite>sprites\sprAlexPlatformKiller</sprite>
+        <sprite>sprites\sprAlexVoidSpawner</sprite>
+        <sprite>sprites\sprAlexVoidKiller</sprite>
         <sprite>sprites\sprAlexPlatformPathDot</sprite>
         <sprite>sprites\sprAlexPlatformPivotPoint</sprite>
         <sprite>sprites\sprAlexPlatformPathArrowUp</sprite>
@@ -1180,10 +1182,10 @@
         <object>objects\objAlexCrystalStarSlots</object>
       </objects>
       <objects name="Star Stages">
-        <object>objects\objAlexStarStageCam_old</object>
         <object>objects\objAlexStarStageCam</object>
         <object>objects\objAlexStarCameraArea</object>
         <object>objects\objAlexStarCameraTrigger</object>
+        <object>objects\objAlexStarStageCam_old</object>
         <object>objects\objAlexCameraClamper</object>
         <object>objects\objAlexCameraAxisLock</object>
         <object>objects\objAlexCameraAxisUnlock</object>
@@ -1215,7 +1217,10 @@
           <object>objects\objAlexDarkVoidSquare</object>
           <object>objects\objAlexDarkVoidCircle</object>
           <object>objects\objAlexDarkVoidTriangle</object>
+          <object>objects\objAlexDarkVoidSpawner</object>
+          <object>objects\objAlexDarkVoidKiller</object>
           <object>objects\objAlexDarkVoid</object>
+          <object>objects\objAlexMovingDarkVoid</object>
           <object>objects\objAlexDarkVoidRenderer</object>
         </objects>
         <objects name="Color Blocks">

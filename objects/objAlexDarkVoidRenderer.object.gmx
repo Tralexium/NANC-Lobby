@@ -173,6 +173,10 @@ surface_set_target(void_surf);
         if(scrInView())
             draw_sprite_ext(sprite_index, image_index, x - view_xview[0]+4, y - view_yview[0]+4, image_xscale, image_yscale, image_angle, -1, image_alpha);
     }
+    with(objAlexMovingDarkVoid) {
+        if(scrInView())
+            draw_sprite_ext(sprite_index, image_index, x - view_xview[0]+4, y - view_yview[0]+4, image_xscale, image_yscale, image_angle, -1, image_alpha);
+    }
 surface_reset_target();
 
 shader_t++;

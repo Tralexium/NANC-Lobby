@@ -31,17 +31,31 @@
 room_id = rStarLevel1;
 stage_name = "Null";
 creator_name = "Null";
+difficulty = 0;  // 0-10
 spawn_x = -1;
 spawn_y = -1;
 
+// Recalculate variables based on the creation code
+alarm[10] = 1;
+
 image_speed = 0;
 timer = 0;
+stage_cleared = false;
+zoom_t = 0;
+zoom_dur = 25;
+initial_view_x = 0;
+initial_view_y = 0;
 colliding = false;
 active = true;
 force_close = false;
 arrow_x = x;
 arrow_y = y;
 arrow_image_index = 0;
+theta = 0;
+checkmark_x = x;
+checkmark_y = y - sprite_height/2;
+checkmark_y_start = checkmark_y;
+checkmark_wiggle = 4;
 
 // Unique vars
 locked = true;
@@ -51,6 +65,35 @@ flash_width = 0;
 flash_timer = 0;
 flash_length = 30;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// UI variables
+
+ui_alpha = 0;
+ui_x = x;
+ui_y = y;
+ui_y_start = ui_y;
+ui_y_travel = 16;
+ui_fade_progress = 0;
+ui_difficulty_length = 0;
 </string>
           </argument>
         </arguments>
@@ -107,6 +150,56 @@ aura_alpha = 0.7;
             <string>/// Clear surface/s
 
 surface_free(aura_surf);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Convert the difficulty into the UI variant
+
+ui_difficulty_length = difficulty/10;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check if the stage is cleared
+
+if(global.gameClear) {
+    stage_cleared = true;
+}
 </string>
           </argument>
         </arguments>
@@ -327,10 +420,14 @@ if(!active) {
 
 if(!active) {
     with(objAlexStarStageCam) {
-        target_obj = other.id;
+        active = false;
     }
-    view_wview[0] = round(lerp(view_wview[0], 300, .1));
-    view_hview[0] = round(lerp(view_hview[0], 228, .1));
+    
+    zoom_t = min(zoom_t+1, zoom_dur);
+    view_wview[0] = scrAlexEaseOutSine(zoom_t, 400, 300, zoom_dur);
+    view_hview[0] = scrAlexEaseOutSine(zoom_t, 304, 228, zoom_dur);
+    view_xview[0] = x - view_wview[0]/2;
+    view_yview[0] = scrAlexEaseOutSine(zoom_t, initial_view_y, y - view_hview[0]/2, zoom_dur);
 }
 </string>
           </argument>
@@ -398,6 +495,9 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active &amp;&amp; !locked)
             fader.bubble_transition = false;
         
         audio_play_sound(sndAlexKidEnter, 0, false);
+        
+        initial_view_x = view_xview[0];
+        initial_view_y = view_yview[0];
     }
 } else {
     colliding = false;
@@ -405,11 +505,46 @@ if(place_meeting(x, y, objAlexLobbyPlayer) &amp;&amp; active &amp;&amp; !locked)
 
 if((colliding || !active) &amp;&amp; !force_close &amp;&amp; !locked) {
     image_speed = .25;
+    
+    if(active)
+        ui_fade_progress = lerp(ui_fade_progress, 1, .25);
+    else
+        ui_fade_progress = lerp(ui_fade_progress, 0, .25);
 } else {
     image_speed = -.25; 
+    ui_fade_progress = lerp(ui_fade_progress, 0, .25);
 }
 
 image_index = clamp(image_index, .5, image_number-1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Handle UI values
+
+ui_alpha = ui_fade_progress;
+ui_y = ui_y_start - (ui_y_travel * ui_fade_progress);
+
+if(stage_cleared) {
+    theta += 5;
+    checkmark_y = checkmark_y_start + dsin(theta)*checkmark_wiggle;
+}
 </string>
           </argument>
         </arguments>
@@ -558,6 +693,58 @@ if(locked) {
     
     draw_set_alpha(1);
     texture_set_interpolation(false);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the UI above
+
+if(ui_fade_progress &gt; .02) {
+
+    draw_set_alpha(ui_alpha);
+    
+    var text_col = $3945e6;
+    var outline_col = $2e1814;
+    
+    if(!locked) {
+        // Stage title
+        draw_set_font(fMenuLobby6);
+        
+        scrDrawTextSquareOutline(ui_x, ui_y-90, stage_name, text_col, outline_col, 1, fa_center, fa_top);
+        
+        // Creator
+        draw_set_font(fLobbySmall);
+        scrDrawTextSquareOutline(ui_x, ui_y-80, "By: "+creator_name, text_col, outline_col, 1, fa_center, fa_top);
+        
+        // Difficulty
+        scrDrawTextSquareOutline(ui_x, ui_y-60, "difficulty", text_col, outline_col, 1, fa_center, fa_top);
+        draw_sprite(sprAlexStageDifficultyBar, 0, ui_x-20, ui_y-45);
+        draw_sprite_part(sprAlexStageDifficultyBar, 1, 0, 0, 40*ui_difficulty_length, 8, ui_x-20, ui_y-45);
+    } else {
+        // Green tick
+        draw_sprite(sprAlexLobbyStageDoorCleared, 0, ui_x-16, ui_y-53);
+        var _string = ": " + string(beaten_levels) + "/" + string(level_amnt);
+        scrDrawTextSquareOutline(ui_x-4, ui_y-45, _string, text_col, outline_col, 1, fa_left, fa_bottom);
+    }
+    
+    draw_set_alpha(1);
 }
 </string>
           </argument>

@@ -145,7 +145,7 @@ if(collided) {
         image_speed = 0.4; 
         
         audio_stop_sound(sndAlexFBCaneStuck);
-        audio_sound_pitch(sndAlexFBCaneStuck, random_range(0.95, 1.05));
+        audio_sound_pitch(sndAlexFBCaneStuck, random_range(0.8, 1.2));
         audio_play_sound(sndAlexFBCaneStuck, 0, false);
     
         var _spark_dir = direction + 180; 

@@ -182,6 +182,7 @@ switch(_lvl) {
             fallback_sprite = sprAlexFinalBossJumpFront;
         }
         
+        /* Old version
         if(t == 120) {
             scrFBSetAttackSprite(sprAlexFinalBossJumpFrontAtk, 0.3);
             scrFBPCane(x, y, true, false, 30, 50, 50, 8, -90);
@@ -206,6 +207,28 @@ switch(_lvl) {
         with(objAlexFBPCane) {
             if(!target_player)
                 target_angle = -90;
+        }
+        */
+        
+        if(t == 120) {
+            scrFBSetAttackSprite(sprAlexFinalBossJumpFrontAtk, 0.3);
+            scrFBPCane(x, y, false, false, 30, 40, 100, 8, -90);
+            scrFBPCane(x, y, false, false, 30, 50, 90, 12, -40);
+            scrFBPCane(x, y, false, false, 30, 60, 80, 12, -140);
+        }
+        
+        if(t == 140) {
+            scrFBSetAttackSprite(sprAlexFinalBossJumpFrontAtk, 0.3);
+            scrFBPCane(x, y, false, false, 30, 50, 70, 8, -90);
+            scrFBPCane(x, y, false, false, 30, 60, 60, 12, -40);
+            scrFBPCane(x, y, false, false, 30, 70, 50, 12, -140);
+        }
+        
+        if(t == 160) {
+            scrFBSetAttackSprite(sprAlexFinalBossJumpFrontAtk, 0.3);
+            scrFBPCane(x, y, false, false, 30, 60, 40, 8, -90);
+            scrFBPCane(x, y, false, false, 30, 70, 30, 12, -40);
+            scrFBPCane(x, y, false, false, 30, 80, 20, 12, -140);
         }
         
         if(t > 210 && t < 260 && sprite_index != sprAlexFinalBossPreDash) {

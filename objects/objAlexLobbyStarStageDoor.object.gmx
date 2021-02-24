@@ -448,9 +448,10 @@ if(!active) {
 if(!active) {
     with(objAlexStarStageCam) {
         target_obj = other.id;
+        index = -1;
     }
-    view_wview[0] = round(lerp(view_wview[0], 300, .1));
-    view_hview[0] = round(lerp(view_hview[0], 228, .1));
+    view_wview[0] = lerp(view_wview[0], 300, .1);
+    view_hview[0] = lerp(view_hview[0], 228, .1);
 }
 </string>
           </argument>

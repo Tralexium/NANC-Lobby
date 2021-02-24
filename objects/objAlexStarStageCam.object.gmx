@@ -35,7 +35,9 @@ xMax = 0
 yMin = 0
 yMax = 0
 
-followSpeed = 0.166
+target_obj = objPlayer;
+followSpeed = 0.166;
+active = true;
 
 opt_previous_x = view_xview[0];
 opt_previous_y = view_yview[0];
@@ -157,7 +159,15 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexPlayMusicWithIntro);
     instance_activate_object(objAlexStarCameraArea);
     instance_activate_object(objAlexStarCameraTrigger);
+    instance_activate_object(objAlexStageIntro);
     
+    // Star floor
+    instance_activate_object(obj3DFloor);
+    instance_activate_object(objAlexFallingStarSpawner);
+    instance_activate_object(objAlexIdleStarGenerator);
+    instance_activate_object(objAlexFallingStar);
+    instance_activate_object(objAlexCrystalStarSlots);
+        
     // Gimmicks
     // Platforms
     instance_activate_object(objAlexPlatformWheel);
@@ -168,6 +178,9 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexFSPathPlatform);
     // Dark Void
     instance_activate_object(objAlexDarkVoidRenderer);
+    instance_activate_object(objAlexDarkVoidSpawner);
+    instance_activate_object(objAlexDarkVoidKiller);
+    instance_activate_object(objAlexMovingDarkVoid);
     // Color blocks
     instance_activate_object(objAlexColorBlock);
     instance_activate_object(objAlexColorBlockController);
@@ -233,17 +246,20 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
             <kind>1</kind>
             <string>/// Manipulate the cam coords
 
+if(!active)
+    exit;
 
-with objPlayer {
+
+with target_obj {
     with instance_place(x, y, objAlexStarCameraTrigger) {
         objAlexStarStageCam.index = index
         if index != -1 {
          with objAlexStarCameraArea {
                 if index == other.index {
-                    objAlexStarStageCam.xMin = x
-                    objAlexStarStageCam.yMin = y
-                    objAlexStarStageCam.xMax = bbox_right-view_wview[0]
-                    objAlexStarStageCam.yMax = bbox_bottom-view_hview[0]
+                    objAlexStarStageCam.xMin = bbox_left;
+                    objAlexStarStageCam.yMin = bbox_top;
+                    objAlexStarStageCam.xMax = max(objAlexStarStageCam.xMin, bbox_right-view_wview[0]);
+                    objAlexStarStageCam.yMax = max(objAlexStarStageCam.yMin, bbox_bottom-view_hview[0]);
                 }
             }
         }
@@ -251,22 +267,32 @@ with objPlayer {
 }
 
 if index == -1 {
-    if instance_exists(objPlayer) {
-        xTarget = objPlayer.x-view_wview[0]/2
-        yTarget = objPlayer.y-view_hview[0]/2
+    if instance_exists(target_obj) {
+        xTarget = target_obj.x-view_wview[0]/2
+        yTarget = target_obj.y-view_hview[0]/2
     }
+    
+    // Make sure the target doesn't extend the room dimensions
+    xTarget = clamp(xTarget, 0, room_width-view_wview[0]);
+    yTarget = clamp(yTarget, 0, room_height-view_hview[0]);
 }
 else {
-    if instance_exists(objPlayer) {
-        xTarget = objPlayer.x-view_wview[0]/2
-        yTarget = objPlayer.y-view_hview[0]/2
+    if instance_exists(target_obj) {
+        xTarget = target_obj.x-view_wview[0]/2
+        yTarget = target_obj.y-view_hview[0]/2
     }
     xTarget = clamp(xTarget, xMin, xMax)
     yTarget = clamp(yTarget, yMin, yMax)
 }
 
+
+/* Pat's version
 x += (xTarget-x) * followSpeed
 y += (yTarget-y) * followSpeed
+*/
+
+x = lerp(x, xTarget, followSpeed);
+y = lerp(y, yTarget, followSpeed);
 view_xview[0] = x
 view_yview[0] = y
 </string>
