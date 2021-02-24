@@ -541,6 +541,7 @@
       </sprites>
       <sprites name="Final Stage">
         <sprite>sprites\sprAlexDarkVoidSquare</sprite>
+        <sprite>sprites\sprAlexDarkVoidSquareCenter</sprite>
         <sprite>sprites\sprAlexDarkVoidCircle</sprite>
         <sprite>sprites\sprAlexDarkVoidTriangle</sprite>
         <sprite>sprites\sprAlexActivateBeamSpawner</sprite>

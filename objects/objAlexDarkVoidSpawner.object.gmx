@@ -74,7 +74,7 @@ var _sprite = noone;
 switch(void_type) {
     default:
     case VOID_TYPE.square:
-        _sprite = sprAlexDarkVoidSquare;
+        _sprite = sprAlexDarkVoidSquareCenter;
         break;
         
     case VOID_TYPE.circle:
@@ -129,7 +129,7 @@ var _sprite = noone;
 switch(void_type) {
     default:
     case VOID_TYPE.square:
-        _sprite = sprAlexDarkVoidSquare;
+        _sprite = sprAlexDarkVoidSquareCenter;
         break;
         
     case VOID_TYPE.circle:
