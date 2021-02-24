@@ -314,6 +314,11 @@ if(active)
             <string>/// Put the player inside the bubble
 
 if(!active) {
+    with(objAlexBubble) {
+        if(active)
+            instance_destroy();
+    }
+
     active = true;
     boing_amnt = 0.5;
     player_start_x = other.x;
