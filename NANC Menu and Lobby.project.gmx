@@ -575,6 +575,10 @@
         <sprite>sprites\sprAlexPlatformPathArrowDown</sprite>
         <sprite>sprites\sprAlexPlatformPathArrowRight</sprite>
         <sprite>sprites\sprAlexPlatformPathArrowLeft</sprite>
+        <sprite>sprites\sprAlexPlatformPathArrowUpRight</sprite>
+        <sprite>sprites\sprAlexPlatformPathArrowDownRight</sprite>
+        <sprite>sprites\sprAlexPlatformPathArrowDownLeft</sprite>
+        <sprite>sprites\sprAlexPlatformPathArrowUpLeft</sprite>
         <sprite>sprites\sprAlexBubble</sprite>
         <sprite>sprites\sprAlexBubblePop</sprite>
         <sprite>sprites\sprAlexCannonWarp</sprite>
@@ -1210,8 +1214,13 @@
           <object>objects\objAlexPlatformArrowDown</object>
           <object>objects\objAlexPlatformArrowRight</object>
           <object>objects\objAlexPlatformArrowLeft</object>
+          <object>objects\objAlexPlatformPathArrowUpRight</object>
+          <object>objects\objAlexPlatformPathArrowDownRight</object>
+          <object>objects\objAlexPlatformPathArrowDownLeft</object>
+          <object>objects\objAlexPlatformPathArrowUpLeft</object>
           <object>objects\objAlexPlatformSpawner</object>
           <object>objects\objAlexPlatformKiller</object>
+          <object>objects\objAlexPlatformPathDot</object>
           <object>objects\objAlexFSPlatform</object>
           <object>objects\objAlexFSPathPlatform</object>
         </objects>

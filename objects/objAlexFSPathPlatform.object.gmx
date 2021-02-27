@@ -45,7 +45,12 @@
 spd = 2;
 dir = 0;
 
-left_over_spd = 0;
+distance_to_travel_x = 0;
+distance_to_travel_y = 0;
+h_dist = 0;
+v_dist = 0;
+left_over_spd_h = 0;
+left_over_spd_v = 0;
 </string>
           </argument>
         </arguments>
@@ -68,30 +73,140 @@ left_over_spd = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Movement &amp; Check for path arrows
+            <string>/// [OLD] Movement &amp; Check for path arrows
 
-if(spd != 0) {
+/*
+if(spd != 0 &amp;&amp; distance_to_travel &gt; 0) {
     var _dist = spd;
     if(left_over_spd &gt;= 1) {
         _dist += round(left_over_spd)
         left_over_spd -= round(left_over_spd);
     }
 
-    while(abs(_dist) &gt; 1) {
+    while(_dist &gt;= 1) {
         x += lengthdir_x(1, dir);
         y += lengthdir_y(1, dir);
-        _dist--;
         
-        var _arrow = instance_place(x, y, objAlexPlatformArrow);
-        if(_arrow != noone) {
-            if(_arrow.x == round(x) &amp;&amp; _arrow.y == round(y)) {
-                dir = _arrow.dir;
-            }
-        }
+        var _travel_dist = max(abs(lengthdir_x(1, dir)), abs(lengthdir_y(1, dir)));
+        
+        _dist -= _travel_dist;
+        distance_to_travel -= _travel_dist;
     }
     
     left_over_spd += _dist;
+} else {
+    event_user(10);
 }
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Movement &amp; Check for path arrows
+
+if(spd != 0 &amp;&amp; distance_to_travel_x + distance_to_travel_y &gt; 0) {
+    h_dist = lengthdir_x(spd, dir);
+    v_dist = lengthdir_y(spd, dir);
+    if(abs(left_over_spd_h) &gt;= 1) {
+        h_dist += round(left_over_spd_h)
+        left_over_spd_h -= round(left_over_spd_h);
+    }
+    if(abs(left_over_spd_v) &gt;= 1) {
+        v_dist += round(left_over_spd_v)
+        left_over_spd_v -= round(left_over_spd_v);
+    }
+
+    while(abs(h_dist) &gt;= 1) {
+        x += sign(h_dist);
+        
+        h_dist -= sign(h_dist);
+        distance_to_travel_x--;
+    }
+    while(abs(v_dist) &gt;= 1) {
+        y += sign(v_dist);
+        
+        v_dist -= sign(v_dist);
+        distance_to_travel_y--;
+    }
+    
+    left_over_spd_h += h_dist;
+    left_over_spd_v += v_dist;
+} else {
+    event_user(10);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="20">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check for path arrows
+
+var _arrow = instance_place(x, y, objAlexPlatformArrow);
+if(_arrow != noone) {
+    x = _arrow.x;
+    y = _arrow.y;
+    dir = _arrow.dir;
+    distance_to_travel_x = _arrow.dist_to_next_arrow_x;
+    distance_to_travel_y = _arrow.dist_to_next_arrow_y;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check for path arrows
+
+event_user(10)
 </string>
           </argument>
         </arguments>

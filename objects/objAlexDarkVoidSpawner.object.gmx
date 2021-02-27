@@ -29,6 +29,7 @@
 
 enum VOID_TYPE {
     square,
+    diamond,
     circle, 
     triangle,
 }
@@ -75,6 +76,10 @@ switch(void_type) {
     default:
     case VOID_TYPE.square:
         _sprite = sprAlexDarkVoidSquareCenter;
+        break;
+        
+    case VOID_TYPE.diamond:
+        _sprite = sprAlexDarkVoidDiamond;
         break;
         
     case VOID_TYPE.circle:
@@ -130,6 +135,10 @@ switch(void_type) {
     default:
     case VOID_TYPE.square:
         _sprite = sprAlexDarkVoidSquareCenter;
+        break;
+    
+    case VOID_TYPE.diamond:
+        _sprite = sprAlexDarkVoidDiamond;
         break;
         
     case VOID_TYPE.circle:
