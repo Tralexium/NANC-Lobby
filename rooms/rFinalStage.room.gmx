@@ -862,7 +862,7 @@
     <instance objName="objAlexColorBlockBlue" x="16624" y="1488" name="inst_ABBFD66B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="16656" y="1488" name="inst_1BA65149" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="16688" y="1488" name="inst_A7B6EBD3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="16608" y="1504" name="inst_F51650C2" locked="0" code="" scaleX="8" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="16608" y="1504" name="inst_F51650C2" locked="0" code="" scaleX="6" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="16752" y="1520" name="inst_592B2A28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="16784" y="1616" name="inst_81ABBE82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="16816" y="1584" name="inst_85CA819F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -919,10 +919,10 @@
     <instance objName="objAlexShadowSpikeU" x="16816" y="1504" name="inst_6C438121" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="16816" y="1472" name="inst_3CF3C7D4" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeL" x="16752" y="1408" name="inst_3A0374E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexShadowSpikeR" x="16688" y="1616" name="inst_97A90105" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexShadowSpikeL" x="16624" y="1616" name="inst_26ABC96A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexShadowSpikeD" x="16656" y="1648" name="inst_028D36D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="16656" y="1616" name="inst_B999A031" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="16672" y="1616" name="inst_97A90105" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeL" x="16608" y="1616" name="inst_26ABC96A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="16640" y="1648" name="inst_028D36D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="16640" y="1616" name="inst_B999A031" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeD" x="16704" y="1792" name="inst_6DB8469F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeU" x="16704" y="1760" name="inst_F7B14204" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="16304" y="1488" name="inst_430FB802" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -932,6 +932,8 @@
     <instance objName="objAlexShadowSpikeR" x="16560" y="1392" name="inst_A412B916" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeR" x="16464" y="1392" name="inst_7EA930FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeL" x="16528" y="1392" name="inst_926D8FE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="16704" y="1504" name="inst_785154C8" locked="0" code="" scaleX="2" scaleY="7" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="16704" y="1600" name="inst_2C0C817B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

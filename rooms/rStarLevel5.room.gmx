@@ -64,7 +64,7 @@
     <instance objName="objAlexCameraClamper" x="128" y="0" name="inst_B3F0CF5F" locked="0" code="" scaleX="13.5" scaleY="6.5" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="576" y="288" name="inst_D537BF7B" locked="0" code="" scaleX="18" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="320" y="160" name="inst_158E243D" locked="0" code="" scaleX="18" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objPlayMusic" x="32" y="32" name="inst_7F3ADFF3" locked="0" code="BGM = musStarStage5;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlayMusic" x="32" y="32" name="inst_7F3ADFF3" locked="0" code="BGM = musFinalStageChase;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="320" y="416" w="32" h="32" xo="32" yo="32" id="10016393" name="inst_7E3FEE59" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
