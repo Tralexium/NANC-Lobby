@@ -127,7 +127,7 @@ else if(color_id == global.next_color_id) {
     active = false;
 
     mask_index = sprAlexNoMask;    
-    draw_t += glow_spd;
+    draw_t = (current_time/20) * glow_spd;
 }
 else {
     active = false;

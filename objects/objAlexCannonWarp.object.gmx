@@ -3,7 +3,7 @@
   <spriteName>sprAlexCannonWarp</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-201</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -202,6 +202,8 @@ if(!in_use &amp;&amp; cooldown_t == 0) {
     
     // In case it collided with a warp launch
     with(objAlexCannonWarpLaunch) {
+        other.line_angle = launch_dir;
+        other.line_target_angle = launch_dir;
         instance_destroy();
     }
         

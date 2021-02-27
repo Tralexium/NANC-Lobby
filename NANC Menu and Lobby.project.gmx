@@ -542,6 +542,7 @@
       <sprites name="Final Stage">
         <sprite>sprites\sprAlexDarkVoidSquare</sprite>
         <sprite>sprites\sprAlexDarkVoidSquareCenter</sprite>
+        <sprite>sprites\sprAlexDarkVoidDiamond</sprite>
         <sprite>sprites\sprAlexDarkVoidCircle</sprite>
         <sprite>sprites\sprAlexDarkVoidTriangle</sprite>
         <sprite>sprites\sprAlexActivateBeamSpawner</sprite>
@@ -1216,6 +1217,7 @@
         </objects>
         <objects name="Dark Void">
           <object>objects\objAlexDarkVoidSquare</object>
+          <object>objects\objAlexDarkVoidDiamond</object>
           <object>objects\objAlexDarkVoidCircle</object>
           <object>objects\objAlexDarkVoidTriangle</object>
           <object>objects\objAlexDarkVoidSpawner</object>

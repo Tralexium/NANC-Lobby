@@ -97,37 +97,6 @@ event_user(0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Shake the camera
-
-if(shake_t &lt; shake_dur) {
-    shake_t = min(shake_t + 1, shake_dur);
-    var _shake_x_theta = (shake_t / shake_dur) * (360 * shake_x_repeats);
-    var _shake_y_theta = (shake_t / shake_dur) * (360 * shake_y_repeats);
-    var _shake_power = 1 - shake_t / shake_dur;
-    
-    view_xview[0] += dcos(_shake_x_theta) * (shake_x_dist * _shake_power);
-    view_yview[0] += dcos(_shake_y_theta) * (shake_y_dist * _shake_power);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// Deactivate unnecessary objects outside of the view
 
 var _exceeded_check_dist = point_distance(view_xview[0], view_yview[0], opt_previous_x, opt_previous_y) &gt;= check_dist;
@@ -167,8 +136,9 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexIdleStarGenerator);
     instance_activate_object(objAlexFallingStar);
     instance_activate_object(objAlexCrystalStarSlots);
-        
-    // Gimmicks
+    
+    
+    // Final Stage
     // Platforms
     instance_activate_object(objAlexPlatformWheel);
     instance_activate_object(objAlexPlatformArrow);
@@ -182,7 +152,6 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexDarkVoidKiller);
     instance_activate_object(objAlexMovingDarkVoid);
     // Color blocks
-    instance_activate_object(objAlexColorBlock);
     instance_activate_object(objAlexColorBlockController);
     instance_activate_object(objAlexChangeColorBlockGlobals);
     // Snake block
@@ -192,7 +161,7 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexSnakeBlockDir);
     instance_activate_object(objAlexSnakeBlockEnd);
     // Cannon warp
-    instance_activate_object(objAlexCannonWarp);
+    //instance_activate_object(objAlexCannonWarp);
     // Orb blocks
     instance_activate_object(objAlexOrbBlockCircle);
     instance_activate_object(objAlexOrbBlockExpandingCircle);
@@ -210,7 +179,7 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexDarkClonePortalPart);
     instance_activate_object(objAlexDarkCloneRenderer);
     // Eye Sentry
-    instance_activate_object(objAlexEyeSentry);
+    //instance_activate_object(objAlexEyeSentry);
     instance_activate_object(objAlexEyeSentryEnable);
     instance_activate_object(objAlexEyeSentryDisable);
     // Beam Obstacle
@@ -250,7 +219,7 @@ if(!active)
     exit;
 
 
-with target_obj {
+with objPlayer {
     with instance_place(x, y, objAlexStarCameraTrigger) {
         objAlexStarStageCam.index = index
         if index != -1 {
@@ -295,6 +264,37 @@ x = lerp(x, xTarget, followSpeed);
 y = lerp(y, yTarget, followSpeed);
 view_xview[0] = x
 view_yview[0] = y
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Shake the camera
+
+if(shake_t &lt; shake_dur) {
+    shake_t = min(shake_t + 1, shake_dur);
+    var _shake_x_theta = (shake_t / shake_dur) * (360 * shake_x_repeats);
+    var _shake_y_theta = (shake_t / shake_dur) * (360 * shake_y_repeats);
+    var _shake_power = 1 - shake_t / shake_dur;
+    
+    view_xview[0] += dcos(_shake_x_theta) * (shake_x_dist * _shake_power);
+    view_yview[0] += dcos(_shake_y_theta) * (shake_y_dist * _shake_power);
+}
 </string>
           </argument>
         </arguments>

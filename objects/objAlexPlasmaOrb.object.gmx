@@ -55,13 +55,15 @@ size = 24;
 image_xscale = size / sprite_get_height(sprAlexFBPOrbHitbox);
 image_yscale = image_xscale;
 
-var _part = scrAlexMakeParticle(x, y, 10, sprAlexFBPOrbTrail, 0, direction, 0, false, true, false);
-    _part.image_xscale = image_xscale * 1.2;
-    _part.image_yscale = image_yscale * 1.2;
-    _part.image_angle = direction;
-    _part.depth = depth;
-    _part.blend_mode = bm_add;
-    _part.add_scale = -0.05 * image_xscale;
+if(scrInView()) {
+    var _part = scrAlexMakeParticle(x, y, 10, sprAlexFBPOrbTrail, 0, direction, 0, false, true, false);
+        _part.image_xscale = image_xscale * 1.2;
+        _part.image_yscale = image_yscale * 1.2;
+        _part.image_angle = direction;
+        _part.depth = depth;
+        _part.blend_mode = bm_add;
+        _part.add_scale = -0.05 * image_xscale;
+}
 </string>
           </argument>
         </arguments>
