@@ -44,6 +44,7 @@ spawn_period = 60;
 
 t = 0;
 current_dist = 0;
+deactivation_range = 5000;
 </string>
           </argument>
         </arguments>
@@ -123,6 +124,13 @@ if(t mod spawn_period == 0){
           <argument>
             <kind>1</kind>
             <string>/// Spawn the voids on screen to avoid waiting
+
+if(instance_exists(objPlayer)) {
+    if(distance_to_object(objPlayer) &gt; deactivation_range) {
+        instance_destroy();
+        exit;
+    }
+}
 
 var _max_num = 10;
 var _curent_num = 0;

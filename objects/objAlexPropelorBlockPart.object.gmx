@@ -55,7 +55,7 @@ shrink = false;
             <kind>1</kind>
             <string>/// Check whether we can start shrinking
 
-if(!shrink &amp;&amp; !place_meeting(x + hspeed*9, y + vspeed*9, objAlexPropelorBlockWindArea)) {
+if(!shrink &amp;&amp; !place_meeting(x + hspeed*16, y + vspeed*16, objAlexPropelorBlockWindArea)) {
     shrink = true;
     sprite_index = sprAlexPropelorBlockWindPartDespawn;
     image_index = 0;

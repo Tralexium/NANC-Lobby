@@ -1261,6 +1261,7 @@
         </objects>
         <objects name="Orb Blocks">
           <object>objects\objAlexOrbBlock</object>
+          <object>objects\objAlexOrbBlockTimer</object>
           <object>objects\objAlexOrbBlockCircle</object>
           <object>objects\objAlexOrbBlockExpandingCircle</object>
           <object>objects\objAlexOrbBlockLine</object>

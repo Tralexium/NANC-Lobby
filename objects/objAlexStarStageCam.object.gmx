@@ -163,10 +163,11 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     // Cannon warp
     //instance_activate_object(objAlexCannonWarp);
     // Orb blocks
-    instance_activate_object(objAlexOrbBlockCircle);
-    instance_activate_object(objAlexOrbBlockExpandingCircle);
-    instance_activate_object(objAlexOrbBlockLine);
-    instance_activate_object(objAlexPlasmaOrb);
+    instance_activate_object(objAlexOrbBlockTimer);
+    //instance_activate_object(objAlexOrbBlockCircle);
+    //instance_activate_object(objAlexOrbBlockExpandingCircle);
+    //instance_activate_object(objAlexOrbBlockLine);
+    //instance_activate_object(objAlexPlasmaOrb);
     // Pandora box
     instance_activate_object(objAlexPandoraBox);
     instance_activate_object(objAlexPandoraBoxArea);

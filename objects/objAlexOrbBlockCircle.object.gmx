@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -75,7 +89,7 @@ for (var i=0; i&lt;orb_num; i++) {
         orb[i].direction = point_direction(_previous_orb_x, _previous_orb_y, orb[i].x, orb[i].y)
     }
 }
-t += dt
+t = global.orb_block_timer * dt
 </string>
           </argument>
         </arguments>
