@@ -43,6 +43,7 @@
 orb_size = 24;
 dt = 1/200 //Time increment, where 1t = 1 cycle. In the default case, one cycle is 200 frames. (4 seconds)
 radius = 80;
+offset = 0;
 
 t = 0
 image_speed = 0.4;
@@ -84,7 +85,7 @@ for (var i=0; i&lt;orb_num; i++) {
         orb[i].direction = point_direction(_previous_orb_x, _previous_orb_y, orb[i].x, orb[i].y)
     }
 }
-t += dt
+t = global.orb_block_timer * dt + offset;
 </string>
           </argument>
         </arguments>

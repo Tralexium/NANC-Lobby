@@ -44,7 +44,7 @@ spawn_period = 60;
 
 t = 0;
 current_dist = 0;
-deactivation_range = 5000;
+deactivation_range = 2000;
 </string>
           </argument>
         </arguments>
@@ -127,7 +127,7 @@ if(t mod spawn_period == 0){
 
 if(instance_exists(objPlayer)) {
     if(distance_to_object(objPlayer) &gt; deactivation_range) {
-        instance_destroy();
+        //instance_destroy();
         exit;
     }
 }

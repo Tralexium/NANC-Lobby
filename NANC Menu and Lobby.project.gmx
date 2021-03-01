@@ -546,6 +546,7 @@
         <sprite>sprites\sprAlexDarkVoidCircle</sprite>
         <sprite>sprites\sprAlexDarkVoidTriangle</sprite>
         <sprite>sprites\sprAlexActivateBeamSpawner</sprite>
+        <sprite>sprites\sprAlexChangeBeamOrientation</sprite>
         <sprite>sprites\sprAlexDeactivateBeamSpawner</sprite>
         <sprite>sprites\sprAlexActivateCircleSpawner</sprite>
         <sprite>sprites\sprAlexDeactivateCircleSpawner</sprite>
@@ -581,6 +582,7 @@
         <sprite>sprites\sprAlexPlatformPathArrowUpLeft</sprite>
         <sprite>sprites\sprAlexBubble</sprite>
         <sprite>sprites\sprAlexBubblePop</sprite>
+        <sprite>sprites\sprAlexBubbleJumpSign</sprite>
         <sprite>sprites\sprAlexCannonWarp</sprite>
         <sprite>sprites\sprAlexCannonWarpSpiral</sprite>
         <sprite>sprites\sprAlexCannonWarpLine</sprite>
@@ -1298,6 +1300,7 @@
         </objects>
         <objects name="Beam Obstacle">
           <object>objects\objAlexActivateBeamSpawner</object>
+          <object>objects\objAlexChangeBeamOrientation</object>
           <object>objects\objAlexDeactivateBeamSpawner</object>
           <object>objects\objAlexBeamSpawner</object>
         </objects>
@@ -1312,6 +1315,9 @@
         </objects>
         <object>objects\objAlexBubble</object>
         <object>objects\objAlexVoidBlock</object>
+        <object>objects\objAlexBubbleActivateSign</object>
+        <object>objects\objAlexBubbleDeactivateSign</object>
+        <object>objects\objAlexBubbleJumpSign</object>
       </objects>
       <objects name="Final Boss">
         <objects name="Projectiles">

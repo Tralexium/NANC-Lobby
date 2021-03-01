@@ -139,6 +139,10 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     
     
     // Final Stage
+    // Bubble jump sign
+    instance_activate_object(objAlexBubbleJumpSign);
+    // Killer block
+    instance_activate_object(objKillerBlock);
     // Platforms
     instance_activate_object(objAlexPlatformWheel);
     instance_activate_object(objAlexPlatformArrow);
