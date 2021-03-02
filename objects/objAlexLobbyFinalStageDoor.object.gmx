@@ -739,6 +739,7 @@ if(ui_fade_progress &gt; .02) {
         draw_sprite_part(sprAlexStageDifficultyBar, 1, 0, 0, 40*ui_difficulty_length, 8, ui_x-20, ui_y-45);
     } else {
         // Green tick
+        draw_set_font(fLobbySmall);
         draw_sprite(sprAlexLobbyStageDoorCleared, 0, ui_x-16, ui_y-53);
         var _string = ": " + string(beaten_levels) + "/" + string(level_amnt);
         scrDrawTextSquareOutline(ui_x-4, ui_y-45, _string, text_col, outline_col, 1, fa_left, fa_bottom);

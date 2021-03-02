@@ -66,6 +66,7 @@ initial_clone_x = x;
 initial_clone_y = y;
 image_xscale = 0;
 image_yscale = 0;
+mask_index = sprAlexNoMask;
 </string>
           </argument>
         </arguments>
@@ -107,6 +108,7 @@ if(active) {
             }
             
             audio_play_sound(sndAlexDarkCloneWarpExpand, 0, false);
+            mask_index = sprite_index;
         } else {
             instance_destroy();
         }

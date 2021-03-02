@@ -3,8 +3,8 @@
   <caption></caption>
   <width>31000</width>
   <height>3200</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -779,9 +779,8 @@
     <instance objName="objAlexColorBlockRed" x="16528" y="1904" name="inst_7B4717DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockRed" x="16272" y="1552" name="inst_06B5FCA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockRed" x="16304" y="1552" name="inst_4D753AF2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockBlue" x="16304" y="1520" name="inst_2DDF1012" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockBlue" x="16432" y="1520" name="inst_C5F63D9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockBlue" x="16464" y="1520" name="inst_83C429B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="16432" y="1552" name="inst_C5F63D9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="16464" y="1552" name="inst_83C429B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockRed" x="16560" y="1520" name="inst_5B82B3A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockRed" x="16592" y="1520" name="inst_A07E6DC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="16224" y="1824" name="inst_44DAD7BF" locked="0" code="" scaleX="4" scaleY="32" colour="4294967295" rotation="0"/>
@@ -873,7 +872,7 @@
     <instance objName="objAlexBlockWithShadow" x="18656" y="1792" name="inst_8EEBADAA" locked="0" code="" scaleX="14" scaleY="46" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="18656" y="608" name="inst_B1E54550" locked="0" code="" scaleX="14" scaleY="66" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="18592" y="1152" name="inst_430FE29B" locked="0" code="" scaleX="4" scaleY="26" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="18592" y="1856" name="inst_8907F6B7" locked="0" code="" scaleX="4" scaleY="42" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="18592" y="1872" name="inst_8907F6B7" locked="0" code="" scaleX="4" scaleY="42" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="18624" y="1568" name="inst_7EC09B5A" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkVoidDiamond" x="17312" y="1792" name="inst_F0B8DAFD" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkVoidDiamond" x="17120" y="1600" name="inst_1FBCE750" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -970,7 +969,7 @@
     <instance objName="objAlexDarkVoidDiamond" x="18464" y="1984" name="inst_5081848D" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarCameraTrigger" x="18720" y="1632" name="inst_49CF56A4" locked="0" code="index = 14;&#xA;" scaleX="1.03225803375244" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarCameraTrigger" x="18768" y="1632" name="inst_27D295F5" locked="0" code="index = 15;&#xA;" scaleX="1.03225803375244" scaleY="6" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="18880" y="1856" name="inst_7967766F" locked="0" code="" scaleX="4" scaleY="42" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="18880" y="1872" name="inst_7967766F" locked="0" code="" scaleX="4" scaleY="42" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="18880" y="1568" name="inst_CD2B6FE5" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="18880" y="1152" name="inst_59DEF06A" locked="0" code="" scaleX="4" scaleY="26" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="19040" y="1824" name="inst_51A6C1A5" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
@@ -1595,6 +1594,7 @@
     <instance objName="objAlexDarkVoidDiamond" x="23744" y="2176" name="inst_EC1114EC" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkVoidDiamond" x="23840" y="2176" name="inst_E17C3334" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkVoidDiamond" x="23904" y="2352" name="inst_228FB932" locked="0" code="" scaleX="0.379999995231628" scaleY="0.379999995231628" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="16304" y="1520" name="inst_392552B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
