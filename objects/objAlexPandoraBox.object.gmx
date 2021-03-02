@@ -32,6 +32,7 @@ image_speed = 0.3;
 active = false;
 unlocked = false;
 explode = false;
+old_cam_index = -1;
 t = 0;
 
 border_wiggle_amnt = 5;
@@ -130,8 +131,10 @@ if(!instance_exists(objAlexPandoraBoxParticles))
 
 surface_free(outside_surf);
 
-with(objAlexStarStageCam)
+with(objAlexStarStageCam) {
     target_obj = objPlayer;
+    index = other.old_cam_index;
+}
     
 audio_stop_sound(sndAlexPandoraBoxAmbience);
 </string>
@@ -438,6 +441,32 @@ if(sprite_index == sprAlexPandoraBoxUnlocked) {
     <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Remove ambient noise and restore music volume
+
+if(audio_is_playing(sndAlexPandoraBoxAmbience)) {
+    audio_stop_sound(sndAlexPandoraBoxAmbience);
+    audio_sound_gain(global.currentMusic, 1, 100);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>203</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -477,32 +506,6 @@ if(_area != noone) {
     area_y1 = _area.bbox_top;
     area_x2 = _area.bbox_right;
     area_y2 = _area.bbox_bottom;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Remove ambient noise and restore music volume
-
-if(audio_is_playing(sndAlexPandoraBoxAmbience)) {
-    audio_stop_sound(sndAlexPandoraBoxAmbience);
-    audio_sound_gain(global.currentMusic, 1, 0);
 }
 </string>
           </argument>

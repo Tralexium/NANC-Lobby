@@ -31,7 +31,8 @@ enum VOID_TYPE {
     square,
     diamond,
     circle, 
-    triangle,
+    triangle_up,
+    triangle_down,
 }
 
 // Change these
@@ -87,8 +88,12 @@ switch(void_type) {
         _sprite = sprAlexDarkVoidCircle;
         break;
         
-    case VOID_TYPE.triangle:
-        _sprite = sprAlexDarkVoidTriangle;
+    case VOID_TYPE.triangle_up:
+        _sprite = sprAlexDarkVoidTriangleUp;
+        break;
+        
+    case VOID_TYPE.triangle_down:
+        _sprite = sprAlexDarkVoidTriangleDown;
         break;
 }
 
@@ -153,8 +158,12 @@ switch(void_type) {
         _sprite = sprAlexDarkVoidCircle;
         break;
         
-    case VOID_TYPE.triangle:
-        _sprite = sprAlexDarkVoidTriangle;
+    case VOID_TYPE.triangle_up:
+        _sprite = sprAlexDarkVoidTriangleUp;
+        break;
+        
+    case VOID_TYPE.triangle_down:
+        _sprite = sprAlexDarkVoidTriangleDown;
         break;
 }
 

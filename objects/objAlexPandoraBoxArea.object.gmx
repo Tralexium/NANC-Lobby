@@ -59,11 +59,14 @@ if(!active &amp;&amp; other.x &gt; bbox_left+edge_margin &amp;&amp; other.x &lt;
     var _box = instance_place(x, y, objAlexPandoraBox);
     with(_box) {
         active = true;
+        old_cam_index = objAlexStarStageCam.index;
         event_user(0);
     }
         
-    with(objAlexStarStageCam)
+    with(objAlexStarStageCam) {
         target_obj = other.id;
+        index = -1;
+    }
 }
 </string>
           </argument>

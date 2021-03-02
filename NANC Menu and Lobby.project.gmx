@@ -449,6 +449,8 @@
         <sprite>sprites\sprStarLevel5BlockTexture</sprite>
         <sprite>sprites\sprStarLevel6BlockTexture</sprite>
         <sprite>sprites\sprFinalStarLevelTexture</sprite>
+        <sprite>sprites\sprFinalStarLevelTexture2</sprite>
+        <sprite>sprites\sprFinalStarLevelTexture3</sprite>
         <sprite>sprites\sprAlexCameraClamper</sprite>
         <sprite>sprites\sprAlexCameraArea</sprite>
         <sprite>sprites\sprAlexCameraAxisLock</sprite>
@@ -544,7 +546,8 @@
         <sprite>sprites\sprAlexDarkVoidSquareCenter</sprite>
         <sprite>sprites\sprAlexDarkVoidDiamond</sprite>
         <sprite>sprites\sprAlexDarkVoidCircle</sprite>
-        <sprite>sprites\sprAlexDarkVoidTriangle</sprite>
+        <sprite>sprites\sprAlexDarkVoidTriangleUp</sprite>
+        <sprite>sprites\sprAlexDarkVoidTriangleDown</sprite>
         <sprite>sprites\sprAlexActivateBeamSpawner</sprite>
         <sprite>sprites\sprAlexChangeBeamOrientation</sprite>
         <sprite>sprites\sprAlexDeactivateBeamSpawner</sprite>
@@ -1230,7 +1233,8 @@
           <object>objects\objAlexDarkVoidSquare</object>
           <object>objects\objAlexDarkVoidDiamond</object>
           <object>objects\objAlexDarkVoidCircle</object>
-          <object>objects\objAlexDarkVoidTriangle</object>
+          <object>objects\objAlexDarkVoidTriangleUp</object>
+          <object>objects\objAlexDarkVoidTriangleDown</object>
           <object>objects\objAlexDarkVoidSpawner</object>
           <object>objects\objAlexDarkVoidKiller</object>
           <object>objects\objAlexDarkVoid</object>

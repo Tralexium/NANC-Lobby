@@ -72,7 +72,7 @@
     <instance objName="objAlexDarkVoidRenderer" x="0" y="64" name="inst_3263CF64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkVoidSquare" x="480" y="-192" name="inst_A7EA92BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkVoidCircle" x="416" y="-352" name="inst_27185923" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexDarkVoidTriangle" x="640" y="-288" name="inst_A33F9B26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidTriangleUp" x="640" y="-288" name="inst_A33F9B26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexChangeColorBlockGlobals" x="576" y="-192" name="inst_27F94CED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockRed" x="624" y="-176" name="inst_48A3BDD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="656" y="-176" name="inst_C919FED3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

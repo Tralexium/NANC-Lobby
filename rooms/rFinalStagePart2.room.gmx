@@ -4,7 +4,7 @@
   <width>5600</width>
   <height>2400</height>
   <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <hsnap>32</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -51,16 +51,15 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="objAlexStarStageBG" x="0" y="0" name="inst_FBB3A06A" locked="0" code="base_col_hsv[0] = 0.7; // Hue&#xA;base_col_hsv[1] = 0.5; // Saturation&#xA;base_col_hsv[2] = 0.15; // Value / Luminosity&#xA;hue_increment = 0.022; // How much the hue changes each step&#xA;sat_increment = 0.038; // How much the sat changes each step&#xA;val_increment = 0.6; // How much the value/luminosity changes each step&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarStageBG" x="0" y="0" name="inst_FBB3A06A" locked="0" code="base_col_hsv[0] = 0.68; // Hue&#xA;base_col_hsv[1] = 0.5; // Saturation&#xA;base_col_hsv[2] = 0.15; // Value / Luminosity&#xA;hue_increment = -0.027; // How much the hue changes each step&#xA;sat_increment = 0.05; // How much the sat changes each step&#xA;val_increment = 1.2; // How much the value/luminosity changes each step&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlayerStart" x="608" y="480" name="inst_BA0BEEED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="1216" y="-112" name="inst_ED607A06" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="448" y="512" name="inst_59E92437" locked="0" code="" scaleX="22" scaleY="10" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexObstacleRenderer" x="0" y="32" name="inst_8F24ED47" locked="0" code="block_texture_sprite = sprFinalStarLevelTexture;&#xA;texture_h_spd = 0.0;&#xA;texture_v_spd = 0.1;&#xA;outline_size = 2;&#xA;outline_col[0] = 105 / 255;  // R (0-1)&#xA;outline_col[1] = 100 / 255;  // G (0-1)&#xA;outline_col[2] = 165 / 255;  // B (0-1)&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexObstacleRenderer" x="0" y="32" name="inst_8F24ED47" locked="0" code="block_texture_sprite = sprFinalStarLevelTexture2;&#xA;texture_h_spd = 0.0;&#xA;texture_v_spd = 0.1;&#xA;outline_size = 2;&#xA;outline_col[0] = 60 / 255;  // R (0-1)&#xA;outline_col[1] = 125 / 255;  // G (0-1)&#xA;outline_col[2] = 100 / 255;  // B (0-1)&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeD" x="1280" y="-80" name="inst_85087443" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeR" x="1280" y="-112" name="inst_56762C4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeL" x="1248" y="-80" name="inst_0FF959AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeU" x="1248" y="-112" name="inst_29619EA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objPlayMusic" x="32" y="32" name="inst_6CBA3B64" locked="0" code="BGM = musFinalStage;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlatformWheel" x="256" y="-160" name="inst_6A53EF00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlatformArrowUp" x="288" y="-160" name="inst_02A1463E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlatformArrowDown" x="320" y="-160" name="inst_B9C3AD24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -72,7 +71,7 @@
     <instance objName="objAlexDarkVoidRenderer" x="0" y="64" name="inst_3263CF64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkVoidSquare" x="480" y="-192" name="inst_A7EA92BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkVoidCircle" x="416" y="-352" name="inst_27185923" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexDarkVoidTriangle" x="640" y="-288" name="inst_A33F9B26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidTriangleUp" x="640" y="-288" name="inst_A33F9B26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexChangeColorBlockGlobals" x="576" y="-192" name="inst_27F94CED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockRed" x="624" y="-176" name="inst_48A3BDD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="656" y="-176" name="inst_C919FED3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -115,6 +114,247 @@
     <instance objName="objAlexStarCameraArea" x="16" y="-128" name="inst_9D789B26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarCameraTrigger" x="96" y="-96" name="inst_BC8F093D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarStageCam" x="32" y="0" name="inst_9BE00A32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="384" y="272" name="inst_4D697265" locked="0" code="" scaleX="10" scaleY="10" colour="4294967295" rotation="0"/>
+    <instance objName="objSave_new" x="1136" y="368" name="inst_665AA239" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPlayMusicWithIntro" x="32" y="32" name="inst_CADC4A7E" locked="0" code="BGM = musFinalStagePart2;&#xA;introLength = 16.594;&#xA;loopLength = 226.560;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="544" y="432" name="inst_E89D40E5" locked="0" code="index = 1;&#xA;" scaleX="4.5" scaleY="2.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="912" y="448" name="inst_34D337F9" locked="0" code="" scaleX="6" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="352" y="400" name="inst_94C1C5FE" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="848" y="480" name="inst_E6D18717" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="880" y="544" name="inst_36C1CA97" locked="0" code="" scaleX="6" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1104" y="400" name="inst_8A273742" locked="0" code="" scaleX="6" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="544" y="336" name="inst_A383058E" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="512" y="240" name="inst_3DD992BF" locked="0" code="" scaleX="6" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="416" y="432" name="inst_BBE4CB7D" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="704" y="304" name="inst_7557A2F8" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="752" y="352" name="inst_909BC09A" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="688" y="336" name="inst_EF6BE26D" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="416" y="576" name="inst_FC9E9B9C" locked="0" code="" scaleX="13" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="768" y="576" name="inst_9EAE6CDF" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1152" y="448" name="inst_C068BB7A" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objSaveBlocker_new" x="1072" y="368" name="inst_1E8B2EA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSaveBlocker_new" x="1200" y="368" name="inst_EE0E931B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPandoraBox" x="1824" y="224" name="inst_B1EAA3A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPandoraBoxArea" x="1632" y="352" name="inst_ECAAE67B" locked="0" code="" scaleX="20" scaleY="14" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1536" y="320" name="inst_E00984DC" locked="0" code="" scaleX="32" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPandoraKey" x="1648" y="480" name="inst_E149D6D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1248" y="320" name="inst_EB3ED06F" locked="0" code="" scaleX="10" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1536" y="288" name="inst_F8D5B7B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1552" y="256" name="inst_38ECA385" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1568" y="224" name="inst_C5DCA1E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1584" y="256" name="inst_BCA4B970" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1568" y="288" name="inst_B19D1D1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1600" y="288" name="inst_C0DC9D49" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1552" y="288" name="inst_24587830" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1584" y="288" name="inst_C7079B3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1568" y="256" name="inst_1B713F08" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1536" y="384" name="inst_99E3F977" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1552" y="416" name="inst_E04ADFDA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1568" y="448" name="inst_2C7519BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1584" y="416" name="inst_686D5CE4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1600" y="384" name="inst_4D35F105" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1568" y="384" name="inst_9873B479" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1584" y="384" name="inst_1521A02C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1552" y="384" name="inst_021CEE3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1568" y="416" name="inst_0F295EB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="1408" y="320" name="inst_C33AD073" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="1440" y="336" name="inst_E7D2E092" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="1408" y="352" name="inst_28448295" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeL" x="1408" y="336" name="inst_5491D9EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1616" y="288" name="inst_3FF32CE8" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1616" y="352" name="inst_63928F7E" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="1680" y="288" name="inst_8F1E04E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="1680" y="384" name="inst_7F1E1ABF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="1712" y="368" name="inst_7C2CAAB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="1712" y="304" name="inst_817BF14D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeL" x="1680" y="304" name="inst_DE8780A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeL" x="1680" y="368" name="inst_9191871E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1760" y="288" name="inst_B01F4D26" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1792" y="304" name="inst_572DA5C8" locked="0" code="" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1856" y="288" name="inst_72CB90A3" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1488" y="512" name="inst_1953E962" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1472" y="480" name="inst_6FCA0B04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1504" y="480" name="inst_F22F17DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1472" y="448" name="inst_86412612" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1488" y="416" name="inst_8932B820" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1504" y="448" name="inst_50564767" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1488" y="480" name="inst_61FD75A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1488" y="448" name="inst_74A54C28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1488" y="160" name="inst_3035E1CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1472" y="192" name="inst_694EE140" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1488" y="192" name="inst_E4DF523A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1504" y="192" name="inst_5C03552D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1472" y="224" name="inst_C9493259" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1504" y="224" name="inst_E9DCCF93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1488" y="224" name="inst_737A896E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1488" y="256" name="inst_23DDC17F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1808" y="384" name="inst_28D442C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1776" y="384" name="inst_531D07F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1760" y="416" name="inst_069FDC2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1856" y="416" name="inst_C8DEC08F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1840" y="384" name="inst_D93711D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1760" y="384" name="inst_DD62089F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1856" y="384" name="inst_7C2396FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="1376" y="240" name="inst_3A53414D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="1376" y="432" name="inst_4F945454" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1376" y="272" name="inst_65C7D124" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1376" y="384" name="inst_7DBB674F" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="1072" y="320" name="inst_5A335902" locked="0" code="index = 1;&#xA;" scaleX="5" scaleY="2.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraArea" x="288" y="64" name="inst_19A566F2" locked="0" code="index = 1&#xA;image_yscale = 10.5;&#xA;" scaleX="50" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objKillerBlock" x="256" y="752" name="inst_31F0AA2A" locked="0" code="visible = false;&#xA;" scaleX="74.5" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objKillerBlock" x="240" y="160" name="inst_DBB93DE2" locked="0" code="visible = false;&#xA;" scaleX="1" scaleY="19.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2000" y="352" name="inst_97F3B445" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2048" y="368" name="inst_DBC59D93" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1984" y="304" name="inst_57659488" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2016" y="288" name="inst_F0A86AC0" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2144" y="320" name="inst_A4D3CCC8" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2176" y="288" name="inst_899C8C09" locked="0" code="" scaleX="6" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2240" y="256" name="inst_65DBF92D" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2256" y="304" name="inst_EBE70480" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2160" y="336" name="inst_273558E0" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2272" y="448" name="inst_DB7DABE4" locked="0" code="" scaleX="11" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2240" y="480" name="inst_7BEF39A5" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2304" y="496" name="inst_E86ADDD7" locked="0" code="" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidTriangleUp" x="2112" y="496" name="inst_9DCBB7BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidTriangleUp" x="3024" y="432" name="inst_91EBC120" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2336" y="256" name="inst_B29B98A6" locked="0" code="" scaleX="0.75" scaleY="0.875" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2112" y="560" name="inst_10B386E7" locked="0" code="" scaleX="0.75" scaleY="0.875" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2400" y="400" name="inst_A5A46F69" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2224" y="384" name="inst_6CA66070" locked="0" code="" scaleX="0.375" scaleY="0.375" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2576" y="448" name="inst_24BE205E" locked="0" code="" scaleX="11" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2592" y="512" name="inst_F7ECEDAF" locked="0" code="" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2656" y="496" name="inst_75985D95" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2704" y="512" name="inst_9848DBA9" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2608" y="416" name="inst_A8A0BEF5" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2672" y="400" name="inst_5B5CC90A" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2688" y="432" name="inst_3CDC8019" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2272" y="416" name="inst_138323E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2304" y="416" name="inst_B8F69966" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2608" y="384" name="inst_FCB1864E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2672" y="368" name="inst_C7420B6C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="2608" y="320" name="inst_A9505BF1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="2672" y="304" name="inst_CEE77D44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2608" y="272" name="inst_7F49E4F7" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2672" y="272" name="inst_35E79EEC" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2624" y="256" name="inst_6445BA3F" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2640" y="272" name="inst_1BC78549" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2640" y="240" name="inst_6AEEC9CE" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="2640" y="432" name="inst_7887AF14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeL" x="2640" y="272" name="inst_09A5A896" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="2720" y="432" name="inst_C4513479" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2512" y="352" name="inst_700FBA12" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2512" y="544" name="inst_97872D3F" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objSave_new" x="2208" y="256" name="inst_64B4E1ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSaveBlocker_new" x="2144" y="256" name="inst_C8781E6D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2336" y="432" name="inst_9D0057E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="2448" y="448" name="inst_0C4E50D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeL" x="2544" y="448" name="inst_C78DD598" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexCannonWarp" x="2768" y="384" name="inst_E98CF661" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="2688" y="416" name="inst_8F3DAAD1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2848" y="352" name="inst_49C15E25" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="2848" y="384" name="inst_BA61B97F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2864" y="352" name="inst_8406E245" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2864" y="320" name="inst_0FFAD69A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2880" y="400" name="inst_FE6B42CC" locked="0" code="" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2880" y="368" name="inst_8FDAF4B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="2880" y="432" name="inst_C0DF8EF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="2752" y="448" name="inst_620215DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexOrbBlockExpandingCircle" x="2752" y="176" name="inst_C5985DDC" locked="0" code="orb_num = 2;&#xA;orb_size = 24;&#xA;dt = 1/200 //Time increment, where 1t = 1 cycle. In the default case, one cycle is 200 frames. (4 seconds)&#xA;radius = 80;&#xA;offset = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="2832" y="272" name="inst_48EECE29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2752" y="144" name="inst_13EC85D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2672" y="256" name="inst_C93B97AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2656" y="224" name="inst_E3E8D94B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="2640" y="224" name="inst_051AA7A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2640" y="192" name="inst_3D27AF00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2848" y="176" name="inst_68AE620E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2832" y="208" name="inst_BC81A673" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2832" y="240" name="inst_FC315EC2" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="2848" y="208" name="inst_B1EEB9CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="2864" y="144" name="inst_3FB2639B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeD" x="2864" y="176" name="inst_D108F09F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="2864" y="240" name="inst_FCB9272C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="2144" y="208" name="inst_8505C253" locked="0" code="index = 1;&#xA;" scaleX="5" scaleY="2.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="2912" y="384" name="inst_E6720C11" locked="0" code="index = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraArea" x="2656" y="160" name="inst_4E5EFC25" locked="0" code="index = 2&#xA;image_yscale = 12;&#xA;" scaleX="12.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3040" y="16" name="inst_C0308E63" locked="0" code="" scaleX="28" scaleY="17" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3152" y="192" name="inst_F118D261" locked="0" code="" scaleX="26" scaleY="13" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3104" y="336" name="inst_3CC744A7" locked="0" code="" scaleX="9" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3200" y="368" name="inst_8C9C86AA" locked="0" code="" scaleX="6" scaleY="5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3296" y="352" name="inst_527B0B6B" locked="0" code="" scaleX="3" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3024" y="128" name="inst_F7DAACD9" locked="0" code="" scaleX="2.13333344459534" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3008" y="176" name="inst_81DAC325" locked="0" code="" scaleX="5.33333349227905" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objKillerBlock" x="2608" y="528" name="inst_F81ED357" locked="0" code="visible = false;&#xA;" scaleX="1" scaleY="13.9354839324951" colour="4294967295" rotation="0"/>
+    <instance objName="objKillerBlock" x="1088" y="960" name="inst_AE8A1DF5" locked="0" code="visible = false;&#xA;" scaleX="74.5" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeL" x="3072" y="336" name="inst_3E55FB5B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3152" y="480" name="inst_02CD8CE3" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3168" y="528" name="inst_136FCA55" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3200" y="496" name="inst_645E7BFB" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3200" y="544" name="inst_FACD89B7" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="2944" y="208" name="inst_98BF4259" locked="0" code="index = 2;&#xA;" scaleX="1" scaleY="6.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidTriangleDown" x="2864" y="640" name="inst_A8D02CC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2864" y="576" name="inst_A519B794" locked="0" code="" scaleX="0.75" scaleY="0.875" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2752" y="624" name="inst_768BF968" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2752" y="544" name="inst_C02CAD7B" locked="0" code="" scaleX="0.125" scaleY="0.125" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="3024" y="480" name="inst_67A75C38" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="3152" y="528" name="inst_D25923E8" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="3120" y="496" name="inst_A24FAE99" locked="0" code="" scaleX="0.125" scaleY="0.125" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="3136" y="560" name="inst_FA68C729" locked="0" code="" scaleX="0.125" scaleY="0.125" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2976" y="608" name="inst_6C8CC173" locked="0" code="" scaleX="9" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3088" y="608" name="inst_D925D046" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2960" y="640" name="inst_FC52B8C6" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2944" y="624" name="inst_291EC34C" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2960" y="640" name="inst_20D060DF" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="2976" y="576" name="inst_17D7AECB" locked="0" code="" scaleX="2" scaleY="3.20000004768372" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3056" y="560" name="inst_6B78D5F3" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeL" x="3008" y="592" name="inst_CC3ED89C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="3040" y="560" name="inst_4280309F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3040" y="592" name="inst_C117D366" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="3072" y="576" name="inst_13EF552B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2928" y="480" name="inst_DD681837" locked="0" code="" scaleX="0.125" scaleY="0.125" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeU" x="3048" y="544" name="inst_B3015FFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3200" y="592" name="inst_CE3357CD" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="3200" y="608" name="inst_423FF796" locked="0" code="" scaleX="0.125" scaleY="0.125" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="3216" y="624" name="inst_D6DC8245" locked="0" code="" scaleX="0.125" scaleY="0.125" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="3232" y="608" name="inst_65879C6D" locked="0" code="" scaleX="0.125" scaleY="0.125" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="3248" y="520" name="inst_22F288C5" locked="0" code="" scaleX="0.1875" scaleY="0.1875" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3392" y="384" name="inst_A5C0E450" locked="0" code="" scaleX="10" scaleY="22" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3392" y="864" name="inst_B71EB4A4" locked="0" code="" scaleX="10" scaleY="22" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="3168" y="672" name="inst_AA13E748" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidTriangleDown" x="3392" y="704" name="inst_20D9F10C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidTriangleUp" x="3392" y="576" name="inst_F18D693C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidTriangleUp" x="3296" y="736" name="inst_FE3C1641" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidTriangleDown" x="3296" y="928" name="inst_57336F46" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidTriangleUp" x="3392" y="960" name="inst_594E902C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidTriangleDown" x="3392" y="1088" name="inst_F54F889D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2976" y="832" name="inst_AE06F5B7" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2864" y="832" name="inst_C7A95611" locked="0" code="" scaleX="0.25" scaleY="0.25" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidDiamond" x="2800" y="832" name="inst_4B649218" locked="0" code="" scaleX="0.125" scaleY="0.125" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexCannonWarp" x="3152" y="832" name="inst_A848036C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3504" y="816" name="inst_AEF7E7D0" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3504" y="736" name="inst_974C8DD8" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3552" y="704" name="inst_7C408126" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3552" y="848" name="inst_B7243C47" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3536" y="672" name="inst_DBE4FBF0" locked="0" code="" scaleX="2.13333344459534" scaleY="2.13333344459534" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3536" y="896" name="inst_17C333D5" locked="0" code="" scaleX="2.13333344459534" scaleY="2.13333344459534" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3696" y="848" name="inst_FDC222E3" locked="0" code="" scaleX="9" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3712" y="880" name="inst_DC90B465" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3776" y="880" name="inst_8487184D" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3808" y="880" name="inst_B7031853" locked="0" code="" scaleX="3.20000004768372" scaleY="2.13333344459534" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3680" y="848" name="inst_FADFA4A4" locked="0" code="" scaleX="1" scaleY="1.06666672229767" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="3744" y="912" name="inst_6C314058" locked="0" code="" scaleX="1" scaleY="1.06666672229767" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="3584" y="720" name="inst_60853909" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="3584" y="864" name="inst_F8F358DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="3584" y="704" name="inst_F6CE7B2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="3584" y="848" name="inst_9D1D7D47" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="3536" y="752" name="inst_56F6B78D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexShadowSpikeR" x="3536" y="816" name="inst_D722B34B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="3392" y="736" name="inst_77874A52" locked="0" code="index = 3;&#xA;" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="3680" y="768" name="inst_990FE1D8" locked="0" code="index = 3;&#xA;" scaleX="5" scaleY="2.5" colour="4294967295" rotation="0"/>
+    <instance objName="objSave_new" x="3744" y="816" name="inst_29C1739F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSaveBlocker_new" x="3680" y="816" name="inst_9E606E78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSaveBlocker_new" x="3808" y="816" name="inst_42BB67B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraArea" x="3360" y="480" name="inst_97AA1076" locked="0" code="index = 3&#xA;image_yscale = 9.5;&#xA;" scaleX="12.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objKillerBlock" x="3456" y="1104" name="inst_7158FDFA" locked="0" code="visible = false;&#xA;" scaleX="74.5" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
