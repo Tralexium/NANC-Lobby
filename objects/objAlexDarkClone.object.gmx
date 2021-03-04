@@ -211,7 +211,6 @@ if(scale &gt; 2 &amp;&amp; t &gt; initial_delay) {
 
     if(airborne_time &gt; _min_air_time &amp;&amp; previous_sprite == sprPlayerFall &amp;&amp; (sprite_index == sprPlayerRunning || sprite_index == sprPlayerIdle)) {
         var _val = scrInverseLerp(_min_air_time, _max_air_time, airborne_time);
-        show_debug_message(_val)
         var _shake_amnt = _val*10;
         scrAlexShakeCam(15, 0, _shake_amnt, 0, 3);
         

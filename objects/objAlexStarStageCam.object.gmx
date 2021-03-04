@@ -201,6 +201,40 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Get Min and Max of the cam area
+
+if index != -1 {
+    with objAlexStarCameraArea {
+        if index == other.index {
+            other.xMin = bbox_left;
+            other.yMin = bbox_top;
+            other.xMax = max(other.xMin, bbox_right-view_wview[0]);
+            other.yMax = max(other.yMin, bbox_bottom-view_hview[0]);
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -227,18 +261,10 @@ if(!active)
 with objPlayer {
     with instance_place(x, y, objAlexStarCameraTrigger) {
         objAlexStarStageCam.index = index
-        if index != -1 {
-         with objAlexStarCameraArea {
-                if index == other.index {
-                    objAlexStarStageCam.xMin = bbox_left;
-                    objAlexStarStageCam.yMin = bbox_top;
-                    objAlexStarStageCam.xMax = max(objAlexStarStageCam.xMin, bbox_right-view_wview[0]);
-                    objAlexStarStageCam.yMax = max(objAlexStarStageCam.yMin, bbox_bottom-view_hview[0]);
-                }
-            }
-        }
     }
 }
+event_user(1);
+
 
 if index == -1 {
     if instance_exists(target_obj) {

@@ -304,6 +304,7 @@
         <sound>sound\sndAlexCrystalStarFused</sound>
         <sound>sound\sndAlexCrystalStarBeamCharge</sound>
         <sound>sound\sndAlexCrystalStarBeam</sound>
+        <sound>sound\sndAlexTrollBlockDing</sound>
       </sounds>
     </sounds>
   </sounds>
@@ -699,6 +700,7 @@
       <sprite>sprites\sprAlexShadowBlock</sprite>
       <sprite>sprites\sprAlexIceBlockSprite</sprite>
       <sprite>sprites\sprAlexPlatform</sprite>
+      <sprite>sprites\sprAlexTrollBlock</sprite>
       <sprite>sprites\sprAlexBlockShadow</sprite>
       <sprite>sprites\sprAlexLobbyTransitionBubble</sprite>
       <sprite>sprites\sprAlexPlayerDustPart</sprite>
@@ -1139,6 +1141,7 @@
         <object>objects\objAlexWater</object>
         <object>objects\objAlexPlatform</object>
         <object>objects\objAlexSparklePlatform</object>
+        <object>objects\objAlexTrollBlock</object>
       </objects>
       <objects name="Doors">
         <object>objects\objAlexLobbyStageDoor</object>

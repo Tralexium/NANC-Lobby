@@ -27,12 +27,14 @@
             <kind>1</kind>
             <string>/// Init vars
 
+// Optionally change this
+new_cam_index = -1;
+
 image_speed = 0.3;
 
 active = false;
 unlocked = false;
 explode = false;
-old_cam_index = -1;
 t = 0;
 
 border_wiggle_amnt = 5;
@@ -133,7 +135,8 @@ surface_free(outside_surf);
 
 with(objAlexStarStageCam) {
     target_obj = objPlayer;
-    index = other.old_cam_index;
+    index = other.new_cam_index;
+    event_user(1);
 }
     
 audio_stop_sound(sndAlexPandoraBoxAmbience);

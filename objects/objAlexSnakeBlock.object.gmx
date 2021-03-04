@@ -107,6 +107,13 @@ if(place_meeting(x, y-1, objPlayer) &amp;&amp; !active) {
     audio_play_sound(sndAlexSnakeBlockStart, 0, false);
     audio_play_sound(sndAlexSnakeBlockMove, 0, true);
 }
+
+if(!instance_exists(objPlayer)) {
+    active = false;
+    with(objAlexSnakeBlockTail) active = false;
+    
+    audio_stop_sound(sndAlexSnakeBlockMove);
+}
 </string>
           </argument>
         </arguments>
