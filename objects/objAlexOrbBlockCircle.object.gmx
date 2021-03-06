@@ -3,7 +3,7 @@
   <spriteName>sprAlexOrbBlock</spriteName>
   <solid>-1</solid>
   <visible>-1</visible>
-  <depth>-201</depth>
+  <depth>-202</depth>
   <persistent>0</persistent>
   <parentName>objAlexOrbBlock</parentName>
   <maskName>&lt;undefined&gt;</maskName>

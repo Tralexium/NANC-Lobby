@@ -243,6 +243,7 @@
           <sound>sound\sndAlexSnakeBlockShake</sound>
           <sound>sound\sndAlexSnakeBlockShrink</sound>
           <sound>sound\sndAlexEyeBlockUnlocked</sound>
+          <sound>sound\sndAlexVoidBlockShot</sound>
         </sounds>
         <sound>sound\sndAlexSaveBlocker</sound>
         <sound>sound\sndAlexSaveGreen</sound>
