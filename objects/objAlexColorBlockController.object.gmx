@@ -118,6 +118,18 @@ if(global.player_on_block) {
             global.next_color_id = 0;
         
         global.player_on_block = false;
+        
+        // Update masks immediately
+        with(objAlexColorBlock) {
+            event_user(0);
+        }
+        
+        // If the player is walking into the next color push him up
+        // so that his feet don't get cliped.
+        with(objPlayer) {
+            if(place_meeting(x, y, objAlexColorBlock))
+                y -= vspeed;
+        }
     }
 }
 </string>

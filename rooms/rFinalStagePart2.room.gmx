@@ -1594,8 +1594,8 @@
     <instance objName="objSave_new" x="15776" y="864" name="inst_E974FB27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="15840" y="912" name="inst_075C14E3" locked="0" code="" scaleX="2" scaleY="26" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="15872" y="928" name="inst_F1E5E278" locked="0" code="" scaleX="2" scaleY="26" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexStarCameraArea" x="15680" y="464" name="inst_5599F874" locked="0" code="index = 15&#xA;image_yscale = 9.5;&#xA;" scaleX="35" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="objKillerBlock" x="15904" y="1088" name="inst_AF4AD59B" locked="0" code="visible = false;&#xA;" scaleX="60" scaleY="0.516129016876221" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraArea" x="15680" y="464" name="inst_5599F874" locked="0" code="index = 15&#xA;image_yscale = 9.5;&#xA;" scaleX="46" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objKillerBlock" x="15904" y="1088" name="inst_AF4AD59B" locked="0" code="visible = false;&#xA;" scaleX="90" scaleY="0.516129016876221" colour="4294967295" rotation="0"/>
     <instance objName="objSaveBlocker_new" x="15904" y="864" name="inst_E8CB895D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSaveBlocker_new" x="15712" y="864" name="inst_F9B208A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarCameraTrigger" x="15712" y="784" name="inst_71EE8ABB" locked="0" code="index = 15;" scaleX="6" scaleY="4.5" colour="4294967295" rotation="0"/>
@@ -1680,18 +1680,13 @@
     <instance objName="objSave_new" x="17088" y="896" name="inst_3CA6602A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSaveBlocker_new" x="17024" y="896" name="inst_3D88A3A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSaveBlocker_new" x="17152" y="896" name="inst_4727925E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexPandoraBoxArea" x="17536" y="768" name="inst_D2B8E948" locked="0" code="" scaleX="16" scaleY="16" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexPandoraBox" x="17536" y="560" name="inst_51549700" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPandoraBoxArea" x="17536" y="768" name="inst_D2B8E948" locked="-1" code="" scaleX="16" scaleY="16" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPandoraBox" x="17440" y="576" name="inst_51549700" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexChangeColorBlockGlobals" x="17008" y="832" name="inst_34EAADDA" locked="0" code="start_id = 0;&#xA;new_max = 3;&#xA;" scaleX="6" scaleY="3.09677410125732" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarCameraTrigger" x="17008" y="784" name="inst_6FD59E07" locked="0" code="index = 15;" scaleX="6" scaleY="4.5" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockRed" x="17216" y="512" name="inst_726E7ADE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockBlue" x="17216" y="544" name="inst_4100DE57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockGreen" x="17216" y="576" name="inst_2D6407E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockYellow" x="17216" y="608" name="inst_C1696F51" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="17280" y="416" name="inst_8684C30F" locked="0" code="" scaleX="8" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="17280" y="896" name="inst_6F06EB2D" locked="0" code="" scaleX="8" scaleY="16" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="17664" y="896" name="inst_070E97E6" locked="0" code="" scaleX="8" scaleY="16" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="17664" y="416" name="inst_AC810AF6" locked="0" code="" scaleX="8" scaleY="11" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="17664" y="416" name="inst_AC810AF6" locked="0" code="" scaleX="8" scaleY="10" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="17472" y="704" name="inst_FFDE9A03" locked="0" code="" scaleX="8" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="17472" y="736" name="inst_86BB4C65" locked="0" code="" scaleX="2" scaleY="10" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="17568" y="736" name="inst_E0E2DC71" locked="0" code="" scaleX="2" scaleY="6" colour="4294967295" rotation="0"/>
@@ -1704,20 +1699,13 @@
     <instance objName="objAlexBlockWithShadow" x="17888" y="720" name="inst_B2EC4D75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="17824" y="768" name="inst_6D89137F" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="17696" y="800" name="inst_4777DCCE" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="17408" y="560" name="inst_3E1F223B" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="17472" y="608" name="inst_B71CFFBF" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="17600" y="560" name="inst_57CB66CE" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="17408" y="608" name="inst_3E1F223B" locked="0" code="" scaleX="6" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="17568" y="608" name="inst_BB99E50F" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPandoraKey" x="17536" y="768" name="inst_9558A7F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockRed" x="17296" y="880" name="inst_A397F654" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="17616" y="720" name="inst_A4F6FC1E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="17648" y="720" name="inst_837C99F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockGreen" x="17824" y="832" name="inst_B52CB5AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockGreen" x="17872" y="864" name="inst_EE154A80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="17376" y="592" name="inst_BAFD1FB2" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="17664" y="592" name="inst_A27C980D" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="17600" y="624" name="inst_D3551C00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="17456" y="624" name="inst_7C5AF1BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockRed" x="17328" y="880" name="inst_AC20F316" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockRed" x="17360" y="880" name="inst_9691FD68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="17424" y="848" name="inst_CDF0E7D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1737,7 +1725,6 @@
     <instance objName="objAlexColorBlockYellow" x="17456" y="752" name="inst_13F920A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockRed" x="17744" y="816" name="inst_AA1D22D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockRed" x="17776" y="816" name="inst_C372BDDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockGreen" x="17872" y="832" name="inst_789F3F26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockGreen" x="17744" y="848" name="inst_48AA930D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockYellow" x="17456" y="848" name="inst_CE85334F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockYellow" x="17456" y="880" name="inst_F6613A25" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1747,12 +1734,65 @@
     <instance objName="objAlexColorBlockYellow" x="17392" y="816" name="inst_7DEC6615" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockBlue" x="17424" y="880" name="inst_8DDD7481" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockGreen" x="17296" y="752" name="inst_206D6A31" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockBlue" x="17824" y="928" name="inst_91296D23" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexColorBlockGreen" x="17904" y="880" name="inst_DBE8A56D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockGreen" x="17776" y="848" name="inst_33676F87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexColorBlockGreen" x="17328" y="816" name="inst_AD86090F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexDarkClonePortal" x="17584" y="912" name="inst_4C34EE45" locked="0" code="clone_amnt = 1;&#xA;clone_scale = 1;&#xA;clone_initial_delay = 40;  // Min is 30!&#xA;clone_seperation = 30;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkClonePortal" x="17632" y="768" name="inst_4C34EE45" locked="0" code="clone_amnt = 1;&#xA;clone_scale = 1;&#xA;clone_initial_delay = 30;  // Min is 30!&#xA;clone_seperation = 20;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkCloneSpawnArea" x="17696" y="880" name="inst_F2D38527" locked="0" code="" scaleX="3" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockRed" x="17584" y="688" name="inst_9EA41F14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockRed" x="17584" y="656" name="inst_4229ED59" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockRed" x="17712" y="624" name="inst_7C886109" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockRed" x="17424" y="1008" name="inst_1D771FB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockRed" x="17456" y="1008" name="inst_FC62DB7B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17616" y="912" name="inst_07E642F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17648" y="912" name="inst_635EE0B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockRed" x="17520" y="912" name="inst_8B1EF283" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockRed" x="17552" y="912" name="inst_4EA6D25E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17520" y="944" name="inst_7D5654EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17552" y="944" name="inst_0989027E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17584" y="944" name="inst_BAD816DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17584" y="912" name="inst_6304B308" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17584" y="880" name="inst_D10A9CDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17584" y="848" name="inst_9A144DF5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockGreen" x="17616" y="1008" name="inst_15B723FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockGreen" x="17648" y="1008" name="inst_D37F8C62" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="17600" y="576" name="inst_E9600B4E" locked="0" code="" scaleX="4" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17776" y="592" name="inst_EA9F9DE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17776" y="624" name="inst_FE37C9B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17776" y="656" name="inst_31B73643" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="17280" y="416" name="inst_276E8FDF" locked="0" code="" scaleX="8" scaleY="10" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="17376" y="576" name="inst_52D81797" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="17664" y="576" name="inst_0BF31665" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17776" y="688" name="inst_51F3C4F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17328" y="688" name="inst_2A5911D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17328" y="624" name="inst_0B190FF1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17328" y="592" name="inst_C01BC354" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17328" y="656" name="inst_61056D44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17680" y="624" name="inst_64E36819" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17680" y="656" name="inst_5BB03D51" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockRed" x="17744" y="624" name="inst_E20A53FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17680" y="688" name="inst_48804752" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17424" y="688" name="inst_BE0B9C37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17392" y="688" name="inst_87863C10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockGreen" x="17296" y="592" name="inst_68B58AA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockGreen" x="17296" y="656" name="inst_B816C513" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockGreen" x="17488" y="688" name="inst_D7ADFEB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkCloneDespawnArea" x="18048" y="528" name="inst_F056A213" locked="0" code="" scaleX="1" scaleY="17" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockBlue" x="17424" y="656" name="inst_1F5DAFBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockGreen" x="17488" y="656" name="inst_2AF8A0B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17616" y="560" name="inst_F49D63B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockYellow" x="17648" y="560" name="inst_607C1759" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockGreen" x="17392" y="656" name="inst_CC842C55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockGreen" x="17296" y="688" name="inst_D3BD2590" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockGreen" x="17296" y="624" name="inst_66FE57DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexColorBlockGreen" x="17360" y="624" name="inst_F2621D85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="18080" y="896" name="inst_184B7507" locked="0" code="" scaleX="12" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="18080" y="944" name="inst_8F27006C" locked="0" code="" scaleX="7" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="18192" y="944" name="inst_3808924C" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="18208" y="960" name="inst_63C9112B" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="18112" y="976" name="inst_8D4AEF4D" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSave_new" x="18160" y="864" name="inst_69B9728B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSaveBlocker_new" x="18080" y="864" name="inst_473C87BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSaveBlocker_new" x="18240" y="864" name="inst_1571162E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
