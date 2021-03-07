@@ -29,6 +29,7 @@
 
 // Change these in creation code if needed
 spawn_period = 160;
+circle_orbs = 5;
 circle_rad = 100;
 circle_rot_period = 60;
 circle_rot_spd = 0;
@@ -62,6 +63,7 @@ if(!instance_exists(objAlexCircleSpawner))
 with(objAlexCircleSpawner) {
     active = true;
     spawn_period = other.spawn_period;
+    circle_orbs = other.circle_orbs;
     circle_rad = other.circle_rad;
     circle_rot_period = other.circle_rot_period;
     circle_rot_spd = other.circle_rot_spd;

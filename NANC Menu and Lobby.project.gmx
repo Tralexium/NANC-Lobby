@@ -1245,6 +1245,12 @@
           <object>objects\objAlexMovingDarkVoid</object>
           <object>objects\objAlexDarkVoidRenderer</object>
         </objects>
+        <objects name="Pandora Box">
+          <object>objects\objAlexPandoraBoxArea</object>
+          <object>objects\objAlexPandoraBoxParticles</object>
+          <object>objects\objAlexPandoraBox</object>
+          <object>objects\objAlexPandoraKey</object>
+        </objects>
         <objects name="Color Blocks">
           <object>objects\objAlexColorBlock</object>
           <object>objects\objAlexColorBlockController</object>
@@ -1276,12 +1282,6 @@
           <object>objects\objAlexOrbBlockExpandingCircle</object>
           <object>objects\objAlexOrbBlockLine</object>
           <object>objects\objAlexPlasmaOrb</object>
-        </objects>
-        <objects name="Pandora Box">
-          <object>objects\objAlexPandoraBoxArea</object>
-          <object>objects\objAlexPandoraBoxParticles</object>
-          <object>objects\objAlexPandoraBox</object>
-          <object>objects\objAlexPandoraKey</object>
         </objects>
         <objects name="Dark Clones">
           <object>objects\objAlexDarkCloneRenderer</object>

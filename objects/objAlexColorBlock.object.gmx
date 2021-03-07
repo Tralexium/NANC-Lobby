@@ -118,6 +118,30 @@ if(instance_exists(objPlayer)) {
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Check if player is inside
+
+if(place_meeting(x, y, objPlayer) &amp;&amp; active)
+    scrKillPlayer();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Animations and mask manipulation
 
 if(color_id == global.current_color_id) {
@@ -146,7 +170,7 @@ if(active) {
     active_block_y_scale = scrAlexEaseOutElastic(ease_t, 0, image_yscale, ease_length);
     
     if(global.player_on_block)
-        glow_alpha = lerp(glow_alpha, 0.25, 0.1);
+        glow_alpha = lerp(glow_alpha, 0, 0.1);
     else
         glow_alpha = 0;
 } 
@@ -156,32 +180,8 @@ else {
     active_block_x_scale = scrAlexEaseInSine(ease_t, 0, image_xscale, ease_length);
     active_block_y_scale = scrAlexEaseInSine(ease_t, 0, image_yscale, ease_length);
     
-    glow_alpha = abs(dsin(draw_t)) * 0.5;
+    glow_alpha = abs(dsin(draw_t)) * 0.25;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Check if player is inside
-
-if(place_meeting(x, y, objPlayer) &amp;&amp; active)
-    scrKillPlayer();
 </string>
           </argument>
         </arguments>
@@ -238,7 +238,7 @@ if(color_id == 0) {
             <kind>1</kind>
             <string>/// Drawing shenanigans
 
-draw_sprite_ext(sprite_index, 1, x, y, image_xscale, image_yscale, 0, -1, 0.5);
+draw_sprite_ext(sprite_index, 1, x, y, image_xscale, image_yscale, 0, -1, 0.4);
 draw_sprite_ext(sprite_index, 0, x, y, active_block_x_scale, active_block_y_scale, 0, -1, 1);
 
 draw_set_blend_mode(bm_add);

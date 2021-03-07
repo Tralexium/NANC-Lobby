@@ -31,6 +31,7 @@ active = false;
 
 t = 0;
 spawn_period = 160;
+circle_orbs = 5;
 circle_rad = 100;
 circle_rot_period = 60;
 circle_rot_spd = 0;
@@ -65,16 +66,19 @@ if(active &amp;&amp; instance_exists(objPlayer)) {
     if(t mod spawn_period == 0) {
         circle_init_spd *= -1;
             
-        var _circle = scrFBPOrbShrinkingCircle(objPlayer.x, objPlayer.y, 6, 24, circle_rad, circle_rot_period, 60, circle_init_spd, circle_rot_spd*sign(circle_init_spd));
+        var _circle = scrFBPOrbShrinkingCircle(objPlayer.x, objPlayer.y, circle_orbs, 24, circle_rad, circle_rot_period, 60, circle_init_spd, circle_rot_spd*sign(circle_init_spd));
             _circle.depth = -201;
+            _circle.dir = 0;
     }
     
+    /*
     with(objAlexFBOrbShrinkingCircle) {
         if(t &lt;= time_before_shrink) {
             x = objPlayer.x;
             y = objPlayer.y;
         }
     }
+    */
     
     t++;
 }

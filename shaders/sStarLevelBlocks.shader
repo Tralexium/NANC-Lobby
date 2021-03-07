@@ -50,7 +50,7 @@ void main()
     if(alpha == 0.0 && current_alpha > 0.0) {  // Is outline
         gl_FragColor = vec4(u_outline_color, 1.0);
     } else {  // Is not outline, draw the assigned texture
-        vec2 tex_offset = vec2(u_texture_h_offset, u_texture_v_offset) - (u_cam_pos / vec2(u_tex_size * 0.75, u_tex_size * 0.75));  // vec2(u_tex_size, u_tex_size) for static
+        vec2 tex_offset = vec2(u_texture_h_offset, u_texture_v_offset) - (u_cam_pos / vec2(u_tex_size, u_tex_size));  // vec2(u_tex_size * 0.75, u_tex_size * 0.75) for moving
         gl_FragColor = texture2D( gm_BaseTexture, v_vTexcoord ) * texture2D( u_block_texture, fract((v_vTexcoord * vec2(800.0 / u_tex_size, 608.0 / u_tex_size)) - tex_offset));
     }
 }
