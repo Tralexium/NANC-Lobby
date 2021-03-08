@@ -1317,6 +1317,11 @@
           <object>objects\objAlexDeactivateCircleSpawner</object>
           <object>objects\objAlexCircleSpawner</object>
         </objects>
+        <objects name="Dark Orb Obstacle">
+          <object>objects\objAlexActivateOrbSpawner</object>
+          <object>objects\objAlexDeactivateOrbSpawner</object>
+          <object>objects\objAlexOrbSpawner</object>
+        </objects>
         <objects name="Eye Block">
           <object>objects\objAlexEye</object>
           <object>objects\objAlexEyeBlock</object>
