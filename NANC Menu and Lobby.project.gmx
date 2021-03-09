@@ -671,6 +671,10 @@
         <sprite>sprites\sprAlexFBHealthBarEyeIcon</sprite>
         <sprite>sprites\sprAlexFBExpBar</sprite>
         <sprite>sprites\sprAlexFinalBossIdle</sprite>
+        <sprite>sprites\sprAlexFinalBossTalking</sprite>
+        <sprite>sprites\sprAlexFinalBossSmokeAppear</sprite>
+        <sprite>sprites\sprAlexFinalBossFingerSnap</sprite>
+        <sprite>sprites\sprAlexFinalBossFingerSnapped</sprite>
         <sprite>sprites\sprAlexFinalBossAtk</sprite>
         <sprite>sprites\sprAlexFinalBossPreDash</sprite>
         <sprite>sprites\sprAlexFinalBossDash</sprite>
@@ -1325,6 +1329,9 @@
         <objects name="Eye Block">
           <object>objects\objAlexEye</object>
           <object>objects\objAlexEyeBlock</object>
+        </objects>
+        <objects name="Final Boss Cutscene">
+          <object>objects\objAlexFinalStageCutscene</object>
         </objects>
         <object>objects\objAlexBubble</object>
         <object>objects\objAlexVoidBlock</object>
