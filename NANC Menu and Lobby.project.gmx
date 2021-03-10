@@ -547,6 +547,9 @@
         </sprites>
       </sprites>
       <sprites name="Final Stage">
+        <sprite>sprites\sprAlexChaseMonsterMouth</sprite>
+        <sprite>sprites\sprAlexChaseMonsterEye</sprite>
+        <sprite>sprites\sprAlexChaseMonsterPupil</sprite>
         <sprite>sprites\sprAlexDarkVoidSquare</sprite>
         <sprite>sprites\sprAlexDarkVoidSquareCenter</sprite>
         <sprite>sprites\sprAlexDarkVoidDiamond</sprite>
@@ -1332,6 +1335,9 @@
         <objects name="Eye Block">
           <object>objects\objAlexEye</object>
           <object>objects\objAlexEyeBlock</object>
+        </objects>
+        <objects name="Chase Monster">
+          <object>objects\objAlexChaseMonster</object>
         </objects>
         <objects name="Final Boss Cutscene">
           <object>objects\objAlexFinalStageSongFadeOut</object>
