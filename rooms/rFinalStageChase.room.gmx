@@ -55,12 +55,11 @@
     <instance objName="objPlayerStart" x="608" y="480" name="inst_BA0BEEED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="1216" y="-112" name="inst_ED607A06" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="448" y="512" name="inst_59E92437" locked="0" code="" scaleX="22" scaleY="10" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexObstacleRenderer" x="0" y="32" name="inst_8F24ED47" locked="0" code="block_texture_sprite = sprFinalStarLevelTexture3;&#xA;texture_h_spd = 0.0;&#xA;texture_v_spd = 0.1;&#xA;outline_size = 2;&#xA;outline_col[0] = 150 / 255;  // R (0-1)&#xA;outline_col[1] = 55 / 255;  // G (0-1)&#xA;outline_col[2] = 70 / 255;  // B (0-1)&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexObstacleRenderer" x="0" y="32" name="inst_8F24ED47" locked="0" code="block_texture_sprite = sprFinalStarLevelTexture3;&#xA;texture_h_spd = 0.0;&#xA;texture_v_spd = 0.1;&#xA;outline_size = 2;&#xA;outline_col[0] = 170 / 255;  // R (0-1)&#xA;outline_col[1] = 80 / 255;  // G (0-1)&#xA;outline_col[2] = 60 / 255;  // B (0-1)&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeD" x="1280" y="-80" name="inst_85087443" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeR" x="1280" y="-112" name="inst_56762C4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeL" x="1248" y="-80" name="inst_0FF959AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeU" x="1248" y="-112" name="inst_29619EA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objPlayMusic" x="32" y="32" name="inst_6CBA3B64" locked="0" code="BGM = musFinalStage;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlatformWheel" x="256" y="-160" name="inst_6A53EF00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlatformArrowUp" x="288" y="-160" name="inst_02A1463E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlatformArrowDown" x="320" y="-160" name="inst_B9C3AD24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -116,6 +115,7 @@
     <instance objName="objAlexStarCameraArea" x="32" y="-128" name="inst_FD776191" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarStageCam" x="32" y="0" name="inst_0F3836B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexChaseMonster" x="624" y="288" name="inst_A4BA81D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPlayMusicWithIntro" x="32" y="48" name="inst_1AF84F95" locked="0" code="BGM = musFinalStageChase;&#xA;introLength = 34.960;&#xA;loopLength = 93.088;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

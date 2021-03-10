@@ -547,6 +547,7 @@
         </sprites>
       </sprites>
       <sprites name="Final Stage">
+        <sprite>sprites\sprAlexChaseMonsterFlarePart</sprite>
         <sprite>sprites\sprAlexChaseMonsterMouth</sprite>
         <sprite>sprites\sprAlexChaseMonsterEye</sprite>
         <sprite>sprites\sprAlexChaseMonsterPupil</sprite>

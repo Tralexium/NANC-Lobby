@@ -115,7 +115,7 @@
     <instance objName="objAlexStarStageCam" x="32" y="704" name="inst_9BE00A32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="384" y="976" name="inst_4D697265" locked="0" code="" scaleX="10" scaleY="10" colour="4294967295" rotation="0"/>
     <instance objName="objSave_new" x="1136" y="1072" name="inst_665AA239" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexPlayMusicWithIntro" x="32" y="736" name="inst_CADC4A7E" locked="0" code="BGM = musFinalStagePart2;&#xA;introLength = 16.594;&#xA;loopLength = 226.560;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexPlayMusicWithIntro" x="32" y="736" name="inst_CADC4A7E" locked="0" code="BGM = musFinalStagePart2;&#xA;introLength = 16.594;&#xA;loopLength = 226.560;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarCameraTrigger" x="544" y="1136" name="inst_E89D40E5" locked="0" code="index = 1;&#xA;" scaleX="4.5" scaleY="2.5" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="912" y="1152" name="inst_34D337F9" locked="0" code="" scaleX="6" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="352" y="1104" name="inst_94C1C5FE" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>

@@ -29,11 +29,13 @@
 
 // General
 t = 0;
+cutscene_finished = false;
+active = false;
 kill_range = 500;
 
 // Draw related
 body_size = kill_range+20;
-body_scale = 1;
+body_scale = 0;
 body_target_scale = 1;
 body_angle = 0;
 body_angle_add = -0.25;
@@ -43,37 +45,93 @@ chunk_pulse_scale_range = 0.1;
 chunk_pulse_spd = 2;
 
 mouth_x = x;
-mouth_y = y;
+mouth_y = y+50;
 mouth_pivot_x = 0;
 mouth_pivot_y = 50
-mouth_move_len = 30;
+mouth_move_len = 0;
+mouth_move_len_target = 40;
 mouth_move_lerp = 0.1;
 mouth_x_scale = 1;
 mouth_y_scale = 1;
-mouth_open_amnt = 1;
-mouth_squish_mult = 0.5;
+mouth_open_amnt = 0;
+mouth_idle_movement_amnt = 0.15;
+mouth_idle_movement_spd = 1.75;
+mouth_squish_mult = 1.25;
 
 eye_x = x;
-eye_y = y;
+eye_y = y-50;
 eye_pivot_x = 0;
 eye_pivot_y = -50;
-eye_move_len = 40;
+eye_move_len = 0;
+eye_move_len_target = 50;
 eye_move_lerp = 0.1;
 eye_x_scale = 1;
 eye_y_scale = 1;
-eye_open_amnt = 1;
-eye_squish_mult = 0.25;
+eye_open_amnt = 0;
+eye_blink_amnt = 1;
+eye_blink_frequency = 150;
+eye_blink_timer = 0;
+eye_blink_dur = 10;
+eye_has_blinked = true;
+eye_squish_mult = 1.25;
 
-pupil_x = x;
-pupil_y = y;
-pupil_move_len = 30;
+pupil_x = 0;
+pupil_y = 0;
+pupil_move_len = 0;
+pupil_move_len_target = 30;
 pupil_move_lerp = 0.2;
 pupil_x_scale = 1;
 pupil_y_scale = 1;
-pupil_dilation = eye_open_amnt;
+pupil_dilation = 1;
 
 // Surfaces
 eye_surf = noone;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Particle systems
+
+part_system = part_system_create();
+part_system_depth(part_system, depth + 1);
+
+
+part_type_beam = part_type_create();
+part_type_life(part_type_beam, 50, 70);
+part_type_alpha3(part_type_beam, 0, 1, 0);
+part_type_shape(part_type_beam, pt_shape_sphere);
+part_type_scale(part_type_beam, 2.5, 0.2);
+part_type_size(part_type_beam, 0, 0, .05, 0);
+part_type_colour2(part_type_beam, $7752ff, $9c2a5e);
+part_type_blend(part_type_beam, true);
+part_type_speed(part_type_beam, 0, 0, 0.15, 0);
+part_type_direction(part_type_beam, 0, 359, 0, 0);
+part_type_orientation(part_type_beam, 0, 0, 0, 0, true);
+
+part_type_flare = part_type_create();
+part_type_life(part_type_flare, 30, 30);
+part_type_alpha3(part_type_flare, 0, 1, 0);
+part_type_sprite(part_type_flare, sprAlexChaseMonsterFlarePart, false, false, false);
+part_type_size(part_type_flare, 0.75, 0.75, -0.02, 0);
+part_type_orientation(part_type_flare, 0, 359, -1, 0, false);
+part_type_blend(part_type_flare, true);
+
 </string>
           </argument>
         </arguments>
@@ -155,6 +213,59 @@ surface_free(void_surf);
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Free particles
+
+part_type_clear(part_type_beam);
+part_type_clear(part_type_flare);
+part_type_destroy(part_type_beam);
+part_type_destroy(part_type_flare);
+part_system_destroy(part_system);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Eye blink
+
+eye_blink_timer = 0;
+eye_has_blinked = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -206,9 +317,13 @@ body_angle += body_angle_add;
 var _target_x = x;
 var _target_y = y+1;
 
-if(instance_exists(objPlayer)) {
+if(instance_exists(objPlayer) &amp;&amp; active) {
     _target_x = objPlayer.x;
     _target_y = objPlayer.y;
+    
+    mouth_move_len = lerp(mouth_move_len, mouth_move_len_target, 0.2);
+    eye_move_len = lerp(eye_move_len, eye_move_len_target, 0.2);
+    pupil_move_len = lerp(pupil_move_len, pupil_move_len_target, 0.2);
 } else {
     mouth_move_len = lerp(mouth_move_len, 0, 0.2);
     eye_move_len = lerp(eye_move_len, 0, 0.2);
@@ -234,14 +349,127 @@ pupil_y = lerp(pupil_y, _target_pupil_y, pupil_move_lerp);
 
 
 // Facial scales
-mouth_x_scale = mouth_open_amnt - (mouth_squish_mult*(mouth_open_amnt-1));
-mouth_y_scale = mouth_open_amnt;
+if(!eye_has_blinked) {
+    eye_blink_timer++;
+    var _blink_spd = 180/eye_blink_dur;
+    
+    eye_blink_amnt = abs(dcos(eye_blink_timer * _blink_spd));
+    
+    if(eye_blink_timer &gt;= eye_blink_dur)
+        eye_has_blinked = true;
+} else if(!alarm[0] &amp;&amp; active) {
+    eye_blink_amnt = 1;
+    alarm[0] = eye_blink_frequency + irandom(50);
+}
 
-eye_x_scale = eye_open_amnt - (eye_squish_mult*(eye_open_amnt-1));
-eye_y_scale = eye_open_amnt;
+var _mouth_scale = mouth_open_amnt + (dsin(t*mouth_idle_movement_spd)*mouth_idle_movement_amnt);
+var _eye_scale = eye_open_amnt * eye_blink_amnt;
+var _pupil_scale = pupil_dilation * eye_blink_amnt;
 
-pupil_x_scale = pupil_dilation;
-pupil_y_scale = pupil_dilation;
+mouth_x_scale = _mouth_scale - (mouth_squish_mult*(_mouth_scale-1));
+mouth_y_scale = _mouth_scale;
+
+eye_x_scale = _eye_scale - (eye_squish_mult*(_eye_scale-1));
+eye_y_scale = _eye_scale;
+
+pupil_x_scale = _pupil_scale;
+pupil_y_scale = _pupil_scale;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Intro Cutscene
+
+if(!cutscene_finished) {
+    if(t == 1) {
+        mouth_idle_movement_amnt = 0;
+    }
+
+    if(t &gt; 50 &amp;&amp; t &lt;= 250) {
+        if(t mod 10 == 0)
+            part_particles_create(part_system, x, y, part_type_flare, 1);
+            
+        if(t mod 15 == 0)
+            part_particles_create(part_system, x, y, part_type_beam, 1);
+    }
+    
+    if(t &gt; 100 &amp;&amp; t &lt;= 140) {
+        var _anim_val = clamp(t-100, 0, 40);
+        body_scale = scrAlexEaseOutElastic(_anim_val, 0, 0.1, 40);
+    }
+    
+    if(t &gt; 170 &amp;&amp; t &lt;= 200) {
+        var _anim_val = clamp(t-170, 0, 30);
+        body_scale = scrAlexEaseOutElastic(_anim_val, 0.1, 0.25, 30);
+    }
+    
+    if(t &gt; 220 &amp;&amp; t &lt;= 250) {
+        var _anim_val = clamp(t-220, 0, 30);
+        body_scale = scrAlexEaseOutElastic(_anim_val, 0.25, 0.5, 30);
+    }
+    
+    if(t &gt; 270 &amp;&amp; t &lt;= 310) {
+        var _anim_val = clamp(t-270, 0, 40);
+        body_scale = scrAlexEaseOutElastic(_anim_val, 0.5, 1, 40);
+    }
+    
+    if(t &gt; 340 &amp;&amp; t &lt;= 360) {
+        var _anim_val = clamp(t-340, 0, 20);
+        eye_open_amnt = scrAlexEaseOutSine(_anim_val, 0, 1, 20);
+    }
+    
+    if(t &gt; 390 &amp;&amp; t &lt;= 420) {
+        var _anim_val = clamp(t-390, 0, 30);
+        mouth_open_amnt = scrAlexEaseOutSine(_anim_val, 0, 1, 30);
+        
+        mouth_idle_movement_amnt = 0.15;
+    }
+    
+    if(t &gt; 450 &amp;&amp; t &lt;= 460) {
+        var _anim_val = clamp(t-450, 0, 10);
+        mouth_open_amnt = scrAlexEaseOutSine(_anim_val, 1, 1.5, 10);
+        eye_y = scrAlexEaseOutSine(_anim_val, y - 50, y - 80, 10);
+    }
+    
+    if(t == 460) {
+        mouth_idle_movement_spd = 50;
+        mouth_idle_movement_amnt = 0.3;
+    }
+    
+    if(t &gt; 460 &amp;&amp; t &lt; 520) {
+        eye_y = y - 80;
+    }
+    
+    if(t &gt; 520 &amp;&amp; t &lt;= 540) {
+        mouth_idle_movement_spd = 1.75;
+        mouth_idle_movement_amnt = 0.15;
+        
+        var _anim_val = clamp(t-520, 0, 20);
+        mouth_open_amnt = scrAlexEaseOutSine(_anim_val, 1.5, 1, 20);
+        eye_y = scrAlexEaseOutSine(_anim_val, y - 80, y - 50, 20);
+    }
+    
+    if(t == 580) {
+        cutscene_finished = true;
+        active = true;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -375,7 +603,7 @@ texture_set_interpolation(false);
             <kind>1</kind>
             <string>/// Draw the facials
 
-var _surf_size = sprite_get_width(sprAlexChaseMonsterEye)
+var _surf_size = sprite_get_width(sprAlexChaseMonsterEye)*eye_squish_mult;
 if(!surface_exists(eye_surf)) {
     eye_surf = surface_create(_surf_size, _surf_size);
 }
