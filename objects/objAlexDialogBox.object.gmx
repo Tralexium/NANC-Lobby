@@ -205,6 +205,8 @@ if(!end_reached) {
 } else {
     // Remove the box and destroy the object
     if(box_animation_timer &gt; 0) {
+        talking = false;
+    
         if(box_animation_timer == box_animation_length)
             audio_play_sound(sndAlexDialogEnd, 0, false);
         

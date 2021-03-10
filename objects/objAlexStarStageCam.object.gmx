@@ -198,6 +198,10 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexCircleSpawner);
     instance_activate_object(objAlexActivateCircleSpawner);
     instance_activate_object(objAlexDeactivateCircleSpawner);
+    // Cutscene objects
+    instance_activate_object(objAlexFinalStageCutscene);
+    instance_activate_object(objAlexFinalStageCutsceneTrigger);
+    instance_activate_object(objAlexFinalStageCutsceneTransition);
 }
 </string>
           </argument>

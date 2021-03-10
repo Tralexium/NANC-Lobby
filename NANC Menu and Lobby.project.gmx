@@ -170,6 +170,7 @@
       <sound>sound\musFinalStage</sound>
       <sound>sound\musFinalStagePart2</sound>
       <sound>sound\musFinalStageChase</sound>
+      <sound>sound\musFinalStageCutscene</sound>
       <sound>sound\musFinalBoss</sound>
       <sound>sound\musFanfare</sound>
       <sounds name="sfx">
@@ -306,6 +307,8 @@
         <sound>sound\sndAlexCrystalStarBeamCharge</sound>
         <sound>sound\sndAlexCrystalStarBeam</sound>
         <sound>sound\sndAlexTrollBlockDing</sound>
+        <sound>sound\sndAlexFinalStageCutsceneAppear</sound>
+        <sound>sound\sndAlexFinalStageCutsceneFingerSnap</sound>
       </sounds>
     </sounds>
   </sounds>
@@ -1331,7 +1334,10 @@
           <object>objects\objAlexEyeBlock</object>
         </objects>
         <objects name="Final Boss Cutscene">
+          <object>objects\objAlexFinalStageSongFadeOut</object>
+          <object>objects\objAlexFinalStageCutsceneTrigger</object>
           <object>objects\objAlexFinalStageCutscene</object>
+          <object>objects\objAlexFinalStageCutsceneTransition</object>
         </objects>
         <object>objects\objAlexBubble</object>
         <object>objects\objAlexVoidBlock</object>

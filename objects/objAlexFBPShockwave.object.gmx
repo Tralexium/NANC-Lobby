@@ -36,13 +36,15 @@ travel_dur = 10;
 t = 0;
 
 // Make sure it's above the floor
-if(place_meeting(x, y, objBlock)) {
-    while(place_meeting(x, y, objBlock) || place_meeting(x, y, objBetterBlock)) {
-        y--;
-    }
-} else {
-    while(!place_meeting(x, y, objBlock) &amp;&amp; !place_meeting(x, y, objBetterBlock)) {
-        y++;
+if(!instance_exists(objAlexDarkClone)) {
+    if(place_meeting(x, y, objBlock)) {
+        while(place_meeting(x, y, objBlock) || place_meeting(x, y, objBetterBlock)) {
+            y--;
+        }
+    } else {
+        while(!place_meeting(x, y, objBlock) &amp;&amp; !place_meeting(x, y, objBetterBlock)) {
+            y++;
+        }
     }
 }
 

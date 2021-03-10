@@ -220,6 +220,10 @@ if(scale &gt; 2 &amp;&amp; t &gt; initial_delay) {
         if(airborne_time &gt;= _max_air_time &amp;&amp; (place_meeting(x, y+1, objBlock) || place_meeting(x, y+1, objBetterBlock))) {
             audio_play_sound(sndAlexFBBlackOrbExplosion, 0, false);
             scrFBPShockwave(x, y, 256, 20, 1);
+            with(objAlexFBPShockwave) {
+                if(x == xstart)
+                    y = other.bbox_bottom+1;
+            }
         }
         
         airborne_time = 0;

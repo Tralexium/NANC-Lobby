@@ -2,7 +2,7 @@
 <object>
   <spriteName>sprAlexFinalBossIdle</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -31,12 +31,11 @@
 dialog_list = ds_list_create();
 room_to = room;
 
-
-npc_name = "Venux";
+npc_name = "???";
 idle_sprite = sprAlexFinalBossIdle;
 talking_sprite = sprAlexFinalBossTalking;
 letter_sfx = sndAlexDialogSoundBartender;
-zoom_dur = 60;
+zoom_dur = 100;
 
 t = 0;
 active = false;
@@ -45,6 +44,8 @@ snap_finger = false;
 show_magic_circles = false;
 dialog_box = noone;
 floating = !place_meeting(x, y+1, objBlock);
+float_y = 0;
+float_amnt = 8;
 show_black_bars = false;
 bars_y = 0;
 bars_target_y = 96;
@@ -52,6 +53,8 @@ magic_circle_scale = 0;
 magic_circle_target_scale = 1;
 magic_circle_angle = 0;
 magic_circle_angle_incr = 2;
+
+sprite_index = sprAlexNoMask;
 image_speed = 0;
 </string>
           </argument>
@@ -108,7 +111,7 @@ show_black_bars = false;
 dialog_box = instance_create(x, y, objAlexDialogBox);
 dialog_box.npc_name = npc_name;
 dialog_box.letter_sfx = letter_sfx;
-dialog_box.npc_name_color = $702a9c;
+dialog_box.npc_name_color = $7752ff;
 ds_list_copy(dialog_box.dialog_list, dialog_list);
 </string>
           </argument>
@@ -139,40 +142,26 @@ if(active) {
     t++;
     
     if(t &lt;= zoom_dur) {
-        var _init_x = objAlexStarStageCam.opt_previous_x;
+        var _init_x = objAlexStarStageCam.x;
         var _dest_x = x - view_wview[0]/2;
-        var _init_y = objAlexStarStageCam.opt_previous_y;
+        var _init_y = objAlexStarStageCam.y;
         var _dest_y = y - view_hview[0]/2;
-        view_xview[0] = scrAlexEaseInOutSine(t, _init_x, _dest_x, zoom_dur);
-        view_yview[0] = scrAlexEaseInOutSine(t, _init_y, _dest_y, zoom_dur);
-        view_wview[0] = scrAlexEaseOutSine(t, 400, 300, zoom_dur);
-        view_hview[0] = scrAlexEaseOutSine(t, 304, 228, zoom_dur);
+        view_xview[0] = scrAlexEaseInSine(t, _init_x, _dest_x, zoom_dur);
+        view_yview[0] = scrAlexEaseInSine(t, _init_y, _dest_y, zoom_dur);
+        view_wview[0] = scrAlexEaseInSine(t, 800, 400, zoom_dur);
+        view_hview[0] = scrAlexEaseInSine(t, 608, 304, zoom_dur);
     }
     
     if(t == zoom_dur) {
-        visible = true;
         sprite_index = sprAlexFinalBossSmokeAppear;
         image_speed = 0.3;
         
-        instance_create(0, 0, objAlexScreenPulseEffect);
+        audio_play_sound(sndAlexFinalStageCutsceneAppear, 0, false);
+        instance_create(x, y, objAlexScreenPulseEffect);
     }
-}
-
-// Dialog and finger snapping
-if(!instance_exists(objAlexDialogBox) &amp;&amp; !alarm[0] &amp;&amp; !snap_finger) {
-    dialog_box = noone;
-    is_talking = false;
-    snap_finger = true;
-    show_black_bars = true;
-    show_magic_circles = true;
     
-    sprite_index = sprAlexFinalBossFingerSnap;
-} else {
-   
-    if(dialog_box.talking) {
-        sprite_index = talking_sprite;
-    } else {
-        sprite_index = idle_sprite;
+    if(floating) {
+        float_y = dsin(t)*float_amnt;
     }
     
     if(instance_exists(objPlayer)) {
@@ -180,6 +169,37 @@ if(!instance_exists(objAlexDialogBox) &amp;&amp; !alarm[0] &amp;&amp; !snap_fing
             image_xscale = 1;
         else
             image_xscale = -1;
+    }
+    
+    if(snap_finger) {
+        view_xview[0] = x - view_wview[0]/2;
+        view_yview[0] = y - view_hview[0]/2;
+        view_wview[0] = lerp(view_wview[0], 800, 0.1);
+        view_hview[0] = lerp(view_hview[0], 608, 0.1);
+        
+        if(sprite_index == sprAlexFinalBossFingerSnap &amp;&amp; round(image_index) == 15 &amp;&amp; !audio_is_playing(sndAlexFinalStageCutsceneFingerSnap)) {
+            audio_play_sound(sndAlexFinalStageCutsceneFingerSnap, 0, false);
+        }
+    }
+}
+
+// Dialog and finger snapping
+if(!snap_finger &amp;&amp; is_talking) {
+    if(!instance_exists(objAlexDialogBox)) {
+        dialog_box = noone;
+        snap_finger = true;
+        show_black_bars = true;
+        show_magic_circles = true;
+        
+        sprite_index = sprAlexFinalBossFingerSnap;
+        image_index = 0;
+    } else {
+       
+        if(dialog_box.talking) {
+            sprite_index = talking_sprite;
+        } else {
+            sprite_index = idle_sprite;
+        }
     }
 }
 
@@ -219,12 +239,16 @@ if(show_magic_circles) {
             <kind>1</kind>
             <string>/// Activate cutscene
 
-alarm[0] = 150;
+global.noRestart = true;
+global.noPause = true;
 
 active = true;
 show_black_bars = true;
 with(objPlayer) frozen = true;
 with(objAlexStarStageCam) active = false;
+
+scrPlayMusic(musFinalStageCutscene, true);
+audio_sound_gain(global.currentMusic, 1, 0);
 </string>
           </argument>
         </arguments>
@@ -251,12 +275,15 @@ with(objAlexStarStageCam) active = false;
 
 if(sprite_index == sprAlexFinalBossSmokeAppear) {
     sprite_index = idle_sprite;
+    alarm[0] = 20;
 }
 
 if(sprite_index == sprAlexFinalBossFingerSnap) {
     sprite_index = sprAlexFinalBossFingerSnapped;
     
     // Spawn transition obj
+    with(instance_create(0, 0, objAlexFinalStageCutsceneTransition))
+        room_to = other.room_to;
 }
 </string>
           </argument>
@@ -351,7 +378,7 @@ draw_sprite_ext(sprAlexFBParticleMagicCircle, 0, x, y, magic_circle_scale, magic
 draw_sprite_ext(sprAlexFBParticleMagicCircle, 0, x, y, magic_circle_scale*2, magic_circle_scale*2, -magic_circle_angle, -1, 0.7);
 draw_set_blend_mode(bm_normal);
 
-draw_self();
+draw_sprite_ext(sprite_index, image_index, x, y+float_y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>
