@@ -3,8 +3,8 @@
   <caption></caption>
   <width>5600</width>
   <height>2400</height>
-  <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <vsnap>32</vsnap>
+  <hsnap>32</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -52,9 +52,9 @@
   </views>
   <instances>
     <instance objName="objAlexStarStageBG" x="0" y="0" name="inst_FBB3A06A" locked="0" code="base_col_hsv[0] = 0.9; // Hue&#xA;base_col_hsv[1] = 0.5; // Saturation&#xA;base_col_hsv[2] = 0.15; // Value / Luminosity&#xA;hue_increment = 0.03; // How much the hue changes each step&#xA;sat_increment = 0.06; // How much the sat changes each step&#xA;val_increment = 1.6; // How much the value/luminosity changes each step&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objPlayerStart" x="608" y="480" name="inst_BA0BEEED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlayerStart" x="1184" y="1568" name="inst_BA0BEEED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="1216" y="-112" name="inst_ED607A06" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="448" y="512" name="inst_59E92437" locked="0" code="" scaleX="22" scaleY="10" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1024" y="1600" name="inst_59E92437" locked="0" code="" scaleX="22" scaleY="10" colour="4294967295" rotation="0"/>
     <instance objName="objAlexObstacleRenderer" x="0" y="32" name="inst_8F24ED47" locked="0" code="block_texture_sprite = sprFinalStarLevelTexture3;&#xA;texture_h_spd = 0.0;&#xA;texture_v_spd = 0.1;&#xA;outline_size = 2;&#xA;outline_col[0] = 170 / 255;  // R (0-1)&#xA;outline_col[1] = 80 / 255;  // G (0-1)&#xA;outline_col[2] = 60 / 255;  // B (0-1)&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeD" x="1280" y="-80" name="inst_85087443" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeR" x="1280" y="-112" name="inst_56762C4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -114,8 +114,8 @@
     <instance objName="objAlexStarCameraTrigger" x="112" y="-96" name="inst_4B8FFE28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarCameraArea" x="32" y="-128" name="inst_FD776191" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarStageCam" x="32" y="0" name="inst_0F3836B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexChaseMonster" x="624" y="288" name="inst_A4BA81D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlayMusicWithIntro" x="32" y="48" name="inst_1AF84F95" locked="0" code="BGM = musFinalStageChase;&#xA;introLength = 34.960;&#xA;loopLength = 93.088;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexChaseMonsterCutscene" x="1120" y="1504" name="inst_CC40A6AF" locked="0" code="spawn_x = 608;&#xA;spawn_y = 1216;&#xA;" scaleX="5" scaleY="3" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

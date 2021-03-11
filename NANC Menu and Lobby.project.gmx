@@ -1136,6 +1136,7 @@
         <object>objects\objStageEndWarpPart</object>
         <object>objects\objStageClearUI</object>
         <object>objects\objAlexScreenPulseEffect</object>
+        <object>objects\objAlexScreenPulseEffect2</object>
       </objects>
       <objects name="Player">
         <object>objects\objAlexLobbyPlayer</object>
@@ -1339,6 +1340,7 @@
         </objects>
         <objects name="Chase Monster">
           <object>objects\objAlexChaseMonster</object>
+          <object>objects\objAlexChaseMonsterCutscene</object>
         </objects>
         <objects name="Final Boss Cutscene">
           <object>objects\objAlexFinalStageSongFadeOut</object>

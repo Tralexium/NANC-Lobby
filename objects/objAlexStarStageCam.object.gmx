@@ -129,6 +129,7 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexStarCameraArea);
     instance_activate_object(objAlexStarCameraTrigger);
     instance_activate_object(objAlexStageIntro);
+    instance_activate_object(objPlayer);
     
     // Star floor
     instance_activate_object(obj3DFloor);
@@ -198,6 +199,9 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexCircleSpawner);
     instance_activate_object(objAlexActivateCircleSpawner);
     instance_activate_object(objAlexDeactivateCircleSpawner);
+    // Chase monster
+    instance_activate_object(objAlexChaseMonster);
+    instance_activate_object(objAlexChaseMonsterCutscene);
     // Cutscene objects
     instance_activate_object(objAlexFinalStageCutscene);
     instance_activate_object(objAlexFinalStageCutsceneTrigger);

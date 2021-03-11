@@ -31,10 +31,15 @@
 t = 0;
 cutscene_finished = false;
 active = false;
-kill_range = 500;
+vanish = false;
+kill_range = 180;
+min_spd = 1;
+max_spd = 20;
+min_dist = 500;
+dist_per_decimal_spd = 150;
 
 // Draw related
-body_size = kill_range+20;
+body_size = (kill_range*2)+180;
 body_scale = 0;
 body_target_scale = 1;
 body_angle = 0;
@@ -287,6 +292,30 @@ eye_has_blinked = false;
             <string>/// Logic
 
 t++;
+
+if(vanish) {
+    speed = max(speed-0.1, 0);
+}
+else if(active) {
+    var _dir = 0;
+    var _dist = 0;
+
+    if(instance_exists(objPlayer)) {
+        _dir = point_direction(x, y, objPlayer.x, objPlayer.y);
+        _dist = point_distance(x, y, objPlayer.x, objPlayer.y);
+        
+        if(_dist &lt; kill_range) {
+            scrKillPlayer();
+        }
+    }
+    
+    var _target_spd = min_spd;
+    if(_dist &gt; min_dist)
+        _target_spd = clamp(_dist / dist_per_decimal_spd, min_spd, max_spd);
+        
+    direction = _dir;
+    speed = lerp(speed, _target_spd, 0.05);
+}
 </string>
           </argument>
         </arguments>
@@ -454,6 +483,9 @@ if(!cutscene_finished) {
     
     if(t &gt; 460 &amp;&amp; t &lt; 520) {
         eye_y = y - 80;
+        
+        if(t mod 5 == 0)
+            instance_create(x, y, objAlexScreenPulseEffect2);
     }
     
     if(t &gt; 520 &amp;&amp; t &lt;= 540) {
