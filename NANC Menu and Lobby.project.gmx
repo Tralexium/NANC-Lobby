@@ -726,6 +726,7 @@
       <sprite>sprites\sprAlexIceBlockSprite</sprite>
       <sprite>sprites\sprAlexPlatform</sprite>
       <sprite>sprites\sprAlexMovingObstacleTrigger</sprite>
+      <sprite>sprites\sprAlexMovingObstacleReset</sprite>
       <sprite>sprites\sprAlexTrollBlock</sprite>
       <sprite>sprites\sprAlexBlockShadow</sprite>
       <sprite>sprites\sprAlexLobbyTransitionBubble</sprite>
@@ -1250,6 +1251,7 @@
           <object>objects\objAlexMovingSpikeR</object>
           <object>objects\objAlexMovingSpikeL</object>
           <object>objects\objAlexMovingObstacleTrigger</object>
+          <object>objects\objAlexMovingObstacleReset</object>
         </objects>
         <objects name="Platforms">
           <object>objects\objAlexPlatformWheel</object>

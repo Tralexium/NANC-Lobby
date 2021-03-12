@@ -31,6 +31,8 @@ num = 0;
 
 move_dur = 40;
 easing_style = scrAlexEaseInOutSine;
+begin_x = x;
+begin_y = y;
 start_x = x;
 start_y = y;
 target_x = x;
@@ -104,6 +106,8 @@ if(t &lt; move_dur) {
             <kind>1</kind>
             <string>/// Get the most recent coords in case we change in creation code
 
+begin_x = x;
+begin_y = y;
 start_x = x;
 start_y = y;
 target_x = x;

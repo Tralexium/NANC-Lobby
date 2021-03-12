@@ -310,7 +310,7 @@ else if(active) {
         _dir = point_direction(x, y, objPlayer.x, objPlayer.y);
         _dist = point_distance(x, y, objPlayer.x, objPlayer.y);
         
-        if(_dist &lt; kill_range) {
+        if(_dist &lt; kill_range*body_target_scale) {
             scrKillPlayer();
         }
     } else {
@@ -377,7 +377,7 @@ if(vanish) {
     if(round(mouth_open_amnt) == 0) {
         shrink_t++;
         
-        body_scale = scrAlexEaseInSine(shrink_t, 1, 0, shrink_dur)
+        body_scale = scrAlexEaseInSine(shrink_t, body_target_scale, 0, shrink_dur)
         
         if(shrink_t &gt;= shrink_dur) {
             if(audio_is_playing(sndAlexChaseMonsterAmbient))
@@ -390,18 +390,18 @@ if(vanish) {
 
 var _dir = point_direction(x, y, _target_x, _target_y);
 
-var _target_mouth_x = x + mouth_pivot_x + lengthdir_x(mouth_move_len, _dir);
-var _target_mouth_y = y + mouth_pivot_y + lengthdir_y(mouth_move_len, _dir);
+var _target_mouth_x = x + (mouth_pivot_x + lengthdir_x(mouth_move_len, _dir))*body_target_scale;
+var _target_mouth_y = y + (mouth_pivot_y + lengthdir_y(mouth_move_len, _dir))*body_target_scale;
 mouth_x = lerp(mouth_x, _target_mouth_x, mouth_move_lerp);
 mouth_y = lerp(mouth_y, _target_mouth_y, mouth_move_lerp);
 
-var _target_eye_x = x + eye_pivot_x + lengthdir_x(eye_move_len, _dir);
-var _target_eye_y = y + eye_pivot_y + lengthdir_y(eye_move_len, _dir);
+var _target_eye_x = x + (eye_pivot_x + lengthdir_x(eye_move_len, _dir))*body_target_scale;
+var _target_eye_y = y + (eye_pivot_y + lengthdir_y(eye_move_len, _dir))*body_target_scale;
 eye_x = lerp(eye_x, _target_eye_x, eye_move_lerp);
 eye_y = lerp(eye_y, _target_eye_y, eye_move_lerp);
 
-var _target_pupil_x = lengthdir_x(pupil_move_len, _dir);
-var _target_pupil_y = lengthdir_y(pupil_move_len, _dir);
+var _target_pupil_x = lengthdir_x(pupil_move_len, _dir)*body_target_scale;
+var _target_pupil_y = lengthdir_y(pupil_move_len, _dir)*body_target_scale;
 pupil_x = lerp(pupil_x, _target_pupil_x, pupil_move_lerp);
 pupil_y = lerp(pupil_y, _target_pupil_y, pupil_move_lerp);
 
@@ -420,14 +420,14 @@ if(!eye_has_blinked) {
     alarm[0] = eye_blink_frequency + irandom(50);
 }
 
-var _mouth_scale = mouth_open_amnt + (dsin(t*mouth_idle_movement_spd)*mouth_idle_movement_amnt);
-var _eye_scale = eye_open_amnt * eye_blink_amnt;
-var _pupil_scale = pupil_dilation * eye_blink_amnt;
+var _mouth_scale = (mouth_open_amnt + (dsin(t*mouth_idle_movement_spd)*mouth_idle_movement_amnt))*body_target_scale;
+var _eye_scale = (eye_open_amnt * eye_blink_amnt)*body_target_scale;
+var _pupil_scale = (pupil_dilation * eye_blink_amnt)*body_target_scale;
 
-mouth_x_scale = _mouth_scale - (mouth_squish_mult*(_mouth_scale-1));
+mouth_x_scale = _mouth_scale - (mouth_squish_mult*(_mouth_scale-body_target_scale));
 mouth_y_scale = _mouth_scale;
 
-eye_x_scale = _eye_scale - (eye_squish_mult*(_eye_scale-1));
+eye_x_scale = _eye_scale - (eye_squish_mult*(_eye_scale-body_target_scale));
 eye_y_scale = _eye_scale;
 
 pupil_x_scale = _pupil_scale;
@@ -564,7 +564,7 @@ if(!cutscene_finished) {
     // Quick spawn
     
     if(t == 1) {
-        body_scale = 1;
+        body_scale = body_target_scale;
         mouth_open_amnt = 1;
         eye_open_amnt = 1;
         
