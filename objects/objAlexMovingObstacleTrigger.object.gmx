@@ -63,15 +63,15 @@ for(var i=0; i&lt;amnt_of_nums; i++) {
     if(num[i] != noone) {
         with(objAlexMovingBlock) {
             if(num == other.num[i]) {
-                target_x = start_x + other.move_x[i];
-                target_y = start_y + other.move_y[i];
+                target_x = target_x + other.move_x[i];
+                target_y = target_y + other.move_y[i];
                 move_dur = other.move_dur[i];
             }
         }
         with(objAlexMovingKiller) {
             if(num == other.num[i]) {
-                target_x = start_x + other.move_x[i];
-                target_y = start_y + other.move_y[i];
+                target_x = target_x + other.move_x[i];
+                target_y = target_y + other.move_y[i];
                 move_dur = other.move_dur[i];
             }
         }

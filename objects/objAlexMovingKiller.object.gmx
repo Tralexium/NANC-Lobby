@@ -37,7 +37,7 @@ target_x = x;
 target_y = y;
 old_pos = target_x + target_y;
 
-t = move_dur;
+t = move_dur+1;
 shadow_dist = 4;
 </string>
           </argument>
@@ -80,6 +80,34 @@ if(t &lt; move_dur) {
     x = target_x;
     y = target_y;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Get the most recent coords in case we change in creation code
+
+start_x = x;
+start_y = y;
+target_x = x;
+target_y = y;
 </string>
           </argument>
         </arguments>

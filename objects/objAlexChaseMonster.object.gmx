@@ -33,7 +33,7 @@ cutscene_finished = false;
 active = false;
 vanish = false;
 kill_range = 180;
-min_spd = 1;
+min_spd = 1.5;
 max_spd = 20;
 min_dist = 500;
 dist_per_decimal_spd = 150;
@@ -603,7 +603,6 @@ if(!cutscene_finished) {
             <string>/// Vanish monster
 
 vanish = true;
-audio_play_sound(sndAlexChaseMonsterVanish, 0, false);
 audio_sound_gain(sndAlexChaseMonsterAmbient, 0, 1000);
 </string>
           </argument>

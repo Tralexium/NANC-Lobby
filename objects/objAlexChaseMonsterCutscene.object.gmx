@@ -127,8 +127,11 @@ if(despawn) {
     if(show_black_bars)
         event_user(1);
 
-    if(round(bars_y) == 0)
+    if(round(bars_y) == 0) {
         instance_destroy();
+        view_wview[0] = 800;
+        view_hview[0] = 608;
+    }
 }
 
 // Black bars
