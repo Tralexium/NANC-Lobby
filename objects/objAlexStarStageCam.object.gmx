@@ -140,6 +140,9 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     
     
     // Final Stage
+    // Moving obstacles
+    instance_activate_object(objAlexMovingBlock);
+    instance_activate_object(objAlexMovingKiller);
     // Bubble jump sign
     instance_activate_object(objAlexBubbleJumpSign);
     // Killer block
@@ -201,6 +204,7 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexDeactivateCircleSpawner);
     // Chase monster
     instance_activate_object(objAlexChaseMonster);
+    instance_activate_object(objAlexChaseMonsterSpawner);
     instance_activate_object(objAlexChaseMonsterCutscene);
     // Cutscene objects
     instance_activate_object(objAlexFinalStageCutscene);

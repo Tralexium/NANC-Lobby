@@ -309,6 +309,14 @@
         <sound>sound\sndAlexTrollBlockDing</sound>
         <sound>sound\sndAlexFinalStageCutsceneAppear</sound>
         <sound>sound\sndAlexFinalStageCutsceneFingerSnap</sound>
+        <sound>sound\sndAlexChaseMonsterCutsceneGlow</sound>
+        <sound>sound\sndAlexChaseMonsterGrowSmall</sound>
+        <sound>sound\sndAlexChaseMonsterGrowBig</sound>
+        <sound>sound\sndAlexChaseMonsterFaceReveal</sound>
+        <sound>sound\sndAlexChaseMonsterRoar</sound>
+        <sound>sound\sndAlexChaseMonsterQuickSpawn</sound>
+        <sound>sound\sndAlexChaseMonsterVanish</sound>
+        <sound>sound\sndAlexChaseMonsterAmbient</sound>
       </sounds>
     </sounds>
   </sounds>
@@ -706,12 +714,18 @@
       <sprite>sprites\sprAlexOpaqueSpikeD</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeR</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeL</sprite>
+      <sprite>sprites\sprAlexMovingSpikeU</sprite>
+      <sprite>sprites\sprAlexMovingSpikeD</sprite>
+      <sprite>sprites\sprAlexMovingSpikeR</sprite>
+      <sprite>sprites\sprAlexMovingSpikeL</sprite>
+      <sprite>sprites\sprAlexMovingBlock</sprite>
       <sprite>sprites\sprAlexOpaqueBlock</sprite>
       <sprite>sprites\sprAlexBlockSprite</sprite>
       <sprite>sprites\sprAlexBlockWithoutShadow</sprite>
       <sprite>sprites\sprAlexShadowBlock</sprite>
       <sprite>sprites\sprAlexIceBlockSprite</sprite>
       <sprite>sprites\sprAlexPlatform</sprite>
+      <sprite>sprites\sprAlexMovingObstacleTrigger</sprite>
       <sprite>sprites\sprAlexTrollBlock</sprite>
       <sprite>sprites\sprAlexBlockShadow</sprite>
       <sprite>sprites\sprAlexLobbyTransitionBubble</sprite>
@@ -1228,6 +1242,15 @@
       </objects>
       <object>objects\objStarzorSign</object>
       <objects name="Final Stage">
+        <objects name="Moving Obstacles">
+          <object>objects\objAlexMovingBlock</object>
+          <object>objects\objAlexMovingKiller</object>
+          <object>objects\objAlexMovingSpikeU</object>
+          <object>objects\objAlexMovingSpikeD</object>
+          <object>objects\objAlexMovingSpikeR</object>
+          <object>objects\objAlexMovingSpikeL</object>
+          <object>objects\objAlexMovingObstacleTrigger</object>
+        </objects>
         <objects name="Platforms">
           <object>objects\objAlexPlatformWheel</object>
           <object>objects\objAlexPlatformArrow</object>
@@ -1341,6 +1364,8 @@
         <objects name="Chase Monster">
           <object>objects\objAlexChaseMonster</object>
           <object>objects\objAlexChaseMonsterCutscene</object>
+          <object>objects\objAlexChaseMonsterSpawner</object>
+          <object>objects\objAlexChaseMonsterDespawn</object>
         </objects>
         <objects name="Final Boss Cutscene">
           <object>objects\objAlexFinalStageSongFadeOut</object>

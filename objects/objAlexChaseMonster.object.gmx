@@ -37,6 +37,8 @@ min_spd = 1;
 max_spd = 20;
 min_dist = 500;
 dist_per_decimal_spd = 150;
+shrink_t = 0;
+shrink_dur = 80;
 
 // Draw related
 body_size = (kill_range*2)+180;
@@ -88,6 +90,10 @@ pupil_move_lerp = 0.2;
 pupil_x_scale = 1;
 pupil_y_scale = 1;
 pupil_dilation = 1;
+
+spawn_glow_alpha = 0;
+spawn_glow_rad = 800;
+spawn_glow_col = $7752ff;
 
 // Surfaces
 eye_surf = noone;
@@ -307,6 +313,8 @@ else if(active) {
         if(_dist &lt; kill_range) {
             scrKillPlayer();
         }
+    } else {
+        event_user(0);
     }
     
     var _target_spd = min_spd;
@@ -346,7 +354,7 @@ body_angle += body_angle_add;
 var _target_x = x;
 var _target_y = y+1;
 
-if(instance_exists(objPlayer) &amp;&amp; active) {
+if(instance_exists(objPlayer) &amp;&amp; active &amp;&amp; !vanish) {
     _target_x = objPlayer.x;
     _target_y = objPlayer.y;
     
@@ -357,6 +365,27 @@ if(instance_exists(objPlayer) &amp;&amp; active) {
     mouth_move_len = lerp(mouth_move_len, 0, 0.2);
     eye_move_len = lerp(eye_move_len, 0, 0.2);
     pupil_move_len = lerp(pupil_move_len, 0, 0.2);
+}
+
+if(vanish) {
+    if(round(mouth_move_len) == 0) {
+        mouth_open_amnt = max(mouth_open_amnt-0.1, 0);
+        mouth_idle_movement_amnt = max(mouth_idle_movement_amnt-0.025, 0);
+        eye_open_amnt = max(eye_open_amnt-0.1, 0);
+    }
+    
+    if(round(mouth_open_amnt) == 0) {
+        shrink_t++;
+        
+        body_scale = scrAlexEaseInSine(shrink_t, 1, 0, shrink_dur)
+        
+        if(shrink_t &gt;= shrink_dur) {
+            if(audio_is_playing(sndAlexChaseMonsterAmbient))
+                audio_stop_sound(sndAlexChaseMonsterAmbient);
+        
+            instance_destroy();
+        }
+    }
 }
 
 var _dir = point_direction(x, y, _target_x, _target_y);
@@ -430,7 +459,10 @@ if(!cutscene_finished) {
         mouth_idle_movement_amnt = 0;
     }
 
-    if(t &gt; 50 &amp;&amp; t &lt;= 250) {
+    if(t &gt;= 50 &amp;&amp; t &lt;= 250) {
+        if(t == 50)
+            audio_play_sound(sndAlexChaseMonsterCutsceneGlow, 0, false);    
+        
         if(t mod 10 == 0)
             part_particles_create(part_system, x, y, part_type_flare, 1);
             
@@ -439,26 +471,49 @@ if(!cutscene_finished) {
     }
     
     if(t &gt; 100 &amp;&amp; t &lt;= 140) {
+        if(t == 101) {
+            audio_sound_pitch(sndAlexChaseMonsterGrowSmall, 0.8);
+            audio_play_sound(sndAlexChaseMonsterGrowSmall, 0, false);
+        }
+            
         var _anim_val = clamp(t-100, 0, 40);
         body_scale = scrAlexEaseOutElastic(_anim_val, 0, 0.1, 40);
     }
     
     if(t &gt; 170 &amp;&amp; t &lt;= 200) {
+        if(t == 171) {
+            audio_sound_pitch(sndAlexChaseMonsterGrowSmall, 1);
+            audio_play_sound(sndAlexChaseMonsterGrowSmall, 0, false);
+        }
+    
         var _anim_val = clamp(t-170, 0, 30);
         body_scale = scrAlexEaseOutElastic(_anim_val, 0.1, 0.25, 30);
     }
     
     if(t &gt; 220 &amp;&amp; t &lt;= 250) {
+        if(t == 221) {
+            audio_sound_pitch(sndAlexChaseMonsterGrowSmall, 0.9);
+            audio_play_sound(sndAlexChaseMonsterGrowSmall, 0, false);
+        }
+    
         var _anim_val = clamp(t-220, 0, 30);
         body_scale = scrAlexEaseOutElastic(_anim_val, 0.25, 0.5, 30);
     }
     
     if(t &gt; 270 &amp;&amp; t &lt;= 310) {
+        if(t == 271) {
+            audio_play_sound(sndAlexChaseMonsterGrowBig, 0, false);
+        }
+    
         var _anim_val = clamp(t-270, 0, 40);
         body_scale = scrAlexEaseOutElastic(_anim_val, 0.5, 1, 40);
     }
     
     if(t &gt; 340 &amp;&amp; t &lt;= 360) {
+        if(t == 341) {
+            audio_play_sound(sndAlexChaseMonsterFaceReveal, 0, false);
+        }
+    
         var _anim_val = clamp(t-340, 0, 20);
         eye_open_amnt = scrAlexEaseOutSine(_anim_val, 0, 1, 20);
     }
@@ -471,6 +526,10 @@ if(!cutscene_finished) {
     }
     
     if(t &gt; 450 &amp;&amp; t &lt;= 460) {
+        if(t == 451) {
+            audio_play_sound(sndAlexChaseMonsterRoar, 0, false);
+        }
+    
         var _anim_val = clamp(t-450, 0, 10);
         mouth_open_amnt = scrAlexEaseOutSine(_anim_val, 1, 1.5, 10);
         eye_y = scrAlexEaseOutSine(_anim_val, y - 50, y - 80, 10);
@@ -501,7 +560,51 @@ if(!cutscene_finished) {
         cutscene_finished = true;
         active = true;
     }
+} else {
+    // Quick spawn
+    
+    if(t == 1) {
+        body_scale = 1;
+        mouth_open_amnt = 1;
+        eye_open_amnt = 1;
+        
+        active = true;
+        
+        scrAlexShakeCam(20, 10, 10, 3, 4);
+        audio_play_sound(sndAlexChaseMonsterQuickSpawn, 0, false);
+    }
+    
+    if(t &gt; 0 &amp;&amp; t &lt;= 50) {
+        spawn_glow_alpha = scrAlexEaseOutSine(t, 1, 0, 50);
+    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Vanish monster
+
+vanish = true;
+audio_play_sound(sndAlexChaseMonsterVanish, 0, false);
+audio_sound_gain(sndAlexChaseMonsterAmbient, 0, 1000);
 </string>
           </argument>
         </arguments>
@@ -650,6 +753,35 @@ surface_reset_target();
 
 draw_sprite_ext(sprAlexChaseMonsterMouth, 0, mouth_x, mouth_y, mouth_x_scale, mouth_y_scale, 0, -1, 1);
 draw_surface(eye_surf, eye_x - _surf_size/2, eye_y - _surf_size/2);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw spawn glow
+
+draw_set_alpha(spawn_glow_alpha);
+draw_set_blend_mode(bm_add);
+draw_set_circle_precision(64);
+draw_circle_colour(xstart, ystart, spawn_glow_rad, spawn_glow_col, c_black, false);
+draw_set_alpha(1);
+draw_set_blend_mode(bm_normal);
+draw_set_circle_precision(24);
 </string>
           </argument>
         </arguments>

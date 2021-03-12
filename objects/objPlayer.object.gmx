@@ -725,7 +725,7 @@ if(!place_meeting(x, y, objAlexPropelorBlockWindArea) &amp;&amp; (alex_wind_acce
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Control the volume for propelor blocks and orb blocks
+            <string>/// Control the volume for propelor blocks and orb blocks and chase monster
 
 if(instance_exists(objAlexPropelorBlock)) {
     var _propelor_block_range = 300;
@@ -740,6 +740,7 @@ if(instance_exists(objAlexPropelorBlock)) {
         audio_stop_sound(sndAlexPropelorBlockNoise);
 }
 
+
 if(instance_exists(objAlexOrbBlock)) {
     var _orb_block_range = 300;
     var _orb_block_vol = scrInverseLerp(_orb_block_range, 0, min(distance_to_object(objAlexOrbBlock), _orb_block_range));
@@ -751,6 +752,23 @@ if(instance_exists(objAlexOrbBlock)) {
 } else {
     if(audio_is_playing(sndAlexOrbBlockNoise))
         audio_stop_sound(sndAlexOrbBlockNoise);
+}
+
+
+if(instance_exists(objAlexChaseMonster)) {
+    var _monster_range = 500;
+    var _monster_vol = scrInverseLerp(_monster_range, 250, clamp(distance_to_object(objAlexChaseMonster), 250, _monster_range)) * objAlexChaseMonster.body_scale;
+    
+    if(!objAlexChaseMonster.cutscene_finished)
+        _monster_vol = 0;
+    
+    audio_sound_gain(sndAlexChaseMonsterAmbient, _monster_vol, 0);
+    
+    if(!audio_is_playing(sndAlexChaseMonsterAmbient))
+        audio_play_sound(sndAlexChaseMonsterAmbient, 0, true);
+} else {
+    if(audio_is_playing(sndAlexChaseMonsterAmbient))
+        audio_stop_sound(sndAlexChaseMonsterAmbient);
 }
 </string>
           </argument>
