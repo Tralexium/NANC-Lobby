@@ -32,6 +32,7 @@ spawn_x = x;
 spawn_y = y;
 min_spd = 1;
 scale = 1;
+min_dist = 500;
 </string>
           </argument>
         </arguments>
@@ -61,6 +62,7 @@ if(!instance_exists(objAlexChaseMonster)) {
         _inst.cutscene_finished = true;
         _inst.min_spd = min_spd;
         _inst.body_target_scale = scale;
+        _inst.min_dist = min_dist;
 }
 
 instance_destroy();

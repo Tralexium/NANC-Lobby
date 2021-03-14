@@ -756,8 +756,9 @@ if(instance_exists(objAlexOrbBlock)) {
 
 
 if(instance_exists(objAlexChaseMonster)) {
-    var _monster_range = 500;
-    var _monster_vol = scrInverseLerp(_monster_range, 250, clamp(distance_to_object(objAlexChaseMonster), 250, _monster_range)) * objAlexChaseMonster.body_scale;
+    var _monster_range = 600 * objAlexChaseMonster.body_scale;
+    var _min_range = (objAlexChaseMonster.kill_range + 100) * objAlexChaseMonster.body_scale;
+    var _monster_vol = scrInverseLerp(_monster_range, _min_range, clamp(distance_to_object(objAlexChaseMonster), _min_range, _monster_range));
     
     if(!objAlexChaseMonster.cutscene_finished)
         _monster_vol = 0;
