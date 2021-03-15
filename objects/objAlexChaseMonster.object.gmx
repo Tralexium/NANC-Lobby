@@ -52,12 +52,12 @@ chunk_pulse_scale_range = 0.1;
 chunk_pulse_spd = 2;
 
 mouth_x = x;
-mouth_y = y+50;
+mouth_y = y+55;
 mouth_pivot_x = 0;
-mouth_pivot_y = 50
+mouth_pivot_y = 55
 mouth_move_len = 0;
-mouth_move_len_target = 40;
-mouth_move_lerp = 0.1;
+mouth_move_len_target = 50;
+mouth_move_lerp = 0.2;
 mouth_x_scale = 1;
 mouth_y_scale = 1;
 mouth_open_amnt = 0;
@@ -66,12 +66,12 @@ mouth_idle_movement_spd = 1.75;
 mouth_squish_mult = 1.25;
 
 eye_x = x;
-eye_y = y-50;
+eye_y = y-55;
 eye_pivot_x = 0;
-eye_pivot_y = -50;
+eye_pivot_y = -55;
 eye_move_len = 0;
-eye_move_len_target = 50;
-eye_move_lerp = 0.1;
+eye_move_len_target = 60;
+eye_move_lerp = 0.2;
 eye_x_scale = 1;
 eye_y_scale = 1;
 eye_open_amnt = 0;
@@ -348,6 +348,10 @@ else if(active) {
 
 // Body rotation
 body_angle += body_angle_add;
+
+// Wobble intensity
+distort_size = 0.5 * body_target_scale;
+distort_strength = 0.04 * body_target_scale;
 
 
 // Facial movement

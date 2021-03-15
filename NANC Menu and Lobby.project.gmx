@@ -473,6 +473,7 @@
         <sprite>sprites\sprAlexCrystalStarEmptySlot</sprite>
         <sprite>sprites\sprAlexCrystalStarMask</sprite>
         <sprite>sprites\sprAlexCrystalStarShine</sprite>
+        <sprite>sprites\sprAlexAstralCrown</sprite>
       </sprites>
       <sprites name="NPCs">
         <sprites name="Generic">
@@ -690,6 +691,12 @@
         <sprite>sprites\sprAlexFinalBossSmokeAppear</sprite>
         <sprite>sprites\sprAlexFinalBossFingerSnap</sprite>
         <sprite>sprites\sprAlexFinalBossFingerSnapped</sprite>
+        <sprite>sprites\sprAlexFinalBossIdleSad</sprite>
+        <sprite>sprites\sprAlexFinalBossTalkingSad</sprite>
+        <sprite>sprites\sprAlexFinalBossIdleMad</sprite>
+        <sprite>sprites\sprAlexFinalBossTalkingMad</sprite>
+        <sprite>sprites\sprAlexFinalBossIdleExcited</sprite>
+        <sprite>sprites\sprAlexFinalBossTalkingExcited</sprite>
         <sprite>sprites\sprAlexFinalBossAtk</sprite>
         <sprite>sprites\sprAlexFinalBossPreDash</sprite>
         <sprite>sprites\sprAlexFinalBossDash</sprite>
