@@ -141,6 +141,11 @@ exp_bar_x = 64;
 exp_bar_x2 = display_get_gui_width() - 80;
 exp_bar_y = 55;
 
+blk_texture = sprFinalStarLevelTexture;
+blk_col_r = 105 / 255;
+blk_col_g = 100 / 255;
+blk_col_b = 165 / 255;
+
 bg_target_hue = 0.7;
 bg_target_sat = 0.5;
 bg_target_val = 0.15;
@@ -814,7 +819,7 @@ if(recovering) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Change color of BG based on level
+            <string>/// Change color of the floor &amp; BG based on level
 
 // Make the background black to make the fade
 // transition afterwards if about to level up
@@ -823,6 +828,11 @@ if(exp_ready_to_level_up) {
     //bg_val_incr = 0;
 } else {
     if(exp_level == 2) {
+        blk_texture = sprFinalStarLevelTexture2;
+        blk_col_r = 60 / 255;
+        blk_col_g = 125 / 255;
+        blk_col_b = 100 / 255;
+    
         bg_target_hue = 0.68;
         bg_target_sat = 0.5;
         bg_target_val = 0.15;
@@ -832,6 +842,11 @@ if(exp_ready_to_level_up) {
     }
     
     if(exp_level &gt;= 3) {
+        blk_texture = sprFinalStarLevelTexture3;
+        blk_col_r = 170 / 255;
+        blk_col_g = 80 / 255;
+        blk_col_b = 60 / 255;
+    
         bg_target_hue = 0.9;
         bg_target_sat = 0.5;
         bg_target_val = 0.15;
@@ -839,6 +854,13 @@ if(exp_ready_to_level_up) {
         bg_sat_incr = 0.06;
         bg_val_incr = 1.6;
     }
+}
+
+with(objAlexObstacleRenderer) {
+    block_texture_sprite = other.blk_texture;
+    outline_col[0] = other.blk_col_r;
+    outline_col[1] = other.blk_col_g;
+    outline_col[2] = other.blk_col_b;
 }
 
 with(objAlexStarStageBG) {

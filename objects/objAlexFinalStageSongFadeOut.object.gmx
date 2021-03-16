@@ -53,7 +53,7 @@ active = false;
             <string>/// Fade out music
 
 if(!active) {
-    audio_sound_gain(global.currentMusic, 0, 3000);
+    audio_sound_gain(global.currentMusic, 0, 4000);
 }
 </string>
           </argument>

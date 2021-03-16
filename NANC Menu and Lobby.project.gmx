@@ -172,6 +172,7 @@
       <sound>sound\musFinalStageChase</sound>
       <sound>sound\musFinalStageCutscene</sound>
       <sound>sound\musFinalBoss</sound>
+      <sound>sound\musAlexFinalStageEerie</sound>
       <sound>sound\musFanfare</sound>
       <sounds name="sfx">
         <sounds name="Final Boss">
@@ -193,6 +194,7 @@
             <sound>sound\sndAlexFBShrinkingCircleSpawn</sound>
             <sound>sound\sndAlexFBLongBeam</sound>
           </sounds>
+          <sound>sound\sndAlexFBClap</sound>
           <sound>sound\sndAlexFBTeleport</sound>
           <sound>sound\sndAlexFBPreDash</sound>
           <sound>sound\sndAlexFBDash</sound>
@@ -317,6 +319,7 @@
         <sound>sound\sndAlexChaseMonsterQuickSpawn</sound>
         <sound>sound\sndAlexChaseMonsterVanish</sound>
         <sound>sound\sndAlexChaseMonsterAmbient</sound>
+        <sound>sound\sndAlexFinalStageVisualChange</sound>
       </sounds>
     </sounds>
   </sounds>
@@ -533,6 +536,9 @@
         <sprites name="Special">
           <sprite>sprites\sprSpecialNPCBartenderIdle</sprite>
           <sprite>sprites\sprSpecialNPCBartenderTalk</sprite>
+          <sprite>sprites\sprSpecialNPCBartenderWalkClap</sprite>
+          <sprite>sprites\sprSpecialNPCBartenderIdle2</sprite>
+          <sprite>sprites\sprSpecialNPCBartenderTalk2</sprite>
           <sprite>sprites\sprSpecialNPCPieceIdle</sprite>
           <sprite>sprites\sprSpecialNPCPieceTalk</sprite>
           <sprite>sprites\sprSpecialNPCNaloaIdle</sprite>
@@ -715,6 +721,7 @@
         <sprite>sprites\sprAlexFinalBossRecover</sprite>
         <sprite>sprites\sprAlexFinalBossFloatUp</sprite>
         <sprite>sprites\sprAlexFinalBossPowerUp</sprite>
+        <sprite>sprites\sprAlexFinalBossKnockedOut</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
@@ -981,6 +988,33 @@
       <script>scripts\scrAlexDrawSegmentBar.gml</script>
       <script>scripts\scrAlexShakeCam.gml</script>
     </scripts>
+    <scripts name="BktGlitch">
+      <script>scripts\BktGlitch_init.gml</script>
+      <script>scripts\BktGlitch_config.gml</script>
+      <script>scripts\BktGlitch_config_preset.gml</script>
+      <script>scripts\BktGlitch_config_zero.gml</script>
+      <script>scripts\BktGlitch_set_time.gml</script>
+      <script>scripts\BktGlitch_set_resolution.gml</script>
+      <script>scripts\BktGlitch_set_resolution_of_gui.gml</script>
+      <script>scripts\BktGlitch_set_resolution_of_application_surface.gml</script>
+      <scripts name="parameters">
+        <script>scripts\BktGlitch_set_intensity.gml</script>
+        <script>scripts\BktGlitch_set_noise_level.gml</script>
+        <script>scripts\BktGlitch_set_line_speed.gml</script>
+        <script>scripts\BktGlitch_set_line_shift.gml</script>
+        <script>scripts\BktGlitch_set_line_vertical_shift.gml</script>
+        <script>scripts\BktGlitch_set_line_drift.gml</script>
+        <script>scripts\BktGlitch_set_line_resolution.gml</script>
+        <script>scripts\BktGlitch_set_shakiness.gml</script>
+        <script>scripts\BktGlitch_set_rng_seed.gml</script>
+        <script>scripts\BktGlitch_set_channel_shift.gml</script>
+        <script>scripts\BktGlitch_set_jumbleness.gml</script>
+        <script>scripts\BktGlitch_set_jumble_resolution.gml</script>
+        <script>scripts\BktGlitch_set_jumble_speed.gml</script>
+        <script>scripts\BktGlitch_set_jumble_shift.gml</script>
+        <script>scripts\BktGlitch_set_channel_dispersion.gml</script>
+      </scripts>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\sHeatHaze.shader</shader>
@@ -994,6 +1028,7 @@
     <shader type="GLSLES">shaders\s3DFloor.shader</shader>
     <shader type="GLSLES">shaders\sRainbowSpiral.shader</shader>
     <shader type="GLSLES">shaders\sRainbowCircles.shader</shader>
+    <shader type="GLSLES">shaders\shdBktGlitch.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fDefault30</font>
@@ -1377,9 +1412,11 @@
           <object>objects\objAlexChaseMonsterDespawn</object>
         </objects>
         <objects name="Final Boss Cutscene">
+          <object>objects\objAlexChangeStarStageVisuals</object>
           <object>objects\objAlexFinalStageSongFadeOut</object>
           <object>objects\objAlexFinalStageCutsceneTrigger</object>
           <object>objects\objAlexFinalStageCutscene</object>
+          <object>objects\objAlexFinalStagePreBossCutscene</object>
           <object>objects\objAlexFinalStageCutsceneTransition</object>
         </objects>
         <object>objects\objAlexBubble</object>

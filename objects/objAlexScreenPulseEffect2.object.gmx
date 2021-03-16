@@ -86,7 +86,9 @@ if(surf_alpha &gt; 0) {
     var _surf_x = (display_get_gui_width() - surface_get_width(application_surface)*surf_scale)/2;
     var _surf_y = (display_get_gui_height() - surface_get_height(application_surface)*surf_scale)/2;
     
-    draw_surface_ext(application_surface, _surf_x, _surf_y, surf_scale, surf_scale, 0, -1, surf_alpha);
+    if(surface_exists(application_surface)) {
+        draw_surface_ext(application_surface, _surf_x, _surf_y, surf_scale, surf_scale, 0, -1, surf_alpha);
+    }
 }
 </string>
           </argument>

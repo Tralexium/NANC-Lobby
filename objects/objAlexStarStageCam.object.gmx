@@ -43,7 +43,7 @@ opt_previous_x = view_xview[0];
 opt_previous_y = view_yview[0];
 disable_objects = true
 check_dist = 128; // How far the camera must travel before activating certain objects
-region_margin = 256; // How much leeway do we want to add in our object deactivation region
+region_margin = 300; //256; // How much leeway do we want to add in our object deactivation region
 
 shake_t = 0;
 shake_dur = 0;  // How long the shake lasts for
@@ -141,8 +141,9 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     
     // Final Stage
     // Moving obstacles
-    instance_activate_object(objAlexMovingBlock);
-    instance_activate_object(objAlexMovingKiller);
+    //instance_activate_object(objAlexMovingBlock);
+    //instance_activate_object(objAlexMovingKiller);
+    
     // Bubble jump sign
     instance_activate_object(objAlexBubbleJumpSign);
     // Killer block
@@ -208,8 +209,10 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexChaseMonsterCutscene);
     // Cutscene objects
     instance_activate_object(objAlexFinalStageCutscene);
+    instance_activate_object(objAlexFinalStagePreBossCutscene);
     instance_activate_object(objAlexFinalStageCutsceneTrigger);
     instance_activate_object(objAlexFinalStageCutsceneTransition);
+    instance_activate_object(objAlexFinalStageSongFadeOut);
 }
 </string>
           </argument>

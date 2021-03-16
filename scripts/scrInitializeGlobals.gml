@@ -2,7 +2,11 @@
 
 scrSetGlobalOptions();       //initialize global game options
 
+
 // ALEX MENU & LOBBY GLOBALS
+
+BktGlitch_init();  //initialize glitch shader globals
+
 global.totalNumberOfStages = 35;
 for (var i = 0; i <= global.totalNumberOfStages; i++)
 {
