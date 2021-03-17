@@ -346,7 +346,7 @@ if(instance_exists(objPlayer) &amp;&amp; look_at_player) {
 
 
 // Check if currently standing on ground
-if(place_meeting(x, y+1, objBlock) &amp;&amp; bbox_bottom &gt;= ground_level - 2) {
+if(bbox_bottom &gt;= ground_level - 2) {
     if(on_ground == false &amp;&amp; sprite_index != sprAlexFinalBossIdle)
         audio_play_sound(sndAlexFBLand, 0, false);
 

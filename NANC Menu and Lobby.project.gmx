@@ -1417,6 +1417,7 @@
           <object>objects\objAlexFinalStageCutsceneTrigger</object>
           <object>objects\objAlexFinalStageCutscene</object>
           <object>objects\objAlexFinalStagePreBossCutscene</object>
+          <object>objects\objAlexCutsceneCrown</object>
           <object>objects\objAlexFinalStageCutsceneTransition</object>
         </objects>
         <object>objects\objAlexBubble</object>

@@ -1211,7 +1211,7 @@
     <instance objName="objAlexChaseMonsterSpawner" x="10592" y="3248" name="inst_C4C69A7C" locked="0" code="spawn_x = 10800;&#xA;spawn_y = 4000;&#xA;min_spd = .6;&#xA;scale = 1;&#xA;min_dist = 500;" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexMovingObstacleReset" x="10704" y="2656" name="inst_A5C55135" locked="0" code="" scaleX="1" scaleY="2.5" colour="4294967295" rotation="0"/>
     <instance objName="objAlexChaseMonsterDespawn" x="10704" y="2656" name="inst_B7E8E28F" locked="0" code="" scaleX="1" scaleY="2.5" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexChaseMonsterSpawner" x="10912" y="2416" name="inst_49E60B73" locked="0" code="spawn_x = 10800;&#xA;spawn_y = 1800;&#xA;min_spd = 1.25;&#xA;scale = .25;&#xA;min_dist = 150;" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexChaseMonsterSpawner" x="10848" y="2416" name="inst_49E60B73" locked="0" code="spawn_x = 10800;&#xA;spawn_y = 1800;&#xA;min_spd = 1.25;&#xA;scale = .25;&#xA;min_dist = 150;" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexChaseMonsterDespawn" x="10720" y="1568" name="inst_F85E945A" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeU" x="10624" y="2704" name="inst_B8086186" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexShadowSpikeU" x="10656" y="2704" name="inst_9B0C0D23" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

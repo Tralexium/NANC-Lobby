@@ -78,12 +78,25 @@ clapped = false;
 dialog_list = ds_list_create();
 dialog_list2 = ds_list_create();
 
-dialog_list[|0] = "blablablabla..."
+dialog_list[|0] = "Well well well, looks like we got a winner."
+dialog_list[|1] = "And that winner is me, all thanks to your help."
 
-dialog_list2[|0] = "blablablabla... 1"
-dialog_list2[|1] = "blablablabla... 2"
-dialog_list2[|2] = "blablablabla... 3"
-dialog_list2[|3] = "blablablabla... final"
+dialog_list2[|0] = "My my where are my manners? I completely forgot to introduce myself last time! Call me Venux."
+dialog_list2[|1] = "I got to say kid I'm impressed that you made it this far. Did you enjoy running away from the void chasers?"
+dialog_list2[|2] = "Judging by the look on your face, you seem to be confussed. Well since I'm in a good mood, I'll tell you the full story."
+dialog_list2[|3] = "The contest was only a ploy to get someone like you. A masochist crazy enough that would gather all the crystal stars, so that I could access this dimension!"
+dialog_list2[|4] = "For a long time now, I have a dream."
+dialog_list2[|5] = "A dream that someday, bad fangames will vanish from existance. Allowing all the brilliant ones to trully shine!"
+dialog_list2[|6] = "But all I see is worthless garbage filling up the wikis made by clueless individuals. Hoping to be praised by others."
+dialog_list2[|7] = "And as a consecuence, the special ones get buried. Months worth of work gone into obscurity. It's sickening."
+dialog_list2[|8] = "But thanks to your hard work, all of that is about to get changed!"
+dialog_list2[|9] = "Behold, the Astral Crown!"
+dialog_list2[|10] = "Harnesing its power will allow me to burn down all of the existing wikis! And from their ashes, a new one will be born!"
+dialog_list2[|11] = "One that filters the impurities, allowing the world to experience only the best!"
+dialog_list2[|12] = "Wait, why are you nodding your head? You can't possibly think that my plan is flawed?"
+dialog_list2[|13] = "I knew it! You're just as a blind as the others..."
+dialog_list2[|14] = "My plan will have to wait, I have another impurity that needs to be disposed of."
+dialog_list2[|15] = "Get ready kid, as this will be your final showdown!"
 </string>
           </argument>
         </arguments>
@@ -182,7 +195,8 @@ image_speed = 0.3;
 audio_play_sound(sndAlexFinalStageCutsceneAppear, 0, false);
 instance_create(x, y, objAlexScreenPulseEffect);
 
-npc_name = "Venux"
+npc_name = "???"
+letter_sfx = sndAlexDialogSoundBartender;
 idle_sprite = sprAlexFinalBossIdle;
 talking_sprite = sprAlexFinalBossTalking;
 </string>
@@ -252,7 +266,7 @@ if(active) {
             var _init_x = last_cam_pos_x;
             var _dest_x = x - view_wview[0]/2;
             var _init_y = last_cam_pos_y;
-            var _dest_y = y - view_hview[0]/2;
+            var _dest_y = y - 60 - view_hview[0]/2;
             view_xview[0] = scrAlexEaseInOutSine(t, _init_x, _dest_x, zoom_dur);
             view_yview[0] = scrAlexEaseInOutSine(t, _init_y, _dest_y, zoom_dur);
             view_wview[0] = scrAlexEaseInOutSine(t, 800, 400, zoom_dur);
@@ -305,14 +319,45 @@ if(instance_exists(objAlexDialogBox)) {
     // Also end the cutscene when out of text
     if(true_form_revealed) {
         if(objAlexDialogBox.dialog_index == 1) {
+            objAlexDialogBox.npc_name = "Venux";
+        }
+        if(objAlexDialogBox.dialog_index == 4) {
             idle_sprite = sprAlexFinalBossIdleSad;
             talking_sprite = sprAlexFinalBossTalkingSad;
         }
-        if(objAlexDialogBox.dialog_index == 2) {
+        if(objAlexDialogBox.dialog_index == 6) {
             idle_sprite = sprAlexFinalBossIdleMad;
             talking_sprite = sprAlexFinalBossTalkingMad;
+            
+            
         }
-        if(objAlexDialogBox.dialog_index == 3) {
+        if(objAlexDialogBox.dialog_index == 8) {
+            idle_sprite = sprAlexFinalBossIdle;
+            talking_sprite = sprAlexFinalBossTalking;
+        }
+        if(objAlexDialogBox.dialog_index == 9) {
+            idle_sprite = sprAlexFinalBossIdleExcited;
+            talking_sprite = sprAlexFinalBossTalkingExcited;
+            
+            if(!instance_exists(objAlexCutsceneCrown))
+                instance_create(x, y, objAlexCutsceneCrown);   
+        }
+        if(objAlexDialogBox.dialog_index == 12) {
+            idle_sprite = sprAlexFinalBossIdle;
+            talking_sprite = sprAlexFinalBossTalking;
+            
+            with(objAlexCutsceneCrown)
+                active = false;
+        }
+        if(objAlexDialogBox.dialog_index == 13) {
+            idle_sprite = sprAlexFinalBossIdleSad;
+            talking_sprite = sprAlexFinalBossTalkingSad;
+        }
+        if(objAlexDialogBox.dialog_index == 14) {
+            idle_sprite = sprAlexFinalBossIdle;
+            talking_sprite = sprAlexFinalBossTalking;
+        }
+        if(objAlexDialogBox.dialog_index == 15) {
             idle_sprite = sprAlexFinalBossIdleExcited;
             talking_sprite = sprAlexFinalBossTalkingExcited;
         }
