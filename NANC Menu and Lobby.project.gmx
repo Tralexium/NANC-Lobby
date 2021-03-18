@@ -723,6 +723,10 @@
         <sprite>sprites\sprAlexFinalBossPowerUp</sprite>
         <sprite>sprites\sprAlexFinalBossKnockedOut</sprite>
       </sprites>
+      <sprites name="Final Boss Phase 2">
+        <sprite>sprites\sprAlexFlyingPlayerTestShape</sprite>
+        <sprite>sprites\sprAlexFlyingPlayerBulletTestShape</sprite>
+      </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeD</sprite>
@@ -967,6 +971,9 @@
         <script>scripts\scrFBSetAttackSprite.gml</script>
         <script>scripts\scrFBLevelUp.gml</script>
         <script>scripts\scrFBGetNextTeleportXPos.gml</script>
+      </scripts>
+      <scripts name="Final Boss Phase 2">
+        <script>scripts\scrAlexFB2POrb.gml</script>
       </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
       <script>scripts\scrResetStageStats.gml</script>
@@ -1456,6 +1463,13 @@
         <object>objects\objAlexFinalBossSpawner</object>
         <object>objects\objAlexFinalBossWarmup</object>
       </objects>
+      <objects name="Final Boss Phase 2">
+        <object>objects\objAlexPseudo3D</object>
+        <object>objects\objAlexPseudo3DHazard</object>
+        <object>objects\objAlexPseudo3DOrb</object>
+        <object>objects\objAlexPseudo3DProjectileSpawner</object>
+        <object>objects\objAlexFlyingPlayer</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -1491,6 +1505,7 @@
       <room>rooms\rFinalStagePart2</room>
       <room>rooms\rFinalStageChase</room>
       <room>rooms\rFinalBoss</room>
+      <room>rooms\rFinalBoss2</room>
       <rooms name="Reception">
         <room>rooms\rLobbyReception</room>
         <room>rooms\rLobbyGallery</room>

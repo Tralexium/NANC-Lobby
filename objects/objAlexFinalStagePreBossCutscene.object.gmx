@@ -90,13 +90,12 @@ dialog_list2[|5] = "A dream that someday, bad fangames will vanish from existanc
 dialog_list2[|6] = "But all I see is worthless garbage filling up the wikis made by clueless individuals. Hoping to be praised by others."
 dialog_list2[|7] = "And as a consecuence, the special ones get buried. Months worth of work gone into obscurity. It's sickening."
 dialog_list2[|8] = "But thanks to your hard work, all of that is about to get changed!"
-dialog_list2[|9] = "Behold, the Astral Crown!"
+dialog_list2[|9] = "Behold, the Astral Crown! The very thing I've been after all this time."
 dialog_list2[|10] = "Harnesing its power will allow me to burn down all of the existing wikis! And from their ashes, a new one will be born!"
 dialog_list2[|11] = "One that filters the impurities, allowing the world to experience only the best!"
-dialog_list2[|12] = "Wait, why are you nodding your head? You can't possibly think that my plan is flawed?"
-dialog_list2[|13] = "I knew it! You're just as a blind as the others..."
-dialog_list2[|14] = "My plan will have to wait, I have another impurity that needs to be disposed of."
-dialog_list2[|15] = "Get ready kid, as this will be your final showdown!"
+dialog_list2[|12] = "Wait, why are you nodding your head like that? You can't possibly think that my ideology is flawed?"
+dialog_list2[|13] = "No matter, you shall be cleansed just like the other impurities."
+dialog_list2[|14] = "And once I'm done with you, my dream will finally grow into fruition!"
 </string>
           </argument>
         </arguments>
@@ -349,15 +348,7 @@ if(instance_exists(objAlexDialogBox)) {
             with(objAlexCutsceneCrown)
                 active = false;
         }
-        if(objAlexDialogBox.dialog_index == 13) {
-            idle_sprite = sprAlexFinalBossIdleSad;
-            talking_sprite = sprAlexFinalBossTalkingSad;
-        }
         if(objAlexDialogBox.dialog_index == 14) {
-            idle_sprite = sprAlexFinalBossIdle;
-            talking_sprite = sprAlexFinalBossTalking;
-        }
-        if(objAlexDialogBox.dialog_index == 15) {
             idle_sprite = sprAlexFinalBossIdleExcited;
             talking_sprite = sprAlexFinalBossTalkingExcited;
         }
