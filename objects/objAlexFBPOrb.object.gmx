@@ -38,6 +38,7 @@ direction = random(360);
 
 is_outside = false;
 explosion_sfx = sndAlexFBOrbExplosion;
+destroy_when_outside = true;
 </string>
           </argument>
         </arguments>
@@ -136,24 +137,13 @@ var _part = scrAlexMakeParticle(x, y, 4, sprAlexFBPOrbTrail, 0, direction, 0, fa
             <kind>1</kind>
             <string>/// Mark that it's outside the room
 
-is_outside = true;
+if(destroy_when_outside) {
+    is_outside = true;
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>203</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_kill_object</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="8" enumb="0">

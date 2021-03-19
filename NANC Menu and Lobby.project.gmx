@@ -973,7 +973,8 @@
         <script>scripts\scrFBGetNextTeleportXPos.gml</script>
       </scripts>
       <scripts name="Final Boss Phase 2">
-        <script>scripts\scrAlexFB2POrb.gml</script>
+        <script>scripts\scrAlexFB2P3DCurveOrb.gml</script>
+        <script>scripts\scrAlexFB2PSpeedRing.gml</script>
       </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
       <script>scripts\scrResetStageStats.gml</script>
@@ -985,6 +986,8 @@
       <script>scripts\scrAlexEaseOutSine.gml</script>
       <script>scripts\scrAlexEaseInSine.gml</script>
       <script>scripts\scrAlexEaseInBack.gml</script>
+      <script>scripts\scrAlexEaseInQuart.gml</script>
+      <script>scripts\scrAlexEaseInExpo.gml</script>
       <script>scripts\scrAlexEaseInOutSine.gml</script>
       <script>scripts\scrAlexEaseOutElastic.gml</script>
       <script>scripts\scrAlexEaseOutCubic.gml</script>
@@ -1466,9 +1469,14 @@
       <objects name="Final Boss Phase 2">
         <object>objects\objAlexPseudo3D</object>
         <object>objects\objAlexPseudo3DHazard</object>
-        <object>objects\objAlexPseudo3DOrb</object>
         <object>objects\objAlexPseudo3DProjectileSpawner</object>
         <object>objects\objAlexFlyingPlayer</object>
+        <objects name="2D Projectiles">
+          <object>objects\objAlexFB2PSpeedRing</object>
+        </objects>
+        <objects name="3D Projectiles">
+          <object>objects\objAlexFB2P3DCurveOrb</object>
+        </objects>
       </objects>
     </objects>
   </objects>

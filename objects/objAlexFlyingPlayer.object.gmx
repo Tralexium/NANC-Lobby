@@ -5,8 +5,8 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>objAlexPseudo3D</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>self</parentName>
+  <maskName>sprCherry</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -41,11 +41,13 @@
             <kind>1</kind>
             <string>/// Init player vars
 
-move_spd = 6;
+spd = 0;
+move_spd = 8;
 slow_spd = 3;
-room_edge_margin = 32;
+room_edge_margin = 16;
 
-base_scale = 2; // Modify base scale
+image_yscale = 2;
+image_xscale = 2;
 </string>
           </argument>
         </arguments>
@@ -98,12 +100,20 @@ scrKillPlayer();
             <kind>1</kind>
             <string>/// Movement
 
-var _spd = move_spd;
-if(scrButtonCheck(global.jumpButton))
-    _spd = slow_spd;
+var _x_move = (scrButtonCheck(global.rightButton) - scrButtonCheck(global.leftButton)); 
+var _y_move = (scrButtonCheck(global.downButton) - scrButtonCheck(global.upButton));
+var _dir = point_direction(0, 0, _x_move, _y_move);
 
-x += (scrButtonCheck(global.rightButton) - scrButtonCheck(global.leftButton)) * _spd; 
-y += (scrButtonCheck(global.downButton) - scrButtonCheck(global.upButton)) * _spd;
+if(abs(_x_move) + abs(_y_move) == 0) {
+    spd = 0;
+} else {
+    spd = move_spd;
+    if(scrButtonCheck(global.jumpButton) || scrButtonCheck(global.shootButton))
+        spd = slow_spd;
+
+    x += lengthdir_x(spd, _dir);
+    y += lengthdir_y(spd, _dir);
+}
 
 // Clamp position
 x = clamp(x, room_edge_margin, room_width - room_edge_margin);
@@ -130,6 +140,9 @@ y = clamp(y, room_edge_margin, room_height - room_edge_margin);
             <kind>1</kind>
             <string>/// Drawing related
 
+if(keyboard_check_pressed(vk_home))
+    global.noDeath = !global.noDeath;
+
 if(global.noDeath)
     image_alpha = 0.6;
 else
@@ -137,6 +150,22 @@ else
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objPlayerKiller">
+      <action>
+        <libid>1</libid>
+        <id>203</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_kill_object</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="7" enumb="20">

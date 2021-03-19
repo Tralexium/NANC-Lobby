@@ -31,10 +31,10 @@ z = 0;  // The Z axis of the object
 zspeed = 0;  // Same as hspeed/vspeed but in the Z axis
 zspeed_remainder = 0;  // If the zspeed is a float, save the remainder
 
-base_scale = 1;  // Starting scale
-xscale = base_scale;  // Use these instead of image_xscale or image_yscale
-yscale = base_scale;
-scale_to_z = 500;  // Z dist in correlation with scale
+xscale = 1;  // Use these instead of image_xscale or image_yscale
+yscale = 1;
+scale_to_z = 120;  // Z dist in correlation with scale
+alpha_to_z = 150;  // Z dist in correlation with alpha
 </string>
           </argument>
         </arguments>
@@ -70,16 +70,14 @@ if(zspeed != 0) {
     }
     
     while(_travel_dist &gt; 0) {
-        z--;
-        
-        // A seperate event in case you want to
-        // expand the functionality in a child obj
-        event_user(10);
-        
+        z--;        
         _travel_dist--;
     }
     
 }
+
+// Do stuff with the obj based on the current z pos
+event_user(10);
 </string>
           </argument>
         </arguments>
@@ -105,9 +103,14 @@ if(zspeed != 0) {
             <string>/// Logic based on current Z axis
 
 // Scale
-var _scale_mult = base_scale - (z / scale_to_z);
+var _scale_mult = 1 - (z / scale_to_z);
 image_xscale = xscale * _scale_mult;
-image_yscale = xscale * _scale_mult;
+image_yscale = yscale * _scale_mult;
+
+// Alpha
+if(z &gt;= 0) {
+    image_alpha = min(1, 1 - (z / alpha_to_z));
+}
 
 // Depth
 depth = z;
