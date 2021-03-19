@@ -974,6 +974,9 @@
       </scripts>
       <scripts name="Final Boss Phase 2">
         <script>scripts\scrAlexFB2P3DCurveOrb.gml</script>
+        <script>scripts\scrAlexFB2P3DWaveOrb.gml</script>
+        <script>scripts\scrAlexFB2P3DImpactOrb.gml</script>
+        <script>scripts\scrAlexFB2P3DWaveOrbLine.gml</script>
         <script>scripts\scrAlexFB2PSpeedRing.gml</script>
       </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
@@ -1476,6 +1479,8 @@
         </objects>
         <objects name="3D Projectiles">
           <object>objects\objAlexFB2P3DCurveOrb</object>
+          <object>objects\objAlexFB2P3DWaveOrb</object>
+          <object>objects\objAlexFB2P3DImpactOrb</object>
         </objects>
       </objects>
     </objects>

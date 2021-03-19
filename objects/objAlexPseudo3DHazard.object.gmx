@@ -110,7 +110,7 @@ if(z &lt;= z_start_fade) {
             <kind>1</kind>
             <string>/// Check for player collisions
     
-if(z == 0 &amp;&amp; !global.noDeath) {
+if(round(z) == 0 &amp;&amp; image_alpha &gt; 0.9 &amp;&amp; !global.noDeath) {
     if(place_meeting(x, y, objAlexFlyingPlayer)) {
         instance_destroy(objAlexFlyingPlayer);
     }

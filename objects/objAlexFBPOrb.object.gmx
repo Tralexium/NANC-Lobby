@@ -39,6 +39,7 @@ direction = random(360);
 is_outside = false;
 explosion_sfx = sndAlexFBOrbExplosion;
 destroy_when_outside = true;
+spawn_trail = true;
 </string>
           </argument>
         </arguments>
@@ -107,12 +108,14 @@ size += size_incr;
 image_xscale = size / sprite_get_height(sprAlexFBPOrbHitbox);
 image_yscale = image_xscale;
 
-var _part = scrAlexMakeParticle(x, y, 4, sprAlexFBPOrbTrail, 0, direction, 0, false, true, false);
-    _part.image_xscale = image_xscale;
-    _part.image_yscale = image_yscale;
-    _part.image_angle = direction;
-    _part.blend_mode = bm_add;
-    _part.add_scale = -0.1 * image_xscale;
+if(spawn_trail) {
+    var _part = scrAlexMakeParticle(x, y, 4, sprAlexFBPOrbTrail, 0, direction, 0, false, true, false);
+        _part.image_xscale = image_xscale;
+        _part.image_yscale = image_yscale;
+        _part.image_angle = direction;
+        _part.blend_mode = bm_add;
+        _part.add_scale = -0.1 * image_xscale;
+}
 </string>
           </argument>
         </arguments>
