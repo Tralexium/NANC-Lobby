@@ -724,6 +724,19 @@
         <sprite>sprites\sprAlexFinalBossKnockedOut</sprite>
       </sprites>
       <sprites name="Final Boss Phase 2">
+        <sprites name="Flying Player">
+          <sprite>sprites\sprAlexFPBodyFlat</sprite>
+          <sprite>sprites\sprAlexFPBodyTilted</sprite>
+          <sprite>sprites\sprAlexFPFeetFlat</sprite>
+          <sprite>sprites\sprAlexFPFeetTilted</sprite>
+          <sprite>sprites\sprAlexFPHitbox</sprite>
+          <sprite>sprites\sprAlexFPCrosshair</sprite>
+          <sprite>sprites\sprAlexFPBullet</sprite>
+          <sprite>sprites\sprAlexFPChargedBullet</sprite>
+          <sprite>sprites\sprAlexFPCharging</sprite>
+          <sprite>sprites\sprAlexFPChargeFinished</sprite>
+          <sprite>sprites\sprAlexFPChargeBulletFired</sprite>
+        </sprites>
         <sprite>sprites\sprAlexFlyingPlayerTestShape</sprite>
         <sprite>sprites\sprAlexFlyingPlayerBulletTestShape</sprite>
       </sprites>
@@ -978,6 +991,7 @@
         <script>scripts\scrAlexFB2P3DImpactOrb.gml</script>
         <script>scripts\scrAlexFB2P3DWaveOrbLine.gml</script>
         <script>scripts\scrAlexFB2PSpeedRing.gml</script>
+        <script>scripts\scrAlexFPMakeBullet.gml</script>
       </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
       <script>scripts\scrResetStageStats.gml</script>
@@ -1474,6 +1488,7 @@
         <object>objects\objAlexPseudo3DHazard</object>
         <object>objects\objAlexPseudo3DProjectileSpawner</object>
         <object>objects\objAlexFlyingPlayer</object>
+        <object>objects\objAlexFlyingPlayerBullet</object>
         <objects name="2D Projectiles">
           <object>objects\objAlexFB2PSpeedRing</object>
         </objects>
