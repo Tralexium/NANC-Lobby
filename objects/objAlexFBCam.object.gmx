@@ -64,6 +64,7 @@ default_view_w = view_wport[0];
 default_view_h = view_hport[0];
 target_obj = objPlayer;
 anchor_obj = objAlexFinalBoss;  // The 2nd object to average the cam position (In this case it's the final boss)
+anchor_strength = .33;
 lock_in_place = true;
 target_x = 0;
 target_y = 0;
@@ -145,8 +146,8 @@ opt_previous_y = view_yview[0];
 if (instance_exists(target_obj) &amp;&amp; !lock_in_place)
 {
     if(instance_exists(anchor_obj)) {
-        var _average_x = mean(target_obj.x, target_obj.x, anchor_obj.x);
-        var _average_y = mean(target_obj.y, target_obj.y, anchor_obj.y);
+        var _average_x = lerp(target_obj.x, anchor_obj.x, anchor_strength); //mean(target_obj.x, target_obj.x, anchor_obj.x);
+        var _average_y = lerp(target_obj.y, anchor_obj.y, anchor_strength); //mean(target_obj.y, target_obj.y, anchor_obj.y);
         
         // Get distance from target to anchor
         with(target_obj) {

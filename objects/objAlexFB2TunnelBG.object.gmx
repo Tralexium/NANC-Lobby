@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>100000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,13 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>t = 0
+            <string>/// Init vars
+
+bg_surf = noone;
+
+shader_time = 0;
+shader_time_spd = 1 / 50;
+
+shader = sFinalBossTunnel;
+u_time = shader_get_uniform(shader, "u_time");
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="1" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -48,18 +56,46 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(t==0 &amp;&amp; instance_exists(objAlexFlyingPlayer)) {
-    repeat(25) {
-        instance_create(random_range(0, room_width), random_range(0, room_height), objAlexFB2PScreenWrapSquishOrb);
-    }
+            <string>/// Free surface
+
+surface_free(bg_surf);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Render background
+
+if(!surface_exists(bg_surf)) {
+    bg_surf = surface_create(room_width, room_height);
 }
 
-if(t == 500) {
-    with(objAlexFB2PScreenWrapSquishOrb)
-        fade_out = true;
-}
+surface_set_target(bg_surf)
+draw_clear_alpha(c_black, 1.0);
+surface_reset_target();
 
-t++;
+shader_set(shader);
+    shader_time += shader_time_spd;
+    shader_set_uniform_f(u_time, shader_time);
+    draw_surface(bg_surf, 0, 0);
+shader_reset();
 </string>
           </argument>
         </arguments>

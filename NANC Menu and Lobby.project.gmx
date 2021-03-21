@@ -991,6 +991,7 @@
         <script>scripts\scrAlexFB2P3DImpactOrb.gml</script>
         <script>scripts\scrAlexFB2P3DWaveOrbLine.gml</script>
         <script>scripts\scrAlexFB2PSpeedRing.gml</script>
+        <script>scripts\scrAlexFB2PCollapseRing.gml</script>
         <script>scripts\scrAlexFPMakeBullet.gml</script>
       </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
@@ -1055,6 +1056,7 @@
     <shader type="GLSLES">shaders\s3DFloor.shader</shader>
     <shader type="GLSLES">shaders\sRainbowSpiral.shader</shader>
     <shader type="GLSLES">shaders\sRainbowCircles.shader</shader>
+    <shader type="GLSLES">shaders\sFinalBossTunnel.shader</shader>
     <shader type="GLSLES">shaders\shdBktGlitch.shader</shader>
   </shaders>
   <fonts name="fonts">
@@ -1487,10 +1489,14 @@
         <object>objects\objAlexPseudo3D</object>
         <object>objects\objAlexPseudo3DHazard</object>
         <object>objects\objAlexPseudo3DProjectileSpawner</object>
+        <object>objects\objAlexFB2CamAnchor</object>
+        <object>objects\objAlexFB2TunnelBG</object>
         <object>objects\objAlexFlyingPlayer</object>
         <object>objects\objAlexFlyingPlayerBullet</object>
         <objects name="2D Projectiles">
           <object>objects\objAlexFB2PSpeedRing</object>
+          <object>objects\objAlexFB2PCollapseRing</object>
+          <object>objects\objAlexFB2PScreenWrapSquishOrb</object>
         </objects>
         <objects name="3D Projectiles">
           <object>objects\objAlexFB2P3DCurveOrb</object>

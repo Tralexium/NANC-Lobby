@@ -57,16 +57,17 @@ hitbox_alpha = 0;
 
 crosshair_x = x;
 crosshair_y = y;
-crosshair_move_dist = 200;
-crosshair_snap_spd = 0.1;
+crosshair_move_dist = 0; //200;
+crosshair_snap_spd = 0.25;
 crosshair_render_distance = 0.5;  // 0: on player, 1: room center
 crosshair_alpha = 1;
 crosshair_angle = 0;
 crosshair_scale = 2;
 
-bullet_travel_dur = 100;
+bullet_travel_dur = 80;
 shoot_t = 0;
 shoot_freq = 6;
+charge_shot_dmg = 12;
 charge_t = 0;
 charge_dur = 50;
 charge_cooldown = 30;
@@ -74,7 +75,7 @@ charge_alpha = 0;
 charge_scale = 2;
 charge_glow_alpha = 0;
 charge_glow_alpha_t = 0;
-charge_glow_freq = 10;
+charge_glow_freq = 7;
 charge_finished_index = 10;
 charge_finished_img_spd = 0.5;
 charge_shot_index = 10;
@@ -187,7 +188,7 @@ if(_action) {
 
 
 // Shooting
-var _bullet_spd = 28 * sign(abs(_x_move) + abs(_y_move));
+var _bullet_spd = 0; //28 * sign(abs(_x_move) + abs(_y_move));
 var _bullet_dir = point_direction(0, 0, _x_move, _y_move);
 
 if(_action &amp;&amp; shoot_t &gt;= 0) {
@@ -214,7 +215,7 @@ if(_action &amp;&amp; shoot_t &gt;= 0) {
     }
 } else {
     if(charge_t &gt;= charge_dur) {
-        var _shot = scrAlexFPMakeBullet(10, bullet_travel_dur, _bullet_spd, _bullet_dir);
+        var _shot = scrAlexFPMakeBullet(charge_shot_dmg, bullet_travel_dur, _bullet_spd, _bullet_dir);
             _shot.sprite_index = sprAlexFPChargedBullet;
             _shot.scale = 4;
             
@@ -289,8 +290,9 @@ else
             <kind>1</kind>
             <string>/// Destroy self
 
-if(!global.noDeath)
+if(!global.noDeath &amp;&amp; other.image_alpha &gt;= 1) {
     instance_destroy();
+}
 </string>
           </argument>
         </arguments>

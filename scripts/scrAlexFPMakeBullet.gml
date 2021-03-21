@@ -8,6 +8,7 @@ var _dir = argument[3];
 var _inst = instance_create(x, y, objAlexFlyingPlayerBullet);
     _inst.damage = _dmg;
     _inst.travel_dur = _travel_dur;
+    _inst.t = _travel_dur;
     _inst.actual_spd = _spd;
     _inst.direction = _dir;
     
