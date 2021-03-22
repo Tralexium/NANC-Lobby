@@ -31,10 +31,18 @@ z = 0;  // The Z axis of the object
 zspeed = 0;  // Same as hspeed/vspeed but in the Z axis
 zspeed_remainder = 0;  // If the zspeed is a float, save the remainder
 
-xscale = 1;  // Use these instead of image_xscale or image_yscale
-yscale = 1;
-scale_to_z = 120;  // Z dist in correlation with scale
-alpha_to_z = 150;  // Z dist in correlation with alpha
+scale_to_z = 1000;  // Z dist in correlation with scale
+alpha_to_z = 1200;  // Z dist in correlation with alpha
+draw_x = x;  // Used for creating a perspective view
+draw_y = y;
+draw_xscale = image_xscale;
+draw_yscale = image_yscale;
+from_center_dist = .3;  // How far the object is from the center at its smallest size
+blend_mode = bm_normal;
+
+destroy_on_max_z = false;  // Destroys object when the z is past
+                           // or equal to the "scale_to_z" variable
+                           // or when it's too close to the screen
 </string>
           </argument>
         </arguments>
@@ -65,13 +73,15 @@ if(zspeed != 0) {
     zspeed_remainder += _zspeed_fraction
     
     if(abs(zspeed_remainder) &gt;= 1) {
-        _travel_dist += sign(zspeed_remainder);
-        zspeed_remainder -= sign(zspeed_remainder);
+        _sign_zspeed_remainder = sign(zspeed_remainder);
+        _travel_dist += _sign_zspeed_remainder;
+        zspeed_remainder -= _sign_zspeed_remainder;
     }
     
     while(_travel_dist != 0) {
-        z += sign(_travel_dist);        
-        _travel_dist -= sign(_travel_dist);
+        var _sign_travel_dist = sign(_travel_dist);
+        z += _sign_travel_dist;        
+        _travel_dist -= _sign_travel_dist;
     }
     
 }
@@ -103,17 +113,63 @@ event_user(10);
             <string>/// Logic based on current Z axis
 
 // Scale
-var _scale_mult = 1 - (z / scale_to_z);
-image_xscale = xscale * _scale_mult;
-image_yscale = yscale * _scale_mult;
+var _scale_mult = scrAlexEaseOutExpo(z / scale_to_z, 1, 0, 1);
+draw_xscale = image_xscale * _scale_mult;
+draw_yscale = image_yscale * _scale_mult;
+
+// Perspective X &amp; Y
+var _perspective = lerp(from_center_dist, 1, _scale_mult);
+draw_x = lerp(room_width/2, x, _perspective);
+draw_y = lerp(room_height/2, y, _perspective);
 
 // Alpha
-if(z &gt;= 0 &amp;&amp; alpha_to_z != -1) {
-    image_alpha = min(1, 1 - (z / alpha_to_z));
+if(alpha_to_z != -1) {
+    if(z &gt;= 0) {
+        image_alpha = min(1, scrAlexEaseOutExpo(z / alpha_to_z, 1, 0, 1));
+    } else {
+        var _val = (-z) / (alpha_to_z/3);
+        image_alpha = scrAlexEaseOutExpo(_val, 1, 0, 1);
+        
+        // Destroy when object is too close to the screen
+        if(destroy_on_max_z &amp;&amp; _val &gt;= 1)
+            instance_destroy();
+    }
 }
 
 // Depth
 depth = z;
+
+// Destroy when the object is too far from the screen
+if(destroy_on_max_z &amp;&amp; _scale_mult &lt;= 0) {
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw with the perspective view coords and specified blend mode
+
+draw_set_blend_mode(blend_mode);
+draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
+draw_set_blend_mode(bm_normal);
 </string>
           </argument>
         </arguments>

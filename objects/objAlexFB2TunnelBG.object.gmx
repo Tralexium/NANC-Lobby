@@ -31,9 +31,11 @@ bg_surf = noone;
 
 shader_time = 0;
 shader_time_spd = 1 / 50;
+shader_shadow_line_thicness = 1;
 
 shader = sFinalBossTunnel;
 u_time = shader_get_uniform(shader, "u_time");
+u_shadow_line_thicness = shader_get_uniform(shader, "u_shadow_line_thicness");
 </string>
           </argument>
         </arguments>
@@ -94,6 +96,7 @@ surface_reset_target();
 shader_set(shader);
     shader_time += shader_time_spd;
     shader_set_uniform_f(u_time, shader_time);
+    shader_set_uniform_f(u_shadow_line_thicness, shader_shadow_line_thicness);
     draw_surface(bg_surf, 0, 0);
 shader_reset();
 </string>

@@ -5,10 +5,24 @@
   <visible>-1</visible>
   <depth>2</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>objAlexPseudo3D</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -27,113 +41,15 @@
             <kind>1</kind>
             <string>/// init vars and change parent vars
 
-image_alpha = 0;
 image_speed = 0.5;
+image_xscale = 2;
+image_yscale = 2;
 damage = 1;
 
 z = 0;
 zspeed = -5;
-actual_spd = 0;
-
-draw_x = x;
-draw_y = y;
-scale = 2;
-travel_dist = 100;  // Z dist in correlation with scale
-travel_dur = 100;
-t = travel_dur;
-from_center_dist = 0.3; // 0 means bullet always reaches center of room at the end
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Travel
-
-if (t == travel_dur - 1)
-image_alpha = 1;
-
-t--;
-z = scrAlexEaseInExpo(t, travel_dist, 0, travel_dur);
-
-if(t == 0)
-    instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Logic based on current Z axis
-
-// Draw X &amp; Y
-var _val = lerp(from_center_dist, 1, 1 - (z / travel_dist));
-draw_x = lerp(room_width/2, x, _val);
-draw_y = lerp(room_height/2, y, _val);
-
-// Scale &amp; Speed
-var _mult = 1 - (z / travel_dist);
-image_xscale = scale * _mult;
-image_yscale = scale * _mult;
-speed = actual_spd * _mult;
-
-// Depth
-depth = z+2;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw with the new coords
-
-draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, image_xscale, image_yscale, 0, -1, image_alpha);
+alpha_to_z = -1;  // Disable alpha fading
+destroy_on_max_z = true;
 </string>
           </argument>
         </arguments>

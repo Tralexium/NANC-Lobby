@@ -41,9 +41,34 @@
             <kind>1</kind>
             <string>/// Additional vars
 
+z_previous = z;
+z_passed_zero = false;
+can_kill = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Assign the previous z
 
-z_start_fade = -1;  // When the hazard is past this dist it starts fading out
-z_end_dist = -70;  // How quickly it fades out
+z_previous = z;
 </string>
           </argument>
         </arguments>
@@ -80,37 +105,14 @@ z_end_dist = -70;  // How quickly it fades out
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Deal with fading when close to the screen
-
-if(z &lt;= z_start_fade) {
-    image_alpha = scrInverseLerp(z_end_dist, z_start_fade, max(z, z_end_dist));
-    
-    if(z &lt;= z_end_dist)
-        instance_destroy();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// Check for player collisions
-    
-if(round(z) == 0 &amp;&amp; image_alpha &gt; 0.9 &amp;&amp; !global.noDeath) {
+
+// Check if we passed or are currently on 0
+if(sign(z_previous) != sign(z) || z == 0) {
+    z_passed_zero = true;
+}
+   
+if(z_passed_zero &amp;&amp; can_kill &amp;&amp; !global.noDeath) {
     if(place_meeting(x, y, objAlexFlyingPlayer)) {
         instance_destroy(objAlexFlyingPlayer);
     }

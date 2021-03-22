@@ -39,7 +39,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Addtional vars
+            <string>/// Addtional/Change vars
 
 speed = 10;
 friction = 0.25;
@@ -51,6 +51,7 @@ initial_z_pos = z;
 target_pos_x = x;
 target_pos_y = y;
 travel_dur = 50;
+blend_mode = bm_add;
 </string>
           </argument>
         </arguments>
