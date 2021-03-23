@@ -887,7 +887,14 @@
       <background>background\bAlexBonusFloor</background>
     </backgrounds>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <paths name="Final Boss 2 Paths">
+      <path>paths\pathFB1</path>
+      <path>paths\pathFB2</path>
+      <path>paths\pathFB3</path>
+      <path>paths\pathFB4</path>
+    </paths>
+  </paths>
   <scripts name="scripts">
     <scripts name="player">
       <script>scripts\scrPlayerJump.gml</script>

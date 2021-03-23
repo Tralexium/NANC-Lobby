@@ -76,7 +76,7 @@ intro_cutscene_finished = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Init star related vars
+            <string>/// Init attack related vars
 
 enum boss_star {
     blue,
@@ -84,19 +84,24 @@ enum boss_star {
     yellow,
     red,
     purple,
-    white
+    white,
 }
+
+path_list = ds_list_create();
+ds_list_add(path_list,
+            pathFB1);
+ds_list_shuffle(path_list);
+
 
 star_list = ds_list_create();
 ds_list_add(star_list, 
             boss_star.blue,
             boss_star.green,
+            boss_star.purple,
             boss_star.yellow,
             boss_star.red,
-            boss_star.purple,
             boss_star.white);           
 ds_list_shuffle(star_list);
-
 
 current_star = star_list[|0];
 star_shield_max_hp = 50;
@@ -138,9 +143,48 @@ mouth_img_spd = 0;
 crown_y_offset = -64;
 crown_star_col = c_white;
 crown_star_rainbow_col = make_colour_hsv(0, 100, 200);  // When no shield is present or choosing an attack
-crown_star_rainbow_col_spd = 1.5;  // Speeds up the rainbow color when choosing the next star
+crown_star_rainbow_hue = 0;
+crown_star_rainbow_hue_spd = 2;  // Speeds up the rainbow color when choosing the next star
 crown_star_attack_col = c_white;  // Matches the color of the current star
 crown_star_color_merge_val = 0;  // 0: rainbow col, 1: attack col
+
+star_ring_anim = false;  // Start the star ring animation
+star_ring_t = 0;
+star_ring_alpha = 0;
+star_ring_scale = 0;
+star_ring_y = y;
+star_ring_y_offset = crown_y_offset;
+star_ring_rad = 0;
+star_ring_max_rad = 112;
+star_ring_appear_dur = 60;  // How long it takes for the ring to fade in, scale up, expand and snap to the center of the body
+star_ring_angle = 0;
+star_ring_spin_amnt = 360*3;  // How many degrees should the star ring spin whilst choosing the next color
+star_ring_spin_dur = 100;  // How long to spin it for
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy any data structures
+
+ds_list_destroy(star_list);
 </string>
           </argument>
         </arguments>
@@ -202,6 +246,8 @@ if(!intro_cutscene_finished) {
         image_alpha = scrAlexEaseInQuart(_ease_val, 0, 1, 30);
         
         if(t == 150) {        
+            choosing_star = true;
+        
             instance_create(-500, -500, objAlexScreenPulseEffect)
             intro_cutscene_finished = true;  // Finish
         }
@@ -231,7 +277,59 @@ if(!intro_cutscene_finished) {
             <kind>1</kind>
             <string>/// Logic &amp; Attacks
 
-t++;
+// Choose next star
+if(current_star == noone) {
+    if(!ds_list_empty(star_list)) {
+        // Assign the next available star
+        current_star = star_list[|0];
+        ds_list_delete(star_list, 0);
+        
+        // Refill star shield hp
+        star_shield_hp = star_shield_max_hp;
+    } else {
+        // No stars left, initiate phase 2
+        current_star = -1;
+    }
+}
+
+// Execute attacks
+if(current_star != noone &amp;&amp; !star_ring_anim) {
+    
+    t++;  // Increment timer once the boss starts attacking
+    
+    switch(current_star) {
+        // Star shield attacks
+        case boss_star.blue:
+            // Todo
+            break;
+        
+        case boss_star.green:
+            // Todo
+            break;
+            
+        case boss_star.purple:
+            // Todo
+            break;
+            
+        case boss_star.yellow:
+            // Todo
+            break;
+            
+        case boss_star.red:
+            // Todo
+            break;
+            
+        case boss_star.white:
+            // Todo
+            break;
+        
+              
+        // Phase 2
+        default:
+            // Todo
+            break;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -254,12 +352,15 @@ t++;
             <kind>1</kind>
             <string>/// Visual stuff
 
+
 // Eyes and mouth image indexes
 eyes_img_index += eyes_img_spd;
 mouth_img_index += mouth_img_spd;
 
+
 // Star on crown
-crown_star_rainbow_col = make_colour_hsv(t*crown_star_rainbow_col_spd, 100, 250);
+crown_star_rainbow_hue += crown_star_rainbow_hue_spd;
+crown_star_rainbow_col = make_colour_hsv(crown_star_rainbow_hue, 100, 250);
 switch(current_star) {
     case boss_star.blue:
         crown_star_attack_col = make_colour_rgb(106, 180, 230);
@@ -269,16 +370,16 @@ switch(current_star) {
         crown_star_attack_col = make_colour_rgb(136, 213, 112);
         break;
         
+    case boss_star.purple:
+        crown_star_attack_col = make_colour_rgb(150, 60, 180);
+        break;
+        
     case boss_star.yellow:
         crown_star_attack_col = make_colour_rgb(230, 185, 75);
         break;
         
     case boss_star.red:
         crown_star_attack_col = make_colour_rgb(242, 108, 108);
-        break;
-        
-    case boss_star.purple:
-        crown_star_attack_col = make_colour_rgb(150, 60, 180);
         break;
         
     case boss_star.white:
@@ -293,6 +394,54 @@ if(star_shield_hp &gt; 0) {
 crown_star_col = merge_colour(crown_star_rainbow_col, crown_star_attack_col, crown_star_color_merge_val);
 
 
+// Star ring
+if(star_ring_anim) {
+    star_ring_t++;
+    
+    var _appear_val = min(star_ring_t, star_ring_appear_dur);
+    var _spin_val = min(star_ring_t, star_ring_spin_dur);
+    
+    star_ring_alpha = scrAlexEaseInOutSine(_appear_val, 0, 1, star_ring_appear_dur);
+    star_ring_scale = scrAlexEaseInOutSine(_appear_val, 0, 2, star_ring_appear_dur);
+    star_ring_y = scrAlexEaseInOutSine(_appear_val, y + star_ring_y_offset, y, star_ring_appear_dur);
+    star_ring_rad = scrAlexEaseInOutSine(_appear_val, 0, star_ring_max_rad, star_ring_appear_dur);
+    
+    crown_star_rainbow_hue_spd = scrAlexEaseInOutSine(_appear_val, 2, 40, star_ring_spin_dur);
+    star_ring_angle = scrAlexEaseInQuart(_spin_val, 0, star_ring_spin_amnt, star_ring_spin_dur);
+    
+    if(star_ring_t == star_ring_spin_dur) {
+        star_ring_anim = false;
+        crown_star_rainbow_hue_spd = 2;
+        star_ring_t = 0;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// End current star
+
+t = 0;
+current_star = noone;  // This forces the boss to
+                       // choose the next available star.
 </string>
           </argument>
         </arguments>
@@ -315,12 +464,29 @@ crown_star_col = merge_colour(crown_star_rainbow_col, crown_star_attack_col, cro
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Stop boss music
+            <string>/// Stop boss music &amp; destroy self
 
 scrStopMusic();
+instance_destroy();
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>203</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_kill_object</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="8" enumb="0">
@@ -356,6 +522,72 @@ if(eyes_sprite != -1)
 // Mouth
 if(mouth_sprite != -1)
     draw_sprite_ext(mouth_sprite, mouth_img_index, draw_x, draw_y, draw_xscale, draw_yscale, image_angle, image_blend, 1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the star ring
+
+if(star_ring_anim) {
+    var _star_list_size = ds_list_size(star_list);
+    var _angle, _xx, _yy, _alpha, _scale, _img_index;
+    
+    _yy = star_ring_y;
+    
+    for(var i=0; i&lt;_star_list_size; i++) {
+        _angle = star_ring_angle + (360/_star_list_size)*i;
+        var _angle_to_dsin = dsin(_angle);
+        var _angle_to_dcos = dcos(_angle);
+        
+        _xx = x + _angle_to_dsin * star_ring_rad;
+        _alpha = _angle_to_dcos * star_ring_alpha;
+        _scale = _angle_to_dcos * star_ring_scale;
+        
+        switch(star_list[| i]) {
+            case boss_star.blue:
+                _img_index = 0;
+                break;
+            
+            case boss_star.green:
+                _img_index = 1;
+                break;
+                
+            case boss_star.purple:
+                _img_index = 2;
+                break;
+                
+            case boss_star.yellow:
+                _img_index = 3;
+                break;
+                
+            case boss_star.red:
+                _img_index = 4;
+                break;
+                
+            case boss_star.white:
+                _img_index = 5;
+                break;
+        }
+        
+        draw_sprite_ext(sprAlexCrystalStars, _img_index, _xx, _yy, _scale, _scale, 0, -1, _alpha);
+    }
+}
 </string>
           </argument>
         </arguments>
