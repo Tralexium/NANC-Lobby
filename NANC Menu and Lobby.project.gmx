@@ -746,6 +746,7 @@
           <sprite>sprites\sprAlexFPChargeFinished</sprite>
           <sprite>sprites\sprAlexFPChargeBulletFired</sprite>
         </sprites>
+        <sprite>sprites\sprAlexFB2ShieldHealthRing</sprite>
         <sprite>sprites\sprAlexFlyingPlayerTestShape</sprite>
         <sprite>sprites\sprAlexFlyingPlayerBulletTestShape</sprite>
       </sprites>
@@ -893,6 +894,8 @@
       <path>paths\pathFB2</path>
       <path>paths\pathFB3</path>
       <path>paths\pathFB4</path>
+      <path>paths\pathFB5</path>
+      <path>paths\pathFB6</path>
     </paths>
   </paths>
   <scripts name="scripts">

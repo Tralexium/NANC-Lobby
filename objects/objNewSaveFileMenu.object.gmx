@@ -636,8 +636,7 @@ for(var yy=-1; yy&lt;=1; yy += 2) {
                     _ring_y = _y_center + _space_for_stars;
                     _ring_val = save_completion[_i] / 100;
                     draw_sprite_ext(sprAlexMenuSaveCompletionRing, 0, _ring_x, _ring_y, 1, 1, 0, _accent_col, draw_alpha/3 * content_alpha[_i]);
-                    var _ring_tex = sprite_get_texture(sprAlexMenuSaveCompletionRing, 0);
-                    scrAlexDrawPieTexExt(_ring_x, _ring_y, _ring_val, _ring_tex, sprAlexMenuSaveCompletionRing, 0, _accent_col, draw_alpha * content_alpha[_i]);
+                    scrAlexDrawPieTexExt(_ring_x, _ring_y, _ring_val, sprAlexMenuSaveCompletionRing, 0, _accent_col, draw_alpha * content_alpha[_i]);
                     _ring_string = string(save_completion[_i]) + "%";
                     scrDrawTextSquareOutline(_ring_x + 2, _ring_y + _fix_text_y + 2, _ring_string, _accent_col, dark_col, 2, fa_center, fa_middle);
                     

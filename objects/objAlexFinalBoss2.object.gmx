@@ -89,7 +89,12 @@ enum boss_star {
 
 path_list = ds_list_create();
 ds_list_add(path_list,
-            pathFB1);
+            pathFB1,
+            pathFB2,
+            pathFB3,
+            pathFB4,
+            pathFB5,
+            pathFB6);
 ds_list_shuffle(path_list);
 
 
@@ -103,13 +108,19 @@ ds_list_add(star_list,
             boss_star.white);           
 ds_list_shuffle(star_list);
 
-current_star = star_list[|0];
-star_shield_max_hp = 50;
-star_shield_hp = 0;
-star_shield_time_until_regen = 100;
-star_shield_t = 0;
-star_shield_regen_rate = 0;
-star_shield_regen_incr = 0.05;
+current_star = noone;
+current_path = noone;
+is_attacking = false;
+min_spd = 4;
+max_spd = 8;
+spd_fluctuation = 2;
+move_speed = min_spd;
+shield_max_hp = 50;
+shield_hp = 0;
+shield_time_until_regen = 100;
+shield_t = 0;
+shield_regen_rate = 0;
+shield_regen_incr = 0.05;
 </string>
           </argument>
         </arguments>
@@ -148,6 +159,12 @@ crown_star_rainbow_hue_spd = 2;  // Speeds up the rainbow color when choosing th
 crown_star_attack_col = c_white;  // Matches the color of the current star
 crown_star_color_merge_val = 0;  // 0: rainbow col, 1: attack col
 
+shield_health_ring_alpha = 0;
+shield_health_ring_circum = 0;  // The circumference of the health ring
+shield_health_ring_target = 0;  // The target circumference of the health ring
+shield_health_ring_regen_circum = 0;  // Goes from 0 up to current health ring circumference
+shield_health_ring_regen_alpha = 0;
+
 star_ring_anim = false;  // Start the star ring animation
 star_ring_t = 0;
 star_ring_alpha = 0;
@@ -185,6 +202,7 @@ star_ring_spin_dur = 100;  // How long to spin it for
             <string>/// Destroy any data structures
 
 ds_list_destroy(star_list);
+ds_list_destroy(path_list);
 </string>
           </argument>
         </arguments>
@@ -246,7 +264,7 @@ if(!intro_cutscene_finished) {
         image_alpha = scrAlexEaseInQuart(_ease_val, 0, 1, 30);
         
         if(t == 150) {        
-            choosing_star = true;
+            star_ring_anim = true;  // Start star ring animation
         
             instance_create(-500, -500, objAlexScreenPulseEffect)
             intro_cutscene_finished = true;  // Finish
@@ -277,15 +295,17 @@ if(!intro_cutscene_finished) {
             <kind>1</kind>
             <string>/// Logic &amp; Attacks
 
-// Choose next star
+// Choose next star attack
 if(current_star == noone) {
     if(!ds_list_empty(star_list)) {
-        // Assign the next available star
-        current_star = star_list[|0];
+        // Assign the next available star &amp; path
         ds_list_delete(star_list, 0);
+        current_star = star_list[|0];
+        ds_list_delete(path_list, 0);
+        current_path = path_list[|0];
         
         // Refill star shield hp
-        star_shield_hp = star_shield_max_hp;
+        shield_hp = shield_max_hp;
     } else {
         // No stars left, initiate phase 2
         current_star = -1;
@@ -295,7 +315,19 @@ if(current_star == noone) {
 // Execute attacks
 if(current_star != noone &amp;&amp; !star_ring_anim) {
     
+    is_attacking = true;
+    
+    if(current_path != noone) {
+        if(t == 0) {
+            path_start(current_path, min_spd, path_action_restart, false);
+        }
+        var _mean_of_min_max_spd = mean(min_spd, max_spd);
+        path_speed = _mean_of_min_max_spd + (dsin(t*spd_fluctuation) * (_mean_of_min_max_spd/2));
+    }
+
     t++;  // Increment timer once the boss starts attacking
+    
+    // TODO: Health regen
     
     switch(current_star) {
         // Star shield attacks
@@ -386,12 +418,35 @@ switch(current_star) {
         crown_star_attack_col = make_colour_rgb(192, 236, 230);
         break;
 }
-if(star_shield_hp &gt; 0) {
+if(shield_hp &gt; 0 &amp;&amp; is_attacking) {
     crown_star_color_merge_val = min(crown_star_color_merge_val+.1, 1);
 } else {
     crown_star_color_merge_val = max(crown_star_color_merge_val-.1, 0);
 }
 crown_star_col = merge_colour(crown_star_rainbow_col, crown_star_attack_col, crown_star_color_merge_val);
+
+
+// Shield health bar
+if(shield_hp &gt; 0 &amp;&amp; is_attacking) {
+    shield_health_ring_alpha = min(shield_health_ring_alpha + 0.1, 1);
+} else {
+    shield_health_ring_alpha = max(shield_health_ring_alpha - 0.1, 0);
+} 
+if(shield_health_ring_alpha &gt; 0) {
+    shield_health_ring_target = shield_hp / shield_max_hp;
+    shield_health_ring_circum = lerp(shield_health_ring_circum, shield_health_ring_target, 0.2); 
+
+    var _regen_anim_len = 100;
+    var _regen_anim_len_half = _regen_anim_len/2;
+    var _regen_t = shield_t mod _regen_anim_len;
+    if(t &lt;= _regen_anim_len/2) {
+        shield_health_ring_regen_alpha = shield_health_ring_alpha;
+        shield_health_ring_regen_circum = scrAlexEaseInSine(_regen_t, 0, shield_health_ring_circum, _regen_anim_len_half);
+    } else {
+        shield_health_ring_regen_alpha = scrAlexEaseInSine(_regen_t - _regen_anim_len_half, 1, 0, _regen_anim_len_half) * shield_health_ring_alpha;
+        shield_health_ring_regen_circum = shield_health_ring_circum;
+    }
+}
 
 
 // Star ring
@@ -437,11 +492,14 @@ if(star_ring_anim) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// End current star
+            <string>/// End current star/attack
 
 t = 0;
+current_path = noone;
 current_star = noone;  // This forces the boss to
                        // choose the next available star.
+                       
+is_attacking = false;
 </string>
           </argument>
         </arguments>
@@ -587,6 +645,34 @@ if(star_ring_anim) {
         
         draw_sprite_ext(sprAlexCrystalStars, _img_index, _xx, _yy, _scale, _scale, 0, -1, _alpha);
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the shield
+
+if(shield_health_ring_alpha &gt; 0) {
+    scrAlexDrawPieTexExt(x, y, shield_health_ring_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_health_ring_alpha);
+    draw_set_blend_mode(bm_add);
+    scrAlexDrawPieTexExt(x, y, shield_health_ring_regen_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_health_ring_regen_alpha);
+    draw_set_blend_mode(bm_normal);
 }
 </string>
           </argument>

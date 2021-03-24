@@ -1,4 +1,4 @@
-/// scrAlexDrawPieTexExt(x, y, value, texture, sprite, image_index, color, alpha)
+/// scrAlexDrawPieTexExt(x, y, value, sprite, image_index, color, alpha)
 // Original code by YellowAfterlife
 
 // MAKE SURE THE SPRITE ORIGIN IS CENTERED!!!
@@ -8,24 +8,24 @@ var v, tex, tex_w, tex_h, spr, i_index, color, alpha, x_center, y_center, x1, y1
 x_center = argument0;
 y_center = argument1;
 v = argument2;
-tex = argument3;
-spr = argument4;
-i_index = argument5;
-color = argument6;
-alpha = argument7;
+spr = argument3;
+i_index = argument4;
+color = argument5;
+alpha = argument6;
 
-if (v <= 0) return 0; // nothing to be drawn
+if (v <= 0) return 0;  // nothing to be drawn
 
 // Check if it's a full pie, if so skip the maths and just draw the sprite
 if (v >= 1) {
     return draw_sprite_ext(spr, i_index, x_center, y_center, 1, 1, 0, color, alpha);
 }
 
+tex = sprite_get_texture(spr, i_index);  // Get texture from sprite
 tex_w = sprite_get_width(spr);
 tex_h = sprite_get_height(spr);
-x1 = x_center - tex_w/2; y1 = y_center - tex_h/2; // top-left corner
-x2 = x_center + tex_w/2; y2 = y_center + tex_h/2; // bottom-right corner
-xm = (x1 + x2) / 2; ym = (y1 + y2) / 2; // middle point
+x1 = x_center - tex_w/2;  y1 = y_center - tex_h/2;  // top-left corner
+x2 = x_center + tex_w/2;  y2 = y_center + tex_h/2;  // bottom-right corner
+xm = (x1 + x2) / 2;       ym = (y1 + y2) / 2;       // middle point
 
 draw_primitive_begin_texture(pr_trianglefan, tex);
 draw_vertex_texture_colour(xm, ym, 0.5, 0.5, color, alpha); draw_vertex_texture_colour(xm, y1, 0.5, 0, color, alpha);
