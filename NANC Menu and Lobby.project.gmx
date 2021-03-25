@@ -1027,8 +1027,10 @@
       <script>scripts\scrAlexEaseInSine.gml</script>
       <script>scripts\scrAlexEaseInBack.gml</script>
       <script>scripts\scrAlexEaseInQuart.gml</script>
+      <script>scripts\scrAlexEaseInOutQuart.gml</script>
       <script>scripts\scrAlexEaseInExpo.gml</script>
       <script>scripts\scrAlexEaseOutExpo.gml</script>
+      <script>scripts\scrAlexEaseInOutExpo.gml</script>
       <script>scripts\scrAlexEaseInOutSine.gml</script>
       <script>scripts\scrAlexEaseOutElastic.gml</script>
       <script>scripts\scrAlexEaseOutCubic.gml</script>
