@@ -55,6 +55,43 @@ destroy_on_max_z = true;
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Spawn impact particle
+
+if(z &lt; scale_to_z) {
+    var _part = scrAlexMakeParticle(draw_x, draw_y, 20, sprAlexFPBulletImpact, .7, 0, 0, false, false, false);
+        _part.end_on_last_frame = true;
+        _part.image_angle = random(360);
+        _part.depth = z-1;
+    
+    if(damage &gt; 1) {
+        _part.sprite_index = sprAlexFPChargedBulletImpact;
+        _part.image_angle = 0;
+        _part.image_xscale = 2;
+        _part.image_yscale = 2;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>

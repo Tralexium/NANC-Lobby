@@ -55,6 +55,8 @@ t = 0;
 max_hp = 200;
 hp = max_hp;
 
+bullet_z_leeway = 5;
+
 intro_cutscene_finished = false;
 </string>
           </argument>
@@ -81,9 +83,9 @@ intro_cutscene_finished = false;
 enum boss_star {
     blue,
     green,
+    purple,
     yellow,
     red,
-    purple,
     white,
 }
 
@@ -111,11 +113,11 @@ ds_list_shuffle(star_list);
 current_star = noone;
 current_path = noone;
 is_attacking = false;
-min_spd = 4;
-max_spd = 8;
-spd_fluctuation = 2;
+min_spd = 6;
+max_spd = 10;
+spd_fluctuation = 1;
 move_speed = min_spd;
-shield_max_hp = 50;
+shield_max_hp = 60;
 shield_hp = 0;
 shield_time_until_regen = 100;
 shield_t = 0;
@@ -159,6 +161,10 @@ crown_star_rainbow_hue_spd = 2;  // Speeds up the rainbow color when choosing th
 crown_star_attack_col = c_white;  // Matches the color of the current star
 crown_star_color_merge_val = 0;  // 0: rainbow col, 1: attack col
 
+shield_alpha = 0;
+shield_scale = 0;
+shield_impact_alpha = 0;  // When a bullet hits, the shield and health bar flash for a moment
+
 shield_health_ring_alpha = 0;
 shield_health_ring_circum = 0;  // The circumference of the health ring
 shield_health_ring_target = 0;  // The target circumference of the health ring
@@ -175,7 +181,7 @@ star_ring_rad = 0;
 star_ring_max_rad = 112;
 star_ring_appear_dur = 60;  // How long it takes for the ring to fade in, scale up, expand and snap to the center of the body
 star_ring_angle = 0;
-star_ring_spin_amnt = 360*3;  // How many degrees should the star ring spin whilst choosing the next color
+star_ring_spin_amnt = 360*2.5;  // How many degrees should the star ring spin whilst choosing the next color
 star_ring_spin_dur = 100;  // How long to spin it for
 </string>
           </argument>
@@ -263,7 +269,8 @@ if(!intro_cutscene_finished) {
         z = scrAlexEaseInQuart(_ease_val, 2, scale_to_z/5, 30);
         image_alpha = scrAlexEaseInQuart(_ease_val, 0, 1, 30);
         
-        if(t == 150) {        
+        if(t == 150) {
+            t = 0;
             star_ring_anim = true;  // Start star ring animation
         
             instance_create(-500, -500, objAlexScreenPulseEffect)
@@ -322,7 +329,7 @@ if(current_star != noone &amp;&amp; !star_ring_anim) {
             path_start(current_path, min_spd, path_action_restart, false);
         }
         var _mean_of_min_max_spd = mean(min_spd, max_spd);
-        path_speed = _mean_of_min_max_spd + (dsin(t*spd_fluctuation) * (_mean_of_min_max_spd/2));
+        path_speed = (min_spd +_mean_of_min_max_spd) + (dsin(t*spd_fluctuation) * _mean_of_min_max_spd);
     }
 
     t++;  // Increment timer once the boss starts attacking
@@ -361,6 +368,11 @@ if(current_star != noone &amp;&amp; !star_ring_anim) {
             // Todo
             break;
     }
+} else {
+
+    // Bring the boss back to the room center
+    x = lerp(x, room_width/2, 0.1);
+    y = lerp(y, room_height/2, 0.1);
 }
 </string>
           </argument>
@@ -426,11 +438,16 @@ if(shield_hp &gt; 0 &amp;&amp; is_attacking) {
 crown_star_col = merge_colour(crown_star_rainbow_col, crown_star_attack_col, crown_star_color_merge_val);
 
 
-// Shield health bar
+// Shield &amp; health bar
+shield_impact_alpha = lerp(shield_impact_alpha, 0, 0.1);
 if(shield_hp &gt; 0 &amp;&amp; is_attacking) {
-    shield_health_ring_alpha = min(shield_health_ring_alpha + 0.1, 1);
+    shield_alpha = min(shield_alpha + 0.1, 1);
+    shield_scale = lerp(shield_scale, 1, 0.1);
+    shield_health_ring_alpha = shield_alpha;
 } else {
-    shield_health_ring_alpha = max(shield_health_ring_alpha - 0.1, 0);
+    shield_alpha = 0;
+    shield_scale = 0;
+    shield_health_ring_alpha = 0;
 } 
 if(shield_health_ring_alpha &gt; 0) {
     shield_health_ring_target = shield_hp / shield_max_hp;
@@ -451,6 +468,7 @@ if(shield_health_ring_alpha &gt; 0) {
 
 // Star ring
 if(star_ring_anim) {
+    
     star_ring_t++;
     
     var _appear_val = min(star_ring_t, star_ring_appear_dur);
@@ -458,7 +476,7 @@ if(star_ring_anim) {
     
     star_ring_alpha = scrAlexEaseInOutSine(_appear_val, 0, 1, star_ring_appear_dur);
     star_ring_scale = scrAlexEaseInOutSine(_appear_val, 0, 2, star_ring_appear_dur);
-    star_ring_y = scrAlexEaseInOutSine(_appear_val, y + star_ring_y_offset, y, star_ring_appear_dur);
+    star_ring_y = scrAlexEaseInOutSine(_appear_val, draw_y + star_ring_y_offset, draw_y, star_ring_appear_dur);
     star_ring_rad = scrAlexEaseInOutSine(_appear_val, 0, star_ring_max_rad, star_ring_appear_dur);
     
     crown_star_rainbow_hue_spd = scrAlexEaseInOutSine(_appear_val, 2, 40, star_ring_spin_dur);
@@ -468,6 +486,59 @@ if(star_ring_anim) {
         star_ring_anim = false;
         crown_star_rainbow_hue_spd = 2;
         star_ring_t = 0;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objAlexFlyingPlayerBullet">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Collisions with bullet
+    
+if(is_attacking) {
+    if(other.z &lt; z || other.z &gt; z + bullet_z_leeway) {
+        exit;
+    } else {
+        other.z = z;  // So that the impact FX shows above
+        with(other) {
+            event_user(10);  // Recalculate all the bullet draw values
+            instance_destroy();
+        }
+    }
+    
+    shield_impact_alpha = 1;
+
+    // Shield/Star phases
+    if(shield_hp &gt; 0) {
+        shield_hp = max(shield_hp - other.damage, 0);
+        
+        if(shield_hp == 0)
+            event_user(0);  // End star phase
+    }
+    
+    // Final phase
+    if(hp &gt; 0) {
+        hp = max(hp - other.damage, 0);
+        
+        if(hp == 0) {}
+            // TODO: End the fight
     }
 }
 </string>
@@ -494,11 +565,14 @@ if(star_ring_anim) {
             <kind>1</kind>
             <string>/// End current star/attack
 
+path_end();
+
 t = 0;
 current_path = noone;
 current_star = noone;  // This forces the boss to
                        // choose the next available star.
-                       
+
+star_ring_anim = true;                  
 is_attacking = false;
 </string>
           </argument>
@@ -613,7 +687,7 @@ if(star_ring_anim) {
         var _angle_to_dsin = dsin(_angle);
         var _angle_to_dcos = dcos(_angle);
         
-        _xx = x + _angle_to_dsin * star_ring_rad;
+        _xx = draw_x + _angle_to_dsin * star_ring_rad;
         _alpha = _angle_to_dcos * star_ring_alpha;
         _scale = _angle_to_dcos * star_ring_scale;
         
@@ -668,10 +742,22 @@ if(star_ring_anim) {
             <kind>1</kind>
             <string>/// Draw the shield
 
-if(shield_health_ring_alpha &gt; 0) {
-    scrAlexDrawPieTexExt(x, y, shield_health_ring_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_health_ring_alpha);
+// Draw_shield
+if(shield_alpha &gt; 0) {
+    draw_sprite_ext(sprAlexFB2Shield, 0, draw_x, draw_y, 1, 1, 0, crown_star_attack_col, shield_alpha);
+    draw_sprite_ext(sprAlexCrystalStars, current_star, draw_x, draw_y, 2, 2, 0, -1, shield_alpha);
     draw_set_blend_mode(bm_add);
-    scrAlexDrawPieTexExt(x, y, shield_health_ring_regen_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_health_ring_regen_alpha);
+    draw_sprite_ext(sprAlexFB2Shield, 0, draw_x, draw_y, 1, 1, 0, crown_star_attack_col, shield_impact_alpha);
+    draw_sprite_ext(sprAlexCrystalStars, current_star, draw_x, draw_y, 2, 2, 0, -1, shield_impact_alpha);
+    draw_set_blend_mode(bm_normal);
+}
+
+// Shield health ring
+if(shield_health_ring_alpha &gt; 0) {
+    scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_health_ring_alpha);
+    draw_set_blend_mode(bm_add);
+    var _glow_alpha = shield_health_ring_regen_alpha + shield_impact_alpha;
+    scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_regen_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, _glow_alpha);
     draw_set_blend_mode(bm_normal);
 }
 </string>

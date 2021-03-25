@@ -43,7 +43,7 @@
 
 spd = 0;
 move_spd = 8;
-slow_spd = 3;
+slow_spd = 4;
 room_edge_margin = 16;
 
 body_sprite = sprAlexFPBodyFlat;

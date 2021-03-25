@@ -732,6 +732,7 @@
           <sprite>sprites\sprAlexFB2EyesBlink</sprite>
           <sprite>sprites\sprAlexFB2MouthIntro</sprite>
           <sprite>sprites\sprAlexFB2MouthIdle</sprite>
+          <sprite>sprites\sprAlexFB2Shield</sprite>
         </sprites>
         <sprites name="Flying Player">
           <sprite>sprites\sprAlexFPBodyFlat</sprite>
@@ -745,6 +746,8 @@
           <sprite>sprites\sprAlexFPCharging</sprite>
           <sprite>sprites\sprAlexFPChargeFinished</sprite>
           <sprite>sprites\sprAlexFPChargeBulletFired</sprite>
+          <sprite>sprites\sprAlexFPBulletImpact</sprite>
+          <sprite>sprites\sprAlexFPChargedBulletImpact</sprite>
         </sprites>
         <sprite>sprites\sprAlexFB2ShieldHealthRing</sprite>
         <sprite>sprites\sprAlexFlyingPlayerTestShape</sprite>
