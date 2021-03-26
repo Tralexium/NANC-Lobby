@@ -60,16 +60,17 @@ crosshair_y = y;
 crosshair_move_dist = 0; //200;
 crosshair_snap_spd = 0.25;
 crosshair_render_distance = 0.5;  // 0: on player, 1: room center
-crosshair_alpha = 1;
+crosshair_alpha = 0;
 crosshair_angle = 0;
 crosshair_scale = 2;
 
+can_shoot = false;
 bullet_speed = 10;
 shoot_t = 0;
 shoot_freq = 6;
-charge_shot_dmg = 12;
+charge_shot_dmg = 15;
 charge_t = 0;
-charge_dur = 50;
+charge_dur = 35;
 charge_cooldown = 30;
 charge_alpha = 0;
 charge_scale = 2;
@@ -158,6 +159,15 @@ y = clamp(y, room_edge_margin, room_height - room_edge_margin);
 
 
 // Crosshair
+if(can_shoot) {
+    crosshair_alpha = lerp(crosshair_alpha, 1, 0.15);
+    crosshair_angle = lerp(crosshair_angle, 0, 0.15);
+    crosshair_scale = lerp(crosshair_scale, 2, 0.15);
+} else {
+    crosshair_alpha = lerp(crosshair_alpha, 0, 0.15);
+    crosshair_angle = lerp(crosshair_angle, 180, 0.15);
+    crosshair_scale = lerp(crosshair_scale, 6, 0.15);
+}
 var _cross_target_x = lerp(x + lengthdir_x(crosshair_move_dist * abs(sign(spd)), _dir), room_width/2, crosshair_render_distance);
 var _cross_target_y = lerp(y + lengthdir_y(crosshair_move_dist * abs(sign(spd)), _dir), room_height/2, crosshair_render_distance);
 crosshair_x = lerp(crosshair_x, _cross_target_x, crosshair_snap_spd);
@@ -191,7 +201,7 @@ if(_action) {
 var _bullet_spd = 0; //28 * sign(abs(_x_move) + abs(_y_move));
 var _bullet_dir = point_direction(0, 0, _x_move, _y_move);
 
-if(_action &amp;&amp; shoot_t &gt;= 0) {
+if(can_shoot &amp;&amp; _action &amp;&amp; shoot_t &gt;= 0) {
     charge_t = min(charge_t+1, charge_dur+1);
     
     if(charge_t &gt;= charge_dur) {
@@ -215,10 +225,12 @@ if(_action &amp;&amp; shoot_t &gt;= 0) {
     }
 } else {
     if(charge_t &gt;= charge_dur) {
-        var _shot = scrAlexFPMakeBullet(charge_shot_dmg, bullet_speed, _bullet_spd, _bullet_dir);
-            _shot.sprite_index = sprAlexFPChargedBullet;
-            _shot.image_xscale = 4;
-            _shot.image_yscale = 4;
+        if(can_shoot) {
+            var _shot = scrAlexFPMakeBullet(charge_shot_dmg, bullet_speed, _bullet_spd, _bullet_dir);
+                _shot.sprite_index = sprAlexFPChargedBullet;
+                _shot.image_xscale = 4;
+                _shot.image_yscale = 4;
+        }
             
         charge_shot_index = 0;
         shoot_t = -charge_cooldown;
@@ -231,7 +243,7 @@ if(_action &amp;&amp; shoot_t &gt;= 0) {
         charge_scale = body_scale + 2;
     
     shoot_t++;
-    if(shoot_t mod shoot_freq == 0 &amp;&amp; shoot_t &gt;= 0) {
+    if(can_shoot &amp;&amp; shoot_t mod shoot_freq == 0 &amp;&amp; shoot_t &gt;= 0) {
         scrAlexFPMakeBullet(1, bullet_speed, bullet_speed, _bullet_dir);
     }
 }

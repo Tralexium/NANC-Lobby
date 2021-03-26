@@ -7,8 +7,8 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>4</bbox_left>
-  <bbox_right>59</bbox_right>
+  <bbox_left>3</bbox_left>
+  <bbox_right>60</bbox_right>
   <bbox_top>8</bbox_top>
   <bbox_bottom>53</bbox_bottom>
   <HTile>0</HTile>
@@ -27,5 +27,6 @@
     <frame index="4">images\sprAlexFPChargedBulletImpact_4.png</frame>
     <frame index="5">images\sprAlexFPChargedBulletImpact_5.png</frame>
     <frame index="6">images\sprAlexFPChargedBulletImpact_6.png</frame>
+    <frame index="7">images\sprAlexFPChargedBulletImpact_7.png</frame>
   </frames>
 </sprite>

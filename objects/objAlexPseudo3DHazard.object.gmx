@@ -44,6 +44,33 @@
 z_previous = z;
 z_passed_zero = false;
 can_kill = true;
+destroy_on_zero = false;
+caution_area_id = noone;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Fade out caution area if it's available
+
+event_user(12);
 </string>
           </argument>
         </arguments>
@@ -69,6 +96,61 @@ can_kill = true;
             <string>/// Assign the previous z
 
 z_previous = z;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="22">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Remove the caution area
+
+if(instance_exists(caution_area_id)) {
+    caution_area_id.fade_out = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="21">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Create a caution area
+
+var _area_scale = sprite_get_width(mask_index)*image_xscale / sprite_get_width(sprAlexFB2CautionArea);
+
+caution_area_id = instance_create(x, y, objAlexFB2CautionArea);
+caution_area_id.scale = _area_scale;
 </string>
           </argument>
         </arguments>
@@ -110,6 +192,12 @@ z_previous = z;
 // Check if we passed or are currently on 0
 if(sign(z_previous) != sign(z) || z == 0) {
     z_passed_zero = true;
+    event_user(12);
+
+    if(destroy_on_zero)
+        instance_destroy();
+} else {
+    z_passed_zero = false;
 }
    
 if(z_passed_zero &amp;&amp; can_kill &amp;&amp; !global.noDeath) {

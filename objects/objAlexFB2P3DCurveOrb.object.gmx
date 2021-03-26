@@ -41,16 +41,15 @@
             <kind>1</kind>
             <string>/// Addtional/Change vars
 
-speed = 10;
-friction = 0.25;
-direction = random(360);
+image_xscale = 3;
+image_yscale = 3;
 
 t = 0;
-speed_before_easing = 5;
-initial_z_pos = z;
+launch_zspd = -15;
+snap_to_target_dur = 40;
+time_before_launch = 40;
 target_pos_x = x;
 target_pos_y = y;
-travel_dur = 50;
 blend_mode = bm_add;
 </string>
           </argument>
@@ -76,8 +75,26 @@ blend_mode = bm_add;
             <kind>1</kind>
             <string>/// Do the arc onto the target pos
 
-if(t &lt; travel_dur) {
-    t++;
+t++
+
+if(t &lt;= snap_to_target_dur) {
+    if(t == 2) {
+        event_user(11);
+        caution_area_id.x = target_pos_x;
+        caution_area_id.y = target_pos_y;
+    }
+
+    x = scrAlexEaseOutSine(t, xstart, target_pos_x, snap_to_target_dur);
+    y = scrAlexEaseOutSine(t, ystart, target_pos_y, snap_to_target_dur);
+    
+    if(t == time_before_launch)
+        zspeed = launch_zspd;
+}
+
+//if(launch) {
+    //zspeed = launch_zspd;
+
+    /*t++;
     
     var _zprevious = z;
     
@@ -93,34 +110,8 @@ if(t &lt; travel_dur) {
         vspeed = (y - yprevious)*2;
         zspeed = _zprevious;
     }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw in bm_add
-
-draw_set_blend_mode(bm_add);
-draw_self();
-draw_set_blend_mode(bm_normal);
+    */
+//}
 </string>
           </argument>
         </arguments>

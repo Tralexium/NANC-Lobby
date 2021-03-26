@@ -750,6 +750,7 @@
           <sprite>sprites\sprAlexFPChargedBulletImpact</sprite>
         </sprites>
         <sprite>sprites\sprAlexFB2ShieldHealthRing</sprite>
+        <sprite>sprites\sprAlexFB2CautionArea</sprite>
         <sprite>sprites\sprAlexFlyingPlayerTestShape</sprite>
         <sprite>sprites\sprAlexFlyingPlayerBulletTestShape</sprite>
       </sprites>
@@ -1008,13 +1009,21 @@
         <script>scripts\scrFBGetNextTeleportXPos.gml</script>
       </scripts>
       <scripts name="Final Boss Phase 2">
-        <script>scripts\scrAlexFB2P3DCurveOrb.gml</script>
-        <script>scripts\scrAlexFB2P3DWaveOrb.gml</script>
-        <script>scripts\scrAlexFB2P3DImpactOrb.gml</script>
-        <script>scripts\scrAlexFB2P3DWaveOrbLine.gml</script>
-        <script>scripts\scrAlexFB2PSpeedRing.gml</script>
-        <script>scripts\scrAlexFB2PCollapseRing.gml</script>
-        <script>scripts\scrAlexFPMakeBullet.gml</script>
+        <scripts name="Projectiles">
+          <script>scripts\scrAlexFB2P3DCurveOrb.gml</script>
+          <script>scripts\scrAlexFB2P3DWaveOrb.gml</script>
+          <script>scripts\scrAlexFB2P3DImpactOrb.gml</script>
+          <script>scripts\scrAlexFB2P3DWaveOrbLine.gml</script>
+          <script>scripts\scrAlexFB2PSpeedRing.gml</script>
+          <script>scripts\scrAlexFB2PCollapseRing.gml</script>
+          <script>scripts\scrAlexFPMakeBullet.gml</script>
+        </scripts>
+        <scripts name="Star Attacks">
+          <script>scripts\scrAlexFB2BlueStarAttack.gml</script>
+          <script>scripts\scrAlexFB2YellowStarAttack.gml</script>
+          <script>scripts\scrAlexFB2RedStarAttack.gml</script>
+          <script>scripts\scrAlexFB2PurpleStarAttack.gml</script>
+        </scripts>
       </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
       <script>scripts\scrResetStageStats.gml</script>
@@ -1518,6 +1527,7 @@
         <object>objects\objAlexFB2TunnelBG</object>
         <object>objects\objAlexFlyingPlayer</object>
         <object>objects\objAlexFlyingPlayerBullet</object>
+        <object>objects\objAlexFB2CautionArea</object>
         <objects name="Boss">
           <object>objects\objAlexFinalBoss2</object>
         </objects>

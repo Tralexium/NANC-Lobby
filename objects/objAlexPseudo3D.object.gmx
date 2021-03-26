@@ -32,7 +32,7 @@ zspeed = 0;  // Same as hspeed/vspeed but in the Z axis
 zspeed_remainder = 0;  // If the zspeed is a float, save the remainder
 
 scale_to_z = 1000;  // Z dist in correlation with scale
-alpha_to_z = 1200;  // Z dist in correlation with alpha
+alpha_to_z = 1500;  // Z dist in correlation with alpha
 draw_x = x;  // Used for creating a perspective view
 draw_y = y;
 draw_xscale = image_xscale;
@@ -127,7 +127,7 @@ if(alpha_to_z != -1) {
     if(z &gt;= 0) {
         image_alpha = min(1, scrAlexEaseOutExpo(z / alpha_to_z, 1, 0, 1));
     } else {
-        var _val = (-z) / (alpha_to_z/3);
+        var _val = (-z) / (alpha_to_z/4);
         image_alpha = scrAlexEaseOutExpo(_val, 1, 0, 1);
         
         // Destroy when object is too close to the screen

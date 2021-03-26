@@ -124,6 +124,12 @@ shield_time_until_regen = 100;
 shield_t = 0;
 shield_regen_rate = 0;
 shield_regen_incr = 0.05;
+
+// Red star attack
+collapse_ring_spin_dir = 1;
+
+// Purple star attack
+speed_ring_dir = 1;
 </string>
           </argument>
         </arguments>
@@ -342,7 +348,8 @@ if(current_star == noone) {
     if(!ds_list_empty(star_list)) {
         // Assign the next available star &amp; path
         ds_list_delete(star_list, 0);
-        current_star = star_list[|0];
+        //current_star = star_list[|0];
+        current_star = boss_star.purple;
         ds_list_delete(path_list, 0);
         current_path = path_list[|0];
         
@@ -362,48 +369,54 @@ if(current_star != noone &amp;&amp; !star_ring_anim &amp;&amp; !alarm[0]) {
     if(current_path != noone) {
         if(t == 0) {
             path_start(current_path, min_spd, path_action_restart, false);
+            
+            with(objAlexFlyingPlayer)
+                can_shoot = true;
         }
         var _mean_of_min_max_spd = mean(min_spd, max_spd);
         spd_t += spd_fluctuation
         path_speed = (min_spd +_mean_of_min_max_spd) + (dsin(spd_t) * _mean_of_min_max_spd);
     }
-
-    t++;  // Increment timer once the boss starts attacking
     
     // TODO: Health regen
     
-    switch(current_star) {
-        // Star shield attacks
-        case boss_star.blue:
-            // Todo
-            break;
-        
-        case boss_star.green:
-            // Todo
-            break;
+    if(instance_exists(objAlexFlyingPlayer)) {
+        switch(current_star) {
+            // Star shield attacks
+            case boss_star.blue:
+                scrAlexFB2BlueStarAttack();
+                break;
             
-        case boss_star.purple:
-            // Todo
-            break;
+            case boss_star.green:
+                // Todo
+                break;
+                
+            case boss_star.purple:
+                scrAlexFB2PurpleStarAttack();
+                break;
+                
+            case boss_star.yellow:
+                scrAlexFB2YellowStarAttack();
+                break;
+                
+            case boss_star.red:
+                scrAlexFB2RedStarAttack();
+                break;
+                
+            case boss_star.white:
+                // Todo
+                break;
             
-        case boss_star.yellow:
-            // Todo
-            break;
-            
-        case boss_star.red:
-            // Todo
-            break;
-            
-        case boss_star.white:
-            // Todo
-            break;
-        
-              
-        // Phase 2
-        default:
-            // Todo
-            break;
+                  
+            // Phase 2
+            default:
+                // Todo
+                break;
+        }
     }
+    
+    t++;  // Increment attack timer
+    
 } else {
 
     // Bring the boss back to the room center
@@ -606,6 +619,12 @@ if(is_attacking) {
 
 path_end();               
 is_attacking = false;
+
+with(objAlexFlyingPlayer)
+    can_shoot = false;
+    
+with(objAlexFB2PScreenWrapSquishOrb)
+    fade_out = true;
 
 alarm[0] = 50;
 </string>

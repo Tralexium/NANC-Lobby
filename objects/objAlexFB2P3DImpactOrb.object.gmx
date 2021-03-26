@@ -41,19 +41,17 @@
             <kind>1</kind>
             <string>/// Addtional vars
 
-image_alpha = 0;
+destroy_on_zero = true;
 
-t = 0;
-initial_z_pos = 80;
-z = initial_z_pos;
-travel_dur = 100;
+z = scale_to_z;
+z_previous = z;
+zspeed = -20;
 projectile_count = 8;
 projectile_size = 20;
 projectile_speed = 3;
+blend_mode = bm_add;
 
-alpha_to_z = initial_z_pos;
-draw_x = x;
-draw_y = y;
+event_user(11);
 </string>
           </argument>
         </arguments>
@@ -88,105 +86,6 @@ scrFBPExplosionParticles(sprite_index, 7, 1.4, _add_scale, true, bm_add, _spark_
 scrFBPOrbCircle(x, y, random(360), projectile_count, projectile_size, 0, projectile_speed);
 with(objAlexFBPOrb)
     spawn_trail = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Change the z axis
-
-t++;
-
-z = scrAlexEaseInExpo(t, initial_z_pos, 0, travel_dur);
-
-if(t &gt;= travel_dur) {
-    event_user(10);
-    instance_destroy();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="20">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Modify the x &amp; y based on how far they are
-
-draw_x = lerp(room_width/2, x, 1 - (z / scale_to_z));
-draw_y = lerp(room_height/2, y, 1 - (z / scale_to_z));
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw in bm_add &amp; with the draw coords
-
-draw_set_blend_mode(bm_add);
-draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, image_xscale, image_yscale, 0, -1, image_alpha);
-draw_set_blend_mode(bm_normal);
 </string>
           </argument>
         </arguments>
