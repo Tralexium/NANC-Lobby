@@ -749,6 +749,19 @@
           <sprite>sprites\sprAlexFPBulletImpact</sprite>
           <sprite>sprites\sprAlexFPChargedBulletImpact</sprite>
         </sprites>
+        <sprites name="Projectiles">
+          <sprite>sprites\sprAlexFBPOrbBlue</sprite>
+          <sprite>sprites\sprAlexFBPOrbTrailBlue</sprite>
+          <sprite>sprites\sprAlexFBPStarGreen</sprite>
+          <sprite>sprites\sprAlexFBPOrbGreen</sprite>
+          <sprite>sprites\sprAlexFBPOrbTrailGreen</sprite>
+          <sprite>sprites\sprAlexFBPOrbYellow</sprite>
+          <sprite>sprites\sprAlexFBPOrbRed</sprite>
+          <sprite>sprites\sprAlexFBPOrbTrailRed</sprite>
+          <sprite>sprites\sprAlexFBPOrbWhite</sprite>
+          <sprite>sprites\sprAlexFBPOrbTrailWhite</sprite>
+          <sprite>sprites\sprAlexFB2Void</sprite>
+        </sprites>
         <sprite>sprites\sprAlexFB2ShieldHealthRing</sprite>
         <sprite>sprites\sprAlexFB2CautionArea</sprite>
         <sprite>sprites\sprAlexFlyingPlayerTestShape</sprite>
@@ -1023,6 +1036,7 @@
           <script>scripts\scrAlexFB2YellowStarAttack.gml</script>
           <script>scripts\scrAlexFB2RedStarAttack.gml</script>
           <script>scripts\scrAlexFB2PurpleStarAttack.gml</script>
+          <script>scripts\scrAlexFB2WhiteStarAttack.gml</script>
         </scripts>
       </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
@@ -1535,6 +1549,8 @@
           <object>objects\objAlexFB2PSpeedRing</object>
           <object>objects\objAlexFB2PCollapseRing</object>
           <object>objects\objAlexFB2PScreenWrapSquishOrb</object>
+          <object>objects\objAlexFB2PCirclingOrb</object>
+          <object>objects\objAlexFB2PPullVoid</object>
         </objects>
         <objects name="3D Projectiles">
           <object>objects\objAlexFB2P3DCurveOrb</object>

@@ -349,7 +349,7 @@ if(current_star == noone) {
         // Assign the next available star &amp; path
         ds_list_delete(star_list, 0);
         //current_star = star_list[|0];
-        current_star = boss_star.purple;
+        current_star = boss_star.white;
         ds_list_delete(path_list, 0);
         current_path = path_list[|0];
         
@@ -404,7 +404,7 @@ if(current_star != noone &amp;&amp; !star_ring_anim &amp;&amp; !alarm[0]) {
                 break;
                 
             case boss_star.white:
-                // Todo
+                scrAlexFB2WhiteStarAttack();
                 break;
             
                   
@@ -580,9 +580,6 @@ if(is_attacking) {
     // Shield/Star phases
     if(shield_hp &gt; 0) {
         shield_hp = max(shield_hp - other.damage, 0);
-        
-        if(shield_hp == 0)
-            event_user(0);  // End star phase
     }
     
     // Final phase
