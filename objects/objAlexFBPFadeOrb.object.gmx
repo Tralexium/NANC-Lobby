@@ -39,7 +39,9 @@ image_alpha = 0;
 
 is_outside = false;
 explosion_sfx = sndAlexFBOrbExplosion;
+trail_sprite = sprAlexFBPOrbTrail;
 destroy_when_outside = true;
+fade_out = false;
 </string>
           </argument>
         </arguments>
@@ -101,7 +103,6 @@ if(!is_outside) {
             <kind>1</kind>
             <string>/// Manipulate obj
 
-image_alpha = min(image_alpha+abs(fade_spd), 1);
 direction += dir_incr;
 speed += spd_incr;
 size += size_incr;
@@ -109,13 +110,26 @@ size += size_incr;
 image_xscale = size / sprite_get_height(sprAlexFBPOrbHitbox);
 image_yscale = image_xscale;
 
-var _part = scrAlexMakeParticle(x, y, 4, sprAlexFBPOrbTrail, 0, direction, 0, false, true, false);
-    _part.image_xscale = image_xscale;
-    _part.image_yscale = image_yscale;
-    _part.image_angle = direction;
-    _part.image_alpha = image_alpha;
-    _part.blend_mode = bm_add;
-    _part.add_scale = -0.1 * image_xscale;
+if(image_alpha &gt;= 1) {
+    var _part = scrAlexMakeParticle(x, y, 4, trail_sprite, 0, direction, 0, false, true, false);
+        _part.image_xscale = image_xscale;
+        _part.image_yscale = image_yscale;
+        _part.image_angle = direction;
+        _part.image_alpha = image_alpha;
+        _part.blend_mode = bm_add;
+        _part.add_scale = -0.1 * image_xscale;
+}
+
+if(fade_out) {   
+    is_outside = true;
+    mask_index = sprAlexNoMask;
+    image_alpha -= 0.05;
+    
+    if(image_alpha &lt;= 0)
+        instance_destroy();
+} else {
+    image_alpha = min(image_alpha+abs(fade_spd), 1);
+}
 </string>
           </argument>
         </arguments>

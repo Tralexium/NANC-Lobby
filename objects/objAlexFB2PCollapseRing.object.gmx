@@ -76,6 +76,8 @@ for(var i=0; i&lt;orb_amnt; i++) {
         var _dir = point_direction(orb[i].x, orb[i].y, x, y);
         var _dash_orb = scrFBPSquishOrb(orb[i].x, orb[i].y, orb_size, _dir, 0, dash_orb_spd, 0, 0);
             _dash_orb.squish_multi = dash_orb_squish_amnt;
+            _dash_orb.sprite_index = sprAlexFBPOrbRed;
+            _dash_orb.trail_sprite = sprAlexFBPOrbTrailRed;
     
         orb[i].is_outside = true;  // to avoid multiple explosion effects
         instance_destroy(orb[i]);
@@ -103,7 +105,7 @@ for(var i=0; i&lt;orb_amnt; i++) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Spawn shield orbs
+            <string>/// Spawn orbs
 
 for(var i=0; i&lt;orb_amnt; i++) {
     var _dir = 360 / orb_amnt;
@@ -112,6 +114,8 @@ for(var i=0; i&lt;orb_amnt; i++) {
     orb[i] = scrFBPFadeOrb(_x, _y, orb_size);
     orb[i].destroy_when_outside = false;
     orb[i].depth = depth;
+    orb[i].sprite_index = sprAlexFBPOrbRed;
+    orb[i].trail_sprite = sprAlexFBPOrbTrailRed;
 }
 
 orbs_set = true;
@@ -167,9 +171,15 @@ if(orbs_set) {
     }
     
     
+    var _skipped_orbs = 0;
     for(var i=0; i&lt;orb_amnt; i++) {
-        if(!instance_exists(orb[i]))
+        if(!instance_exists(orb[i])) {
+            _skipped_orbs++
+            
+            if(_skipped_orbs == orb_amnt)
+                instance_destroy();
             continue;
+        }
     
         var _sep = _orb_sep * i;
         orb[i].x = x + lengthdir_x(rad, dir + _sep);

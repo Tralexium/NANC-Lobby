@@ -348,8 +348,7 @@ if(current_star == noone) {
     if(!ds_list_empty(star_list)) {
         // Assign the next available star &amp; path
         ds_list_delete(star_list, 0);
-        //current_star = star_list[|0];
-        current_star = boss_star.white;
+        current_star = star_list[|0];
         ds_list_delete(path_list, 0);
         current_path = path_list[|0];
         
@@ -619,9 +618,6 @@ is_attacking = false;
 
 with(objAlexFlyingPlayer)
     can_shoot = false;
-    
-with(objAlexFB2PScreenWrapSquishOrb)
-    fade_out = true;
 
 alarm[0] = 50;
 </string>

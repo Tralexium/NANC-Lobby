@@ -40,6 +40,8 @@ is_outside = false;
 explosion_sfx = sndAlexFBOrbExplosion;
 destroy_when_outside = true;
 spawn_trail = true;
+trail_sprite = sprAlexFBPOrbTrail;
+fade_out = false;
 </string>
           </argument>
         </arguments>
@@ -109,12 +111,21 @@ image_xscale = size / sprite_get_height(sprAlexFBPOrbHitbox);
 image_yscale = image_xscale;
 
 if(spawn_trail) {
-    var _part = scrAlexMakeParticle(x, y, 4, sprAlexFBPOrbTrail, 0, direction, 0, false, true, false);
+    var _part = scrAlexMakeParticle(x, y, 4, trail_sprite, 0, direction, 0, false, true, false);
         _part.image_xscale = image_xscale;
         _part.image_yscale = image_yscale;
         _part.image_angle = direction;
         _part.blend_mode = bm_add;
         _part.add_scale = -0.1 * image_xscale;
+}
+
+if(fade_out) {   
+    is_outside = true;
+    mask_index = sprAlexNoMask;
+    image_alpha -= 0.05;
+    
+    if(image_alpha &lt;= 0)
+        instance_destroy();
 }
 </string>
           </argument>

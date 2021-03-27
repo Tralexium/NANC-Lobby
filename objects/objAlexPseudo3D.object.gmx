@@ -35,6 +35,7 @@ scale_to_z = 1000;  // Z dist in correlation with scale
 alpha_to_z = 1500;  // Z dist in correlation with alpha
 draw_x = x;  // Used for creating a perspective view
 draw_y = y;
+draw_alpha = 1;
 draw_xscale = image_xscale;
 draw_yscale = image_yscale;
 from_center_dist = .3;  // How far the object is from the center at its smallest size
@@ -125,10 +126,10 @@ draw_y = lerp(room_height/2, y, _perspective);
 // Alpha
 if(alpha_to_z != -1) {
     if(z &gt;= 0) {
-        image_alpha = min(1, scrAlexEaseOutExpo(z / alpha_to_z, 1, 0, 1));
+        draw_alpha = min(1, scrAlexEaseOutExpo(z / alpha_to_z, 1, 0, 1)) * image_alpha;
     } else {
         var _val = (-z) / (alpha_to_z/4);
-        image_alpha = scrAlexEaseOutExpo(_val, 1, 0, 1);
+        draw_alpha = scrAlexEaseOutExpo(_val, 1, 0, 1) * image_alpha;
         
         // Destroy when object is too close to the screen
         if(destroy_on_max_z &amp;&amp; _val &gt;= 1)
@@ -168,7 +169,7 @@ if(destroy_on_max_z &amp;&amp; _scale_mult &lt;= 0) {
             <string>/// Draw with the perspective view coords and specified blend mode
 
 draw_set_blend_mode(blend_mode);
-draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, draw_xscale, draw_yscale, image_angle, image_blend, draw_alpha);
 draw_set_blend_mode(bm_normal);
 </string>
           </argument>

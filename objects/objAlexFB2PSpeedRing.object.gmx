@@ -42,6 +42,8 @@ dir = random(360);
 
 projectile_count = 12;  // Not set in the script
 
+fade_out = false;
+
 alarm[0] = 1;
 </string>
           </argument>
@@ -105,13 +107,20 @@ var _orb_sep = 360 / orb_amnt;
 
 
 if(orbs_set) {
+    var _skipped_orbs = 0;
     for(var i=0; i&lt;orb_amnt; i++) {
-        if(!instance_exists(orb[i]))
+        if(!instance_exists(orb[i])) {
+            _skipped_orbs++
+            
+            if(_skipped_orbs == orb_amnt)
+                instance_destroy();
             continue;
+        }
     
         var _sep = _orb_sep * i;
         orb[i].x = x + lengthdir_x(rad, dir + _sep);
         orb[i].y = y + lengthdir_y(rad, dir + _sep);
+        orb[i].fade_out = fade_out;
     }
     
     if(instance_exists(objAlexFlyingPlayer)) {
