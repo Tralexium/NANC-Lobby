@@ -764,6 +764,7 @@
         </sprites>
         <sprite>sprites\sprAlexFB2ShieldHealthRing</sprite>
         <sprite>sprites\sprAlexFB2CautionArea</sprite>
+        <sprite>sprites\sprAlexFB2GreenStarCaution</sprite>
         <sprite>sprites\sprAlexFlyingPlayerTestShape</sprite>
         <sprite>sprites\sprAlexFlyingPlayerBulletTestShape</sprite>
       </sprites>
@@ -1036,6 +1037,7 @@
           <script>scripts\scrAlexFB2YellowStarAttack.gml</script>
           <script>scripts\scrAlexFB2RedStarAttack.gml</script>
           <script>scripts\scrAlexFB2PurpleStarAttack.gml</script>
+          <script>scripts\scrAlexFB2GreenStarAttack.gml</script>
           <script>scripts\scrAlexFB2WhiteStarAttack.gml</script>
         </scripts>
       </scripts>
@@ -1549,6 +1551,7 @@
           <object>objects\objAlexFB2PSpeedRing</object>
           <object>objects\objAlexFB2PCollapseRing</object>
           <object>objects\objAlexFB2PScreenWrapSquishOrb</object>
+          <object>objects\objAlexFB2PGreenStar</object>
           <object>objects\objAlexFB2PCirclingOrb</object>
           <object>objects\objAlexFB2PPullVoid</object>
         </objects>

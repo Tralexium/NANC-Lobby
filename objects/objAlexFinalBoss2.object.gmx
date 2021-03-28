@@ -120,10 +120,10 @@ spd_fluctuation = 1.5;
 move_speed = min_spd;
 shield_max_hp = 60;
 shield_hp = 0;
-shield_time_until_regen = 100;
+shield_time_until_regen = 150;
 shield_t = 0;
 shield_regen_rate = 0;
-shield_regen_incr = 0.05;
+shield_regen_incr = 0.001;
 
 // Red star attack
 collapse_ring_spin_dir = 1;
@@ -348,7 +348,8 @@ if(current_star == noone) {
     if(!ds_list_empty(star_list)) {
         // Assign the next available star &amp; path
         ds_list_delete(star_list, 0);
-        current_star = star_list[|0];
+        //current_star = star_list[|0];
+        current_star = boss_star.green;
         ds_list_delete(path_list, 0);
         current_path = path_list[|0];
         
@@ -377,7 +378,14 @@ if(current_star != noone &amp;&amp; !star_ring_anim &amp;&amp; !alarm[0]) {
         path_speed = (min_spd +_mean_of_min_max_spd) + (dsin(spd_t) * _mean_of_min_max_spd);
     }
     
-    // TODO: Health regen
+    // Health regen
+    shield_t++;
+    if(shield_t &gt;= shield_time_until_regen &amp;&amp; shield_hp &lt; shield_max_hp) {
+        shield_regen_rate += shield_regen_incr;
+        shield_hp += shield_regen_rate;
+    } else {
+        shield_regen_rate = 0;
+    }
     
     if(instance_exists(objAlexFlyingPlayer)) {
         switch(current_star) {
@@ -387,7 +395,7 @@ if(current_star != noone &amp;&amp; !star_ring_anim &amp;&amp; !alarm[0]) {
                 break;
             
             case boss_star.green:
-                // Todo
+                scrAlexFB2GreenStarAttack();
                 break;
                 
             case boss_star.purple:
@@ -503,14 +511,19 @@ if(shield_health_ring_alpha &gt; 0) {
     shield_health_ring_target = shield_hp / shield_max_hp;
     shield_health_ring_circum = lerp(shield_health_ring_circum, shield_health_ring_target, 0.2); 
 
-    var _regen_anim_len = 100;
-    var _regen_anim_len_half = _regen_anim_len/2;
-    var _regen_t = shield_t mod _regen_anim_len;
-    if(t &lt;= _regen_anim_len/2) {
-        shield_health_ring_regen_alpha = shield_health_ring_alpha;
-        shield_health_ring_regen_circum = scrAlexEaseInSine(_regen_t, 0, shield_health_ring_circum, _regen_anim_len_half);
+    if(shield_t &gt;= shield_time_until_regen &amp;&amp; shield_hp &lt; shield_max_hp) {
+        var _regen_anim_len = 100 - min(round(shield_regen_rate*300), 80);
+        var _regen_anim_len_half = _regen_anim_len/2;
+        var _regen_t = (shield_t - shield_time_until_regen) mod _regen_anim_len;
+        if(_regen_t &lt;= _regen_anim_len_half) {
+            shield_health_ring_regen_alpha = shield_health_ring_alpha;
+            shield_health_ring_regen_circum = scrAlexEaseInSine(_regen_t, 0, shield_health_ring_circum, _regen_anim_len_half);
+        } else {
+            shield_health_ring_regen_alpha = scrAlexEaseInSine(_regen_t - _regen_anim_len_half, 1, 0, _regen_anim_len_half) * shield_health_ring_alpha;
+            shield_health_ring_regen_circum = shield_health_ring_circum;
+        }
     } else {
-        shield_health_ring_regen_alpha = scrAlexEaseInSine(_regen_t - _regen_anim_len_half, 1, 0, _regen_anim_len_half) * shield_health_ring_alpha;
+        shield_health_ring_regen_alpha = max(shield_health_ring_regen_alpha - 0.025, 0);
         shield_health_ring_regen_circum = shield_health_ring_circum;
     }
 }
@@ -575,6 +588,8 @@ if(is_attacking) {
     }
     
     shield_impact_alpha = 1;
+    shield_health_ring_regen_alpha = 0;
+    shield_t = 0;
 
     // Shield/Star phases
     if(shield_hp &gt; 0) {
@@ -802,8 +817,8 @@ if(shield_alpha &gt; 0) {
 if(shield_health_ring_alpha &gt; 0) {
     scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_health_ring_alpha);
     draw_set_blend_mode(bm_add);
-    var _glow_alpha = shield_health_ring_regen_alpha + shield_impact_alpha;
-    scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_regen_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, _glow_alpha);
+    scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_impact_alpha);
+    scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_regen_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_health_ring_regen_alpha);
     draw_set_blend_mode(bm_normal);
 }
 </string>

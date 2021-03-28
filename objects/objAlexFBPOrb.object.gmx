@@ -110,7 +110,7 @@ size += size_incr;
 image_xscale = size / sprite_get_height(sprAlexFBPOrbHitbox);
 image_yscale = image_xscale;
 
-if(spawn_trail) {
+if(spawn_trail &amp;&amp; scrInView()) {
     var _part = scrAlexMakeParticle(x, y, 4, trail_sprite, 0, direction, 0, false, true, false);
         _part.image_xscale = image_xscale;
         _part.image_yscale = image_yscale;
