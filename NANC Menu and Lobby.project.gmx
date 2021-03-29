@@ -1533,6 +1533,7 @@
         <object>objects\objAlexFinalBossShieldOrb</object>
         <object>objects\objAlexFinalBossShieldOrbCircle</object>
         <object>objects\objAlexFinalBossSpawner</object>
+        <object>objects\objAlexFinalBossDefeatCutsceneColorEffect</object>
         <object>objects\objAlexFinalBossWarmup</object>
       </objects>
       <objects name="Final Boss Phase 2">

@@ -14,7 +14,7 @@ if(shield_hp == 0) {
     with(objAlexFB2P3DWaveOrb)
         fade_out = true;
         
-    with(objAlexFBPOrb)
+    with(objAlexFB2PCollapseRing)
         fade_out = true;
         
     with(objAlexFBPSquishOrb)

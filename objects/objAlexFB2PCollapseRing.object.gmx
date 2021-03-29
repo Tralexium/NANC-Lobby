@@ -46,6 +46,8 @@ dash_orb_squish_amnt = 0.01;
 t = 0;
 dir = 0;
 
+fade_out = false;
+
 alarm[0] = 1;
 </string>
           </argument>
@@ -71,16 +73,18 @@ alarm[0] = 1;
             <kind>1</kind>
             <string>/// Spawn dash orbs
 
-for(var i=0; i&lt;orb_amnt; i++) {
-    if(instance_exists(orb[i])) {
-        var _dir = point_direction(orb[i].x, orb[i].y, x, y);
-        var _dash_orb = scrFBPSquishOrb(orb[i].x, orb[i].y, orb_size, _dir, 0, dash_orb_spd, 0, 0);
-            _dash_orb.squish_multi = dash_orb_squish_amnt;
-            _dash_orb.sprite_index = sprAlexFBPOrbRed;
-            _dash_orb.trail_sprite = sprAlexFBPOrbTrailRed;
-    
-        orb[i].is_outside = true;  // to avoid multiple explosion effects
-        instance_destroy(orb[i]);
+if(!fade_out) {
+    for(var i=0; i&lt;orb_amnt; i++) {
+        if(instance_exists(orb[i])) {
+            var _dir = point_direction(orb[i].x, orb[i].y, x, y);
+            var _dash_orb = scrFBPSquishOrb(orb[i].x, orb[i].y, orb_size, _dir, 0, dash_orb_spd, 0, 0);
+                _dash_orb.squish_multi = dash_orb_squish_amnt;
+                _dash_orb.sprite_index = sprAlexFBPOrbRed;
+                _dash_orb.trail_sprite = sprAlexFBPOrbTrailRed;
+        
+            orb[i].is_outside = true;  // to avoid multiple explosion effects
+            instance_destroy(orb[i]);
+        }
     }
 }
 </string>
@@ -184,6 +188,7 @@ if(orbs_set) {
         var _sep = _orb_sep * i;
         orb[i].x = x + lengthdir_x(rad, dir + _sep);
         orb[i].y = y + lengthdir_y(rad, dir + _sep);
+        orb[i].fade_out = fade_out;
     }
 }
 </string>

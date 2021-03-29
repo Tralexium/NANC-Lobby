@@ -241,11 +241,14 @@ ds_list_destroy(path_list);
             <kind>1</kind>
             <string>/// Tell the boss to choose a new star
 
+ds_list_delete(star_list, 0);
+ds_list_delete(path_list, 0);
 current_path = noone;
 current_star = noone;  // This forces the boss to
                        // choose the next available star.
 
-star_ring_anim = true;   
+if(!ds_list_empty(star_list))
+    star_ring_anim = true;
 </string>
           </argument>
         </arguments>
@@ -347,10 +350,7 @@ if(current_star == noone) {
 
     if(!ds_list_empty(star_list)) {
         // Assign the next available star &amp; path
-        ds_list_delete(star_list, 0);
-        //current_star = star_list[|0];
-        current_star = boss_star.green;
-        ds_list_delete(path_list, 0);
+        current_star = star_list[|0];
         current_path = path_list[|0];
         
         // Refill star shield hp

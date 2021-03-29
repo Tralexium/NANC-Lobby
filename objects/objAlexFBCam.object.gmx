@@ -72,6 +72,7 @@ min_x = 0;
 min_y = 0;
 max_x = room_width - view_wview[0];
 max_y = room_height - view_hview[0];
+update_max_coords = true;
 dist_to_anchor = 0;
 default_dist_to_anchor = 600;
 shake_t = 0;
@@ -166,8 +167,10 @@ if (instance_exists(target_obj) &amp;&amp; !lock_in_place)
         }
         
         // Update the max X &amp; Y coords
-        max_x = room_width - view_wview[0];
-        max_y = room_height - view_hview[0];
+        if(update_max_coords) {
+            max_x = room_width - view_wview[0];
+            max_y = room_height - view_hview[0];
+        }
         
         // Set a new target position for the cam
         if(!zoom_on_boss) {
