@@ -136,11 +136,13 @@ if(orbs_set) {
     
     if(t == shrink_length) {
         for(var i=0; i&lt;orb_amnt; i++) {
+            if(!instance_exists(orb[i]))
+                continue;
+        
             if(i != 0)
                 orb[i].is_outside = true;  // to avoid multiple explosion effects
             
-            if(instance_exists(orb[i]))
-                instance_destroy(orb[i]);
+            instance_destroy(orb[i]);
         }
         
         if(projectile_count &gt; 0) {

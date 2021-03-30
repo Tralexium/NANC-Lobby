@@ -197,6 +197,44 @@ star_ring_spin_dur = 100;  // How long to spin it for
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Init shader vars
+
+shader = sFBDistortionShader;
+
+u_fx_strength = shader_get_uniform(shader, "fx_strength");
+u_aspect = shader_get_uniform(shader, "aspect");
+u_aberration = shader_get_uniform(shader, "aberration");
+u_tex_waves = shader_get_sampler_index(shader, "tex_waves");
+
+fx_strength = 0.025;
+aberration = 1.0;
+aspect = view_wview[0] / view_hview[0];
+tex_waves = -1;
+
+srf_waves = noone;
+srf_shield = noone;
+wave_t = 0;
+wave_spawn_freq = 60;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -215,10 +253,14 @@ star_ring_spin_dur = 100;  // How long to spin it for
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Destroy any data structures
+            <string>/// Destroy any data structures &amp; surfs
 
 ds_list_destroy(star_list);
 ds_list_destroy(path_list);
+
+surface_free(srf_waves);
+surface_free(srf_shield);
+
 </string>
           </argument>
         </arguments>
@@ -530,7 +572,7 @@ if(shield_health_ring_alpha &gt; 0) {
     shield_health_ring_circum = lerp(shield_health_ring_circum, shield_health_ring_target, 0.2); 
 
     if(shield_t &gt;= shield_time_until_regen &amp;&amp; shield_hp &lt; shield_max_hp) {
-        var _regen_anim_len = 100 - min(round(shield_regen_rate*300), 80);
+        var _regen_anim_len = 100 - min(round(shield_regen_rate*300), 70);
         var _regen_anim_len_half = _regen_anim_len/2;
         var _regen_t = (shield_t - shield_time_until_regen) mod _regen_anim_len;
         if(_regen_t &lt;= _regen_anim_len_half) {
@@ -545,6 +587,13 @@ if(shield_health_ring_alpha &gt; 0) {
         shield_health_ring_regen_circum = shield_health_ring_circum;
     }
 }
+
+
+// Spawn distortion rings
+if(wave_t mod wave_spawn_freq == 0) {
+    instance_create(x, y, objAlexFB2DistortionRing);
+}
+wave_t++;
 
 
 // Star ring
@@ -747,20 +796,107 @@ draw_set_alpha(1);
             <kind>1</kind>
             <string>/// Draw body and facials
 
-// Body
-draw_sprite_ext(sprite_index, image_index, draw_x, draw_y, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
+if(!surface_exists(srf_shield)) {
+    srf_shield = surface_create(view_wview[0], view_hview[0]);
+}
 
-// Crown
-draw_sprite_ext(sprAlexAstralCrown, 0, draw_x, draw_y + (crown_y_offset*draw_yscale), draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
-draw_sprite_ext(sprAlexAstralCrown, 1, draw_x, draw_y + (crown_y_offset*draw_yscale), draw_xscale, draw_yscale, image_angle, crown_star_col, image_alpha);
+surface_set_target(srf_shield);
+    draw_clear_alpha(c_black, 0);
 
-// Eyes
-if(eyes_sprite != -1)
-    draw_sprite_ext(eyes_sprite, eyes_img_index, draw_x, draw_y, draw_xscale, draw_yscale, image_angle, image_blend, 1);
+    // Body
+    draw_sprite_ext(sprite_index, image_index, draw_x - view_xview[0], draw_y - view_yview[0], draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
+    
+    // Crown
+    draw_sprite_ext(sprAlexAstralCrown, 0, draw_x - view_xview[0], draw_y + (crown_y_offset*draw_yscale) - view_yview[0], draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprAlexAstralCrown, 1, draw_x - view_xview[0], draw_y + (crown_y_offset*draw_yscale) - view_yview[0], draw_xscale, draw_yscale, image_angle, crown_star_col, image_alpha);
+    
+    // Eyes
+    if(eyes_sprite != -1)
+        draw_sprite_ext(eyes_sprite, eyes_img_index, draw_x - view_xview[0], draw_y - view_yview[0], draw_xscale, draw_yscale, image_angle, image_blend, 1);
+    
+    // Mouth
+    if(mouth_sprite != -1)
+        draw_sprite_ext(mouth_sprite, mouth_img_index, draw_x - view_xview[0], draw_y - view_yview[0], draw_xscale, draw_yscale, image_angle, image_blend, 1);
+surface_reset_target();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the shield
 
-// Mouth
-if(mouth_sprite != -1)
-    draw_sprite_ext(mouth_sprite, mouth_img_index, draw_x, draw_y, draw_xscale, draw_yscale, image_angle, image_blend, 1);
+// Draw_shield
+if(shield_alpha &gt; 0) {  
+    surface_set_target(srf_shield);
+        //draw_clear_alpha(c_black, 0);
+        
+        draw_sprite_ext(sprAlexFB2Shield, 0, draw_x - view_xview[0], draw_y - view_yview[0], shield_scale, shield_scale, 0, crown_star_attack_col, shield_alpha);
+        draw_sprite_ext(sprAlexCrystalStars, current_star, draw_x - view_xview[0], draw_y - view_yview[0], 2, 2, 0, -1, shield_star_alpha);
+        draw_set_blend_mode(bm_add);
+        draw_sprite_ext(sprAlexFB2Shield, 0, draw_x - view_xview[0], draw_y - view_yview[0], shield_scale, shield_scale, 0, crown_star_attack_col, shield_impact_alpha);
+        draw_sprite_ext(sprAlexCrystalStars, current_star, draw_x - view_xview[0], draw_y - view_yview[0], 2, 2, 0, -1, shield_impact_alpha);
+        draw_set_blend_mode(bm_normal);
+    surface_reset_target();
+} else {
+    // Draw body like normally (yes dispite the name being srf_shield)
+    draw_surface(srf_shield, view_xview[0], view_yview[0]);
+}
+
+
+// Draw the distortion surface and FX
+if(shield_alpha &gt; 0) {
+    if(!surface_exists(srf_waves)) {
+        srf_waves = surface_create(view_wview[0], view_hview[0]);
+        tex_waves = surface_get_texture(srf_waves);
+    }
+    
+    // Process the normal map
+    surface_set_target(srf_waves);
+        draw_clear_alpha($FF7F7F, 1);
+        draw_set_blend_mode_ext(bm_dest_colour, bm_src_colour);
+        shader_set(sAddNormalMaps);
+        
+        with(objAlexFB2DistortionRing)
+            draw_sprite_ext(sprite_index, 0, other.draw_x - view_xview[0], other.draw_y - view_yview[0], image_xscale * other.shield_scale, image_yscale * other.shield_scale, 0, -1, image_alpha * other.shield_alpha);
+            
+        shader_reset();
+        draw_set_blend_mode(bm_normal);
+    surface_reset_target();
+    
+    // Render the shader
+    shader_set(shader);
+        shader_set_uniform_f(u_fx_strength, fx_strength);
+        shader_set_uniform_f(u_aspect, aspect);
+        shader_set_uniform_f(u_aberration, aberration);
+        texture_set_stage(u_tex_waves, tex_waves);
+        draw_surface(srf_shield, view_xview[0], view_yview[0]);
+    shader_reset();
+}
+
+
+// Shield health ring
+if(shield_health_ring_alpha &gt; 0) {
+    scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_health_ring_alpha);
+    draw_set_blend_mode(bm_add);
+    scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_impact_alpha);
+    scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_regen_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_health_ring_regen_alpha);
+    draw_set_blend_mode(bm_normal);
+}
 </string>
           </argument>
         </arguments>
@@ -826,46 +962,6 @@ if(star_ring_alpha &gt; 0) {
         
         draw_sprite_ext(sprAlexCrystalStars, _img_index, _xx, _yy, _scale, _scale, 0, -1, _alpha);
     }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw the shield
-
-// Draw_shield
-if(shield_alpha &gt; 0) {
-    draw_sprite_ext(sprAlexFB2Shield, 0, draw_x, draw_y, shield_scale, shield_scale, 0, crown_star_attack_col, shield_alpha);
-    draw_sprite_ext(sprAlexCrystalStars, current_star, draw_x, draw_y, 2, 2, 0, -1, shield_star_alpha);
-    draw_set_blend_mode(bm_add);
-    draw_sprite_ext(sprAlexFB2Shield, 0, draw_x, draw_y, shield_scale, shield_scale, 0, crown_star_attack_col, shield_impact_alpha);
-    draw_sprite_ext(sprAlexCrystalStars, current_star, draw_x, draw_y, 2, 2, 0, -1, shield_impact_alpha);
-    draw_set_blend_mode(bm_normal);
-}
-
-// Shield health ring
-if(shield_health_ring_alpha &gt; 0) {
-    scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_health_ring_alpha);
-    draw_set_blend_mode(bm_add);
-    scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_impact_alpha);
-    scrAlexDrawPieTexExt(draw_x, draw_y, shield_health_ring_regen_circum, sprAlexFB2ShieldHealthRing, 0, crown_star_attack_col, shield_health_ring_regen_alpha);
-    draw_set_blend_mode(bm_normal);
 }
 </string>
           </argument>

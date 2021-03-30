@@ -769,6 +769,7 @@
         <sprite>sprites\sprAlexFB2GreenStarCaution</sprite>
         <sprite>sprites\sprAlexFlyingPlayerTestShape</sprite>
         <sprite>sprites\sprAlexFlyingPlayerBulletTestShape</sprite>
+        <sprite>sprites\sprAlexFB2RippleNormal</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
@@ -1109,6 +1110,8 @@
     <shader type="GLSLES">shaders\sRainbowSpiral.shader</shader>
     <shader type="GLSLES">shaders\sRainbowCircles.shader</shader>
     <shader type="GLSLES">shaders\sFinalBossTunnel.shader</shader>
+    <shader type="GLSLES">shaders\sAddNormalMaps.shader</shader>
+    <shader type="GLSLES">shaders\sFBDistortionShader.shader</shader>
     <shader type="GLSLES">shaders\shdBktGlitch.shader</shader>
   </shaders>
   <fonts name="fonts">
@@ -1548,6 +1551,7 @@
         <object>objects\objAlexFlyingPlayer</object>
         <object>objects\objAlexFlyingPlayerBullet</object>
         <object>objects\objAlexFB2CautionArea</object>
+        <object>objects\objAlexFB2DistortionRing</object>
         <objects name="Boss">
           <object>objects\objAlexFinalBoss2</object>
         </objects>
