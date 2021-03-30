@@ -191,9 +191,9 @@ feet_y = lerp(feet_y, y, feet_snap_spd);
 
 // Hitbox
 if(_action) {
-    hitbox_alpha = min(hitbox_alpha+0.1, 1);
+    hitbox_alpha = min(hitbox_alpha+0.2, 1);
 } else {
-    hitbox_alpha = max(hitbox_alpha-0.1, 0);
+    hitbox_alpha = max(hitbox_alpha-0.2, 0);
 }
 
 
@@ -272,7 +272,7 @@ charge_shot_index += charge_shot_img_spd;
             <kind>1</kind>
             <string>/// God mode stuff
 
-if(keyboard_check_pressed(vk_home))
+if(keyboard_check_pressed(vk_home) &amp;&amp; global.debugMode)
     global.noDeath = !global.noDeath;
 
 if(global.noDeath)
@@ -303,7 +303,7 @@ else
             <kind>1</kind>
             <string>/// Destroy self
 
-if(!global.noDeath &amp;&amp; other.image_alpha &gt;= 1) {
+if(!global.noDeath &amp;&amp; other.image_alpha &gt;= 0.95) {
     instance_destroy();
 }
 </string>

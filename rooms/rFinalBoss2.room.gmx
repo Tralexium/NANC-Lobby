@@ -51,12 +51,12 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="objAlexFlyingPlayer" x="600" y="544" name="inst_2CF4DEF2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexFB2CamAnchor" x="592" y="448" name="inst_FE5866FC" locked="0" code="x = room_width/2;&#xA;y = room_height/2;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexFBCam" x="0" y="0" name="inst_FA133081" locked="0" code="target_obj = objAlexFlyingPlayer;&#xA;anchor_obj = objAlexFB2CamAnchor;  // The 2nd object to average the cam position (In this case it's the final boss)&#xA;anchor_strength = .4;&#xA;zoom_min_lvl = 1;&#xA;lock_in_place = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexFBCam" x="0" y="0" name="inst_FA133081" locked="0" code="anchor_obj = objAlexFB2CamAnchor;  // The 2nd object to average the cam position (In this case it's the final boss)&#xA;anchor_strength = .4;&#xA;zoom_min_lvl = 1;&#xA;lock_in_place = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexFB2TunnelBG" x="8" y="-32" name="inst_BDF18E38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlayMusicWithIntro" x="32" y="0" name="inst_8E009860" locked="0" code="BGM = musFinalBoss2;&#xA;introLength = 70.071;&#xA;loopLength = 136.747;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexFinalBoss2" x="592" y="336" name="inst_86547217" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlayerStart" x="584" y="512" name="inst_CD9DBC03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -1532,6 +1532,7 @@
         </objects>
         <object>objects\objAlexFBCam</object>
         <object>objects\objAlexFinalBoss</object>
+        <object>objects\objAlexFinalBossCutsceneCrown</object>
         <object>objects\objAlexFinalBossShieldOrb</object>
         <object>objects\objAlexFinalBossShieldOrbCircle</object>
         <object>objects\objAlexFinalBossSpawner</object>

@@ -42,7 +42,6 @@ shield_rad = 40;                // How large the shield radius is
 recovery_time = 200;            // How many frames until recover shield
 recovering = false;             // Whether the boss is about to regenerate the shield orbs
 beaten = false;                 // Whether the boss is defeated
-time_frozen = false;            // Used for the defeat cutscene
 
 shield_orb_amnt = 0;            // How many orbs are currently present
 shield_orb_spawn_amnt = 1//5;      // How many orbs the shield should have
@@ -287,6 +286,31 @@ part_type_destroy(part_type);
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Spawn the astral crown for the defeat cutscene
+
+instance_create(x, y, objAlexFinalBossCutsceneCrown);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -306,7 +330,7 @@ part_type_destroy(part_type);
             <kind>1</kind>
             <string>/// Freeze time during the defeat cutscene
 
-time_frozen = true;
+alarm[2] = 40;  // Spawn the astral crown
 
 friction = 0.05;
 gravity = 0;
@@ -964,6 +988,8 @@ show_bars = false;
 look_at_player = true;
 show_black_bars = true;
 
+scrStopMusic();
+
 // Spawn the color effect obj
 instance_create(0, 0, objAlexFinalBossDefeatCutsceneColorEffect);
 
@@ -974,13 +1000,13 @@ with(objPlayer) {
     else
         other.hspeed = -1;
 }
-vspeed = -2;
+vspeed = -1.5;
 gravity = 0.015;
 sprite_index = sprAlexFinalBossKnockedOut;
 image_index = 0;
 image_speed = 0.04;
 
-var _part = scrAlexMakeParticle(x, y, 200, sprAlexPlayerBloodSplatter, 0.05, 0, 0, false, false, false);
+var _part = scrAlexMakeParticle(x, y, 200, sprAlexPlayerBloodSplatter, 0.06, 0, 0, false, false, false);
     _part.depth = -1000;
     _part.image_xscale = 2;
     _part.image_yscale = 2;

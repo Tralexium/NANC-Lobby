@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>/// Init vars
 
+global.noPause = true;
+
 fade_delay = 40;
 
 go_string = "GAME OVER";
@@ -122,6 +124,31 @@ _time_begin = go_letter_delay * (go_string_size + 4) - fade_delay;
 _letter_timer = clamp(timer - (_time_begin + fade_delay), 0, restart_anim_length);
 
 restart_alpha = scrAlexEaseOutSine(_letter_timer, 0, 1, restart_anim_length);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Re enable pausing
+
+global.noPause = false;
 </string>
           </argument>
         </arguments>
