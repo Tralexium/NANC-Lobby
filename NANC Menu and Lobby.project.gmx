@@ -440,7 +440,9 @@
         <sprite>sprites\sprAlexMenuClearCheckmark</sprite>
         <sprite>sprites\sprAlexMenuSecretIcon</sprite>
         <sprite>sprites\sprAlexMenuSaveStar</sprite>
+        <sprite>sprites\sprAlexEmptyStar</sprite>
         <sprite>sprites\sprAlexMenuSaveCrown</sprite>
+        <sprite>sprites\sprAlexMenuSaveJustCrown</sprite>
       </sprites>
       <sprites name="Star Levels">
         <sprite>sprites\sprAlex3DFloor</sprite>

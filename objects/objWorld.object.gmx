@@ -88,6 +88,9 @@ pause_bar_rise_distance = 72;
 pause_bar_render_x = 0;
 pause_bar_length = 32;
 pause_bar_height = 96;
+pause_right_stats_alpha = 1;  // 1: cleared stages and secrets, -1: crystal stars and crown
+pause_right_stats_add_alpha = .1;  // If positive it shows the cleared stages and secrets, otherwise shows stars and crown.
+pause_right_stats_change_freq = 150;
 pause_BG_alpha = 0;
 pause_BG_max_alpha = .3;
 pause_BG_x = 0;
@@ -596,6 +599,14 @@ pause_BG_x += pause_BG_scroll_h_speed;
 pause_BG_y += pause_BG_scroll_v_speed;
 var col_amnt = abs(dsin(pause_timer/2));
 pause_BG_col = merge_colour(pause_BG_col1, pause_BG_col2, col_amnt);
+
+// Shift between bottom right stats
+var _shift_timer = pause_timer + 1;
+if(_shift_timer mod pause_right_stats_change_freq == 0 &amp;&amp; global.totalCrystalStarsFound &gt; 0) {
+    pause_right_stats_add_alpha *= -1;
+}
+pause_right_stats_alpha += pause_right_stats_add_alpha;
+pause_right_stats_alpha = clamp(pause_right_stats_alpha, -1, 1);
 </string>
           </argument>
         </arguments>
@@ -1018,6 +1029,8 @@ if (!global.gamePaused)  //game currently not paused, pause the game
                                                  
         global.pauseSurf = surface_create(surface_get_width(application_surface),surface_get_height(application_surface));    //create new surface
         surface_copy(global.pauseSurf,0,0,application_surface);             //copy current screen to it
+        
+        pause_timer = 0;  // Reset pause timer
     }
 }
 else    //game currently paused, unpause the game
@@ -1472,6 +1485,8 @@ if (pause_anim_progress &gt; 0)
     
     // Draw bottom stats
     ////////////////////
+    
+    // Time &amp; Deaths
     var gui_width = display_get_gui_width();
     var gui_height = display_get_gui_height();
     var bottom_text_y = gui_height-32-pause_bar_y;
@@ -1497,18 +1512,45 @@ if (pause_anim_progress &gt; 0)
     draw_text(32, bottom_text_y, _time_text);
     
     draw_text(_time_text_width + 64, bottom_text_y,"Deaths: " + string(global.death));
+   
+    
+    // Cleared stages and collected secrets 
+    var _stats_alpha = max(pause_right_stats_alpha, 0);
+    draw_set_alpha(_stats_alpha);
     
     draw_set_halign(fa_right);
-    var _secret_text = ": " + string(global.totalSecretsFound) + "/28";
+    var _secret_text = ": " + string(global.totalSecretsFound) + "/" + string(global.secretItemTotal);
     var _secret_text_width = string_width(_secret_text);
     var _secret_icon_x = gui_width - _secret_text_width - 52;
-    draw_text(gui_width - 32, bottom_text_y, _secret_text); // Yeah I'm hard coding the secret amnt cause the max is 99
-    draw_sprite_ext(sprAlexPauseSecretIcon, 0, _secret_icon_x, bottom_text_y, 1, 1, 0, pause_BG_col, 1);
+    draw_text(gui_width - 32, bottom_text_y, _secret_text);
+    draw_sprite_ext(sprAlexPauseSecretIcon, 0, _secret_icon_x, bottom_text_y, 1, 1, 0, pause_BG_col, _stats_alpha);
     
     var _clear_text = ": " + string(global.totalStagesCleared) + "/" + string(global.totalNumberOfStages);
     var _clear_text_width = string_width(_clear_text);
     draw_text(_secret_icon_x - 48, bottom_text_y, _clear_text);
-    draw_sprite_ext(sprAlexPauseClearedStageIcon, 0, _secret_icon_x - _clear_text_width - 64, bottom_text_y, 1, 1, 0, pause_BG_col, 1);
+    draw_sprite_ext(sprAlexPauseClearedStageIcon, 0, _secret_icon_x - _clear_text_width - 64, bottom_text_y, 1, 1, 0, pause_BG_col, _stats_alpha);
+    
+    
+    // Crystal stars &amp; crown
+    _stats_alpha = max(-1 * pause_right_stats_alpha, 0);
+    _star_pad = 36;
+    
+    for(var i=0; i&lt;global.totalNumberOfCrystalStars; i++) {
+        var _star_x = gui_width - _star_pad*(i+1);
+        var _star_y = gui_height-42-pause_bar_y;
+        
+        if(i &lt; global.totalCrystalStarsFound)
+            draw_sprite_ext(sprAlexMenuSaveStar, 0, _star_x, _star_y, 1, 1, 0, pause_BG_col, _stats_alpha);
+        else
+            draw_sprite_ext(sprAlexEmptyStar, 0, _star_x, _star_y, 1, 1, 0, pause_BG_col, _stats_alpha);
+    }
+
+    if(global.gameClear) {
+        var _crown_x = gui_width - _star_pad*(global.totalNumberOfCrystalStars + 1.4);
+        var _crown_y = gui_height-42-pause_bar_y;
+        draw_sprite_ext(sprAlexMenuSaveJustCrown, 0, _crown_x, _crown_y, 1, 1, 0, pause_BG_col, _stats_alpha);
+    }
+    
     
     
     // Draw black borders &amp; overlay
