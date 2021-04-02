@@ -807,6 +807,8 @@
       <sprite>sprites\sprAlexLobbyElevatorButtonPanel</sprite>
       <sprite>sprites\sprAlexLobbyElevatorButton</sprite>
       <sprite>sprites\sprAlexLobbyElevatorButtonCursor</sprite>
+      <sprite>sprites\sprAlexLobbyElevatorPresentArrow</sprite>
+      <sprite>sprites\sprAlexLobbyElevatorPresent</sprite>
       <sprite>sprites\sprAlexWaterTop</sprite>
       <sprite>sprites\sprAlexWater</sprite>
       <sprite>sprites\sprAlexWaterBubble</sprite>

@@ -35,6 +35,9 @@ if (instance_exists(objAlexLobbyPlayer))
     x = objAlexLobbyPlayer.x;
     y = objAlexLobbyPlayer.y;
 }
+
+max_x = room_width - view_wview[0];
+max_y = room_height - view_hview[0];
 </string>
           </argument>
         </arguments>
@@ -61,6 +64,9 @@ if (instance_exists(objAlexLobbyPlayer))
 {
     x += (objAlexLobbyPlayer.x - x) / snapDiv;
     y += (objAlexLobbyPlayer.y - y) / snapDiv;
+    
+    view_xview[0] = clamp(x - view_wview[0]/2, 0, max_x);
+    view_yview[0] = clamp(y - view_hview[0]/2, 0, max_y);
 }
 </string>
           </argument>

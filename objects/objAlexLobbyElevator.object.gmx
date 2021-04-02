@@ -37,14 +37,14 @@ arrow_y = y;
 arrow_image_index = 0;
 
 // New to the elevator
-floor_id[0] = rLobbyReception;  // Change this later into reception room
-floor_id[1] = rLobbyFloor1;
-floor_id[2] = rLobbyFloor2;
-floor_id[3] = rLobbyFloor3;
-floor_id[4] = rLobbyFloor4;
-floor_id[5] = rLobbyFloor5;
-floor_id[6] = rLobbyFloor6;  // Change this later into floor 6
-floor_id[7] = rLobbyBonusFloor;  // Change this later into bonus room
+floor_id[0] = rLobbyReception;
+floor_id[1] = rLobbyBonusFloor;
+floor_id[2] = rLobbyFloor1;
+floor_id[3] = rLobbyFloor2;
+floor_id[4] = rLobbyFloor3;
+floor_id[5] = rLobbyFloor4;
+floor_id[6] = rLobbyFloor5;
+floor_id[7] = rLobbyFloor6;
 
 for(var i=0; i&lt;8; i++) {
     if(floor_id[i] == room) {
@@ -78,6 +78,99 @@ t = 0;  // general use timer
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// New goodies vars
+
+// Map key = total amount of cosmetics
+// Map value = required secrets for next cosmetic
+secrets_quota_map = ds_map_create();
+
+secrets_quota_map[? 0] = 1;
+secrets_quota_map[? 1] = 2;
+secrets_quota_map[? 2] = 3;
+secrets_quota_map[? 3] = 4;
+secrets_quota_map[? 4] = 5;
+secrets_quota_map[? 5] = 6;
+secrets_quota_map[? 6] = 7;
+secrets_quota_map[? 7] = 9;
+secrets_quota_map[? 8] = 11;
+secrets_quota_map[? 9] = 13;
+secrets_quota_map[? 10] = 15;
+secrets_quota_map[? 11] = 18;
+secrets_quota_map[? 12] = 21;
+secrets_quota_map[? 13] = 24;
+
+cosmetics_amnt = 0;
+
+for (var i = 0; i &lt; global.totalNumberOfHats; i++)
+{
+    if(global.playerHat[i])
+        cosmetics_amnt++;
+}
+for (var i = 0; i &lt; global.totalNumberOfPets; i++)
+{
+    if(global.playerPet[i])
+        cosmetics_amnt++;
+}
+
+// Checks if you collected enough secrets to unlock another cosmetic
+goodies_available = global.totalSecretsFound &gt;= secrets_quota_map[? cosmetics_amnt];
+
+goodie_arrow_x = x;
+goodie_arrow_y = y;
+goodie_arrow_alpha = 0;
+goodie_arrow_fade_range = 96;
+goodie_arrow_direction = 0;
+goodie_arrow_door_gap = 40;
+goodie_arrow_view_gap = 16;
+goodie_arrow_shift_val = 0; // 0: snap near door, 1: snap to view
+goodie_arrow_present_x = x;
+goodie_arrow_present_y = y;
+goodie_arrow_present_gap = 32;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy data structures
+
+ds_map_destroy(secrets_quota_map);
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="2">
       <action>
@@ -104,6 +197,9 @@ with(objAlexLobbyPlayer)
 // Enable pause and restart
 global.noRestart = false;
 global.noPause = false;
+
+// Auto save
+global.autosave = true;
     
 room_goto(floor_id[cursor_index])
 </string>
@@ -253,6 +349,59 @@ if(!active) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Manage arrow visuals
+
+if(goodies_available &amp;&amp; current_room_num != 1 &amp;&amp; instance_exists(objPlayer)) {
+    if(scrInView()) {
+        goodie_arrow_shift_val = max(goodie_arrow_shift_val-0.1, 0);
+    } else {
+        goodie_arrow_shift_val = min(goodie_arrow_shift_val+0.1, 1);
+    }
+    
+    var _y_offset = -24;
+    
+    // Arrow dir
+    goodie_arrow_direction = point_direction(x, y + _y_offset, objPlayer.x, objPlayer.y);
+    
+    // Arrow coords
+    var _arrow_door_x = x + lengthdir_x(goodie_arrow_door_gap, goodie_arrow_direction);
+    var _arrow_door_y = y + _y_offset + lengthdir_y(goodie_arrow_door_gap, goodie_arrow_direction);
+    var _arrow_view_x = clamp(x, view_xview[0]+20, view_xview[0]+view_wview[0]-20);
+    var _arrow_view_y = clamp(y + _y_offset, view_yview[0]+20, view_yview[0]+view_hview[0]-20);
+    goodie_arrow_x = lerp(_arrow_door_x, _arrow_view_x, goodie_arrow_shift_val);
+    goodie_arrow_y = lerp(_arrow_door_y, _arrow_view_y, goodie_arrow_shift_val);
+    
+    // Present coords
+    goodie_arrow_present_x = goodie_arrow_x + lengthdir_x(goodie_arrow_present_gap, goodie_arrow_direction);
+    goodie_arrow_present_y = goodie_arrow_y + lengthdir_y(goodie_arrow_present_gap, goodie_arrow_direction);
+    
+    // Arrow alpha
+    if(distance_to_object(objPlayer) &lt;= goodie_arrow_fade_range) {
+        goodie_arrow_alpha = max(goodie_arrow_alpha-0.1, 0);
+    } else {
+        goodie_arrow_alpha = min(goodie_arrow_alpha+0.1, 1);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -313,7 +462,7 @@ if(show_panel &amp;&amp; active) {
         
     //  Confirm the choice
     var is_same_floor = (cursor_index == current_room_num);
-    var bonus_is_locked = ((cursor_index == 7) &amp;&amp; !bonus_room_available);
+    var bonus_is_locked = ((cursor_index == 1) &amp;&amp; !bonus_room_available);
     if(scrButtonCheckPressed(global.menuAcceptButton) &amp;&amp; !(is_same_floor || bonus_is_locked)) {
         show_panel = false;
         panel_alpha = 0;
@@ -435,6 +584,34 @@ if(active) {
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="73">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw goodie/present arrow
+
+if(goodie_arrow_alpha &gt; 0) {
+    draw_sprite_ext(sprAlexLobbyElevatorPresentArrow, 0, goodie_arrow_x, goodie_arrow_y, 1, 1, goodie_arrow_direction, -1, goodie_arrow_alpha);
+    draw_sprite_ext(sprAlexLobbyElevatorPresent, 0, goodie_arrow_present_x, goodie_arrow_present_y, 1, 1, 0, -1, goodie_arrow_alpha);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -483,13 +660,15 @@ for(var i=0; i&lt;button_amnt; i++) {
     // Draw buttons
     if(current_room_num == i)
         draw_sprite(sprAlexLobbyElevatorButton, 2, xx, yy);
-    else if(i == 7 &amp;&amp; !bonus_room_available)
+    else if(i == 1 &amp;&amp; !bonus_room_available)
         draw_sprite(sprAlexLobbyElevatorButton, 1, xx, yy);
+    else if(i == 1 &amp;&amp; goodies_available)
+        draw_sprite(sprAlexLobbyElevatorButton, 3, xx, yy);
     else
         draw_sprite(sprAlexLobbyElevatorButton, 0, xx, yy);
     
     // Draw bonus floor button
-    if(i == 7) {
+    if(i == 1) {
         if(bonus_room_available)
             scrDrawTextSquareOutline(xx, yy+2, "B", $e8fff5, $2e1814, 1, fa_center, fa_top);
         else   
@@ -500,7 +679,7 @@ for(var i=0; i&lt;button_amnt; i++) {
         scrDrawTextSquareOutline(xx, yy+2, "G", $e8fff5, $2e1814, 1, fa_center, fa_top);
     // Draw the number floor buttons
     else
-        scrDrawTextSquareOutline(xx, yy+2, string(i), $e8fff5, $2e1814, 1, fa_center, fa_top);
+        scrDrawTextSquareOutline(xx, yy+2, string(i-1), $e8fff5, $2e1814, 1, fa_center, fa_top);
         
     // Draw the cursor
     if(i == cursor_index)
@@ -593,15 +772,17 @@ if(colliding &amp;&amp; active)
             <kind>1</kind>
             <string>/// Draw the current floor light
 
-if(current_room_num &lt; 7) {
-    var offset = current_room_num*6;
-    draw_sprite(sprAlexLobbyElevatorLight, 0, x-17, y-8-offset);
-} else {
+if(current_room_num == 0) {
+    draw_sprite(sprAlexLobbyElevatorLight, 0, x-17, y-8);
+} else if(current_room_num == 1){
     for(var i=0; i&lt;7; i++) {
         var a = abs(dsin((t*3)+(i*10)))
         var offset = i*6;
         draw_sprite_ext(sprAlexLobbyElevatorLight, 0, x-17, y-8-offset, 1, 1, 0, -1, a);
     }
+} else {    
+    var offset = (current_room_num-1)*6;
+    draw_sprite(sprAlexLobbyElevatorLight, 0, x-17, y-8-offset);
 }
 </string>
           </argument>
