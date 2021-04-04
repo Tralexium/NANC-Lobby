@@ -120,7 +120,7 @@ spd_fluctuation = 1.5;
 move_speed = min_spd;
 shield_max_hp = 60;
 shield_hp = 0;
-shield_time_until_regen = 150;
+shield_time_until_regen = 180;
 shield_t = 0;
 shield_regen_rate = 0;
 shield_regen_incr = 0.001;
@@ -375,6 +375,7 @@ if(!intro_cutscene_finished) {
         
             instance_create(-500, -500, objAlexScreenPulseEffect)
             intro_cutscene_finished = true;  // Finish
+            scrFBShakeCam(20, 6, 6, 3, 2);
         }
     }
     

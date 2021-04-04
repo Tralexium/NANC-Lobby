@@ -85,6 +85,8 @@ if(z &lt; scale_to_z) {
         _part.image_angle = 0;
         _part.image_xscale = 2;
         _part.image_yscale = 2;
+        
+        scrFBShakeCam(10, 5, 5, 2, 1);
     }
 }
 </string>

@@ -332,7 +332,7 @@ if (global.gameStarted)
     //handle pausing
     if (global.pauseDelay &lt;= 0) //check if pause delay is active
     {
-        if ((scrButtonCheckPressed(global.pauseButton) || (global.gamePaused &amp;&amp; scrButtonCheckPressed(global.menuBackButton))) &amp;&amp; !pause_top_option_selected)
+        if ((scrButtonCheckPressed(global.pauseButton) || (global.gamePaused &amp;&amp; scrButtonCheckPressed(global.menuBackButton)) || (!global.gamePaused &amp;&amp; !window_has_focus())) &amp;&amp; !pause_top_option_selected)
         {
             event_user(1);
         }

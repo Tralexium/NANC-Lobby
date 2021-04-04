@@ -86,6 +86,8 @@ if(!fade_out) {
             instance_destroy(orb[i]);
         }
     }
+    
+    scrFBShakeCam(15, 5, 5, 3, 2);
 }
 </string>
           </argument>

@@ -86,7 +86,7 @@ surface_free(bg_surf);
             <string>/// Render background
 
 if(!surface_exists(bg_surf)) {
-    bg_surf = surface_create(room_width, room_height);
+    bg_surf = surface_create(room_width+20, room_height+20);
 }
 
 surface_set_target(bg_surf)
@@ -97,7 +97,7 @@ shader_set(shader);
     shader_time += shader_time_spd;
     shader_set_uniform_f(u_time, shader_time);
     shader_set_uniform_f(u_shadow_line_thicness, shader_shadow_line_thicness);
-    draw_surface(bg_surf, 0, 0);
+    draw_surface(bg_surf, -10, -10);
 shader_reset();
 </string>
           </argument>
