@@ -122,6 +122,7 @@ t++
 if(t &lt;= snap_to_target_dur) {
     if(t == 2) {
         event_user(11);
+        audio_play_sound(sndFB2CurveOrbWarn, 0, false);
         caution_area_id.x = target_pos_x;
         caution_area_id.y = target_pos_y;
     }
@@ -129,8 +130,10 @@ if(t &lt;= snap_to_target_dur) {
     x = scrAlexEaseOutSine(t, xstart, target_pos_x, snap_to_target_dur);
     y = scrAlexEaseOutSine(t, ystart, target_pos_y, snap_to_target_dur);
     
-    if(t == time_before_launch)
+    if(t == time_before_launch) {
         zspeed = launch_zspd;
+        audio_play_sound(sndFB2CurveOrbLaunch, 0, false);
+    }
 }
 
 if(fade_out) {   

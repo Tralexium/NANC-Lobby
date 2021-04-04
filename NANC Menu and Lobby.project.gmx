@@ -208,6 +208,25 @@
           <sound>sound\sndAlexFBLevelUp</sound>
           <sound>sound\sndAlexFBLand</sound>
         </sounds>
+        <sounds name="Final Boss 2">
+          <sound>sound\sndFB2Appear</sound>
+          <sound>sound\sndFB2SnapIntoPlace</sound>
+          <sound>sound\sndFB2StarRingSpin</sound>
+          <sound>sound\sndFB2StarShield</sound>
+          <sound>sound\sndFB2StarShieldBroken</sound>
+          <sound>sound\sndFB2PlayerBulletHit</sound>
+          <sound>sound\sndFB2PlayerChargedBulletHit</sound>
+          <sound>sound\sndFB2PlayerCharging</sound>
+          <sound>sound\sndFB2PlayerChargedBulletReady</sound>
+          <sound>sound\sndFB2PlayerChargeReadyLoop</sound>
+          <sound>sound\sndFB2PlayerChargedBulletShot</sound>
+          <sound>sound\sndFB2CurveOrbWarn</sound>
+          <sound>sound\sndFB2CurveOrbLaunch</sound>
+          <sound>sound\sndFB2PullVoid</sound>
+          <sound>sound\sndFB2CollapseRingAppear</sound>
+          <sound>sound\sndFB2CollapseRingCollapse</sound>
+          <sound>sound\sndFB2GreenStarLaunch</sound>
+        </sounds>
         <sounds name="Final Stage Gimmicks">
           <sound>sound\sndAlexBubbleIn</sound>
           <sound>sound\sndAlexBubblePop</sound>

@@ -110,6 +110,9 @@ image_speed = 0.3;
 with(instance_create(x, y, objPlayer))
     visible = false;
     
+audio_stop_sound(sndFB2PlayerCharging);
+audio_stop_sound(sndFB2PlayerChargeReadyLoop);
+    
 scrKillPlayer();
 </string>
           </argument>
@@ -208,6 +211,8 @@ if(can_shoot &amp;&amp; _action &amp;&amp; shoot_t &gt;= 0) {
         if(charge_t == charge_dur) {
             charge_alpha = 0;
             charge_finished_index = 0;
+            audio_play_sound(sndFB2PlayerChargedBulletReady, 0, false);
+            audio_play_sound(sndFB2PlayerChargeReadyLoop, 0, true);
         }
         
         charge_glow_alpha_t += 180/charge_glow_freq;
@@ -217,6 +222,8 @@ if(can_shoot &amp;&amp; _action &amp;&amp; shoot_t &gt;= 0) {
             shoot_t = 1;
             charge_alpha = 0;
             charge_scale = body_scale + 2;
+
+            audio_play_sound(sndFB2PlayerCharging, 0, false);
         }
     
         charge_glow_alpha_t = 0;
@@ -224,12 +231,17 @@ if(can_shoot &amp;&amp; _action &amp;&amp; shoot_t &gt;= 0) {
         charge_scale = max(charge_scale-0.1, body_scale);
     }
 } else {
+    audio_stop_sound(sndFB2PlayerCharging);
+    audio_stop_sound(sndFB2PlayerChargeReadyLoop);
+
     if(charge_t &gt;= charge_dur) {
         if(can_shoot) {
             var _shot = scrAlexFPMakeBullet(charge_shot_dmg, bullet_speed, _bullet_spd, _bullet_dir);
                 _shot.sprite_index = sprAlexFPChargedBullet;
                 _shot.image_xscale = 4;
                 _shot.image_yscale = 4;
+                
+            audio_play_sound(sndFB2PlayerChargedBulletShot, 0, false);
         }
             
         charge_shot_index = 0;

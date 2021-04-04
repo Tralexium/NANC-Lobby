@@ -48,6 +48,8 @@ dir = 0;
 
 fade_out = false;
 
+audio_play_sound(sndFB2CollapseRingAppear, 0, false);
+
 alarm[0] = 1;
 </string>
           </argument>
@@ -88,6 +90,7 @@ if(!fade_out) {
     }
     
     scrFBShakeCam(15, 5, 5, 3, 2);
+    audio_play_sound(sndFB2CollapseRingCollapse, 0, false);
 }
 </string>
           </argument>

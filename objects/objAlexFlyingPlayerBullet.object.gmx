@@ -87,6 +87,9 @@ if(z &lt; scale_to_z) {
         _part.image_yscale = 2;
         
         scrFBShakeCam(10, 5, 5, 2, 1);
+        audio_play_sound(sndFB2PlayerChargedBulletHit, 0, false);
+    } else {
+        audio_play_sound(sndFB2PlayerBulletHit, 0, false);
     }
 }
 </string>

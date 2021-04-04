@@ -37,6 +37,7 @@ orb_spawn_freq = 2;
 orb_dir = choose(-1, 1);
 
 warning_alpha = 0;
+launch_glow_alpha = 0;
 launch = false;
 launch_spd = 20;
 was_in_view = false;
@@ -68,10 +69,14 @@ fade_out = false;
             <kind>1</kind>
             <string>/// Launch star
 
-launch = true;
-speed = launch_spd;
-
-scrFBShakeCam(15, 5, 5, 3, 2);
+if(!fade_out) {
+    launch = true;
+    launch_glow_alpha = 1;
+    speed = launch_spd;
+    
+    scrFBShakeCam(15, 5, 5, 3, 2);
+    audio_play_sound(sndFB2GreenStarLaunch, 0, false);
+}
 </string>
           </argument>
         </arguments>
@@ -108,6 +113,7 @@ if(t mod orb_spawn_freq == 0 &amp;&amp; !fade_out) {
 }
 
 image_angle += rot_spd;
+launch_glow_alpha = max(launch_glow_alpha-0.05, 0);
 
 if(!launch &amp;&amp; !fade_out) {
     warning_alpha = min(warning_alpha + 0.1, 1);
@@ -202,6 +208,37 @@ if(warning_alpha &gt; 0) {
     draw_sprite_ext(sprAlexFB2GreenStarCaution, 0, _xx, _yy, 1, 1, direction, -1, warning_alpha);
     draw_set_blend_mode(bm_normal);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the spawn glow
+
+draw_set_alpha(launch_glow_alpha);
+draw_set_blend_mode(bm_add);
+draw_set_circle_precision(32);
+
+draw_circle_colour(xstart, ystart, 500, c_lime, c_black, false);
+
+draw_set_blend_mode(bm_normal);
+draw_set_circle_precision(24);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

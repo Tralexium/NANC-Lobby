@@ -291,8 +291,10 @@ current_path = noone;
 current_star = noone;  // This forces the boss to
                        // choose the next available star.
 
-if(!ds_list_empty(star_list))
+if(!ds_list_empty(star_list)) {
     star_ring_anim = true;
+    audio_play_sound(sndFB2StarRingSpin, 0, false);
+}
 </string>
           </argument>
         </arguments>
@@ -355,6 +357,8 @@ if(!intro_cutscene_finished) {
         eyes_img_spd = image_speed;
         mouth_sprite = sprAlexFB2MouthIntro;
         mouth_img_spd = image_speed;
+        
+        audio_play_sound(sndFB2Appear, 0, false);
     }
     
     if(t &gt; 50 &lt;= 150) {
@@ -369,9 +373,13 @@ if(!intro_cutscene_finished) {
         z = scrAlexEaseInQuart(_ease_val, 2, scale_to_z/5, 30);
         image_alpha = scrAlexEaseInQuart(_ease_val, 0, 1, 30);
         
+        if(t == 130)
+            audio_play_sound(sndFB2SnapIntoPlace, 0, false);
+        
         if(t == 150) {
             t = 0;
             star_ring_anim = true;  // Start star ring animation
+            audio_play_sound(sndFB2StarRingSpin, 0, false);
         
             instance_create(-500, -500, objAlexScreenPulseEffect)
             intro_cutscene_finished = true;  // Finish
@@ -429,6 +437,8 @@ if(current_star != noone &amp;&amp; !star_ring_anim &amp;&amp; !alarm[0]) {
     
     if(current_path != noone) {
         if(t == 0) {
+            audio_play_sound(sndFB2StarShield, 0, false);
+        
             path_start(current_path, min_spd, path_action_restart, false);
             
             with(objAlexFlyingPlayer)
@@ -701,6 +711,8 @@ is_attacking = false;
 
 with(objAlexFlyingPlayer)
     can_shoot = false;
+    
+audio_play_sound(sndFB2StarShieldBroken, 0, false);
 
 alarm[0] = 50;
 </string>

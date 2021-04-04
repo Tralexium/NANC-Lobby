@@ -145,7 +145,7 @@ if(orbs_set) {
             instance_destroy(orb[i]);
         }
         
-        if(projectile_count &gt; 0) {
+        if(projectile_count &gt; 0 &amp;&amp; !fade_out) {
             scrFBPSquishOrbCircle(x, y, random(360), projectile_count, 32);
             with(objAlexFBPSquishOrb) {
                spd_incr = random_range(0.01, 0.15); 
