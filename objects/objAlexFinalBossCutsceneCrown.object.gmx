@@ -71,6 +71,10 @@ with(objPlayer)
     
 global.autosave = true;
 
+// Reanable pausing &amp; restarting
+global.noPause = false;
+global.noRestart = false;
+
 room_goto(rFinalBoss2);
 </string>
           </argument>

@@ -226,6 +226,7 @@
           <sound>sound\sndFB2CollapseRingAppear</sound>
           <sound>sound\sndFB2CollapseRingCollapse</sound>
           <sound>sound\sndFB2GreenStarLaunch</sound>
+          <sound>sound\sndFB2Explosion</sound>
         </sounds>
         <sounds name="Final Stage Gimmicks">
           <sound>sound\sndAlexBubbleIn</sound>
@@ -751,9 +752,14 @@
           <sprite>sprites\sprAlexFB2EyesIntro</sprite>
           <sprite>sprites\sprAlexFB2EyesIdle</sprite>
           <sprite>sprites\sprAlexFB2EyesBlink</sprite>
+          <sprite>sprites\sprAlexFB2EyesDefeated</sprite>
+          <sprite>sprites\sprAlexFB2EyesDefeatedWhite</sprite>
           <sprite>sprites\sprAlexFB2MouthIntro</sprite>
           <sprite>sprites\sprAlexFB2MouthIdle</sprite>
+          <sprite>sprites\sprAlexFB2MouthDefeated</sprite>
+          <sprite>sprites\sprAlexFB2MouthDefeatedWhite</sprite>
           <sprite>sprites\sprAlexFB2Shield</sprite>
+          <sprite>sprites\sprAlexFB2DefeatGlow</sprite>
         </sprites>
         <sprites name="Flying Player">
           <sprite>sprites\sprAlexFPBodyFlat</sprite>
@@ -1148,6 +1154,7 @@
       <font>fonts\fStageClear</font>
       <font>fonts\fLobbySmall</font>
       <font>fonts\fLobbySmall24</font>
+      <font>fonts\fGameClear</font>
     </fonts>
   </fonts>
   <objects name="objects">
@@ -1575,6 +1582,7 @@
         <object>objects\objAlexFB2DistortionRing</object>
         <objects name="Boss">
           <object>objects\objAlexFinalBoss2</object>
+          <object>objects\objAlexFB2DefeatCutsceneColorEffect</object>
         </objects>
         <objects name="2D Projectiles">
           <object>objects\objAlexFB2PSpeedRing</object>

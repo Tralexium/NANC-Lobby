@@ -1026,8 +1026,9 @@ alarm[1] = 150;
 with(objPlayer)
     frozen = true;
 
-// Disable pausing
+// Disable pausing &amp; restarting
 global.noPause = true;
+global.noRestart = true;
 
 // Clear smoke particles
 part_particles_clear(part_system);
