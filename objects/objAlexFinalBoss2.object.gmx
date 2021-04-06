@@ -750,6 +750,7 @@ if(is_attacking) {
 beaten = true;
 
 scrStopMusic();
+audio_play_sound(sndFB2FinalShieldBreak, 0, false);
 
 // Freeze player
 with(objAlexFlyingPlayer)

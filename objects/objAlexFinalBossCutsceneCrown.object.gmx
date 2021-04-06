@@ -101,7 +101,7 @@ room_goto(rFinalBoss2);
             <string>/// Logic
 
 if(active)
-    t = min(t+1, anim_dur);
+    t = min(t+1, anim_dur+1);
 else {
     t = max(t-1, 0);
     if(t == 0)
@@ -113,6 +113,9 @@ if(t &gt;= anim_dur) {
         alarm[0] = 100;
         
     circle_rad = lerp(circle_rad, circle_target_rad, 0.025);
+    
+    if(t == anim_dur)
+        audio_play_sound(sndFB2StarShield, 0, false);
 }
 
 scale = scrAlexEaseOutSine(t, 0, 1, anim_dur);

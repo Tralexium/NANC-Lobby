@@ -203,10 +203,13 @@
           <sound>sound\sndAlexFBShieldOrbHit</sound>
           <sound>sound\sndAlexFBShieldOrbBroken</sound>
           <sound>sound\sndAlexFBShieldHit</sound>
+          <sound>sound\sndAlexFBGuard</sound>
           <sound>sound\sndAlexFBShieldBroken</sound>
           <sound>sound\sndAlexFBShieldRestored</sound>
           <sound>sound\sndAlexFBLevelUp</sound>
           <sound>sound\sndAlexFBLand</sound>
+          <sound>sound\sndAlexFBDefeat</sound>
+          <sound>sound\sndAlexFBAstralCrownAppear</sound>
         </sounds>
         <sounds name="Final Boss 2">
           <sound>sound\sndFB2Appear</sound>
@@ -226,7 +229,10 @@
           <sound>sound\sndFB2CollapseRingAppear</sound>
           <sound>sound\sndFB2CollapseRingCollapse</sound>
           <sound>sound\sndFB2GreenStarLaunch</sound>
+          <sound>sound\sndFB2FinalShieldBreak</sound>
           <sound>sound\sndFB2Explosion</sound>
+          <sound>sound\sndFB2DefeatGlow</sound>
+          <sound>sound\sndFB2DefeatWhiteCircle</sound>
         </sounds>
         <sounds name="Final Stage Gimmicks">
           <sound>sound\sndAlexBubbleIn</sound>

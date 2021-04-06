@@ -36,7 +36,7 @@ switch(_lvl) {
         }
         
         if(t == 50) {
-            scrFBPStartAttackCane2(x, y, objPlayer.x, objPlayer.y - 150, 30, 1)
+            scrFBPStartAttackCane2(x, y, objPlayer.x, objPlayer.y - 150, 30, 1.5)
             fallback_sprite = sprite_index;
             
             if(sprite_index == sprAlexFinalBossJumpBack)
@@ -46,7 +46,7 @@ switch(_lvl) {
         }
         
         if(t == 80) {
-            scrFBPStartAttackCane2(x, y, objPlayer.x + 150, objPlayer.y - 150, 30, 1)
+            scrFBPStartAttackCane2(x, y, objPlayer.x + 150, objPlayer.y - 150, 30, 1.5)
             
             if(sprite_index == sprAlexFinalBossJumpBack)
                 scrFBSetAttackSprite(sprAlexFinalBossJumpBackAtk, 0.3);
@@ -55,7 +55,7 @@ switch(_lvl) {
         }
         
         if(t == 100) {
-            scrFBPStartAttackCane2(x, y, objPlayer.x - 150, objPlayer.y - 150, 30, 1)
+            scrFBPStartAttackCane2(x, y, objPlayer.x - 150, objPlayer.y - 150, 30, 1.5)
             
             if(sprite_index == sprAlexFinalBossJumpBack)
                 scrFBSetAttackSprite(sprAlexFinalBossJumpBackAtk, 0.3);
@@ -100,7 +100,7 @@ switch(_lvl) {
         }
         
         if(t == 50) {
-            scrFBPStartAttackCane2(x, y, objPlayer.x, objPlayer.y - 150, 30, 1)
+            scrFBPStartAttackCane2(x, y, objPlayer.x, objPlayer.y - 150, 30, 1.5)
             fallback_sprite = sprite_index;
             
             if(sprite_index == sprAlexFinalBossJumpBack)
@@ -110,7 +110,7 @@ switch(_lvl) {
         }
         
         if(t == 80) {
-            scrFBPStartAttackCane2(x, y, objPlayer.x + 150, objPlayer.y - 150, 30, 1)
+            scrFBPStartAttackCane2(x, y, objPlayer.x + 150, objPlayer.y - 150, 30, 1.5)
             
             if(sprite_index == sprAlexFinalBossJumpBack)
                 scrFBSetAttackSprite(sprAlexFinalBossJumpBackAtk, 0.3);
@@ -119,7 +119,7 @@ switch(_lvl) {
         }
         
         if(t == 100) {
-            scrFBPStartAttackCane2(x, y, objPlayer.x - 150, objPlayer.y - 150, 30, 1)
+            scrFBPStartAttackCane2(x, y, objPlayer.x - 150, objPlayer.y - 150, 30, 1.5)
             
             if(sprite_index == sprAlexFinalBossJumpBack)
                 scrFBSetAttackSprite(sprAlexFinalBossJumpBackAtk, 0.3);
@@ -203,7 +203,7 @@ switch(_lvl) {
         }
         
         if(t == 40) {
-            scrFBPStartAttackCane2(x, y, objPlayer.x - 200, objPlayer.y - 150, 30, 1)
+            scrFBPStartAttackCane2(x, y, objPlayer.x - 200, objPlayer.y - 150, 30, 1.5)
             fallback_sprite = sprite_index;
             
             if(sprite_index == sprAlexFinalBossJumpBack)
@@ -213,7 +213,7 @@ switch(_lvl) {
         }
         
         if(t == 60) {
-            scrFBPStartAttackCane2(x, y, objPlayer.x - 100, objPlayer.y - 150, 30, 1)
+            scrFBPStartAttackCane2(x, y, objPlayer.x - 100, objPlayer.y - 150, 30, 1.5)
             
             if(sprite_index == sprAlexFinalBossJumpBack)
                 scrFBSetAttackSprite(sprAlexFinalBossJumpBackAtk, 0.3);
@@ -222,7 +222,7 @@ switch(_lvl) {
         }
         
         if(t == 80) {
-            scrFBPStartAttackCane2(x, y, objPlayer.x + 100, objPlayer.y - 150, 30, 1)
+            scrFBPStartAttackCane2(x, y, objPlayer.x + 100, objPlayer.y - 150, 30, 1.5)
             
             if(sprite_index == sprAlexFinalBossJumpBack)
                 scrFBSetAttackSprite(sprAlexFinalBossJumpBackAtk, 0.3);
@@ -231,7 +231,7 @@ switch(_lvl) {
         }
         
         if(t == 100) {
-            scrFBPStartAttackCane2(x, y, objPlayer.x - 200, objPlayer.y - 150, 30, 1)
+            scrFBPStartAttackCane2(x, y, objPlayer.x - 200, objPlayer.y - 150, 30, 1.5)
             
             if(sprite_index == sprAlexFinalBossJumpBack)
                 scrFBSetAttackSprite(sprAlexFinalBossJumpBackAtk, 0.3);
@@ -320,7 +320,7 @@ switch(_lvl) {
             sprite_index = sprAlexFinalBossIdle;
         }
         
-        if(t == 450) {
+        if(t == 480) {
             event_user(1);
         }
         break;

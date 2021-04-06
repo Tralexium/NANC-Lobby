@@ -134,9 +134,12 @@ if(t == 200)
     explosion_freq -= 5;
 if(t == 300)
     explosion_freq -= 5;
-    
+
 // Start glow animation
 if(t &gt;= 400 &amp;&amp; t &lt; 500) {
+    if(t == 400)
+        audio_play_sound(sndFB2DefeatGlow, 0, false);
+
     bg_merge_val = min(bg_merge_val + 0.0025, 1);
     halo_alpha = min(halo_alpha + 0.01, 1);
     halo_scale = halo_alpha;
@@ -148,6 +151,9 @@ if(t &gt;= 400 &amp;&amp; t &lt; 500) {
 
 // Expand white circle
 if(t &gt; 500 &amp;&amp; t &lt;= 530) {
+    if(t == 501)
+        audio_play_sound(sndFB2DefeatWhiteCircle, 0, false);
+
     white_circle_rad = scrAlexEaseOutSine(t-500, 0, 2000, 30);
     bg_merge_val = scrAlexEaseOutSine(t-500, 0.25, 1, 30);
     boss_alpha = scrAlexEaseOutSine(t-500, 1, 0, 30);
@@ -166,12 +172,12 @@ for(var i=0; i&lt;string_length(clear_string); i++) {
 }
 
 // Fade out to black
-if(t &gt;= 710) {
+if(t &gt;= 780) {
     fade_out_alpha += fade_out_spd;
 }
 
 // Goto credits
-if(t == 960) {
+if(t == 1000) {
     room_goto_next();
 }
 </string>

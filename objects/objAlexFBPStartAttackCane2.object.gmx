@@ -30,6 +30,7 @@
 // Change these:
 attack_type = 0; // 0: Spinning circles
                  // 1: Bullet shower
+                 // 1.5: Bullet shower but slower
                  // 2: Pulse moving orbs
 spin_dur = 50;
 target_x = xstart;
@@ -129,6 +130,14 @@ if(t == spin_dur) {
             }
             break;
             
+        // Bullet shower but slower
+        case 1.5:
+            repeat(6) {
+                var _orb = scrFBPOrb(x, y, 16, random_range(70, 110), 0, random_range(7, 11));
+                    _orb.gravity = .2;
+            }
+            break;
+        
         // Pulse moving orbs
         case 2:
             scrFBPSquishOrbCircle(x, y, random(360), 10, 32, 0, 12, -.4, 0);

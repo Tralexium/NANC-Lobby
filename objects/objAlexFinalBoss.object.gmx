@@ -32,26 +32,28 @@ t = 0;                          // General use timer, updates in the "Animations
 
 intro_finished = false;         // Toggles to true when the intro is finished
 
-hp = 3//85;                        // Starting health
+hp = 90;                        // Starting health
 max_hp = hp;
+hit_count = 0;                  // How many times the boss got shot while being vulnerable
+max_hits = 30;                  // How many hits are possible when the boss is vulnerable
 
 vulnerable = false;             // If possible to damage the boss
 iframes = 0;                    // How many iframes are currently present
-max_iframes = 7;                // How long the iframes last
+max_iframes = 5;                // How long the iframes last
 shield_rad = 40;                // How large the shield radius is
 recovery_time = 200;            // How many frames until recover shield
 recovering = false;             // Whether the boss is about to regenerate the shield orbs
 beaten = false;                 // Whether the boss is defeated
 
 shield_orb_amnt = 0;            // How many orbs are currently present
-shield_orb_spawn_amnt = 1//5;      // How many orbs the shield should have
+shield_orb_spawn_amnt = 5;      // How many orbs the shield should have
 shield_orb_rad = 64;            // How spaced out should the shield orbs be
 shield_orb_circle_id = noone;   // The ID of the circle orb circle object
 
 exp_amnt = 0;                   // Current exp amount
 exp_max = 100;                  // How much exp is needed to level up
-exp_idle_gain = 0.025;          // How much exp per frame
-exp_shield_gain = 6;            // How much exp per shield hit
+exp_idle_gain = 0.035;          // How much exp per frame
+exp_shield_gain = 5;            // How much exp per shield hit
 exp_lock_gain = true;           // Restricts exp gaining when true
 exp_ready_to_level_up = false;  // Indicates when the boss should play the leveling animation
 exp_level = 1;                  // Current boss level
@@ -306,6 +308,7 @@ part_type_destroy(part_type);
             <string>/// Spawn the astral crown for the defeat cutscene
 
 instance_create(x, y, objAlexFinalBossCutsceneCrown);
+audio_play_sound(sndAlexFBAstralCrownAppear, 0, false);
 </string>
           </argument>
         </arguments>
@@ -649,7 +652,7 @@ if(intro_finished &amp;&amp; !vulnerable &amp;&amp; instance_exists(objPlayer)) 
                 current_attack = attack_list[| 0];
                 last_attack = current_attack;
                 ds_list_delete(attack_list, 0);
-                //current_attack = atk.dash;
+                //current_attack = atk.jump;
             } else {
                 // If attack list is empty refill it
                 event_user(0);
@@ -740,6 +743,7 @@ if(intro_finished &amp;&amp; !instance_exists(shield_orb_circle_id) &amp;&amp; !
     vulnerable = true;
     fallback_sprite = noone;
     alarm[0] = recovery_time;
+    y = ground_level;  // Makes sure the boss is on the ground (in case you break the last orb on the last frame)
     audio_play_sound(sndAlexFBShieldBroken, 0, false);
     var _part = scrAlexMakeParticleExt(x, y, 25, sprAlexFinalBossMagicCircle, 0, 0, 0, 0, 0, 0, c_purple, c_purple, bm_add, false, true, 0, depth-1, false);
         _part.image_xscale = 0.5;
@@ -780,21 +784,43 @@ if(intro_finished &amp;&amp; !beaten) {
     } else {    
         var _bullet_id = collision_circle(x, y, 32, objBullet, true, true);
         if(_bullet_id &amp;&amp; iframes == 0) {
-            hp--;
-            iframes = max_iframes;
-            audio_play_sound(sndBossHit, 0, false);
-            
-            repeat(3) {
-                var _angle = random_range(40, 180 - 40);
-                _part = scrAlexMakeParticle(x, y+5, 20, sprAlexGlowOrb, 0, _angle, random_range(5, 8), false, true, false);
-                _part.image_xscale = 0.4;
-                _part.image_yscale = 0.4;
-                _part.image_blend = c_red;
-                _part.gravity = 0.25;
-                _part.add_scale = -0.02;
-                _part.blend_mode = bm_add;
+            if(hit_count &lt; max_hits) {
+                hp--;
+                hit_count++;
+                iframes = max_iframes;
+                audio_play_sound(sndBossHit, 0, false);
+                
+                repeat(3) {
+                    var _angle = random_range(40, 180 - 40);
+                    _part = scrAlexMakeParticle(x, y+5, 14, sprAlexGlowOrb, 0, _angle, random_range(6, 11), false, true, false);
+                    _part.image_xscale = 0.4;
+                    _part.image_yscale = 0.4;
+                    _part.image_blend = c_red;
+                    _part.gravity = 0.35;
+                    _part.add_scale = -0.02;
+                    _part.blend_mode = bm_add;
+                }
+            } else {
+                iframes = max_iframes;
+                var _pitch = random_range(0.9, 1.1);
+                repeat(2) {
+                    var _sfx = audio_play_sound(sndAlexFBRicochet, 0, false);
+                    audio_sound_pitch(_sfx, _pitch);
+                }
+                
+                with(_bullet_id) {
+                    repeat(3) {
+                        var _angle = random(360);
+                        _part = scrAlexMakeParticle(x, y, 10, sprAlexFBParticleSpark, 0, _angle, random_range(6, 9), true, false, false);
+                        _part.image_angle = _angle;
+                        _part.start_col = c_aqua;
+                        _part.blend_mode = bm_add;
+                    }
+                }
             }
         }
+        
+        
         instance_destroy(_bullet_id);
         
         // Check if the hp reached 0
@@ -856,6 +882,7 @@ if(recovering) {
         if(ceil(image_index) == image_number-1) {
             recovering = false;
             vulnerable = false;
+            hit_count -= max_hits;  // If the player missed a few shots they accumulate over
             event_user(1);
         }
     }
@@ -989,6 +1016,7 @@ look_at_player = true;
 show_black_bars = true;
 
 scrStopMusic();
+audio_play_sound(sndAlexFBDefeat, 0, false);
 
 // Spawn the color effect obj
 instance_create(0, 0, objAlexFinalBossDefeatCutsceneColorEffect);
@@ -1475,7 +1503,13 @@ draw_set_alpha(1);
 
 // Damage indicator
 var _damage_alpha = iframes / max_iframes;
-draw_sprite_ext(sprite_index, image_index, x, y + float_y, image_xscale, image_yscale, image_angle, c_red, _damage_alpha);
+var _blend_col = c_red;
+if(hit_count &gt;= max_hits)
+    _blend_col = c_aqua;
+draw_sprite_ext(sprite_index, image_index, x, y + float_y, image_xscale, image_yscale, image_angle, _blend_col, _damage_alpha);
+draw_set_blend_mode(bm_add);
+draw_sprite_ext(sprite_index, image_index, x, y + float_y, image_xscale, image_yscale, image_angle, _blend_col, _damage_alpha);
+draw_set_blend_mode(bm_normal);
 </string>
           </argument>
         </arguments>
