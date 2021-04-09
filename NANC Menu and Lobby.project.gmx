@@ -823,6 +823,13 @@
         <sprite>sprites\sprAlexFlyingPlayerBulletTestShape</sprite>
         <sprite>sprites\sprAlexFB2RippleNormal</sprite>
       </sprites>
+      <sprites name="Minigame Room">
+        <sprite>sprites\sprAlexMinigameBall</sprite>
+        <sprite>sprites\sprAlexMinigameCannon</sprite>
+        <sprite>sprites\sprAlexMinigameTargetBlueHalf</sprite>
+        <sprite>sprites\sprAlexMinigameTargetRedHalf</sprite>
+        <sprite>sprites\sprAlexMinigameTargetYellowHalf</sprite>
+      </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeD</sprite>
@@ -1469,6 +1476,13 @@
         <object>objects\objAlexCrystalStar</object>
         <object>objects\objAlexCrystalStarCollectedIndicator</object>
       </objects>
+      <objects name="Minigame Room">
+        <object>objects\objAlexMinigameScoreUI</object>
+        <object>objects\objAlexMinigameBall</object>
+        <object>objects\objAlexMinigamePointField</object>
+        <object>objects\objAlexMinigameBallLauncher</object>
+        <object>objects\objAlexMinigameBallScoreText</object>
+      </objects>
       <object>objects\objStarzorSign</object>
       <objects name="Final Stage">
         <objects name="Moving Obstacles">
@@ -1731,6 +1745,7 @@
         <room>rooms\rLobbyFloor6</room>
         <room>rooms\rLobbyBonusFloor</room>
         <room>rooms\rStarFloor</room>
+        <room>rooms\rMinigameFloor</room>
       </rooms>
     </rooms>
     <rooms name="Credits">

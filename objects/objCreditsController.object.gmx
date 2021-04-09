@@ -723,7 +723,9 @@ if(credits_scroll_spd != 0) {
                 if(credits_current_font == fMenuLobby12) {
                     scrDrawTextSquareOutline(_line_x, _line_y, _line_string, $e8e0df, $2e1814, 2, fa_center, fa_middle);
                 } else {
-                    scrDrawTextSquareOutline(_line_x, _line_y, _line_string, $e8e0df, $2e1814, 1, fa_center, fa_middle);
+                    draw_set_halign(fa_center);
+                    draw_set_valign(fa_middle);
+                    scrDrawTextOutline(_line_x, _line_y, _line_string, $e8e0df, $2e1814);
                 }
             }
             

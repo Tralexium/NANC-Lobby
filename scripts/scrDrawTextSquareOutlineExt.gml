@@ -45,7 +45,7 @@ surface_set_target(global.text_outline_surf);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
     draw_set_colour(_text_color);
-    draw_text_transformed(_outline_size, _outline_size, _string, _xscale, _yscale, 0);
+    draw_text_transformed(_outline_size + _surf_w/2, _outline_size + _surf_h/2, _string, _xscale, _yscale, 0);
 surface_reset_target();
 
 
@@ -66,5 +66,5 @@ shader_set(_shader);
     shader_set_uniform_f(_shader_outline_width_u, _shader_outline_width);
     shader_set_uniform_f(_shader_outline_height_u, _shader_outline_height);
     shader_set_uniform_f_array(_shader_color_u, _shader_color);
-    draw_surface(global.text_outline_surf, _surf_x, _surf_y);
+    draw_surface(global.text_outline_surf, _surf_x - _surf_w/2, _surf_y - _surf_h/2);
 shader_reset();
