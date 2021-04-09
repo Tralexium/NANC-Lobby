@@ -61,7 +61,8 @@ with(objPlayer) {
     instance_create(x, y, objAlexLobbyPlayer);
     
     // Spawn the camera
-    instance_create(x, y, objAlexLobbyCam)
+    if(!instance_exists(objAlexStarStageCam))
+        instance_create(x, y, objAlexLobbyCam)
 }
 </string>
           </argument>

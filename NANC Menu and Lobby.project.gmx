@@ -3,9 +3,9 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="7" name="datafiles">
-    <datafiles number="7" name="Reviews">
-      <datafiles number="7" name="Stage_35">
+  <datafiles number="8" name="datafiles">
+    <datafiles number="8" name="Reviews">
+      <datafiles number="8" name="Stage_35">
         <datafile>
           <name>Average_ratings.txt</name>
           <exists>-1</exists>
@@ -127,6 +127,23 @@
         </datafile>
       </datafiles>
     </datafiles>
+    <datafile>
+      <name>credits.txt</name>
+      <exists>-1</exists>
+      <size>1790</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>credits.txt</filename>
+    </datafile>
   </datafiles>
   <NewExtensions/>
   <sounds name="sound">
@@ -348,6 +365,10 @@
         <sound>sound\sndAlexChaseMonsterAmbient</sound>
         <sound>sound\sndAlexFinalStageVisualChange</sound>
       </sounds>
+    </sounds>
+    <sounds name="Credits">
+      <sound>sound\musCredits</sound>
+      <sound>sound\musDramaticZoomout</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -910,6 +931,49 @@
         <sprite>sprites\sprAlexPetRNG</sprite>
       </sprites>
     </sprites>
+    <sprites name="Credits">
+      <sprite>sprites\sprCreditsConfetti</sprite>
+      <sprite>sprites\Cool_SmileyUp</sprite>
+      <sprite>sprites\somebroBlock</sprite>
+      <sprite>sprites\spr_RenkoBlock3</sprite>
+      <sprite>sprites\spr128Credits</sprite>
+      <sprite>sprites\sprAlejoCredits</sprite>
+      <sprite>sprites\sprAlexTrollfaceCredits</sprite>
+      <sprite>sprites\sprArcherikCredits</sprite>
+      <sprite>sprites\sprBattery_Asza</sprite>
+      <sprite>sprites\sprBetterBlockExpandBlock</sprite>
+      <sprite>sprites\sprCoolFogThatMakesEverythingLookBetter</sprite>
+      <sprite>sprites\sprCreditsBlocks</sprite>
+      <sprite>sprites\sprCreditsBlocks2</sprite>
+      <sprite>sprites\sprCreditsPlatform</sprite>
+      <sprite>sprites\sprCreditsStars</sprite>
+      <sprite>sprites\sprDenferokMushroom</sprite>
+      <sprite>sprites\sprGoranDartTrapD</sprite>
+      <sprite>sprites\sprIronEnergyBall</sprite>
+      <sprite>sprites\sprJoaoTForceBTimeBlockEmpty</sprite>
+      <sprite>sprites\sprKingMuncher</sprite>
+      <sprite>sprites\sprLoneCredits</sprite>
+      <sprite>sprites\sprMakespike1</sprite>
+      <sprite>sprites\sprMeemCredits</sprite>
+      <sprite>sprites\sprNeosCreditsEnemy</sprite>
+      <sprite>sprites\sprNinzMarioCredits</sprite>
+      <sprite>sprites\sprPasteloftCherryCredits</sprite>
+      <sprite>sprites\sprPatCredits</sprite>
+      <sprite>sprites\sprPooksCredits</sprite>
+      <sprite>sprites\sprPrinceCredits</sprite>
+      <sprite>sprites\sprRed_Brick</sprite>
+      <sprite>sprites\sprRedDown</sprite>
+      <sprite>sprites\sprRossiterAnchor</sprite>
+      <sprite>sprites\sprSecretItemCredits</sprite>
+      <sprite>sprites\sprShignCredits</sprite>
+      <sprite>sprites\sprSkull_Bouncy</sprite>
+      <sprite>sprites\sprStagemanDiamond</sprite>
+      <sprite>sprites\sprStarzorCredits</sprite>
+      <sprite>sprites\sprVerveRise</sprite>
+      <sprite>sprites\sprWhitBE</sprite>
+      <sprite>sprites\sprWolfiSnowman</sprite>
+      <sprite>sprites\sprYoshiDeadCredits</sprite>
+    </sprites>
     <sprite>sprites\sprStarzorSignIdle</sprite>
     <sprite>sprites\sprStarzorSignTalking</sprite>
     <sprite>sprites\sprStarzorSignArrow</sprite>
@@ -919,6 +983,7 @@
     <background>background\bMegaman</background>
     <background>background\bJumpThrough</background>
     <background>background\bTree</background>
+    <background>background\bgCredits</background>
     <background>background\bStars</background>
     <backgrounds name="ALEX">
       <background>background\tAlexReception</background>
@@ -1005,6 +1070,7 @@
     <scripts name="functions">
       <script>scripts\scrInView.gml</script>
       <script>scripts\scrDrawTextOutline.gml</script>
+      <script>scripts\scrDrawTextOutlineTransformed.gml</script>
       <script>scripts\scrMakeShapes.gml</script>
       <script>scripts\scrMakeCircle.gml</script>
       <script>scripts\scrInverseLerp.gml</script>
@@ -1097,6 +1163,7 @@
       <script>scripts\scrAlexEaseOutCubic.gml</script>
       <script>scripts\scrAlexEaseOutQuint.gml</script>
       <script>scripts\scrDrawTextSquareOutline.gml</script>
+      <script>scripts\scrDrawTextSquareOutlineExt.gml</script>
       <script>scripts\scrAlexDrawPieTex.gml</script>
       <script>scripts\scrAlexDrawPieTexExt.gml</script>
       <script>scripts\scrAlexDrawSegmentBar.gml</script>
@@ -1605,6 +1672,16 @@
         </objects>
       </objects>
     </objects>
+    <objects name="Credits">
+      <object>objects\objCreditsBGController</object>
+      <object>objects\objCreditsBlock</object>
+      <object>objects\objCreditsController</object>
+      <object>objects\objCreditsDude</object>
+      <object>objects\objCreditsConfetti</object>
+      <object>objects\objCreditsPlatform</object>
+      <object>objects\objCreditsStar</object>
+      <object>objects\objSkipForwardTime</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="init">
@@ -1654,6 +1731,9 @@
         <room>rooms\rLobbyBonusFloor</room>
         <room>rooms\rStarFloor</room>
       </rooms>
+    </rooms>
+    <rooms name="Credits">
+      <room>rooms\rCredits</room>
     </rooms>
   </rooms>
   <help>
