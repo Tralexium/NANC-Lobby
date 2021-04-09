@@ -933,6 +933,7 @@
     </sprites>
     <sprites name="Credits">
       <sprite>sprites\sprCreditsConfetti</sprite>
+      <sprite>sprites\sprCreditsThankYou</sprite>
       <sprite>sprites\Cool_SmileyUp</sprite>
       <sprite>sprites\somebroBlock</sprite>
       <sprite>sprites\spr_RenkoBlock3</sprite>

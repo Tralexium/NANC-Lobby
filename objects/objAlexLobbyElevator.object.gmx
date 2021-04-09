@@ -197,9 +197,6 @@ with(objAlexLobbyPlayer)
 // Enable pause and restart
 global.noRestart = false;
 global.noPause = false;
-
-// Auto save
-global.autosave = true;
     
 room_goto(floor_id[cursor_index])
 </string>

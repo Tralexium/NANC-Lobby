@@ -186,6 +186,9 @@ fade_in_text_index = -1;
 fade_in_text_alpha = 0;
 fade_in_text_active = false;
 
+fade_out = false;
+fade_out_alpha = 0;
+
 credits_line_list = ds_list_create();
 credits_y_offset = 900;
 credits_scroll_spd = 0;
@@ -261,6 +264,58 @@ audio_sound_gain(global.currentMusic, 1, 0);
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Restore pausing and restarting
+
+// Disable pausing &amp; restarting
+global.noPause = false;
+global.noRestart = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Thank you text
+
+fade_in_text_index++;
+fade_in_text_active = true;
+alarm[1] = 50*5;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="1">
       <action>
@@ -279,9 +334,13 @@ audio_sound_gain(global.currentMusic, 1, 0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Fade out text
+            <string>/// Fade out text OR screen
 
-fade_in_text_active = false;
+if(fade_in_text_index &lt; 2) {
+    fade_in_text_active = false;
+} else {
+    fade_out = true;
+}
 </string>
           </argument>
         </arguments>
@@ -403,7 +462,7 @@ if(t &gt; 1100 &amp;&amp; !spent) {
 // Credits scrolling
 if(t &gt;= 600) {
     if(t == 600) {
-        credits_scroll_spd = -0.39;
+        credits_scroll_spd = -0.38;
     }
     
     if(spent) {
@@ -416,6 +475,15 @@ if(t &gt;= 600) {
     }
 }
 
+// Fade out overlay
+if(fade_out) {
+    fade_out_alpha += 0.005;
+    
+    if(fade_out_alpha &gt;= 1.3) {
+        instance_create(0, 0, objAlexMusicFadeTransition);
+        room_goto(rLobbyReception);
+    }
+}
 
 
 
@@ -490,7 +558,10 @@ if(zoom &amp;&amp; zoom_out_t &lt;= zoom_out_dur) {
     
     view_wview = scrAlexEaseInSine(zoom_out_t, 800, _view_height*_width_aspect, zoom_out_dur);
     view_hview = scrAlexEaseInSine(zoom_out_t, 608, _view_height, zoom_out_dur);
-    view_xview = scrAlexEaseInSine(zoom_out_t, 0, -(_view_height*_width_aspect)/2 + 200, zoom_out_dur);
+    view_xview = scrAlexEaseInSine(zoom_out_t, 0, -(_view_height*_width_aspect)/2 + 230, zoom_out_dur);
+    
+    if(zoom_out_t == zoom_out_dur)
+        alarm[2] = 50;
 }
 
 
@@ -547,6 +618,71 @@ global.creditsindex = 0
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Fade in text
+
+if(fade_in_text_alpha &gt; 0) {
+    var _x = 400;
+    var _y = 304;
+    
+    if(fade_in_text_index &lt; 2) {
+        draw_set_font(fMenuLobby12);
+        draw_set_alpha(fade_in_text_alpha);
+        scrDrawTextSquareOutline(_x, _y, fade_in_text[fade_in_text_index], $e8e0df, $2e1814, 2, fa_center, fa_middle);
+        draw_set_alpha(1);
+    } else {
+        draw_set_alpha(fade_in_text_alpha);
+        draw_sprite(sprCreditsThankYou, 0, _x, _y);
+        draw_set_alpha(1);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Fade out overlay
+
+draw_set_colour(c_black);
+draw_set_alpha(fade_out_alpha);
+draw_rectangle(-1, -1, 800, 608, false);
+draw_set_alpha(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -565,16 +701,6 @@ global.creditsindex = 0
           <argument>
             <kind>1</kind>
             <string>/// Draw credits
-
-if(fade_in_text_alpha &gt; 0) {
-    var _x = view_xview[0] + 400;
-    var _y = view_yview[0] + 304;
-    
-    draw_set_font(fMenuLobby12);
-    draw_set_alpha(fade_in_text_alpha);
-    scrDrawTextSquareOutline(_x, _y, fade_in_text[fade_in_text_index], $e8e0df, $2e1814, 2, fa_center, fa_middle);
-    draw_set_alpha(1);
-}
 
 if(credits_scroll_spd != 0) {
     var _line_x = 555;
