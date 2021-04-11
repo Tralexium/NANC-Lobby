@@ -30,6 +30,7 @@
 vspeed = -3;
 friction = 0.2;
 
+text_score = 0;
 text_scale = 1;
 text_scale_dur = 30;
 text_scale_t = 0;
@@ -95,7 +96,7 @@ if(fade_out) {
             <string>/// Draw text
 
 draw_set_font(fMenuLobby12);
-scrDrawTextSquareOutlineExt(ui_x, ui_y, _line_string, $e8e0df, $2e1814, 2, fa_center, fa_middle, text_scale, text_scale);
+scrDrawTextSquareOutlineExt(ui_x, ui_y, text_score, $e8e0df, $2e1814, 2, fa_center, fa_middle, text_scale, text_scale);
 </string>
           </argument>
         </arguments>

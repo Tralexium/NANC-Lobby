@@ -142,7 +142,7 @@ switch(_lvl) {
         }
         
         if(t == 170) {
-            scrFBPSquishOrbCircle(x, y, random(360), 12, 32, 1, 2, .1, -0.01);
+            scrFBPSquishOrbCircle(x, y, random(360), 10, 32, 1, 2, .1, -0.01);
             audio_play_sound(sndAlexFBCaneThrow, 0, false);
             audio_play_sound(sndAlexFBSquishOrbPulse, 0, false);
             
@@ -153,7 +153,7 @@ switch(_lvl) {
         }
         
         if(t == 210) {
-            scrFBPSquishOrbCircle(x, y, random(360), 12, 32, -1, 2, .1, -0.01);
+            scrFBPSquishOrbCircle(x, y, random(360), 10, 32, -1, 2, .1, -0.01);
             audio_play_sound(sndAlexFBCaneThrow, 0, false);
             audio_play_sound(sndAlexFBSquishOrbPulse, 0, false);
             
@@ -254,7 +254,7 @@ switch(_lvl) {
         }
         
         if(t == 170) {
-            scrFBPSquishOrbCircle(x, y, random(360), 14, 32, 1, 2, .1, -0.01);
+            scrFBPSquishOrbCircle(x, y, random(360), 12, 32, 1, 2, .1, -0.01);
             audio_play_sound(sndAlexFBCaneThrow, 0, false);
             audio_play_sound(sndAlexFBSquishOrbPulse, 0, false);
             
@@ -265,7 +265,7 @@ switch(_lvl) {
         }
         
         if(t == 210) {
-            scrFBPSquishOrbCircle(x, y, random(360), 14, 32, -1, 2, .1, -0.01);
+            scrFBPSquishOrbCircle(x, y, random(360), 12, 32, -1, 2, .1, -0.01);
             audio_play_sound(sndAlexFBCaneThrow, 0, false);
             audio_play_sound(sndAlexFBSquishOrbPulse, 0, false);
             

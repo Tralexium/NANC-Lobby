@@ -1479,9 +1479,10 @@
       <objects name="Minigame Room">
         <object>objects\objAlexMinigameScoreUI</object>
         <object>objects\objAlexMinigameBall</object>
+        <object>objects\objAlexMinigameBallScoreText</object>
         <object>objects\objAlexMinigamePointField</object>
         <object>objects\objAlexMinigameBallLauncher</object>
-        <object>objects\objAlexMinigameBallScoreText</object>
+        <object>objects\objAlexMinigameTarget</object>
       </objects>
       <object>objects\objStarzorSign</object>
       <objects name="Final Stage">

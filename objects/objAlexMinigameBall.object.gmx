@@ -69,7 +69,17 @@ collision_cooldown_t = 0;
 if(points_on_destroy &gt; 0) {
     global.ballMinigameScore += points_on_destroy;
     
-    // TODO: spawn a score floating text
+    with(objAlexMinigameTarget) {
+        if(other.points_on_destroy == 5)
+            blue_glow = 1;
+        if(other.points_on_destroy == 10)
+            red_glow = 1;  
+        if(other.points_on_destroy == 20)
+            yellow_glow = 1;  
+    }
+    
+    var _floating_score = instance_create(x, y, objAlexMinigameBallScoreText);
+        _floating_score.text_score = points_on_destroy;
 }
 </string>
           </argument>

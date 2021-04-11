@@ -1,4 +1,4 @@
-///scrFBPOrbCircle(x, y, circle_angle, amount, size[optional], dir_incr[optional], speed[optional], spd_incr[optional], size_incr[optional])
+///scrFBPOrbCircle(x, y, circle_angle, amount, size[optional], dir_incr[optional], speed[optional], spd_incr[optional], size_incr[optional], depth[optional])
 
 var _x = argument[0];
 var _y = argument[1];
@@ -9,6 +9,7 @@ var _dir_incr = -1;
 var _spd = -1;
 var _spd_incr = -1;
 var _size_incr = -1;
+var _depth = -1;
 
 
 for (var i = 0; i < _amount; i += 1)
@@ -38,5 +39,9 @@ for (var i = 0; i < _amount; i += 1)
     if(argument_count > 8) {
         _size_incr = argument[8];
         _obj.size_incr = _size_incr;
+    }
+    if(argument_count > 9) {
+        _depth = argument[9];
+        _obj.depth = _depth;
     }
 }

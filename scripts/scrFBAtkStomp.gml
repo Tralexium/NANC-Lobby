@@ -48,7 +48,7 @@ switch(_lvl) {
             instance_create(0, 0, objAlexScreenPulseEffect);
             audio_play_sound(sndAlexFBGroundStomp, 0, false);
             
-            repeat(15) {
+            repeat(12) {
                 var _orb = scrFBPOrb(x, y, 32, random_range(70, 110), 0, random_range(9, 15), 0, -0.1);
                     _orb.gravity = 0.25;
             }
@@ -94,7 +94,7 @@ switch(_lvl) {
             instance_create(0, 0, objAlexScreenPulseEffect);
             audio_play_sound(sndAlexFBGroundStomp, 0, false);
             
-            repeat(12) {
+            repeat(8) {
                 var _orb = scrFBPOrbBounce(x, y, 32, random_range(70, 110), 0, random_range(9, 15), 0, -0.1, 0.2, 1);
                     _orb.gravity = 0.25;
             }
@@ -153,7 +153,7 @@ switch(_lvl) {
         with(objAlexFBPSquishOrb)
             squish_multi = 0.02;
     
-        if(t == 530) {
+        if(t == 550) {
             with(objAlexFBPOrbBounce)
                 instance_destroy();
                 

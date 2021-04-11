@@ -59,6 +59,7 @@ background_vspeed[0] = -.5</code>
     <instance objName="objAlexBlockWithShadow" x="0" y="464" name="inst_ADE9260B" locked="0" code="" scaleX="42" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="0" y="0" name="inst_C5BDD074" locked="0" code="" scaleX="42" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="512" y="48" name="inst_B6968C4C" locked="0" code="" scaleX="10" scaleY="26" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexMinigameTarget" x="576" y="256" name="inst_2BE15B80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexBonusFloor" x="512" y="432" w="16" h="16" xo="32" yo="80" id="10018910" name="inst_C9B2C243" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

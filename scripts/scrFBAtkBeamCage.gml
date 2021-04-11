@@ -46,6 +46,9 @@ switch(_lvl) {
                 var _spd = 1;
                 var _accel = 0.1;
                 
+                if(t mod 60 == 0)
+                    _spawn_y = ground_level - 16;
+                
                 if(_spawn_x > objPlayer.x) {
                     _spd *= -1;
                     _accel *= -1;
@@ -101,8 +104,8 @@ switch(_lvl) {
                 }
             
                 var _spawn_x = x + (440 * _spawn_side);
-                var _spawn_y = ground_level - choose(16+64, 16+96, 16+150);
-                var _spd = random_range(2, 5) * -_spawn_side;
+                var _spawn_y = ground_level - random_range(16+80, 16+150);
+                var _spd = random_range(2.5, 5) * -_spawn_side;
                 
                 scrFBPOrbBounce(_spawn_x, _spawn_y, 32, 0, 0, _spd, 0, 0, 0.2, 4);
             }
@@ -117,9 +120,9 @@ switch(_lvl) {
         if(t == 355) {
             with(objAlexFBPOrbBounce) {
                 if(y < 520) {
-                    repeat(3) {
-                    var _orb = scrFBPOrb(x, y, 32, random_range(80, 100), 0, random_range(11, 13), 0, -.2);
-                        _orb.gravity = .25;
+                    repeat(2) {
+                    var _orb = scrFBPOrb(x, y, 32, random_range(80, 100), 0, random_range(7, 10), 0, -.2);
+                        _orb.gravity = .2;
                     }
                 }
                 
@@ -162,7 +165,7 @@ switch(_lvl) {
             if(t > 100 && t < 300 && t mod 25 == 0) {  
                 var _spawn_side = choose(-1, 1);
                 var _spawn_x = objPlayer.x + (450*_spawn_side); 
-                var _spawn_y = ground_level - choose(16+64, 16+96, 16+150);
+                var _spawn_y = ground_level - random_range(16+80, 16+150);
                 
                 if(view_xview[0] < 100) {
                     _spawn_x = 850;
@@ -173,7 +176,7 @@ switch(_lvl) {
                     _spawn_side = -1;
                 }
                 
-                var _spd = random_range(3.5, 6) * -_spawn_side;
+                var _spd = random_range(2.5, 6) * -_spawn_side;
                 
                 scrFBPOrbBounce(_spawn_x, _spawn_y, 32, 0, 0, _spd, 0, 0, 0.2, 4);
             }
@@ -185,9 +188,9 @@ switch(_lvl) {
             if(t == 360) {
                 with(objAlexFBPOrbBounce) {
                     if(y < 520) {
-                        repeat(3) {
-                        var _orb = scrFBPOrb(x, y, 32, random_range(80, 100), 0, random_range(11, 13), 0, -.2);
-                            _orb.gravity = .25;
+                        repeat(2) {
+                        var _orb = scrFBPOrb(x, y, 32, random_range(80, 100), 0, random_range(7, 10), 0, -.2);
+                            _orb.gravity = .2;
                         }
                     }
                     

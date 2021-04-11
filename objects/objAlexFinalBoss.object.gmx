@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-1</depth>
   <persistent>0</persistent>
-  <parentName>objPlayerKiller</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -32,10 +32,10 @@ t = 0;                          // General use timer, updates in the "Animations
 
 intro_finished = false;         // Toggles to true when the intro is finished
 
-hp = 90;                        // Starting health
+hp = 60;                        // Starting health
 max_hp = hp;
 hit_count = 0;                  // How many times the boss got shot while being vulnerable
-max_hits = 30;                  // How many hits are possible when the boss is vulnerable
+max_hits = 20;                  // How many hits are possible when the boss is vulnerable
 
 vulnerable = false;             // If possible to damage the boss
 iframes = 0;                    // How many iframes are currently present
@@ -879,10 +879,11 @@ if(recovering) {
         if(round(image_index) == 10 &amp;&amp; !instance_exists(shield_orb_circle_id)) {
             event_user(2);  // Recover shield orbs
         }
-        if(ceil(image_index) == image_number-1) {
+        if(ceil(image_index) == image_number-1) {        
             recovering = false;
             vulnerable = false;
             hit_count -= max_hits;  // If the player missed a few shots they accumulate over
+            exp_idle_gain += 0.005;
             event_user(1);
         }
     }
@@ -985,6 +986,32 @@ if(!beaten) {
     repeat(5)
         part_particles_create(part_system, random_range(-50, room_width+50), ground_level + 130, part_type, 1)
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objPlayer">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Kill player upon collision
+
+if(!vulnerable &amp;&amp; !beaten)
+    scrKillPlayer();
 </string>
           </argument>
         </arguments>

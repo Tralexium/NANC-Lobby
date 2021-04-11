@@ -111,8 +111,8 @@ switch(_lvl) {
                 }
             }
             
-            if(t == 300) {
-                scrFBPBeam(objPlayer.x, ground_level - 32, 64, 0, 0, 100);
+            if(t == 340) {
+                scrFBPBeam(objPlayer.x, ground_level - 32, 64, 0, 0, 60);
             }
         }
         

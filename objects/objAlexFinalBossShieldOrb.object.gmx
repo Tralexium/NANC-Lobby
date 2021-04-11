@@ -3,7 +3,7 @@
   <spriteName>sprAlexFinalBossShieldOrb</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>-202</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -106,7 +106,7 @@ if(hp &lt;= 0) {
         _part.add_scale = 0.125;
         _part.depth = depth - 1;
     
-    scrFBPOrbCircle(x, y, 0, 8, 24, 0, 3, .2, 0);
+    scrFBPOrbCircle(x, y, 0, 8, 24, 0, 3, .15, 0, depth - 1);
     
     audio_play_sound(sndAlexFBShieldOrbBroken, 0, false);
     instance_destroy();
