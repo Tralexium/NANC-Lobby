@@ -28,12 +28,11 @@
             <string>/// Init vars
 
 t = 0;
-beam_size = 100;
-duration = 120;
-indicator_alpha = 0;
-indicator_scale = 1;
-shrinking_indicator_alpha = 0;
-indicator_dist = 128;
+glow_width = 150;
+x_scale = 1;
+player_dist = 0;
+fade_min_dist = 100;
+fade_max_dist = 500;
 </string>
           </argument>
         </arguments>
@@ -56,25 +55,15 @@ indicator_dist = 128;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Do animation shenanigans
+            <string>/// Fading
 
 t++;
 
-var _beam_scale = beam_size / sprite_get_width(sprAlexFBPBeamIndicator)
-indicator_alpha = scrAlexEaseOutSine(t, 0, 0.2, duration);
-indicator_scale = scrAlexEaseOutSine(t, 0, _beam_scale, duration);
-indicator_dist = scrAlexEaseOutSine(t, 128, 0, duration);
-shrinking_indicator_alpha = abs(dsin(t * ((t/duration)*20)));
+if(instance_exists(objPlayer))
+    player_dist = clamp(point_distance(x, y, objPlayer.x, y), fade_min_dist, fade_max_dist);
 
-if(t == duration) {
-    scrFBPBeam(x, y, beam_size, 90, 0, 1);
-    scrFBPShockwave(x, y, 800, 40, 2);
-    scrFBShakeCam(35, 0, 12, 0, 3);
-    instance_create(x, -64, objAlexFinalBoss);
-    instance_create(0, 0, objAlexScreenPulseEffect);
-    audio_play_sound(sndAlexFBGroundStomp, 0, false);
-    instance_destroy();
-}
+var _base_alpha = scrInverseLerp(fade_max_dist, fade_min_dist, player_dist) * 0.5;
+image_alpha = _base_alpha + dsin(t*4)*0.15;
 </string>
           </argument>
         </arguments>
@@ -97,24 +86,23 @@ if(t == duration) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw stuff
+            <string>/// Draw edge glow
 
+var _col = $7b2fcc;
+draw_set_colour(_col);
 draw_set_blend_mode(bm_add);
-repeat(4)
-    draw_sprite_ext(sprAlexFBGroundGlow, 0, room_width/2, 512, 100, 2, 0, -1, indicator_alpha);
-draw_set_blend_mode(bm_normal);
+draw_set_alpha(image_alpha);
 
-var _beam_scale = beam_size / sprite_get_width(sprAlexFBPBeamIndicator)
+if(x_scale == 1) {
+    draw_rectangle_colour(x, y, glow_width, room_height, _col, c_black, c_black, _col, false);
+    draw_rectangle(x - 500, y, x - 1, room_height, false);
+} else {
+    draw_rectangle_colour(x - glow_width, y, x, room_height, c_black, _col, _col, c_black, false);
+    draw_rectangle(x + 1, y, x + 500, room_height, false);
+}
 
-draw_sprite_ext(sprAlexFBPBeamIndicator, 0, x-indicator_dist, y, _beam_scale, 100, 0, -1, indicator_alpha/2);
-draw_set_blend_mode(bm_add);
-draw_sprite_ext(sprAlexFBPBeamIndicator, 0, x-indicator_dist, y, indicator_scale, 100, 0, -1, indicator_alpha * shrinking_indicator_alpha);
 draw_set_blend_mode(bm_normal);
-
-draw_sprite_ext(sprAlexFBPBeamIndicator, 0, x+indicator_dist, y, _beam_scale, 100, 0, -1, indicator_alpha/2);
-draw_set_blend_mode(bm_add);
-draw_sprite_ext(sprAlexFBPBeamIndicator, 0, x+indicator_dist, y, indicator_scale, 100, 0, -1, indicator_alpha * shrinking_indicator_alpha);
-draw_set_blend_mode(bm_normal);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

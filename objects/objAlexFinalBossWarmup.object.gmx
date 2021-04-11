@@ -30,6 +30,8 @@
 image_speed = 0.3;
 image_xscale = -1;
 
+intro_skipped = false;
+
 t = 0;
 floating = false;
 draw_y = 0;
@@ -46,6 +48,10 @@ aura_add_alpha = 0.2;
 aura_scale = 1.5;
 aura_base_scale = aura_scale;
 aura_add_scale = .3;
+black_overlay_alpha = 0;
+
+if(global.skipFBIntro)
+    black_overlay_alpha = 1;
 </string>
           </argument>
         </arguments>
@@ -107,11 +113,16 @@ aura_scale = (aura_base_scale + dsin(t*aura_spd) * aura_add_scale) * sign(image_
             <string>/// Timeline
 
 t++;
+black_overlay_alpha = max(black_overlay_alpha - 0.02, 0);
+
 
 // For debug purposes, skips the majority of the warmup phase
-if(global.debugMode &amp;&amp; scrButtonCheckPressed(global.skipButton) &amp;&amp; t &lt; 1370) {
-    t = 1370;
-    scrFinalBossTP(room_width/2, 96, sprAlexFinalBossFloat);
+if(!intro_skipped &amp;&amp; ((global.debugMode &amp;&amp; scrButtonCheckPressed(global.skipButton)) || global.skipFBIntro) &amp;&amp; t &lt; 1370) {
+    t = 1251;
+    x = room_width/2;
+    sprite_index = sprAlexFinalBossFloat;
+    
+    intro_skipped = true;
 }
 
 if(!instance_exists(objPlayer))
@@ -141,6 +152,7 @@ if(t == 7*50) {
     scrFBPStartAttackCane2(x, y, room_width/2 + 250, 100, 44, 0);
     
     event_user(0);
+    event_user(1);
 }
 
 // Spin circles 2
@@ -247,19 +259,19 @@ if(t &gt;= 900 &amp;&amp; t &lt; 960 &amp;&amp; t mod 22 == 0) {
 }
 
 // Beam dodge  &amp; shower attack
-if(t == 932) {
+if(t == 922) {
     scrFBPBeam(room_width/2, 480, 64, 45, 0, 44);
     scrFBPBeam(room_width/2, 480, 64, -45, 0, 44); 
 }
-else if(t == 942) {
+else if(t == 932) {
     scrFBPBeam(room_width/2 - 200, 480, 64, 20, 0, 56);
     scrFBPBeam(room_width/2 + 200, 480, 64, -20, 0, 56);
 }
-else if(t == 952) {
+else if(t == 942) {
     scrFBPBeam(room_width/2 - 400, 480, 64, 30, 0, 68);
     scrFBPBeam(room_width/2 + 400, 480, 64, -30, 0, 68);
 }
-else if(t == 962) {
+else if(t == 952) {
     scrFBPBeam(room_width/2 - 400, 480, 64, 45, 0, 80);
     scrFBPBeam(room_width/2 + 400, 480, 64, -45, 0, 80);
 }
@@ -268,9 +280,9 @@ else if(t == 962) {
 if(t == 1060) {
     with(objAlexFBPOrbBounce) {
         if(y &lt; 520) {
-            repeat(3) {
-            var _orb = scrFBPOrb(x, y, 32, random_range(80, 100), 0, random_range(11, 13), 0, -.2);
-                _orb.gravity = .25;
+            repeat(2) {
+            var _orb = scrFBPOrb(x, y, 32, random_range(70, 110), 0, random_range(8, 11), 0, -.2);
+                _orb.gravity = .2;
             }
         }
         
@@ -280,8 +292,15 @@ if(t == 1060) {
 
 // Spiral pulse thingy
 if(t &gt;= 1070 &amp;&amp; t &lt; 1230 &amp;&amp; t mod 22 == 0) {
+    /* OLD VER
     scrFBPSquishOrbCircle(room_width/2, 300, pulse_circle_angle, 12, 32, pulse_circle_curve_spd, 13, 0, 0);
     pulse_circle_angle += 25;
+    pulse_circle_curve_spd *= -1;
+    */
+    
+    scrFBPSquishOrbCircle(room_width/2 - 300, 300, pulse_circle_angle, 8, 32, pulse_circle_curve_spd, 13, 0, 0);
+    scrFBPSquishOrbCircle(room_width/2 + 300, 300, -pulse_circle_angle, 8, 32, -pulse_circle_curve_spd, 13, 0, 0);
+    pulse_circle_angle += 30;
     pulse_circle_curve_spd *= -1;
     
     with(objAlexFBPSquishOrb) {
@@ -304,6 +323,8 @@ if(t == 1250) {
         spd_incr = .04;
         dir_incr *= 0.5;
     }
+    
+    event_user(2);
 }
 
 // Zoom out cam and spawn the canes
@@ -329,6 +350,62 @@ if(t == 1500) {
     }
     
     instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Move edges up
+
+with(objAlexMovingBlock) {
+    target_y = target_y - 128;
+    move_dur = 100;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Move edges down
+
+with(objAlexMovingBlock) {
+    target_y = target_y + 128;
+    move_dur = 100;
 }
 </string>
           </argument>
@@ -431,7 +508,43 @@ scrStopMusic();
 scrPlayMusic(musFinalBoss, true);
 
 // Make sure the volume is full
-audio_sound_gain(musFinalBoss, 1, 10);
+if(global.skipFBIntro) {
+    audio_sound_set_track_position(global.currentMusic, 25);
+    audio_sound_gain(musFinalBoss, 0, 0);
+    audio_sound_gain(musFinalBoss, 1, 1000);
+} else {
+    audio_sound_gain(musFinalBoss, 1, 10);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw black overlay
+
+if(black_overlay_alpha &gt; 0) {
+    draw_set_colour(c_black);
+    draw_set_alpha(black_overlay_alpha);
+    draw_rectangle(-1, -1, 800, 608, false);
+    draw_set_alpha(1);
+}
 </string>
           </argument>
         </arguments>

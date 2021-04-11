@@ -4,8 +4,12 @@ var _lvl = argument[0];
 
 // Teleport onto position
 if(t == 1) {
+    var _tp_y = ground_level - 200;
+    if(_lvl == 3)
+        _tp_y = ground_level - 250;
+    
     var _tp_x = scrFBGetNextTeleportXPos();
-    scrFinalBossTP(_tp_x, ground_level - 200, sprAlexFinalBossJump);
+    scrFinalBossTP(_tp_x, _tp_y, sprAlexFinalBossJump);
     fallback_sprite = sprAlexFinalBossJump;
     fallback_image_speed = 0.3;
 }

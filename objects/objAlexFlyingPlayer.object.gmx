@@ -83,6 +83,11 @@ charge_finished_img_spd = 0.5;
 charge_shot_index = 10;
 charge_shot_img_spd = 0.5;
 
+show_charge_text = false;
+charge_text_alpha = 0;
+if(!global.FB2PlayerHasCharged &amp;&amp; global.FB2AttemptsWithoutCharge &gt; 2)
+    alarm[0] = 1;
+
 image_speed = 0.3;
 </string>
           </argument>
@@ -115,6 +120,81 @@ audio_stop_sound(sndFB2PlayerCharging);
 audio_stop_sound(sndFB2PlayerChargeReadyLoop);
     
 scrKillPlayer();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Increment attempts without a charge
+
+if(!global.FB2PlayerHasCharged)
+    global.FB2AttemptsWithoutCharge++;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Hide charge text
+
+show_charge_text = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Show charge text
+
+show_charge_text = true;
+alarm[1] = 150;
 </string>
           </argument>
         </arguments>
@@ -217,6 +297,7 @@ if(can_shoot &amp;&amp; _action &amp;&amp; shoot_t &gt;= 0) {
             charge_finished_index = 0;
             audio_play_sound(sndFB2PlayerChargedBulletReady, 0, false);
             audio_play_sound(sndFB2PlayerChargeReadyLoop, 0, true);
+            global.FB2PlayerHasCharged = true;
         }
         
         charge_glow_alpha_t += 180/charge_glow_freq;
@@ -385,6 +466,48 @@ draw_sprite_ext(feet_sprite, image_index, feet_x, feet_y, body_scale*body_xflip,
 
 // Hitbox
 draw_sprite_ext(sprAlexFPHitbox, 0, x, y, body_scale, body_scale, 0, -1, hitbox_alpha);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the charge text
+
+if(show_charge_text)
+    charge_text_alpha = min(charge_text_alpha + 0.025, 1);
+else
+    charge_text_alpha = max(charge_text_alpha - 0.025, 0);
+    
+if(charge_text_alpha &gt; 0) {
+    var scr_to_get_key = scrGetKeybind;
+    var array_index = 0;
+    if(global.controllerMode) {
+        scr_to_get_key = scrGetControllerBind;
+        array_index = 1;
+    }
+    draw_set_font(fMenuLobby12);
+    draw_set_alpha(charge_text_alpha);
+    
+    var _string = "Hold ["+script_execute(scr_to_get_key,global.jumpButton[array_index])+"] or ["+script_execute(scr_to_get_key,global.shootButton[array_index])+"] to charge!"
+    scrDrawTextSquareOutline(x, y + 60, _string, $e8e0df, $2e1814, 2, fa_center, fa_middle);
+    
+    draw_set_alpha(1);
+}
 </string>
           </argument>
         </arguments>

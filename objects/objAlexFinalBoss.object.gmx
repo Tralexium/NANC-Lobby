@@ -44,6 +44,7 @@ shield_rad = 40;                // How large the shield radius is
 recovery_time = 200;            // How many frames until recover shield
 recovering = false;             // Whether the boss is about to regenerate the shield orbs
 beaten = false;                 // Whether the boss is defeated
+player_defeated = false;        // Whether the player is dead
 
 shield_orb_amnt = 0;            // How many orbs are currently present
 shield_orb_spawn_amnt = 5;      // How many orbs the shield should have
@@ -283,6 +284,37 @@ ds_list_destroy(attack_list);
 
 part_system_destroy(part_system);
 part_type_destroy(part_type);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Teleport to the middle after defeating the player
+
+scrFinalBossTP(view_xview[0] + 400, 300, sprAlexFinalBossIdleExcited);
+image_speed = 0.2;
+fallback_sprite = noone;
+with(objAlexFBCam) {
+    target_obj = other.id;
+    zoom_on_boss = true;
+}
 </string>
           </argument>
         </arguments>
@@ -617,6 +649,9 @@ if(!intro_finished &amp;&amp; instance_exists(objPlayer)) {
             if(y &lt; other.ground_level &amp;&amp; y &gt;= 0 &amp;&amp; x &gt; 0 &amp;&amp; x &lt; room_width)
                 instance_destroy();
         }
+        
+        global.skipFBIntro = true;
+        scrSaveGame(false);
     }
 }
 </string>
@@ -883,7 +918,7 @@ if(recovering) {
             recovering = false;
             vulnerable = false;
             hit_count -= max_hits;  // If the player missed a few shots they accumulate over
-            exp_idle_gain += 0.005;
+            exp_idle_gain += 0.015;
             event_user(1);
         }
     }
@@ -985,6 +1020,33 @@ with(objAlexStarStageBG) {
 if(!beaten) {
     repeat(5)
         part_particles_create(part_system, random_range(-50, room_width+50), ground_level + 130, part_type, 1)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Teleport to the middle of the screen when the player is dead
+
+if(!instance_exists(objPlayer) &amp;&amp; !player_defeated) {
+    alarm[3] = 50;
+    sprite_index = sprAlexFinalBossIdle;
+    player_defeated = true;
 }
 </string>
           </argument>

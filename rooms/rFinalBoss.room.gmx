@@ -51,10 +51,10 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="objAlexStarStageBG" x="0" y="0" name="inst_FBB3A06A" locked="0" code="base_col_hsv[0] = 0.7; // Hue&#xA;base_col_hsv[1] = 0.5; // Saturation&#xA;base_col_hsv[2] = 0.0; // Value / Luminosity&#xA;hue_increment = 0.022; // How much the hue changes each step&#xA;sat_increment = 0.02; // How much the sat changes each step&#xA;val_increment = 0.15; // How much the value/luminosity changes each step&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarStageBG" x="80" y="0" name="inst_FBB3A06A" locked="0" code="base_col_hsv[0] = 0.7; // Hue&#xA;base_col_hsv[1] = 0.5; // Saturation&#xA;base_col_hsv[2] = 0.0; // Value / Luminosity&#xA;hue_increment = 0.022; // How much the hue changes each step&#xA;sat_increment = 0.02; // How much the sat changes each step&#xA;val_increment = 0.15; // How much the value/luminosity changes each step&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlayerStart" x="544" y="480" name="inst_BA0BEEED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="-832" y="512" name="inst_59E92437" locked="0" code="" scaleX="200" scaleY="8" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexObstacleRenderer" x="0" y="32" name="inst_8F24ED47" locked="0" code="block_texture_sprite = sprFinalStarLevelTexture;&#xA;texture_h_spd = 0.0;&#xA;texture_v_spd = 0.1;&#xA;outline_size = 2;&#xA;outline_col[0] = 105 / 255;  // R (0-1)&#xA;outline_col[1] = 100 / 255;  // G (0-1)&#xA;outline_col[2] = 165 / 255;  // B (0-1)&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="-1232" y="512" name="inst_59E92437" locked="0" code="" scaleX="100" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexObstacleRenderer" x="96" y="0" name="inst_8F24ED47" locked="0" code="block_texture_sprite = sprFinalStarLevelTexture;&#xA;texture_h_spd = 0.0;&#xA;texture_v_spd = 0.1;&#xA;outline_size = 2;&#xA;outline_col[0] = 105 / 255;  // R (0-1)&#xA;outline_col[1] = 100 / 255;  // G (0-1)&#xA;outline_col[2] = 165 / 255;  // B (0-1)&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexFinalBossWarmup" x="1024" y="482" name="inst_71067511" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="0" y="-32" name="inst_5DCBE950" locked="0" code="" scaleX="50.0645179748535" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexFBCam" x="32" y="0" name="inst_3FF3759A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -62,6 +62,12 @@
     <instance objName="objBlock" x="1200" y="0" name="inst_86E94851" locked="0" code="" scaleX="1" scaleY="16" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="-32" y="-1" name="inst_1BCFF981" locked="0" code="" scaleX="1" scaleY="16" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="1600" y="0" name="inst_01A0D7E3" locked="0" code="" scaleX="1" scaleY="16" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="512" y="512" name="inst_9C746E44" locked="0" code="" scaleX="36" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1232" y="512" name="inst_EB713C04" locked="0" code="" scaleX="100" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexMovingBlock" x="368" y="512" name="inst_2F4C5191" locked="0" code="" scaleX="4.5" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexMovingBlock" x="1088" y="512" name="inst_E8ABFA8E" locked="0" code="" scaleX="4.5" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexFinalBossEdgeGlow" x="0" y="0" name="inst_BFFB2AB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexFinalBossEdgeGlow" x="1600" y="0" name="inst_C6B473BB" locked="0" code="x_scale = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

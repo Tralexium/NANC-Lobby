@@ -131,6 +131,9 @@ ds_map_add(saveMap,"stagePresent",global.stagePresent);
 ds_map_add(saveMap,"stageDeaths",global.stageDeaths);
 ds_map_add(saveMap,"stageTime",global.stageTime);
 
+// Final Boss
+ds_map_add(saveMap,"skipFBIntro",global.skipFBIntro);
+
 for (var i = 0; i <= global.totalNumberOfStages; i++)
 {
     ds_map_add(saveMap,"saveStageClear["+string(i)+"]",global.saveStageCleared[i]);

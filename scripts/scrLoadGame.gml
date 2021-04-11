@@ -57,6 +57,9 @@ if (loadFile)
         global.stageDeaths = ds_map_find_value(saveMap,"stageDeaths");
         global.stageTime = ds_map_find_value(saveMap,"stageTime");
         
+        // Final Boss
+        global.skipFBIntro = ds_map_find_value(saveMap,"skipFBIntro");
+        
         if (is_string(global.saveRoom))   //check if the saved room loaded properly
         {
             if (!room_exists(asset_get_index(global.saveRoom)))  //check if the room index in the save is valid

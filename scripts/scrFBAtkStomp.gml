@@ -19,11 +19,7 @@ switch(_lvl) {
             x = lerp(x, objPlayer.x, 0.05);
             
             if((t+1) mod 20 == 0) {
-                var _spawn_x = objPlayer.x + random_range(-400, 400);
-                
-                while(_spawn_x < 0 || _spawn_x > room_width) {
-                    _spawn_x = objPlayer.x + random_range(-400, 400);
-                }
+                var _spawn_x = clamp(objPlayer.x + random_range(-400, 400), 33, room_width - 33);
                 
                 scrFBPFadeBeamOrb(_spawn_x, y + 50, 64, -90, 0, 0, .15);
             }
@@ -65,11 +61,7 @@ switch(_lvl) {
             x = lerp(x, objPlayer.x, 0.05);
             
             if((t+1) mod 20 == 0) {
-                var _spawn_x = objPlayer.x + random_range(-400, 400);
-                
-                while(_spawn_x < 0 || _spawn_x > room_width) {
-                    _spawn_x = objPlayer.x + random_range(-400, 400);
-                }
+                var _spawn_x = clamp(objPlayer.x + random_range(-400, 400), 33, room_width - 33);
                 
                 scrFBPFadeBeamOrb(_spawn_x, y + 50, 64, -90, 0, 0, .15, 0, .025, 3);
             }
@@ -114,7 +106,10 @@ switch(_lvl) {
             x = lerp(x, objPlayer.x, 0.05);
             
             if((t+1) mod 50 == 0) {
-                var _spawn_x = clamp(objPlayer.x + choose(-270, -190, -120, 120, 190, 270), 96, room_width - 96);
+                var _side = 1;
+                if((t+1) mod 100 == 0)
+                    _side = -1;
+                var _spawn_x = clamp(objPlayer.x + choose(120, 190)*_side, 60, room_width - 60);
                 
                 var _bubble = scrFBPBubble(_spawn_x, y + 50, 0, .6, -90, 0);
                     _bubble.gravity = .2;

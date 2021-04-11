@@ -106,7 +106,7 @@ if(hp &lt;= 0) {
         _part.add_scale = 0.125;
         _part.depth = depth - 1;
     
-    scrFBPOrbCircle(x, y, 0, 8, 24, 0, 3, .15, 0, depth - 1);
+    scrFBPOrbCircle(x, y, 0, 8, 24, 0, 3, .15, 0);
     
     audio_play_sound(sndAlexFBShieldOrbBroken, 0, false);
     instance_destroy();
