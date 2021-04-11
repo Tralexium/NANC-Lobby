@@ -119,7 +119,7 @@ switch(_lvl) {
                     y = objPlayer.y;
                 }
                 
-                projectile_count = 5;
+                projectile_count = 4;
             }
                 
             x = clamp(objPlayer.x + (dist_from_player * side_from_player), dist_from_room_edges, room_width - dist_from_room_edges);
