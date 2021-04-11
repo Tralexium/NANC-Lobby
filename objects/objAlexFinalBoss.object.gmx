@@ -49,6 +49,7 @@ player_defeated = false;        // Whether the player is dead
 shield_orb_amnt = 0;            // How many orbs are currently present
 shield_orb_spawn_amnt = 5;      // How many orbs the shield should have
 shield_orb_rad = 64;            // How spaced out should the shield orbs be
+shield_orb_spd = -1;            // How fast should the orbs rotate
 shield_orb_circle_id = noone;   // The ID of the circle orb circle object
 
 exp_amnt = 0;                   // Current exp amount
@@ -1184,9 +1185,11 @@ with(objAlexFBCam) {
 
 shield_orb_circle_id = instance_create(x, y, objAlexFinalBossShieldOrbCircle);
 shield_orb_circle_id.rad_target = shield_orb_rad;
+shield_orb_circle_id.target_spd = shield_orb_spd;
 shield_orb_circle_id.shield_orb_amnt = shield_orb_spawn_amnt;
 
 shield_orb_rad += 8;
+shield_orb_spd -= 0.15;
 shield_orb_spawn_amnt = min(shield_orb_spawn_amnt + 1, 7);
 
 audio_play_sound(sndAlexFBShieldRestored, 0, false);
