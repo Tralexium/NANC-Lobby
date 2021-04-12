@@ -27,11 +27,11 @@
             <kind>1</kind>
             <string>/// Init vars
 
-orb_amnt = 8;
+orb_amnt = 10;
 orb_size = 48;
 start_rad = room_width/2 + 100;
 rad = start_rad;
-shrink_length = 250;
+shrink_length = 300;
 spd = 0;
 spin_dir = choose(-1, 1);
 
@@ -123,11 +123,16 @@ if(orbs_set) {
         orb[i].fade_out = fade_out;
     }
     
+    /* OLD SPEED CODE
     if(instance_exists(objAlexFlyingPlayer)) {
         spd = (objAlexFlyingPlayer.spd/6) * spin_dir;
     } else {
         spd = 0;
     }
+    */
+    
+    var _max_spd = 2 * spin_dir;
+    spd = abs(dsin(t*4)) * _max_spd;
     
     dir += spd;
     

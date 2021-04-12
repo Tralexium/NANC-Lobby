@@ -90,15 +90,13 @@ enum boss_star {
     white,
 }
 
-path_list = ds_list_create();
-ds_list_add(path_list,
-            pathFB1,
-            pathFB2,
-            pathFB3,
-            pathFB4,
-            pathFB5,
-            pathFB6);
-ds_list_shuffle(path_list);
+path_map = ds_map_create();
+path_map[? boss_star.blue] = pathFB4;
+path_map[? boss_star.green] = pathFB3;
+path_map[? boss_star.purple] = pathFB5;
+path_map[? boss_star.yellow] = pathFB2;
+path_map[? boss_star.red] = pathFB6;
+path_map[? boss_star.white] = pathFB1;
 
 
 star_list = ds_list_create();
@@ -114,8 +112,8 @@ ds_list_shuffle(star_list);
 current_star = noone;
 current_path = noone;
 is_attacking = false;
-min_spd = 5;
-max_spd = 8;
+min_spd = 6;
+max_spd = 11;
 spd_t = 0;
 spd_fluctuation = 1.5;
 move_speed = min_spd;
@@ -257,7 +255,7 @@ wave_spawn_freq = 60;
             <string>/// Destroy any data structures &amp; surfs
 
 ds_list_destroy(star_list);
-ds_list_destroy(path_list);
+ds_map_destroy(path_map);
 
 surface_free(srf_waves);
 surface_free(srf_shield);
@@ -312,7 +310,6 @@ snap_cam = true;
             <string>/// Tell the boss to choose a new star
 
 ds_list_delete(star_list, 0);
-ds_list_delete(path_list, 0);
 current_path = noone;
 current_star = noone;  // This forces the boss to
                        // choose the next available star.
@@ -446,7 +443,7 @@ if(current_star == noone) {
     if(!ds_list_empty(star_list)) {
         // Assign the next available star &amp; path
         current_star = star_list[|0];
-        current_path = path_list[|0];
+        current_path = path_map[? current_star];
         
         // Refill star shield hp
         shield_hp = shield_max_hp;
@@ -471,9 +468,10 @@ if(!beaten) {
                 with(objAlexFlyingPlayer)
                     can_shoot = true;
             }
-            var _mean_of_min_max_spd = mean(min_spd, max_spd);
-            spd_t += spd_fluctuation
-            path_speed = (min_spd +_mean_of_min_max_spd) + (dsin(spd_t) * _mean_of_min_max_spd);
+            //var _mean_of_min_max_spd = mean(min_spd, max_spd);
+            //path_speed = (min_spd +_mean_of_min_max_spd) + (dsin(spd_t) * _mean_of_min_max_spd);
+            spd_t += spd_fluctuation;
+            path_speed = lerp(min_spd, max_spd, abs(dsin(spd_t)));
         }
         
         // Health regen
@@ -807,7 +805,6 @@ if(ds_list_size(star_list) &gt; 1) {
     alarm[0] = 50;
 } else {
     ds_list_delete(star_list, 0);
-    ds_list_delete(path_list, 0);
     event_user(1);  // Defeated
 }
 </string>

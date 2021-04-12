@@ -2,7 +2,7 @@
 
 // Spawn the screen wrapping projectiles
 if(t == 10) {
-    repeat(30) {
+    repeat(25) {
         instance_create(random_range(0, room_width), random_range(0, room_height), objAlexFB2PScreenWrapSquishOrb);
     }
 }

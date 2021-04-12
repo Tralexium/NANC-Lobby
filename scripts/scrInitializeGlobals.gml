@@ -48,7 +48,6 @@ global.skipGameIntro = false;  // Used when going back to the main menu screen f
 global.noRestart = false;  // Disables restarting
 global.skipFBIntro = false;  // Skips the attack sequence of the final boss
 global.FB2AttemptsWithoutCharge = 0;
-global.FB2PlayerHasCharged = false;
 
 // Lobby related
 global.lobbyPlayerSpeedUp = false; // Whether the player is faster in the lobby
