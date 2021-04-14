@@ -50,7 +50,7 @@ arrow_t = 0;
 
 // Edge bars
 bar_t = 0;
-bar_anim_length = 40;
+bar_anim_length = 25;
 bar_scroll_min_speed = 0.5;
 bar_scroll_max_speed = 8;
 bar_scroll_speed = bar_scroll_max_speed;
@@ -424,17 +424,24 @@ if(shake_t &lt; shake_dur) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Free roam camera
+            <string>/// Free roam camera movement
 
 if(free_roam) {
     var _hor_move = scrButtonCheck(global.rightButton) - scrButtonCheck(global.leftButton);
     var _ver_move = scrButtonCheck(global.downButton) - scrButtonCheck(global.upButton);
+    var _old_x = xTarget;
+    var _old_y = yTarget;
     
     xTarget += _hor_move * free_roam_spd;
     yTarget += _ver_move * free_roam_spd;
     
     xTarget = clamp(xTarget, xMin, xMax);
     yTarget = clamp(yTarget, yMin, yMax);
+    
+    if(_old_x != xTarget || _old_y != yTarget) {
+        if(!audio_is_playing(sndAlexSnakeBlockMove) &amp;&amp; !audio_is_playing(sndAlexFreeRoamCamOn))
+            audio_play_sound(sndAlexSnakeBlockMove, 0, false);
+    }
 
     x = lerp(x, xTarget, followSpeed);
     y = lerp(y, yTarget, followSpeed);

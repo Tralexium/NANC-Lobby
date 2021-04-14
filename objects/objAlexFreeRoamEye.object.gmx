@@ -160,6 +160,7 @@ if(place_meeting(x, bbox_bottom - 1, objPlayer) &amp;&amp; listen_for_input) {
     // Activate
     if(!active &amp;&amp; scrButtonCheckPressed(global.upButton)) {
         active = true;
+        audio_play_sound(sndAlexFreeRoamCamOn, 0, false);
         
         with(objAlexStarStageCam) {
             free_roam = true;
@@ -191,6 +192,7 @@ if(place_meeting(x, bbox_bottom - 1, objPlayer) &amp;&amp; listen_for_input) {
     // Deactivate
     if(active &amp;&amp; scrButtonCheckPressed(global.shootButton)) {
         active = false;
+        audio_play_sound(sndAlexFreeRoamCamOff, 0, false);
         
         with(objAlexStarStageCam) {
             free_roam = false;

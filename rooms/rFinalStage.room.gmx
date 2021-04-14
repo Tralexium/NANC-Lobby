@@ -410,7 +410,7 @@
     <instance objName="objAlexDarkVoidCircle" x="8368" y="2400" name="inst_289F6631" locked="0" code="" scaleX="0.75" scaleY="0.75" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlatformSpawner" x="8368" y="2368" name="inst_297DC5CA" locked="0" code="spawn_dir = 90;&#xA;spawn_spd = 2;&#xA;spawn_period = 50;&#xA;big_platform = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexPlatformKiller" x="8368" y="2000" name="inst_BF425924" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexDarkVoidKiller" x="8000" y="2288" name="inst_08FF0EBE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexDarkVoidKiller" x="8000" y="2368" name="inst_08FF0EBE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkVoidKiller" x="8192" y="1472" name="inst_C65EE9CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkVoidSpawner" x="8000" y="1552" name="inst_B8E702F5" locked="0" code="void_type = VOID_TYPE.circle;&#xA;spawn_dir = -90;&#xA;spawn_spd = 3;&#xA;spawn_rot_spd = 0;&#xA;spawn_scale = 0.5;&#xA;spawn_period = 100;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexDarkVoidSpawner" x="8192" y="2368" name="inst_5A63BD15" locked="0" code="void_type = VOID_TYPE.circle;&#xA;spawn_dir = 90;&#xA;spawn_spd = 3;&#xA;spawn_rot_spd = 0;&#xA;spawn_scale = 0.5;&#xA;spawn_period = 100;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

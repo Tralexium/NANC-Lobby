@@ -252,6 +252,8 @@
           <sound>sound\sndFB2DefeatWhiteCircle</sound>
         </sounds>
         <sounds name="Final Stage Gimmicks">
+          <sound>sound\sndAlexFreeRoamCamOn</sound>
+          <sound>sound\sndAlexFreeRoamCamOff</sound>
           <sound>sound\sndAlexBubbleIn</sound>
           <sound>sound\sndAlexBubblePop</sound>
           <sound>sound\sndAlexBubbleBounce</sound>
