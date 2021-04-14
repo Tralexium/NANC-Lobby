@@ -2,7 +2,7 @@
 <object>
   <spriteName>sprCamera</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>index = -1
+            <string>/// Init vars
+
+index = -1
 
 xTarget = 0
 yTarget = 0
@@ -38,6 +40,25 @@ yMax = 0
 target_obj = objPlayer;
 followSpeed = 0.166;
 active = true;
+
+free_roam = false;
+free_roam_spd = 7;
+
+// Free roam arrows
+arrow_alpha = 0;
+arrow_t = 0;
+
+// Edge bars
+bar_t = 0;
+bar_anim_length = 40;
+bar_scroll_min_speed = 0.5;
+bar_scroll_max_speed = 8;
+bar_scroll_speed = bar_scroll_max_speed;
+bar_y = -96;
+bar_rise_distance = 48;
+bar_render_x = 0;
+bar_length = 32;
+bar_height = 96;
 
 opt_previous_x = view_xview[0];
 opt_previous_y = view_yview[0];
@@ -140,6 +161,12 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     
     
     // Final Stage
+    // Always active blocks (orange ones)
+    instance_activate_object(objAlexAlwaysActiveBlock);
+    
+    // Free Roam Eye
+    instance_activate_object(objAlexFreeRoamEye);
+    
     // Moving obstacles
     //instance_activate_object(objAlexMovingBlock);
     //instance_activate_object(objAlexMovingKiller);
@@ -218,6 +245,37 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Free roam stuff
+
+if(free_roam) {
+    bar_t = min(bar_t+1, bar_anim_length);
+} else {
+    bar_t = max(bar_t-1, 0);
+}
+arrow_alpha = scrAlexEaseInOutSine(bar_t, 0, 1, bar_anim_length);
+bar_rise_amnt = scrAlexEaseInOutSine(bar_t, -bar_height, -bar_height + bar_rise_distance, bar_anim_length);
+bar_scroll_speed = scrAlexEaseInOutSine(bar_t, bar_scroll_max_speed, bar_scroll_min_speed, bar_anim_length);
+bar_render_x = (bar_render_x + bar_scroll_speed) mod bar_length;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="11">
       <action>
@@ -276,43 +334,45 @@ if(!active)
     exit;
 
 
-with objPlayer {
-    with instance_place(x, y, objAlexStarCameraTrigger) {
-        objAlexStarStageCam.index = index
+if(!free_roam) {
+    with objPlayer {
+        with instance_place(x, y, objAlexStarCameraTrigger) {
+            objAlexStarStageCam.index = index
+        }
     }
-}
-event_user(1);
-
-
-if index == -1 {
-    if instance_exists(target_obj) {
-        xTarget = target_obj.x-view_wview[0]/2
-        yTarget = target_obj.y-view_hview[0]/2
+    event_user(1);
+    
+    
+    if index == -1 {
+        if instance_exists(target_obj) {
+            xTarget = target_obj.x-view_wview[0]/2
+            yTarget = target_obj.y-view_hview[0]/2
+        }
+        
+        // Make sure the target doesn't extend the room dimensions
+        xTarget = clamp(xTarget, 0, room_width-view_wview[0]);
+        yTarget = clamp(yTarget, 0, room_height-view_hview[0]);
+    }
+    else {
+        if instance_exists(target_obj) {
+            xTarget = target_obj.x-view_wview[0]/2
+            yTarget = target_obj.y-view_hview[0]/2
+        }
+        xTarget = clamp(xTarget, xMin, xMax)
+        yTarget = clamp(yTarget, yMin, yMax)
     }
     
-    // Make sure the target doesn't extend the room dimensions
-    xTarget = clamp(xTarget, 0, room_width-view_wview[0]);
-    yTarget = clamp(yTarget, 0, room_height-view_hview[0]);
+    
+    /* Pat's version
+    x += (xTarget-x) * followSpeed
+    y += (yTarget-y) * followSpeed
+    */
+    
+    x = lerp(x, xTarget, followSpeed);
+    y = lerp(y, yTarget, followSpeed);
+    view_xview[0] = x
+    view_yview[0] = y
 }
-else {
-    if instance_exists(target_obj) {
-        xTarget = target_obj.x-view_wview[0]/2
-        yTarget = target_obj.y-view_hview[0]/2
-    }
-    xTarget = clamp(xTarget, xMin, xMax)
-    yTarget = clamp(yTarget, yMin, yMax)
-}
-
-
-/* Pat's version
-x += (xTarget-x) * followSpeed
-y += (yTarget-y) * followSpeed
-*/
-
-x = lerp(x, xTarget, followSpeed);
-y = lerp(y, yTarget, followSpeed);
-view_xview[0] = x
-view_yview[0] = y
 </string>
           </argument>
         </arguments>
@@ -348,6 +408,43 @@ if(shake_t &lt; shake_dur) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Free roam camera
+
+if(free_roam) {
+    var _hor_move = scrButtonCheck(global.rightButton) - scrButtonCheck(global.leftButton);
+    var _ver_move = scrButtonCheck(global.downButton) - scrButtonCheck(global.upButton);
+    
+    xTarget += _hor_move * free_roam_spd;
+    yTarget += _ver_move * free_roam_spd;
+    
+    xTarget = clamp(xTarget, xMin, xMax);
+    yTarget = clamp(yTarget, yMin, yMax);
+
+    x = lerp(x, xTarget, followSpeed);
+    y = lerp(y, yTarget, followSpeed);
+    view_xview[0] = x;
+    view_yview[0] = y;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="4">
       <action>
@@ -374,6 +471,86 @@ y = yTarget
 event_user(0)
 
 global.gravAnimT = 0
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the free roam stuff
+
+if(arrow_alpha &gt; 0) {
+    var bar_segments = round(display_get_gui_width() / bar_length);
+    var bar_bottom_side_rise = display_get_gui_height()- bar_rise_amnt - bar_height;
+    var bar_right_side_rise = display_get_gui_width()- bar_rise_amnt - bar_height;
+    var bar_render_x_bottom = bar_length - bar_render_x;
+    for(var i=0; i&lt;bar_segments; i++) {
+        var segment_x_y = i*32;
+        // Top &amp; Bottom
+        draw_sprite_part(sprAlexPauseUITopBar, 0, bar_render_x, 0, bar_length, bar_height, segment_x_y, bar_rise_amnt);
+        draw_sprite_part(sprAlexPauseUIBottomBar, 0, bar_render_x_bottom, 0, bar_length, bar_height, segment_x_y, bar_bottom_side_rise);
+        // Left &amp; Right
+        draw_sprite_part(sprAlexWavyBarLeft, 0, 0, bar_render_x, bar_height, bar_length, bar_rise_amnt, segment_x_y);
+        draw_sprite_part(sprAlexWavyBarRight, 0, 0, bar_render_x_bottom, bar_height, bar_length, bar_right_side_rise, segment_x_y);
+    }
+    
+    arrow_t++;
+    var _wiggle = dsin(arrow_t*4) * 8;
+    var _arrow_margin = 80;
+    var _hor_middle = display_get_gui_width()/2;
+    var _ver_middle = display_get_gui_height()/2;
+    // Left Arrow
+    if(xTarget != xMin)
+        draw_sprite_ext(sprAlexLobbyElevatorPresentArrow, 0, _arrow_margin + _wiggle, _ver_middle, 3, 3, 0, -1, arrow_alpha);
+    // Right Arrow
+    if(xTarget != xMax)
+        draw_sprite_ext(sprAlexLobbyElevatorPresentArrow, 0, (_hor_middle*2) - _arrow_margin - _wiggle, _ver_middle, 3, 3, 180, -1, arrow_alpha);
+    // Top Arrow
+    if(yTarget != yMin)
+        draw_sprite_ext(sprAlexLobbyElevatorPresentArrow, 0, _hor_middle, _arrow_margin + _wiggle, 3, 3, -90, -1, arrow_alpha);
+    // Bottom Arrow
+    if(yTarget != yMax)
+        draw_sprite_ext(sprAlexLobbyElevatorPresentArrow, 0, _hor_middle, (_ver_middle*2) - _arrow_margin - _wiggle, 3, 3, 90, -1, arrow_alpha);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Don't draw self
 </string>
           </argument>
         </arguments>

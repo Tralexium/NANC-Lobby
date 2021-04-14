@@ -465,6 +465,8 @@
         <sprite>sprites\sprAlexPause</sprite>
         <sprite>sprites\sprAlexPauseUITopBar</sprite>
         <sprite>sprites\sprAlexPauseUIBottomBar</sprite>
+        <sprite>sprites\sprAlexWavyBarLeft</sprite>
+        <sprite>sprites\sprAlexWavyBarRight</sprite>
         <sprite>sprites\sprAlexPauseUIBG</sprite>
         <sprite>sprites\sprAlexPauseTopOptionArrow</sprite>
         <sprite>sprites\sprAlexPauseContentArrow</sprite>
@@ -612,6 +614,8 @@
         </sprites>
       </sprites>
       <sprites name="Final Stage">
+        <sprite>sprites\sprAlexEyeCam</sprite>
+        <sprite>sprites\sprAlexEyeCamPedestal</sprite>
         <sprite>sprites\sprAlexChaseMonsterFlarePart</sprite>
         <sprite>sprites\sprAlexChaseMonsterMouth</sprite>
         <sprite>sprites\sprAlexChaseMonsterEye</sprite>
@@ -842,6 +846,7 @@
       <sprite>sprites\sprAlexMovingBlock</sprite>
       <sprite>sprites\sprAlexOpaqueBlock</sprite>
       <sprite>sprites\sprAlexBlockSprite</sprite>
+      <sprite>sprites\sprAlexAlwaysActiveBlock</sprite>
       <sprite>sprites\sprAlexBlockWithoutShadow</sprite>
       <sprite>sprites\sprAlexShadowBlock</sprite>
       <sprite>sprites\sprAlexIceBlockSprite</sprite>
@@ -1399,6 +1404,7 @@
       <objects name="Blocks">
         <object>objects\objAlexBlockWithShadow</object>
         <object>objects\objAlexSparkleShadowBlock</object>
+        <object>objects\objAlexAlwaysActiveBlock</object>
         <object>objects\objAlexBlockWithoutShadow</object>
         <object>objects\objAlexShadowBlock</object>
         <object>objects\objAlexIceBlockWithShadow</object>
@@ -1622,6 +1628,7 @@
           <object>objects\objAlexCutsceneCrown</object>
           <object>objects\objAlexFinalStageCutsceneTransition</object>
         </objects>
+        <object>objects\objAlexFreeRoamEye</object>
         <object>objects\objAlexBubble</object>
         <object>objects\objAlexVoidBlock</object>
         <object>objects\objAlexBubbleActivateSign</object>
