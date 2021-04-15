@@ -78,9 +78,167 @@ if(active) {
         scrAlexLaunchBall(_rand_cannon);
     }
     
-    if(t &gt;= 400 &amp;&amp; t &lt; 450 &amp;&amp; t mod 16 == 0) {
+    if(t &gt;= 440 &amp;&amp; t &lt;= 520 &amp;&amp; t mod 10 == 0) {
+        if(t == 440)
+            ball_counter = 0;
+            
+        var _num = ball_counter mod cannon_amnt;
+        scrAlexLaunchBall(_num);
+    }
+    
+    if(t &gt; 550 &amp;&amp; t &lt; 750 &amp;&amp; t mod 33 == 0) {
+        if(t == 551)
+            ball_counter = 0;
+        
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        var _type = ball_type.normal;
+        if(ball_counter mod 3 == 0)
+            _type = ball_type.spiky;
+            
+        scrAlexLaunchBall(_rand_cannon, _type);
+    }
+    
+    if(t &gt;= 750 &amp;&amp; t &lt;= 770 &amp;&amp; t mod 10 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon, ball_type.spiky);
+    }
+    
+    if(t &gt;= 760 &amp;&amp; t &lt; 920 &amp;&amp; t mod 33 == 0) {
+        if(t == 800)
+            ball_counter = 0;
+        
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        var _type = ball_type.normal;
+        if(ball_counter mod 3 == 0)
+            _type = ball_type.spiky;
+            
+        scrAlexLaunchBall(_rand_cannon, _type);
+    }
+    
+    if(t &gt;= 930 &amp;&amp; t &lt;= 1020 &amp;&amp; t mod 10 == 0) {            
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon, ball_type.spiky);
+    }
+    
+    if(t == 1040) {
+        scrAlexLaunchBall(2, ball_type.golden);
+    }
+    
+    if(t == 1041)
+        ball_counter = 0;
+    if(t &gt; 1030 &amp;&amp; t &lt; 1275 &amp;&amp; t mod 33 == 0) {
+        var _pattern = (floor(ball_counter/2)) mod 4;
+        switch(_pattern) {
+            case 0:
+                scrAlexLaunchBall(0, ball_type.spiky);
+                scrAlexLaunchBall(4, ball_type.spiky);
+                break;
+            case 1:
+            case 3:
+                scrAlexLaunchBall(1, ball_type.normal);
+                scrAlexLaunchBall(3, ball_type.normal);
+                break;
+            case 2:
+                scrAlexLaunchBall(2, ball_type.spiky);
+                break;
+        }
+    }
+    
+    if(t &gt;= 1275 &amp;&amp; t &lt;= 1295 &amp;&amp; t mod 10 == 0) {
         var _rand_cannon = scrAlexGetRandomCannonNum();
         scrAlexLaunchBall(_rand_cannon);
+    }
+    
+    if(t &gt; 1305 &amp;&amp; t &lt; 1435 &amp;&amp; t mod 33 == 0) {
+        var _pattern = (round(ball_counter/2)) mod 4;
+        switch(_pattern) {
+            case 0:
+                scrAlexLaunchBall(0, ball_type.spiky);
+                scrAlexLaunchBall(4, ball_type.spiky);
+                break;
+            case 1:
+            case 3:
+                scrAlexLaunchBall(1, ball_type.normal);
+                scrAlexLaunchBall(3, ball_type.normal);
+                break;
+            case 2:
+                scrAlexLaunchBall(2, ball_type.spiky);
+                break;
+        }
+    }
+    
+    if(t == 1435) {
+        scrAlexLaunchBall(0, ball_type.spiky);
+        scrAlexLaunchBall(2, ball_type.spiky);
+        scrAlexLaunchBall(4, ball_type.spiky);
+    }
+    if(t == 1445) {
+        scrAlexLaunchBall(1, ball_type.spiky);
+        scrAlexLaunchBall(3, ball_type.spiky);
+    }
+    
+    if(t == 1500) {
+        scrAlexLaunchBall(0);
+        scrAlexLaunchBall(4);
+    }
+    if(t == 1510) {
+        scrAlexLaunchBall(2);
+    }
+    
+    if(t &gt;= 1550 &amp;&amp; t &lt;= 1550 + (4*16) &amp;&amp; t mod 16 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon);
+    }
+    
+    if(t &gt;= 1685 &amp;&amp; t &lt;= 1685 + (3*16) &amp;&amp; t mod 16 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon);
+    }
+    
+    if(t &gt;= 1730 &amp;&amp; t &lt;= 1750 &amp;&amp; t mod 10 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon, ball_type.spiky);
+    }
+    
+    if(t &gt;= 1765 &amp;&amp; t &lt;= 1765 + (3*15) &amp;&amp; t mod 15 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon);
+    }
+    
+    if(t &gt;= 1815 &amp;&amp; t &lt;= 1815 + (2 * 15) &amp;&amp; t mod 15 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon, ball_type.spiky);
+    }
+    
+    if(t &gt;= 1855 &amp;&amp; t &lt;= 1860 + (2*8) &amp;&amp; t mod 8 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon);
+    }
+    
+    if(t &gt;= 1945 &amp;&amp; t &lt;= 1995 &amp;&amp; t mod 5 == 0) {
+        if(t == 1945)
+            ball_counter = 0;
+            
+        var _num = ball_counter mod cannon_amnt;
+        var _type = ball_type.normal;
+        if(ball_counter mod 4 == 0)
+            _type = ball_type.spiky;
+        scrAlexLaunchBall(_num, _type);
+    }
+    
+    if(t &gt;= 2000 &amp;&amp; t &lt;= 2060 &amp;&amp; t mod 5 == 0) {
+        if(t == 2000)
+            ball_counter = 0;
+            
+        var _num = (15-ball_counter) mod cannon_amnt;
+        var _type = ball_type.normal;
+        if(ball_counter mod 3 == 0)
+            _type = ball_type.spiky;
+        scrAlexLaunchBall(_num, _type);
+    }
+    
+    if(t == 2075) {
+        scrAlexLaunchBall(2, ball_type.golden);
     }
 }
 </string>
@@ -115,6 +273,37 @@ instance_create(0, 0, objAlexMinigameScoreUI);
 scrStopMusic();
 scrPlayMusic(musAlexMinigameFloorStart, false);
 scrAlexShakeCam(25, 8, 8, 4, 6);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw timer
+
+if(global.debugMode) {
+    draw_set_colour(c_white)
+    draw_set_font(fLobbySmall24);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_bottom);
+    draw_text(20, 595, string(t))
+}
 </string>
           </argument>
         </arguments>

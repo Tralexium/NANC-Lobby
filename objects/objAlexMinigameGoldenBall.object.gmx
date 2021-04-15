@@ -102,7 +102,7 @@ if(points_on_destroy &gt; 0) {
 
 if(!active &amp;&amp; vspeed &gt; 0) {
     active = true;
-    depth = -2;
+    depth = -3;
 }
 
 if(collision_cooldown_t &gt; 0) {
@@ -118,9 +118,9 @@ if(collision_cooldown_t &gt; 0) {
             _floating_score.text_score = points_on_collision;
             
         if(x &lt; objAlexMinigameButton.x) {
-            direction = random_range(75, 85);
+            direction = random_range(85, 90);
         } else {
-            direction = random_range(95, 105);
+            direction = random_range(90, 95);
         }
         speed = on_hit_spd;
         
@@ -129,7 +129,7 @@ if(collision_cooldown_t &gt; 0) {
     }
     
     // Solids
-    if(place_meeting(x, y + vspeed, objBlock)) {
+    if(place_meeting(x, y + vspeed, objBlock) &amp;&amp; y &gt; ystart) {
         instance_destroy();
     }
 }

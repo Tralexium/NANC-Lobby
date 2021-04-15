@@ -42,7 +42,7 @@ image_blend = make_colour_hsv(0, 0, brightness);
 
 collision_spd_mult = 0.5;  // Speed reduction upon colliding with a solid
 player_spd_mult = 1.5;
-max_spd = 9;
+max_spd = 10;
 aim_assist_amnt = 0.4;
 
 player_touched = false;
@@ -142,9 +142,13 @@ if(collision_cooldown_t &gt; 0) {
     var _player = instance_place(x, y, objPlayer);
     if(_player != noone &amp;&amp; active &amp;&amp; !player_touched) {
         player_touched = true;
-        alarm[0] = 100;
+        alarm[0] = 130;
     
-        var _dir = lerp(point_direction(_player.x, _player.y, x, y), 45, aim_assist_amnt);
+        var _player_dir = point_direction(_player.x, _player.y, x, y);
+        if(_player_dir &lt; 180)       
+            var _dir = lerp(_player_dir, 45, aim_assist_amnt);
+        else
+            var _dir = lerp(_player_dir, 270 + 45, aim_assist_amnt);
         direction = _dir;
         
         var _spd = speed + (_player.speed * player_spd_mult);

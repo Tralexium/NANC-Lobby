@@ -30,7 +30,7 @@
 shoot = false;
 ball = ball_type.normal;
 ball_spd = 7;
-ball_dir = random_range(88, 92);
+ball_dir = random_range(86, 94);
 </string>
           </argument>
         </arguments>
@@ -57,7 +57,7 @@ ball_dir = random_range(88, 92);
 
 if(shoot) {
     shoot = false;
-    ball_dir = random_range(85, 95);
+    ball_dir = random_range(86, 94);
     
     var _ball;
     switch(ball) {
@@ -67,11 +67,11 @@ if(shoot) {
             break;
             
         case ball_type.golden:
-            _ball = instance_create(x, y - 5, objAlexMinigameBall);
+            _ball = instance_create(x, y - 5, objAlexMinigameGoldenBall);
             break;
         
         case ball_type.spiky:
-            _ball = instance_create(x, y - 5, objAlexMinigameBall);
+            _ball = instance_create(x, y - 5, objAlexMinigameSpikyBall);
             break;
     }
     _ball.speed = ball_spd;
