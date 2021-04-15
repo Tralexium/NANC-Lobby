@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-200</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,41 +27,25 @@
             <kind>1</kind>
             <string>/// Init vars
 
-vspeed = -3;
-friction = 0.1;
+enum ball_type {
+    normal,
+    golden,
+    spiky,
+}
 
-text_score = 0;
-text_scale = 1;
-text_scale_dur = 30;
-text_scale_t = 0;
+t = 0;
+active = false;
+cannon_amnt = 5;
+ball_counter = 0;
 
-alarm[0] = 30;
-fade_out = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Fade out
+player_speed = 5;
 
-fade_out = true;
+var _cannon_pad = 32;
+var _cannon_x = x;
+for(var i=0; i&lt;cannon_amnt; i++) {
+    cannon[i] = instance_create(_cannon_x, y, objAlexMinigameCannon);
+    _cannon_x += _cannon_pad;
+}
 </string>
           </argument>
         </arguments>
@@ -84,24 +68,27 @@ fade_out = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Visuals
+            <string>/// Cannon shooting timeline
 
-if(text_scale_t &lt; text_scale_dur) {
-    text_scale_t++;
-    text_scale = scrAlexEaseOutElastic(text_scale_t, 1.5, 1, text_scale_dur);
-}
-
-if(fade_out) {
-    image_alpha -= .025;
-    if(image_alpha &lt;= 0)
-        instance_destroy();
+if(active) {
+    t++;
+    
+    if(t &gt; 5 &amp;&amp; t &lt; 400 &amp;&amp; t mod 33 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon);
+    }
+    
+    if(t &gt;= 400 &amp;&amp; t &lt; 450 &amp;&amp; t mod 16 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon);
+    }
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -118,15 +105,16 @@ if(fade_out) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw text
+            <string>/// Start the controller &amp; spawn the score UI
 
-draw_set_font(fMenuLobby12);
-draw_set_alpha(image_alpha);
-if(text_score &gt;= 0)
-    scrDrawTextSquareOutlineExt(x, y, string(text_score), $e8e0df, $2e1814, 2, fa_center, fa_middle, text_scale, text_scale);
-else
-    scrDrawTextSquareOutlineExt(x, y, string(text_score), $3945e6, $2e1814, 2, fa_center, fa_middle, text_scale, text_scale);
-draw_set_alpha(1);
+active = true;
+t = 0;
+
+instance_create(0, 0, objAlexMinigameScoreUI);
+
+scrStopMusic();
+scrPlayMusic(musAlexMinigameFloorStart, false);
+scrAlexShakeCam(25, 8, 8, 4, 6);
 </string>
           </argument>
         </arguments>

@@ -89,26 +89,44 @@ var _should_draw_glow = (blue_glow + red_glow + yellow_glow &gt; 0.05);
 
 // Upper side
 draw_sprite_ext(sprAlexMinigameTargetBlueHalf, 0, x, y, 1, 1, 0, -1, 1);
-draw_sprite_ext(sprAlexMinigameTargetRedHalf, 0, x, y, 1, 1, 0, -1, 1);
-draw_sprite_ext(sprAlexMinigameTargetYellowHalf, 0, x, y, 1, 1, 0, -1, 1);
-
 if(_should_draw_glow) {
     draw_set_blend_mode(bm_add);
     draw_sprite_ext(sprAlexMinigameTargetBlueHalf, 0, x, y, 1, 1, 0, -1, blue_glow);
+    draw_set_blend_mode(bm_normal);
+}
+
+draw_sprite_ext(sprAlexMinigameTargetRedHalf, 0, x, y, 1, 1, 0, -1, 1);
+if(_should_draw_glow) {
+    draw_set_blend_mode(bm_add);
     draw_sprite_ext(sprAlexMinigameTargetRedHalf, 0, x, y, 1, 1, 0, -1, red_glow);
+    draw_set_blend_mode(bm_normal);
+}
+
+draw_sprite_ext(sprAlexMinigameTargetYellowHalf, 0, x, y, 1, 1, 0, -1, 1);
+if(_should_draw_glow) {
+    draw_set_blend_mode(bm_add);
     draw_sprite_ext(sprAlexMinigameTargetYellowHalf, 0, x, y, 1, 1, 0, -1, yellow_glow);
     draw_set_blend_mode(bm_normal);
 }
 
 // Bottom side
 draw_sprite_ext(sprAlexMinigameTargetBlueHalf, 0, x, y, 1, -1, 0, -1, 1);
-draw_sprite_ext(sprAlexMinigameTargetRedHalf, 0, x, y, 1, -1, 0, -1, 1);
-draw_sprite_ext(sprAlexMinigameTargetYellowHalf, 0, x, y, 1, -1, 0, -1, 1);
-
 if(_should_draw_glow) {
     draw_set_blend_mode(bm_add);
     draw_sprite_ext(sprAlexMinigameTargetBlueHalf, 0, x, y, 1, -1, 0, -1, blue_glow);
+    draw_set_blend_mode(bm_normal);
+}
+
+draw_sprite_ext(sprAlexMinigameTargetRedHalf, 0, x, y, 1, -1, 0, -1, 1);
+if(_should_draw_glow) {
+    draw_set_blend_mode(bm_add);
     draw_sprite_ext(sprAlexMinigameTargetRedHalf, 0, x, y, 1, -1, 0, -1, red_glow);
+    draw_set_blend_mode(bm_normal);
+}
+
+draw_sprite_ext(sprAlexMinigameTargetYellowHalf, 0, x, y, 1, -1, 0, -1, 1);
+if(_should_draw_glow) {
+    draw_set_blend_mode(bm_add);
     draw_sprite_ext(sprAlexMinigameTargetYellowHalf, 0, x, y, 1, -1, 0, -1, yellow_glow);
     draw_set_blend_mode(bm_normal);
 }

@@ -31,7 +31,7 @@ global.ballMinigameScore = 0;  // Reset and init
 old_score = 0;
 
 
-ui_x = 400;
+ui_x = 50;
 ui_y = -50;
 ui_target_y = 30;
 ui_scale = 1;
@@ -96,7 +96,7 @@ draw_set_font(fMenuLobby12);
 draw_set_alpha(image_alpha);
 
 var _score = "Score: " + string(global.ballMinigameScore);
-scrDrawTextSquareOutlineExt(ui_x, ui_y, _line_string, $e8e0df, $2e1814, 2, fa_center, fa_top, ui_scale, ui_scale);
+scrDrawTextSquareOutlineExt(ui_x, ui_y, _score, $e8e0df, $2e1814, 2, fa_left, fa_top, ui_scale, ui_scale);
 
 draw_set_alpha(1);
 </string>

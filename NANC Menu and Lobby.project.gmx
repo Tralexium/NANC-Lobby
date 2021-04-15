@@ -178,6 +178,8 @@
       <sound>sound\musAlexFloor5</sound>
       <sound>sound\musAlexFloor6</sound>
       <sound>sound\musAlexBonusFloor</sound>
+      <sound>sound\musAlexMinigameFloor</sound>
+      <sound>sound\musAlexMinigameFloorStart</sound>
       <sound>sound\musAlexStarHub</sound>
       <sound>sound\musStarStage2</sound>
       <sound>sound\musStarStage3</sound>
@@ -831,7 +833,13 @@
       </sprites>
       <sprites name="Minigame Room">
         <sprite>sprites\sprAlexMinigameBall</sprite>
+        <sprite>sprites\sprAlexMinigameGoldenBall</sprite>
+        <sprite>sprites\sprAlexMinigameSpikyBall</sprite>
         <sprite>sprites\sprAlexMinigameCannon</sprite>
+        <sprite>sprites\sprAlexMinigameButton</sprite>
+        <sprite>sprites\sprAlexMinigameClockBase</sprite>
+        <sprite>sprites\sprAlexMinigameClockTex</sprite>
+        <sprite>sprites\sprAlexMinigameClockArrow</sprite>
         <sprite>sprites\sprAlexMinigameTargetBlueHalf</sprite>
         <sprite>sprites\sprAlexMinigameTargetRedHalf</sprite>
         <sprite>sprites\sprAlexMinigameTargetYellowHalf</sprite>
@@ -1021,6 +1029,7 @@
       <background>background\bAlexFloor5SmallSnow</background>
       <background>background\bAlexFloor6</background>
       <background>background\bAlexBonusFloor</background>
+      <background>background\bAlexMinigameFloor</background>
     </backgrounds>
   </backgrounds>
   <paths name="paths">
@@ -1158,6 +1167,10 @@
           <script>scripts\scrAlexFB2GreenStarAttack.gml</script>
           <script>scripts\scrAlexFB2WhiteStarAttack.gml</script>
         </scripts>
+      </scripts>
+      <scripts name="Minigame">
+        <script>scripts\scrAlexGetRandomCannonNum.gml</script>
+        <script>scripts\scrAlexLaunchBall.gml</script>
       </scripts>
       <script>scripts\scrStageClearUIGetCurrentStageInfo.gml</script>
       <script>scripts\scrResetStageStats.gml</script>
@@ -1488,9 +1501,13 @@
       <objects name="Minigame Room">
         <object>objects\objAlexMinigameScoreUI</object>
         <object>objects\objAlexMinigameBall</object>
+        <object>objects\objAlexMinigameGoldenBall</object>
+        <object>objects\objAlexMinigameSpikyBall</object>
         <object>objects\objAlexMinigameBallScoreText</object>
         <object>objects\objAlexMinigamePointField</object>
-        <object>objects\objAlexMinigameBallLauncher</object>
+        <object>objects\objAlexMinigameCannon</object>
+        <object>objects\objAlexMinigameCannonController</object>
+        <object>objects\objAlexMinigameButton</object>
         <object>objects\objAlexMinigameTarget</object>
       </objects>
       <object>objects\objStarzorSign</object>

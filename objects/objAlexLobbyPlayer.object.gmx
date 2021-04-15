@@ -431,6 +431,11 @@ if(global.lobbyPlayerSpeedUp) {
     maxSpeed = 4;
 }
 
+with(objAlexMinigameCannonController) {
+    if(active)
+        other.maxSpeed = player_speed;
+}
+
 // Water effects
 if(!in_water &amp;&amp; place_meeting(x, y, objAlexWater)) {
     in_water = true;
