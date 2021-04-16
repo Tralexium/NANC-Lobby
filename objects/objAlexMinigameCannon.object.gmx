@@ -57,20 +57,22 @@ ball_dir = random_range(86, 94);
 
 if(shoot) {
     shoot = false;
-    ball_dir = random_range(86, 94);
     
     var _ball;
     switch(ball) {
         default:
         case ball_type.normal:
+            ball_dir = random_range(87, 93);
             _ball = instance_create(x, y - 5, objAlexMinigameBall);
             break;
             
         case ball_type.golden:
+            ball_dir = 90;
             _ball = instance_create(x, y - 5, objAlexMinigameGoldenBall);
             break;
         
         case ball_type.spiky:
+            ball_dir = random_range(82, 98);
             _ball = instance_create(x, y - 5, objAlexMinigameSpikyBall);
             break;
     }

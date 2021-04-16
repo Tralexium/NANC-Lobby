@@ -37,6 +37,7 @@ t = 0;
 active = false;
 cannon_amnt = 5;
 ball_counter = 0;
+golden_ball_reward = 100;
 
 player_speed = 5;
 
@@ -149,7 +150,7 @@ if(active) {
         scrAlexLaunchBall(_rand_cannon);
     }
     
-    if(t &gt; 1305 &amp;&amp; t &lt; 1435 &amp;&amp; t mod 33 == 0) {
+    if(t &gt; 1305 &amp;&amp; t &lt; 1410 &amp;&amp; t mod 33 == 0) {
         var _pattern = (round(ball_counter/2)) mod 4;
         switch(_pattern) {
             case 0:
@@ -167,12 +168,12 @@ if(active) {
         }
     }
     
-    if(t == 1435) {
+    if(t == 1425) {
         scrAlexLaunchBall(0, ball_type.spiky);
         scrAlexLaunchBall(2, ball_type.spiky);
         scrAlexLaunchBall(4, ball_type.spiky);
     }
-    if(t == 1445) {
+    if(t == 1435) {
         scrAlexLaunchBall(1, ball_type.spiky);
         scrAlexLaunchBall(3, ball_type.spiky);
     }
@@ -226,7 +227,7 @@ if(active) {
         scrAlexLaunchBall(_num, _type);
     }
     
-    if(t &gt;= 2000 &amp;&amp; t &lt;= 2060 &amp;&amp; t mod 5 == 0) {
+    if(t &gt;= 2000 &amp;&amp; t &lt;= 2050 &amp;&amp; t mod 5 == 0) {
         if(t == 2000)
             ball_counter = 0;
             
@@ -240,7 +241,162 @@ if(active) {
     if(t == 2075) {
         scrAlexLaunchBall(2, ball_type.golden);
     }
+    
+    if(t &gt; 2080 &amp;&amp; t &lt;= 2200 &amp;&amp; t mod 33 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon);
+    }
+    if(t &gt; 2225 &amp;&amp; t &lt;= 2325 &amp;&amp; t mod 33 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon);
+    }
+    if(t == 2215 || t == 2345) {
+        scrAlexLaunchBall(0, ball_type.spiky);
+        scrAlexLaunchBall(2, ball_type.spiky);
+        scrAlexLaunchBall(4, ball_type.spiky);
+    }
+    if(t &gt; 2355 &amp;&amp; t &lt;= 2537 &amp;&amp; t mod 33 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon);
+    }
+    
+    if(t &gt;= 2560 &amp;&amp; t &lt;= 2595 &amp;&amp; t mod 5 == 0) {
+        if(t == 2560)
+            ball_counter = 0;
+            
+        var _num = ball_counter mod cannon_amnt;
+        scrAlexLaunchBall(_num);
+    }
+    
+    if(t &gt; 2595 &amp;&amp; t &lt;= 2845 &amp;&amp; t mod 33 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon, ball_type.spiky);
+    }
+    
+    if(t &gt; 2845 &amp;&amp; t &lt;= 2855 &amp;&amp; t mod 15 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon, ball_type.spiky);
+    }
+    
+    if(t == 2870) {
+        scrAlexLaunchBall(0, ball_type.spiky);
+        scrAlexLaunchBall(4, ball_type.spiky);
+    }
+    
+    if(t &gt;= 2900 &amp;&amp; t &lt; 3090 &amp;&amp; t mod 15 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        var _type = ball_type.normal;
+        if(ball_counter mod 3 == 0)
+            _type = ball_type.spiky;
+            
+        scrAlexLaunchBall(_rand_cannon, _type);
+    }
+    
+    if(t &gt;= 3085 &amp;&amp; t &lt;= 3105 &amp;&amp; t mod 5 == 0) {
+        if(ball_counter mod 2 == 0)
+            scrAlexLaunchBall(0, ball_type.spiky);
+        else
+            scrAlexLaunchBall(4, ball_type.spiky);
+    }
+    
+    if(t == 3115) {
+        scrAlexLaunchBall(1);
+        scrAlexLaunchBall(3);
+    }
+    if(t == 3130) {
+        scrAlexLaunchBall(2);
+    }
+    
+    if(t &gt;= 3180 &amp;&amp; t &lt;= 3235 &amp;&amp; t mod 5 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon, ball_type.spiky);
+    }
+    
+    if(t == 3145) {
+        scrAlexLaunchBall(2);
+    }
+    if(t == 3170) {
+        scrAlexLaunchBall(0);
+        scrAlexLaunchBall(4);   
+    }
+    
+    if(t &gt;= 3310 &amp;&amp; t &lt;= 3365 &amp;&amp; t mod 5 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon, ball_type.spiky);
+    }
+    
+    if(t &gt;= 3375 &amp;&amp; t &lt;= 3475 &amp;&amp; t mod 15 == 0) {
+        var _rand_cannon = scrAlexGetRandomCannonNum();
+        scrAlexLaunchBall(_rand_cannon);
+    }
+    
+    if(t == 3505) {
+        scrAlexLaunchBall(0);
+        scrAlexLaunchBall(4);  
+    }
+    if(t == 3515) {
+        scrAlexLaunchBall(1);
+        scrAlexLaunchBall(3); 
+    }
+    if(t == 3530) {
+        scrAlexLaunchBall(2);
+    }
+    
+    if(t == 3545) {
+        scrAlexLaunchBall(0);
+        scrAlexLaunchBall(4);  
+    }
+    if(t == 3550) {
+        scrAlexLaunchBall(1);
+        scrAlexLaunchBall(3); 
+    }
+    if(t == 3555) {
+        scrAlexLaunchBall(2);
+    }
+    
+    
+    // Redeem golden balls
+    if(t == 3560) {
+        with(objAlexMinigameGoldenBall) {
+            event_user(0);  // Slow down
+        }   
+    }
+    if(t == 3620) {
+        with(objAlexMinigameGoldenBall) {
+            points_on_destroy = other.golden_ball_reward;
+            instance_destroy();
+        }   
+    }
+    
+    if(t &gt;= 3750 &amp;&amp; !instance_exists(objAlexMinigameBall)) {
+        event_user(1);
+    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Finish the timeline
+
+active = 0;
 </string>
           </argument>
         </arguments>

@@ -42,7 +42,8 @@ image_blend = make_colour_hsv(0, 0, brightness);
 max_spd = 9;
 on_hit_spd = 7;
 
-points_on_collision = 5;
+slow_down = false;
+points_on_collision = 10;
 points_on_destroy = 0;
 
 collision_cooldown_t = 0;
@@ -110,8 +111,8 @@ if(collision_cooldown_t &gt; 0) {
 } else {
 
     // Player
-    var _player = instance_place(x, y, objPlayer);
-    if(_player != noone &amp;&amp; active) {    
+    var _player = instance_place(x + hspeed, y + vspeed, objPlayer);
+    if(_player != noone &amp;&amp; active &amp;&amp; !slow_down) {    
         global.ballMinigameScore += points_on_collision;
             
         var _floating_score = instance_create(x, y, objAlexMinigameBallScoreText);
@@ -130,7 +131,12 @@ if(collision_cooldown_t &gt; 0) {
     
     // Solids
     if(place_meeting(x, y + vspeed, objBlock) &amp;&amp; y &gt; ystart) {
-        instance_destroy();
+        if(!slow_down)
+            instance_destroy();
+        else {
+            vspeed *= -1;
+            collision_cooldown_t = 10;
+        }
     }
 }
 </string>
@@ -166,7 +172,37 @@ else
 image_angle -= hspeed;
 
 // Glow alpha
-glow_alpha = lerp(glow_alpha, 0, 0.1);
+if(!slow_down)
+    glow_alpha = lerp(glow_alpha, 0, 0.1);
+else
+    glow_alpha = min(glow_alpha + 0.02, 1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Slow the ball down before redeeming it at the end
+
+slow_down = true;
+gravity = 0;
+friction = 0.1;
 </string>
           </argument>
         </arguments>

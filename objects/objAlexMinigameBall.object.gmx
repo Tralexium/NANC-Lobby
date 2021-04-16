@@ -37,6 +37,7 @@ active = false;  // Whether it can collide with the player
 brightness = 125;
 glow_alpha = 0;
 glow_t = 0;
+glow_spd = 1;
 
 image_blend = make_colour_hsv(0, 0, brightness);
 
@@ -221,7 +222,7 @@ image_angle -= hspeed;
 // Glow when touched a solid
 if(player_touched) {
     glow_t++;
-    glow_alpha = abs(dsin(glow_t*10));
+    glow_alpha = abs(dsin(glow_t*15));
 }
 </string>
           </argument>
