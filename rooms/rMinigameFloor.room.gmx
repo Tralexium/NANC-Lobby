@@ -4,7 +4,7 @@
   <width>672</width>
   <height>512</height>
   <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -55,9 +55,6 @@ background_vspeed[0] = -.5</code>
     <instance objName="objPlayMusic" x="16" y="-64" name="inst_5078C3D3" locked="0" code="BGM = musAlexMinigameFloor;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlayerStart" x="32" y="432" name="inst_EC26863D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="-32" y="0" name="inst_A0150F0A" locked="0" code="" scaleX="2" scaleY="32" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="0" y="464" name="inst_ADE9260B" locked="0" code="" scaleX="42" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="0" y="0" name="inst_C5BDD074" locked="0" code="" scaleX="42" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="512" y="48" name="inst_B6968C4C" locked="0" code="" scaleX="10" scaleY="26" colour="4294967295" rotation="0"/>
     <instance objName="objAlexMinigameTarget" x="576" y="256" name="inst_2BE15B80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexMinigameButton" x="160" y="464" name="inst_49928B2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexMinigameCannonController" x="96" y="448" name="inst_941E7A5A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -68,6 +65,9 @@ background_vspeed[0] = -.5</code>
     <instance objName="objAlexMinigamePointField" x="504" y="224" name="inst_418B839C" locked="0" code="points_rewarded = 20;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objFloorInitializer" x="0" y="-48" name="inst_8935AED7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarStageCam" x="48" y="-64" name="inst_AD2406A7" locked="0" code="target_obj = objAlexLobbyPlayer;&#xA;disable_objects = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexMinigameWall" x="0" y="464" name="inst_CE635788" locked="0" code="" scaleX="42" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexMinigameWall" x="512" y="48" name="inst_39DB73E8" locked="0" code="" scaleX="10" scaleY="26" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexMinigameWall" x="0" y="0" name="inst_BCDFB131" locked="0" code="" scaleX="42" scaleY="3" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexMinigame" x="0" y="32" w="16" h="16" xo="16" yo="64" id="10019184" name="inst_435B1A00" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

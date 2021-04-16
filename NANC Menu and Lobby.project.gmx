@@ -1504,6 +1504,7 @@
         <object>objects\objAlexMinigameGoldenBall</object>
         <object>objects\objAlexMinigameSpikyBall</object>
         <object>objects\objAlexMinigameBallScoreText</object>
+        <object>objects\objAlexMinigameWall</object>
         <object>objects\objAlexMinigamePointField</object>
         <object>objects\objAlexMinigameCannon</object>
         <object>objects\objAlexMinigameCannonController</object>

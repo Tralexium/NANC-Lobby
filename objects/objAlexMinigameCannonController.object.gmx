@@ -531,7 +531,7 @@ clear_text_fade_in = true;
 alarm[0] = clear_text_scale_dur + 50;
 
 with(objAlexMinigameBall)
-    instance_destroy();
+    shrink = true;
 
 with(objAlexMinigameScoreUI)
     fade_out = true;
