@@ -32,6 +32,7 @@ with(objAlexMinigameCannonController)
 
 gravity = 0.1;
 image_speed = 0;
+image_angle = random(360);
 
 active = false;  // Whether it can collide with the player
 brightness = 125;
@@ -97,7 +98,7 @@ if(!active &amp;&amp; vspeed &gt; 0) {
 // Player
 var _player = instance_place(x, y, objPlayer);
 if(_player != noone &amp;&amp; active) {    
-    global.ballMinigameScore += points_on_collision;
+    global.lobbyMinigameScore += points_on_collision;
         
     var _floating_score = instance_create(x, y, objAlexMinigameBallScoreText);
         _floating_score.text_score = points_on_collision;
@@ -134,12 +135,12 @@ if(place_meeting(x, y + vspeed, objBlock)) {
 // Brightness
 image_blend = make_colour_hsv(0, 0, brightness);
 if(active)
-    brightness = min(brightness + 2, 255);
+    brightness = min(brightness + 3, 255);
 else
-    brightness = max(brightness - 2, 125);
+    brightness = max(brightness - 3, 125);
     
 // Image angle
-image_angle -= hspeed;
+image_angle -= hspeed*3;
 </string>
           </argument>
         </arguments>
@@ -164,7 +165,8 @@ image_angle -= hspeed;
             <kind>1</kind>
             <string>/// Draw
 
-draw_self();
+draw_sprite_ext(sprite_index, 0, x, y, image_xscale, image_yscale, 0, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, 1, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>

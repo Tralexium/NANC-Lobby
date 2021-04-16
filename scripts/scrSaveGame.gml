@@ -125,6 +125,7 @@ ds_map_add(saveMap,"lobbyPlayerSpeedUp",global.lobbyPlayerSpeedUp);
 ds_map_add(saveMap,"lobbyLastFloor",global.lobbyLastFloor);
 ds_map_add(saveMap,"lobbyLastX",global.lobbyLastX);
 ds_map_add(saveMap,"lobbyLastY",global.lobbyLastY);
+ds_map_add(saveMap,"lobbyMinigameHighScore",global.lobbyMinigameHighScore);
 
 // Stage related
 ds_map_add(saveMap,"stagePresent",global.stagePresent);

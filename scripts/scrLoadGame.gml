@@ -51,6 +51,7 @@ if (loadFile)
         global.lobbyLastFloor = ds_map_find_value(saveMap,"lobbyLastFloor");
         global.lobbyLastX = ds_map_find_value(saveMap,"lobbyLastX");
         global.lobbyLastY = ds_map_find_value(saveMap,"lobbyLastY");
+        global.lobbyMinigameHighScore = ds_map_find_value(saveMap,"lobbyMinigameHighScore");
         
         // Stage related
         global.stagePresent = ds_map_find_value(saveMap,"stagePresent");

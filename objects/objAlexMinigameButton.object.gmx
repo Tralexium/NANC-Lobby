@@ -31,6 +31,7 @@ image_speed = 0;
 
 pressed = false;
 img_speed = 0;
+img_index = 0;
 </string>
           </argument>
         </arguments>
@@ -63,13 +64,12 @@ if(_p != noone &amp;&amp; !pressed) {
         
         with(objAlexMinigameCannonController)
             event_user(0);  // Start the controller
-    } else {
-        img_speed = -0.5;
     }
 }
 
-image_index += img_speed;
-image_index = clamp(image_index, 0.1, image_number-1);
+img_index += img_speed;
+img_index = clamp(img_index, 0.1, image_number-1.1);
+image_index = img_index;
 </string>
           </argument>
         </arguments>

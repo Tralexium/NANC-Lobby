@@ -38,8 +38,15 @@ active = false;
 cannon_amnt = 5;
 ball_counter = 0;
 golden_ball_reward = 100;
-
+high_score_achieved = false;
 player_speed = 5;
+
+clear_text_t = 0;
+clear_text_scale_dur = 30;
+clear_text_scale = 0;
+clear_text_alpha = 1;
+clear_text_fade_in = false;
+clear_text_fade_out = false;
 
 var _cannon_pad = 32;
 var _cannon_x = x;
@@ -47,6 +54,31 @@ for(var i=0; i&lt;cannon_amnt; i++) {
     cannon[i] = instance_create(_cannon_x, y, objAlexMinigameCannon);
     _cannon_x += _cannon_pad;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Fade out finish text
+
+clear_text_fade_out = true;
 </string>
           </argument>
         </arguments>
@@ -368,9 +400,107 @@ if(active) {
         }   
     }
     
-    if(t &gt;= 3750 &amp;&amp; !instance_exists(objAlexMinigameBall)) {
+    if(t &gt;= 3780) {
         event_user(1);
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Modify bullets
+
+if(active) {
+    with(objBullet) {
+        if (image_xscale == 1) {
+            image_xscale = 3;
+            image_yscale = 3;
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Clear text
+
+if(clear_text_fade_out) {
+    clear_text_alpha -= 0.025;
+    
+    if(clear_text_alpha &lt; 0.5) {
+        event_user(2);
+    }
+} else if(clear_text_fade_in) {
+    clear_text_t = min(clear_text_t+1, clear_text_scale_dur);
+    clear_text_scale = scrAlexEaseOutElastic(clear_text_t, 0, 1.5, clear_text_scale_dur);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Restore music and return things back to their default
+
+scrPlayMusic(musAlexMinigameFloor, true);
+
+clear_text_t = 0;
+clear_text_scale = 0;
+clear_text_alpha = 1;
+clear_text_fade_in = false;
+clear_text_fade_out = false;
+
+with(objAlexMinigameButton) {
+    pressed = false;
+    img_speed = -0.3;
 }
 </string>
           </argument>
@@ -396,7 +526,30 @@ if(active) {
             <kind>1</kind>
             <string>/// Finish the timeline
 
-active = 0;
+active = false;
+clear_text_fade_in = true;
+alarm[0] = clear_text_scale_dur + 50;
+
+with(objAlexMinigameBall)
+    instance_destroy();
+
+with(objAlexMinigameScoreUI)
+    fade_out = true;
+    
+// Check for new high score
+if(global.lobbyMinigameScore &gt; global.lobbyMinigameHighScore) {
+    global.lobbyMinigameHighScore = global.lobbyMinigameScore;
+    high_score_achieved = true;  
+    
+    // Spawn celebratory confetti
+    repeat(20) {
+        instance_create(view_xview[0] + 130, room_height, objAlexMinigameConfetti);
+        instance_create(view_xview[0] + 400, room_height, objAlexMinigameConfetti);
+    }
+    
+    // Save current score
+    scrSaveGame(false);
+}
 </string>
           </argument>
         </arguments>
@@ -451,14 +604,18 @@ scrAlexShakeCam(25, 8, 8, 4, 6);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw timer
+            <string>/// Draw clear text
 
-if(global.debugMode) {
-    draw_set_colour(c_white)
-    draw_set_font(fLobbySmall24);
-    draw_set_halign(fa_left);
-    draw_set_valign(fa_bottom);
-    draw_text(20, 595, string(t))
+if(clear_text_scale &gt; 0) {
+    draw_set_font(fMenuLobby18);
+    draw_set_alpha(clear_text_alpha);
+    
+    if(high_score_achieved)
+        scrDrawTextSquareOutlineExt(250, 304, "New Best!", $e8e0df, $2e1814, 3, fa_center, fa_middle, clear_text_scale, clear_text_scale);
+    else
+        scrDrawTextSquareOutlineExt(250, 304, "Finish!", $e8e0df, $2e1814, 3, fa_center, fa_middle, clear_text_scale, clear_text_scale);
+        
+    draw_set_alpha(1);
 }
 </string>
           </argument>

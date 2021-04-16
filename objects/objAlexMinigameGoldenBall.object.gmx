@@ -72,7 +72,7 @@ collision_cooldown_t = 0;
             <string>/// Reward points &amp; effects
 
 if(points_on_destroy &gt; 0) {
-    global.ballMinigameScore += points_on_destroy;
+    global.lobbyMinigameScore += points_on_destroy;
     
     var _floating_score = instance_create(x, y, objAlexMinigameBallScoreText);
         _floating_score.text_score = points_on_destroy;
@@ -111,9 +111,10 @@ if(collision_cooldown_t &gt; 0) {
 } else {
 
     // Player
-    var _player = instance_place(x + hspeed, y + vspeed, objPlayer);
-    if(_player != noone &amp;&amp; active &amp;&amp; !slow_down) {    
-        global.ballMinigameScore += points_on_collision;
+    var _player = place_meeting(x + hspeed, y + vspeed, objPlayer);
+    var _bullet =place_meeting(x + hspeed, y + vspeed, objBullet); 
+    if((_player || _bullet) &amp;&amp; active &amp;&amp; !slow_down) {    
+        global.lobbyMinigameScore += points_on_collision;
             
         var _floating_score = instance_create(x, y, objAlexMinigameBallScoreText);
             _floating_score.text_score = points_on_collision;
@@ -164,12 +165,12 @@ if(collision_cooldown_t &gt; 0) {
 // Brightness
 image_blend = make_colour_hsv(0, 0, brightness);
 if(active)
-    brightness = min(brightness + 2, 255);
+    brightness = min(brightness + 3, 255);
 else
-    brightness = max(brightness - 2, 125);
+    brightness = max(brightness - 3, 125);
     
 // Image angle
-image_angle -= hspeed;
+image_angle -= hspeed*3;
 
 // Glow alpha
 if(!slow_down)
@@ -227,10 +228,12 @@ friction = 0.1;
             <kind>1</kind>
             <string>/// Draw
 
-draw_self();
+draw_sprite_ext(sprite_index, 0, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, 1, x, y, image_xscale, image_yscale, 0, image_blend, image_alpha);
 
 draw_set_blend_mode(bm_add);
-draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, glow_alpha);
+draw_sprite_ext(sprite_index, 0, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha * glow_alpha);
+draw_sprite_ext(sprite_index, 1, x, y, image_xscale, image_yscale, 0, image_blend, image_alpha * glow_alpha);
 draw_set_blend_mode(bm_normal);
 </string>
           </argument>

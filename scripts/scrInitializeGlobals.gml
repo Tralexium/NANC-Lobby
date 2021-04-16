@@ -54,6 +54,8 @@ global.lobbyPlayerSpeedUp = false; // Whether the player is faster in the lobby
 global.lobbyLastFloor = -1; // Remembers the floor of the last door that the player entered
 global.lobbyLastX = -1; // Remembers which door the player entered
 global.lobbyLastY = -1;
+global.lobbyMinigameScore = 0;
+global.lobbyMinigameHighScore = 0;
 
 // Stage related
 global.stagePresent = false; // Whether you're playing a stage currently

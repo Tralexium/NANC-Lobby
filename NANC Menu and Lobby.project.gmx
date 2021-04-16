@@ -838,7 +838,7 @@
         <sprite>sprites\sprAlexMinigameCannon</sprite>
         <sprite>sprites\sprAlexMinigameButton</sprite>
         <sprite>sprites\sprAlexMinigameClockBase</sprite>
-        <sprite>sprites\sprAlexMinigameClockTex</sprite>
+        <sprite>sprites\sprAlexMinigameClockInner</sprite>
         <sprite>sprites\sprAlexMinigameClockArrow</sprite>
         <sprite>sprites\sprAlexMinigameTargetBlueHalf</sprite>
         <sprite>sprites\sprAlexMinigameTargetRedHalf</sprite>
@@ -1508,6 +1508,7 @@
         <object>objects\objAlexMinigameCannon</object>
         <object>objects\objAlexMinigameCannonController</object>
         <object>objects\objAlexMinigameButton</object>
+        <object>objects\objAlexMinigameConfetti</object>
         <object>objects\objAlexMinigameTarget</object>
       </objects>
       <object>objects\objStarzorSign</object>
