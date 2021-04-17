@@ -504,6 +504,9 @@ with(objAlexMinigameButton) {
     pressed = false;
     img_speed = -0.3;
 }
+
+with(objAlexMinigameLockWall)
+    mask_index = sprAlexNoMask;
 </string>
           </argument>
         </arguments>
@@ -586,6 +589,9 @@ instance_create(0, 0, objAlexMinigameScoreUI);
 
 with(objAlexMinigameSpike)
     active = true;
+    
+with(objAlexMinigameLockWall)
+    mask_index = sprite_index;
 
 scrStopMusic();
 scrPlayMusic(musAlexMinigameFloorStart, false);

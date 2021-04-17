@@ -1506,6 +1506,9 @@
         <object>objects\objAlexMinigameSpikyBall</object>
         <object>objects\objAlexMinigameBallScoreText</object>
         <object>objects\objAlexMinigameWall</object>
+        <object>objects\objAlexMinigameLockWall</object>
+        <object>objects\objAlexMinigameCamZoomController</object>
+        <object>objects\objAlexMinigameCamZoomTrigger</object>
         <object>objects\objAlexMinigameSpike</object>
         <object>objects\objAlexMinigamePointField</object>
         <object>objects\objAlexMinigameCannon</object>

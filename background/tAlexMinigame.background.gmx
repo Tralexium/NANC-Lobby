@@ -13,7 +13,7 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>112</width>
-  <height>128</height>
+  <width>288</width>
+  <height>160</height>
   <data>images\tAlexMinigame.png</data>
 </background>
