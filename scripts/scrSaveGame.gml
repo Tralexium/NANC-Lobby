@@ -41,16 +41,6 @@ if (savePosition)
         global.saveSecretItem[i] = global.secretItem[i];
     }
     
-    for (var i = 0; i < global.totalNumberOfHats; i++)
-    {
-        global.savePlayerHat[i] = global.playerHat[i];
-    }
-    
-    for (var i = 0; i < global.totalNumberOfPets; i++)
-    {
-        global.savePlayerPet[i] = global.playerPet[i];
-    }
-    
     for (var i = 0; i < global.bossItemTotal; i++)
     {
         global.saveBossItem[i] = global.bossItem[i];
@@ -97,6 +87,18 @@ for (var i = 0; i < global.totalNumberOfCrystalStars; i++)
         global.totalCrystalStarsFound++;
 }
 global.saveTotalCrystalStarsFound = global.totalCrystalStarsFound;
+
+// Hats
+for (var i = 0; i < global.totalNumberOfHats; i++)
+{
+    global.savePlayerHat[i] = global.playerHat[i];
+}
+
+// Pets
+for (var i = 0; i < global.totalNumberOfPets; i++)
+{
+    global.savePlayerPet[i] = global.playerPet[i];
+}
 
 
 //create a map for save data

@@ -21,7 +21,7 @@ for (var i = 0; i < global.totalNumberOfCrystalStars; i++)
     global.saveCrystalStar[i] = false;
 }
 
-global.totalNumberOfHats = 10;
+global.totalNumberOfHats = 14;
 for (var i = 0; i < global.totalNumberOfHats; i++)
 {
     global.playerHat[i] = false;

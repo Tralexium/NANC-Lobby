@@ -117,7 +117,7 @@ secrets_quota_map[? 13] = 24;
 
 cosmetics_amnt = 0;
 
-for (var i = 0; i &lt; global.totalNumberOfHats; i++)
+for (var i = 0; i &lt; global.totalNumberOfHats - 4; i++)
 {
     if(global.playerHat[i])
         cosmetics_amnt++;

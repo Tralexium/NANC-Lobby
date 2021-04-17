@@ -844,6 +844,9 @@
         <sprite>sprites\sprAlexMinigameTargetRedHalf</sprite>
         <sprite>sprites\sprAlexMinigameTargetYellowHalf</sprite>
         <sprite>sprites\sprAlexMinigameSpikes</sprite>
+        <sprite>sprites\sprAlexMinigameHighscoreBoard</sprite>
+        <sprite>sprites\sprAlexMinigameLootBox</sprite>
+        <sprite>sprites\sprAlexFullCompletionBox</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
@@ -948,6 +951,9 @@
         <sprite>sprites\sprAlexHatOongaBoonga</sprite>
         <sprite>sprites\sprAlexHatPropellerHat</sprite>
         <sprite>sprites\sprAlexHatSombrero</sprite>
+        <sprite>sprites\sprAlexHatChair</sprite>
+        <sprite>sprites\sprAlexHatBurger</sprite>
+        <sprite>sprites\sprAlexHatCrusher</sprite>
         <sprite>sprites\sprAlexPetGhosty</sprite>
         <sprite>sprites\sprAlexPetPatsBall</sprite>
         <sprite>sprites\sprAlexPetTrollBuddy</sprite>
@@ -1451,6 +1457,7 @@
       </objects>
       <objects name="Cosmetics">
         <object>objects\objAlexLootBox</object>
+        <object>objects\objAlexMinigameLootBox</object>
         <object>objects\objAlexLootBoxStarPart</object>
         <object>objects\objAlexCosmeticPreviewFromBox</object>
       </objects>
@@ -1515,6 +1522,7 @@
         <object>objects\objAlexMinigameCannonController</object>
         <object>objects\objAlexMinigameButton</object>
         <object>objects\objAlexMinigameConfetti</object>
+        <object>objects\objAlexMinigameHighscoreBoard</object>
         <object>objects\objAlexMinigameTarget</object>
       </objects>
       <object>objects\objStarzorSign</object>
