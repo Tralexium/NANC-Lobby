@@ -51,6 +51,10 @@ has_landed = true; // for squish and smoke particles
 in_water = false;  // for splash and bubble particles
 draw_shadow = true // Draws a drop shadow underneath the player
 
+// Minigame related
+mg_iframes = 0;
+mg_max_iframes = 20;
+
 // Bow's old fashion
 with(objBow)
     instance_destroy();
@@ -454,6 +458,12 @@ if(place_meeting(x, y, objAlexWater)) {
         instance_create(x, y-5, objAlexWaterBubble);
     }
 }
+
+// Minigame stuff
+if(mg_iframes &gt; 0) {
+    mg_iframes--;
+    image_blend = merge_colour(c_white, c_red, mg_iframes/mg_max_iframes);
+}
 </string>
           </argument>
         </arguments>
@@ -700,7 +710,7 @@ draw_sprite_ext(sprite_index,image_index,drawX,drawY+draw_y_adjustment,draw_xsca
 
 // Draw hat
 if(hat_sprite != -1)
-    draw_sprite_ext(hat_sprite, cosmetic_index, hat_x, hat_y+draw_y_adjustment, draw_xscale*xScale, draw_yscale*global.grav, image_angle, -1, image_alpha*draw_alpha);
+    draw_sprite_ext(hat_sprite, cosmetic_index, hat_x, hat_y+draw_y_adjustment, draw_xscale*xScale, draw_yscale*global.grav, image_angle, image_blend, image_alpha*draw_alpha);
 
 //draw the player's hitbox
 if (global.debugShowHitbox)

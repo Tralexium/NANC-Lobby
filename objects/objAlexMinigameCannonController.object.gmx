@@ -492,6 +492,8 @@ if(clear_text_fade_out) {
 
 scrPlayMusic(musAlexMinigameFloor, true);
 
+high_score_achieved = false;
+
 clear_text_t = 0;
 clear_text_scale = 0;
 clear_text_alpha = 1;
@@ -536,6 +538,9 @@ with(objAlexMinigameBall)
 with(objAlexMinigameScoreUI)
     fade_out = true;
     
+with(objAlexMinigameSpike)
+    active = false;
+    
 // Check for new high score
 if(global.lobbyMinigameScore &gt; global.lobbyMinigameHighScore) {
     global.lobbyMinigameHighScore = global.lobbyMinigameScore;
@@ -578,6 +583,9 @@ active = true;
 t = 0;
 
 instance_create(0, 0, objAlexMinigameScoreUI);
+
+with(objAlexMinigameSpike)
+    active = true;
 
 scrStopMusic();
 scrPlayMusic(musAlexMinigameFloorStart, false);

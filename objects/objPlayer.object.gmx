@@ -1004,7 +1004,7 @@ draw_sprite_ext(sprite_index,image_index,drawX,drawY,image_xscale*xScale,image_y
 
 // Draw hat
 if(hat_sprite != -1)
-    draw_sprite_ext(hat_sprite, cosmetic_index, hat_x, hat_y, xScale, image_yscale*global.grav, image_angle, -1, image_alpha);
+    draw_sprite_ext(hat_sprite, cosmetic_index, hat_x, hat_y, xScale, image_yscale*global.grav, image_angle, image_blend, image_alpha);
 
 //draw the player's hitbox
 if (global.debugShowHitbox)

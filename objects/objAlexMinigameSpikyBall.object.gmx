@@ -48,30 +48,6 @@ points_on_collision = -10;
         </arguments>
       </action>
     </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Crumble effect [TODO]
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -101,10 +77,24 @@ if(!shrink) {
     var _player = instance_place(x, y, objPlayer);
     if(_player != noone &amp;&amp; active) {    
         global.lobbyMinigameScore += points_on_collision;
-            
+        
+        var _part = scrAlexMakeParticle(x, y, 50, sprAlexFPChargeFinished, 0.4, 90, 2.5, false, false, false);
+            _part.end_on_last_frame = true;
+            _part.image_xscale = 2;
+            _part.image_yscale = 2;
+            _part = scrAlexMakeParticle(x, y, 50, sprAlexFPChargeFinished, 0.4, 90, 2.5, false, false, false);
+            _part.end_on_last_frame = true;
+            _part.image_xscale = -2;
+            _part.image_yscale = 2;
+        
         var _floating_score = instance_create(x, y, objAlexMinigameBallScoreText);
             _floating_score.text_score = points_on_collision;
             
+        scrAlexShakeCam(15, 5, 5, 4, 3);
+            
+        with(objAlexLobbyPlayer)
+            mg_iframes = mg_max_iframes;
+        
         instance_destroy();
     }
     

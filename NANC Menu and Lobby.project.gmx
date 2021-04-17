@@ -843,6 +843,7 @@
         <sprite>sprites\sprAlexMinigameTargetBlueHalf</sprite>
         <sprite>sprites\sprAlexMinigameTargetRedHalf</sprite>
         <sprite>sprites\sprAlexMinigameTargetYellowHalf</sprite>
+        <sprite>sprites\sprAlexMinigameSpikes</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
@@ -1505,6 +1506,7 @@
         <object>objects\objAlexMinigameSpikyBall</object>
         <object>objects\objAlexMinigameBallScoreText</object>
         <object>objects\objAlexMinigameWall</object>
+        <object>objects\objAlexMinigameSpike</object>
         <object>objects\objAlexMinigamePointField</object>
         <object>objects\objAlexMinigameCannon</object>
         <object>objects\objAlexMinigameCannonController</object>
