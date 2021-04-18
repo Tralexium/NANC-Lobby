@@ -468,6 +468,38 @@ if(mg_iframes &gt; 0) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Spawn sparkles if player is wearing the crown
+
+if(hat_sprite == sprAlexHatCrown &amp;&amp; irandom(30) == 0) {
+    var _x, _y;
+    _x = hat_x + random_range(-5, 5);
+    _y = hat_y + random_range(-3, 3) - 15;
+    
+    var spr = choose(sprAlexBonusFloorSparkPart1, sprAlexBonusFloorSparkPart2, sprAlexBonusFloorSparkPart3, sprAlexBonusFloorSparkPart4, sprAlexBonusFloorSparkPart5);
+    var part = scrAlexMakeParticle(_x, _y, 15, spr, .45, 0, 0, 0, 0, 0);
+        part.end_on_last_frame = true;
+        part.depth = depth - 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="objPlayerKiller">
       <action>
@@ -711,7 +743,7 @@ draw_sprite_ext(sprite_index,image_index,drawX,drawY+draw_y_adjustment,draw_xsca
 // Draw hat
 if(hat_sprite != -1)
     draw_sprite_ext(hat_sprite, cosmetic_index, hat_x, hat_y+draw_y_adjustment, draw_xscale*xScale, draw_yscale*global.grav, image_angle, image_blend, image_alpha*draw_alpha);
-
+    
 //draw the player's hitbox
 if (global.debugShowHitbox)
     draw_sprite_ext(mask_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha*0.8);

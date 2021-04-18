@@ -847,6 +847,8 @@
         <sprite>sprites\sprAlexMinigameHighscoreBoard</sprite>
         <sprite>sprites\sprAlexMinigameLootBox</sprite>
         <sprite>sprites\sprAlexFullCompletionBox</sprite>
+        <sprite>sprites\sprAlexFullCompletionBoxCircle</sprite>
+        <sprite>sprites\sprAlexFullCompletionBoxInnerCircle</sprite>
       </sprites>
       <sprite>sprites\sprPlayMusicIntro</sprite>
       <sprite>sprites\sprAlexOpaqueSpikeU</sprite>
@@ -872,6 +874,7 @@
       <sprite>sprites\sprAlexLobbyTransitionBubble</sprite>
       <sprite>sprites\sprAlexPlayerDustPart</sprite>
       <sprite>sprites\sprAlexLobbyStageDoor</sprite>
+      <sprite>sprites\sprAlexLobbyMinigameDoor</sprite>
       <sprite>sprites\sprAlexLobbyGrandDoor</sprite>
       <sprite>sprites\sprAlexLobbyStageDoorTag</sprite>
       <sprite>sprites\sprAlexLobbyStageDoorAcedTag</sprite>
@@ -954,6 +957,7 @@
         <sprite>sprites\sprAlexHatChair</sprite>
         <sprite>sprites\sprAlexHatBurger</sprite>
         <sprite>sprites\sprAlexHatCrusher</sprite>
+        <sprite>sprites\sprAlexHatCrown</sprite>
         <sprite>sprites\sprAlexPetGhosty</sprite>
         <sprite>sprites\sprAlexPetPatsBall</sprite>
         <sprite>sprites\sprAlexPetTrollBuddy</sprite>
@@ -1441,6 +1445,7 @@
         <object>objects\objAlexLobbyStarStageDoor</object>
         <object>objects\objAlexLobbyFinalStageDoor</object>
         <object>objects\objAlexLobbyReceptionDoor</object>
+        <object>objects\objAlexLobbyMinigameDoor</object>
         <object>objects\objAlexLobbyElevator</object>
         <object>objects\objAlexDoorTag</object>
         <object>objects\objAlexStageReviewUI</object>
@@ -1458,6 +1463,7 @@
       <objects name="Cosmetics">
         <object>objects\objAlexLootBox</object>
         <object>objects\objAlexMinigameLootBox</object>
+        <object>objects\objAlexFullCompletionLootBox</object>
         <object>objects\objAlexLootBoxStarPart</object>
         <object>objects\objAlexCosmeticPreviewFromBox</object>
       </objects>

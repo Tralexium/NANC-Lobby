@@ -73,11 +73,10 @@ background_vspeed[0] = -.25</code>
     <instance objName="objAlexMinigameSpike" x="1344" y="960" name="inst_F0B0373E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexMinigameSpike" x="1376" y="960" name="inst_ADDC62AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexMinigameSpike" x="1408" y="960" name="inst_A4F3E439" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="208" y="48" name="inst_28222B66" locked="0" code="" scaleX="37.3333320617676" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="208" y="48" name="inst_28222B66" locked="0" code="" scaleX="36" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="256" y="64" name="inst_D6FCFB02" locked="0" code="" scaleX="9" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="448" y="64" name="inst_11F926C8" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="784" y="64" name="inst_5CC99D7C" locked="0" code="" scaleX="5" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexBlockWithShadow" x="848" y="96" name="inst_92EE310D" locked="0" code="" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="784" y="64" name="inst_5CC99D7C" locked="0" code="" scaleX="9" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="752" y="192" name="inst_30A7D187" locked="0" code="" scaleX="6" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="656" y="256" name="inst_97DDA38F" locked="0" code="" scaleX="6" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithShadow" x="512" y="384" name="inst_EDAAC95C" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
@@ -119,11 +118,29 @@ background_vspeed[0] = -.25</code>
     <instance objName="objAlexStarCameraTrigger" x="928" y="560" name="inst_DAB1D1C1" locked="0" code="index = 1;&#xA;" scaleX="1" scaleY="13" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarCameraTrigger" x="880" y="560" name="inst_FD6A3B1F" locked="0" code="index = -1;&#xA;" scaleX="1" scaleY="13" colour="4294967295" rotation="0"/>
     <instance objName="objAlexMinigameHighscoreBoard" x="584" y="824" name="inst_68C4D410" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexMinigameLootBox" x="584" y="912" name="inst_215A48E4" locked="0" code="hat_id = 11;&#xA;pet_id = -1;&#xA;min_high_score = 1000;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexMinigameLootBox" x="496" y="912" name="inst_44C8ECA2" locked="0" code="hat_id = 10;&#xA;pet_id = -1;&#xA;min_high_score = 800;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexMinigameLootBox" x="672" y="912" name="inst_2B132687" locked="0" code="hat_id = 12;&#xA;pet_id = -1;&#xA;min_high_score = 1200;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexMinigameLootBox" x="584" y="928" name="inst_215A48E4" locked="0" code="hat_id = 11;&#xA;pet_id = -1;&#xA;min_high_score = 1000;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexMinigameLootBox" x="496" y="928" name="inst_44C8ECA2" locked="0" code="hat_id = 10;&#xA;pet_id = -1;&#xA;min_high_score = 800;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexMinigameLootBox" x="672" y="928" name="inst_2B132687" locked="0" code="hat_id = 12;&#xA;pet_id = -1;&#xA;min_high_score = 1200;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAlexSpeedOrb" x="288" y="896" name="inst_2B6D3971" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objAlexNPC" x="800" y="976" name="inst_DB92DB9F" locked="0" code="npc_name = &quot;Billy the sign&quot;;&#xA;idle_sprite = sprSpecialNPCBillyIdle;&#xA;talking_sprite = sprSpecialNPCBillyTalk;&#xA;letter_sfx = sndAlexDialogSoundBilly;&#xA;&#xA;if(global.lobbyMinigameHighScore == 0) {&#xA;    dialog_list[| 0] = &quot;Oh hey Kid, welcome to the special zone!&quot;&#xA;    dialog_list[| 1] = &quot;We got all the good stuff down here. Food, drinks, the latest version of Patball Mania(tm), you name it!&quot;&#xA;    dialog_list[| 2] = &quot;What's that? You never played a game of Patball Mania(tm)? Don't sweat it Kid, the rules are simple.&quot;&#xA;    dialog_list[| 3] = &quot;There's 3 types of balls.&quot;&#xA;    dialog_list[| 4] = &quot;[Green Balls] reward you with points based on the target color that they hit. You can only interact with them using your body.&quot;&#xA;    dialog_list[| 5] = &quot;[Golden Balls] reward you with 10 points each time you hit them. If you manage to juggle them till the end you get a bonus of 100 points. You can interact with them using both your body and bullets.&quot;&#xA;    dialog_list[| 6] = &quot;Lastly you got the [Spiky Balls], these pointy trouble makers will deduct 10 points from your score. Make sure to avoid them when possible!&quot;&#xA;    dialog_list[| 7] = &quot;And that pretty much covers the basics! Feel free to jump on the red button whenever you're ready.&quot;&#xA;    dialog_list[| 8] = &quot;Have fun and best of luck!&quot;&#xA;} else {&#xA;    dialog_list[| 0] = &quot;Hey watsup Kid?&quot;&#xA;    dialog_list[| 1] = &quot;Need to brush up on the rules of Patball Mania(tm)? I gotchu buddy.&quot;&#xA;    dialog_list[| 2] = &quot;So, there's 3 types of balls.&quot;&#xA;    dialog_list[| 3] = &quot;[Green Balls] reward you with points based on the target color that they hit. You can only interact with them using your body.&quot;&#xA;    dialog_list[| 4] = &quot;[Golden Balls] reward you with 10 points each time you hit them. If you manage to juggle them till the end you get a bonus of 100 points. You can interact with them using both your body and bullets.&quot;&#xA;    dialog_list[| 5] = &quot;Lastly you got the [Spiky Balls], these pointy trouble makers will deduct 10 points from your score. Make sure to avoid them when possible!&quot;&#xA;    dialog_list[| 6] = &quot;And that pretty much covers the basics! Feel free to jump on the red button whenever you're ready.&quot;&#xA;    dialog_list[| 7] = &quot;Have fun and best of luck!&quot;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="800" y="976" name="inst_DB92DB9F" locked="0" code="npc_name = &quot;Billy the sign&quot;;&#xA;idle_sprite = sprSpecialNPCBillyIdle;&#xA;talking_sprite = sprSpecialNPCBillyTalk;&#xA;letter_sfx = sndAlexDialogSoundBilly;&#xA;&#xA;if(global.lobbyMinigameHighScore == 0) {&#xA;    dialog_list[| 0] = &quot;Oh hey Kid, welcome to the special zone!&quot;&#xA;    dialog_list[| 1] = &quot;We got all the good stuff down here. Food, drinks, the latest version of Patball Mania(tm), you name it!&quot;&#xA;    dialog_list[| 2] = &quot;What's that? You never played a game of Patball Mania(tm)? Don't sweat it Kid, the rules are simple.&quot;&#xA;    dialog_list[| 3] = &quot;There's 3 types of balls.&quot;&#xA;    dialog_list[| 4] = &quot;[Green Balls] reward you with points based on the target color that they hit. You can only interact with them using your body.&quot;&#xA;    dialog_list[| 5] = &quot;[Golden Balls] reward you with 10 points each time you hit them. If you manage to juggle them till the end you get a bonus of 100 points. You can interact with them using both your body and bullets.&quot;&#xA;    dialog_list[| 6] = &quot;Lastly you got the [Spiky Balls], these pointy trouble makers will deduct 10 points from your score. Make sure to avoid them when possible!&quot;&#xA;    dialog_list[| 7] = &quot;And that pretty much covers the basics! Feel free to jump on the red button whenever you're ready.&quot;&#xA;    dialog_list[| 8] = &quot;Have fun and best of luck!&quot;&#xA;} else {&#xA;    dialog_list[| 0] = &quot;Hey watsup Kid?&quot;&#xA;    dialog_list[| 1] = &quot;Need to brush up on the rules of Patball Mania(tm)? I gotchu buddy.&quot;&#xA;    dialog_list[| 2] = &quot;Alright, so there's 3 types of balls.&quot;&#xA;    dialog_list[| 3] = &quot;[Green Balls] reward you with points based on the target color that they hit. You can only interact with them using your body.&quot;&#xA;    dialog_list[| 4] = &quot;[Golden Balls] reward you with 10 points each time you hit them. If you manage to juggle them till the end you get a bonus of 100 points. You can interact with them using both your body and bullets.&quot;&#xA;    dialog_list[| 5] = &quot;Lastly you got the [Spiky Balls], these pointy trouble makers will deduct 10 points from your score. Make sure to avoid them when possible!&quot;&#xA;    dialog_list[| 6] = &quot;And that pretty much covers the basics! Feel free to jump on the red button whenever you're ready.&quot;&#xA;    dialog_list[| 7] = &quot;Have fun and best of luck!&quot;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyMinigameDoor" x="400" y="976" name="inst_9D7E5F72" locked="0" code="room_id = rStarFloor;&#xA;spawn_x = 1296;&#xA;spawn_y = 1558;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="368" y="928" name="inst_631CE316" locked="0" code="index = -1;&#xA;" scaleX="2" scaleY="1.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="848" y="192" name="inst_41D526D4" locked="0" code="" scaleX="5" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="928" y="48" name="inst_A5C61F81" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1312" y="64" name="inst_E4B1BD42" locked="0" code="" scaleX="2.13333344459534" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1344" y="96" name="inst_E7B03B1F" locked="0" code="" scaleX="1.06666672229767" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1312" y="192" name="inst_3667CA63" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="1280" y="224" name="inst_CD69E828" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="928" y="224" name="inst_848484F6" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithShadow" x="960" y="288" name="inst_0137FE52" locked="0" code="" scaleX="20" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="896" y="96" name="inst_384C33C6" locked="0" code="index = 3;&#xA;" scaleX="1" scaleY="3.09677410125732" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraArea" x="864" y="0" name="inst_ECD332FD" locked="0" code="index = 3;&#xA;image_yscale = 5.25;&#xA;" scaleX="8.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraArea" x="0" y="0" name="inst_F32EF8C7" locked="0" code="index = 2;&#xA;image_yscale = 16;&#xA;" scaleX="14" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="176" y="592" name="inst_FCA73265" locked="0" code="index = 2;&#xA;" scaleX="4" scaleY="1.03225803375244" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="176" y="656" name="inst_B78024F6" locked="0" code="index = -1;&#xA;" scaleX="4" scaleY="1.03225803375244" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexStarCameraTrigger" x="848" y="96" name="inst_0CE75B96" locked="0" code="index = 2;&#xA;" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexBlockWithoutShadow" x="1024" y="224" name="inst_EF368719" locked="0" code="" scaleX="12" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexFullCompletionLootBox" x="1120" y="176" name="inst_A7EB2391" locked="0" code="hat_id = 13;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexMinigame" x="400" y="1008" w="32" h="32" xo="80" yo="64" id="10021017" name="inst_D7485525" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -614,6 +631,26 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="848" y="960" w="16" h="16" xo="160" yo="80" id="10021710" name="inst_1BA8599A" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="64" y="832" w="16" h="16" xo="128" yo="80" id="10021712" name="inst_FEAA0A6B" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="528" y="960" w="16" h="16" xo="112" yo="80" id="10021715" name="inst_FFC3FD2C" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="960" y="272" w="32" h="16" xo="224" yo="96" id="10022151" name="inst_23E0CA12" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1024" y="272" w="32" h="16" xo="224" yo="112" id="10022152" name="inst_5AB21553" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1248" y="256" w="32" h="32" xo="192" yo="64" id="10022153" name="inst_04D862BC" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="272" w="32" h="16" xo="224" yo="64" id="10022154" name="inst_3AAF82DC" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1056" y="272" w="16" h="16" xo="160" yo="80" id="10022155" name="inst_442473A9" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="992" y="272" w="16" h="16" xo="112" yo="64" id="10022157" name="inst_B97C83AC" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1232" y="272" w="16" h="16" xo="144" yo="80" id="10022158" name="inst_4EC1914B" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1168" y="272" w="16" h="16" xo="128" yo="80" id="10022159" name="inst_B6F46FA3" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="960" y="64" w="16" h="16" xo="128" yo="128" id="10022160" name="inst_B5E0A29C" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="976" y="64" w="16" h="16" xo="112" yo="112" id="10022161" name="inst_E381F0E8" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1248" y="64" w="16" h="16" xo="128" yo="96" id="10022162" name="inst_E4A7EFCF" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1264" y="64" w="16" h="16" xo="144" yo="96" id="10022163" name="inst_5DD3B1F3" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="64" w="16" h="16" xo="112" yo="128" id="10022164" name="inst_2EB807F6" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1056" y="64" w="16" h="16" xo="128" yo="96" id="10022165" name="inst_5274A33E" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1328" y="96" w="16" h="16" xo="128" yo="128" id="10022166" name="inst_486399DE" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="880" y="96" w="16" h="16" xo="112" yo="128" id="10022167" name="inst_71FDDE89" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="896" y="96" w="16" h="16" xo="128" yo="96" id="10022168" name="inst_189E9B09" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1328" y="176" w="16" h="16" xo="144" yo="64" id="10022169" name="inst_E1CCFC2F" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="336" y="960" w="16" h="16" xo="128" yo="64" id="10022194" name="inst_7A324F30" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="320" y="944" w="16" h="32" xo="208" yo="64" id="10022196" name="inst_8AE2B7B8" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="928" y="544" w="16" h="16" xo="16" yo="64" id="10019184" name="inst_435B1A00" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="944" y="544" w="16" h="16" xo="16" yo="64" id="10019185" name="inst_8CB5091A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="960" y="544" w="16" h="16" xo="16" yo="64" id="10019186" name="inst_BF0780FD" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1133,20 +1170,12 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="848" y="240" w="16" h="16" xo="32" yo="80" id="10019838" name="inst_C6602057" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="848" y="224" w="16" h="16" xo="32" yo="80" id="10019839" name="inst_6F4283EC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="848" y="208" w="16" h="16" xo="32" yo="80" id="10019840" name="inst_DCD24927" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="848" y="192" w="16" h="16" xo="32" yo="80" id="10019841" name="inst_694636F2" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="848" y="176" w="16" h="16" xo="32" yo="80" id="10019842" name="inst_3A024B2C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="848" y="160" w="16" h="16" xo="32" yo="80" id="10019843" name="inst_17E6EA69" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="848" y="144" w="16" h="16" xo="32" yo="80" id="10019844" name="inst_33700A91" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="848" y="128" w="16" h="16" xo="32" yo="80" id="10019845" name="inst_E83BC1BA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="848" y="112" w="16" h="16" xo="32" yo="80" id="10019846" name="inst_7158E679" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="848" y="96" w="16" h="16" xo="32" yo="80" id="10019847" name="inst_98262D09" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="832" y="80" w="16" h="16" xo="16" yo="64" id="10019850" name="inst_442305E4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="800" y="80" w="16" h="16" xo="16" yo="64" id="10019851" name="inst_DEC85AAA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="816" y="80" w="16" h="16" xo="16" yo="64" id="10019853" name="inst_7B7A8A3C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="784" y="80" w="16" h="16" xo="64" yo="64" id="10019854" name="inst_64987B3A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="784" y="64" w="16" h="16" xo="32" yo="80" id="10019855" name="inst_6F81EA6B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="784" y="48" w="16" h="16" xo="32" yo="64" id="10019856" name="inst_2A2D4A15" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="848" y="80" w="16" h="16" xo="32" yo="64" id="10019857" name="inst_4578ECAB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="768" y="48" w="16" h="16" xo="16" yo="64" id="10019858" name="inst_8151B203" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="752" y="48" w="16" h="16" xo="16" yo="64" id="10019859" name="inst_6705DDA8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="736" y="48" w="16" h="16" xo="16" yo="64" id="10019860" name="inst_34D9E2B3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1211,15 +1240,6 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="1152" y="0" w="32" h="32" xo="80" yo="64" id="10019925" name="inst_A2EB5D98" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1184" y="0" w="32" h="32" xo="80" yo="64" id="10019926" name="inst_41757476" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1216" y="0" w="32" h="32" xo="80" yo="64" id="10019927" name="inst_9F527026" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1216" y="32" w="32" h="32" xo="80" yo="64" id="10019928" name="inst_629B55DD" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1216" y="64" w="32" h="32" xo="80" yo="64" id="10019929" name="inst_B47BEE2C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1216" y="96" w="32" h="32" xo="80" yo="64" id="10019930" name="inst_6EAD835D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1216" y="128" w="32" h="32" xo="80" yo="64" id="10019931" name="inst_1E476F8D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1216" y="160" w="32" h="32" xo="80" yo="64" id="10019932" name="inst_9869AA60" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1216" y="192" w="32" h="32" xo="80" yo="64" id="10019933" name="inst_D51A3B8D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1216" y="224" w="32" h="32" xo="80" yo="64" id="10019934" name="inst_D191240F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1216" y="256" w="32" h="32" xo="80" yo="64" id="10019935" name="inst_B22B830C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1216" y="288" w="32" h="32" xo="80" yo="64" id="10019936" name="inst_54B072E6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1216" y="320" w="32" h="32" xo="80" yo="64" id="10019937" name="inst_EFD22711" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1216" y="352" w="32" h="32" xo="80" yo="64" id="10019938" name="inst_3DCF5C7B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1216" y="384" w="32" h="32" xo="80" yo="64" id="10019939" name="inst_1BCAB48D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1230,22 +1250,6 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="1184" y="384" w="32" h="32" xo="80" yo="64" id="10019944" name="inst_876E65CD" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1184" y="352" w="32" h="32" xo="80" yo="64" id="10019945" name="inst_236E826A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1184" y="320" w="32" h="32" xo="80" yo="64" id="10019946" name="inst_B9E99F53" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1184" y="288" w="32" h="32" xo="80" yo="64" id="10019947" name="inst_54BADD11" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1184" y="256" w="32" h="32" xo="80" yo="64" id="10019948" name="inst_78ADB3C0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1184" y="224" w="32" h="32" xo="80" yo="64" id="10019949" name="inst_1FA9AEBF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1184" y="192" w="32" h="32" xo="80" yo="64" id="10019950" name="inst_D200DCB8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1184" y="128" w="32" h="32" xo="80" yo="64" id="10019951" name="inst_AA3F88F3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1184" y="96" w="32" h="32" xo="80" yo="64" id="10019952" name="inst_C01188A7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1184" y="64" w="32" h="32" xo="80" yo="64" id="10019953" name="inst_FEAE88C9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1184" y="32" w="32" h="32" xo="80" yo="64" id="10019954" name="inst_402308CB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1184" y="160" w="32" h="32" xo="80" yo="64" id="10019955" name="inst_8DF92452" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1152" y="32" w="32" h="32" xo="80" yo="64" id="10019956" name="inst_BAC06294" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1152" y="96" w="32" h="32" xo="80" yo="64" id="10019957" name="inst_2672DF57" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1152" y="128" w="32" h="32" xo="80" yo="64" id="10019958" name="inst_DC4D1423" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1152" y="160" w="32" h="32" xo="80" yo="64" id="10019959" name="inst_4EA5FEF9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1152" y="224" w="32" h="32" xo="80" yo="64" id="10019960" name="inst_745D4FBA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1152" y="256" w="32" h="32" xo="80" yo="64" id="10019961" name="inst_7B6AC64C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1152" y="288" w="32" h="32" xo="80" yo="64" id="10019962" name="inst_B0797314" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1152" y="352" w="32" h="32" xo="80" yo="64" id="10019963" name="inst_53477941" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1152" y="384" w="32" h="32" xo="80" yo="64" id="10019964" name="inst_BC154521" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1152" y="416" w="32" h="32" xo="80" yo="64" id="10019965" name="inst_A35232A8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1256,43 +1260,7 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="1120" y="352" w="32" h="32" xo="80" yo="64" id="10019970" name="inst_E70082D7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1120" y="320" w="32" h="32" xo="80" yo="64" id="10019971" name="inst_5DAB7819" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1152" y="320" w="32" h="32" xo="80" yo="64" id="10019972" name="inst_09092903" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1120" y="288" w="32" h="32" xo="80" yo="64" id="10019973" name="inst_09616AE4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1120" y="224" w="32" h="32" xo="80" yo="64" id="10019974" name="inst_1CD85A41" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1120" y="192" w="32" h="32" xo="80" yo="64" id="10019975" name="inst_EEB336ED" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1120" y="256" w="32" h="32" xo="80" yo="64" id="10019976" name="inst_C90D1656" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1152" y="192" w="32" h="32" xo="80" yo="64" id="10019977" name="inst_8579A913" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1120" y="160" w="32" h="32" xo="80" yo="64" id="10019978" name="inst_9838D717" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1120" y="128" w="32" h="32" xo="80" yo="64" id="10019979" name="inst_EC084C82" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1120" y="96" w="32" h="32" xo="80" yo="64" id="10019980" name="inst_71337D4C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1120" y="64" w="32" h="32" xo="80" yo="64" id="10019981" name="inst_0FFD800F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1152" y="64" w="32" h="32" xo="80" yo="64" id="10019982" name="inst_20181370" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1120" y="32" w="32" h="32" xo="80" yo="64" id="10019983" name="inst_A32EFDE9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1088" y="32" w="32" h="32" xo="80" yo="64" id="10019984" name="inst_9C2191AF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1056" y="32" w="32" h="32" xo="80" yo="64" id="10019985" name="inst_5AEFD50C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1024" y="32" w="32" h="32" xo="80" yo="64" id="10019986" name="inst_317399CE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="992" y="32" w="32" h="32" xo="80" yo="64" id="10019987" name="inst_136A4BB3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="960" y="32" w="32" h="32" xo="80" yo="64" id="10019988" name="inst_2C5AD390" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="928" y="32" w="32" h="32" xo="80" yo="64" id="10019989" name="inst_5E467945" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="896" y="32" w="32" h="32" xo="80" yo="64" id="10019990" name="inst_FD0D9778" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="864" y="32" w="32" h="32" xo="80" yo="64" id="10019991" name="inst_77845930" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="832" y="32" w="32" h="32" xo="80" yo="64" id="10019992" name="inst_BEB2BB6E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="800" y="32" w="32" h="32" xo="80" yo="64" id="10019993" name="inst_8A676FBE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="864" y="64" w="32" h="32" xo="80" yo="64" id="10019994" name="inst_1443F5ED" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="896" y="64" w="32" h="32" xo="80" yo="64" id="10019995" name="inst_25AD4C87" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="928" y="64" w="32" h="32" xo="80" yo="64" id="10019996" name="inst_03680B0B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="960" y="64" w="32" h="32" xo="80" yo="64" id="10019997" name="inst_215EEC9A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="992" y="64" w="32" h="32" xo="80" yo="64" id="10019998" name="inst_075DAAFC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1024" y="64" w="32" h="32" xo="80" yo="64" id="10019999" name="inst_8CFCEF61" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1056" y="64" w="32" h="32" xo="80" yo="64" id="10020000" name="inst_446405F1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1088" y="64" w="32" h="32" xo="80" yo="64" id="10020001" name="inst_9EB774D5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1088" y="96" w="32" h="32" xo="80" yo="64" id="10020002" name="inst_8518CF26" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1088" y="128" w="32" h="32" xo="80" yo="64" id="10020003" name="inst_7B9CB93A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1088" y="160" w="32" h="32" xo="80" yo="64" id="10020004" name="inst_5395437C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1088" y="192" w="32" h="32" xo="80" yo="64" id="10020005" name="inst_6A9C05E9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1088" y="224" w="32" h="32" xo="80" yo="64" id="10020006" name="inst_55EEAA9C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1088" y="256" w="32" h="32" xo="80" yo="64" id="10020007" name="inst_27BC16AB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1088" y="288" w="32" h="32" xo="80" yo="64" id="10020008" name="inst_C109BA38" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1088" y="320" w="32" h="32" xo="80" yo="64" id="10020009" name="inst_A685C9DB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1056" y="320" w="32" h="32" xo="80" yo="64" id="10020010" name="inst_BB0E0978" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1056" y="352" w="32" h="32" xo="80" yo="64" id="10020011" name="inst_EC65D499" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1056" y="384" w="32" h="32" xo="80" yo="64" id="10020012" name="inst_69F6D30C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1307,64 +1275,15 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="1024" y="384" w="32" h="32" xo="80" yo="64" id="10020021" name="inst_4E982ED8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1024" y="352" w="32" h="32" xo="80" yo="64" id="10020022" name="inst_7A0D705B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1024" y="320" w="32" h="32" xo="80" yo="64" id="10020023" name="inst_AA3905B1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1056" y="288" w="32" h="32" xo="80" yo="64" id="10020024" name="inst_C4ACB67D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1056" y="256" w="32" h="32" xo="80" yo="64" id="10020025" name="inst_F76D34FE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1056" y="224" w="32" h="32" xo="80" yo="64" id="10020026" name="inst_5F17F5BE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1056" y="192" w="32" h="32" xo="80" yo="64" id="10020027" name="inst_CEB7A260" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1056" y="160" w="32" h="32" xo="80" yo="64" id="10020028" name="inst_37AA358C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1056" y="128" w="32" h="32" xo="80" yo="64" id="10020029" name="inst_39779E02" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1056" y="96" w="32" h="32" xo="80" yo="64" id="10020030" name="inst_24AF84FD" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1024" y="96" w="32" h="32" xo="80" yo="64" id="10020031" name="inst_344BDDE3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="992" y="96" w="32" h="32" xo="80" yo="64" id="10020032" name="inst_8FFEDE13" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="960" y="96" w="32" h="32" xo="80" yo="64" id="10020033" name="inst_CB9960CD" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="928" y="96" w="32" h="32" xo="80" yo="64" id="10020034" name="inst_7107865C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="896" y="96" w="32" h="32" xo="80" yo="64" id="10020035" name="inst_42C02344" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="864" y="96" w="32" h="32" xo="80" yo="64" id="10020036" name="inst_11522643" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="864" y="128" w="32" h="32" xo="80" yo="64" id="10020037" name="inst_C529AA03" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="864" y="160" w="32" h="32" xo="80" yo="64" id="10020038" name="inst_B67FEADF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="864" y="192" w="32" h="32" xo="80" yo="64" id="10020039" name="inst_21ECBAD9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="864" y="224" w="32" h="32" xo="80" yo="64" id="10020040" name="inst_D2739E15" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="896" y="224" w="32" h="32" xo="80" yo="64" id="10020041" name="inst_D773576D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="896" y="192" w="32" h="32" xo="80" yo="64" id="10020042" name="inst_CE9ADBF6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="896" y="160" w="32" h="32" xo="80" yo="64" id="10020043" name="inst_7EC0EA90" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="896" y="128" w="32" h="32" xo="80" yo="64" id="10020044" name="inst_E675786E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="928" y="128" w="32" h="32" xo="80" yo="64" id="10020045" name="inst_DBAD5CCF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="960" y="128" w="32" h="32" xo="80" yo="64" id="10020046" name="inst_AEFB8F58" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="992" y="128" w="32" h="32" xo="80" yo="64" id="10020047" name="inst_2FC5FE7A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1024" y="128" w="32" h="32" xo="80" yo="64" id="10020048" name="inst_658CE677" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1024" y="160" w="32" h="32" xo="80" yo="64" id="10020049" name="inst_29B4186F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1024" y="192" w="32" h="32" xo="80" yo="64" id="10020050" name="inst_09523C40" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1024" y="224" w="32" h="32" xo="80" yo="64" id="10020051" name="inst_754AD221" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1024" y="256" w="32" h="32" xo="80" yo="64" id="10020052" name="inst_17EF99CA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="1024" y="288" w="32" h="32" xo="80" yo="64" id="10020053" name="inst_E8D32C2D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="992" y="288" w="32" h="32" xo="80" yo="64" id="10020054" name="inst_3BFF59F6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="992" y="256" w="32" h="32" xo="80" yo="64" id="10020055" name="inst_4257A970" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="992" y="224" w="32" h="32" xo="80" yo="64" id="10020056" name="inst_4FBA0DF4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="992" y="192" w="32" h="32" xo="80" yo="64" id="10020057" name="inst_971716F4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="992" y="160" w="32" h="32" xo="80" yo="64" id="10020058" name="inst_D690FA22" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="960" y="160" w="32" h="32" xo="80" yo="64" id="10020059" name="inst_899129CE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="928" y="160" w="32" h="32" xo="80" yo="64" id="10020060" name="inst_60665363" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="928" y="192" w="32" h="32" xo="80" yo="64" id="10020061" name="inst_558C1082" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="960" y="192" w="32" h="32" xo="80" yo="64" id="10020062" name="inst_B13B3946" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="960" y="224" w="32" h="32" xo="80" yo="64" id="10020063" name="inst_1D4F5838" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="960" y="256" w="32" h="32" xo="80" yo="64" id="10020064" name="inst_BB3B8924" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="960" y="288" w="32" h="32" xo="80" yo="64" id="10020065" name="inst_BF9C3E0B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="960" y="320" w="32" h="32" xo="80" yo="64" id="10020066" name="inst_BF3159ED" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="992" y="320" w="32" h="32" xo="80" yo="64" id="10020067" name="inst_DCB837F9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="992" y="352" w="32" h="32" xo="80" yo="64" id="10020068" name="inst_5BD0C275" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="992" y="384" w="32" h="32" xo="80" yo="64" id="10020069" name="inst_97D6DF7E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="992" y="416" w="32" h="32" xo="80" yo="64" id="10020070" name="inst_0679B93D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="992" y="448" w="32" h="32" xo="80" yo="64" id="10020071" name="inst_133C0D8C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="960" y="448" w="32" h="32" xo="80" yo="64" id="10020072" name="inst_B75658A9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="960" y="416" w="32" h="32" xo="80" yo="64" id="10020073" name="inst_522ED618" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="960" y="384" w="32" h="32" xo="80" yo="64" id="10020074" name="inst_E6237CEB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="960" y="352" w="32" h="32" xo="80" yo="64" id="10020075" name="inst_1F48A325" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="928" y="352" w="32" h="32" xo="80" yo="64" id="10020076" name="inst_1A2DEDC5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="928" y="320" w="32" h="32" xo="80" yo="64" id="10020077" name="inst_6D548CF2" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="928" y="288" w="32" h="32" xo="80" yo="64" id="10020078" name="inst_CBC46C06" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="928" y="256" w="32" h="32" xo="80" yo="64" id="10020079" name="inst_B39B3A16" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="928" y="224" w="32" h="32" xo="80" yo="64" id="10020080" name="inst_6B31DCB3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="896" y="256" w="32" h="32" xo="80" yo="64" id="10020081" name="inst_CCAF65E5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="864" y="256" w="32" h="32" xo="80" yo="64" id="10020082" name="inst_9572030D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="864" y="288" w="32" h="32" xo="80" yo="64" id="10020083" name="inst_43116A0D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="864" y="320" w="32" h="32" xo="80" yo="64" id="10020084" name="inst_72DC0553" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1380,7 +1299,6 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="896" y="416" w="32" h="32" xo="80" yo="64" id="10020094" name="inst_655F8C43" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="896" y="352" w="32" h="32" xo="80" yo="64" id="10020095" name="inst_8502C8D7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="896" y="320" w="32" h="32" xo="80" yo="64" id="10020096" name="inst_0F46302B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="896" y="288" w="32" h="32" xo="80" yo="64" id="10020097" name="inst_6AD09082" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="832" y="288" w="32" h="32" xo="80" yo="64" id="10020098" name="inst_43770DDB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="800" y="288" w="32" h="32" xo="80" yo="64" id="10020099" name="inst_E7FE278E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="768" y="288" w="32" h="32" xo="80" yo="64" id="10020100" name="inst_EA276A9C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1447,7 +1365,6 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="352" y="448" w="32" h="32" xo="80" yo="64" id="10020167" name="inst_8DFBB128" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="352" y="544" w="32" h="32" xo="80" yo="64" id="10020170" name="inst_9C3B9B55" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="352" y="576" w="32" h="32" xo="80" yo="64" id="10020171" name="inst_60AE9BD8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="352" y="608" w="32" h="32" xo="80" yo="64" id="10020172" name="inst_9F306011" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="320" y="608" w="32" h="32" xo="80" yo="64" id="10020173" name="inst_2432DA4D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="320" y="576" w="32" h="32" xo="80" yo="64" id="10020174" name="inst_A687986D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="320" y="544" w="32" h="32" xo="80" yo="64" id="10020175" name="inst_E0D57CF5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1464,11 +1381,8 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="384" y="448" w="32" h="32" xo="80" yo="64" id="10020186" name="inst_D5FEE24A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="384" y="544" w="32" h="32" xo="80" yo="64" id="10020189" name="inst_09FA0AA7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="384" y="576" w="32" h="32" xo="80" yo="64" id="10020190" name="inst_E128D33F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="384" y="608" w="32" h="32" xo="80" yo="64" id="10020191" name="inst_3A16ADD5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="320" y="672" w="32" h="32" xo="80" yo="64" id="10020192" name="inst_21FAAA35" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="320" y="640" w="32" h="32" xo="80" yo="64" id="10020193" name="inst_02A88A43" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="352" y="640" w="32" h="32" xo="80" yo="64" id="10020194" name="inst_5CF71227" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="384" y="640" w="32" h="32" xo="80" yo="64" id="10020195" name="inst_B410FA8E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="416" y="640" w="32" h="32" xo="80" yo="64" id="10020196" name="inst_020F8F16" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="448" y="640" w="32" h="32" xo="80" yo="64" id="10020197" name="inst_234207AA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="448" y="608" w="32" h="32" xo="80" yo="64" id="10020198" name="inst_5CE2F756" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1555,7 +1469,6 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="736" y="640" w="32" h="32" xo="80" yo="64" id="10020281" name="inst_F5845EB3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="352" y="32" w="32" h="32" xo="80" yo="64" id="10020284" name="inst_92B8AFB0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="352" y="64" w="32" h="32" xo="80" yo="64" id="10020285" name="inst_E0B1C37E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="320" y="64" w="32" h="32" xo="80" yo="64" id="10020286" name="inst_014D26F0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="288" y="64" w="32" h="32" xo="80" yo="64" id="10020287" name="inst_2E2833DC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="0" y="32" w="32" h="32" xo="80" yo="64" id="10020288" name="inst_6EA22CA0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="32" y="32" w="32" h="32" xo="80" yo="64" id="10020289" name="inst_D2495897" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1994,9 +1907,6 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="128" y="256" w="32" h="32" xo="80" yo="64" id="10020836" name="inst_D438C226" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="128" y="288" w="32" h="32" xo="80" yo="64" id="10020837" name="inst_4A944F1C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="352" y="480" w="32" h="32" xo="80" yo="96" id="10020846" name="inst_4956AD9E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="384" y="480" w="32" h="32" xo="80" yo="96" id="10020847" name="inst_B210385E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="384" y="512" w="32" h="32" xo="80" yo="96" id="10020848" name="inst_1E7BC4C3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="352" y="512" w="32" h="32" xo="80" yo="96" id="10020849" name="inst_D8CFFF3D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="352" y="416" w="32" h="32" xo="80" yo="96" id="10020850" name="inst_F52D6B43" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="64" y="608" w="32" h="32" xo="80" yo="96" id="10020851" name="inst_B03D0596" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="96" y="608" w="32" h="32" xo="80" yo="96" id="10020852" name="inst_6E2C06EF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -2012,10 +1922,8 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="704" y="288" w="32" h="32" xo="80" yo="96" id="10020862" name="inst_F82C8FAB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="736" y="288" w="32" h="32" xo="80" yo="96" id="10020863" name="inst_87087F8F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="96" y="352" w="32" h="32" xo="80" yo="96" id="10020864" name="inst_95EF7802" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="288" y="0" w="32" h="32" xo="80" yo="96" id="10020865" name="inst_71D53B2E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="288" y="32" w="32" h="32" xo="80" yo="96" id="10020866" name="inst_177F2125" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="320" y="32" w="32" h="32" xo="80" yo="96" id="10020867" name="inst_D3C1FCEE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tAlexMinigame" x="320" y="0" w="32" h="32" xo="80" yo="96" id="10020868" name="inst_E93B8637" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="896" y="544" w="16" h="16" xo="16" yo="64" id="10020869" name="inst_37003C06" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="912" y="544" w="16" h="16" xo="16" yo="64" id="10020870" name="inst_5C6DA8E1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="0" y="1056" w="32" h="32" xo="80" yo="64" id="10020871" name="inst_9B4E3042" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -2200,6 +2108,370 @@ background_vspeed[0] = -.25</code>
     <tile bgName="tAlexMinigame" x="1376" y="560" w="16" h="16" xo="128" yo="112" id="10021699" name="inst_C25439AE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1344" y="560" w="16" h="16" xo="112" yo="96" id="10021700" name="inst_4F767654" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tAlexMinigame" x="1360" y="560" w="16" h="16" xo="112" yo="112" id="10021701" name="inst_CBF8AD59" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1248" y="384" w="32" h="32" xo="80" yo="64" id="10021716" name="inst_491F5E51" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="384" w="32" h="32" xo="80" yo="64" id="10021717" name="inst_873504DE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="384" w="32" h="32" xo="80" yo="64" id="10021718" name="inst_51CCFCCF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="384" w="32" h="32" xo="80" yo="64" id="10021719" name="inst_3DDA00C8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="384" w="32" h="32" xo="80" yo="64" id="10021720" name="inst_9D2FD584" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="384" w="32" h="32" xo="80" yo="64" id="10021721" name="inst_55E57AC8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="384" w="32" h="32" xo="80" yo="64" id="10021722" name="inst_A6653757" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="384" w="32" h="32" xo="80" yo="64" id="10021723" name="inst_62C65F5A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="384" w="32" h="32" xo="80" yo="64" id="10021724" name="inst_1C9CDF6A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="384" w="32" h="32" xo="80" yo="64" id="10021725" name="inst_E8488A1B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="384" w="32" h="32" xo="80" yo="64" id="10021726" name="inst_A1CEC207" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="352" w="32" h="32" xo="80" yo="64" id="10021727" name="inst_82F60D36" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="320" w="32" h="32" xo="80" yo="64" id="10021728" name="inst_7D1C1EE1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="288" w="32" h="32" xo="80" yo="64" id="10021729" name="inst_C74704B9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="256" w="32" h="32" xo="80" yo="64" id="10021730" name="inst_969AB38A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="224" w="32" h="32" xo="80" yo="64" id="10021731" name="inst_E8E94445" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="192" w="32" h="32" xo="80" yo="64" id="10021732" name="inst_625999B1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="128" w="32" h="32" xo="80" yo="64" id="10021733" name="inst_2FB1815C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="96" w="32" h="32" xo="80" yo="64" id="10021734" name="inst_822AFDA8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="64" w="32" h="32" xo="80" yo="64" id="10021735" name="inst_AA1B8CC4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="32" w="32" h="32" xo="80" yo="64" id="10021736" name="inst_442E8B52" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="0" w="32" h="32" xo="80" yo="64" id="10021737" name="inst_3B8A91BF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="0" w="32" h="32" xo="80" yo="64" id="10021738" name="inst_1F08C0BE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="0" w="32" h="32" xo="80" yo="64" id="10021739" name="inst_BB765CC3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="0" w="32" h="32" xo="80" yo="64" id="10021740" name="inst_1CE9467B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="0" w="32" h="32" xo="80" yo="64" id="10021741" name="inst_C083F2FC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="0" w="32" h="32" xo="80" yo="64" id="10021742" name="inst_BC270651" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="0" w="32" h="32" xo="80" yo="64" id="10021743" name="inst_5DB5C0BA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="0" w="32" h="32" xo="80" yo="64" id="10021744" name="inst_763FFFD7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1248" y="0" w="32" h="32" xo="80" yo="64" id="10021745" name="inst_C2A4F3E1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="0" w="32" h="32" xo="80" yo="64" id="10021746" name="inst_DEA116F7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="0" w="32" h="32" xo="80" yo="64" id="10021747" name="inst_23431443" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1568" y="160" w="32" h="32" xo="80" yo="64" id="10021748" name="inst_0FD42853" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="32" w="32" h="32" xo="80" yo="64" id="10021749" name="inst_F811A6D6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="64" w="32" h="32" xo="80" yo="64" id="10021750" name="inst_39BCA928" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="96" w="32" h="32" xo="80" yo="64" id="10021751" name="inst_D3488A68" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="128" w="32" h="32" xo="80" yo="64" id="10021752" name="inst_272615FE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="160" w="32" h="32" xo="80" yo="64" id="10021753" name="inst_27A61A0C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="192" w="32" h="32" xo="80" yo="64" id="10021754" name="inst_40A949B8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="224" w="32" h="32" xo="80" yo="64" id="10021755" name="inst_0E2A99F3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="256" w="32" h="32" xo="80" yo="64" id="10021756" name="inst_93D1DE26" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="288" w="32" h="32" xo="80" yo="64" id="10021757" name="inst_3E69ACBB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="320" w="32" h="32" xo="80" yo="64" id="10021758" name="inst_6EA0AD7A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1536" y="352" w="32" h="32" xo="80" yo="64" id="10021759" name="inst_CA43400A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="352" w="32" h="32" xo="80" yo="64" id="10021760" name="inst_619F5BB6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="352" w="32" h="32" xo="80" yo="64" id="10021761" name="inst_939E5150" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="352" w="32" h="32" xo="80" yo="64" id="10021762" name="inst_9BC71B7E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="352" w="32" h="32" xo="80" yo="64" id="10021763" name="inst_AD7BB3C3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="352" w="32" h="32" xo="80" yo="64" id="10021764" name="inst_2235C0EE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="352" w="32" h="32" xo="80" yo="64" id="10021765" name="inst_D7024BE2" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="352" w="32" h="32" xo="80" yo="64" id="10021766" name="inst_6F4DA0B3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="352" w="32" h="32" xo="80" yo="64" id="10021767" name="inst_CFF766A1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1248" y="352" w="32" h="32" xo="80" yo="64" id="10021768" name="inst_215B89FC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1248" y="320" w="32" h="32" xo="80" yo="64" id="10021769" name="inst_24602D17" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="320" w="32" h="32" xo="80" yo="64" id="10021770" name="inst_CDD699EE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="320" w="32" h="32" xo="80" yo="64" id="10021771" name="inst_76F35169" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="320" w="32" h="32" xo="80" yo="64" id="10021772" name="inst_A0A7F1A7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="320" w="32" h="32" xo="80" yo="64" id="10021773" name="inst_A0CD28D2" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="320" w="32" h="32" xo="80" yo="64" id="10021774" name="inst_489E6046" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="320" w="32" h="32" xo="80" yo="64" id="10021775" name="inst_FF754BB7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="320" w="32" h="32" xo="80" yo="64" id="10021776" name="inst_2ED34C37" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="320" w="32" h="32" xo="80" yo="64" id="10021777" name="inst_AB5DB1D4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="288" w="32" h="32" xo="80" yo="64" id="10021778" name="inst_B90E07C5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="288" w="32" h="32" xo="80" yo="64" id="10021779" name="inst_A2BE0975" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="288" w="32" h="32" xo="80" yo="64" id="10021780" name="inst_37835424" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="288" w="32" h="32" xo="80" yo="64" id="10021781" name="inst_569139BA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="256" w="32" h="32" xo="80" yo="64" id="10021793" name="inst_9DD4EE3A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="256" w="32" h="32" xo="80" yo="64" id="10021794" name="inst_2A765058" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="256" w="32" h="32" xo="80" yo="64" id="10021795" name="inst_CBEDF153" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="256" w="32" h="32" xo="80" yo="64" id="10021796" name="inst_827A8093" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="224" w="32" h="32" xo="80" yo="64" id="10021797" name="inst_60807869" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="192" w="32" h="32" xo="80" yo="64" id="10021798" name="inst_965E7581" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="160" w="32" h="32" xo="80" yo="64" id="10021799" name="inst_880B2A71" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="128" w="32" h="32" xo="80" yo="64" id="10021800" name="inst_5903C3C3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="96" w="32" h="32" xo="80" yo="64" id="10021801" name="inst_91E637C5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="64" w="32" h="32" xo="80" yo="64" id="10021802" name="inst_0E500319" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1504" y="32" w="32" h="32" xo="80" yo="64" id="10021803" name="inst_FC3009B0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="32" w="32" h="32" xo="80" yo="64" id="10021804" name="inst_1FFD14F7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="32" w="32" h="32" xo="80" yo="64" id="10021805" name="inst_91CAC7CA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="32" w="32" h="32" xo="80" yo="64" id="10021806" name="inst_159BEAEC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="32" w="32" h="32" xo="80" yo="64" id="10021807" name="inst_6BF532E7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="224" w="32" h="32" xo="80" yo="64" id="10021822" name="inst_27105043" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="224" w="32" h="32" xo="80" yo="64" id="10021823" name="inst_F3CF97D0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="224" w="32" h="32" xo="80" yo="64" id="10021824" name="inst_9A351270" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="192" w="32" h="32" xo="80" yo="64" id="10021825" name="inst_749EC44B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="160" w="32" h="32" xo="80" yo="64" id="10021826" name="inst_4DB1A4DF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="128" w="32" h="32" xo="80" yo="64" id="10021827" name="inst_75BAEBAE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="96" w="32" h="32" xo="80" yo="64" id="10021828" name="inst_D36402D3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1472" y="64" w="32" h="32" xo="80" yo="64" id="10021829" name="inst_5CB968CE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="64" w="32" h="32" xo="80" yo="64" id="10021830" name="inst_09D47122" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="64" w="32" h="32" xo="80" yo="64" id="10021831" name="inst_32CA7C59" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="64" w="32" h="32" xo="80" yo="64" id="10021832" name="inst_C30646CC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="192" w="32" h="32" xo="80" yo="64" id="10021842" name="inst_C82077F7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="192" w="32" h="32" xo="80" yo="64" id="10021843" name="inst_173922D3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="192" w="32" h="32" xo="80" yo="64" id="10021844" name="inst_698F48CA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="160" w="32" h="32" xo="80" yo="64" id="10021845" name="inst_717B047F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="128" w="32" h="32" xo="80" yo="64" id="10021846" name="inst_A955B9B0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1440" y="96" w="32" h="32" xo="80" yo="64" id="10021847" name="inst_2CBA9B1C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="96" w="32" h="32" xo="80" yo="64" id="10021848" name="inst_BE5EB343" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="96" w="32" h="32" xo="80" yo="64" id="10021849" name="inst_B3B66F13" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="160" w="32" h="32" xo="80" yo="64" id="10021855" name="inst_76B89256" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="160" w="32" h="32" xo="80" yo="64" id="10021856" name="inst_88465F58" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1408" y="128" w="32" h="32" xo="80" yo="64" id="10021857" name="inst_3F48CAEF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="128" w="32" h="32" xo="80" yo="64" id="10021858" name="inst_D5035969" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="848" y="192" w="16" h="16" xo="64" yo="80" id="10021860" name="inst_C3AE1A74" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="864" y="192" w="16" h="16" xo="16" yo="96" id="10021861" name="inst_9CFD0759" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="880" y="192" w="16" h="16" xo="16" yo="96" id="10021862" name="inst_8F22AD95" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="896" y="192" w="16" h="16" xo="16" yo="96" id="10021863" name="inst_4600AF9B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="912" y="192" w="16" h="16" xo="48" yo="80" id="10021864" name="inst_EF4603D8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="912" y="208" w="16" h="16" xo="0" yo="80" id="10021865" name="inst_DEC44ED1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="912" y="224" w="16" h="16" xo="0" yo="96" id="10021867" name="inst_BEB84D83" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="944" y="288" w="16" h="16" xo="0" yo="96" id="10021868" name="inst_31D9CC22" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="928" y="224" w="16" h="16" xo="16" yo="96" id="10021869" name="inst_4B9BA087" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="944" y="224" w="16" h="16" xo="48" yo="80" id="10021870" name="inst_AB098911" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="944" y="240" w="16" h="16" xo="0" yo="80" id="10021871" name="inst_8DE08E12" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="944" y="256" w="16" h="16" xo="0" yo="80" id="10021872" name="inst_4321D475" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="944" y="272" w="16" h="16" xo="0" yo="80" id="10021873" name="inst_0B06A6A7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="960" y="288" w="16" h="16" xo="16" yo="96" id="10021874" name="inst_648E1813" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="976" y="288" w="16" h="16" xo="16" yo="96" id="10021875" name="inst_9373C6DD" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="992" y="288" w="16" h="16" xo="16" yo="96" id="10021876" name="inst_A275EF03" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1008" y="288" w="16" h="16" xo="16" yo="96" id="10021877" name="inst_F19560D5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1024" y="288" w="16" h="16" xo="16" yo="96" id="10021878" name="inst_E2C19E8A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="288" w="16" h="16" xo="16" yo="96" id="10021879" name="inst_D972080B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1056" y="288" w="16" h="16" xo="16" yo="96" id="10021880" name="inst_D8496FCE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1072" y="288" w="16" h="16" xo="16" yo="96" id="10021881" name="inst_F3A1E169" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1088" y="288" w="16" h="16" xo="16" yo="96" id="10021882" name="inst_91B6693F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1104" y="288" w="16" h="16" xo="16" yo="96" id="10021883" name="inst_C02DE5AE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="848" y="80" w="16" h="16" xo="16" yo="64" id="10021884" name="inst_B608777F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="864" y="80" w="16" h="16" xo="16" yo="64" id="10021885" name="inst_EE17CB9F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="880" y="80" w="16" h="16" xo="16" yo="64" id="10021886" name="inst_027AB150" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="896" y="80" w="16" h="16" xo="16" yo="64" id="10021887" name="inst_850EA1BF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="912" y="80" w="16" h="16" xo="48" yo="64" id="10021889" name="inst_CDCC6D29" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="912" y="64" w="16" h="16" xo="0" yo="80" id="10021890" name="inst_C04F6081" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="912" y="48" w="16" h="16" xo="0" yo="64" id="10021891" name="inst_6374B689" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="928" y="48" w="16" h="16" xo="16" yo="64" id="10021892" name="inst_1139F831" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="944" y="48" w="16" h="16" xo="16" yo="64" id="10021893" name="inst_C25E2FA3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="960" y="48" w="16" h="16" xo="16" yo="64" id="10021894" name="inst_8FFDEAD4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="976" y="48" w="16" h="16" xo="16" yo="64" id="10021895" name="inst_61F596E5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="992" y="48" w="16" h="16" xo="16" yo="64" id="10021896" name="inst_E3809E4F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1008" y="48" w="16" h="16" xo="16" yo="64" id="10021897" name="inst_1B0DD8D6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1024" y="48" w="16" h="16" xo="16" yo="64" id="10021898" name="inst_5DE2261E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="48" w="16" h="16" xo="16" yo="64" id="10021899" name="inst_240999BD" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1056" y="48" w="16" h="16" xo="16" yo="64" id="10021900" name="inst_5AD6EB24" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1072" y="48" w="16" h="16" xo="16" yo="64" id="10021901" name="inst_6A106AA1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1088" y="48" w="16" h="16" xo="16" yo="64" id="10021902" name="inst_779EA4E9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1104" y="48" w="16" h="16" xo="16" yo="64" id="10021903" name="inst_915BFDE9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1120" y="48" w="16" h="16" xo="16" yo="64" id="10021904" name="inst_03EB4A39" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1136" y="48" w="16" h="16" xo="16" yo="64" id="10021905" name="inst_4E33B4A9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1152" y="48" w="16" h="16" xo="16" yo="64" id="10021906" name="inst_4C11744E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1168" y="48" w="16" h="16" xo="16" yo="64" id="10021907" name="inst_F1D2147B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="48" w="16" h="16" xo="16" yo="64" id="10021908" name="inst_5C6BB318" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1200" y="48" w="16" h="16" xo="16" yo="64" id="10021909" name="inst_F945828C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1216" y="48" w="16" h="16" xo="16" yo="64" id="10021910" name="inst_2F933042" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1232" y="48" w="16" h="16" xo="16" yo="64" id="10021911" name="inst_80EB6A7E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1248" y="48" w="16" h="16" xo="16" yo="64" id="10021912" name="inst_E84FACB0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1264" y="48" w="16" h="16" xo="16" yo="64" id="10021913" name="inst_56E0F3A4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="48" w="16" h="16" xo="16" yo="64" id="10021914" name="inst_CC6ABB62" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1296" y="48" w="16" h="16" xo="16" yo="64" id="10021915" name="inst_57BD2A76" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="96" w="16" h="16" xo="32" yo="80" id="10021923" name="inst_BAD00CDD" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="112" w="16" h="16" xo="32" yo="80" id="10021924" name="inst_6D15CE02" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="128" w="16" h="16" xo="32" yo="80" id="10021925" name="inst_02419149" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="144" w="16" h="16" xo="32" yo="80" id="10021926" name="inst_6643E9F5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="160" w="16" h="16" xo="32" yo="80" id="10021927" name="inst_FE88E400" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="176" w="16" h="16" xo="32" yo="80" id="10021928" name="inst_1476994F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="192" w="16" h="16" xo="64" yo="80" id="10021933" name="inst_C2C5F5B5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="224" w="16" h="16" xo="64" yo="80" id="10021934" name="inst_5B36E015" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1120" y="288" w="16" h="16" xo="16" yo="96" id="10021935" name="inst_3468CE1D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1152" y="288" w="16" h="16" xo="16" yo="96" id="10021936" name="inst_E4F27412" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1168" y="288" w="16" h="16" xo="16" yo="96" id="10021937" name="inst_E97DC163" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="288" w="16" h="16" xo="16" yo="96" id="10021938" name="inst_1D2A6A0D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1216" y="288" w="16" h="16" xo="16" yo="96" id="10021939" name="inst_8999BC37" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1248" y="288" w="16" h="16" xo="16" yo="96" id="10021940" name="inst_BFE3F056" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1264" y="288" w="16" h="16" xo="16" yo="96" id="10021941" name="inst_6A260D79" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1136" y="288" w="16" h="16" xo="16" yo="96" id="10021942" name="inst_0E1E2D0F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1200" y="288" w="16" h="16" xo="16" yo="96" id="10021943" name="inst_160B791E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1232" y="288" w="16" h="16" xo="16" yo="96" id="10021944" name="inst_D010CBEA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1296" y="224" w="16" h="16" xo="16" yo="96" id="10021945" name="inst_8429A35D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1328" y="192" w="16" h="16" xo="16" yo="96" id="10021946" name="inst_3FEB2CB2" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="208" w="16" h="16" xo="32" yo="80" id="10021947" name="inst_CD67E379" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="240" w="16" h="16" xo="32" yo="80" id="10021948" name="inst_7CC0D673" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="256" w="16" h="16" xo="32" yo="80" id="10021949" name="inst_17C3B856" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="272" w="16" h="16" xo="32" yo="80" id="10021950" name="inst_69331228" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="288" w="16" h="16" xo="32" yo="96" id="10021951" name="inst_BBB09235" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="224" w="16" h="16" xo="32" yo="96" id="10021952" name="inst_33DEA6EE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="192" w="16" h="16" xo="32" yo="96" id="10021953" name="inst_C79BED0A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="80" w="16" h="16" xo="64" yo="64" id="10021954" name="inst_61CF4E71" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="48" w="16" h="16" xo="32" yo="64" id="10021955" name="inst_2F2B948D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="80" w="16" h="16" xo="32" yo="64" id="10021956" name="inst_DE881BA7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1328" y="80" w="16" h="16" xo="16" yo="64" id="10021957" name="inst_5CFBDAE1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="64" w="16" h="16" xo="32" yo="80" id="10021958" name="inst_5BA0A004" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="224" w="16" h="32" xo="176" yo="112" id="10021961" name="inst_8AF8E88F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1056" y="224" w="16" h="32" xo="176" yo="112" id="10021962" name="inst_8226DC69" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1072" y="224" w="16" h="32" xo="176" yo="112" id="10021963" name="inst_688700DC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1088" y="224" w="16" h="32" xo="176" yo="112" id="10021964" name="inst_A791F671" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1104" y="224" w="16" h="32" xo="176" yo="112" id="10021965" name="inst_3B8459E0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1120" y="224" w="16" h="32" xo="176" yo="112" id="10021966" name="inst_1D382FE7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1136" y="224" w="16" h="32" xo="176" yo="112" id="10021967" name="inst_CE5F1FA5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1152" y="224" w="16" h="32" xo="176" yo="112" id="10021968" name="inst_9BD5D955" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1168" y="224" w="16" h="32" xo="176" yo="112" id="10021969" name="inst_BCFBB226" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="224" w="16" h="32" xo="176" yo="112" id="10021970" name="inst_45C1A4F6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1200" y="224" w="16" h="32" xo="192" yo="112" id="10021973" name="inst_44D6FAB0" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="256" w="16" h="16" xo="176" yo="144" id="10021976" name="inst_B6A7DE28" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1056" y="256" w="16" h="16" xo="176" yo="144" id="10021977" name="inst_8D57ACCA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1072" y="256" w="16" h="16" xo="176" yo="144" id="10021978" name="inst_86B9D257" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1088" y="256" w="16" h="16" xo="176" yo="144" id="10021979" name="inst_D823ED0E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1104" y="256" w="16" h="16" xo="176" yo="144" id="10021980" name="inst_254B8DD7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1120" y="256" w="16" h="16" xo="176" yo="144" id="10021981" name="inst_E729D84B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1136" y="256" w="16" h="16" xo="176" yo="144" id="10021982" name="inst_AF162EDE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1152" y="256" w="16" h="16" xo="176" yo="144" id="10021983" name="inst_EE62D922" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1168" y="256" w="16" h="16" xo="176" yo="144" id="10021984" name="inst_C99B6997" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="256" w="16" h="16" xo="176" yo="144" id="10021985" name="inst_56804D9D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1200" y="256" w="16" h="16" xo="192" yo="144" id="10021986" name="inst_FAB04D43" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1008" y="224" w="32" h="48" xo="144" yo="112" id="10021988" name="inst_223079B8" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="208" w="16" h="16" xo="176" yo="96" id="10021989" name="inst_EF2C154C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="208" w="16" h="16" xo="176" yo="96" id="10021990" name="inst_DFDDC029" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="192" w="16" h="16" xo="176" yo="80" id="10021991" name="inst_418FB238" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="176" w="16" h="16" xo="176" yo="80" id="10021992" name="inst_89E51ED4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="160" w="16" h="16" xo="176" yo="80" id="10021993" name="inst_E5C90528" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="144" w="16" h="16" xo="176" yo="80" id="10021994" name="inst_24B7B4DF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="128" w="16" h="16" xo="176" yo="80" id="10021995" name="inst_B5E2C7A4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="112" w="16" h="16" xo="176" yo="80" id="10021996" name="inst_08E6E779" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="96" w="16" h="16" xo="176" yo="80" id="10021997" name="inst_5267CC77" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="80" w="16" h="16" xo="176" yo="80" id="10021998" name="inst_50464FC4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="192" w="16" h="16" xo="176" yo="80" id="10021999" name="inst_535715FC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="176" w="16" h="16" xo="176" yo="80" id="10022000" name="inst_628588F2" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="160" w="16" h="16" xo="176" yo="80" id="10022001" name="inst_4C877D34" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="144" w="16" h="16" xo="176" yo="80" id="10022002" name="inst_F2516DC7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="128" w="16" h="16" xo="176" yo="80" id="10022003" name="inst_E0D7E6E7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="112" w="16" h="16" xo="176" yo="80" id="10022004" name="inst_D4F889D4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="96" w="16" h="16" xo="176" yo="80" id="10022005" name="inst_9FEEFC76" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="80" w="16" h="16" xo="176" yo="80" id="10022006" name="inst_485CDD24" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="64" w="16" h="16" xo="176" yo="64" id="10022007" name="inst_F1D20FCB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="64" w="16" h="16" xo="176" yo="64" id="10022008" name="inst_5EB2A29A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="896" y="240" w="32" h="32" xo="80" yo="64" id="10022009" name="inst_3F29997D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="896" y="272" w="32" h="32" xo="80" yo="64" id="10022010" name="inst_A984FECC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="896" y="304" w="32" h="16" xo="80" yo="64" id="10022011" name="inst_B3E3D5E4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="928" y="304" w="32" h="16" xo="80" yo="64" id="10022012" name="inst_D86DCC46" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1056" y="304" w="32" h="16" xo="80" yo="64" id="10022016" name="inst_1EB7B042" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1120" y="304" w="32" h="16" xo="80" yo="64" id="10022018" name="inst_513EA7EE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1152" y="304" w="32" h="16" xo="80" yo="64" id="10022019" name="inst_8103D88D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="304" w="32" h="16" xo="80" yo="64" id="10022020" name="inst_6F8ED734" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1216" y="304" w="32" h="16" xo="80" yo="64" id="10022021" name="inst_A867BB8F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1248" y="304" w="32" h="16" xo="80" yo="64" id="10022022" name="inst_47AAA1BE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="304" w="32" h="16" xo="80" yo="64" id="10022023" name="inst_A3FC0895" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="304" w="32" h="16" xo="80" yo="64" id="10022024" name="inst_5C1EB3BE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="304" w="32" h="16" xo="80" yo="64" id="10022025" name="inst_540F3AFB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1296" y="240" w="32" h="16" xo="80" yo="64" id="10022026" name="inst_8FC6F8AB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1296" y="256" w="32" h="16" xo="80" yo="64" id="10022027" name="inst_E5EB9386" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1296" y="272" w="32" h="16" xo="80" yo="64" id="10022028" name="inst_BAE43165" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1296" y="288" w="32" h="16" xo="80" yo="64" id="10022029" name="inst_4D1DF4BF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1328" y="208" w="32" h="16" xo="80" yo="64" id="10022030" name="inst_4001FB81" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1360" y="32" w="16" h="32" xo="80" yo="64" id="10022036" name="inst_5A0D1E26" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1360" y="64" w="16" h="32" xo="80" yo="64" id="10022037" name="inst_BBA0B563" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1360" y="96" w="16" h="32" xo="80" yo="64" id="10022038" name="inst_F0F6E900" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1360" y="128" w="16" h="32" xo="80" yo="64" id="10022039" name="inst_BC2D95EF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1360" y="160" w="16" h="32" xo="80" yo="64" id="10022040" name="inst_E977531B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1360" y="192" w="16" h="32" xo="80" yo="64" id="10022041" name="inst_A472C828" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="864" y="64" w="32" h="16" xo="80" yo="64" id="10022046" name="inst_5F0C6204" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="896" y="48" w="16" h="32" xo="80" yo="64" id="10022047" name="inst_B718DD58" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="896" y="32" w="32" h="16" xo="80" yo="64" id="10022048" name="inst_C30D82BF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="928" y="32" w="32" h="16" xo="80" yo="64" id="10022049" name="inst_8C27665F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="960" y="32" w="32" h="16" xo="80" yo="64" id="10022050" name="inst_CDB86396" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="992" y="32" w="32" h="16" xo="80" yo="64" id="10022051" name="inst_91A79ED5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1024" y="32" w="32" h="16" xo="80" yo="64" id="10022052" name="inst_1FE427FB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1056" y="32" w="32" h="16" xo="80" yo="64" id="10022053" name="inst_CDDE0ECA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1088" y="32" w="32" h="16" xo="80" yo="64" id="10022054" name="inst_B18816BE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1120" y="32" w="32" h="16" xo="80" yo="64" id="10022055" name="inst_A429F349" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1152" y="32" w="32" h="16" xo="80" yo="64" id="10022056" name="inst_5D8BBB53" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1184" y="32" w="32" h="16" xo="80" yo="64" id="10022057" name="inst_1153C918" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1216" y="32" w="32" h="16" xo="80" yo="64" id="10022058" name="inst_3D179E7A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1248" y="32" w="32" h="16" xo="80" yo="64" id="10022059" name="inst_44F2ADFD" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1280" y="32" w="32" h="16" xo="80" yo="64" id="10022060" name="inst_6F685C7C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1312" y="32" w="32" h="16" xo="80" yo="64" id="10022061" name="inst_90D591ED" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="32" w="16" h="16" xo="96" yo="64" id="10022062" name="inst_A02E762A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="864" y="208" w="16" h="16" xo="96" yo="64" id="10022063" name="inst_F3998204" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="896" y="208" w="16" h="16" xo="96" yo="64" id="10022064" name="inst_D1AC448F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="896" y="224" w="16" h="16" xo="96" yo="64" id="10022065" name="inst_3CC434FF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="880" y="208" w="16" h="16" xo="96" yo="64" id="10022066" name="inst_A710E070" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="928" y="240" w="16" h="16" xo="96" yo="64" id="10022067" name="inst_414FE467" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="928" y="272" w="16" h="16" xo="96" yo="64" id="10022068" name="inst_F07E313D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="928" y="288" w="16" h="16" xo="96" yo="64" id="10022069" name="inst_B7AAFB84" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="928" y="256" w="16" h="16" xo="96" yo="64" id="10022070" name="inst_9749DD63" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="864" y="32" w="32" h="32" xo="80" yo="96" id="10022071" name="inst_BD90C88C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1328" y="240" w="32" h="32" xo="80" yo="96" id="10022079" name="inst_9B30FE6D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1360" y="240" w="32" h="32" xo="80" yo="96" id="10022081" name="inst_4D83F877" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="224" w="16" h="16" xo="80" yo="64" id="10022084" name="inst_157BE69C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1392" y="224" w="16" h="16" xo="80" yo="64" id="10022085" name="inst_E1E92630" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1392" y="240" w="16" h="16" xo="80" yo="64" id="10022086" name="inst_B3068825" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1392" y="256" w="16" h="16" xo="80" yo="64" id="10022087" name="inst_7ED2B344" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1392" y="272" w="16" h="16" xo="80" yo="64" id="10022088" name="inst_2C8529B9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1392" y="288" w="16" h="16" xo="80" yo="64" id="10022089" name="inst_A5C42F95" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1392" y="304" w="16" h="16" xo="80" yo="64" id="10022090" name="inst_A8A0D7DD" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="304" w="16" h="16" xo="80" yo="64" id="10022091" name="inst_3FCF5D02" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="848" y="48" w="16" h="16" xo="96" yo="112" id="10022092" name="inst_A4BE684C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="832" y="48" w="16" h="16" xo="96" yo="112" id="10022093" name="inst_66351627" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="832" y="32" w="32" h="16" xo="80" yo="64" id="10022094" name="inst_0A8B5F3D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="960" y="352" w="16" h="16" xo="80" yo="64" id="10022096" name="inst_47452729" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="960" y="368" w="16" h="16" xo="80" yo="64" id="10022097" name="inst_79F47DB7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="976" y="368" w="16" h="16" xo="80" yo="64" id="10022098" name="inst_34206CC9" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="224" w="16" h="16" xo="96" yo="96" id="10022099" name="inst_6A896A32" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1360" y="224" w="16" h="16" xo="96" yo="96" id="10022100" name="inst_A6F2C840" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="272" w="16" h="16" xo="96" yo="96" id="10022101" name="inst_37EAD294" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1360" y="272" w="16" h="16" xo="96" yo="96" id="10022102" name="inst_1271627D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1328" y="224" w="16" h="16" xo="80" yo="64" id="10022103" name="inst_6974CBE6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1360" y="288" w="16" h="16" xo="80" yo="64" id="10022104" name="inst_489FEE75" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="272" w="16" h="16" xo="80" yo="64" id="10022105" name="inst_3A479F4D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1376" y="288" w="16" h="16" xo="80" yo="64" id="10022106" name="inst_C8D78A57" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1344" y="288" w="16" h="16" xo="80" yo="64" id="10022107" name="inst_37813795" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1328" y="288" w="16" h="16" xo="80" yo="64" id="10022108" name="inst_F18B8769" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1328" y="272" w="16" h="16" xo="80" yo="64" id="10022109" name="inst_CB9F60E1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="320" y="64" w="16" h="16" xo="80" yo="96" id="10022110" name="inst_79F09BBE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="336" y="64" w="16" h="16" xo="80" yo="96" id="10022111" name="inst_AD363F58" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="288" y="0" w="32" h="32" xo="80" yo="64" id="10022112" name="inst_3199AE66" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="320" y="0" w="32" h="32" xo="80" yo="64" id="10022113" name="inst_2A791084" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="320" y="80" w="32" h="16" xo="80" yo="64" id="10022114" name="inst_DCEA9BCA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="384" y="640" w="16" h="16" xo="80" yo="96" id="10022115" name="inst_C5118965" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="368" y="624" w="16" h="16" xo="80" yo="96" id="10022116" name="inst_209A818A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="400" y="624" w="16" h="16" xo="80" yo="96" id="10022117" name="inst_244DD257" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="368" y="640" w="16" h="16" xo="80" yo="64" id="10022119" name="inst_3DBA239A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="368" y="656" w="16" h="16" xo="80" yo="64" id="10022120" name="inst_26FF6E15" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="384" y="656" w="16" h="16" xo="80" yo="64" id="10022121" name="inst_233A7D4F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="400" y="656" w="16" h="16" xo="80" yo="64" id="10022122" name="inst_01D6E179" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="352" y="656" w="16" h="16" xo="80" yo="64" id="10022124" name="inst_F1902BBE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="352" y="624" w="16" h="16" xo="80" yo="64" id="10022125" name="inst_EE50E4BB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="352" y="608" w="16" h="16" xo="80" yo="64" id="10022126" name="inst_25110FFA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="400" y="608" w="16" h="16" xo="80" yo="64" id="10022128" name="inst_C6F93581" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="352" y="640" w="16" h="16" xo="80" yo="64" id="10022129" name="inst_48553F8C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="384" y="624" w="16" h="16" xo="80" yo="96" id="10022131" name="inst_3607C93B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="400" y="640" w="16" h="16" xo="80" yo="96" id="10022132" name="inst_7908B1A3" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="384" y="496" w="16" h="16" xo="96" yo="96" id="10022134" name="inst_5AB69C57" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="352" y="512" w="16" h="16" xo="96" yo="96" id="10022136" name="inst_85F7EEFE" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="368" y="528" w="16" h="16" xo="96" yo="96" id="10022137" name="inst_8783F203" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="384" y="480" w="16" h="16" xo="96" yo="96" id="10022138" name="inst_C4F652A1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="352" y="528" w="16" h="16" xo="80" yo="64" id="10022140" name="inst_81D0900C" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="400" y="480" w="16" h="16" xo="80" yo="64" id="10022142" name="inst_57E83A3D" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="400" y="496" w="16" h="16" xo="80" yo="96" id="10022143" name="inst_BC681A30" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="368" y="512" w="32" h="16" xo="80" yo="96" id="10022144" name="inst_78D9C6F1" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="384" y="528" w="16" h="16" xo="80" yo="64" id="10022145" name="inst_7089E4A4" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="400" y="528" w="16" h="16" xo="80" yo="64" id="10022146" name="inst_27276206" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="400" y="512" w="16" h="16" xo="80" yo="64" id="10022147" name="inst_3F82EF6A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="368" y="608" w="16" h="16" xo="80" yo="64" id="10022148" name="inst_AD5B6517" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="384" y="608" w="16" h="16" xo="80" yo="64" id="10022149" name="inst_1C9625DB" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1328" y="48" w="32" h="32" xo="80" yo="96" id="10022150" name="inst_18318FCC" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="960" y="336" w="16" h="16" xo="80" yo="64" id="10022173" name="inst_E7614149" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="976" y="352" w="16" h="16" xo="80" yo="64" id="10022174" name="inst_5EAA4A5E" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="992" y="368" w="16" h="16" xo="80" yo="64" id="10022175" name="inst_5BBDE491" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1008" y="368" w="16" h="16" xo="80" yo="64" id="10022176" name="inst_43BC6A6A" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1088" y="336" w="16" h="16" xo="80" yo="64" id="10022177" name="inst_B48A80E5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1104" y="336" w="16" h="16" xo="80" yo="64" id="10022178" name="inst_F2860471" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="992" y="304" w="32" h="16" xo="80" yo="96" id="10022179" name="inst_928D4717" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="992" y="320" w="32" h="16" xo="80" yo="96" id="10022180" name="inst_44734528" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="976" y="336" w="16" h="16" xo="80" yo="64" id="10022181" name="inst_7537FFB6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1008" y="336" w="16" h="16" xo="80" yo="64" id="10022182" name="inst_B601D56F" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1008" y="352" w="16" h="16" xo="80" yo="64" id="10022183" name="inst_D0A0AACF" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="992" y="352" w="16" h="16" xo="80" yo="64" id="10022184" name="inst_521628B6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="992" y="336" w="16" h="16" xo="80" yo="64" id="10022185" name="inst_F7F459B5" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1104" y="320" w="16" h="16" xo="80" yo="64" id="10022186" name="inst_4934CC3B" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1088" y="304" w="16" h="16" xo="80" yo="64" id="10022187" name="inst_52625316" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1088" y="320" w="16" h="16" xo="80" yo="64" id="10022188" name="inst_23B0E4AA" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1104" y="304" w="16" h="16" xo="80" yo="64" id="10022189" name="inst_130F1791" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="960" y="304" w="32" h="16" xo="80" yo="96" id="10022190" name="inst_80F70456" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="960" y="320" w="32" h="16" xo="80" yo="80" id="10022191" name="inst_60E59714" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1024" y="304" w="16" h="16" xo="80" yo="96" id="10022192" name="inst_4AF7F2F7" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tAlexMinigame" x="1040" y="304" w="16" h="16" xo="96" yo="80" id="10022193" name="inst_B43BB1B6" depth="-100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

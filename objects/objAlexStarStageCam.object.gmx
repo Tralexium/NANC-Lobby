@@ -152,6 +152,12 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexStageIntro);
     instance_activate_object(objPlayer);
     
+    // Lobby
+    instance_activate_object(objAlexLobbyBubbleTransition);
+    instance_activate_object(objAlexLobbyBubbleTransitionOut);
+    instance_activate_object(objAlexLobbyTransitionBubble);
+    instance_activate_object(objAlexLobbyTransitionBubbleOut);
+    
     // Star floor
     instance_activate_object(obj3DFloor);
     instance_activate_object(objAlexFallingStarSpawner);

@@ -17,6 +17,7 @@ switch(cosmetic_id) {
     case 10: spr = sprAlexHatChair; break;
     case 11: spr = sprAlexHatBurger; break;
     case 12: spr = sprAlexHatCrusher; break;
+    case 13: spr = sprAlexHatCrown; break;
 }
 
 return spr;

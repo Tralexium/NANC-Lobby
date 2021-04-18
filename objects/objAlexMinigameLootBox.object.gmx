@@ -141,8 +141,6 @@ if(place_meeting(x, y+16, objAlexLobbyPlayer) &amp;&amp; !collected) {
             collected = true;
             alarm[0] = 50;
             
-            scrSaveGame(false);
-            
             var preview = instance_create(x, y, objAlexCosmeticPreviewFromBox);            
             if(hat_id != -1) {
                 global.playerHat[hat_id] = true;
@@ -173,7 +171,7 @@ if(!collected) {
 } else {
     halo_spin_spd += .5;
     halo_alpha = max(halo_alpha - .05, 0);
-    halo_scale = max(halo_alpha - .02, 0);
+    halo_scale = max(halo_scale - .02, 0);
     halfs_distance = lerp(halfs_distance, 24, .05);
     halfs_alpha = max(halfs_alpha - .05, 0);
 }
@@ -288,6 +286,30 @@ shader_res[1] = sprite_height;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Check if in view
+
+if(!scrInView(128))
+    exit;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Draw halo if unlocked
 
 if(!locked) {
@@ -339,7 +361,7 @@ if(locked) {
     } else {
         var _offset = sprite_height / 2;
         draw_sprite_part_ext(sprite_index, 0, 0, 0, sprite_width, sprite_height/2, draw_x-_offset, draw_y-halfs_distance-_offset, image_xscale, image_yscale, -1, halfs_alpha);
-        draw_sprite_part_ext(sprite_index, 0, 0, _offset, sprite_width, sprite_height/2, draw_x-_offset, draw_y+halfs_distance-_offset, image_xscale, image_yscale, -1, halfs_alpha);
+        draw_sprite_part_ext(sprite_index, 0, 0, _offset, sprite_width, sprite_height/2, draw_x-_offset, draw_y+halfs_distance, image_xscale, image_yscale, -1, halfs_alpha);
     }
 }
 </string>

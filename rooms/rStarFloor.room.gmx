@@ -190,6 +190,7 @@ background_vspeed[0] = 0</code>
     <instance objName="objAlexStarCameraTrigger" x="448" y="0" name="inst_2DC4FF92" locked="0" code="" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarCameraTrigger" x="832" y="0" name="inst_8BB9A064" locked="0" code="index = 1;&#xA;" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="objAlexStarCameraTrigger" x="880" y="0" name="inst_BDB7D3C5" locked="0" code="" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLobbyMinigameDoor" x="1296" y="1568" name="inst_01427E3C" locked="0" code="room_id = rMinigameFloor;&#xA;spawn_x = -1;&#xA;spawn_y = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexFloor4" x="752" y="816" w="16" h="16" xo="160" yo="112" id="10018319" name="inst_3186080F" depth="1002" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
