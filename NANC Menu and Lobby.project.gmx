@@ -358,6 +358,7 @@
         <sound>sound\sndAlexDialogSoundBoshy</sound>
         <sound>sound\sndAlexDialogSoundPiece</sound>
         <sound>sound\sndAlexDialogSoundWolfie</sound>
+        <sound>sound\sndAlexDialogSoundLeTroll</sound>
         <sound>sound\sndAlexDialogSoundBartender</sound>
         <sound>sound\sndAlexClearWarp</sound>
         <sound>sound\sndAlexClearUISecret</sound>
@@ -627,6 +628,14 @@
           <sprite>sprites\sprSpecialNPCBoshyTalk</sprite>
           <sprite>sprites\sprSpecialNPCBillyIdle</sprite>
           <sprite>sprites\sprSpecialNPCBillyTalk</sprite>
+          <sprite>sprites\sprSpecialNPCStonkIdle</sprite>
+          <sprite>sprites\sprSpecialNPCStonkTalk</sprite>
+          <sprite>sprites\sprSpecialNPCErikIdle</sprite>
+          <sprite>sprites\sprSpecialNPCErikTalk</sprite>
+          <sprite>sprites\sprSpecialNPCLeTrollIdle</sprite>
+          <sprite>sprites\sprSpecialNPCLeTrollTalk</sprite>
+          <sprite>sprites\sprSpecialNPCLeTrollOilJar</sprite>
+          <sprite>sprites\sprAlexOilPart</sprite>
         </sprites>
       </sprites>
       <sprites name="Final Stage">
@@ -1426,6 +1435,8 @@
         <object>objects\objAlexPandaNPC</object>
         <object>objects\objOneTimeTrigger</object>
         <object>objects\objAlexBillyTheSign</object>
+        <object>objects\objAlexLeTrollNPC</object>
+        <object>objects\objAlexLeTrollOil</object>
         <object>objects\objAlexDialogBox</object>
         <object>objects\objStageEndWarp</object>
         <object>objects\objStageEndWarpPart</object>

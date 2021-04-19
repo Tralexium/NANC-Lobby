@@ -34,7 +34,7 @@ idle_sprite = sprSpecialNPCBillyIdle;
 talking_sprite = sprSpecialNPCBillyTalk;
 letter_sfx = sndAlexDialogSoundBilly;
 max_distance = 24;
-lock_dir = true;
+lock_dir = false;
 
 dialog_list[| 0] = "If you're looking for wisdom then you found the right sign!"
 
@@ -191,6 +191,8 @@ if(!is_talking) {
                 image_xscale = 1;
             else
                 image_xscale = -1;
+                
+            objPlayer.xScale = -image_xscale;
         }
     }
 }

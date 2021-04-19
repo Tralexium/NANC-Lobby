@@ -4,7 +4,7 @@
   <width>1600</width>
   <height>1024</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -140,6 +140,9 @@ background_vspeed[0] = -.25</code>
     <instance objName="objAlexStarCameraTrigger" x="848" y="96" name="inst_0CE75B96" locked="0" code="index = 2;&#xA;" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="objAlexBlockWithoutShadow" x="1024" y="224" name="inst_EF368719" locked="0" code="" scaleX="12" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objAlexFullCompletionLootBox" x="1120" y="176" name="inst_A7EB2391" locked="0" code="hat_id = 13;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexLeTrollNPC" x="688" y="256" name="inst_0D0D4BBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="160" y="208" name="inst_0BA56630" locked="0" code="npc_name = &quot;Grey Face&quot;;&#xA;idle_sprite = sprSpecialNPCErikIdle;&#xA;talking_sprite = sprSpecialNPCErikTalk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;Yo Kid, you should try Burnmind sometime.&quot;;&#xA;dialog_list[| 1] = &quot;Since that unforgatable experience, I have no braincells nor hair left.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objAlexNPC" x="368" y="320" name="inst_9829F627" locked="0" code="npc_name = &quot;Corn Fanatic&quot;;&#xA;idle_sprite = sprSpecialNPCStonkIdle;&#xA;talking_sprite = sprSpecialNPCStonkTalk;&#xA;letter_sfx = sndAlexDialogSoundDefault;&#xA;&#xA;dialog_list[| 0] = &quot;Game&quot;;&#xA;dialog_list[| 1] = &quot;Game Game Game Game Game Game Game Game Game Game Game Game Game Game&quot;;&#xA;" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tAlexMinigame" x="400" y="1008" w="32" h="32" xo="80" yo="64" id="10021017" name="inst_D7485525" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

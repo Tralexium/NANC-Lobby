@@ -55,6 +55,11 @@ draw_shadow = true // Draws a drop shadow underneath the player
 mg_iframes = 0;
 mg_max_iframes = 20;
 
+// Oil
+oil_mode = false;
+oil_slip_amnt = 0;  // -1: full left, 1: full right
+oil_slip_accel = 0.05;
+
 // Bow's old fashion
 with(objBow)
     instance_destroy();
@@ -463,6 +468,31 @@ if(place_meeting(x, y, objAlexWater)) {
 if(mg_iframes &gt; 0) {
     mg_iframes--;
     image_blend = merge_colour(c_white, c_red, mg_iframes/mg_max_iframes);
+}
+
+// Oil
+var L = (scrButtonCheck(global.leftButton) || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.leftButton)));
+var R = (scrButtonCheck(global.rightButton) || (global.directionalTapFix &amp;&amp; scrButtonCheckPressed(global.rightButton)));
+if(oil_mode &amp;&amp; !frozen) {
+    image_blend = $41b5f0;
+    
+    if(L || R) {
+        if(L)
+            oil_slip_amnt = max(oil_slip_amnt - oil_slip_accel, -1);
+        if(R)
+            oil_slip_amnt = min(oil_slip_amnt + oil_slip_accel, 1);
+    
+        hspeed = oil_slip_amnt * maxSpeed;
+        
+        if(t mod 10 == 0 &amp;&amp; place_meeting(x, y+1, objBlock)) {
+            var _oil_dir = 90 + (40 * xScale);
+            var _part = scrAlexMakeParticle(x, bbox_bottom, 20, sprAlexOilPart, 0, _oil_dir, 2, true, false, false);
+                _part.gravity = 0.1;
+                _part.depth = depth + 1;
+        }
+    } else {
+        oil_slip_amnt = lerp(oil_slip_amnt, 0, 0.1);
+    }
 }
 </string>
           </argument>
