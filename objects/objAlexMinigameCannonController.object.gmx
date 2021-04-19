@@ -535,6 +535,8 @@ active = false;
 clear_text_fade_in = true;
 alarm[0] = clear_text_scale_dur + 50;
 
+global.noPause = false;
+
 with(objAlexMinigameBall)
     shrink = true;
 
