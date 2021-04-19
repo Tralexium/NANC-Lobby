@@ -48,7 +48,7 @@ clear_text_alpha = 1;
 clear_text_fade_in = false;
 clear_text_fade_out = false;
 
-var _cannon_pad = 32;
+var _cannon_pad = 48;
 var _cannon_x = x;
 for(var i=0; i&lt;cannon_amnt; i++) {
     cannon[i] = instance_create(_cannon_x, y, objAlexMinigameCannon);
@@ -557,6 +557,10 @@ if(global.lobbyMinigameScore &gt; global.lobbyMinigameHighScore) {
     
     // Save current score
     scrSaveGame(false);
+    
+    audio_play_sound(sndAlexMinigameNewBest, 0, false);
+} else {
+    audio_play_sound(sndAlexMinigameFinish, 0, false);
 }
 </string>
           </argument>
@@ -585,6 +589,8 @@ if(global.lobbyMinigameScore &gt; global.lobbyMinigameHighScore) {
 active = true;
 t = 0;
 
+global.noPause = true;
+
 instance_create(0, 0, objAlexMinigameScoreUI);
 
 with(objAlexMinigameSpike)
@@ -596,6 +602,31 @@ with(objAlexMinigameLockWall)
 scrStopMusic();
 scrPlayMusic(musAlexMinigameFloorStart, false);
 scrAlexShakeCam(25, 8, 8, 4, 6);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Re-enable pausing
+
+global.noPause = false;
 </string>
           </argument>
         </arguments>

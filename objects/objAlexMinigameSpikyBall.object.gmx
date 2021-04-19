@@ -94,6 +94,9 @@ if(!shrink) {
             
         with(objAlexLobbyPlayer)
             mg_iframes = mg_max_iframes;
+            
+        var _sfx = audio_play_sound(sndAlexMinigameSpikyBallKick, 0, false);
+        audio_sound_pitch(_sfx, random_range(0.9, 1.1));
         
         instance_destroy();
     }

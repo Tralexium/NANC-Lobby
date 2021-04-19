@@ -79,12 +79,18 @@ if(points_on_destroy &gt; 0) {
     global.lobbyMinigameScore += points_on_destroy;
     
     with(objAlexMinigameTarget) {
-        if(other.points_on_destroy == 5)
+        if(other.points_on_destroy == 5) {
             blue_glow = 1;
-        if(other.points_on_destroy == 10)
-            red_glow = 1;  
-        if(other.points_on_destroy == 20)
-            yellow_glow = 1;  
+            audio_play_sound(sndAlexMinigameTargetBlue, 0, false);
+        }
+        if(other.points_on_destroy == 10) {
+            red_glow = 1;
+            audio_play_sound(sndAlexMinigameTargetRed, 0, false);
+        }
+        if(other.points_on_destroy == 20) {
+            yellow_glow = 1;
+            audio_play_sound(sndAlexMinigameTargetYellow, 0, false);
+        }
     }
     
     var _floating_score = instance_create(x, y, objAlexMinigameBallScoreText);
@@ -156,11 +162,14 @@ if(collision_cooldown_t &gt; 0) {
     
         var _player_dir = point_direction(_player.x, _player.y, x, y);
         if(_player_dir &lt; 180)       
-            var _dir = lerp(_player_dir, 30, aim_assist_amnt);
+            var _dir = lerp(_player_dir, 15, aim_assist_amnt);
         else
             var _dir = lerp(_player_dir, 270 + 45, aim_assist_amnt);
         direction = _dir;
         speed = max_spd;
+        
+        var _sfx = audio_play_sound(sndAlexMinigameBallKick, 0, false);
+        audio_sound_pitch(_sfx, random_range(0.9, 1.1));
     }
     
     

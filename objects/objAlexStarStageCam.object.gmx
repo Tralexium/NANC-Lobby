@@ -151,6 +151,8 @@ if(_exceeded_check_dist &amp;&amp; disable_objects) {
     instance_activate_object(objAlexStarCameraTrigger);
     instance_activate_object(objAlexStageIntro);
     instance_activate_object(objPlayer);
+    instance_activate_object(objFloorInitializer);
+    instance_activate_object(objAlexMusicFadeTransition);
     
     // Lobby
     instance_activate_object(objAlexLobbyBubbleTransition);

@@ -296,6 +296,18 @@
           <sound>sound\sndAlexEyeBlockUnlocked</sound>
           <sound>sound\sndAlexVoidBlockShot</sound>
         </sounds>
+        <sounds name="Minigame">
+          <sound>sound\sndAlexMinigameBallKick</sound>
+          <sound>sound\sndAlexMinigameSpikyBallKick</sound>
+          <sound>sound\sndAlexMinigameGoldenBallKick</sound>
+          <sound>sound\sndAlexMinigameGoldenBallGlow</sound>
+          <sound>sound\sndAlexMinigameGoldenBallExplode</sound>
+          <sound>sound\sndAlexMinigameFinish</sound>
+          <sound>sound\sndAlexMinigameNewBest</sound>
+          <sound>sound\sndAlexMinigameTargetBlue</sound>
+          <sound>sound\sndAlexMinigameTargetRed</sound>
+          <sound>sound\sndAlexMinigameTargetYellow</sound>
+        </sounds>
         <sound>sound\sndAlexSaveBlocker</sound>
         <sound>sound\sndAlexSaveGreen</sound>
         <sound>sound\sndAlexSaveRed</sound>
@@ -835,6 +847,7 @@
         <sprite>sprites\sprAlexMinigameBall</sprite>
         <sprite>sprites\sprAlexMinigameGoldenBall</sprite>
         <sprite>sprites\sprAlexMinigameSpikyBall</sprite>
+        <sprite>sprites\sprAlexMinigameGoldenBallExplosion</sprite>
         <sprite>sprites\sprAlexMinigameCannon</sprite>
         <sprite>sprites\sprAlexMinigameButton</sprite>
         <sprite>sprites\sprAlexMinigameClockBase</sprite>

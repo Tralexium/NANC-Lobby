@@ -122,7 +122,9 @@ if(fade_out) {
 
 draw_set_font(fMenuLobby12);
 draw_set_alpha(image_alpha);
-if(text_score &gt;= 0)
+if(text_score &gt;= 50)
+    scrDrawTextSquareOutlineExt(x, y, string(text_score), $41b5f0, $2e1814, 2, fa_center, fa_middle, text_scale, text_scale);
+else if(text_score &gt;= 0)
     scrDrawTextSquareOutlineExt(x, y, string(text_score), $e8e0df, $2e1814, 2, fa_center, fa_middle, text_scale, text_scale);
 else
     scrDrawTextSquareOutlineExt(x, y, string(text_score), $3945e6, $2e1814, 2, fa_center, fa_middle, text_scale, text_scale);

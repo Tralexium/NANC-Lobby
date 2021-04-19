@@ -79,6 +79,25 @@ if(points_on_destroy &gt; 0) {
     
     var _floating_score = instance_create(x, y, objAlexMinigameBallScoreText);
         _floating_score.text_score = points_on_destroy;
+      
+    audio_stop_sound(sndAlexMinigameGoldenBallGlow);          
+    if(!audio_is_playing(sndAlexMinigameGoldenBallExplode))
+        audio_play_sound(sndAlexMinigameGoldenBallExplode, 0, false);
+        
+    var _part = scrAlexMakeParticle(x, y, 30, sprAlexChaseMonsterFlarePart, 0, 90, 2.25, false, true, false);
+        _part.add_angle = -10;
+        _part.blend_mode = bm_add;
+        _part.start_col = $41b5f0;
+        _part.add_scale = -.02;
+        _part.image_angle = halo_angle;
+        _part.image_xscale = .6;
+        _part.image_yscale = .6;
+        
+    
+        _part = scrAlexMakeParticle(x, y, 50, sprAlexMinigameGoldenBallExplosion, 0.5, 90, 2.25, false, false, false);
+        _part.end_on_last_frame = true;
+        _part.image_xscale = 2;
+        _part.image_yscale = 2;
 }
 </string>
           </argument>
@@ -123,11 +142,14 @@ if(collision_cooldown_t &gt; 0) {
             _floating_score.text_score = points_on_collision;
             
         if(x &lt; objAlexMinigameButton.x) {
-            direction = random_range(85, 90);
+            direction = random_range(86, 90);
         } else {
-            direction = random_range(90, 95);
+            direction = random_range(90, 94);
         }
         speed = on_hit_spd;
+        
+        var _sfx = audio_play_sound(sndAlexMinigameGoldenBallKick, 0, false);
+        audio_sound_pitch(_sfx, random_range(0.9, 1.1));
         
         collision_cooldown_t = 10;
         glow_alpha = 1;
@@ -220,6 +242,9 @@ else
 slow_down = true;
 gravity = 0;
 friction = 0.1;
+
+if(!audio_is_playing(sndAlexMinigameGoldenBallGlow))
+    audio_play_sound(sndAlexMinigameGoldenBallGlow, 0, false);
 </string>
           </argument>
         </arguments>
